@@ -52,6 +52,7 @@ import Element from '../../vdom/Element';
 const SETTERS = {
   attr: 'setAttr',
   style: 'setStyle',
+  data: 'setData',
   event: 'addEvent',
   idStyle: 'setIdStyle',
   tagStyle: 'setTagStyle'
@@ -65,14 +66,6 @@ const SETTERS = {
  * @param {Element | FragBlockInterface} parentElement - Parent element of current element.
  */
 export function bindElement(vm: Vm, el: Element, template: TemplateInterface, parentElement: Element | FragBlockInterface): void {
-  setId(vm, el, template.id, vm);
-  setAttr(vm, el, template.attr);
-  setStyle(vm, el, template.style);
-  setIdStyle(vm, el, template.id);
-  setClass(vm, el, template.classList);
-  setTagStyle(vm, el, template.type);
-  applyStyle(vm, el);
-
   // Set descendant style.
   setDescendantStyle(
     vm.selector,
@@ -93,11 +86,36 @@ export function bindElement(vm: Vm, el: Element, template: TemplateInterface, pa
       setStyle(vm, el, style);
     }
   );
+
+  // inherit 'show' attribute of custom component
+  if (el.isCustomComponent) {
+    const value = vm['show'];
+    if (template.attr && value !== undefined) {
+      if (typeof value === 'function') {
+        // vm['show'] is assigned to this.show in initPropsToData()
+        template.attr['show'] = function() {
+          return this.show;
+        };
+      } else {
+        template.attr['show'] = value;
+      }
+    }
+  }
+
+  setId(vm, el, template.id, vm);
+  setAttr(vm, el, template.attr);
+  setStyle(vm, el, template.style);
+  setIdStyle(vm, el, template.id);
+  setClass(vm, el, template.classList);
+  setTagStyle(vm, el, template.type);
+  applyStyle(vm, el);
+
   bindEvents(vm, el, template.events);
   bindEvents(vm, el, template.onBubbleEvents, '');
   bindEvents(vm, el, template.onCaptureEvents, 'capture');
   bindEvents(vm, el, template.catchBubbleEvents, 'catchbubble');
   bindEvents(vm, el, template.catchCaptureEvents, 'catchcapture');
+
   if (!vm.isHide && !vm.init) {
     el.addEvent('hide');
     vm.isHide = true;
@@ -196,7 +214,12 @@ function mergePropsObject(key: string, value: any, vm: Vm, subVm: Vm): any {
     const returnValue = watch(vm, value, function(v) {
       subVm[key] = v;
     });
-    subVm[key] = returnValue;
+    // 'show' attribute will be inherited by elements in custom component
+    if (key === 'show') {
+      subVm[key] = value;
+    } else {
+      subVm[key] = returnValue;
+    }
   } else {
     const realValue =
         value && value.__hasDefault ? value.__isDefaultValue : value;
@@ -224,7 +247,12 @@ function mergeProps(target: object, props: any, vm: Vm, subVm: Vm): void {
         const returnValue = watch(vm, value, function(v) {
           subVm[key] = v;
         });
-        subVm[key] = returnValue;
+        // 'show' attribute will be inherited by elements in custom component
+        if (key === 'show') {
+          subVm[key] = value;
+        } else {
+          subVm[key] = returnValue;
+        }
       } else {
         subVm[key] = value;
       }
@@ -351,6 +379,10 @@ function setElementId(el: Element, id: string): void {
  * @param {AttrInterface} attr - Attr to bind.
  */
 function setAttr(vm: Vm, el: Element, attr: Partial<AttrInterface>): void {
+  if (attr && attr.data) {
+    // address data independently
+    bindDir(vm, el, 'data', attr.data);
+  }
   bindDir(vm, el, 'attr', attr);
 }
 
@@ -538,6 +570,7 @@ function setClassStyle(el: Element, css: object, classList: string[], vm?: Vm): 
     const animationName = classStyle['animationName'];
     if (animationName) {
       classStyle['animationName'] = keyframes[animationName];
+      classStyle['animationName'].push({'animationName': animationName});
     }
     const transitionEnter = classStyle['transitionEnter'];
     if (transitionEnter) {
@@ -648,6 +681,7 @@ function setAnimation(style: any, css: any): void {
   const keyframes = css['@KEYFRAMES'];
   if (animationName && keyframes) {
     style['animationName'] = keyframes[animationName];
+    style['animationName'].push({'animationName': animationName});
   }
 }
 

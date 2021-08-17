@@ -90,7 +90,8 @@
     "wrap-iife": [2, "any"],
     "no-var": 2,
     "prefer-const": 2,
-    "array-bracket-spacing": 2
+    "array-bracket-spacing": 2,
+    "no-useless-escape": 0
   },
 
   "settings": {

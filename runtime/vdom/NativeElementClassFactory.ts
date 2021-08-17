@@ -57,6 +57,9 @@ class NativeElementClassFactory {
             if (taskCenter) {
               // support aceapp callback style
               args = interceptCallback(args);
+              if (methodName === 'scrollTo' && args[0].id) {
+                args[0].id = findEl(this, args[0].id);
+              }
               const ret = taskCenter.send('component', {
                 ref: this.ref,
                 component: tagName,
@@ -72,6 +75,23 @@ class NativeElementClassFactory {
     // Add to element type map.
     this.nativeElementClassMap.set(tagName, NativeElement);
   }
+}
+
+function findEl(parent, id) {
+  if (!parent) {
+    return;
+  }
+  if (parent.id === id) {
+    return parent.ref;
+  }
+  let ans;
+  const children = parent.children;
+  if (children) {
+    for (const child in children) {
+      ans = ans || findEl(children[child], id);
+    }
+  }
+  return ans;
 }
 
 export default NativeElementClassFactory;

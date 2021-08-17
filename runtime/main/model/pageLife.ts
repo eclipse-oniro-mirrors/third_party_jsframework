@@ -171,7 +171,7 @@ export function bindPageLifeCycle(vm: Vm, element: Element): void {
         emitSubVmLife(vm, 'onPageHide');
         vm.visible = false;
       } else if (type === PageLifecycleHooks.ONCONFIGURATIONUPDATED) {
-        return vm.$emitDirect('hook:${type}', ...args);
+        return vm.$emitDirect(`hook:${type}`, ...args);
       }
 
       Log.debug(`EventHandle: isEmitEvent = ${isEmitEvent}, event = ${event}, args = ${JSON.stringify(args)}.`);

@@ -37,7 +37,6 @@ import {
 } from '../../runtime/main/page/register';
 import { App } from '../../runtime/main/app/App';
 import Page from '../../runtime/main/page';
-import config from '../../runtime/main/config';
 
 const expect = chai.expect;
 
@@ -64,6 +63,7 @@ describe('framework entry', () => {
     width: '0',
     height: '0',
     isInit: true,
+    darkMode: 'false',
     pcPreview: 'disable',
     appInstanceId: '10002',
     packageName: 'com.example.helloworld',
@@ -81,7 +81,6 @@ describe('framework entry', () => {
     appCode: '',
     bundleUrl: ''
   };
-  const { nativeComponentMap } = config;
 
   before(() => {
     initFramework();

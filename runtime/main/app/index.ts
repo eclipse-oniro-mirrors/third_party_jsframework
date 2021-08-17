@@ -24,7 +24,7 @@ import { getPageGlobal } from './helper';
 import { App } from './App';
 import Page from '../page/index';
 import { destroy } from '../page/api/index';
-import { mockSystemPlugin } from '../extend/systemplugin/systemPlugins';
+import { mockSystemPlugin } from '../extend/systemplugin/index';
 import { compileBundle } from '../page/entry/init';
 import { removePrefix } from '../util/index';
 import { requireModule } from '../page/register';
@@ -43,6 +43,7 @@ export interface MediaQueryInfo {
   'isInit': boolean;
   'resolution': string;
   'aspectRatio': string;
+  'darkMode': string;
 }
 
 /**
@@ -52,7 +53,7 @@ export interface Options extends MediaQueryInfo {
   'appInstanceId': string;
   'packageName': string;
   'appCreate': boolean;
-  'appCode': string;
+  'appCode': string | Function;
   'pcPreview': string;
   'resourcesConfiguration': object;
   'i18n': object;
@@ -99,7 +100,7 @@ export function appCreate(page: Page, options: Options, data: object, services: 
   appMap[packageName] = new App(packageName, options.appInstanceId);
   const timerAPIs: object = genTimerAPI(appPage);
   appMap[packageName].setTimer(timerAPIs);
-  const code: string = options.appCode;
+  const code = options.appCode;
   global.__appProto__ = getPageGlobal(packageName);
 
   // prepare page env methods
@@ -117,11 +118,15 @@ export function appCreate(page: Page, options: Options, data: object, services: 
     $app_require$: appRequireModule
   };
 
-  // Function with code and use strict mode.
-  const functionCode: string = `(function(global){\n\n"use strict";\n\n ${code} \n\n})(this.__appProto__)`;
-
   // Compile js bundle code and get result.
-  compileBundle(functionCode, 'app.js', parseOptions, timerAPIs, services);
+  if (typeof code === 'function') {
+    Log.info('call Function directly when appCreate');
+    code.call(global, parseOptions);
+  } else {
+    // Function with code and use strict mode.
+    const functionCode: string = `(function(global){\n\n"use strict";\n\n ${code} \n\n})(this.__appProto__)`;
+    compileBundle(functionCode, 'app.js', parseOptions, timerAPIs, services);
+  }
 }
 
 /**
@@ -138,6 +143,34 @@ export function appError(packageName: string, errors: any): void {
   }
   Log.debug(`AppError an app error ${packageName}.`);
   app.emitEvent('hook:onError', errors);
+}
+
+/**
+ * Emit onShow event.
+ * @param {string} packageName - Package name.
+ */
+export function appShow(packageName: string): void {
+  Log.debug(`Show an app with: ${packageName}.`);
+  const app: App = appMap[packageName];
+  if (!app) {
+    Log.debug(`Show an app error ${packageName}.`);
+    return;
+  }
+  app.emitEvent('hook:onShow');
+}
+
+/**
+ * Emit onHide event.
+ * @param {string} packageName - Package name.
+ */
+export function appHide(packageName: string): void {
+  Log.debug(`Hide an app with: ${packageName}.`);
+  const app: App = appMap[packageName];
+  if (!app) {
+    Log.debug(`Hide an app error ${packageName}.`);
+    return;
+  }
+  app.emitEvent('hook:onHide');
 }
 
 /**

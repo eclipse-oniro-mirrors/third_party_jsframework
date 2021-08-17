@@ -33,6 +33,8 @@ export interface GlobalInterface {
   createInstance: (id: string, code: string, config: Options, data: object) => any | Error;
   registerModules: (modules: object) => void;
   appDestroy: (packageName: string) => void;
+  appShow: (packageName: string) => void;
+  appHide: (packageName: string) => void;
   appError: (packageName: string, errors: any) => void;
   destroyInstance: (pageId: string) => any | Error;
   getRoot: (...args: any[]) => any | Error;
@@ -55,6 +57,8 @@ export function initFramework(): void {
     'registerModules': globalApi.registerModules,
     'appDestroy': globalApi.appDestroy,
     'appError': globalApi.appError,
+    'appShow': globalApi.appShow,
+    'appHide': globalApi.appHide,
     'destroyInstance': globalApi.destroyInstance,
     'getRoot': globalApi.getRoot,
     'callJS': globalApi.callJS
@@ -86,9 +90,9 @@ export function initFramework(): void {
 }
 
 const ModulesInfo: Record<string, string[]>[] = [
-  {'system.router': ['push', 'replace', 'back', 'clear', 'getLength', 'getState']},
+  {'system.router': ['push', 'replace', 'back', 'clear', 'getLength', 'getState', 'enableAlertBeforeBackPage', 'disableAlertBeforeBackPage']},
   {'system.app': ['getInfo', 'getPackageInfo', 'terminate', 'requestFullWindow', 'screenOnVisible', 'setSwipeToDismiss']},
-  {'system.prompt': ['showToast', 'showDialog']},
+  {'system.prompt': ['showToast', 'showDialog', 'showActionMenu']},
   {'system.configuration': ['getLocale']},
   {'timer': ['setTimeout', 'clearTimeout', 'setInterval', 'clearInterval']},
   {'system.image': ['getImage']},
@@ -96,7 +100,8 @@ const ModulesInfo: Record<string, string[]>[] = [
   {'system.grid': ['getSystemLayoutInfo']},
   {'system.mediaquery': ['addListener', 'getDeviceType']},
   {'animation': ['requestAnimationFrame', 'cancelAnimationFrame']},
-  {'system.resource': ['readText']}
+  {'system.resource': ['readText']},
+  {'ohos.animator': ['createAnimator']}
 ];
 
 type components<T> = {
@@ -105,42 +110,42 @@ type components<T> = {
 }
 
 const ComponentsInfo: components<string>[] = [
-  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'clock'},
-  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'image'},
-  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'label'},
-  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'list-item'},
-  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'list-item-group'},
-  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'progress'},
-  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'rating'},
-  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'select'},
-  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'switch'},
-  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'tabs'},
-  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'tab-bar'},
-  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'tab-content'},
-  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'text'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'clock'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'image'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'label'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'list-item'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'list-item-group'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'progress'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'rating'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'select'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'switch'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'tabs'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'tab-bar'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'tab-content'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'text'},
+  {'methods': ['focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'div'},
   {
-    'methods': ['setProgress', 'focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'],
+    'methods': ['setProgress', 'focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'],
     'type': 'button'
   },
-  {'methods': ['append', 'focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'chart'},
-  {'methods': ['goto', 'focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'calendar'},
+  {'methods': ['append', 'focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'chart'},
+  {'methods': ['goto', 'focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'calendar'},
   {
-    'methods': ['getContext', 'toDataURL', 'animate', 'focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'],
+    'methods': ['getContext', 'toDataURL', 'focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'],
     'type': 'canvas'
   },
-  {'methods': ['show', 'close', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'dialog'},
-  {'methods': ['focus', 'animate', 'getScrollOffset', 'scrollBy', 'getBoundingClientRect'], 'type': 'div'},
-  {'methods': ['animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'divider'},
+  {'methods': ['show', 'close', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'dialog'},
+  {'methods': ['animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'divider'},
   {
-    'methods': ['getColumns', 'getColumnWidth', 'getGutterWidth', 'getSizeType', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'],
+    'methods': ['getColumns', 'getColumnWidth', 'getGutterWidth', 'getSizeType', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'],
     'type': 'grid-container'
   },
   {
-    'methods': ['start', 'stop', 'pause', 'resume', 'getState', 'animate', 'focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'],
+    'methods': ['start', 'stop', 'pause', 'resume', 'getState', 'focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'],
     'type': 'image-animator'
   },
   {
-    'methods': ['showError', 'focus', 'animate', 'delete', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'],
+    'methods': ['showError', 'delete', 'focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'],
     'type': 'input'
   },
   {
@@ -148,47 +153,44 @@ const ComponentsInfo: components<string>[] = [
     'type': 'list'
   },
   {
-    'methods': ['start', 'stop', 'focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'],
+    'methods': ['start', 'stop', 'focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'],
     'type': 'marquee'
   },
-  {'methods': ['show', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'menu'},
-  {'methods': ['focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'option'},
-  {'methods': ['show', 'close', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'panel'},
-  {'methods': ['show', 'animate', 'focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'picker'},
+  {'methods': ['show', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'menu'},
+  {'methods': ['focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'option'},
+  {'methods': ['show', 'close', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'panel'},
+  {'methods': ['show', 'animate', 'focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'picker'},
   {
-    'methods': ['rotation', 'animate', 'focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'],
+    'methods': ['rotation', 'animate', 'focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'],
     'type': 'picker-view'
   },
-  {'methods': ['focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'piece'},
-  {'methods': ['focus', 'show', 'hide', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'popup'},
-  {'methods': ['animate', 'focus', 'delete', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'], 'type': 'search'},
+  {'methods': ['focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'piece'},
+  {'methods': ['focus', 'show', 'hide', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'popup'},
+  {'methods': ['animate', 'focus', 'delete', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'search'},
   {
-    'methods': ['rotation', 'focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'],
+    'methods': ['rotation', 'focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'],
     'type': 'slider'
   },
-  {'methods': ['focus', 'animate', 'getScrollOffset', 'scrollBy', 'getBoundingClientRect'], 'type': 'stack'},
+  {'methods': ['focus', 'animate', 'getScrollOffset', 'scrollBy', 'getBoundingClientRect', 'scrollTo'], 'type': 'stack'},
   {
-    'methods': ['swipeTo', 'focus', 'showPrevious', 'showNext', 'rotation', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'],
+    'methods': ['swipeTo', 'focus', 'showPrevious', 'showNext', 'rotation', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'],
     'type': 'swiper'
   },
   {
-    'methods': ['start', 'pause', 'setCurrentTime', 'requestFullscreen', 'exitFullscreen', 'focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'],
+    'methods': ['start', 'pause', 'stop', 'setCurrentTime', 'requestFullscreen', 'exitFullscreen', 'focus', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'],
     'type': 'video'
   },
   {
-    'methods': ['setNextButtonStatus', 'focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'],
+    'methods': ['setNextButtonStatus', 'focus', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'],
     'type': 'stepper'
   },
   {
-    'methods': ['focus', 'animate', 'delete', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'],
+    'methods': ['focus', 'animate', 'delete', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'],
     'type': 'textarea'
   },
+  {'methods': ['reload', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo'], 'type': 'web'},
   {
-    'methods': ['reload', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset'],
-    'type': 'web'
-  },
-  {
-    'methods': ['takePhoto', 'startRecorder', 'closeRecorder'],
+    'methods': ['takePhoto', 'scrollTo'],
     'type': 'camera'
   }
 ];

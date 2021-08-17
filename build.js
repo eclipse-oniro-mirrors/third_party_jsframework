@@ -25,7 +25,7 @@ const commonjs = require('rollup-plugin-commonjs');
 
 const json = require('rollup-plugin-json');
 
-const buble = require('rollup-plugin-buble');
+const babel = require('rollup-plugin-babel');
 
 const typescript = require('rollup-plugin-typescript2');
 
@@ -58,7 +58,17 @@ const esPlugin = eslint({
 const configInput = {
   input: path.resolve(__dirname, 'runtime/preparation/index.ts'),
   onwarn,
-  plugins: [esPlugin, tsPlugin, json(), resolve(), commonjs(), buble(), uglify()]
+  plugins: [
+    esPlugin,
+    tsPlugin,
+    json(),
+    resolve(),
+    commonjs(),
+    babel({
+      exclude: 'node_moduels/**'
+    }),
+    uglify()
+  ]
 };
 
 const configOutput = {

@@ -16,16 +16,18 @@
 import { Log } from '../../../utils/index';
 
 const MEDIA_QUERY_RULE = {
-  CONDITION_WITH_SCREEN: /^(((only|not)screen)|screen)((and|or|,)\([\w.:><=-]+\))*$/,
-  CONDITION_WITHOUT_SCREEN: /^\([\w.:><=-]+\)((and|or|,)\([\w.:><=-]+\))*$/,
-  CONDITION_WITH_AND: /^\([.a-z0-9:>=<-]+\)(and\([.a-z0-9:>=<-]+\))+/,
-  CSS_LEVEL4_MULTI: /^\(([\d.]+(dpi|dppx|dpcm|px)?)(>|<|>=|<=)[a-z0-9:-]+(>|<|>=|<=)([\d.]+(dpi|dppx|dpcm|px)?)\)$/,
-  CSS_LEVEL4_LEFT: /^\([^m][a-z-]+(>|<|>=|<=)[\d.]+(dpi|dppx|dpcm|px)?\)$/,
-  CSS_LEVEL4_RIGHT: /^\([\d.]+(dpi|dppx|dpcm|px)?(>|<|>=|<=)[^m][a-z-]+\)$/,
-  CSS_LEVEL3_RULE: /^\((min|max)-[a-z-]+:[\d.]+(dpi|dppx|dpcm)?\)$/,
+  CONDITION_WITH_SCREEN: /^(((only|not)screen)|screen)((and|or|,)\([\w\/\.:><=-]+\))*$/,
+  CONDITION_WITHOUT_SCREEN: /^\([\w\/\.:><=-]+\)((and|or|,)\([\w\/\.:><=-]+\))*$/,
+  CONDITION_WITH_AND: /^\([\/\.a-z0-9:>=<-]+\)(and\([\/\.a-z0-9:>=<-]+\))+/,
+  CSS_LEVEL4_MULTI: /^\(([\d\.]+(dpi|dppx|dpcm|px)?)(>|<|>=|<=)[a-z0-9:-]+(>|<|>=|<=)([\d\.]+(dpi|dppx|dpcm|px)?)\)$/,
+  CSS_LEVEL4_LEFT: /^\([^m][a-z-]+(>|<|>=|<=)[\d\.]+(dpi|dppx|dpcm|px)?\)$/,
+  CSS_LEVEL4_RIGHT: /^\([\d\.]+(dpi|dppx|dpcm|px)?(>|<|>=|<=)[^m][a-z-]+\)$/,
+  CSS_LEVEL3_RULE: /^\((min|max)-[a-z-]+:[\d\.]+(dpi|dppx|dpcm|px)?\)$/,
   ORIENTATION_RULE: /^\(orientation:[a-z]+\)/,
   DEVICETYPE_RULE: /^\(device-type:[a-z]+\)/,
-  SCREEN_SHAPE_RULE: /^\(round-screen:[a-z]+\)/
+  SCREEN_SHAPE_RULE: /^\(round-screen:[a-z]+\)/,
+  DARK_MODE: /^\(dark-mode:[a-z]+\)/,
+  ASPECT_RATIO: /^\((min|max)?-?(device)?-?aspect-ratio:[\d(\/)?(\d)*]+\)/
 };
 
 /**
@@ -179,6 +181,14 @@ function parseSingleCondition(condition: string, mediaStatus: object, failReason
     }
   } else if (MEDIA_QUERY_RULE.SCREEN_SHAPE_RULE.exec(condition)) {
     if (parseScreenShapeCondition(condition, mediaStatus, failReason)) {
+      return true;
+    }
+  } else if (MEDIA_QUERY_RULE.DARK_MODE.exec(condition)) {
+    if (parseDarkModeCondition(condition, mediaStatus, failReason)) {
+      return true;
+    }
+  } else if (MEDIA_QUERY_RULE.ASPECT_RATIO.exec(condition)) {
+    if (parseAspectRatioCondition(condition, mediaStatus, failReason)) {
       return true;
     }
   } else {
@@ -358,6 +368,56 @@ function parseScreenShapeCondition(condition: string, mediaStatus: object, failR
 }
 
 /**
+ * parse dark mode condition, such as: (dark-mode: true)
+ * @param {String} condition: dark condition
+ * @param {Object} mediaStatus: device info
+ * @param {Object} failReason: parse fail reason
+ */
+function parseDarkModeCondition(condition: string, mediaStatus: object, failReason: FailReason): boolean {
+  const darkMode = condition.match(/[a-z-]+/g);
+  if (!darkMode || darkMode.length !== 2) {
+    failReason.type = MEDIAERROR.SYNTAX;
+    return false;
+  }
+  return darkMode[1] === mediaStatus['dark-mode'].toString();
+}
+
+/**
+ * parse aspect ratio condition, such as: (aspect-ratio: 8/3)
+ * @param {String} condition: (device)?-aspect-ratio condition
+ * @param {Object} mediaStatus: aspect-ratio, device-width, device-height
+ * @param {Object} failReason: parse fail reason
+ */
+function parseAspectRatioCondition(condition: string, mediaStatus: object, failReason: FailReason): boolean {
+  let conditionValue;
+  const aspectRatio = condition.match(/[a-z-\d-\/]+/g);
+  let relationship;
+  if (aspectRatio[0].match(/^(max-)/)) {
+    relationship = '<=';
+  } else if (aspectRatio[0].match(/^(min-)/)) {
+    relationship = '>=';
+  } else {
+    relationship = '==';
+  }
+  let statusValue;
+  if (aspectRatio[0].match(/device/)) {
+    Log.info('query device status');
+    statusValue = mediaStatus['device-width'] / mediaStatus['device-height'];
+  } else {
+    Log.info('query page status');
+    statusValue = mediaStatus['aspect-ratio'];
+  }
+  const numbers = aspectRatio[1].split('/');
+  if (numbers.length === 2) {
+    conditionValue = parseInt(numbers[0]) / parseInt(numbers[1]);
+  } else {
+    failReason.type = MEDIAERROR.SYNTAX;
+    return false;
+  }
+  return calculateExpression(statusValue, relationship, conditionValue, failReason);
+}
+
+/**
  * Transfer unit the same with condition value unit.
  * @param {number} value - Device value should be transfer unit the same with condition value.
  * @param {string} unit - Condition value unit, such as: dpi/dpcm/dppx.
@@ -396,6 +456,9 @@ function calculateExpression(leftValue: number | string, relationship: string,
   } else if (typeof rightValue === 'string') {
     lvalue = leftValue;
     rvalue = rightValue.match(/[\d]+\.[\d]+/) ? parseFloat(rightValue) : parseInt(rightValue);
+  } else if (typeof rightValue === 'number') {
+    lvalue = leftValue;
+    rvalue = rightValue;
   } else {
     failReason.type = MEDIAERROR.SYNTAX;
     return false;
@@ -409,6 +472,8 @@ function calculateExpression(leftValue: number | string, relationship: string,
       return lvalue <= rvalue;
     case '<':
       return lvalue < rvalue;
+    case '==':
+      return lvalue === rvalue;
     default:
       failReason.type = MEDIAERROR.SYNTAX;
   }

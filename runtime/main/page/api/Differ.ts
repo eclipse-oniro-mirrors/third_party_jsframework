@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { hasOwn } from '../../../utils/index';
+
 /**
  * This class provides action for page refresh.
  */
@@ -121,9 +123,11 @@ function callTypeMap(group: any, type: string): void {
 function callTypeList(group: any, type: string): void {
   const map: any = group[type];
   for (const ref in map) {
-    const list: Function[] = map[ref];
-    list.forEach((handler) => {
-      handler();
-    });
+    if (hasOwn(map, ref)) {
+      const list: Function[] = map[ref];
+      list.forEach((handler) => {
+        handler();
+      });
+    }
   }
 }
