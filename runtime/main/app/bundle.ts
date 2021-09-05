@@ -37,7 +37,7 @@ import { updateLocale, updateDpi } from './index';
 import Page from '../page/index';
 import { App } from './App';
 
-const APP_LIFE_CYCLE_TYPES: string[] = ['onCreate', 'onError', 'onDestroy'];
+const APP_LIFE_CYCLE_TYPES: string[] = ['onCreate', 'onError', 'onDestroy', 'onShow', 'onHide'];
 
 /**
  * Parse app page code.
@@ -98,6 +98,10 @@ export function bootstrap(page: Page, packageName: string, name: string, config:
   // Init global data when page first load,
   // global.aceapp.$data means config.data in manifest.json, can add new data by this.$app.$data api.
   if (page.options && page.options.appCreate) {
+    const getApp = function() {
+      return global.aceapp;
+    };
+    global.getApp = getApp;
     global.aceapp = {};
     global.aceapp.$data = page.options.appGlobalData || {};
 

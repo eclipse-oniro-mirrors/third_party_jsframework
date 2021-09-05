@@ -52,5 +52,6 @@ export interface MediaStatusInterface<T, K> {
   'aspect-ratio': T,
   'device-width': T,
   'device-height': T,
+  'dark-mode': T,
   'round-screen': K
 }

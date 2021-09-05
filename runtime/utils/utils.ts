@@ -99,7 +99,7 @@ export class Log {
    * Log.debug('This is a debug message.');
    */
   public static debug(...message: any[]): void {
-    aceConsole.info('[JS Framework] (debug)  ', message);
+    aceConsole.debug('[JS Framework] (debug) %s', message);
   }
 
   /**
@@ -109,7 +109,7 @@ export class Log {
    * Log.info('This is an info message.');
    */
   public static info(...message: any[]): void {
-    aceConsole.info('[JS Framework] (info)  ', message);
+    aceConsole.info('[JS Framework] (info) %s', message);
   }
 
   /**
@@ -119,7 +119,7 @@ export class Log {
    * Log.warn('This is a warn message.');
    */
   public static warn(...message: any[]): void {
-    aceConsole.warn('[JS Framework] (warn)  ', message);
+    aceConsole.warn('[JS Framework] (warn) %s', message);
   }
 
   /**
@@ -129,6 +129,6 @@ export class Log {
    * Log.error('This is an error message.');
    */
   public static error(...message: any[]): void {
-    aceConsole.error('[JS Framework] (error)  ', message);
+    aceConsole.error('[JS Framework] (error) %s', message);
   }
 }

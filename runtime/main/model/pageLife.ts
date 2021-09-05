@@ -171,7 +171,7 @@ export function bindPageLifeCycle(vm: Vm, element: Element): void {
         emitSubVmLife(vm, 'onPageHide');
         vm.visible = false;
       } else if (type === PageLifecycleHooks.ONCONFIGURATIONUPDATED) {
-        return vm.$emitDirect('hook:${type}', ...args);
+        return vm.$emitDirect(`hook:${type}`, ...args);
       }
 
       Log.debug(`EventHandle: isEmitEvent = ${isEmitEvent}, event = ${event}, args = ${JSON.stringify(args)}.`);
@@ -233,10 +233,10 @@ export function bindPageLifeCycle(vm: Vm, element: Element): void {
  * Watch a calc function and callback if the calc value changes.
  * @param {Vm} vm - Vm object.
  * @param {string} data - Data that needed.
- * @param {Function} callback - Callback function.
+ * @param {Function | string} callback - Callback function.
  * @return {*}
  */
-export function watch(vm: Vm, data: string, callback: (...args: any) => any): any {
+export function watch(vm: Vm, data: string, callback: ((...args: any) => any) | string): any {
   function calc() {
     let arr = [];
     arr = data.split('.');

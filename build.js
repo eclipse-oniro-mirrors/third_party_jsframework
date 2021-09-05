@@ -25,7 +25,7 @@ const commonjs = require('rollup-plugin-commonjs');
 
 const json = require('rollup-plugin-json');
 
-const buble = require('rollup-plugin-buble');
+const babel = require('rollup-plugin-babel');
 
 const typescript = require('rollup-plugin-typescript2');
 
@@ -58,7 +58,32 @@ const esPlugin = eslint({
 const configInput = {
   input: path.resolve(__dirname, 'runtime/preparation/index.ts'),
   onwarn,
-  plugins: [esPlugin, tsPlugin, json(), resolve(), commonjs(), buble(), uglify()]
+  plugins: [
+    esPlugin,
+    tsPlugin,
+    json(),
+    resolve(),
+    commonjs(),
+    babel({
+      exclude: 'node_moduels/**'
+    }),
+    uglify()
+  ]
+};
+
+const configJSAPIMockInput = {
+  input: path.resolve(__dirname, 'runtime/main/extend/systemplugin/entry.js'),
+  onwarn,
+  plugins: [
+    esPlugin,
+    tsPlugin,
+    json(),
+    resolve(),
+    commonjs(),
+    babel({
+      exclude: 'node_moduels/**'
+    })
+  ]
 };
 
 const configOutput = {
@@ -67,9 +92,20 @@ const configOutput = {
   banner: frameworkBanner
 };
 
+const configJSAPIMockOutput = {
+  file: path.resolve(__dirname, 'dist/jsMockSystemPlugin.js'),
+  format: 'umd'
+};
+
 rollup.rollup(configInput).then(bundle => {
   bundle.write(configOutput).then(() => {
     countSize(configOutput.file);
+  });
+});
+
+rollup.rollup(configJSAPIMockInput).then(bundle => {
+  bundle.write(configJSAPIMockOutput).then(() => {
+    countSize(configJSAPIMockOutput.file);
   });
 });
 

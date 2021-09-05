@@ -50,6 +50,7 @@ describe('receiveTasks', () => {
     height: '0',
     isInit: true,
     pcPreview: 'disable',
+    darkMode: 'false',
     appInstanceId: '10002',
     packageName: 'com.example.helloworld',
     resourcesConfiguration: [],

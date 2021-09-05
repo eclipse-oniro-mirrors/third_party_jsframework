@@ -210,6 +210,8 @@ export class TaskCenter {
             return ace.callNative(JSON.stringify(options), args);
           case 'timer':
             return ace.callNative(JSON.stringify(options), args);
+          case 'system.offscreenCanvas':
+            return ace.callNative(JSON.stringify(options), JSON.stringify(args[0]));
           case 'system.image':
             return ace.callNative(JSON.stringify(options), JSON.stringify(args[0]));
           case 'system.mediaquery':
@@ -218,6 +220,8 @@ export class TaskCenter {
             return ace.callNative(JSON.stringify(options), args[0]);
           case 'system.resource':
             return ace.callNative(JSON.stringify(options), args);
+          case 'ohos.animator':
+            return ace.callNative(JSON.stringify(options), JSON.stringify(args[0]));
           default:
             break;
         }
