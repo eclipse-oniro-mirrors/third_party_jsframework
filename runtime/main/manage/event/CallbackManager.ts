@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Log } from '../../../utils/index';
-
 export interface callbackObjInterface {
   [key: string]: Function;
 }
@@ -73,12 +71,7 @@ export default class CallbackManager {
       delete this.callbackMap[callbackId];
     }
     if (typeof callback === 'function') {
-      try {
-        return callback.call(null, data);
-      } catch (error) {
-        Log.error(`Failed to execute the callback function:\n ${error.toString()}`);
-        throw error;
-      }
+      return callback.call(null, data);
     }
     return new Error(`Invalid callback id '${callbackId}'.`);
   }

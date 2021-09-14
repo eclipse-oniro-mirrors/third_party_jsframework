@@ -57,9 +57,7 @@ const pageMap: pageMapInterface = {};
 function createInstance(id: string, code: string, config: Options, data: object): any | Error {
   const page = pageMap[id];
   if (!page) {
-    config = JSON.parse(JSON.stringify(config || {}));
     Log.debug(`Create a page.`);
-
     const env: EnvInterface = {
       config,
       created: Date.now(),
@@ -158,5 +156,7 @@ export default {
   destroyInstance: destroyInstance,
   appError: framework.appError,
   appDestroy: framework.appDestroy,
+  appHide: framework.appHide,
+  appShow: framework.appShow,
   registerModules: framework.registerModules
 };

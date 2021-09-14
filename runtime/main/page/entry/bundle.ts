@@ -34,6 +34,7 @@ import {
 import { appMap } from '../../app/map';
 import Vm from '../../model/index';
 import Page from '../index';
+import {updateDpi, updateLocale} from '../../app';
 
 /**
  * Parse page code.
@@ -93,6 +94,14 @@ export function bootstrap(page: Page, name: string, data: any): any {
     componentName = removePrefix(name);
   } else {
     return new Error(`Wrong component name: ${name}.`);
+  }
+
+  // Set i18n and dpi data.
+  if (global && global.aceapp && page.options && page.options.i18n) {
+    updateLocale(page.options.i18n);
+  }
+  if (global && global.aceapp && page.options && page.options.resourcesConfiguration) {
+    updateDpi(page.options.resourcesConfiguration);
   }
 
   // Start i18n service.

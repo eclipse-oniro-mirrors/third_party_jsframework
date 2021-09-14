@@ -95,3 +95,31 @@ def(
     }
   }
 )
+
+/**
+ * Support includes for panda.
+ * @param {Number} index
+ * @param {*} val
+ * @return {Boolean}
+ */
+
+def(
+  arrayProto,
+  'includes',
+  function includes(param, start = 0) {
+    if (start >= this.length) return false
+    if (start < 0) {
+      start = start + this.length < 0 ? 0 : start + this.length;
+    }
+    if (Number.isNaN(param)) {
+      for (let i = start; i < this.length; i++) {
+        if (Number.isNaN(this[i])) return true;
+      }
+    } else {
+      for (let i = start; i < this.length; i++) {
+        if (this[i] === param) return true;
+      }
+    }
+    return false
+  }
+)
