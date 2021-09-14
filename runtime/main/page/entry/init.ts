@@ -37,6 +37,7 @@ import {
 import { updateActions } from '../api/misc';
 import { getPageGlobal } from '../../app/helper';
 import { Image } from '../Image';
+import { OffscreenCanvas } from '../OffscreenCanvas';
 import Page from '../index';
 import { Services } from '../../app/index';
 import { requireModule } from '../register';
@@ -47,6 +48,7 @@ interface ParseOptions {
   $app_bootstrap$(name: string): void; // eslint-disable-line camelcase
   $app_require$(name: string): void; // eslint-disable-line camelcase
   Image(): void;
+  OffscreenCanvas(width, height): void;
 }
 
 /**
@@ -88,11 +90,15 @@ export function init(page: Page, code: string | Function, data: object, services
   const imageObj: () => Image = function() {
     return new Image(page);
   };
+  const offscreenCanvasObj: (width, height) => OffscreenCanvas = function(width, height) {
+    return new OffscreenCanvas(page, width, height);
+  };
   const options: ParseOptions = {
     $app_define$: pageDefine,
     $app_bootstrap$: pageBoot,
     $app_require$: pageRequireModule,
-    Image: imageObj
+    Image: imageObj,
+    OffscreenCanvas: offscreenCanvasObj
   };
 
   // Support page global and init language.

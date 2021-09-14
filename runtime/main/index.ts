@@ -22,12 +22,16 @@ export { createInstance, destroyInstance } from './manage/instance/life';
 import { registerModules } from './manage/instance/register';
 export { receiveTasks } from './manage/event/bridge';
 export { getRoot } from './manage/instance/misc';
-import { appDestroy } from './app/index';
-import { appError } from './app/index';
+import {
+  appDestroy,
+  appError,
+  appShow,
+  appHide
+} from './app/index';
 
 /**
  * Prevent modification of Vm and Vm.prototype.
  */
 Object.freeze(Vm);
 
-export { registerModules, appDestroy, appError };
+export { registerModules, appDestroy, appError, appShow, appHide };

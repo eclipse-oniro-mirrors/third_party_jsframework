@@ -64,6 +64,9 @@ import {
   MediaStatusInterface,
   ExternalBindingInterface
 } from './vmOptions';
+import {
+  hasOwn
+} from '../util/shared';
 
 /**
  * VM constructor.
@@ -142,8 +145,8 @@ export default class Vm {
       `'_innerInit' lifecycle in Vm(${this._type}) and mergedData = ${JSON.stringify(mergedData)}.`
     );
     this.$emit('hook:_innerInit');
-    this._data = typeof data === 'function' ? data.apply(this) : data;
-    this._shareData = typeof shareData === 'function' ? shareData.apply(this) : shareData;
+    this._data = (typeof data === 'function' ? data.apply(this) : data) || {};
+    this._shareData = (typeof shareData === 'function' ? shareData.apply(this) : shareData) || {};
     this._descriptor = options._descriptor;
     if (global.aceapp && global.aceapp.i18n && global.aceapp.i18n.extend) {
       global.aceapp.i18n.extend(this);
@@ -154,14 +157,30 @@ export default class Vm {
 
     // MergedData means extras params.
     if (mergedData) {
-      dataAccessControl(this, mergedData, this._app.options && this._app.options.appCreate);
-      extend(this._data, mergedData);
+      if (hasOwn(mergedData, 'paramsData') && hasOwn(mergedData, 'dontOverwrite') && mergedData['dontOverwrite'] === false) {
+        dataAccessControl(this, mergedData['paramsData'], this._app.options && this._app.options.appCreate);
+        extend(this._data, mergedData['paramsData']);
+      } else {
+        dataAccessControl(this, mergedData, this._app.options && this._app.options.appCreate);
+        extend(this._data, mergedData);
+      }
     }
+
     initPropsToData(this);
     initState(this);
     initBases(this);
     Log.debug(`"onInit" lifecycle in Vm(${this._type})`);
-    this.$emit('hook:onInit');
+
+    if (mergedData && hasOwn(mergedData, 'paramsData') && hasOwn(mergedData, 'dontOverwrite')) {
+      if (mergedData['dontOverwrite'] === false) {
+        this.$emit('hook:onInit');
+      } else {
+        this.$emitDirect('hook:onInit', mergedData['paramsData']);
+      }
+    } else {
+      this.$emit('hook:onInit');
+    }
+
     if (!this._app.doc) {
       return;
     }
@@ -175,6 +194,7 @@ export default class Vm {
     this.mediaStatus['device-width'] = this._app.options.deviceWidth;
     this.mediaStatus['device-height'] = this._app.options.deviceHeight;
     this.mediaStatus['round-screen'] = this._app.options.roundScreen;
+    this.mediaStatus['dark-mode'] = this._app.options.darkMode;
 
     // If there is no parentElement, specify the documentElement.
     this._parentEl = parentEl || this._app.doc.documentElement;
@@ -404,15 +424,15 @@ export default class Vm {
   /**
    * Watch a calc function and callback if the calc value changes.
    * @param {string} data - Data that needed.
-   * @param {Function} callback - Callback function.
+   * @param {Function | string} callback - Callback function.
    */
-  public $watch(data: string, callback: (...args: any) => any): void {
+  public $watch(data: string, callback: ((...args: any) => any) | string): void {
     if (typeof data !== 'string') {
       Log.warn(`Invalid parameter type: The type of 'data' should be string, not ${typeof data}.`);
       return;
     }
-    if (typeof callback !== 'function') {
-      Log.warn(`Invalid parameter type: The type of 'callback' should be function, not ${typeof callback}.`);
+    if (typeof callback !== 'function' && typeof callback !== 'string') {
+      Log.warn(`Invalid parameter type: The type of 'callback' should be function or string, not ${typeof callback}.`);
       return;
     }
     watch(this, data, callback);
@@ -446,12 +466,12 @@ export default class Vm {
 
   /**
    * Delete Vm object.
-   * @param {Vm} vm - Vm object.
    */
-  public destroyVm(vm: Vm): void {
-    Log.debug(`[JS Framework] "onDestroy" lifecycle in Vm(${vm.type})`);
+  public destroy(): void {
+    Log.debug(`[JS Framework] "onDestroy" lifecycle in Vm(${this.type})`);
     this.$emit('hook:onDestroy');
-    vm.$emit('hook:onDetached');
+    this.$emit('hook:onDetached');
+    fireNodeDetached(this._rootEl);
     this._valid = false;
 
     delete this._app;
@@ -469,7 +489,7 @@ export default class Vm {
     if (this._childrenVms) {
       let vmCount: number = this._childrenVms.length;
       while (vmCount--) {
-        this.destroyVm.call(this._childrenVms[vmCount], this._childrenVms[vmCount]);
+        this.destroy.call(this._childrenVms[vmCount], this._childrenVms[vmCount]);
       }
       delete this._childrenVms;
     }
@@ -833,7 +853,7 @@ function _proxySet(data: object, key: string, value: any): void {
  * @param {boolean} external - If has external data.
  */
 function dataAccessControl(vm: any, mergedData: object, external: boolean): void {
-  if (vm._descriptor) {
+  if (vm._descriptor && Object.keys(vm._descriptor).length !== 0) {
     const keys = Object.keys(mergedData);
     keys.forEach(key => {
       const desc = vm._descriptor[key];
@@ -859,4 +879,19 @@ function getRoot(vm: any): Vm {
     return vm;
   }
   return getRoot(parent);
+}
+
+/**
+ * order node and fire detached event.
+ * @param {Element} el - Element object.
+ */
+function fireNodeDetached(el: Element) {
+  if (el.event && el.event['detached']) {
+    el.fireEvent('detached', {});
+  }
+  if (el.children && el.children.length !== 0) {
+    for (const child of el.children) {
+      fireNodeDetached(child as Element);
+    }
+  }
 }
