@@ -163,6 +163,11 @@ function bind(app: Page | Function, target: object, methods: object, moduleName:
             promise = needPromise ? ret.promise : undefined;
           }
           const appInstance: Page = typeof app === 'function' ? app() : app;
+          if (moduleName === 'system.router' && methodName === 'getParams') {
+            if (appInstance.routerParams) {
+              return appInstance.routerParams.paramsData;
+            }
+          }
           const ret: any = appInstance.callTasks({
             module: moduleName,
             method: methodName,

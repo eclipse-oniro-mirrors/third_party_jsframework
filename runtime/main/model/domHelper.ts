@@ -234,9 +234,6 @@ export function removeTarget(target: Element | FragBlockInterface, preserveBlock
  */
 function removeElement(target: Element | Comment): void {
   const parent = target.parentNode as Element;
-  if (target instanceof Element && target.event && target.event['disappear']) {
-    target.fireEvent('disappear', {});
-  }
   if (parent) {
     parent.removeChild(target);
   }

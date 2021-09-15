@@ -51,10 +51,8 @@ export class Image {
       width: this._width,
       height: this._height,
       success: data => {
-        this._width = data.width;
-        this._height = data.height;
         if (this.onload && typeof this.onload === 'function') {
-          this.onload();
+          this.onload(data);
         }
       },
       fail: data => {

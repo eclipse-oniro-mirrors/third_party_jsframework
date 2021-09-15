@@ -95,6 +95,7 @@ export class MediaQueryApi {
       data['device-width'] = data.deviceWidth;
       data['device-height'] = data.deviceHeight;
       data['round-screen'] = data.roundScreen;
+      data['dark-mode'] = data.darkMode;
       for (let i = 0; i < this._mqlArray.length; i++) {
         const mediaQueryList:MediaQueryList = this._mqlArray[i];
         const result: boolean = matchMediaQueryCondition(mediaQueryList.condition, data, true);

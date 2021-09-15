@@ -43,7 +43,7 @@ export function createInstance(id: string, code: string, options: Options, data:
   let page: Page = pageMap.get(id);
   let result: object;
   if (!page) {
-    page = new Page(id, options, options.packageName);
+    page = new Page(id, options, options.packageName, data);
     page.i18nService = I18n;
     page.dpiService = dpi;
     appCreate(page, options, data, services);
