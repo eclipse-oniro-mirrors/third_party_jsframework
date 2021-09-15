@@ -34,7 +34,6 @@ action("gen_node_modules") {
 action("gen_snapshot") {
   script = "//third_party/jsframework/js_framework_build.sh"
 
-  # deps when need update node module.
   #deps = [ ":gen_node_modules" ]
 
   js_framework = "//third_party/jsframework/runtime"
@@ -205,7 +204,8 @@ ts2abc_gen_abc("ark_jsf") {
   out_puts = [ ark_abc_path ]
 }
 
-ohos_prebuilt_etc("ark_built") {
+ohos_prebuilt_etc("ark_build") {
   deps = [ ":ark_jsf" ]
   source = ark_abc_path
+  part_name = "ace_engine_standard"
 }
