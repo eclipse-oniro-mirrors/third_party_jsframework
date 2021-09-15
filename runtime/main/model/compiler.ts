@@ -78,7 +78,8 @@ export interface AttrInterface {
   tid: number;
   append: string;
   slot: string;
-  name: string
+  name: string;
+  data: () => any | string;
 }
 
 export interface TemplateInterface {
@@ -221,8 +222,7 @@ function targetIsComposed(vm: Vm, type: string): VmOptions {
       if (!component.initObjectData) {
         component.initObjectData = component.data;
       }
-      const str = JSON.stringify(component.initObjectData);
-      component.data = JSON.parse(str);
+      component.data = Object.assign({}, component.initObjectData);
     }
   }
   return component;
@@ -272,7 +272,7 @@ function compileRepeat(vm: Vm, target: TemplateInterface, dest: Element): void {
 
   if (isRepeat(repeat)) {
     getter = repeat.exp;
-    key = repeat.key;
+    key = repeat.key || '$idx';
     value = repeat.value;
     trackBy = repeat.tid;
   } else {
@@ -406,7 +406,10 @@ function compileCustomComponent(
  * @param {Element} element - To be reset.
  */
 function resetElementStyle(vm: Vm, element: Element): void {
+  // Add judgment statements to avoid repeatedly calling 'setClass' function.
   const len = element.children.length;
+  const css = vm.css || {};
+  const mqArr = css['@MEDIA'];
   for (let ii = 0; ii < len; ii++) {
     const el = element.children[ii] as Element;
     resetElementStyle(vm, el);
@@ -417,8 +420,15 @@ function resetElementStyle(vm: Vm, element: Element): void {
   if (element.id) {
     setIdStyle(vm, element, element.id);
   }
-  if (element.classList) {
-    setClass(vm, element, element.classList);
+  if (element.classList && mqArr) {
+    for (let i = 0; i < element.classList.length; i++) {
+      for (let m = 0; m < mqArr.length; m++) {
+        const clsKey = '.' + element.classList[i];
+        if (hasOwn(mqArr[m], clsKey)) {
+          setClass(vm, element, element.classList);
+        }
+      }
+    }
   }
 }
 
@@ -444,6 +454,7 @@ function compileNativeComponent(vm: Vm, template: TemplateInterface, dest: FragB
     vm.mediaStatus['device-width'] = e.deviceWidth;
     vm.mediaStatus['device-height'] = e.deviceHeight;
     vm.mediaStatus['round-screen'] = e.roundScreen;
+    vm.mediaStatus['dark-mode'] = e.darkMode;
     const css = vm.vmOptions && vm.vmOptions.style || {};
     const mqArr = css['@MEDIA'];
     if (!mqArr) {
@@ -501,8 +512,8 @@ function compileNativeComponent(vm: Vm, template: TemplateInterface, dest: FragB
 
   // Dest is parent element.
   bindElement(vm, element, template, dest);
-  if (element.event && element.event['appear']) {
-    element.fireEvent('appear', {});
+  if (element.event && element.event['attached']) {
+    element.fireEvent('attached', {});
   }
 
   if (template.attr && template.attr.append) {

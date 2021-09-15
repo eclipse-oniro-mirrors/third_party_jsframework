@@ -29,6 +29,8 @@ import { TaskCenter } from '../main/manage/event/TaskCenter';
 import { FragBlockInterface } from '../main/model/compiler';
 import Vm from '../main/model';
 
+const CSS_INHERITANCE: string[] = ['fontFamily', 'fontWeight', 'fontSize', 'fontStyle', 'textAlign', 'lineHeight', 'letterSpacing', 'color', 'visibility'];
+
 /**
  * Element is a basic class to describe a tree node in vdom.
  * @extends Node
@@ -44,11 +46,13 @@ class Element extends Node {
   private _block: FragBlockInterface;
   private _vm: Vm;
   private _isCustomComponent: boolean;
+  private _inheritedStyle: object;
 
   protected _children: Node[];
   protected _pureChildren: Element[];
   protected _role: string;
   protected _attr: any;
+  protected _dataSet: any;
 
   constructor(type = 'div', props:any = {}, isExtended: boolean = false) {
     super();
@@ -70,6 +74,20 @@ class Element extends Node {
     this._children = [];
     this._pureChildren = [];
     this._isCustomComponent = false;
+    this._inheritedStyle = {};
+    this._dataSet = {};
+  }
+
+  /**
+   * inherit sytle from parent
+   * @type {Object}
+   */
+  public set inheritedStyle(inheritedStyle: object) {
+    this._inheritedStyle = inheritedStyle;
+  }
+
+  public get inheritedStyle() {
+    return this._inheritedStyle;
   }
 
   /**
@@ -182,6 +200,18 @@ class Element extends Node {
 
   public get attr() {
     return this._attr;
+  }
+
+  /**
+   * DataSet object of this Element.
+   * @type {Object}
+   */
+  public set dataSet(dataSet: any) {
+    this._dataSet = dataSet;
+  }
+
+  public get dataSet() {
+    return this._dataSet;
   }
 
   /**
@@ -381,6 +411,7 @@ class Element extends Node {
       if (node.nodeType === Node.NodeType.Element) {
         const element = node as Element;
         this.insertIndex(element, this.pureChildren.length, { isInPureChildren: true });
+        this.inheritStyle(node, true);
         const taskCenter = this.getTaskCenter(this.docId);
         if (taskCenter) {
           return taskCenter.send(
@@ -439,6 +470,7 @@ class Element extends Node {
             : this.pureChildren.length,
           { isInPureChildren: true }
         );
+        this.inheritStyle(node);
         const taskCenter = this.getTaskCenter(this.docId);
         if (taskCenter) {
           return taskCenter.send(
@@ -498,8 +530,8 @@ class Element extends Node {
           this.pureChildren.indexOf(this.previousElement(after)) + 1,
           { isInPureChildren: true }
         );
+        this.inheritStyle(node);
         const taskCenter = this.getTaskCenter(this.docId);
-
         if (taskCenter) {
           return taskCenter.send(
             'dom',
@@ -571,6 +603,15 @@ class Element extends Node {
   }
 
   /**
+   * Set dataSet for an element.
+   * @param {string} key - dataSet name.
+   * @param {string} value - dataSet value.
+   */
+  public setData(key: string, value: string): void {
+    this.dataSet[key] = value;
+  }
+
+  /**
    * Set an attribute, and decide whether the task should be send to native.
    * @param {string} key - Arribute name.
    * @param {string | number} value - Arribute value.
@@ -578,6 +619,10 @@ class Element extends Node {
    */
   public setAttr(key: string, value: string | number, silent: boolean = false): void {
     if (this.attr[key] === value && silent !== false) {
+      return;
+    }
+    // Because the data has been addressed in SetData
+    if (key === 'data') {
       return;
     }
     this.attr[key] = value;
@@ -605,6 +650,9 @@ class Element extends Node {
       const result = {};
       result[key] = value;
       taskCenter.send('dom', { action: 'updateStyle' }, [this.ref, this.toStyle()]);
+      if (CSS_INHERITANCE.includes(key)) {
+        this.broadcastStyle();
+      }
     }
   }
 
@@ -613,14 +661,25 @@ class Element extends Node {
    * @param {object} classStyle - Style properties.
    */
   public setClassStyle(classStyle: any): void {
+    let canUpdate: boolean = false;
+    const taskCenter = this.getTaskCenter(this.docId);
+    Object.keys(classStyle).forEach(key => {
+      if (CSS_INHERITANCE.includes(key) && taskCenter) {
+        if (!this.isSameStyle(this.classStyle[key], classStyle[key], key)) {
+          canUpdate = true;
+        }
+      }
+    });
     for (const key in this._classStyle) {
       this._classStyle[key] = '';
     }
 
     Object.assign(this._classStyle, classStyle);
-    const taskCenter = this.getTaskCenter(this.docId);
     if (taskCenter) {
       taskCenter.send('dom', { action: 'updateStyle' }, [this.ref, this.toStyle()]);
+      if (canUpdate) {
+        this.broadcastStyle();
+      }
     }
   }
 
@@ -652,6 +711,9 @@ class Element extends Node {
       const result = {};
       result[key] = value;
       taskCenter.send('dom', { action: 'updateStyle' }, [this.ref, result]);
+      if (CSS_INHERITANCE.includes(key)) {
+        this.broadcastStyle();
+      }
     }
   }
 
@@ -765,9 +827,9 @@ class Element extends Node {
    * @return {object} style
    */
   public toStyle(): any {
-    // Selector Specificity  inline > #id > .class > tag.
-    // Return Object.assign({}, this._tagStyle,this.classStyle, this._idStyle,this.style).
-    const style = Object.assign({}, this._tagStyle);
+    // Selector Specificity  inline > #id > .class > tag > inheritance.
+    const style = Object.assign({}, this._inheritedStyle);
+    this.assignStyle(style, this._tagStyle);
     this.assignStyle(style, this._classStyle);
     this.assignStyle(style, this._idStyle);
     this.assignStyle(style, this.style);
@@ -859,6 +921,9 @@ class Element extends Node {
    */
   public destroy() {
     Log.debug(`Element#destroy this._type = ${this._type}.`);
+    if (this._event && this._event['detached']) {
+      this.fireEvent('detached', {});
+    }
     this._attr = null;
     this._style = null;
     this._classStyle = {};
@@ -884,6 +949,87 @@ class Element extends Node {
       this._pureChildren = null;
     }
     super.destroy();
+  }
+
+  /**
+   * the judgement of whether the inherited style should update
+   * @param {string | Array} oldClassStyle
+   * @param {string | Array} newClassStyle
+   * @param {string} key
+   * @returns {boolean}
+   */
+  isSameStyle(oldClassStyle: string | any[], newClassStyle: string | any[], key: string) {
+    if (key === 'fontFamily') {
+      if (oldClassStyle[0].fontFamily === newClassStyle[0].fontFamily) {
+        return true;
+      }
+    } else {
+      if (oldClassStyle === newClassStyle) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * iterate child node for updating inheritedstyle
+   */
+  broadcastStyle() {
+    if (this.pureChildren) {
+      for (const child in this.pureChildren) {
+        this.pureChildren[child].setInheritedStyle();
+        this.pureChildren[child].broadcastStyle();
+      }
+    }
+  }
+
+  /**
+   * before update inherited style
+   * clear up the inherited style
+   */
+  resetInheritedStyle() {
+    this.inheritedStyle = {};
+  }
+
+  /**
+   * inherited style from parent
+   */
+  public setInheritedStyle() {
+    this.resetInheritedStyle();
+    const parentNode: Element = this.parentNode as Element;
+    parentNode.inheritStyle(this);
+    const taskCenter = this.getTaskCenter(this.docId);
+    if (taskCenter) {
+      taskCenter.send(
+        'dom',
+        { action: 'updateStyle' },
+        [this.ref, this.toStyle()]
+      );
+    }
+  }
+
+  /**
+   * inherit style of parent.
+   * @return {object} element
+   */
+  public inheritStyle(node, isFirst = false) {
+    // for first render, save time
+    const allStyle = this.toStyle();
+    this.setChildStyle(allStyle, node._inheritedStyle);
+  }
+
+  /**
+   * set inherited style to child
+   * @param {object} parentStyle
+   * @param {object} childStyle
+   * @param {object} node
+   */
+  public setChildStyle(parentStyle, childStyle) {
+    Object.keys(parentStyle).forEach(key => {
+      if (CSS_INHERITANCE.includes(key)) {
+        childStyle[key] = parentStyle[key];
+      }
+    });
   }
 
   private registerNode(node) {

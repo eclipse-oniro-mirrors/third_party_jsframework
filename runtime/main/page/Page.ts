@@ -57,8 +57,9 @@ export default class Page {
   private _dpiService: object;
   private _lastSignal: number;
   private _destroyed: boolean;
+  private readonly _routerParams: any;
 
-  constructor(id: string, options: Options, packageName: string) {
+  constructor(id: string, options: Options, packageName: string, data: object) {
     this._packageName = packageName || 'notset';
     this._id = id;
     this._options = options || null;
@@ -67,6 +68,7 @@ export default class Page {
     this._commonModules = {};
     this._doc = new Document(id, this._options.bundleUrl);
     this._differ = new Differ(id);
+    this._routerParams = data;
   }
 
   /**
@@ -233,5 +235,13 @@ export default class Page {
    */
   public callTasks(tasks: Task[] | Task): any {
     return callTasks(this, tasks);
+  }
+
+  /**
+   * get params from other page.
+   * @type {Object}
+   */
+  get routerParams() {
+    return this._routerParams;
   }
 }

@@ -44,7 +44,7 @@ export function destroy(page: Page): void {
   Log.debug(`Destroy a page(${page.id}).`);
 
   if (page.vm) {
-    page.vm.destroyVm(page.vm);
+    page.vm.destroy();
   }
 
   page.id = null;
