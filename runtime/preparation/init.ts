@@ -195,7 +195,7 @@ const ComponentsInfo: components<string>[] = [
   },
   {'methods': ['reload', 'createIntersectionObserver'], 'type': 'web'},
   {
-    'methods': ['takePhoto', 'scrollTo', 'createIntersectionObserver'],
+    'methods': ['takePhoto', 'startRecorder', 'closeRecorder', 'scrollTo', 'createIntersectionObserver'],
     'type': 'camera'
   }
 ];
