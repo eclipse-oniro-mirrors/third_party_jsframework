@@ -10,12 +10,7 @@ export function getRandomArbitrary(min, max) {
 }
 
 export const paramMock = {
-  businessErrorMock: {
-    code: '[PC Preview]: unknow code',
-    name: '[PC Preview]: unknow name',
-    message: '[PC Preview]: unknow message',
-    stack: '[PC Preview]: unknow stack'
-  },
+  businessErrorMock: null,
   paramNumberMock: "[PC Preview] unknow number",
   paramStringMock: "[PC Preview] unknow string",
   paramBooleanMock: "[PC Preview] unknow boolean",

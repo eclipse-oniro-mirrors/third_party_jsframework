@@ -17,6 +17,8 @@ import("//foundation/ace/ace_engine/ace_config.gni")
 
 prebuilt_js_path =
     get_label_info(":gen_jsf_c", "target_out_dir") + "/dist/strip.native.min.js"
+prebuilt_js_api_mock_path = get_label_info(":gen_jsf_c", "target_out_dir") +
+                            "/dist/jsMockSystemPlugin.js"
 
 #snapshot_path =
 #    get_label_info(":gen_snapshot", "target_out_dir") + "/strip.native.min.js"
@@ -158,7 +160,10 @@ action("gen_snapshot") {
     "tsconfig.json",
     "tslint.json",
   ]
-  outputs = [ prebuilt_js_path ]
+  outputs = [
+    prebuilt_js_path,
+    prebuilt_js_api_mock_path,
+  ]
 }
 
 jsfc_path = get_label_info(":jsf", "target_out_dir") + "/src/jsf.c"

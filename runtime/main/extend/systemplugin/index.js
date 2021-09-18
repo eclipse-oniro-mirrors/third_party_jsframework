@@ -3,13 +3,19 @@ import regeneratorRuntime from 'babel-runtime/regenerator'
 import {
   mockAbilityFeatureAbility,
   mockAbilityParticleAbility,
-  mockAbilityFormManager
+  mockAbilityFormManager,
+  mockAbilityContinuationRegisterManager,
+  mockAbilityDataUriUtils,
+  mockAbilityAbilityAgent,
+  mockAbilityFormBindingData
 } from './ability'
+import {mockAppAbilityManager} from './ohos/app'
 
+import { mockBackgroundTaskManager } from './ohos/backgroundTaskManager'
 import { mockBattery } from './battery'
 import { mockBrightness } from './brightness'
 import { mockBluetooth } from './bluetooth'
-import { mockCall } from './telephony'
+import { mockCall, mockData, mockRadio, mockSim, mockSMS } from './telephony'
 import { mockCipher } from './cipher'
 import { mockDataStorage } from './data'
 import { mockDeviceInfo } from './deviceInfo'
@@ -29,6 +35,8 @@ import {
 import { mockNetwork } from './network'
 import { mockNfcCardEmulation } from './nfc'
 import { mockNotification } from './notification'
+import { mockOhosNotification } from './ohos/notification'
+import { mockCommonEvent } from './ohos/commonEvent'
 import { mockOhosBatteryinfo } from './batteryinfo'
 import { mockOhosRequest } from './ohos/request'
 
@@ -36,14 +44,17 @@ import { mockPasteBoard } from './pasteboard'
 import { mockReminderAgent } from './ohos/reminderAgent'
 import { mockRequest } from './request'
 
+import { mockResourceManager } from './resourceManager'
+
 import { mockSensor } from './sensor'
 import { mockStorage } from './storage'
+import { mockStorageInfoManager} from './ohos/storageInfoManager'
 import { mockSystemPackage } from './systemPackage'
 
 import { mockUserauth } from './userIAM'
 import { mockVibrator } from './vibrator'
 
-import { mockWebSocket, mockHttp } from './net'
+import { mockWebSocket, mockHttp, mockMdns, mockSocket } from './net'
 import { mockWifi } from './wifi'
 import { mockWindow } from './window'
 
@@ -52,6 +63,10 @@ import { mockAccessibility } from './accessibility'
 import { mockAI } from './ai'
 import { mockDisplay } from './display'
 import { mockDeviceManager } from './deviceManager'
+import { mockScreenshot } from './screenshot'
+import {mockContact} from './contact'
+import {mockScreenLock} from "./screenLock"
+import {mockSettings} from "./settings"
 
 export function mockSystemPlugin() {
   global.regeneratorRuntime = regeneratorRuntime
@@ -60,6 +75,8 @@ export function mockSystemPlugin() {
   global.ohosplugin = {}
 
   mockNotification()
+  mockOhosNotification()
+  mockCommonEvent()
   mockFetch()
   mockRequest()
   mockStorage()
@@ -85,20 +102,38 @@ export function mockSystemPlugin() {
   mockMultimediaMedia()
   mockMultimediaMedialibrary()
   mockCall()
+  mockData()
+  mockRadio()
+  mockSim()
+  mockSMS()
   mockWebSocket()
   mockHttp()
+  mockMdns()
+  mockSocket()
   mockDeviceInfo()
   mockWifi()
+  mockResourceManager()
   mockNfcCardEmulation()
   mockDataStorage()
   mockWindow()
   mockAbilityFeatureAbility()
+  mockAbilityContinuationRegisterManager()
   mockReminderAgent()
   mockRequireNapiFun()
+  mockAbilityDataUriUtils()
   mockAccessibility()
   mockAbilityParticleAbility()
   mockAbilityFormManager()
+  mockAbilityAbilityAgent()
+  mockAbilityFormBindingData()
   mockAI()
   mockDisplay()
   mockDeviceManager()
+  mockScreenshot()
+  mockBackgroundTaskManager()
+  mockStorageInfoManager()
+  mockContact()
+  mockScreenLock()
+  mockSettings()
+  mockAppAbilityManager()
 }
