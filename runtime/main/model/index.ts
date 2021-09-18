@@ -189,12 +189,12 @@ export default class Vm {
     this.mediaStatus.width = this._app.options.width;
     this.mediaStatus.height = this._app.options.height;
     this.mediaStatus.resolution = this._app.options.resolution;
-    this.mediaStatus['device-type'] = this._app.options.deviceType;
-    this.mediaStatus['aspect-ratio'] = this._app.options.aspectRatio;
-    this.mediaStatus['device-width'] = this._app.options.deviceWidth;
-    this.mediaStatus['device-height'] = this._app.options.deviceHeight;
-    this.mediaStatus['round-screen'] = this._app.options.roundScreen;
-    this.mediaStatus['dark-mode'] = this._app.options.darkMode;
+    this.mediaStatus['device-type'] = this._app.options['device-type'];
+    this.mediaStatus['aspect-ratio'] = this._app.options['aspect-ratio'];
+    this.mediaStatus['device-width'] = this._app.options['device-width'];
+    this.mediaStatus['device-height'] = this._app.options['device-height'];
+    this.mediaStatus['round-screen'] = this._app.options['round-screen'];
+    this.mediaStatus['dark-mode'] = this._app.options['dark-mode'];
 
     // If there is no parentElement, specify the documentElement.
     this._parentEl = parentEl || this._app.doc.documentElement;
