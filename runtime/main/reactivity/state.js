@@ -120,6 +120,10 @@ function proxyMethods(vm, key) {
     enumerable: true,
     get: function proxyGetter () {
       return vm._methods[key];
+    },
+    set: function proxySetter(newMethod) {
+      vm._methods[key] = typeof newMethod === 'function' && key !== 'data' ?
+        newMethod.bind(vm) : newMethod;
     }
-  })
+  });
 }

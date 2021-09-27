@@ -730,11 +730,11 @@ function watchBlock(vm: Vm, fragBlock: FragBlockInterface, calc: Function, type:
  */
 function mergeContext(context: Vm, mergedData: object): any {
   const newContext = Object.create(context);
-  newContext.data = mergedData;
-  newContext.shareData = {};
+  newContext._data = mergedData;
+  newContext._shareData = {};
   initData(newContext);
   initComputed(newContext);
-  newContext.realParent = context;
+  newContext._realParent = context;
   return newContext;
 }
 
