@@ -513,6 +513,18 @@ function selectStyle(css: object, key: string, vm: Vm): any {
  * @param {string[]} classList - List of class label.
  */
 function setClassStyle(el: Element, css: object, classList: string[], vm?: Vm): void {
+  const SPACE_REG: RegExp = /\s+/;
+  const newClassList: string[] = [];
+  if (Array.isArray(classList)) {
+    classList.forEach(v => {
+      if (typeof v === 'string' && SPACE_REG.test(v)) {
+        newClassList.push(...v.trim().split(SPACE_REG));
+      } else {
+        newClassList.push(v);
+      }
+    });
+  }
+  classList = newClassList;
   const classStyle = {};
   const length = classList.length;
   if (length === 1) {
@@ -681,7 +693,9 @@ function setAnimation(style: any, css: any): void {
   const keyframes = css['@KEYFRAMES'];
   if (animationName && keyframes) {
     style['animationName'] = keyframes[animationName];
-    style['animationName'].push({'animationName': animationName});
+    if (style['animationName']) {
+      style['animationName'].push({'animationName': animationName});
+    }
   }
 }
 

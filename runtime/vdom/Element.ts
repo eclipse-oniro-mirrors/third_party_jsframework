@@ -28,8 +28,7 @@ import Document from './Document';
 import { TaskCenter } from '../main/manage/event/TaskCenter';
 import { FragBlockInterface } from '../main/model/compiler';
 import Vm from '../main/model';
-
-const CSS_INHERITANCE: string[] = ['fontFamily', 'fontWeight', 'fontSize', 'fontStyle', 'textAlign', 'lineHeight', 'letterSpacing', 'color', 'visibility'];
+import { CSS_INHERITANCE } from '../main/app/bundle';
 
 /**
  * Element is a basic class to describe a tree node in vdom.
@@ -842,27 +841,29 @@ class Element extends Node {
    * @param {*} dest - Target style object.
    */
   public assignStyle(src: any, dest: any): void {
-    const keys = Object.keys(dest);
+    if (dest) {
+      const keys = Object.keys(dest);
 
-    // Margin and padding style: the style should be empty in the first.
-    keys.sort(function(style1, style2) {
-      if (dest[style1] === '') {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
-    let i = keys.length;
-    while (i--) {
-      const key = keys[i];
-      const val = dest[key];
-      if (val) {
-        src[key] = val;
-      } else {
-        if ((val === '' || val === undefined) && src[key]) {
-          return;
+      // Margin and padding style: the style should be empty in the first.
+      keys.sort(function(style1, style2) {
+        if (dest[style1] === '') {
+          return 1;
+        } else {
+          return -1;
         }
-        src[key] = val;
+      });
+      let i = keys.length;
+      while (i--) {
+        const key = keys[i];
+        const val = dest[key];
+        if (val) {
+          src[key] = val;
+        } else {
+          if ((val === '' || val === undefined) && src[key]) {
+            return;
+          }
+          src[key] = val;
+        }
       }
     }
   }
@@ -924,14 +925,13 @@ class Element extends Node {
     if (this._event && this._event['detached']) {
       this.fireEvent('detached', {});
     }
-    this._attr = null;
-    this._style = null;
+    this._attr = {};
+    this._style = {};
     this._classStyle = {};
-    this._event = null;
-    this._idStyle = null;
-    this._tagStyle = null;
+    this._event = {};
+    this._idStyle = {};
+    this._tagStyle = {};
     this._classList.length = 0;
-    this._classList = null;
 
     if (this.destroyHook) {
       this.destroyHook();
@@ -942,11 +942,9 @@ class Element extends Node {
         child.destroy();
       });
       this._children.length = 0;
-      this._children = null;
     }
     if (this._pureChildren) {
       this._pureChildren.length = 0;
-      this._pureChildren = null;
     }
     super.destroy();
   }
