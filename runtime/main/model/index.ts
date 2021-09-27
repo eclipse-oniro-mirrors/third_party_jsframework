@@ -444,11 +444,13 @@ export default class Vm {
    * @param {*} value - Property
    */
   public $set(key: string, value: any): void {
-    if (typeof key !== 'string' || key.indexOf('.') === -1) {
+    if (typeof key !== 'string') {
       Log.warn(`Invalid parameter type: The type of 'key' should be string with '.', not ${typeof key}.`);
       return;
     }
-    _proxySet(this.data, key, value);
+    if (key.indexOf('.') !== -1) {
+      _proxySet(this.data, key, value);
+    }
     set(this.data, key, value);
   }
 
@@ -544,10 +546,13 @@ export default class Vm {
   /**
    * Type of this Vm.
    * @type {string}
-   * @readonly
    */
   public get type() {
     return this._type;
+  }
+
+  public set type(newType) {
+    this._type = newType;
   }
 
   /**
@@ -886,6 +891,9 @@ function getRoot(vm: any): Vm {
  * @param {Element} el - Element object.
  */
 function fireNodeDetached(el: Element) {
+  if (!el) {
+    return;
+  }
   if (el.event && el.event['detached']) {
     el.fireEvent('detached', {});
   }

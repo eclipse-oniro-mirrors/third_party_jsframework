@@ -39,6 +39,8 @@ import { App } from './App';
 
 const APP_LIFE_CYCLE_TYPES: string[] = ['onCreate', 'onError', 'onDestroy', 'onShow', 'onHide'];
 
+export let CSS_INHERITANCE: string[];
+
 /**
  * Parse app page code.
  * @param {Page} page
@@ -49,7 +51,7 @@ const APP_LIFE_CYCLE_TYPES: string[] = ['onCreate', 'onError', 'onDestroy', 'onS
 export const defineFn = function(page: Page, packageName: string, name?: string, ...args: any[] | null): void {
   Log.debug(`Define a page ${name}.`);
   const parseContent: Function = args[1];
-  let bundleContent: object = null;
+  let bundleContent: any = null;
 
   // Function to obtain bundle content.
   if (parseContent) {
@@ -65,6 +67,14 @@ export const defineFn = function(page: Page, packageName: string, name?: string,
     const moduleContent = { exports: {} };
     parseContent(pageRequire, moduleContent.exports, moduleContent);
     bundleContent = moduleContent.exports;
+
+    let minPlatformVersion: number = 5;
+    if (bundleContent.manifest) {
+      minPlatformVersion = bundleContent.manifest.minPlatformVersion;
+    }
+    CSS_INHERITANCE = minPlatformVersion > 5 ?
+      ['fontFamily', 'fontWeight', 'fontSize', 'fontStyle', 'textAlign', 'lineHeight', 'letterSpacing', 'color', 'visibility'] :
+      [];
   }
 
   // Apply bundleContent.
