@@ -91,6 +91,7 @@ export function appCreate(page: Page, options: Options, data: object, services: 
     return;
   }
   if (options.pcPreview && options.pcPreview === 'enable') {
+    global.pcPreview = true;
     mockSystemPlugin();
   }
   const packageName: string = page.packageName;

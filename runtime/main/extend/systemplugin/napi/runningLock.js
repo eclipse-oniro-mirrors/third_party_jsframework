@@ -16,7 +16,12 @@ export function mockRunningLock() {
         " may be different from that on a real device.")
     }
   };
+  const RunningLockType = {
+    BACKGROUND : '[PC Preview] unknow BACKGROUND',
+    PROXIMITY_SCREEN_CONTROL : '[PC Preview] unknow PROXIMITY_SCREEN_CONTROL'
+  };
   const runningLock = {
+    RunningLockType,
     isRunningLockTypeSupported: function (...args) {
       console.warn("runningLock.isRunningLockTypeSupported interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")

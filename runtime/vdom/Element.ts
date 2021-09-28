@@ -29,6 +29,9 @@ import { TaskCenter } from '../main/manage/event/TaskCenter';
 import { FragBlockInterface } from '../main/model/compiler';
 import Vm from '../main/model';
 import { CSS_INHERITANCE } from '../main/app/bundle';
+import {interceptCallback} from "../main/manage/event/callbackIntercept";
+import {mockwebgl} from "../main/extend/systemplugin/napi/webgl";
+import {mockwebgl2} from "../main/extend/systemplugin/napi/webgl2";
 
 /**
  * Element is a basic class to describe a tree node in vdom.
@@ -57,6 +60,32 @@ class Element extends Node {
     super();
     const NativeElementClass = NativeElementClassFactory.nativeElementClassMap.get(type);
     if (NativeElementClass && !isExtended) {
+      if (global.pcPreview && type === 'canvas') {
+        Object.defineProperty(NativeElementClass.prototype, 'getContext', {
+          configurable: true,
+          enumerable: true,
+          get: function moduleGetter() {
+            return (...args: any) => {
+              const taskCenter = this.getTaskCenter(this.docId);
+              if (taskCenter) {
+                // support aceapp callback style
+                args = interceptCallback(args);
+                if (args[0] === 'webgl') {
+                  return mockwebgl();
+                } else if (args[0] === 'webgl2') {
+                  return mockwebgl2();
+                }
+                const ret = taskCenter.send('component', {
+                  ref: this.ref,
+                  component: type,
+                  method: 'getContext'
+                }, args);
+                return ret;
+              }
+            };
+          }
+        });
+      }
       return new NativeElementClass(props);
     }
 

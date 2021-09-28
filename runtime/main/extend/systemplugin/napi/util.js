@@ -2,6 +2,25 @@ import { paramMock } from "../utils"
 
 export function mockUtil() {
     const result = {
+        printf: function(...args) {
+            console.warn("util.printf interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramStringMock;
+        },
+        getErrorString: function(...args) {
+            console.warn("util.getErrorString interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramStringMock;
+        },
+        callbackWrapper: function(...args) {
+            console.warn("util.callbackWrapper interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+        },
+        promiseWrapper: function(...args) {
+            console.warn("util.promiseWrapper interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramObjectMock;
+        },
         TextDecoder: function(...args) {
             console.warn("util.TextDecoder interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
@@ -28,7 +47,8 @@ export function mockUtil() {
         encode: function(...args) {
             console.warn("TextEncoder.encode interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
-            return paramMock.paramArrayMock;
+            const arr = new Uint8Array()
+            return arr;
         },
         encodeInto: function(...args) {
             console.warn("TextEncoder.encodeInto interface mocked in the Previewer. How this interface works on the Previewer" +
