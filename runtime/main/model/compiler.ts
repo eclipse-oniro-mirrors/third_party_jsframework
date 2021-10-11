@@ -407,7 +407,10 @@ function compileCustomComponent(
  */
 function resetElementStyle(vm: Vm, element: Element): void {
   // Add judgment statements to avoid repeatedly calling 'setClass' function.
-  const len = element.children.length;
+  let len = 0;
+  if (element.children !== undefined) {
+    len = element.children.length;
+  }
   const css = vm.css || {};
   const mqArr = css['@MEDIA'];
   for (let ii = 0; ii < len; ii++) {
