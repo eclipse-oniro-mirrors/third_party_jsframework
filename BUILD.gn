@@ -178,7 +178,7 @@ action("gen_jsf_c") {
     "-N",
     "js_framework",
     "-c",
-    rebase_path(prebuilt_js_path),
+    rebase_path(prebuilt_js_path, "."),
   ]
 
   inputs = [ prebuilt_js_path ]
