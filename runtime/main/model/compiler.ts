@@ -311,7 +311,7 @@ function compileShown(
   if (isBlock(dest) && dest.children) {
     dest.children.push(fragBlock);
   }
-  if (meta.repeat) {
+  if (hasOwn(meta, 'repeat')) {
     newMeta.repeat = meta.repeat;
   }
   bindShown(vm, target, fragBlock, newMeta);
