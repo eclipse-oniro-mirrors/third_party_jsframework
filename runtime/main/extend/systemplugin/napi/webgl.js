@@ -1,7 +1,6 @@
 import { paramMock } from "../utils"
 
 export function mockwebgl() {
-
     const WebGLContextAttributes ={
         brightness: '[PC preview] unknow brightness',
         alpha: '[PC preview] unknow alpha',
@@ -14,7 +13,6 @@ export function mockwebgl() {
         failIfMajorPerformanceCaveat: '[PC preview] unknow failIfMajorPerformanceCaveat',
         desynchronized: '[PC preview] unknow desynchronized'
     }
-
     const float32ArrayWith2val = [
         paramMock.paramNumberMock,paramMock.paramNumberMock
     ]
@@ -28,7 +26,6 @@ export function mockwebgl() {
     const int32ArrayWith4ele = [
         paramMock.paramNumberMock,paramMock.paramNumberMock,paramMock.paramNumberMock,paramMock.paramNumberMock
     ]
-
     const WebGLShaderArray = [
         WebGLShader,WebGLShader,WebGLShader
     ]
@@ -56,14 +53,15 @@ export function mockwebgl() {
         rangeMax: '[PC preview] unknow rangeMax',
         precision: '[PC preview] unknow precision'
     }
-    const webglmock = {
+    const glParamMock = {
         paramDoubleMock: '[PC Preview] unknow double',
         paramAnyMock: '[PC Preview] unknow any',
         stringArray: '[PC preview] unknow stringArray',
         uint32Array: '[PC preview] unknow uint32Array',
         glBooleanArray: '[PC preview] unknow glBooleanArray',
         WebGLShaderArray: '[PC preview] unknow WebGLShaderArray',
-
+    }
+    const webglmock = {
         getContextAttributes: function (...args) {
             console.warn("webgl.getContextAttributes interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
@@ -77,12 +75,12 @@ export function mockwebgl() {
         getSupportedExtensions: function (...args) {
             console.warn("webgl.getSupportedExtensions interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
-            return stringarray
+            return glParamMock.stringArray
         },
         getExtension: function (...args) {
             console.warn("webgl.getExtension interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
-            return paramAnyMock
+            return glParamMock.paramAnyMock
         },
         activeTexture: function (...args) {
             console.warn("webgl.activeTexture interface mocked in the Previewer. How this interface works on the" +
@@ -195,7 +193,6 @@ export function mockwebgl() {
                 " Previewer may be different from that on a real device.")
             return WebGLShader;
         },
-
         createTexture: function (...args) {
             console.warn("webgl.createTexture interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
@@ -302,7 +299,6 @@ export function mockwebgl() {
                 " Previewer may be different from that on a real device.")
             return WebGLActiveInfo;
         },
-
         getActiveUniform: function (...args) {
             console.warn("webgl.getActiveAttrib interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
@@ -311,7 +307,7 @@ export function mockwebgl() {
         getAttachedShaders: function (...args) {
             console.warn("webgl.getActiveAttrib interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
-            return WebGLShaderArray;
+            return glParamMock.WebGLShaderArray;
         },
         getAttribLocation: function (...args) {
             console.warn("webgl.getActiveAttrib interface mocked in the Previewer. How this interface works on the" +
@@ -334,7 +330,7 @@ export function mockwebgl() {
                 return WebGLTexture;
             } else if (args[0] == 0x1F01 || args[0] == 0x8B8C ||
                 args[0] == 0x1F00 || args[0] == 0x1F02) {
-                return stringArray;
+                return glParamMock.stringArray;
             } else if (args[0] == 0x8894 || args[0] == 0x8895) {
                 return WebGLBuffer;
             } else if (args[0] == 0x8CA6) {
@@ -349,7 +345,7 @@ export function mockwebgl() {
             } else if (args[0] == 0x0C22 || args[0] == 0x8005) {
                 return float32ArrayWith4val;
             } else if (args[0] == 0x86A3) {
-                return uint32Array;
+                return glParamMock.uint32Array;
             } else if (args[0] == 0x0D3A) {
                 return int32ArrayWith2ele;
             } else if (args[0] == 0x0C10) {
@@ -362,7 +358,7 @@ export function mockwebgl() {
                 args[0] == 0x9241) {
                 return paramMock.paramBooleanMock;
             } else if (args[0] == 0x0C23) {
-                return glBooleanArray;
+                return glParamMock.glBooleanArray;
             } else {
                 return paramMock.paramNumberMock;;
             }
@@ -440,16 +436,15 @@ export function mockwebgl() {
             console.warn("webgl.getTexParameter interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
             if (args[1] == 0x84FE) {
-                return paramMock.paramDoubleMock;
+                return glParamMock.paramDoubleMock;
             } else {
                 return paramMock.paramNumberMock;
             }
         },
-
         getUniform: function (...args) {
             console.warn("webgl.getUniform interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
-            return paramAnyMock;
+            return glParamMock.paramAnyMock;
         },
         getUniformLocation: function (...args) {
             console.warn("webgl.getUniformLocation interface mocked in the Previewer. How this interface works on the" +

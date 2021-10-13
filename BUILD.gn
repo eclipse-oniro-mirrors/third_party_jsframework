@@ -20,9 +20,6 @@ prebuilt_js_path =
 prebuilt_js_api_mock_path = get_label_info(":gen_jsf_c", "target_out_dir") +
                             "/dist/jsMockSystemPlugin.js"
 
-#snapshot_path =
-#    get_label_info(":gen_snapshot", "target_out_dir") + "/strip.native.min.js"
-
 action("gen_node_modules") {
   script = "//third_party/jsframework/prebuild_env.sh"
   args = []
@@ -36,12 +33,23 @@ action("gen_node_modules") {
 action("gen_snapshot") {
   script = "//third_party/jsframework/js_framework_build.sh"
 
-  #deps = [ ":gen_node_modules" ]
-
   js_framework = "//third_party/jsframework/runtime"
   is_mac = "false"
-  node_modules = "//prebuilts/build-tools/common/js-framework/node_modules"
-  nodejs_path = "//prebuilts/build-tools/common/nodejs/node-v12.18.4-linux-x64"
+
+  if (is_standard_system) {
+    node_modules = "//prebuilts/build-tools/common/js-framework/node_modules"
+    nodejs_path =
+        "//prebuilts/build-tools/common/nodejs/node-v12.18.4-linux-x64"
+  } else {
+    node_modules = "//prebuilts/ace-toolkit/js-framework/node_modules"
+    if (use_mac) {
+      nodejs_path = "//prebuilts/ace-toolkit/nodejs/node-v12.18.4-darwin-x64"
+      is_mac = "true"
+    } else {
+      nodejs_path = "//prebuilts/ace-toolkit/nodejs/node-v12.18.4-linux-x64"
+      is_mac = "false"
+    }
+  }
 
   buildfile = "//third_party/jsframework/build.js"
 
@@ -164,6 +172,83 @@ action("gen_snapshot") {
     prebuilt_js_path,
     prebuilt_js_api_mock_path,
   ]
+}
+
+if (!is_standard_system) {
+  import("$v8_root/gni/snapshot_toolchain.gni")
+
+  v8_snapshot_bin_path = get_label_info(":v8_snapshot_bin", "target_out_dir") +
+                         "/strip.native.min.js.bin"
+  v8_snapshot_obj_path = get_label_info(":v8_snapshot_bin", "target_out_dir") +
+                         "/strip.native.min.js.o"
+
+  action("gen_snapshot_bin") {
+    visibility = [ ":*" ]  # Only targets in this file can depend on this.
+
+    deps = [ ":gen_snapshot" ]
+    deps += [ "$v8_root:mksnapshot($v8_snapshot_toolchain)" ]
+
+    script = "$v8_root/tools/run.sh"
+
+    args = [
+      rebase_path("${aosp_libs_dir}/ndk/libcxx/linux_x86") + ":" +
+          rebase_path("${aosp_libs_dir}/ndk/libcxx/linux_x86_64"),
+      rebase_path(
+          get_label_info("$v8_root:mksnapshot($v8_snapshot_toolchain)",
+                         "root_out_dir") + "/ace/ace_engine_full/mksnapshot"),
+      rebase_path(prebuilt_js_path),
+      "--startup_blob=" + rebase_path(v8_snapshot_bin_path),
+      "--turbo_instruction_scheduling",
+    ]
+
+    inputs = [ prebuilt_js_path ]
+    outputs = [ v8_snapshot_bin_path ]
+  }
+
+  ohos_prebuilt_etc("v8_snapshot_bin") {
+    deps = [ ":gen_snapshot_bin" ]
+    source = v8_snapshot_bin_path
+    part_name = "ace_engine_full"
+  }
+
+  action("gen_snapshot_obj") {
+    visibility = [ ":*" ]  # Only targets in this file can depend on this.
+
+    if (use_mingw_win) {
+      objcopy_tool = objcopy_mingw
+      script = "$flutter_root/engine/flutter/sky/tools/objcopy_pc_mac.py"
+    } else if (use_mac) {
+      objcopy_tool = objcopy_clang
+      script = "$flutter_root/engine/flutter/sky/tools/objcopy_pc_mac.py"
+    } else if (target_cpu == "x86_64") {
+      objcopy_tool = objcopy_x86_64
+      script = "$flutter_root/engine/flutter/sky/tools/objcopy.py"
+    } else {
+      objcopy_tool = objcopy_aarch64
+      script = "$flutter_root/engine/flutter/sky/tools/objcopy.py"
+    }
+
+    args = [
+      "--objcopy",
+      rebase_path(objcopy_tool),
+      "--input",
+      rebase_path(v8_snapshot_bin_path),
+      "--output",
+      rebase_path(v8_snapshot_obj_path),
+      "--arch",
+      current_cpu,
+    ]
+
+    deps = [ ":gen_snapshot_bin" ]
+
+    inputs = [ v8_snapshot_bin_path ]
+    outputs = [ v8_snapshot_obj_path ]
+  }
+
+  source_set("v8_snapshot_obj") {
+    sources = [ v8_snapshot_obj_path ]
+    deps = [ ":gen_snapshot_obj" ]
+  }
 }
 
 jsfc_path = get_label_info(":jsf", "target_out_dir") + "/src/jsf.c"

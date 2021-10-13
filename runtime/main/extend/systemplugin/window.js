@@ -1,6 +1,6 @@
 import { paramMock } from "./utils"
 
-const windowPropertiesMock = {
+export const windowPropertiesMock = {
   windowRect:'[PC preview] unknow windowRect',
   type:'[PC preview] unknow type',
   brightness: '[PC preview] unknow brightness',
@@ -14,13 +14,13 @@ const windowPropertiesMock = {
   isPrivacyMode: '[PC preview] unknow isPrivacyMode',
   isRoundCorner: '[PC preview] unknow isRoundCorner'
 }
-const RectMock = {
+export const RectMock = {
   left: '[PC preview] unknow Rect.left',
   top: '[PC preview] unknow  Rect.top',
   width: '[PC preview] unknow Rect.width',
   height: '[PC preview] unknow Rect.height'
 }
-const AvoidAreaMock = {
+export const AvoidAreaMock = {
   leftRect: RectMock,
   topRect: RectMock,
   rightRect: RectMock,
@@ -398,6 +398,11 @@ export function mockWindow() {
           resolve()
         })
       }
-    }
+    },
+    AvoidAreaType: {
+      TYPE_SYSTEM: 0,
+      TYPE_CUTOUT: 1,
+      TYPE_SYSTEM_GESTURE: 2
+    },
   }
 }

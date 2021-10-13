@@ -10,6 +10,7 @@ export function mockDeviceInfo() {
     hardwareModel: '[PC preview] unknow hardware model',
     hardwareProfile: '[PC preview] unknow hardware profile',
     serial: '[PC preview] unknow serial',
+    udid: '[PC preview] unknow udid',
     bootloaderVersion: '[PC preview] unknow bootloader version',
     abiList: '[PC preview] unknow ablity list',
     securityPatchTag: '[PC preview] unknow security patch tag',

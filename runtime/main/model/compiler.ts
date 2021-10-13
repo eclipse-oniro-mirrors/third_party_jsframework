@@ -452,13 +452,12 @@ function compileNativeComponent(vm: Vm, template: TemplateInterface, dest: FragB
     vm.mediaStatus.width = e.width;
     vm.mediaStatus.height = e.height;
     vm.mediaStatus.resolution = e.resolution;
-    vm.mediaStatus['device-type'] = e['device-type'];
-    vm.mediaStatus['aspect-ratio'] = e['aspect-ratio'];
-    vm.mediaStatus['device-width'] = e['device-width'];
-    vm.mediaStatus['device-height'] = e['device-height'];
-    vm.mediaStatus['round-screen'] = e['round-screen'];
-    vm.mediaStatus['dark-mode'] = e['dark-mode'];
-    vm.mediaStatus['api-version'] = e['api-version'];
+    vm.mediaStatus['device-type'] = e.deviceType;
+    vm.mediaStatus['aspect-ratio'] = e.aspectRatio;
+    vm.mediaStatus['device-width'] = e.deviceWidth;
+    vm.mediaStatus['device-height'] = e.deviceHeight;
+    vm.mediaStatus['round-screen'] = e.roundScreen;
+    vm.mediaStatus['dark-mode'] = e.darkMode;
     const css = vm.vmOptions && vm.vmOptions.style || {};
     const mqArr = css['@MEDIA'];
     if (!mqArr) {

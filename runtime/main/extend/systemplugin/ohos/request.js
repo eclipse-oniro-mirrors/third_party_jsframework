@@ -24,13 +24,37 @@ const Properties = [
 ]
 
 export function mockOhosRequest() {
+  const ErrorMock = {
+    ERROR_HTTP_DATA_ERROR: 501,
+    ERROR_DEVICE_NOT_FOUND: 502,
+    ERROR_UNHANDLED_HTTP_CODE: 503,
+    ERROR_INSUFFICIENT_SPACE: 504,
+    ERROR_TOO_MANY_REDIRECTS: 505,
+    ERROR_CANNOT_RESUME: 506,
+    ERROR_FILE_ALREADY_EXISTS: 507,
+    ERROR_FILE_ERROR: 508,
+    ERROR_UNKNOWN: 509
+  }
+  const PauseMock = {
+    PAUSED_WAITING_TO_RETRY: 301,
+    PAUSED_WAITING_FOR_NETWORK: 302,
+    PAUSED_QUEUED_FOR_WIFI: 303,
+    PAUSED_UNKNOWN: 304,
+  }
+  const SessionMock = {
+    SESSION_PENDING: 1,
+    SESSION_RUNNING: 2,
+    SESSION_PAUSED: 4,
+    SESSION_SUCCESSFUL:8,
+    SESSION_FAILED: 16,
+  }
   const downloadInfo = {
     downloadId: 1,
-    failedReason: 16,
+    failedReason: ErrorMock,
     fileName: "[PC preview] unknown file name",
     filePath: "[PC preview] unknown file path",
-    pausedReason: 1,
-    status: 1,
+    pausedReason: PauseMock,
+    status: SessionMock,
     targetURI: "[PC preview] unknown targetURI",
     downloadTitle: "[PC preview] unknown download title",
     downloadTotalBytes: 1024,
@@ -48,7 +72,7 @@ export function mockOhosRequest() {
           } else if (args[0] == 'complete' || args[0] == 'pause' || args[0] == 'remove') {
               args[len - 1].call(this, paramMock.businessErrorMock);
           } else if (args[0] == 'fail') {
-            args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+            args[len - 1].call(this, paramMock.businessErrorMock, ErrorMock);
           }
       }
     },
@@ -62,7 +86,7 @@ export function mockOhosRequest() {
           } else if (args[0] == 'complete' || args[0] == 'pause' || args[0] == 'remove') {
               args[len - 1].call(this, paramMock.businessErrorMock);
           } else if (args[0] == 'fail') {
-              args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+              args[len - 1].call(this, paramMock.businessErrorMock, ErrorMock);
           }
       }
     },

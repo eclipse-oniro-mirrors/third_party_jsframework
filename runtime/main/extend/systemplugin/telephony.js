@@ -1,5 +1,6 @@
 import {paramMock} from "./utils"
 
+const CallState = "[PC Preview] unknow CallState";
 export function mockCall() {
     const CallWaitingStatus = "[PC Preview] unknow CallWaitingStatus";
     const RestrictionStatus = "[PC Preview] unknow RestrictionStatus";
@@ -15,12 +16,11 @@ export function mockCall() {
         callState: "[PC Preview] unknow callState",
         conferenceState: "[PC Preview] unknow conferenceState"
     }
-    const TransferNumberInfo = {
+    const CallTransferResult = {
         status: "[PC Preview] unknow status",
         number: "[PC Preview] unknow number",
     }
-    const CallState = "[PC Preview] unknow CallState";
-    global.systemplugin.telephony = {}
+    global.systemplugin.telephony = global.systemplugin.telephony || {}
     global.systemplugin.telephony.call = {
         dial: function (...args) {
             console.warn("telephony.call.dial interface mocked in the Previewer. How this interface works on the Previewer may" +
@@ -483,15 +483,15 @@ export function mockCall() {
                 })
             }
         },
-        getCallTransferNumber: function (...args) {
-            console.warn("telephony.call.getCallTransferNumber interface mocked in the Previewer. How this interface works on the Previewer may" +
+        getCallTransferInfo: function (...args) {
+            console.warn("telephony.call.getCallTransferInfo interface mocked in the Previewer. How this interface works on the Previewer may" +
                 " be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, TransferNumberInfo);
+                args[len - 1].call(this, paramMock.businessErrorMock, CallTransferResult);
             } else {
                 return new Promise((resolve, reject) => {
-                    resolve(TransferNumberInfo);
+                    resolve(CallTransferResult);
                 })
             }
         },
@@ -545,7 +545,6 @@ export function mockCall() {
         }
     }
 }
-
 export function mockData() {
     global.systemplugin.telephony.data = {
         getDefaultCellularDataSlotId: function (...args) {
@@ -670,18 +669,30 @@ export function mockData() {
         }
     }
 }
-
+const NetworkState = {
+    longOperatorName: "[PC Preview] unknow longOperatorName",
+    shortOperatorName: "[PC Preview] unknow shortOperatorName",
+    plmnNumeric: "[PC Preview] unknow plmnNumeric",
+    isRoaming: "[PC Preview] unknow isRoaming",
+    regState: "[PC Preview] unknow regState",
+    nsaState: "[PC Preview] unknow nsaState",
+    isCaActive: "[PC Preview] unknow isCaActive",
+    isEmergency: "[PC Preview] unknow isEmergency",
+}
+const SignalInformation = {
+    signalType: "[PC Preview] unknow signalType",
+    signalLevel:"[PC Preview] unknow signalLevel"
+}
+const DataFlowType = "[PC Preview] unknow DataFlowType"
+const DataConnectState = "[PC Preview] unknow DataConnectState"
+const CellInformation = {
+    networkType: "[PC Preview] unknow networkType",
+    isCamped: "[PC Preview] unknow isCamped",
+    timeStamp:"[PC Preview] unknow timeStamp",
+    signalInformation:"[PC Preview] unknow signalInformation",
+    data:"[PC Preview] unknow unkown data"
+  }
 export function mockRadio() {
-    const NetworkState = {
-        longOperatorName: "[PC Preview] unknow longOperatorName",
-        shortOperatorName: "[PC Preview] unknow shortOperatorName",
-        plmnNumeric: "[PC Preview] unknow plmnNumeric",
-        isRoaming: "[PC Preview] unknow isRoaming",
-        regState: "[PC Preview] unknow regState",
-        nsaState: "[PC Preview] unknow nsaState",
-        isCaActive: "[PC Preview] unknow isCaActive",
-        isEmergency: "[PC Preview] unknow isEmergency",
-    }
     const NetworkSearchResult = {
         isNetworkSearchSuccess: "[PC Preview] unknow isNetworkSearchSuccess",
         networkSearchResult: [{
@@ -692,18 +703,7 @@ export function mockRadio() {
         }]
     }
     const PreferredNetworkMode = "[PC Preview] unknow PreferredNetworkMode"
-    const SignalInformation = {
-      signalType: "[PC Preview] unknow signalType",
-      signalLevel:"[PC Preview] unknow signalLevel"
-    }
     const NrOptionMode ="[PC Preview] unknow NrOptionMode"
-    const CellInformation = {
-      networkType: "[PC Preview] unknow networkType",
-      isCamped: "[PC Preview] unknow isCamped",
-      timeStamp:"[PC Preview] unknow timeStamp",
-      signalInformation:"[PC Preview] unknow signalInformation",
-      data:"[PC Preview] unknow unkown data"
-    }
     const NetworkSelectionMode = "[PC Preview] unknow unkown NetworkSelectionMode"
     global.systemplugin.telephony.radio = {
         getRadioTech: function (...args) {
@@ -959,7 +959,6 @@ export function mockRadio() {
         }
     }
 }
-
 export function mockSim() {
     const IccAccountInfo = {
         simId: "[PC Preview] unknow simId",
@@ -1463,11 +1462,11 @@ export function mockSim() {
         }
     }
 }
-
 export function mockSMS() {
     const SimShortMessage = {
         shortMessage: "[PC Preview] unknow shortMessage",
         simMessageStatus: "[PC Preview] unknow simMessageStatus",
+        indexOnSim: "[PC Preview] unknow indexOnSim"
     }
     const ShortMessage = {
         visibleMessageBody: "[PC Preview] unknow visibleMessageBody",
@@ -1627,6 +1626,104 @@ export function mockSMS() {
                 return new Promise((resolve, reject) => {
                     resolve();
                 })
+            }
+        }
+    }
+}
+export function mockObserver() {
+    const SimStateData = {
+        type: "[PC Preview] unknow type",
+        state: "[PC Preview] unknow state",
+    }
+    global.systemplugin.telephony.observer = {
+        on: function (...args) {
+            console.warn("telephony.on interface mocked in the Previewer. How this interface works on the Previewer may " +
+                "be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                if (args[0] === 'networkStateChange') {
+                    args[len - 1].call(this, NetworkState);
+                } else if (args[0] === 'signalInfoChange') {
+                    args[len - 1].call(this, [SignalInformation]);
+                } else if (args[0] === 'cellInfoChange') {
+                    args[len - 1].call(this, [CellInformation]);
+                } else if (args[0] === 'cellularDataConnectionStateChange') {
+                    args[len - 1].call(this, paramMock.businessErrorMock, {
+                        state: "[PC Preview] unknow state",
+                        network: "[PC Preview] unknow network"
+                    });
+                } else if (args[0] === 'cellularDataFlowChange') {
+                    args[len - 1].call(this, DataFlowType);
+                } else if (args[0] === 'callStateChange') {
+                    args[len - 1].call(this, paramMock.businessErrorMock, {
+                        state: "[PC Preview] unknow state",
+                        number: "[PC Preview] unknow number"
+                    });
+                } else if (args[0] === 'cfuIndicatorChange' || 'voiceMailMsgIndicatorChange') {
+                    args[len - 1].call(this, paramMock.paramBooleanMock);
+                } else if (args[0] === 'simStateChange') {
+                    args[len - 1].call(this, SimStateData);
+                }
+            }
+        },
+        off: function (...args) {
+            console.warn("telephony.off interface mocked in the Previewer. How this interface works on the Previewer may " +
+                "be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                if (args[0] === 'networkStateChange') {
+                    args[len - 1].call(this, NetworkState);
+                } else if (args[0] === 'signalInfoChange') {
+                    args[len - 1].call(this, [SignalInformation]);
+                } else if (args[0] === 'cellInfoChange') {
+                    args[len - 1].call(this, [CellInformation]);
+                } else if (args[0] === 'cellularDataConnectionStateChange') {
+                    args[len - 1].call(this, paramMock.businessErrorMock, {
+                        state: "[PC Preview] unknow state",
+                        network: "[PC Preview] unknow network"
+                    });
+                } else if (args[0] === 'cellularDataFlowChange') {
+                    args[len - 1].call(this, DataFlowType);
+                } else if (args[0] === 'callStateChange') {
+                    args[len - 1].call(this, paramMock.businessErrorMock, {
+                        state: "[PC Preview] unknow state",
+                        number: "[PC Preview] unknow number"
+                    });
+                } else if (args[0] === 'cfuIndicatorChange' || 'voiceMailMsgIndicatorChange') {
+                    args[len - 1].call(this, paramMock.paramBooleanMock);
+                } else if (args[0] === 'simStateChange') {
+                    args[len - 1].call(this, SimStateData);
+                }
+            }
+        },
+        once: function (...args) {
+            console.warn("telephony.once interface mocked in the Previewer. How this interface works on the Previewer may " +
+                "be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                if (args[0] === 'networkStateChange') {
+                    args[len - 1].call(this, NetworkState);
+                } else if (args[0] === 'signalInfoChange') {
+                    args[len - 1].call(this, [SignalInformation]);
+                } else if (args[0] === 'cellInfoChange') {
+                    args[len - 1].call(this, [CellInformation]);
+                } else if (args[0] === 'cellularDataConnectionStateChange') {
+                    args[len - 1].call(this, paramMock.businessErrorMock, {
+                        state: "[PC Preview] unknow state",
+                        network: "[PC Preview] unknow network"
+                    });
+                } else if (args[0] === 'cellularDataFlowChange') {
+                    args[len - 1].call(this, DataFlowType);
+                } else if (args[0] === 'callStateChange') {
+                    args[len - 1].call(this, paramMock.businessErrorMock, {
+                        state: "[PC Preview] unknow state",
+                        number: "[PC Preview] unknow number"
+                    });
+                } else if (args[0] === 'cfuIndicatorChange' || 'voiceMailMsgIndicatorChange') {
+                    args[len - 1].call(this, paramMock.paramBooleanMock);
+                } else if (args[0] === 'simStateChange') {
+                    args[len - 1].call(this, SimStateData);
+                }
             }
         }
     }

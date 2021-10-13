@@ -254,7 +254,7 @@ export function mockOhosNotification() {
                 args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
             } else {
                 return new Promise((resolve) => {
-                    resolve(paramMock.paramStringMock);
+                    resolve(paramMock.paramNumberMock);
                 });
             }
         },

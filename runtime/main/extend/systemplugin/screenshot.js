@@ -5,7 +5,7 @@ export function mockScreenshot() {
         ImageSource: '[PC preview] unknow ImageSource'
     }
 
-    global.systemplugin.window.screenshot = {
+    global.systemplugin.screenshot = {
         save: function (...args) {
             console.warn("screenshot.save interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")

@@ -3,6 +3,7 @@ import { mockFileio } from './fileio'
 import { mockWorker } from './worker'
 import { mockUtil } from './util'
 import { mockPower } from './power'
+import { mockIntl } from './intl'
 import { mockRunningLock } from './runningLock'
 import { mockRpc } from './rpc'
 import { mockBytrace } from './bytrace'
@@ -13,6 +14,14 @@ import { mockUrl } from './url'
 import { mockMediaQuery } from './mediaquery'
 import { mockHiAppEvent } from './hiAppEvent'
 import { mockHilog } from './hilog'
+import { mockTv } from './tv'
+import { mockDtv } from './dtv'
+import { mockDistributedAccount } from './distributedAccount'
+import { mockEmitter } from './emitter'
+import { mockDistributedData } from './distributedData'
+import { mockDataAbility } from './dataAbility'
+import { mockStorage } from './storage'
+import { mockRdb } from './rdb'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -25,6 +34,8 @@ export function mockRequireNapiFun() {
         return mockWorker();
       case "util":
         return mockUtil();
+      case "intl":
+        return mockIntl();
       case "power":
         return mockPower();
       case "runningLock":
@@ -47,6 +58,22 @@ export function mockRequireNapiFun() {
         return mockHiAppEvent();
       case "hilog":
         return mockHilog();
+      case "tv":
+        return mockTv();
+      case "dtv":
+        return mockDtv();
+      case "account.distributedAccount":
+        return mockDistributedAccount();
+      case "events.emitter":
+        return mockEmitter();
+      case "data.distributedData":
+        return mockDistributedData();
+      case "data.rdb":
+        return mockRdb();
+      case "data.storage":
+        return mockStorage();
+      case "data.dataAbility":
+        return mockDataAbility();
     }
   }
 }
