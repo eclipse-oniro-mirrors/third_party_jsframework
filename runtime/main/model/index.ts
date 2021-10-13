@@ -145,7 +145,7 @@ export default class Vm {
       `'_innerInit' lifecycle in Vm(${this._type}) and mergedData = ${JSON.stringify(mergedData)}.`
     );
     this.$emit('hook:_innerInit');
-    this._data = (typeof data === 'function' ? data.apply(this) : data) || {};
+    this._data =  (this.data !== undefined ? this.data : typeof data === 'function' ? data.apply(this) : data) || {};
     this._shareData = (typeof shareData === 'function' ? shareData.apply(this) : shareData) || {};
     this._descriptor = options._descriptor;
     if (global.aceapp && global.aceapp.i18n && global.aceapp.i18n.extend) {
@@ -445,7 +445,7 @@ export default class Vm {
    */
   public $set(key: string, value: any): void {
     if (typeof key !== 'string') {
-      Log.warn(`Invalid parameter type: The type of 'key' should be string with '.', not ${typeof key}.`);
+      Log.warn(`Invalid parameter type: The type of 'key' should be string, not ${typeof key}.`);
       return;
     }
     if (key.indexOf('.') !== -1) {
@@ -546,12 +546,13 @@ export default class Vm {
   /**
    * Type of this Vm.
    * @type {string}
+   * @readonly
    */
   public get type() {
     return this._type;
   }
 
-  public set type(newType) {
+  public set type(newType: string) {
     this._type = newType;
   }
 

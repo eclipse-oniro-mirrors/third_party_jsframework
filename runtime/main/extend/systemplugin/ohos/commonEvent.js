@@ -125,6 +125,7 @@ export function mockCommonEvent() {
         getSubscribeInfo: function (...args) {
             console.warn("CommonEventSubscriber.getSubscribeInfo interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.");
+            const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, CommonEventSubscribeInfoMock);
             } else {
@@ -139,6 +140,7 @@ export function mockCommonEvent() {
         bundleName: '[PC preview] unknow bundleName',
         code: '[PC preview] unknow code',
         data: '[PC preview] unknow data',
+        parameters: '[PC preview] unknow parameters',
     }
     const CommonEventSubscribeInfoMock = {
         events: '[PC preview] unknow events',

@@ -78,12 +78,12 @@ export function mockUrl() {
     }
     const URLMock = {
         toString: function(...args) {
-            console.warn("URLSearchParams.toString interface mocked in the Previewer. How this interface works on the Previewer" +
+            console.warn("URL.toString interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
             return paramMock.paramStringMock;
         },
         toJSON: function(...args) {
-            console.warn("URLSearchParams.toJSON interface mocked in the Previewer. How this interface works on the Previewer" +
+            console.warn("URL.toJSON interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
             return paramMock.paramStringMock;
         },

@@ -12,6 +12,9 @@ export function mockSensor() {
   mockOnBodyState()
   mockProximity()
   mockStepCounter()
+  mockGravity()
+  mockMagnetic()
+  mockHall()
 }
 
 function mockAccelerometer() {
@@ -259,5 +262,102 @@ function mockStepCounter() {
       " Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribeSteps)
     delete this.unsubscribeSteps
+  }
+}
+
+function mockGravity() {
+  global.systemplugin.sensor.subscribeGravity = function(...args) {
+    console.warn("sensor.subscribeGravity interface mocked in the Previewer. How this interface works on" +
+      " the Previewer may be different from that on a real device.")
+    const time = {
+      normal: 200,
+      game: 20,
+      ui: 60
+    }
+    let ret = {}
+    let timer = 0
+    if (!args[0].interval) {
+      timer = time.normal
+    } else {
+      timer = time[args[0].interval]
+    }
+    clearInterval(this.unsubscribeGrav)
+    delete this.unsubscribeGrav
+    this.unsubscribeGrav = setInterval(() => {
+      ret.x = Math.ceil(Math.random() * 10)
+      ret.y = Math.ceil(Math.random() * 10)
+      ret.z = Math.ceil(Math.random() * 10)
+      args[0].success(ret)
+    }, timer)
+  }
+  global.systemplugin.sensor.unsubscribeGravity = function() {
+    console.warn("sensor.unsubscribeGravity interface mocked in the Previewer. How this interface works" +
+      " on the Previewer may be different from that on a real device.")
+    clearInterval(this.unsubscribeGrav)
+    delete this.unsubscribeGrav
+  }
+}
+
+function mockMagnetic() {
+  global.systemplugin.sensor.subscribeMagnetic = function(...args) {
+    console.warn("sensor.subscribeMagnetic interface mocked in the Previewer. How this interface works on" +
+      " the Previewer may be different from that on a real device.")
+    const time = {
+      normal: 200,
+      game: 20,
+      ui: 60
+    }
+    let ret = {}
+    let timer = 0
+    if (!args[0].interval) {
+      timer = time.normal
+    } else {
+      timer = time[args[0].interval]
+    }
+    clearInterval(this.unsubscribeMag)
+    delete this.unsubscribeMag
+    this.unsubscribeMag = setInterval(() => {
+      ret.x = getRandomArbitrary(-100, 100)
+      ret.y = getRandomArbitrary(-100, 100)
+      ret.z = getRandomArbitrary(-100, 100)
+      args[0].success(ret)
+    }, timer)
+  }
+  global.systemplugin.sensor.unsubscribeMagnetic = function() {
+    console.warn("sensor.unsubscribeMagnetic interface mocked in the Previewer. How this interface works" +
+      " on the Previewer may be different from that on a real device.")
+    clearInterval(this.unsubscribeMag)
+    delete this.unsubscribeMag
+  }
+}
+
+function mockHall() {
+  global.systemplugin.sensor.subscribeHall = function(...args) {
+    console.warn("sensor.subscribeHall interface mocked in the Previewer. How this interface works on" +
+      " the Previewer may be different from that on a real device.")
+    const time = {
+      normal: 200,
+      game: 20,
+      ui: 60
+    }
+    let ret = {}
+    let timer = 0
+    if (!args[0].interval) {
+      timer = time.normal
+    } else {
+      timer = time[args[0].interval]
+    }
+    clearInterval(this.unsubscribeHal)
+    delete this.unsubscribeHal
+    this.unsubscribeHal = setInterval(() => {
+      ret.value = Math.round(Math.random())
+      args[0].success(ret)
+    }, timer)
+  }
+  global.systemplugin.sensor.unsubscribeHall = function() {
+    console.warn("sensor.unsubscribeHall interface mocked in the Previewer. How this interface works" +
+      " on the Previewer may be different from that on a real device.")
+    clearInterval(this.unsubscribeHal)
+    delete this.unsubscribeHal
   }
 }

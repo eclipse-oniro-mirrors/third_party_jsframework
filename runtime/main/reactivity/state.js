@@ -121,9 +121,9 @@ function proxyMethods(vm, key) {
     get: function proxyGetter () {
       return vm._methods[key];
     },
-    set: function proxySetter(newMethod) {
-      vm._methods[key] = typeof newMethod === 'function' && key !== 'data' ?
-        newMethod.bind(vm) : newMethod;
+    set: function proxySetter(newValue) {
+      vm._methods[key] = typeof newValue === 'function' && key !== 'data' ?
+        newValue.bind(vm) : newValue;
     }
-  });
+  })
 }

@@ -15,7 +15,9 @@ import { mockBackgroundTaskManager } from './ohos/backgroundTaskManager'
 import { mockBattery } from './battery'
 import { mockBrightness } from './brightness'
 import { mockBluetooth } from './bluetooth'
-import { mockCall, mockData, mockRadio, mockSim, mockSMS } from './telephony'
+import { mockOhosBluetooth } from './ohos/bluetooth'
+import { mockCall, mockData, mockRadio, mockSim, mockSMS, mockObserver } from './telephony'
+import { mockBundleState } from './ohos/bundleState'
 import { mockCipher } from './cipher'
 import { mockDataStorage } from './data'
 import { mockDeviceInfo } from './deviceInfo'
@@ -26,21 +28,26 @@ import { mockFeatureAbility } from './featureAbility'
 import { mockFile } from './file'
 import { mockGeolocation } from './geolocation'
 import { mockInputmethod } from './inputmethod'
-
+import { mockI18n } from './i18n'
 import {
   mockMultimediaImage,
   mockMultimediaMedia,
-  mockMultimediaMedialibrary
+  mockMultimediaMedialibrary,
+  mockMultimediaAudio
 } from './multimedia'
 import { mockNetwork } from './network'
-import { mockNfcCardEmulation } from './nfc'
+import { mockOhosNfc } from './ohos/nfc'
 import { mockNotification } from './notification'
 import { mockOhosNotification } from './ohos/notification'
 import { mockCommonEvent } from './ohos/commonEvent'
+import { mockWantAgent } from './ohos/wantAgent'
 import { mockOhosBatteryinfo } from './batteryinfo'
 import { mockOhosRequest } from './ohos/request'
 
-import { mockPasteBoard } from './pasteboard'
+import { mockPasteBoard } from './ohos/pasteboard'
+import { mockSystemTime } from './ohos/systemTime'
+import { mockSystemTimer } from './ohos/systemTimer'
+import { mockWallpaper } from './ohos/wallpaper'
 import { mockReminderAgent } from './ohos/reminderAgent'
 import { mockRequest } from './request'
 
@@ -54,9 +61,10 @@ import { mockSystemPackage } from './systemPackage'
 import { mockUserauth } from './userIAM'
 import { mockVibrator } from './vibrator'
 
-import { mockWebSocket, mockHttp, mockMdns, mockSocket } from './net'
-import { mockWifi } from './wifi'
+import { mockWebSocket, mockHttp, mockMdns, mockSocket, mockHotspot, mockStatistics } from './net'
+import { mockWifi } from './ohos/wifi'
 import { mockWindow } from './window'
+import { mockWorkScheduler } from './ohos/workScheduler'
 
 import { mockRequireNapiFun } from './napi'
 import { mockAccessibility } from './accessibility'
@@ -67,6 +75,15 @@ import { mockScreenshot } from './screenshot'
 import {mockContact} from './contact'
 import {mockScreenLock} from "./screenLock"
 import {mockSettings} from "./settings"
+import { mockAppAccount} from './ohos/appAccount'
+import { mockOsAccount} from './ohos/osAccount'
+import { mockOhosGeolocation } from './ohos/geolocation'
+import { mockInputMonitor} from './ohos/inputMonitor'
+import {mockUserIAMUserAuth} from './ohos/userIAMuserAuth.js'
+import { mockBundleManager } from './ohos/bundleManager'
+import { mockPackageManager } from './ohos/packageManager'
+import { mockZlib } from './napi/zlib'
+import {mockCalendar} from "./calendar"
 
 export function mockSystemPlugin() {
   global.regeneratorRuntime = regeneratorRuntime
@@ -77,6 +94,7 @@ export function mockSystemPlugin() {
   mockNotification()
   mockOhosNotification()
   mockCommonEvent()
+  mockWantAgent()
   mockFetch()
   mockRequest()
   mockStorage()
@@ -90,30 +108,39 @@ export function mockSystemPlugin() {
   mockSystemPackage()
   mockFeatureAbility()
   mockBluetooth()
+  mockOhosBluetooth()
   mockCipher()
   mockOhosBatteryinfo()
   mockUserauth()
   mockDistributedSchedule()
   mockDocument()
   mockPasteBoard()
+  mockSystemTime()
+  mockSystemTimer()
+  mockWallpaper()
   mockInputmethod()
+  mockI18n()
   mockOhosRequest()
   mockMultimediaImage()
   mockMultimediaMedia()
   mockMultimediaMedialibrary()
+  mockMultimediaAudio()
   mockCall()
   mockData()
   mockRadio()
   mockSim()
   mockSMS()
+  mockObserver()
   mockWebSocket()
   mockHttp()
   mockMdns()
   mockSocket()
+  mockHotspot()
+  mockStatistics()
   mockDeviceInfo()
   mockWifi()
   mockResourceManager()
-  mockNfcCardEmulation()
+  mockOhosNfc()
   mockDataStorage()
   mockWindow()
   mockAbilityFeatureAbility()
@@ -136,4 +163,15 @@ export function mockSystemPlugin() {
   mockScreenLock()
   mockSettings()
   mockAppAbilityManager()
+  mockAppAccount()
+  mockOsAccount()
+  mockBundleState()
+  mockWorkScheduler()
+  mockOhosGeolocation()
+  mockUserIAMUserAuth()
+  mockInputMonitor()
+  mockBundleManager()
+  mockPackageManager()
+  mockZlib()
+  mockCalendar()
 }
