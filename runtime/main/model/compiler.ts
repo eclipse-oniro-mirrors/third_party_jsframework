@@ -415,7 +415,9 @@ function resetElementStyle(vm: Vm, element: Element): void {
   const mqArr = css['@MEDIA'];
   for (let ii = 0; ii < len; ii++) {
     const el = element.children[ii] as Element;
-    resetElementStyle(vm, el);
+    if (!el.isCustomComponent) {
+      resetElementStyle(vm, el);
+    }
   }
   if (element.type) {
     setTagStyle(vm, element, element.type);
