@@ -27,7 +27,8 @@ import { mockFetch } from './fetch'
 import { mockFeatureAbility } from './featureAbility'
 import { mockFile } from './file'
 import { mockGeolocation } from './geolocation'
-import { mockInputmethod } from './inputmethod'
+import { mockInputMethod } from './inputMethod'
+import { mockInputMethodEngine } from './inputMethodEngine'
 import { mockI18n } from './i18n'
 import {
   mockMultimediaImage,
@@ -118,7 +119,8 @@ export function mockSystemPlugin() {
   mockSystemTime()
   mockSystemTimer()
   mockWallpaper()
-  mockInputmethod()
+  mockInputMethod()
+  mockInputMethodEngine()
   mockI18n()
   mockOhosRequest()
   mockMultimediaImage()
