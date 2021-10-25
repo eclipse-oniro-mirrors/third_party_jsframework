@@ -449,9 +449,9 @@ export default class Vm {
       return;
     }
     if (key.indexOf('.') !== -1) {
-      _proxySet(this.data, key, value);
+      _proxySet(this._data, key, value);
     }
-    set(this.data, key, value);
+    set(this._data, key, value);
   }
 
   /**
@@ -463,7 +463,7 @@ export default class Vm {
       Log.warn(`Invalid parameter type: The type of 'key' should be string, not ${typeof key}.`);
       return;
     }
-    del(this.data, key);
+    del(this._data, key);
   }
 
   /**
@@ -658,11 +658,11 @@ export default class Vm {
    * Data of this Vm.
    * @type {*}
    */
-  public get data() {
+  public get __data() {
     return this._data;
   }
 
-  public set data(newData: any) {
+  public set __data(newData: any) {
     this._data = newData;
   }
 
