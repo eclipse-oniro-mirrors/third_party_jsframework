@@ -203,9 +203,9 @@ describe('api of communication between vm and data methods', () => {
     doc.destroy();
     const detail = { aaa: 1 };
     vm.$set('test.aaa', detail);
-    expect(typeof vm.data['test.aaa']).eql('object');
+    expect(typeof vm.__data['test.aaa']).eql('object');
     vm.$delete('test.aaa');
-    expect(typeof vm.data['test.aaa']).eql('undefined');
+    expect(typeof vm.__data['test.aaa']).eql('undefined');
   });
 
   it('$watch', () => {
