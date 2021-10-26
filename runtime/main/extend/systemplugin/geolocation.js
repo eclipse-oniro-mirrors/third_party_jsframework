@@ -1,4 +1,4 @@
-import { hasComplete } from "./utils"
+import {hasComplete, getRandomArbitrary} from "./utils"
 
 export function mockGeolocation() {
     const data = {
