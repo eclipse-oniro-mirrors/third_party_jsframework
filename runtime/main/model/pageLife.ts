@@ -223,7 +223,7 @@ export function bindPageLifeCycle(vm: Vm, element: Element): void {
       return vm.$emitDirect(`hook:${type}`, saveData);
     }
     function handleNewRequest(data: any) {
-      Object.assign(vm.data, data);
+      Object.assign(vm.__data, data);
       return vm.$emitDirect(`hook:${type}`);
     }
   });
@@ -269,8 +269,8 @@ export function watch(vm: Vm, data: string, callback: ((...args: any) => any) | 
  */
 export function initPropsToData(vm: Vm): void {
   vm.props.forEach(prop => {
-    if (vm.data) {
-      vm.data[prop] = vm[prop];
+    if (vm.__data) {
+      vm.__data[prop] = vm[prop];
     }
   });
 }
