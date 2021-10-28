@@ -14,6 +14,11 @@ export function mockOhosNotification() {
         lightColor: '[PC preview] unknow lightColor',
         vibrationValues: '[PC preview] unknow vibrationValues'
     }
+    const DoNotDisturbDateMock = {
+        type: '[PC preview] unknow type',
+        begin: '[PC preview] unknow begin',
+        end: '[PC preview] unknow end',
+    }
     const NotificationRequestMock = {
         content: '[PC preview] unknow content',
         id: '[PC preview] unknow id',
@@ -40,6 +45,8 @@ export function mockOhosNotification() {
         creatorPid: '[PC preview] unknow creatorPid',
         classification: '[PC preview] unknow classification',
         hashCode: '[PC preview] unknow hashCode',
+        groupName: '[PC preview] unknow groupName',
+        template: '[PC preview] unknow template',
     }
     global.ohosplugin.notification = {
         publish: function (...args) {
@@ -315,6 +322,126 @@ export function mockOhosNotification() {
             } else {
                 return new Promise((resolve) => {
                     resolve([NotificationRequestMock]);
+                });
+            }
+        },
+        isDistributedEnabled: function (...args) {
+            console.warn("notification.isDistributedEnabled interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.");
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock);
+                });
+            }
+        },
+        enableDistributed: function (...args) {
+            console.warn("notification.enableDistributed interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.");
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve();
+                });
+            }
+        },
+        enableDistributedSelf: function (...args) {
+            console.warn("notification.enableDistributedSelf interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.");
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve();
+                });
+            }
+        },
+        enableDistributedByBundle: function (...args) {
+            console.warn("notification.enableDistributedByBundle interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.");
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve();
+                });
+            }
+        },
+        isDistributedEnabledByBundle: function (...args) {
+            console.warn("notification.isDistributedEnabledByBundle interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.");
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock);
+                });
+            }
+        },
+        cancelGroup: function (...args) {
+            console.warn("notification.cancelGroup interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.");
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve();
+                });
+            }
+        },
+        removeGroupByBundle: function (...args) {
+            console.warn("notification.removeGroupByBundle interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.");
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock);
+                });
+            }
+        },
+        isSupportDoNotDisturbMode: function (...args) {
+            console.warn("notification.isSupportDoNotDisturbMode interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.");
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock);
+                });
+            }
+        },
+        setDoNotDisturbDate: function (...args) {
+            console.warn("notification.setDoNotDisturbDate interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.");
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve();
+                });
+            }
+        },
+        getDoNotDisturbDate: function (...args) {
+            console.warn("notification.getDoNotDisturbDate interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.");
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, DoNotDisturbDateMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(DoNotDisturbDateMock);
                 });
             }
         },
