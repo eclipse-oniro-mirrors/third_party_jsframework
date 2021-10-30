@@ -620,10 +620,6 @@ class Element extends Node {
     if (this.attr[key] === value && silent !== false) {
       return;
     }
-    // Because the data has been addressed in SetData
-    if (key === 'data') {
-      return;
-    }
     this.attr[key] = value;
     const taskCenter = this.getTaskCenter(this.docId);
     if (!silent && taskCenter) {

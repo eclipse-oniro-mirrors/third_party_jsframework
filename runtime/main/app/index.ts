@@ -111,7 +111,7 @@ export function appCreate(page: Page, options: Options, data: object, services: 
   };
 
   // require in top app(instance)
-  const appRequireModule = name => requireModule(appPage, removePrefix(name));
+  const appRequireModule = name => requireModule(page || appPage, removePrefix(name));
   const parseOptions: ParseOptions = {
     $app_define$: appDefine,
     $app_bootstrap$: appBootstrap,
