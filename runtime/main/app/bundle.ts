@@ -58,8 +58,7 @@ export const defineFn = function(page: Page, packageName: string, name?: string,
     const pageRequire = (name: string) : any => {
       if (isModule(name)) {
         const appFunction = (): Page => {
-          const appPage: Page = appMap[packageName].getAppInstance();
-          return appPage || page;
+          return page || appMap[packageName].getAppInstance();
         };
         return requireModule(appFunction, removePrefix(name));
       }
