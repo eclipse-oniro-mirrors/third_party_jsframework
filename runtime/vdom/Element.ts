@@ -29,9 +29,9 @@ import { TaskCenter } from '../main/manage/event/TaskCenter';
 import { FragBlockInterface } from '../main/model/compiler';
 import Vm from '../main/model';
 import { CSS_INHERITANCE } from '../main/app/bundle';
-import {interceptCallback} from "../main/manage/event/callbackIntercept";
-import {mockwebgl} from "../main/extend/systemplugin/napi/webgl";
-import {mockwebgl2} from "../main/extend/systemplugin/napi/webgl2";
+import { interceptCallback } from '../main/manage/event/callbackIntercept';
+import { mockwebgl } from '../main/extend/systemplugin/napi/webgl';
+import { mockwebgl2 } from '../main/extend/systemplugin/napi/webgl2';
 
 /**
  * Element is a basic class to describe a tree node in vdom.
