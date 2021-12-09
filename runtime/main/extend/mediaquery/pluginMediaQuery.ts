@@ -90,12 +90,6 @@ export class MediaQueryApi {
       if (!this._mqlArray || this._mqlArray.length === 0) {
         return;
       }
-      data['device-type'] = data.deviceType;
-      data['aspect-ratio'] = data.aspectRatio;
-      data['device-width'] = data.deviceWidth;
-      data['device-height'] = data.deviceHeight;
-      data['round-screen'] = data.roundScreen;
-      data['dark-mode'] = data.darkMode;
       for (let i = 0; i < this._mqlArray.length; i++) {
         const mediaQueryList:MediaQueryList = this._mqlArray[i];
         const result: boolean = matchMediaQueryCondition(mediaQueryList.condition, data, true);

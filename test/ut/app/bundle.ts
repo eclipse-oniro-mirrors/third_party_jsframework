@@ -41,11 +41,11 @@ describe('use defineFn/bootstrap', () => {
   let doc: Document;
   const options = {
     orientation: 'portrait',
-    deviceType: 'phone',
+    'device-type': 'phone',
     resolution: '3.0',
-    aspectRatio: 'string',
-    deviceWidth: '1176',
-    deviceHeight: '2400',
+    'aspect-ratio': 'string',
+    'device-width': '1176',
+    'device-height': '2400',
     width: '0',
     height: '0',
     isInit: true,

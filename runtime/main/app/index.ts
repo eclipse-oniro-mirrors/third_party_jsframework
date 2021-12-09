@@ -34,16 +34,16 @@ import { requireModule } from '../page/register';
  */
 export interface MediaQueryInfo {
   'orientation': string;
-  'deviceType': string;
-  'deviceWidth': string;
-  'deviceHeight': string;
-  'roundScreen': boolean;
+  'device-type': string;
+  'device-width': string;
+  'device-height': string;
+  'round-screen': boolean;
   'width': string;
   'height': string;
   'isInit': boolean;
   'resolution': string;
-  'aspectRatio': string;
-  'darkMode': string;
+  'aspect-ratio': string;
+  'dark-mode': string;
 }
 
 /**
