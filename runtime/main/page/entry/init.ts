@@ -104,6 +104,10 @@ export function init(page: Page, code: string | Function, data: object, services
   // Support page global and init language.
   global.__appProto__ = getPageGlobal(page.packageName);
   global.language = page.options.language;
+  global.$app_define$ = pageDefine;
+  global.$app_require$ = pageRequireModule;
+  global.Image = imageObj;
+  global.OffscreenCanvas = offscreenCanvasObj;
 
   let functionCode: string;
   if (typeof code !== 'function') {

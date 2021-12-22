@@ -1,15 +1,573 @@
 import { paramMock } from "../utils"
+import { PixelMapMock } from "../multimedia"
 
 export function mockBundleManager() {
-    const BundleInstallerMock= {}
-const BundleInfoMock = {
-    name: "[PC preview] unknown name",
-    type: "[PC preview] unknown type",
-    appId: "[PC preview] unknown app id",
-    uid: "[PC preview] unknown uid",
-    installTime: "[PC preview] unknown install time",
-    updateTime: "[PC preview] unknown up date time",
-    appInfo: {
+
+    const ArrayNumberMock = ["[PC preview] unknown array number"]
+    const ArrayStringMock = ["[PC preview] unknown array string"]
+    const LauncherAbilityInfosMock = [
+        {
+            abilityInfo: {
+                bundleName: "[PC preview] unknown bundle name",
+                name: "[PC preview] unknown name",
+                label: "[PC preview] unknown label",
+                description: "[PC preview] unknown description",
+                icon: "[PC preview] unknown icon",
+                labelId: "[PC preview] unknown label id",
+                descriptionId: "[PC preview] unknown description id",
+                iconId: "[PC preview] unknown icon id",
+                moduleName: "[PC preview] unknown module name",
+                process: "[PC preview] unknown process",
+                targetAbility: "[PC preview] unknown target ability",
+                backgroundModes: "[PC preview] unknown background modes",
+                isVisible: "[PC preview] unknown is visible",
+                formEnabled: "[PC preview] unknown form enabled",
+                type: "[PC preview] unknown type",
+                subType: "[PC preview] unknown sub type",
+                orientation: "[PC preview] unknown orientation",
+                launchMode: "[PC preview] unknown launch mode",
+                permissions: ["[PC preview] unknown permission"],
+                deviceTypes: ["[PC preview] unknown device type"],
+                deviceCapabilities: ["[PC preview] unknown device capability"],
+                readPermission: "[PC preview] unknown read permission",
+                writePermission: "[PC preview] unknown write permission",
+                applicationInfo: {
+                    packageName: "[PC preview] unknown package name",
+                    className: "[PC preview] unknown class name",
+                    name: "[PC preview] unknown name",
+                    labelId: "[PC preview] unknown label id",
+                    iconId: "[PC preview] unknown icon id",
+                    sourceDir: "[PC preview] unknown source dir",
+                    flags: "[PC preview] unknown flags",
+                    customizeData: {
+                        key: "[PC preview] unknown key",
+                        value: {
+                            CustomizeData: {
+                                name: "[PC preview] unknown name",
+                                value: "[PC preview] unknown value",
+                            }
+                        }
+                    }
+                },
+                formEntity: "[PC preview] unknown form entity",
+                minFormHeight: "[PC preview] unknown min form height",
+                defaultFormHeight: "[PC preview] unknown default form height",
+                minFormWidth: "[PC preview] unknown min form width",
+                uri: "[PC preview] unknown uri",
+                customizeData: {
+                    key: "[PC preview] unknown key",
+                    value: [
+                        {
+                            CustomizeData: {
+                                name: "[PC preview] unknown name",
+                                value: "[PC preview] unknown value",
+                            },
+                        },
+                        {
+                            CustomizeData: {
+                                name: "[PC preview] unknown name",
+                                value: "[PC preview] unknown value",
+                            },
+                        }
+                    ]
+                },
+            },
+            elementName: {
+                deviceId: "[PC preview] unknown device id",
+                bundleName: "[PC preview] unknown bundle name",
+                abilityName: "[PC preview] unknown ability name",
+                uri: "[PC preview] unknown uri",
+                shortName: "[PC preview] unknown short name",
+            },
+            userId: "[PC preview] unknown user id",
+            installTime: "[PC preview] unknown install time",
+        },
+    ]
+    const ModeleUsageRecordsMock = [
+        {
+            bundleName: "[PC preview] unknown bundle name",
+            appLabelId: "[PC preview] unknown app label id",
+            name: "[PC preview] unknown name",
+            labelId: "[PC preview] unknown label id",
+            descriptionId: "[PC preview] unknown description id",
+            abilityName: "[PC preview] unknown ability name",
+            abilityLabelId: "[PC preview] unknown ability label id",
+            abilityDescriptionId: "[PC preview] unknown ability description id",
+            abilityIconId: "[PC preview] unknown ability icon id",
+            launchedCount: "[PC preview] unknown launched count",
+            lastLaunchTime: "[PC preview] unknown last launch time",
+            isRemoved: "[PC preview] unknown is removed",
+            installationFreeSupported: "[PC preview] unknown installation free supported",
+        },
+    ]
+    const ShortcutInfosMock = [
+        {
+            id: "[PC preview] unknown id",
+            bundleName: "[PC preview] unknown bundle name",
+            hostAbility: "[PC preview] unknown host ability",
+            icon: "[PC preview] unknown icon",
+            label: "[PC preview] unknown label",
+            disableMessage: "[PC preview] unknown disable message",
+            wants: [
+                {
+                    targetBundle: "[PC preview] unknown target bundle",
+                    targetClass: "[PC preview] unknown target class",
+                }],
+            isStatic: "[PC preview] unknown is static",
+            isHomeShortcut: "[PC preview] unknown is home shortcut",
+            isEnabled: "[PC preview] unknown is enabled",
+        },
+    ]
+    const WantMock = {
+        deviceId: "[PC preview] unknown device id",
+        bundleName: "[PC preview] unknown bundle name",
+        abilityName: "[PC preview] unknown ability name",
+        uri: "[PC preview] unknown uri",
+        type: "[PC preview] unknown type",
+        action: "[PC preview] unknown action",
+        entities: "[PC preview] unknown entities",
+        flags: "[PC preview] unknown flags",
+    }
+    const BundleInstallerMock = {}
+    const BundleInfoMock = {
+        name: "[PC preview] unknown name",
+        type: "[PC preview] unknown type",
+        appId: "[PC preview] unknown app id",
+        uid: "[PC preview] unknown uid",
+        installTime: "[PC preview] unknown install time",
+        updateTime: "[PC preview] unknown up date time",
+        appInfo: {
+            packageName: "[PC preview] unknown package name",
+            className: "[PC preview] unknown class name",
+            name: "[PC preview] unknown name",
+            labelId: "[PC preview] unknown label id",
+            iconId: "[PC preview] unknown icon id",
+            sourceDir: "[PC preview] unknown source dir",
+            flags: "[PC preview] unknown flags",
+            customizeData: {
+                key: "[PC preview] unknown key",
+                value: {
+                    CustomizeData: {
+                        name: "[PC preview] unknown name",
+                        value: "[PC preview] unknown value",
+                    }
+                }
+            }
+        },
+        abilityInfo: [
+            {
+                bundleName: "[PC preview] unknown bundle name",
+                name: "[PC preview] unknown name",
+                label: "[PC preview] unknown label",
+                description: "[PC preview] unknown description",
+                icon: "[PC preview] unknown icon",
+                labelId: "[PC preview] unknown label id",
+                descriptionId: "[PC preview] unknown description id",
+                iconId: "[PC preview] unknown icon id",
+                moduleName: "[PC preview] unknown module name",
+                process: "[PC preview] unknown process",
+                targetAbility: "[PC preview] unknown target ability",
+                backgroundModes: "[PC preview] unknown background modes",
+                isVisible: "[PC preview] unknown is visible",
+                formEnabled: "[PC preview] unknown form enabled",
+                type: "[PC preview] unknown type",
+                subType: "[PC preview] unknown sub type",
+                orientation: "[PC preview] unknown orientation",
+                launchMode: "[PC preview] unknown launch mode",
+                permissions: ["[PC preview] unknown permission"],
+                deviceTypes: ["[PC preview] unknown device type"],
+                deviceCapabilities: ["[PC preview] unknown device capability"],
+                readPermission: "[PC preview] unknown read permission",
+                writePermission: "[PC preview] unknown write permission",
+                applicationInfo: {
+                    packageName: "[PC preview] unknown package name",
+                    className: "[PC preview] unknown class name",
+                    name: "[PC preview] unknown name",
+                    labelId: "[PC preview] unknown label id",
+                    iconId: "[PC preview] unknown icon id",
+                    sourceDir: "[PC preview] unknown source dir",
+                    flags: "[PC preview] unknown flags",
+                    customizeData: {
+                        key: "[PC preview] unknown key",
+                        value: {
+                            CustomizeData: {
+                                name: "[PC preview] unknown name",
+                                value: "[PC preview] unknown value",
+                            }
+                        }
+                    }
+                },
+                formEntity: "[PC preview] unknown form entity",
+                minFormHeight: "[PC preview] unknown min form height",
+                defaultFormHeight: "[PC preview] unknown default form height",
+                minFormWidth: "[PC preview] unknown min form width",
+                defaultFormWidth: "[PC preview] unknown default form width",
+                uri: "[PC preview] unknown uri",
+                customizeData: {
+                    key: "[PC preview] unknown key",
+                    value: [
+                        {
+                            CustomizeData: {
+                                name: "[PC preview] unknown name",
+                                value: "[PC preview] unknown value",
+                            },
+                        },
+                        {
+                            CustomizeData: {
+                                name: "[PC preview] unknown name",
+                                value: "[PC preview] unknown value",
+                            },
+                        }
+                    ]
+                },
+            }
+        ],
+        reqPermissions: ["[PC preview] unknown repermission"],
+        reqPermissionDetails: [
+            {
+                name: "[PC preview] unknown name",
+                reason: "[PC preview] unknown reason",
+                usedScene: {
+                    abilities: ["[PC preview] unknown ability"],
+                    when: "[PC preview] unknown when",
+                }
+            }
+        ],
+        vendor: "[PC preview] unknown vendor",
+        versionCode: "[PC preview] unknown versionCode",
+        versionName: "[PC preview] unknown versionName",
+        compatibleVersion: "[PC preview] unknown compatibleVersion",
+        targetVersion: "[PC preview] unknown targetVersion",
+        isCompressNativeLibs: "[PC preview] unknown isCompressNativeLibs",
+        hapModuleInfo: [
+            {
+                name: "[PC preview] unknown name",
+                description: "[PC preview] unknown desciption",
+                descriptionId: "[PC preview] unknown description id",
+                icon: "[PC preview] unknown icon",
+                label: "[PC preview] unknown label",
+                labelId: "[PC preview] unknown label id",
+                iconId: "[PC preview] unknown iconid",
+                backgroundImg: "[PC preview] unknown back ground img",
+                supportedModes: "[PC preview] unknown supported modes",
+                reqCapabilities: ["[PC preview] unknown reqcapability"],
+                deviceTypes: ["[PC preview] unknown device type"],
+                abilityInfo: [
+                    {
+                        bundleName: "[PC preview] unknown bundle name",
+                        name: "[PC preview] unknown name",
+                        label: "[PC preview] unknown label",
+                        description: "[PC preview] unknown description",
+                        icon: "[PC preview] unknown icon",
+                        labelId: "[PC preview] unknown label id",
+                        descriptionId: "[PC preview] unknown description id",
+                        iconId: "[PC preview] unknown icon id",
+                        moduleName: "[PC preview] unknown module name",
+                        process: "[PC preview] unknown process",
+                        targetAbility: "[PC preview] unknown target ability",
+                        backgroundModes: "[PC preview] unknown back ground modes",
+                        isVisible: "[PC preview] unknown is visible",
+                        formEnabled: "[PC preview] unknown form enabled",
+                        type: "[PC preview] unknown bundle.AbilityType",
+                        subType: " [PC preview] unknown bundle.AbilitySubType",
+                        orientation: "[PC preview] unknown bundle.DisplayOrientation",
+                        launchMode: " [PC preview] unknown bundle.LaunchMode",
+                        permissions: ["[PC preview] unknown permission"],
+                        deviceTypes: ["[PC preview] unknown device type"],
+                        deviceCapabilities: ["[PC preview] unknown device capability "],
+                        readPermission: "[PC preview] unknown read permission",
+                        writePermission: "[PC preview] unknown write permission",
+                        applicationInfo: {
+                            packageName: "[PC preview] unknown package name",
+                            className: "[PC preview] unknown class name",
+                            name: "[PC preview] unknown name",
+                            labelId: "[PC preview] unknown label id",
+                            iconId: "[PC preview] unknown icon id",
+                            sourceDir: "[PC preview] unknown source dir",
+                            flags: "[PC preview] unknown flags",
+                            customizeData: {
+                                key: "[PC preview] unknown key",
+                                value: {
+                                    CustomizeData: {
+                                        name: "[PC preview] unknown name",
+                                        value: "[PC preview] unknown value",
+                                    }
+                                }
+                            }
+                        },
+                        formEntity: "[PC preview] unknown form entity",
+                        minFormHeight: "[PC preview] unknown min form height",
+                        defaultFormHeight: "[PC preview] unknown default form height",
+                        minFormWidth: "[PC preview] unknown min form width",
+                        defaultFormWidth: "[PC preview] unknown default form width",
+                        uri: "[PC preview] unknown uri",
+                        customizeData: {
+                            key: "[PC preview] unknown key",
+                            value: [
+                                {
+                                    CustomizeData: {
+                                        name: "[PC preview] unknown name",
+                                        value: "[PC preview] unknown value",
+                                    },
+                                },
+                                {
+                                    CustomizeData: {
+                                        name: "[PC preview] unknown name",
+                                        value: "[PC preview] unknown value",
+                                    },
+                                }
+                            ]
+                        },
+                    }
+                ],
+                moduleName: "[PC preview] unknown module name",
+                mainAbilityName: "[PC preview] unknown main ability name",
+                installationFree: "[PC preview] unknown installation free",
+            }
+        ],
+        entryModuleName: "[PC preview] unknown entry module name",
+        cpuAbi: "[PC preview] unknown cpu abi",
+        isSilentInstallation: "[PC preview] unknown is silent installation",
+        minCompatibleVersionCode: "[PC preview] unknown min compatible version code",
+        entryInstallationFree: "[PC preview] unknown entry installation free",
+    }
+    const PermissionDefMock = {
+        name: "[PC preview] unknown name",
+        permissionFlags: "[PC preview] unknown permission flags",
+        grantMode: "[PC preview] unknown grant mode",
+        availableScope: "[PC preview] unknown available scope",
+        labelRes: "[PC preview] unknown label res",
+        descriptionRes: "[PC preview] unknown description res",
+        group: "[PC preview] unknown group",
+        usageInfo: "[PC preview] unknown usage info",
+        reminderDesc: "[PC preview] unknown reminder desc",
+        reminderIcon: "[PC preview] unknown reminder icon"
+    }
+    const PermissionDefsMock = [
+        {
+            name: "[PC preview] unknown name",
+            permissionFlags: "[PC preview] unknown permission flags",
+            grantMode: "[PC preview] unknown grant mode",
+            availableScope: "[PC preview] unknown available scope",
+            labelRes: "[PC preview] unknown label res",
+            descriptionRes: "[PC preview] unknown description res",
+            group: "[PC preview] unknown group",
+            usageInfo: "[PC preview] unknown usage info",
+            reminderDesc: "[PC preview] unknown reminder desc",
+            reminderIcon: "[PC preview] unknown reminder icon"
+        }
+    ]
+    const BundlePackInfoMock = {
+        packages: [
+            {
+                deviceType: ["[PC preview] unknown device type"],
+                name: "[PC preview] unknown name",
+                moduleType: "[PC preview] unknown module type",
+                deliveryWithInstall: "[PC preview] unknown deliver with install",
+            }
+        ],
+        summary: {
+            app: {
+                bundleName: "[PC preview] unknown bundle name",
+                version: {
+                    minCompatibleVersionCode: "[PC preview] unknown min compatible version code",
+                    name: "[PC preview] unknown name",
+                    code: " [PC preview] unknown code",
+                }
+            },
+            modules: [
+                {
+                    apiVersion: {
+                        releaseType: "[PC preview] unknown release type",
+                        compatible: "[PC preview] unknown compatible",
+                        target: "[PC preview] unknown target",
+                    },
+                    deviceType: ["[PC preview] unknown device type"],
+                    distro: {
+                        deliveryWithInstall: "[PC preview] unknown deliver with install",
+                        installationFree: "[PC preview] unknown installation free",
+                        moduleName: "[PC preview] unknown module name",
+                        moduleType: "[PC preview] unknown module type",
+                        mainAbility: "[PC preview] unknown main ability",
+                    },
+                    abilities: [
+                        {
+                            name: "[PC preview] unknown name",
+                            label: "[PC preview] unknown label",
+                            visible: '[PC preview] unknown visible',
+                            forms: [
+                                {
+                                    name: "[PC preview] unknown name",
+                                    type: "[PC preview] unknown type",
+                                    updateEnabled: "[PC preview] unknown update enabled",
+                                    scheduledUpateTime: "[PC preview] unknown scheduled updte time",
+                                    updateDuration: "[PC preview] unknown update duration",
+                                    supportDimensions: ["[PC preview] unknown support dimension"],
+                                    defaultDimension: "[PC preview] unknown default dimension",
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+    }
+    const ApplicationInfosMock = [
+        {
+            packageName: "[PC preview] unknown package name",
+            className: "[PC preview] unknown class name",
+            name: "[PC preview] unknown name",
+            labelId: "[PC preview] unknown label id",
+            iconId: "[PC preview] unknown icon id",
+            sourceDir: "[PC preview] unknown source dir",
+            flags: "[PC preview] unknown flags",
+            customizeData: {
+                key: "[PC preview] unknown key",
+                value: {
+                    CustomizeData: {
+                        name: "[PC preview] unknown name",
+                        value: "[PC preview] unknown value",
+                    }
+                }
+            }
+        },
+    ]
+
+    const AbilityInfosMock = [
+        {
+            bundleName: "[PC preview] unknown bundle name",
+            name: "[PC preview] unknown name",
+            label: "[PC preview] unknown label",
+            description: "[PC preview] unknown descrption",
+            icon: "[PC preview] unknown icon",
+            labelId: "[PC preview] unknown label id",
+            descriptionId: "[PC preview] unknown description id",
+            iconId: "[PC preview] unknown icon id",
+            moduleName: "[PC preview] unknown module name",
+            process: "[PC preview] unknown process",
+            targetAbility: "[PC preview] unknown target ability",
+            backgroundModes: "[PC preview] unknown background modes ",
+            isVisible: "[PC preview] unknown is visible",
+            formEnabled: "[PC preview] unknown form enabled",
+            type: "[PC preview] unknown bundle.AbilityType",
+            subType: "[PC preview] unknown bundle.AbilitySubType",
+            orientation: "[PC preview] unknown bundle.DisplayOrientation",
+            launchMode: "[PC preview] unknown bundle.LaunchMode",
+            permissions: ["[PC preview] unknown  permission"],
+            deviceTypes: ["[PC preview] unknown device type"],
+            deviceCapabilities: ["[PC preview] unknown device capability"],
+            readPermission: "[PC preview] unknown read permission",
+            writePermission: "[PC preview] unknown write permission",
+            applicationInfo: {
+                packageName: "[PC preview] unknown package name",
+                className: "[PC preview] unknown class name",
+                name: "[PC preview] unknown name",
+                labelId: "[PC preview] unknown label id",
+                iconId: "[PC preview] unknown icon id",
+                sourceDir: "[PC preview] unknown source dir",
+                flags: "[PC preview] unknown flags",
+                customizeData: {
+                    key: "[PC preview] unknown key",
+                    value: {
+                        CustomizeData: {
+                            name: "[PC preview] unknown name",
+                            value: "[PC preview] unknown value",
+                        }
+                    }
+                }
+            },
+            formEntity: "[PC preview] unknown form entitty",
+            minFormHeight: "[PC preview] unknown minForm Height",
+            defaultFormHeight: "[PC preview] unknown default Form Height",
+            minFormWidth: "[PC preview] unknown default min Form Width",
+            defaultFormWidth: "[PC preview] unknown default form width",
+            uri: "[PC preview] unknown uri",
+            customizeData: {
+                key: "[PC preview] unknown key",
+                value: [
+                    {
+                        CustomizeData: {
+                            name: "[PC preview] unknown name",
+                            value: "[PC preview] unknown value",
+                        },
+                    },
+                    {
+                        CustomizeData: {
+                            name: "[PC preview] unknown name",
+                            value: "[PC preview] unknown value",
+                        },
+                    }
+                ]
+            },
+        }
+    ]
+    const AbilityInfoMock = {
+        bundleName: "[PC preview] unknown bundle name",
+        name: "[PC preview] unknown name",
+        label: "[PC preview] unknown label",
+        description: "[PC preview] unknown descrption",
+        icon: "[PC preview] unknown icon",
+        labelId: "[PC preview] unknown label id",
+        descriptionId: "[PC preview] unknown description id",
+        iconId: "[PC preview] unknown icon id",
+        moduleName: "[PC preview] unknown module name",
+        process: "[PC preview] unknown process",
+        targetAbility: "[PC preview] unknown target ability",
+        backgroundModes: "[PC preview] unknown background modes ",
+        isVisible: "[PC preview] unknown is visible",
+        formEnabled: "[PC preview] unknown form enabled",
+        type: "[PC preview] unknown bundle.AbilityType",
+        subType: "[PC preview] unknown bundle.AbilitySubType",
+        orientation: "[PC preview] unknown bundle.DisplayOrientation",
+        launchMode: "[PC preview] unknown bundle.LaunchMode",
+        permissions: ["[PC preview] unknown  permission"],
+        deviceTypes: ["[PC preview] unknown device type"],
+        deviceCapabilities: ["[PC preview] unknown device capability"],
+        readPermission: "[PC preview] unknown read permission",
+        writePermission: "[PC preview] unknown write permission",
+        applicationInfo: {
+            packageName: "[PC preview] unknown package name",
+            className: "[PC preview] unknown class name",
+            name: "[PC preview] unknown name",
+            labelId: "[PC preview] unknown label id",
+            iconId: "[PC preview] unknown icon id",
+            sourceDir: "[PC preview] unknown source dir",
+            flags: "[PC preview] unknown flags",
+            customizeData: {
+                key: "[PC preview] unknown key",
+                value: {
+                    CustomizeData: {
+                        name: "[PC preview] unknown name",
+                        value: "[PC preview] unknown value",
+                    }
+                }
+            }
+        },
+        formEntity: "[PC preview] unknown form entitty",
+        minFormHeight: "[PC preview] unknown minForm Height",
+        defaultFormHeight: "[PC preview] unknown default Form Height",
+        minFormWidth: "[PC preview] unknown default min Form Width",
+        defaultFormWidth: "[PC preview] unknown default form width",
+        uri: "[PC preview] unknown uri",
+        customizeData: {
+            key: "[PC preview] unknown key",
+            value: [
+                {
+                    CustomizeData: {
+                        name: "[PC preview] unknown name",
+                        value: "[PC preview] unknown value",
+                    },
+                },
+                {
+                    CustomizeData: {
+                        name: "[PC preview] unknown name",
+                        value: "[PC preview] unknown value",
+                    },
+                }
+            ]
+        },
+    }
+    const ApplicationInfoMock = {
         packageName: "[PC preview] unknown package name",
         className: "[PC preview] unknown class name",
         name: "[PC preview] unknown name",
@@ -26,9 +584,218 @@ const BundleInfoMock = {
                 }
             }
         }
-    },
-    abilityInfo: [
+    }
+
+    const BundleInfosMock = [
         {
+            name: "[PC preview] unknown name",
+            type: "[PC preview] unknown type",
+            appId: "[PC preview] unknown app id",
+            uid: "[PC preview] unknown uid",
+            installTime: "[PC preview] unknown install time",
+            updateTime: "[PC preview] unknown up date time",
+            appInfo: {
+                packageName: "[PC preview] unknown package name",
+                className: "[PC preview] unknown class name",
+                name: "[PC preview] unknown name",
+                labelId: "[PC preview] unknown label id",
+                iconId: "[PC preview] unknown icon id",
+                sourceDir: "[PC preview] unknown source dir",
+                flags: "[PC preview] unknown flags",
+                customizeData: {
+                    key: "[PC preview] unknown key",
+                    value: {
+                        CustomizeData: {
+                            name: "[PC preview] unknown name",
+                            value: "[PC preview] unknown value",
+                        }
+                    }
+                }
+            },
+            abilityInfo: [
+                {
+                    bundleName: "[PC preview] unknown bundle name",
+                    name: "[PC preview] unknown name",
+                    label: "[PC preview] unknown label",
+                    description: "[PC preview] unknown description",
+                    icon: "[PC preview] unknown icon",
+                    labelId: "[PC preview] unknown label id",
+                    descriptionId: "[PC preview] unknown description id",
+                    iconId: "[PC preview] unknown icon id",
+                    moduleName: "[PC preview] unknown module name",
+                    process: "[PC preview] unknown process",
+                    targetAbility: "[PC preview] unknown target ability",
+                    backgroundModes: "[PC preview] unknown background modes",
+                    isVisible: "[PC preview] unknown is visible",
+                    formEnabled: "[PC preview] unknown form enabled",
+                    type: "[PC preview] unknown type",
+                    subType: "[PC preview] unknown sub type",
+                    orientation: "[PC preview] unknown orientation",
+                    launchMode: "[PC preview] unknown launch mode",
+                    permissions: ["[PC preview] unknown permission"],
+                    deviceTypes: ["[PC preview] unknown device type"],
+                    deviceCapabilities: ["[PC preview] unknown device capability"],
+                    readPermission: "[PC preview] unknown read permission",
+                    writePermission: "[PC preview] unknown write permission",
+                    applicationInfo: {
+                        packageName: "[PC preview] unknown package name",
+                        className: "[PC preview] unknown class name",
+                        name: "[PC preview] unknown name",
+                        labelId: "[PC preview] unknown label id",
+                        iconId: "[PC preview] unknown icon id",
+                        sourceDir: "[PC preview] unknown source dir",
+                        flags: "[PC preview] unknown flags",
+                        customizeData: {
+                            key: "[PC preview] unknown key",
+                            value: {
+                                CustomizeData: {
+                                    name: "[PC preview] unknown name",
+                                    value: "[PC preview] unknown value",
+                                }
+                            }
+                        }
+                    },
+                    formEntity: "[PC preview] unknown form entity",
+                    minFormHeight: "[PC preview] unknown min form height",
+                    defaultFormHeight: "[PC preview] unknown default form height",
+                    minFormWidth: "[PC preview] unknown min form width",
+                    defaultFormWidth: "[PC preview] unknown default form width",
+                    uri: "[PC preview] unknown uri",
+                    customizeData: {
+                        key: "[PC preview] unknown key",
+                        value: [
+                            {
+                                CustomizeData: {
+                                    name: "[PC preview] unknown name",
+                                    value: "[PC preview] unknown value",
+                                },
+                            },
+                            {
+                                CustomizeData: {
+                                    name: "[PC preview] unknown name",
+                                    value: "[PC preview] unknown value",
+                                },
+                            }
+                        ]
+                    },
+                }
+            ],
+            reqPermissions: ["[PC preview] unknown repermission"],
+            reqPermissionDetails: [
+                {
+                    name: "[PC preview] unknown name",
+                    reason: "[PC preview] unknown reason",
+                    usedScene: {
+                        abilities: ["[PC preview] unknown ability"],
+                        when: "[PC preview] unknown when",
+                    }
+                }
+            ],
+            vendor: "[PC preview] unknown vendor",
+            versionCode: "[PC preview] unknown versionCode",
+            versionName: "[PC preview] unknown versionName",
+            compatibleVersion: "[PC preview] unknown compatibleVersion",
+            targetVersion: "[PC preview] unknown targetVersion",
+            isCompressNativeLibs: "[PC preview] unknown isCompressNativeLibs",
+            hapModuleInfo: [
+                {
+                    name: "[PC preview] unknown name",
+                    description: "[PC preview] unknown desciption",
+                    descriptionId: "[PC preview] unknown description id",
+                    icon: "[PC preview] unknown icon",
+                    label: "[PC preview] unknown label",
+                    labelId: "[PC preview] unknown label id",
+                    iconId: "[PC preview] unknown iconid",
+                    backgroundImg: "[PC preview] unknown back ground img",
+                    supportedModes: "[PC preview] unknown supported modes",
+                    reqCapabilities: ["[PC preview] unknown reqcapability"],
+                    deviceTypes: ["[PC preview] unknown device type"],
+                    abilityInfo: [
+                        {
+                            bundleName: "[PC preview] unknown bundle name",
+                            name: "[PC preview] unknown name",
+                            label: "[PC preview] unknown label",
+                            description: "[PC preview] unknown description",
+                            icon: "[PC preview] unknown icon",
+                            labelId: "[PC preview] unknown label id",
+                            descriptionId: "[PC preview] unknown description id",
+                            iconId: "[PC preview] unknown icon id",
+                            moduleName: "[PC preview] unknown module name",
+                            process: "[PC preview] unknown process",
+                            targetAbility: "[PC preview] unknown target ability",
+                            backgroundModes: "[PC preview] unknown back ground modes",
+                            isVisible: "[PC preview] unknown is visible",
+                            formEnabled: "[PC preview] unknown form enabled",
+                            type: "[PC preview] unknown bundle.AbilityType",
+                            subType: " [PC preview] unknown bundle.AbilitySubType",
+                            orientation: "[PC preview] unknown bundle.DisplayOrientation",
+                            launchMode: " [PC preview] unknown bundle.LaunchMode",
+                            permissions: ["[PC preview] unknown permission"],
+                            deviceTypes: ["[PC preview] unknown device type"],
+                            deviceCapabilities: ["[PC preview] unknown device capability "],
+                            readPermission: "[PC preview] unknown read permission",
+                            writePermission: "[PC preview] unknown write permission",
+                            applicationInfo: {
+                                packageName: "[PC preview] unknown package name",
+                                className: "[PC preview] unknown class name",
+                                name: "[PC preview] unknown name",
+                                labelId: "[PC preview] unknown label id",
+                                iconId: "[PC preview] unknown icon id",
+                                sourceDir: "[PC preview] unknown source dir",
+                                flags: "[PC preview] unknown flags",
+                                customizeData: {
+                                    key: "[PC preview] unknown key",
+                                    value: {
+                                        CustomizeData: {
+                                            name: "[PC preview] unknown name",
+                                            value: "[PC preview] unknown value",
+                                        }
+                                    }
+                                }
+                            },
+                            formEntity: "[PC preview] unknown form entity",
+                            minFormHeight: "[PC preview] unknown min form height",
+                            defaultFormHeight: "[PC preview] unknown default form height",
+                            minFormWidth: "[PC preview] unknown min form width",
+                            defaultFormWidth: "[PC preview] unknown default form width",
+                            uri: "[PC preview] unknown uri",
+                            customizeData: {
+                                key: "[PC preview] unknown key",
+                                value: [
+                                    {
+                                        CustomizeData: {
+                                            name: "[PC preview] unknown name",
+                                            value: "[PC preview] unknown value",
+                                        },
+                                    },
+                                    {
+                                        CustomizeData: {
+                                            name: "[PC preview] unknown name",
+                                            value: "[PC preview] unknown value",
+                                        },
+                                    }
+                                ]
+                            },
+                        }
+                    ],
+                    moduleName: "[PC preview] unknown module name",
+                    mainAbilityName: "[PC preview] unknown main ability name",
+                    installationFree: "[PC preview] unknown installation free",
+                }
+            ],
+            entryModuleName: "[PC preview] unknown entry module name",
+            cpuAbi: "[PC preview] unknown cpu abi",
+            isSilentInstallation: "[PC preview] unknown is silent installation",
+            minCompatibleVersionCode: "[PC preview] unknown min compatible version code",
+            entryInstallationFree: "[PC preview] unknown entry installation free"
+        }
+    ]
+    const BundleOptionsMock = {
+        userId: "[PC preview] unknown user id",
+        networkId: "[PC preview] unknown network id",
+    }
+    const LauncherAbilityInfoMock = {
+        abilityInfo: {
             bundleName: "[PC preview] unknown bundle name",
             name: "[PC preview] unknown name",
             label: "[PC preview] unknown label",
@@ -74,7 +841,6 @@ const BundleInfoMock = {
             minFormHeight: "[PC preview] unknown min form height",
             defaultFormHeight: "[PC preview] unknown default form height",
             minFormWidth: "[PC preview] unknown min form width",
-            defaultFormWidth: "[PC preview] unknown default form width",
             uri: "[PC preview] unknown uri",
             customizeData: {
                 key: "[PC preview] unknown key",
@@ -93,586 +859,23 @@ const BundleInfoMock = {
                     }
                 ]
             },
-        }
-    ],
-    reqPermissions: ["[PC preview] unknown repermission"],
-    reqPermissionDetails: [
-        {
-            name: "[PC preview] unknown name",
-            reason: "[PC preview] unknown reason",
-            usedScene: {
-                abilities: ["[PC preview] unknown ability"],
-                when: "[PC preview] unknown when",
-            }
-        }
-    ],
-    vendor: "[PC preview] unknown vendor",
-    versionCode: "[PC preview] unknown versionCode",
-    versionName: "[PC preview] unknown versionName",
-    compatibleVersion: "[PC preview] unknown compatibleVersion",
-    targetVersion: "[PC preview] unknown targetVersion",
-    isCompressNativeLibs: "[PC preview] unknown isCompressNativeLibs",
-    hapModuleInfo: [
-        {
-            name: "string",
-            description: "string",
-            descriptionId: 1,
-            icon: "string",
-            label: "string",
-            labelId: 2,
-            iconId: 3,
-            backgroundImg: "string",
-            supportedModes: 4,
-            reqCapabilities: ["1", "2"],
-            deviceTypes: ["1", "2"],
-            abilityInfo: [
-                {
-                    bundleName: "string",
-                    name: "string",
-                    label: "string",
-                    description: "string",
-                    icon: "string",
-                    labelId: 1,
-                    descriptionId: 2,
-                    iconId: 3,
-                    moduleName: "string",
-                    process: "string",
-                    targetAbility: "string",
-                    backgroundModes: 4,
-                    isVisible: true,
-                    formEnabled: true,
-                    type: "bundle.AbilityType",
-                    subType: "bundle.AbilitySubType",
-                    orientation: "bundle.DisplayOrientation",
-                    launchMode: "bundle.LaunchMode",
-                    permissions: ["1"],
-                    deviceTypes: ["2"],
-                    deviceCapabilities: ["3"],
-                    readPermission: "string",
-                    writePermission: "string",
-                    applicationInfo: {
-                        packageName: "[PC preview] unknown package name",
-                        className: "[PC preview] unknown class name",
-                        name: "[PC preview] unknown name",
-                        labelId: 2,
-                        iconId: 3,
-                        sourceDir: "[PC preview] unknown source dir",
-                        flags: 1,
-                        customizeData: {
-                            key: "[PC preview] unknown key",
-                            value: {
-                                CustomizeData: {
-                                    name: "[PC preview] unknown name",
-                                    value: "[PC preview] unknown value",
-                                }
-                            }
-                        }
-                    },
-                    formEntity: 5,
-                    minFormHeight: 6,
-                    defaultFormHeight: 7,
-                    minFormWidth: 8,
-                    defaultFormWidth: 9,
-                    uri: "string",
-                    customizeData: {
-                        key: "[PC preview] unknown key",
-                        value: [
-                            {
-                                CustomizeData: {
-                                    name: "[PC preview] unknown name",
-                                    value: "[PC preview] unknown value",
-                                },
-                            },
-                            {
-                                CustomizeData: {
-                                    name: "[PC preview] unknown name",
-                                    value: "[PC preview] unknown value",
-                                },
-                            }
-                        ]
-                    },
-                }
-            ],
-            moduleName: "string",
-            mainAbilityName: "string",
-            installationFree: true,
-        }
-    ],
-    entryModuleName: "string",
-    cpuAbi: "string",
-    isSilentInstallation: "string",
-    minCompatibleVersionCode: 7,
-    entryInstallationFree: true,
-}
-const PermissionDefsMock = [
-    {
-        name:1,
-        permissionFlags:2,
-        grantMode:3,
-        availableScope:4,
-        labelRes:5,
-        descriptionRes:6,
-        group:"string",
-        usageInfo:7,
-        reminderDesc:"string",
-        reminderDesc:8
-    }
-]
-const BundlePackInfoMock = {
-    packages: [
-        {
-            deviceType: ["1", "2", "3"],
-            name: "1",
-            moduleType: "2",
-            deliveryWithInstall: true,
-        }
-    ],
-    summary: {
-        app: {
-            bundleName: "1",
-            version: {
-                minCompatibleVersionCode: 1,
-                name: "1",
-                code: 1,
-            }
         },
-        modules: [
-            {
-                apiVersion: {
-                    releaseType: "1",
-                    compatible: 1,
-                    target: 1,
-                },
-                deviceType: ["1", "2"],
-                distro: {
-                    deliveryWithInstall: true,
-                    installationFree: true,
-                    moduleName: "1",
-                    moduleType: "2",
-                    mainAbility: "3",
-                },
-                abilities: [
-                    {
-                        name: "1",
-                        label: "2",
-                        visible: true,
-                        forms: [
-                            {
-                                name: "1",
-                                type: "2",
-                                updateEnabled: true,
-                                scheduledUpateTime: "3",
-                                updateDuration: 4,
-                                supportDimensions: [1, 2, 3],
-                                defaultDimension: 1,
-                            }
-                        ]
-                    }
-                ]
-            }
-
-        ]
-    },
-}
-const ApplicationInfosMock = [
-    {
-        packageName: "[PC preview] unknown package name",
-        className: "[PC preview] unknown class name",
-        name: "[PC preview] unknown name",
-        labelId: 1,
-        iconId: 2,
-        sourceDir: "[PC preview] unknown source dir",
-        flags: 3,
-        customizeData: {
-            key: "[PC preview] unknown key",
-            value: {
-                CustomizeData: {
-                    name: "[PC preview] unknown name",
-                    value: "[PC preview] unknown value",
-                }
-            }
-        }
-    },
-]
-
-const AbilityInfosMock = [
-    {
-        bundleName: "string",
-        name: "string",
-        label: "string",
-        description: "string",
-        icon: "string",
-        labelId: 1,
-        descriptionId: 2,
-        iconId: 3,
-        moduleName: "string",
-        process: "string",
-        targetAbility: "string",
-        backgroundModes: 4,
-        isVisible: true,
-        formEnabled: true,
-        type: "bundle.AbilityType",
-        subType: "bundle.AbilitySubType",
-        orientation: "bundle.DisplayOrientation",
-        launchMode: "bundle.LaunchMode",
-        permissions: ["1"],
-        deviceTypes: ["2"],
-        deviceCapabilities: ["3"],
-        readPermission: "string",
-        writePermission: "string",
-        applicationInfo: {
-            packageName: "[PC preview] unknown package name",
-            className: "[PC preview] unknown class name",
-            name: "[PC preview] unknown name",
-            labelId: "[PC preview] unknown label id",
-            iconId: "[PC preview] unknown icon id",
-            sourceDir: "[PC preview] unknown source dir",
-            flags: "[PC preview] unknown flags",
-            customizeData: {
-                key: "[PC preview] unknown key",
-                value: {
-                    CustomizeData: {
-                        name: "[PC preview] unknown name",
-                        value: "[PC preview] unknown value",
-                    }
-                }
-            }
+        elementName: {
+            deviceId: "[PC preview] unknown device id",
+            bundleName: "[PC preview] unknown bundle name",
+            abilityName: "[PC preview] unknown ability name",
+            uri: "[PC preview] unknown uri",
+            shortName: "[PC preview] unknown short name",
         },
-        formEntity: 5,
-        minFormHeight: 6,
-        defaultFormHeight: 7,
-        minFormWidth: 8,
-        defaultFormWidth: 9,
-        uri: "string",
-        customizeData: {
-            key: "[PC preview] unknown key",
-            value: [
-                {
-                    CustomizeData: {
-                        name: "[PC preview] unknown name",
-                        value: "[PC preview] unknown value",
-                    },
-                },
-                {
-                    CustomizeData: {
-                        name: "[PC preview] unknown name",
-                        value: "[PC preview] unknown value",
-                    },
-                }
-            ]
-        },
-    }
-]
-const AbilityInfoMock = {
-    bundleName: "string",
-    name: "string",
-    label: "string",
-    description: "string",
-    icon: "string",
-    labelId: 1,
-    descriptionId: 2,
-    iconId: 3,
-    moduleName: "string",
-    process: "string",
-    targetAbility: "string",
-    backgroundModes: 4,
-    isVisible: true,
-    formEnabled: true,
-    type: "bundle.AbilityType",
-    subType: "bundle.AbilitySubType",
-    orientation: "bundle.DisplayOrientation",
-    launchMode: "bundle.LaunchMode",
-    permissions: ["1"],
-    deviceTypes: ["2"],
-    deviceCapabilities: ["3"],
-    readPermission: "string",
-    writePermission: "string",
-    applicationInfo: {
-        packageName: "[PC preview] unknown package name",
-        className: "[PC preview] unknown class name",
-        name: "[PC preview] unknown name",
-        labelId: 1,
-        iconId: 2,
-        sourceDir: "[PC preview] unknown source dir",
-        flags: 3,
-        customizeData: {
-            key: "[PC preview] unknown key",
-            value: {
-                CustomizeData: {
-                    name: "[PC preview] unknown name",
-                    value: "[PC preview] unknown value",
-                }
-            }
-        }
-    },
-    formEntity: 5,
-    minFormHeight: 6,
-    defaultFormHeight: 7,
-    minFormWidth: 8,
-    defaultFormWidth: 9,
-    uri: "string",
-    customizeData: {
-        key: "[PC preview] unknown key",
-        value: [
-            {
-                CustomizeData: {
-                    name: "[PC preview] unknown name",
-                    value: "[PC preview] unknown value",
-                },
-            },
-            {
-                CustomizeData: {
-                    name: "[PC preview] unknown name",
-                    value: "[PC preview] unknown value",
-                },
-            }
-        ]
-    },
-}
-const ApplicationInfoMock = {
-    packageName: "[PC preview] unknown package name",
-    className: "[PC preview] unknown class name",
-    name: "[PC preview] unknown name",
-    labelId: 1,
-    iconId: 2,
-    sourceDir: "[PC preview] unknown source dir",
-    flags: 3,
-    customizeData: {
-        key: "[PC preview] unknown key",
-        value: {
-            CustomizeData: {
-                name: "[PC preview] unknown name",
-                value: "[PC preview] unknown value",
-            }
-        }
-    }
-}
-
-const BundleInfosMock = [
-    {
-        name: "string",
-        type: "string",
-        appId: "string",
-        uid: 1,
-        installTime: 2,
-        updateTime: 3,
-        appInfo: {
-            packageName: "[PC preview] unknown package name",
-            className: "[PC preview] unknown class name",
-            name: "[PC preview] unknown name",
-            labelId: "[PC preview] unknown label id",
-            iconId: "[PC preview] unknown icon id",
-            sourceDir: "[PC preview] unknown source dir",
-            flags: "[PC preview] unknown flags",
-            customizeData: {
-                key: "[PC preview] unknown key",
-                value: {
-                    CustomizeData: {
-                        name: "[PC preview] unknown name",
-                        value: "[PC preview] unknown value",
-                    }
-                }
-            }
-        },
-        abilityInfo: [
-            {
-                bundleName: "string",
-                name: "string",
-                label: "string",
-                description: "string",
-                icon: "string",
-                labelId: 1,
-                descriptionId: 2,
-                iconId: 3,
-                moduleName: "string",
-                process: "string",
-                targetAbility: "string",
-                backgroundModes: 4,
-                isVisible: true,
-                formEnabled: true,
-                type: "bundle.AbilityType",
-                subType: "bundle.AbilitySubType",
-                orientation: "bundle.DisplayOrientation",
-                launchMode: "bundle.LaunchMode",
-                permissions: ["1"],
-                deviceTypes: ["2"],
-                deviceCapabilities: ["3"],
-                readPermission: "string",
-                writePermission: "string",
-                applicationInfo: {
-                    packageName: "[PC preview] unknown package name",
-                    className: "[PC preview] unknown class name",
-                    name: "[PC preview] unknown name",
-                    labelId: "[PC preview] unknown label id",
-                    iconId: "[PC preview] unknown icon id",
-                    sourceDir: "[PC preview] unknown source dir",
-                    flags: "[PC preview] unknown flags",
-                    customizeData: {
-                        key: "[PC preview] unknown key",
-                        value: {
-                            CustomizeData: {
-                                name: "[PC preview] unknown name",
-                                value: "[PC preview] unknown value",
-                            }
-                        }
-                    }
-                },
-                formEntity: 5,
-                minFormHeight: 6,
-                defaultFormHeight: 7,
-                minFormWidth: 8,
-                defaultFormWidth: 9,
-                uri: "string",
-                customizeData: {
-                    key: "[PC preview] unknown key",
-                    value: [
-                        {
-                            CustomizeData: {
-                                name: "[PC preview] unknown name",
-                                value: "[PC preview] unknown value",
-                            },
-                        },
-                        {
-                            CustomizeData: {
-                                name: "[PC preview] unknown name",
-                                value: "[PC preview] unknown value",
-                            },
-                        }
-                    ],
-                },
-            }
-        ],
-        reqPermissions: ["1", "2", "3"],
-        reqPermissionDetails: [
-            {
-                name: "string",
-                reason: "string",
-                usedScene: {
-                    abilities: ["1,", "2"],
-                    when: "string",
-                }
-            }
-        ],
-        vendor: "string",
-        versionCode: 1,
-        versionName: "string",
-        compatibleVersion: 2,
-        targetVersion: 3,
-        isCompressNativeLibs: true,
-        hapModuleInfo: [
-            {
-                name: "string",
-                description: "string",
-                descriptionId: 1,
-                icon: "string",
-                label: "string",
-                labelId: 2,
-                iconId: 3,
-                backgroundImg: "string",
-                supportedModes: 4,
-                reqCapabilities: ["1", "2"],
-                deviceTypes: ["1", "2"],
-                abilityInfo: [
-                    {
-                        bundleName: "string",
-                        name: "string",
-                        label: "string",
-                        description: "string",
-                        icon: "string",
-                        labelId: 1,
-                        descriptionId: 2,
-                        iconId: 3,
-                        moduleName: "string",
-                        process: "string",
-                        targetAbility: "string",
-                        backgroundModes: 4,
-                        isVisible: true,
-                        formEnabled: true,
-                        type: "bundle.AbilityType",
-                        subType: "bundle.AbilitySubType",
-                        orientation: "bundle.DisplayOrientation",
-                        launchMode: "bundle.LaunchMode",
-                        permissions: ["1"],
-                        deviceTypes: ["2"],
-                        deviceCapabilities: ["3"],
-                        readPermission: "string",
-                        writePermission: "string",
-                        applicationInfo: {
-                            packageName: "[PC preview] unknown package name",
-                            className: "[PC preview] unknown class name",
-                            name: "[PC preview] unknown name",
-                            labelId: "[PC preview] unknown label id",
-                            iconId: "[PC preview] unknown icon id",
-                            sourceDir: "[PC preview] unknown source dir",
-                            flags: "[PC preview] unknown flags",
-                            customizeData: {
-                                key: "[PC preview] unknown key",
-                                value: {
-                                    CustomizeData: {
-                                        name: "[PC preview] unknown name",
-                                        value: "[PC preview] unknown value",
-                                    }
-                                }
-                            }
-                        },
-                        formEntity: 5,
-                        minFormHeight: 6,
-                        defaultFormHeight: 7,
-                        minFormWidth: 8,
-                        defaultFormWidth: 9,
-                        uri: "string",
-                        customizeData: {
-                            key: "[PC preview] unknown key",
-                            value: [
-                                {
-                                    CustomizeData: {
-                                        name: "[PC preview] unknown name",
-                                        value: "[PC preview] unknown value",
-                                    },
-                                },
-                                {
-                                    CustomizeData: {
-                                        name: "[PC preview] unknown name",
-                                        value: "[PC preview] unknown value",
-                                    },
-                                }
-                            ]
-                        },
-                    }
-                ],
-                moduleName: "string",
-                mainAbilityName: "string",
-                installationFree: true,
-            }
-        ],
-        entryModuleName: "string",
-        cpuAbi: "string",
-        isSilentInstallation: "string",
-        minCompatibleVersionCode: 7,
-        entryInstallationFree: true,
+        userId: "[PC preview] unknown user id",
+        installTime: "[PC preview] unknown install time",
     }
 
-]
-
-
-
-const BundleOptionsMock = {
-    userId: 1,
-    networkId: "[PC preview] unknown network id",
-}
-const PermissionDefMock = {
-    name:"string",
-    permissionFlags : "string",
-    grantMode:1,
-    availableScope:2,
-    labelRes:3,
-    descriptionRes:4,
-    group:"string",
-    usageInfo:5,
-    reminderDesc:"string",
-    reminderIcon:6
-}
-
+    const ModuleUpdateFlagMock = {
+        FLAG_MODULE_UPGRADE_CHECK: 0,
+        FLAG_MODULE_UPGRADE_INSTALL: 1,
+        FLAG_MODULE_UPGRADE_INSTALL_WITH_CONFIG_WINDOWS: 2,
+    }
     const BundleFlagMock = {
         GET_BUNDLE_DEFAULT: 0x00000000,
         GET_BUNDLE_WITH_ABILITIES: 0x00000001,
@@ -686,6 +889,25 @@ const PermissionDefMock = {
         AUTO_MODE: -1,
         DARK_MODE: 0,
         LIGHT_MODE: 1,
+    }
+    const ModuleRemoveFlagMock = {
+        FLAG_MODULE_NOT_USED_BY_FORM: 0,
+        FLAG_MODULE_USED_BY_FORM: 1,
+        FLAG_MODULE_NOT_USED_BY_SHORTCUT: 2,
+        FLAG_MODULE_USED_BY_SHORTCUT: 3,
+    }
+    const SignatureCompareResultMock = {
+        SIGNATURE_MATCHED: 0,
+        SIGNATURE_NOT_MATCHED: 1,
+        SIGNATURE_UNKNOWN_BUNDLE: 2,
+    }
+    const ShortcutExistenceMock = {
+        SHORTCUT_EXISTENCE_EXISTS: 0,
+        SHORTCUT_EXISTENCE_NOT_EXISTS: 1,
+        SHORTCUT_EXISTENCE_UNKNOWN: 2,
+    }
+    const QueryShortCutFlagMock = {
+        QUERY_SHORYCUT_HOME: 0,
     }
     const GrantStatusMock = {
         PERMISSION_DENIED: -1,
@@ -702,10 +924,10 @@ const PermissionDefMock = {
         CA: 1,
     }
     const DisplayOrientationMock = {
-        UNSPECIFIED:0,
-        LANDSCAPE:1,
-        PORTRAIT:2,
-        FOLLOW_RECENT:3
+        UNSPECIFIED: 0,
+        LANDSCAPE: 1,
+        PORTRAIT: 2,
+        FOLLOW_RECENT: 3
     }
     const LaunchModeMock = {
         SINGLETON: 0,
@@ -729,13 +951,13 @@ const PermissionDefMock = {
         STATUS_BMS_SERVICE_ERROR: 0x41
     }
     const BundleErrorMock = {
-        REMOTE_EXCEPTION:0,
-        SECURITY_EXCEPTION:1
+        REMOTE_EXCEPTION: 0,
+        SECURITY_EXCEPTION: 1
     }
 
     global.ohosplugin.bundle = {
         getBundleInfo: function (...args) {
-            console.warn("BundleManger.getBundleInfo interface mocked in the Previewer. How this interface works on the" +
+            console.warn("bundle.getBundleInfo interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
@@ -747,7 +969,7 @@ const PermissionDefMock = {
             }
         },
         getBundleInstaller: function (...args) {
-            console.warn("BundleManger.getBundleInstaller interface mocked in the Previewer. How this interface works on the" +
+            console.warn("bundle.getBundleInstaller interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
@@ -759,7 +981,7 @@ const PermissionDefMock = {
             }
         },
         getApplicationInfo: function (...args) {
-            console.warn("BundleManger.getApplicationInfo interface mocked in the Previewer. How this interface works on the" +
+            console.warn("bundle.getApplicationInfo interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
@@ -770,8 +992,20 @@ const PermissionDefMock = {
                 });
             }
         },
+        checkPermission: function (...args) {
+            console.warn("bundle.checkPermission interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, GrantStatusMock.PERMISSION_GRANTED)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(GrantStatusMock.PERMISSION_GRANTED)
+                });
+            }
+        },
         queryAbilityByWant: function (...args) {
-            console.warn("BundleManger.queryAbilityByWant interface mocked in the Previewer. How this interface works on the" +
+            console.warn("bundle.queryAbilityByWant interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
@@ -783,7 +1017,7 @@ const PermissionDefMock = {
             }
         },
         getAllBundleInfo: function (...args) {
-            console.warn("BundleManger.getAllBundleInfo interface mocked in the Previewer. How this interface works on the" +
+            console.warn("bundle.getAllBundleInfo interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
@@ -794,8 +1028,20 @@ const PermissionDefMock = {
                 });
             }
         },
+        getBundlesForUid: function (...args) {
+            console.warn("bundle.getBundlesForUid interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, ArrayStringMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(ArrayStringMock)
+                });
+            }
+        },
         getAllApplicationInfo: function (...args) {
-            console.warn("BundleManger.getAllApplicationInfo interface mocked in the Previewer. How this interface works on the" +
+            console.warn("bundle.getAllApplicationInfo interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
@@ -806,8 +1052,68 @@ const PermissionDefMock = {
                 });
             }
         },
+        getSystemAvailableCapabilities: function (...args) {
+            console.warn("bundle.getSystemAvailableCapabilities interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, ArrayStringMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(ArrayStringMock)
+                });
+            }
+        },
+        hasSystemCapability: function (...args) {
+            console.warn("bundle.hasSystemCapability interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock)
+                });
+            }
+        },
+        getBundleGids: function (...args) {
+            console.warn("bundle.getBundleGids interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, ArrayNumberMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(ArrayNumberMock)
+                });
+            }
+        },
+        checkPublicKeys: function (...args) {
+            console.warn("bundle.checkPublicKeys interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, SignatureCompareResultMock.SIGNATURE_MATCHED)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(SignatureCompareResultMock.SIGNATURE_MATCHED)
+                });
+            }
+        },
+        getNameForUid: function (...args) {
+            console.warn("bundle.getNameForUid interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramStringMock)
+                });
+            }
+        },
         getBundleArchiveInfo: function (...args) {
-            console.warn("BundleManger.getBundleArchiveInfo interface mocked in the Previewer. How this interface works on the" +
+            console.warn("bundle.getBundleArchiveInfo interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
@@ -818,8 +1124,272 @@ const PermissionDefMock = {
                 });
             }
         },
+        isSafeMode: function (...args) {
+            console.warn("bundle.isSafeMode interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock)
+                });
+            }
+        },
+        getLaunchWantForBundle: function (...args) {
+            console.warn("bundle.getLaunchWantForBundle interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, WantMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(WantMock)
+                });
+            }
+        },
+        setApplicationEnabled: function (...args) {
+            console.warn("bundle.setApplicationEnabled interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve()
+                });
+            }
+        },
+        setAbilityEnabled: function (...args) {
+            console.warn("bundle.setAbilityEnabled interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve()
+                });
+            }
+        },
+        isApplicationEnabled: function (...args) {
+            console.warn("bundle.isApplicationEnabled interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock)
+                });
+            }
+        },
+        isAbilityEnabled: function (...args) {
+            console.warn("bundle.isAbilityEnabled interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock)
+                });
+            }
+        },
+        getAllShortcutInfo: function (...args) {
+            console.warn("bundle.getAllShortcutInfo interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, ShortcutInfosMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(ShortcutInfosMock)
+                });
+            }
+        },
+        cleanBundleCacheFiles: function (...args) {
+            console.warn("bundle.cleanBundleCacheFiles interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve()
+                });
+            }
+        },
+        startShortcut: function (...args) {
+            console.warn("bundle.startShortcut interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve()
+                });
+            }
+        },
+        getAppType: function (...args) {
+            console.warn("bundle.getAppType interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramStringMock)
+                });
+            }
+        },
+        isShortcutExist: function (...args) {
+            console.warn("bundle.isShortcutExist interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, ShortcutExistenceMock.SHORTCUT_EXISTENCE_EXISTS)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(ShortcutExistenceMock.SHORTCUT_EXISTENCE_EXISTS)
+                });
+            }
+        },
+        isHomeShortcutSupported: function (...args) {
+            console.warn("bundle.isHomeShortcutSupported interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock)
+                });
+            }
+        },
+        addHomeShortcut: function (...args) {
+            console.warn("bundle.addHomeShortcut interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve()
+                });
+            }
+        },
+        updateShortcuts: function (...args) {
+            console.warn("bundle.updateShortcuts interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve()
+                });
+            }
+        },
+        disableHomeShortcuts: function (...args) {
+            console.warn("bundle.disableHomeShortcuts interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve()
+                });
+            }
+        },
+        enableHomeShortcuts: function (...args) {
+            console.warn("bundle.enableHomeShortcuts interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve()
+                });
+            }
+        },
+        getAllHomeShortcutInfo: function (...args) {
+            console.warn("bundle.getAllHomeShortcutInfo interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, ShortcutInfosMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(ShortcutInfosMock)
+                });
+            }
+        },
+        getAppsGrantedPermissions: function (...args) {
+            console.warn("bundle.getAppsGrantedPermissions interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, ArrayStringMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(ArrayStringMock)
+                });
+            }
+        },
+        getAbilityIcon: function (...args) {
+            console.warn("bundle.getAbilityIcon interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, PixelMapMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(PixelMapMock)
+                });
+            }
+        },
+        getAbilityLabel: function (...args) {
+            console.warn("bundle.getAbilityLabel interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramStringMock)
+                });
+            }
+        },
+        getClearUserDataFlag: function (...args) {
+            console.warn("bundle.getClearUserDataFlag interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock)
+                });
+            }
+        },
+        setClearUserDataFlag: function (...args) {
+            console.warn("bundle.setClearUserDataFlag interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve()
+                });
+            }
+        },
         getBundlePackInfo: function (...args) {
-            console.warn("BundleManger.getBundlePackInfo interface mocked in the Previewer. How this interface works on the" +
+            console.warn("bundle.getBundlePackInfo interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
@@ -830,20 +1400,90 @@ const PermissionDefMock = {
                 });
             }
         },
-        getAbilityInfo: function (...args) {
-            console.warn("BundleManger.getAbilityInfo interface mocked in the Previewer. How this interface works on the" +
+        getAbilityList: function (...args) {
+            console.warn("bundle.getAbilityList interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, AbilityInfoMock)
+                args[len - 1].call(this, paramMock.businessErrorMock, LauncherAbilityInfosMock)
             } else {
                 return new Promise((resolve) => {
-                    resolve(AbilityInfoMock)
+                    resolve(LauncherAbilityInfosMock)
+                });
+            }
+        },
+        getAbilityInfo: function (...args) {
+            console.warn("bundle.getAbilityInfo interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[0] === 'string') {
+                if (typeof args[len - 1] === 'function') {
+                    args[len - 1].call(this, paramMock.businessErrorMock, AbilityInfoMock)
+                } else {
+                    return new Promise((resolve) => {
+                        resolve(AbilityInfoMock)
+                    });
+                }
+            } else if (typeof args[0] === 'object') {
+                if (typeof args[len - 1] === 'function') {
+                    args[len - 1].call(this, paramMock.businessErrorMock, LauncherAbilityInfoMock)
+                } else {
+                    return new Promise((resolve) => {
+                        resolve(LauncherAbilityInfoMock)
+                    });
+                }
+            }
+        },
+        isBundleEnabled: function (...args) {
+            console.warn("bundle.isBundleEnabled interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock)
+                });
+            }
+        },
+        getPermissionDef: function (...args) {
+            console.warn("bundle.getPermissionDef interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, PermissionDefMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(PermissionDefMock)
+                });
+            }
+        },
+        getPermissionGroupDef: function (...args) {
+            console.warn("bundle.getPermissionGroupDef interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, PermissionDefMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(PermissionDefMock)
+                });
+            }
+        },
+        getAllPermissionGroupDefs: function (...args) {
+            console.warn("bundle.getAllPermissionGroupDefs interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, PermissionDefsMock)
+            } else {
+                return new Promise((resolve) => {
+                    resolve(PermissionDefsMock)
                 });
             }
         },
         getPermissionDefByGroup: function (...args) {
-            console.warn("BundleManger.getPermissionDefByGroup interface mocked in the Previewer. How this interface works on the" +
+            console.warn("bundle.getPermissionDefByGroup interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {

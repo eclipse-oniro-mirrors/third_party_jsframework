@@ -24,7 +24,8 @@
 
 import {
   Log,
-  typof
+  typof,
+  bufferToBase64
 } from '../../../utils/index';
 import CallbackManager from './CallbackManager';
 
@@ -82,6 +83,58 @@ export class TaskCenter {
   }
 
   /**
+   * Normalize args.
+   * @param  {*} v - Original args.
+   * @return {*} - Normalized args.
+   */
+  public normalizePrimitive(v: any): any {
+    const type = typof(v);
+
+    switch (type) {
+      case 'undefined':
+      case 'null':
+        return '';
+
+      case 'regexp':
+        return v.toString();
+      case 'date':
+        return v.toISOString();
+
+      case 'number':
+      case 'string':
+      case 'boolean':
+      case 'array':
+      case 'object':
+        return v;
+
+      case 'arraybuffer':
+        return {
+          '@type': 'binary',
+          dataType: type,
+          base64: bufferToBase64(v)
+        };
+
+      case 'int8array':
+      case 'uint8array':
+      case 'uint8clampedarray':
+      case 'int16array':
+      case 'uint16array':
+      case 'int32array':
+      case 'uint32array':
+      case 'float32array':
+      case 'float64array':
+        return {
+          '@type': 'binary',
+          dataType: type,
+          base64: bufferToBase64(v.buffer)
+        };
+
+      default:
+        return JSON.stringify(v);
+    }
+  }
+
+  /**
    * Standardizing a value. Specially, if the value is a function, generate a function id.
    * @param  {*} arg - Any type.
    * @return {*}
@@ -99,7 +152,7 @@ export class TaskCenter {
     } else if (type === 'array') {
       return arg.map(i => this.standardization(i));
     } else {
-      return arg;
+      return this.normalizePrimitive(arg);
     }
   }
 

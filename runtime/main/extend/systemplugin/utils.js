@@ -1,8 +1,8 @@
 export function hasComplete(...args) {
   if (args[0] === undefined) {
-    return
+    return;
   }
-  args[0].call(this)
+  args[0].call(this);
 }
 
 export function getRandomArbitrary(min, max) {
@@ -11,9 +11,9 @@ export function getRandomArbitrary(min, max) {
 
 export const paramMock = {
   businessErrorMock: null,
-  paramNumberMock: "[PC Preview] unknow number",
-  paramStringMock: "[PC Preview] unknow string",
-  paramBooleanMock: "[PC Preview] unknow boolean",
-  paramObjectMock: "[PC Preview] unknow object",
-  paramArrayMock: "[PC Preview] unknow Array"
-}
+  paramNumberMock: '[PC Preview] unknow number',
+  paramStringMock: '[PC Preview] unknow string',
+  paramBooleanMock: '[PC Preview] unknow boolean',
+  paramObjectMock: '[PC Preview] unknow object',
+  paramArrayMock: '[PC Preview] unknow Array'
+};

@@ -123,7 +123,7 @@ const PAGE_LIFE_CYCLE_TYPES: Array<PageLifecycleHooks> = [
  * @param {Element} element - Element object.
  */
 export function bindPageLifeCycle(vm: Vm, element: Element): void {
-  const options = vm.vmOptions || {};
+  const options = vm._vmOptions || {};
   PAGE_LIFE_CYCLE_TYPES.forEach(type => {
     let eventType;
     if (type === PageLifecycleHooks.ONSHOW) {
@@ -166,10 +166,10 @@ export function bindPageLifeCycle(vm: Vm, element: Element): void {
     function eventHandle(event, ...args: any[]): any {
       if (type === PageLifecycleHooks.ONSHOW) {
         emitSubVmLife(vm, 'onPageShow');
-        vm.visible = true;
+        vm._visible = true;
       } else if (type === PageLifecycleHooks.ONHIDE) {
         emitSubVmLife(vm, 'onPageHide');
-        vm.visible = false;
+        vm._visible = false;
       } else if (type === PageLifecycleHooks.ONCONFIGURATIONUPDATED) {
         return vm.$emitDirect(`hook:${type}`, ...args);
       }
@@ -203,7 +203,7 @@ export function bindPageLifeCycle(vm: Vm, element: Element): void {
       if (!result) {
         return false;
       }
-      const shareResult = vm.shareData || {};
+      const shareResult = vm._shareData || {};
       if (shareResult instanceof Object && !(shareResult instanceof Array)) {
         allData.shareData = shareResult;
       }
@@ -219,11 +219,11 @@ export function bindPageLifeCycle(vm: Vm, element: Element): void {
       const saveData = restoreData.saveData || {};
       const shareData = restoreData.shareData || {};
 
-      Object.assign(vm.shareData, shareData);
+      Object.assign(vm._shareData, shareData);
       return vm.$emitDirect(`hook:${type}`, saveData);
     }
     function handleNewRequest(data: any) {
-      Object.assign(vm.__data, data);
+      Object.assign(vm._data, data);
       return vm.$emitDirect(`hook:${type}`);
     }
   });
@@ -255,8 +255,8 @@ export function watch(vm: Vm, data: string, callback: ((...args: any) => any) | 
     if (typeof callback === 'function') {
       callback(value, oldValue);
     } else {
-      if (vm.methods[callback] && typeof vm.methods[callback] === 'function') {
-        vm.methods[callback](value, oldValue);
+      if (vm._methods[callback] && typeof vm._methods[callback] === 'function') {
+        vm._methods[callback](value, oldValue);
       }
     }
   }, null);
@@ -268,9 +268,9 @@ export function watch(vm: Vm, data: string, callback: ((...args: any) => any) | 
  * @param {Vm} vm - Vm object.
  */
 export function initPropsToData(vm: Vm): void {
-  vm.props.forEach(prop => {
-    if (vm.__data) {
-      vm.__data[prop] = vm[prop];
+  vm._props.forEach(prop => {
+    if (vm._data) {
+      vm._data[prop] = vm[prop];
     }
   });
 }
@@ -281,8 +281,8 @@ export function initPropsToData(vm: Vm): void {
  * @param {String} type - event type
  */
 export function emitSubVmLife(vm: Vm, type:string) {
-  if (vm.childrenVms) {
-    vm.childrenVms.forEach((subVm) => {
+  if (vm._childrenVms) {
+    vm._childrenVms.forEach((subVm) => {
       subVm.$emit(`hook:${type}`);
       emitSubVmLife(subVm, type);
     });

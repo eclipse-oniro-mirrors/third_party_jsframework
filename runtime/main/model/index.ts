@@ -72,40 +72,40 @@ import {
  * VM constructor.
  * @param {string} type - Type.
  * @param {null | VmOptions} options - Component options.
- * @param {Vm} parentVm   which contains _app.
+ * @param {Vm} parentVm   which contains __app.
  * @param {Element | FragBlockInterface} parentEl - root element or frag block.
  * @param {Object} mergedData - External data.
  * @param {ExternalEvent} externalEvents - External events.
  */
 export default class Vm {
-  private _parent: Vm;
-  private _app: Page;
-  private _computed: ComputedInterface;
-  private _css: cssType;
-  private _type: string;
-  private readonly _descriptor: string;
-  private _props: Props;
-  private _vmOptions: VmOptions;
-  private _selector: object;
-  private _ids: Record<string, {vm: Vm, el: Element}>;
-  private _init: boolean;
-  private _ready: boolean;
-  private _valid: boolean;
-  private _vmEvents: object;
-  private _childrenVms: Vm[];
-  private _visible: boolean;
-  private _data: any;
-  private _shareData: any;
-  private _realParent: Vm
-  private _parentEl: Element | FragBlockInterface;
-  private _rootEl: Element;
-  private _$refs: Record<string, Element>;
-  private _externalBinding: ExternalBindingInterface;
-  private _isHide: boolean;
-  private _mediaStatus: Partial<MediaStatusInterface<string, boolean>>;
-  private _methods: Record<string, (...args: unknown[]) => any>;
-  private _slotContext: { content: Record<string, any>, parentVm: Vm };
   private _$app: any;
+  private __methods: Record<string, (...args: unknown[]) => any>;
+  private __type: string;
+  private __css: cssType;
+  private __vmOptions: VmOptions;
+  private __parent: Vm;
+  private __realParent: Vm;
+  private __computed: ComputedInterface;
+  private __selector: object;
+  private __parentEl: Element | FragBlockInterface;
+  private __app: Page;
+  private __shareData: any;
+  private __data: any;
+  private __props: Props;
+  private __init: boolean;
+  private __valid: boolean;
+  private __visible: boolean;
+  private __ready: boolean;
+  private __rootEl: Element;
+  private __ids: Record<string, {vm: Vm, el: Element}>;
+  private __vmEvents: object;
+  private __childrenVms: Vm[];
+  private __externalBinding: ExternalBindingInterface;
+  private readonly __descriptor: string;
+  private __isHide: boolean;
+  private __mediaStatus: Partial<MediaStatusInterface<string, boolean>>;
+  private _$refs: Record<string, Element>;
+  private __slotContext: { content: Record<string, any>, parentVm: Vm };
 
   constructor(
     type: string,
@@ -116,38 +116,38 @@ export default class Vm {
     externalEvents: ExternalEvent
   ) {
     this._$app = global.aceapp;
-    this._parent = parentVm._realParent ? parentVm._realParent : parentVm;
-    this._app = parentVm._app;
-    parentVm._childrenVms && parentVm._childrenVms.push(this);
+    this.__parent = parentVm.__realParent ? parentVm.__realParent : parentVm;
+    this.__app = parentVm.__app;
+    parentVm.__childrenVms && parentVm.__childrenVms.push(this);
 
-    if (!options && this._app.customComponentMap) {
-      options = this._app.customComponentMap[type];
+    if (!options && this.__app.customComponentMap) {
+      options = this.__app.customComponentMap[type];
     }
     const data = options.data || {};
     const shareData = options.shareData || {};
-    this._vmOptions = options;
-    this._computed = options.computed;
-    this._css = options.style;
-    this._selector = selector(this._css);
-    this._ids = {};
+    this.__vmOptions = options;
+    this.__computed = options.computed;
+    this.__css = options.style;
+    this.__selector = selector(this.__css);
+    this.__ids = {};
     this._$refs = {};
-    this._vmEvents = {};
-    this._childrenVms = [];
-    this._type = type;
-    this._valid = true;
-    this._props = [];
-    this._methods = {};
+    this.__vmEvents = {};
+    this.__childrenVms = [];
+    this.__type = type;
+    this.__valid = true;
+    this.__props = [];
+    this.__methods = {};
 
     // Bind events and lifecycles.
     initEvents(this, externalEvents);
 
     Log.debug(
-      `'_innerInit' lifecycle in Vm(${this._type}) and mergedData = ${JSON.stringify(mergedData)}.`
+      `'_innerInit' lifecycle in Vm(${this.__type}) and mergedData = ${JSON.stringify(mergedData)}.`
     );
     this.$emit('hook:_innerInit');
-    this._data = (typeof data === 'function' ? data.apply(this) : data) || {};
-    this._shareData = (typeof shareData === 'function' ? shareData.apply(this) : shareData) || {};
-    this._descriptor = options._descriptor;
+    this.__data = (typeof data === 'function' ? data.apply(this) : data) || {};
+    this.__shareData = (typeof shareData === 'function' ? shareData.apply(this) : shareData) || {};
+    this.__descriptor = options._descriptor;
     if (global.aceapp && global.aceapp.i18n && global.aceapp.i18n.extend) {
       global.aceapp.i18n.extend(this);
     }
@@ -158,10 +158,10 @@ export default class Vm {
     // MergedData means extras params.
     if (mergedData) {
       if (hasOwn(mergedData, 'paramsData') && hasOwn(mergedData, 'dontOverwrite') && mergedData['dontOverwrite'] === false) {
-        dataAccessControl(this, mergedData['paramsData'], this._app.options && this._app.options.appCreate);
+        dataAccessControl(this, mergedData['paramsData'], this.__app.options && this.__app.options.appCreate);
         extend(this._data, mergedData['paramsData']);
       } else {
-        dataAccessControl(this, mergedData, this._app.options && this._app.options.appCreate);
+        dataAccessControl(this, mergedData, this.__app.options && this.__app.options.appCreate);
         extend(this._data, mergedData);
       }
     }
@@ -169,7 +169,7 @@ export default class Vm {
     initPropsToData(this);
     initState(this);
     initBases(this);
-    Log.debug(`"onInit" lifecycle in Vm(${this._type})`);
+    Log.debug(`"onInit" lifecycle in Vm(${this.__type})`);
 
     if (mergedData && hasOwn(mergedData, 'paramsData') && hasOwn(mergedData, 'dontOverwrite')) {
       if (mergedData['dontOverwrite'] === false) {
@@ -181,23 +181,23 @@ export default class Vm {
       this.$emit('hook:onInit');
     }
 
-    if (!this._app.doc) {
+    if (!this.__app.doc) {
       return;
     }
-    this.mediaStatus = {};
-    this.mediaStatus.orientation = this._app.options.orientation;
-    this.mediaStatus.width = this._app.options.width;
-    this.mediaStatus.height = this._app.options.height;
-    this.mediaStatus.resolution = this._app.options.resolution;
-    this.mediaStatus['device-type'] = this._app.options['device-type'];
-    this.mediaStatus['aspect-ratio'] = this._app.options['aspect-ratio'];
-    this.mediaStatus['device-width'] = this._app.options['device-width'];
-    this.mediaStatus['device-height'] = this._app.options['device-height'];
-    this.mediaStatus['round-screen'] = this._app.options['round-screen'];
-    this.mediaStatus['dark-mode'] = this._app.options['dark-mode'];
+    this.__mediaStatus = {};
+    this.__mediaStatus.orientation = this.__app.options.orientation;
+    this.__mediaStatus.width = this.__app.options.width;
+    this.__mediaStatus.height = this.__app.options.height;
+    this.__mediaStatus.resolution = this.__app.options.resolution;
+    this.__mediaStatus['device-type'] = this.__app.options['device-type'];
+    this.__mediaStatus['aspect-ratio'] = this.__app.options['aspect-ratio'];
+    this.__mediaStatus['device-width'] = this.__app.options['device-width'];
+    this.__mediaStatus['device-height'] = this.__app.options['device-height'];
+    this.__mediaStatus['round-screen'] = this.__app.options['round-screen'];
+    this.__mediaStatus['dark-mode'] = this.__app.options['dark-mode'];
 
     // If there is no parentElement, specify the documentElement.
-    this._parentEl = parentEl || this._app.doc.documentElement;
+    this.__parentEl = parentEl || this.__app.doc.documentElement;
     build(this);
   }
 
@@ -212,12 +212,12 @@ export default class Vm {
         Log.warn(`Invalid parameter type: The type of 'id' should be string or number, not ${typeof id}.`);
         return;
       }
-      const info: any = this.ids[id];
+      const info: any = this._ids[id];
       if (info) {
         return info.el;
       }
     } else {
-      return this.rootEl;
+      return this.__rootEl;
     }
   }
 
@@ -227,7 +227,7 @@ export default class Vm {
    * @return {Vm} Vm object.
    */
   public $vm(id: string): Vm {
-    const info = this.ids[id];
+    const info = this._ids[id];
     if (info) {
       return info.vm;
     }
@@ -237,7 +237,7 @@ export default class Vm {
    * Get parent Vm of current.
    */
   public $parent(): Vm {
-    return this.parent;
+    return this._parent;
   }
 
   /**
@@ -255,7 +255,7 @@ export default class Vm {
    * Get root element of current.
    */
   public $rootElement(): Element {
-    return this.rootEl;
+    return this.__rootEl;
   }
 
   /**
@@ -277,7 +277,7 @@ export default class Vm {
       Log.warn(`Invalid parameter type: The type of 'type' should be string, not ${typeof type}.`);
       return;
     }
-    const events = this._vmEvents;
+    const events = this.__vmEvents;
     const handlerList = events[type];
     if (handlerList) {
       const results = [];
@@ -300,7 +300,7 @@ export default class Vm {
       Log.warn(`Invalid parameter type: The type of 'type' should be string, not ${typeof type}.`);
       return;
     }
-    const events = this._vmEvents;
+    const events = this.__vmEvents;
     const handlerList = events[type];
     if (handlerList) {
       const results = [];
@@ -323,8 +323,8 @@ export default class Vm {
     }
     const evt = new Evt(type, detail);
     this.$emit(type, evt);
-    if (!evt.hasStopped() && this._parent && this._parent.$dispatch) {
-      this._parent.$dispatch(type, evt);
+    if (!evt.hasStopped() && this.__parent && this.__parent.$dispatch) {
+      this.__parent.$dispatch(type, evt);
     }
   }
 
@@ -340,8 +340,8 @@ export default class Vm {
     }
     const evt = new Evt(type, detail);
     this.$emit(type, evt);
-    if (!evt.hasStopped() && this._childrenVms) {
-      this._childrenVms.forEach((subVm) => {
+    if (!evt.hasStopped() && this.__childrenVms) {
+      this.__childrenVms.forEach((subVm) => {
         subVm.$broadcast(type, evt);
       });
     }
@@ -361,11 +361,11 @@ export default class Vm {
       Log.warn(`Invalid parameter type: The type of 'handler' should be function, not ${typeof handler}.`);
       return;
     }
-    const events = this._vmEvents;
+    const events = this.__vmEvents;
     const handlerList = events[type] || [];
     handlerList.push(handler);
     events[type] = handlerList;
-    if (type === 'hook:onReady' && this._ready) {
+    if (type === 'hook:onReady' && this.__ready) {
       this.$emit('hook:onReady');
     }
   }
@@ -384,7 +384,7 @@ export default class Vm {
       Log.warn(`Invalid parameter type: The type of 'handler' should be function, not ${typeof handler}.`);
       return;
     }
-    const events = this._vmEvents;
+    const events = this.__vmEvents;
     if (!handler) {
       delete events[type];
       return;
@@ -411,7 +411,7 @@ export default class Vm {
       Log.warn(`Invalid parameter type: The type of 'id' should be string, not ${typeof id}.`);
       return;
     }
-    const info = this.ids[id];
+    const info = this._ids[id];
     if (info) {
       const element = info.el;
       const evt = new Evt(type, data);
@@ -470,33 +470,33 @@ export default class Vm {
    * Delete Vm object.
    */
   public destroy(): void {
-    Log.debug(`[JS Framework] "onDestroy" lifecycle in Vm(${this.type})`);
+    Log.debug(`[JS Framework] "onDestroy" lifecycle in Vm(${this.__type})`);
     this.$emit('hook:onDestroy');
     this.$emit('hook:onDetached');
-    fireNodeDetached(this._rootEl);
-    this._valid = false;
+    fireNodeDetached(this.__rootEl);
+    this.__valid = false;
 
-    delete this._app;
-    delete this._computed;
-    delete this._css;
-    delete this._data;
-    delete this._ids;
-    delete this._vmOptions;
-    delete this._parent;
-    delete this._parentEl;
-    delete this._rootEl;
+    delete this.__app;
+    delete this.__computed;
+    delete this.__css;
+    delete this.__data;
+    delete this.__ids;
+    delete this.__vmOptions;
+    delete this.__parent;
+    delete this.__parentEl;
+    delete this.__rootEl;
     delete this._$refs;
 
     // Destroy child vms recursively.
-    if (this._childrenVms) {
-      let vmCount: number = this._childrenVms.length;
+    if (this.__childrenVms) {
+      let vmCount: number = this.__childrenVms.length;
       while (vmCount--) {
-        this.destroy.call(this._childrenVms[vmCount], this._childrenVms[vmCount]);
+        this.destroy.call(this.__childrenVms[vmCount], this.__childrenVms[vmCount]);
       }
-      delete this._childrenVms;
+      delete this.__childrenVms;
     }
-    delete this._type;
-    delete this._vmEvents;
+    delete this.__type;
+    delete this.__vmEvents;
   }
 
   /**
@@ -539,8 +539,8 @@ export default class Vm {
    * @type {Object}
    * @readonly
    */
-  public get methods() {
-    return this._methods;
+  public get _methods() {
+    return this.__methods;
   }
 
   /**
@@ -548,12 +548,12 @@ export default class Vm {
    * @type {string}
    * @readonly
    */
-  public get type() {
-    return this._type;
+  public get _type() {
+    return this.__type;
   }
 
-  public set type(newType: string) {
-    this._type = newType;
+  public set _type(newType: string) {
+    this.__type = newType;
   }
 
   /**
@@ -561,20 +561,20 @@ export default class Vm {
    * @type {[key: string]: any}
    * @readonly
    */
-  public get css() {
-    return this._css;
+  public get _css() {
+    return this.__css;
   }
 
   /**
    * Options of this Vm.
    * @type {VmOptions}
    */
-  public get vmOptions() {
-    return this._vmOptions;
+  public get _vmOptions() {
+    return this.__vmOptions;
   }
 
-  public set vmOptions(newOptions: VmOptions) {
-    this._vmOptions = newOptions;
+  public set _vmOptions(newOptions: VmOptions) {
+    this.__vmOptions = newOptions;
   }
 
   /**
@@ -582,20 +582,20 @@ export default class Vm {
    * @type {Vm}
    * @readonly
    */
-  public get parent() {
-    return this._parent;
+  public get _parent() {
+    return this.__parent;
   }
 
   /**
    * RealParent of this Vm.
    * @type {Vm}
    */
-  public get realParent() {
-    return this._realParent;
+  public get _realParent() {
+    return this.__realParent;
   }
 
-  public set realParent(realParent: Vm) {
-    this._realParent = realParent;
+  public set _realParent(realParent: Vm) {
+    this.__realParent = realParent;
   }
 
   /**
@@ -603,11 +603,11 @@ export default class Vm {
    * @type {ComputedInterface}
    */
   public get computed() {
-    return this._computed;
+    return this.__computed;
   }
 
   public set computed(newComputed: ComputedInterface) {
-    this._computed = newComputed;
+    this.__computed = newComputed;
   }
 
   /**
@@ -615,56 +615,56 @@ export default class Vm {
    * @type {Object}
    * @readonly
    */
-  public get selector() {
-    return this._selector;
+  public get _selector() {
+    return this.__selector;
   }
 
   /**
    * ParentEl of this Vm.
    * @type {FragBlockInterface | Element}
    */
-  public get parentEl() {
-    return this._parentEl;
+  public get _parentEl() {
+    return this.__parentEl;
   }
 
-  public set parentEl(newParentEl: FragBlockInterface | Element) {
-    this._parentEl = newParentEl;
+  public set _parentEl(newParentEl: FragBlockInterface | Element) {
+    this.__parentEl = newParentEl;
   }
 
   /**
    * App of this Vm.
    * @type {Page}
    */
-  public get app() {
-    return this._app;
+  public get _app() {
+    return this.__app;
   }
 
-  public set app(newApp: Page) {
-    this._app = newApp;
+  public set _app(newApp: Page) {
+    this.__app = newApp;
   }
 
   /**
    * ShareData of this Vm.
    * @type {*}
    */
-  public get shareData() {
-    return this._shareData;
+  public get _shareData() {
+    return this.__shareData;
   }
 
-  public set shareData(newShareData: object) {
-    this._shareData = newShareData;
+  public set _shareData(newShareData: object) {
+    this.__shareData = newShareData;
   }
 
   /**
    * Data of this Vm.
    * @type {*}
    */
-  public get __data() {
-    return this._data;
+  public get _data() {
+    return this.__data;
   }
 
-  public set __data(newData: any) {
-    this._data = newData;
+  public set _data(newData: any) {
+    this.__data = newData;
   }
 
   /**
@@ -672,20 +672,20 @@ export default class Vm {
    * @type {Props}
    * @readonly
    */
-  public get props() {
-    return this._props;
+  public get _props() {
+    return this.__props;
   }
 
   /**
    * Init of this Vm.
    * @type {boolean}
    */
-  public get init() {
-    return this._init;
+  public get _init() {
+    return this.__init;
   }
 
-  public set init(newInit: boolean) {
-    this._init = newInit;
+  public set _init(newInit: boolean) {
+    this.__init = newInit;
   }
 
   /**
@@ -693,44 +693,44 @@ export default class Vm {
    * @type {boolean}
    * @readonly
    */
-  public get valid() {
-    return this._valid;
+  public get _valid() {
+    return this.__valid;
   }
 
   /**
    * Visible of this Vm.
    * @type {boolean}
    */
-  public get visible() {
-    return this._visible;
+  public get _visible() {
+    return this.__visible;
   }
 
-  public set visible(newVisible) {
-    this._visible = newVisible;
+  public set _visible(newVisible) {
+    this.__visible = newVisible;
   }
 
   /**
    * Ready of this Vm.
    * @type {boolean}
    */
-  public get ready() {
-    return this._ready;
+  public get _ready() {
+    return this.__ready;
   }
 
-  public set ready(newReady: boolean) {
-    this._ready = newReady;
+  public set _ready(newReady: boolean) {
+    this.__ready = newReady;
   }
 
   /**
    * RootEl of this Vm.
    * @type {Element}
    */
-  public get rootEl() {
-    return this._rootEl;
+  public get _rootEl() {
+    return this.__rootEl;
   }
 
-  public set rootEl(newRootEl: Element) {
-    this._rootEl = newRootEl;
+  public set _rootEl(newRootEl: Element) {
+    this.__rootEl = newRootEl;
   }
 
   /**
@@ -738,8 +738,8 @@ export default class Vm {
    * @type {{[key: string]: { vm: Vm, el: Element}}}
    * @readonly
    */
-  public get ids() {
-    return this._ids;
+  public get _ids() {
+    return this.__ids;
   }
 
   /**
@@ -747,28 +747,28 @@ export default class Vm {
    * @type {Object}
    * @readonly
    */
-  public get vmEvents() {
-    return this._vmEvents;
+  public get _vmEvents() {
+    return this.__vmEvents;
   }
 
   /**
    * children of vm.
    * @return {Array} - children of Vm.
    */
-  public get childrenVms() {
-    return this._childrenVms;
+  public get _childrenVms() {
+    return this.__childrenVms;
   }
 
   /**
    * ExternalBinding of this Vm.
    * @type {ExternalBinding}
    */
-  public get externalBinding() {
-    return this._externalBinding;
+  public get _externalBinding() {
+    return this.__externalBinding;
   }
 
-  public set externalBinding(newExternalBinding: ExternalBindingInterface) {
-    this._externalBinding = newExternalBinding;
+  public set _externalBinding(newExternalBinding: ExternalBindingInterface) {
+    this.__externalBinding = newExternalBinding;
   }
 
   /**
@@ -776,32 +776,32 @@ export default class Vm {
    * @type {string}
    * @readonly
    */
-  public get descriptor() {
-    return this._descriptor;
+  public get _descriptor() {
+    return this.__descriptor;
   }
 
   /**
    * IsHide of this Vm.
    * @type {boolean}
    */
-  public get isHide() {
-    return this._isHide;
+  public get _isHide() {
+    return this.__isHide;
   }
 
-  public set isHide(newIsHide: boolean) {
-    this._isHide = newIsHide;
+  public set _isHide(newIsHide: boolean) {
+    this.__isHide = newIsHide;
   }
 
   /**
    * MediaStatus of this Vm.
    * @type {MediaStatusInterface<string, boolean>}
    */
-  public get mediaStatus() {
-    return this._mediaStatus;
+  public get _mediaStatus() {
+    return this.__mediaStatus;
   }
 
-  public set mediaStatus(newMediaStatus: Partial<MediaStatusInterface<string, boolean>>) {
-    this._mediaStatus = newMediaStatus;
+  public set _mediaStatus(newMediaStatus: Partial<MediaStatusInterface<string, boolean>>) {
+    this.__mediaStatus = newMediaStatus;
   }
 
   /**
@@ -817,12 +817,12 @@ export default class Vm {
    * slotContext of this Vm.
    * @type { content: Record<string, any>, parentVm: Vm }
    */
-  public get slotContext() {
-    return this._slotContext;
+  public get _slotContext() {
+    return this.__slotContext;
   }
 
-  public set slotContext(newMSoltContext: { content: Record<string, any>, parentVm: Vm }) {
-    this._slotContext = newMSoltContext;
+  public set _slotContext(newMSoltContext: { content: Record<string, any>, parentVm: Vm }) {
+    this.__slotContext = newMSoltContext;
   }
 }
 
@@ -877,11 +877,11 @@ function dataAccessControl(vm: any, mergedData: object, external: boolean): void
  * @return {Vm} Root vm.
  */
 function getRoot(vm: any): Vm {
-  const parent = vm.parent;
+  const parent = vm._parent;
   if (!parent) {
     return vm;
   }
-  if (parent._rootVm) {
+  if (parent.__rootVm) {
     return vm;
   }
   return getRoot(parent);

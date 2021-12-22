@@ -1,4 +1,4 @@
-import {paramMock} from "../utils"
+import { paramMock } from "../utils"
 
 export function mockWantAgent() {
     const WantMock = {
@@ -21,9 +21,28 @@ export function mockWantAgent() {
     }
     const WantAgentMock = {}
     global.ohosplugin.wantAgent = {
+        OperationType: {
+            UNKNOWN_TYPE: 0,
+            START_ABILITY: 1,
+            START_ABILITIES: 2,
+            START_SERVICE: 3,
+            SEND_COMMON_EVENT: 4
+        },
+        WantAgentFlags: {
+            ONE_TIME_FLAG: 0,
+            NO_BUILD_FLAG: 1,
+            CANCEL_PRESENT_FLAG: 2,
+            UPDATE_PRESENT_FLAG: 3,
+            CONSTANT_FLAG: 4,
+            REPLACE_ELEMENT: 5,
+            REPLACE_ACTION: 6,
+            REPLACE_URI: 7,
+            REPLACE_ENTITIES: 8,
+            REPLACE_BUNDLE: 9
+        },
         getBundleName: function (...args) {
             console.warn("wantAgent.getBundleName interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
@@ -35,7 +54,7 @@ export function mockWantAgent() {
         },
         getUid: function (...args) {
             console.warn("wantAgent.getUid interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
@@ -47,7 +66,7 @@ export function mockWantAgent() {
         },
         getWant: function (...args) {
             console.warn("wantAgent.getWant interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, WantMock);
@@ -59,7 +78,7 @@ export function mockWantAgent() {
         },
         cancel: function (...args) {
             console.warn("wantAgent.cancel interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock);
@@ -71,7 +90,7 @@ export function mockWantAgent() {
         },
         trigger: function (...args) {
             console.warn("wantAgent.trigger interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, CompleteDataMock);
@@ -79,7 +98,7 @@ export function mockWantAgent() {
         },
         equal: function (...args) {
             console.warn("wantAgent.equal interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
@@ -91,7 +110,7 @@ export function mockWantAgent() {
         },
         getWantAgent: function (...args) {
             console.warn("wantAgent.getWantAgent interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, WantAgentMock);

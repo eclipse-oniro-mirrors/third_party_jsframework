@@ -36,10 +36,12 @@ import {
   setClass,
   setIdStyle,
   setTagStyle,
+  setUniversalStyle,
   setId,
   bindSubVm,
   bindSubVmAfterInitialized,
-  newWatch
+  newWatch,
+  bindDir
 } from './directive';
 import {
   createBlock,
@@ -80,6 +82,7 @@ export interface AttrInterface {
   slot: string;
   name: string;
   data: () => any | string;
+  $data: () => any | string;
 }
 
 export interface TemplateInterface {
@@ -118,15 +121,15 @@ interface ConfigInterface {
 }
 
 export function build(vm: Vm) {
-  const opt: any = vm.vmOptions || {};
+  const opt: any = vm._vmOptions || {};
   const template: any = opt.template || {};
-  compile(vm, template, vm.parentEl);
-  Log.debug(`"OnReady" lifecycle in Vm(${vm.type}).`);
+  compile(vm, template, vm._parentEl);
+  Log.debug(`"OnReady" lifecycle in Vm(${vm._type}).`);
   vm.$emit('hook:onReady');
-  if (vm.parent) {
+  if (vm._parent) {
     vm.$emit('hook:onAttached');
   }
-  vm.ready = true;
+  vm._ready = true;
 }
 
 /**
@@ -137,7 +140,7 @@ export function build(vm: Vm) {
  * @param {MetaInterface} [meta] - To transfer data.
  */
 function compile(vm: Vm, target: TemplateInterface, dest: FragBlockInterface | Element, meta?: Partial<MetaInterface>): void {
-  const app: any = vm.app || {};
+  const app: any = vm._app || {};
   if (app.lastSignal === -1) {
     return;
   }
@@ -169,11 +172,70 @@ function compile(vm: Vm, target: TemplateInterface, dest: FragBlockInterface | E
     compileCustomComponent(vm, component, target, dest, type, meta);
     return;
   }
+  if (type === 'compontent') {
+    compileDyanmicComponent(vm, target, dest, type, meta);
+    return;
+  }
   if (targetIsBlock(target)) {
     compileBlock(vm, target, dest);
     return;
   }
   compileNativeComponent(vm, target, dest, type);
+}
+
+/**
+ * Compile a dynamic component.
+ * @param {Vm} vm - Vm object needs to be compiled.
+ * @param {TemplateInterface} target - Node needs to be compiled. Structure of the label in the template.
+ * @param {Element | FragBlockInterface} dest - Parent Node's VM of current.
+ * @param {string} type - Component Type.
+ * @param {MetaInterface} meta - To transfer data.
+ */
+export function compileDyanmicComponent(
+  vm: Vm,
+  target: TemplateInterface,
+  dest: Element | FragBlockInterface,
+  type: string,
+  meta: Partial<MetaInterface>
+): void {
+  const attr: object = target.attr;
+  let dynamicType: string;
+  for (const key in attr) {
+    const value = attr[key];
+    if (key === 'name') {
+      if (typeof value === 'function') {
+        dynamicType = value.call(vm, vm);
+      } else if (typeof value === 'string') {
+        dynamicType = value;
+      } else {
+        Log.error('compontent attr name is unkonwn');
+        return;
+      }
+    }
+  }
+
+  const elementDiv = createElement(vm, 'div');
+  attachTarget(elementDiv, dest);
+
+  const element = createElement(vm, type);
+  element.vm = vm;
+  element.target = target;
+  element.destroyHook = function() {
+    if (element.watchers !== undefined) {
+      element.watchers.forEach(function(watcher) {
+        watcher.teardown();
+      });
+      element.watchers = [];
+    }
+  };
+  bindDir(vm, element, 'attr', attr);
+  attachTarget(element, elementDiv);
+
+  const component: VmOptions | null = targetIsComposed(vm, dynamicType);
+  if (component) {
+    compileCustomComponent(vm, component, target, elementDiv, dynamicType, meta);
+    return;
+  }
 }
 
 /**
@@ -212,17 +274,18 @@ function targetNeedCheckShown(target: TemplateInterface, meta: Partial<MetaInter
  * @param {string} type - Component type.
  * @return {VmOptions} Component.
  */
-function targetIsComposed(vm: Vm, type: string): VmOptions {
+export function targetIsComposed(vm: Vm, type: string): VmOptions {
   let component;
-  if (vm.app && vm.app.customComponentMap) {
-    component = vm.app.customComponentMap[type];
+  if (vm._app && vm._app.customComponentMap) {
+    component = vm._app.customComponentMap[type];
   }
   if (component) {
     if (component.data && typeof component.data === 'object') {
       if (!component.initObjectData) {
         component.initObjectData = component.data;
       }
-      component.data = Object.assign({}, component.initObjectData);
+      const str = JSON.stringify(component.initObjectData);
+      component.data = JSON.parse(str);
     }
   }
   return component;
@@ -235,16 +298,16 @@ function targetIsComposed(vm: Vm, type: string): VmOptions {
  * @param {dest} dest - Node need to be appended.
  */
 function compileSlot(vm: Vm, target: TemplateInterface, dest: Element): Element {
-  if (!vm.slotContext) {
+  if (!vm._slotContext) {
     // slot in root vm
     return;
   }
 
   const slotDest = createBlock(vm, dest);
 
-  // reslove slot contentext
-  const namedContents = vm.slotContext.content;
-  const parentVm = vm.slotContext.parentVm;
+  // reslove slot content
+  const namedContents = vm._slotContext.content;
+  const parentVm = vm._slotContext.parentVm;
   const slotItem = { target, dest: slotDest };
   const slotName = target.attr.name || 'default';
 
@@ -337,7 +400,7 @@ function compileBlock(vm: Vm, target: TemplateInterface, dest: Element | FragBlo
   if (isBlock(dest) && dest.children) {
     dest.children.push(block);
   }
-  const app: any = vm.app || {};
+  const app: any = vm._app || {};
   const children = target.children;
   if (children && children.length) {
     children.every((child) => {
@@ -356,7 +419,7 @@ function compileBlock(vm: Vm, target: TemplateInterface, dest: Element | FragBlo
  * @param {string} type - Component Type.
  * @param {MetaInterface} meta - To transfer data.
  */
-function compileCustomComponent(
+export function compileCustomComponent(
   vm: Vm,
   component: VmOptions,
   target: TemplateInterface,
@@ -384,11 +447,11 @@ function compileCustomComponent(
             }
           });
         }
-        this.slotContext = { content: namedContents, parentVm: vm };
+        this.__slotContext = { content: namedContents, parentVm: vm };
         setId(vm, null, target.id, this);
 
         // Bind template earlier because of lifecycle issues.
-        this.externalBinding = {
+        this.__externalBinding = {
           parent: vm,
           template: target
         };
@@ -411,7 +474,7 @@ function resetElementStyle(vm: Vm, element: Element): void {
   if (element.children !== undefined) {
     len = element.children.length;
   }
-  const css = vm.css || {};
+  const css = vm._css || {};
   const mqArr = css['@MEDIA'];
   for (let ii = 0; ii < len; ii++) {
     const el = element.children[ii] as Element;
@@ -419,6 +482,7 @@ function resetElementStyle(vm: Vm, element: Element): void {
       resetElementStyle(vm, el);
     }
   }
+  setUniversalStyle(vm, element);
   if (element.type) {
     setTagStyle(vm, element, element.type);
   }
@@ -447,28 +511,28 @@ function resetElementStyle(vm: Vm, element: Element): void {
  */
 function compileNativeComponent(vm: Vm, template: TemplateInterface, dest: FragBlockInterface | Element, type: string): void {
   function handleViewSizeChanged(e) {
-    if (!vm.mediaStatus) {
-      vm.mediaStatus = {};
+    if (!vm._mediaStatus) {
+      vm._mediaStatus = {};
     }
-    vm.mediaStatus.orientation = e.orientation;
-    vm.mediaStatus.width = e.width;
-    vm.mediaStatus.height = e.height;
-    vm.mediaStatus.resolution = e.resolution;
-    vm.mediaStatus['device-type'] = e.deviceType;
-    vm.mediaStatus['aspect-ratio'] = e.aspectRatio;
-    vm.mediaStatus['device-width'] = e.deviceWidth;
-    vm.mediaStatus['device-height'] = e.deviceHeight;
-    vm.mediaStatus['round-screen'] = e.roundScreen;
-    vm.mediaStatus['dark-mode'] = e.darkMode;
-    const css = vm.vmOptions && vm.vmOptions.style || {};
+    vm._mediaStatus.orientation = e.orientation;
+    vm._mediaStatus.width = e.width;
+    vm._mediaStatus.height = e.height;
+    vm._mediaStatus.resolution = e.resolution;
+    vm._mediaStatus['device-type'] = e['device-type'];
+    vm._mediaStatus['aspect-ratio'] = e['aspect-ratio'];
+    vm._mediaStatus['device-width'] = e['device-width'];
+    vm._mediaStatus['device-height'] = e['device-height'];
+    vm._mediaStatus['round-screen'] = e['round-screen'];
+    vm._mediaStatus['dark-mode'] = e['dark-mode'];
+    const css = vm._vmOptions && vm._vmOptions.style || {};
     const mqArr = css['@MEDIA'];
     if (!mqArr) {
       return;
     }
-    if (e.isInit && vm.init) {
+    if (e.isInit && vm._init) {
       return;
     }
-    vm.init = true;
+    vm._init = true;
     resetElementStyle(vm, e.currentTarget);
     e.currentTarget.addEvent('show');
   }
@@ -492,11 +556,11 @@ function compileNativeComponent(vm: Vm, template: TemplateInterface, dest: FragB
     };
   }
 
-  if (!vm.rootEl) {
-    vm.rootEl = element;
+  if (!vm._rootEl) {
+    vm._rootEl = element;
 
     // Bind event earlier because of lifecycle issues.
-    const binding: any = vm.externalBinding || {};
+    const binding: any = vm._externalBinding || {};
     const target = binding.template;
     const parentVm = binding.parent;
     if (target && target.events && parentVm && element) {
@@ -511,7 +575,7 @@ function compileNativeComponent(vm: Vm, template: TemplateInterface, dest: FragB
     bindPageLifeCycle(vm, element);
     element.setCustomFlag();
     element.customFlag = true;
-    vm.init = true;
+    vm._init = true;
     element.addEvent('viewsizechanged', handleViewSizeChanged);
   }
 
@@ -529,7 +593,7 @@ function compileNativeComponent(vm: Vm, template: TemplateInterface, dest: FragB
     element.attr.append = template.append;
   }
   let treeMode = template.append === 'tree';
-  const app: any = vm.app || {};
+  const app: any = vm._app || {};
 
   // Record the parent node of treeMode, used by class selector.
   if (treeMode) {
@@ -559,7 +623,7 @@ function compileNativeComponent(vm: Vm, template: TemplateInterface, dest: FragB
  * @return {void | boolean} If there is no children, return null. Return true if has node.
  */
 function compileChildren(vm: Vm, template: any, dest: Element | FragBlockInterface): void | boolean {
-  const app: any = vm.app || {};
+  const app: any = vm._app || {};
   const children = template.children;
   if (children && children.length) {
     children.every((child) => {
@@ -614,6 +678,7 @@ function bindRepeat(vm: Vm, target: TemplateInterface, fragBlock: FragBlockInter
 
       // Remove unused element foreach old item.
       const reusedList: any[] = [];
+      const cacheList: any[] = [];
       oldData.forEach((item, index) => {
         const key = trackBy && item[trackBy] !== undefined ? item[trackBy] : index;
         if (hasOwn(trackMap, key)) {
@@ -624,7 +689,10 @@ function bindRepeat(vm: Vm, target: TemplateInterface, fragBlock: FragBlockInter
           };
           reusedList.push(item);
         } else {
-          removeTarget(oldChildren[index]);
+          cacheList.push({
+            target: oldChildren[index],
+            vm: oldVms[index]
+          });
         }
       });
 
@@ -651,10 +719,25 @@ function bindRepeat(vm: Vm, target: TemplateInterface, fragBlock: FragBlockInter
           reused.vm[keyName] = index;
           fragBlock.updateMark = reused.target;
         } else {
-          compileItem(item, index, vm);
+          if (cacheList.length > 0) {
+            const reusedItem = cacheList[0];
+            cacheList.shift();
+            moveTarget(reusedItem.target, fragBlock.updateMark);
+            children.push(reusedItem.target);
+            vms.push(reusedItem.vm);
+            reusedItem.vm[valueName] = item;
+
+            reusedItem.vm[keyName] = index;
+            fragBlock.updateMark = reusedItem.target;
+          } else {
+            compileItem(item, index, vm);
+          }
         }
       });
       delete fragBlock.updateMark;
+      cacheList.forEach((item) => {
+        removeTarget(item.target);
+      });
     }
   );
   if (list && Array.isArray(list)) {
@@ -709,7 +792,7 @@ function bindShown(
  * @return {*} Init value of calc.
  */
 function watchBlock(vm: Vm, fragBlock: FragBlockInterface, calc: Function, type: string, handler: Function): any {
-  const differ = vm && vm.app && vm.app.differ;
+  const differ = vm && vm._app && vm._app.differ;
   const config: Partial<ConfigInterface> = {};
   const newWatcher = newWatch(vm, calc, (value) => {
     config.latestValue = value;
@@ -735,11 +818,11 @@ function watchBlock(vm: Vm, fragBlock: FragBlockInterface, calc: Function, type:
  */
 function mergeContext(context: Vm, mergedData: object): any {
   const newContext = Object.create(context);
-  newContext._data = mergedData;
-  newContext._shareData = {};
+  newContext.__data = mergedData;
+  newContext.__shareData = {};
   initData(newContext);
   initComputed(newContext);
-  newContext._realParent = context;
+  newContext.__realParent = context;
   return newContext;
 }
 

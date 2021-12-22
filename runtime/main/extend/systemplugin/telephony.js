@@ -1,4 +1,4 @@
-import {paramMock} from "./utils"
+import { paramMock } from "./utils"
 
 const CallState = "[PC Preview] unknow CallState";
 export function mockCall() {
@@ -459,7 +459,7 @@ export function mockCall() {
                 })
             }
         },
-        setCallRestriction :function (...args) {
+        setCallRestriction: function (...args) {
             console.warn("telephony.call.setCallRestriction interface mocked in the Previewer. How this interface works on the Previewer may" +
                 " be different from that on a real device.")
             const len = args.length
@@ -681,17 +681,17 @@ const NetworkState = {
 }
 const SignalInformation = {
     signalType: "[PC Preview] unknow signalType",
-    signalLevel:"[PC Preview] unknow signalLevel"
+    signalLevel: "[PC Preview] unknow signalLevel"
 }
 const DataFlowType = "[PC Preview] unknow DataFlowType"
 const DataConnectState = "[PC Preview] unknow DataConnectState"
 const CellInformation = {
     networkType: "[PC Preview] unknow networkType",
     isCamped: "[PC Preview] unknow isCamped",
-    timeStamp:"[PC Preview] unknow timeStamp",
-    signalInformation:"[PC Preview] unknow signalInformation",
-    data:"[PC Preview] unknow unkown data"
-  }
+    timeStamp: "[PC Preview] unknow timeStamp",
+    signalInformation: "[PC Preview] unknow signalInformation",
+    data: "[PC Preview] unknow unkown data"
+}
 export function mockRadio() {
     const NetworkSearchResult = {
         isNetworkSearchSuccess: "[PC Preview] unknow isNetworkSearchSuccess",
@@ -703,7 +703,7 @@ export function mockRadio() {
         }]
     }
     const PreferredNetworkMode = "[PC Preview] unknow PreferredNetworkMode"
-    const NrOptionMode ="[PC Preview] unknow NrOptionMode"
+    const NrOptionMode = "[PC Preview] unknow NrOptionMode"
     const NetworkSelectionMode = "[PC Preview] unknow unkown NetworkSelectionMode"
     global.systemplugin.telephony.radio = {
         getRadioTech: function (...args) {
@@ -954,6 +954,18 @@ export function mockRadio() {
             } else {
                 return new Promise((resolve, reject) => {
                     resolve(PreferredNetworkMode);
+                })
+            }
+        },
+        getIMEISV: function (...args) {
+            console.warn("telephony.radio.getIMEISV interface mocked in the Previewer. How this interface works on the Previewer may" +
+                " be different from that on a real device.")
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve(paramMock.paramStringMock);
                 })
             }
         }
@@ -1637,7 +1649,7 @@ export function mockObserver() {
     }
     global.systemplugin.telephony.observer = {
         on: function (...args) {
-            console.warn("telephony.on interface mocked in the Previewer. How this interface works on the Previewer may " +
+            console.warn("telephony.observer.on interface mocked in the Previewer. How this interface works on the Previewer may " +
                 "be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
@@ -1667,7 +1679,7 @@ export function mockObserver() {
             }
         },
         off: function (...args) {
-            console.warn("telephony.off interface mocked in the Previewer. How this interface works on the Previewer may " +
+            console.warn("telephony.observer.off interface mocked in the Previewer. How this interface works on the Previewer may " +
                 "be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
@@ -1697,7 +1709,7 @@ export function mockObserver() {
             }
         },
         once: function (...args) {
-            console.warn("telephony.once interface mocked in the Previewer. How this interface works on the Previewer may " +
+            console.warn("telephony.observer.once interface mocked in the Previewer. How this interface works on the Previewer may " +
                 "be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {

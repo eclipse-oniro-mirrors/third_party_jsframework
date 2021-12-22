@@ -30,7 +30,8 @@ export {
   remove,
   hasOwn,
   isObject,
-  isPlainObject
+  isPlainObject,
+  bufferToBase64
 } from '../main/util/shared';
 
 export {

@@ -26,13 +26,17 @@ import Node from './Node';
 import NativeElementClassFactory from './NativeElementClassFactory';
 import Document from './Document';
 import { TaskCenter } from '../main/manage/event/TaskCenter';
-import { FragBlockInterface } from '../main/model/compiler';
+import { FragBlockInterface,
+  TemplateInterface,
+  compileCustomComponent,
+  targetIsComposed
+} from '../main/model/compiler';
 import Vm from '../main/model';
 import { CSS_INHERITANCE } from '../main/app/bundle';
-import { interceptCallback } from '../main/manage/event/callbackIntercept';
-import { mockwebgl } from '../main/extend/systemplugin/napi/webgl';
-import { mockwebgl2 } from '../main/extend/systemplugin/napi/webgl2';
-
+import {interceptCallback} from '../main/manage/event/callbackIntercept';
+import {mockwebgl} from '../main/extend/systemplugin/napi/webgl';
+import {mockwebgl2} from '../main/extend/systemplugin/napi/webgl2';
+import { VmOptions } from '../main/model/vmOptions';
 /**
  * Element is a basic class to describe a tree node in vdom.
  * @extends Node
@@ -43,18 +47,21 @@ class Element extends Node {
   private _event: any;
   private _idStyle: any;
   private _tagStyle: any;
+  private _universalStyle: any;
   private _id: string | null;
   private _classList: any[];
   private _block: FragBlockInterface;
   private _vm: Vm;
   private _isCustomComponent: boolean;
   private _inheritedStyle: object;
+  private _target:TemplateInterface;
 
   protected _children: Node[];
   protected _pureChildren: Element[];
   protected _role: string;
   protected _attr: any;
   protected _dataSet: any;
+  protected _isFirstDyanmicName: boolean;
 
   constructor(type = 'div', props:any = {}, isExtended: boolean = false) {
     super();
@@ -97,6 +104,7 @@ class Element extends Node {
     this._event = {};
     this._idStyle = {};
     this._tagStyle = {};
+    this._universalStyle = {};
     this._id = null;
     this._classList = [];
     this._children = [];
@@ -104,6 +112,7 @@ class Element extends Node {
     this._isCustomComponent = false;
     this._inheritedStyle = {};
     this._dataSet = {};
+    this._isFirstDyanmicName = true;
   }
 
   /**
@@ -163,11 +172,19 @@ class Element extends Node {
   }
 
   /**
-   * Style object of this Element, which keys is style name, and values is style values.
+   * Class style object of this Element, which keys is style name, and values is style values.
    * @type {JSON}
    */
   public get classStyle() {
     return this._classStyle;
+  }
+
+  /**
+   * Id style object of this Element, which keys is style name, and values is style values.
+   * @type {JSON}
+   */
+  public get idStyle() {
+    return this._idStyle;
   }
 
   /**
@@ -267,6 +284,18 @@ class Element extends Node {
   }
 
   /**
+     * target object of this Element.
+     * @type {Object}
+     */
+  public set target(target: TemplateInterface) {
+    this._target = target;
+  }
+
+  public get target() {
+    return this._target;
+  }
+
+  /**
    * Get TaskCenter instance by id.
    * @param {string} id
    * @return {TaskCenter} TaskCenter
@@ -288,7 +317,9 @@ class Element extends Node {
     if (this._docId) {
       child.docId = this._docId;
       child.ownerDocument = this._ownerDocument;
-      child.ownerDocument.nodeMap[child.nodeId] = child;
+      if (child.ownerDocument) {
+        child.ownerDocument.nodeMap[child.nodeId] = child;
+      }
       child.depth = this._depth + 1;
     }
     if (child.nodeType === Node.NodeType.Element) {
@@ -656,6 +687,26 @@ class Element extends Node {
       result[key] = value;
       taskCenter.send('dom', { action: 'updateAttrs' }, [this.ref, result]);
     }
+
+    if (this._type === 'compontent' && key === 'name') {
+      if (this._isFirstDyanmicName === true) {
+        Log.info('compontent first setAttr name = ' + value);
+        this._isFirstDyanmicName = false;
+      } else {
+        Log.info('compontent second setAttr name,' + value);
+        if (taskCenter) {
+          const node = this._nextSibling;
+          taskCenter.send('dom', { action: 'removeElement' }, [node.ref]);
+        }
+        const parentNode = this._parentNode as Element;
+        const component: VmOptions | null = targetIsComposed(this._vm, value.toString());
+        const meta = {};
+        if (component) {
+          compileCustomComponent(this._vm, component, this._target, parentNode, value.toString(), meta);
+          return;
+        }
+      }
+    }
   }
 
   /**
@@ -732,9 +783,7 @@ class Element extends Node {
     this._idStyle[key] = value;
     const taskCenter = this.getTaskCenter(this.docId);
     if (!silent && taskCenter) {
-      const result = {};
-      result[key] = value;
-      taskCenter.send('dom', { action: 'updateStyle' }, [this.ref, result]);
+      taskCenter.send('dom', { action: 'updateStyle' }, [this.ref, this._idStyle]);
       if (CSS_INHERITANCE.includes(key)) {
         this.broadcastStyle();
       }
@@ -762,6 +811,24 @@ class Element extends Node {
       result[key] = value;
       taskCenter.send('dom', { action: 'updateStyle' }, [this.ref, result]);
     }
+  }
+
+  public setUniversalStyle(key: string, value: string | number, silent: boolean = false): void {
+    if (this._universalStyle[key] === value && silent !== false) {
+      return;
+    }
+    // If inline id class style has define return.
+    if (this.style[key] || this._idStyle[key] || this._classStyle[key] || this._tagStyle[key]) {
+      return;
+    }
+    this._universalStyle[key] = value;
+    const taskCenter = this.getTaskCenter(this.docId);
+    if (!silent && taskCenter) {
+      const result = {};
+      result[key] = value;
+      taskCenter.send('dom', { action: 'updateStyle' }, [this.ref, result]);
+    }
+
   }
 
   /**
@@ -853,6 +920,7 @@ class Element extends Node {
   public toStyle(): any {
     // Selector Specificity  inline > #id > .class > tag > inheritance.
     const style = Object.assign({}, this._inheritedStyle);
+    this.assignStyle(style, this._universalStyle);
     this.assignStyle(style, this._tagStyle);
     this.assignStyle(style, this._classStyle);
     this.assignStyle(style, this._idStyle);
@@ -956,6 +1024,7 @@ class Element extends Node {
     this._event = {};
     this._idStyle = {};
     this._tagStyle = {};
+    this._universalStyle = {};
     this._classList.length = 0;
 
     if (this.destroyHook) {
@@ -1057,7 +1126,9 @@ class Element extends Node {
 
   private registerNode(node) {
     const doc = this._ownerDocument;
-    doc.nodeMap[node.nodeId] = node;
+    if (doc) {
+      doc.nodeMap[node.nodeId] = node;
+    }
   }
 }
 

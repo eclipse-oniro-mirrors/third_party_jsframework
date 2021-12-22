@@ -40,9 +40,9 @@ describe('api of communication between vm and data methods', () => {
     orientation: 1,
     width: 1,
     height: 1,
-    aspectRatio: 1,
-    deviceWidth: 1,
-    deviceHeight: 1,
+    'aspect-ratio': 1,
+    'device-width': 1,
+    'device-height': 1,
     resolution: 1,
     accessType: 1
   };
@@ -87,8 +87,8 @@ describe('api of communication between vm and data methods', () => {
     'parent',
     null,
     {
-      _app: page,
-      _rootVm: true
+      __app: page,
+      __rootVm: true
     },
     null,
     null,
@@ -97,24 +97,24 @@ describe('api of communication between vm and data methods', () => {
 
   const spyParent = sinon.spy();
   const spyChild = sinon.spy();
-  const subVm = vm.childrenVms[0];
+  const subVm = vm._childrenVms[0];
   vm.$on('event1', spyParent);
   subVm.$on('event1', spyChild);
 
   it('$on && $off', () => {
     const fn = function() {};
     vm.$on('event1', fn);
-    expect(vm.vmEvents['event1'].length).eql(2);
-    expect(typeof vm.vmEvents['event1'][1]).eql('function');
+    expect(vm._vmEvents['event1'].length).eql(2);
+    expect(typeof vm._vmEvents['event1'][1]).eql('function');
 
     vm.$off('event1', fn);
-    expect(vm.vmEvents['event1'].length).eql(1);
-    expect(typeof vm.vmEvents['event1'][1]).eql('undefined');
+    expect(vm._vmEvents['event1'].length).eql(1);
+    expect(typeof vm._vmEvents['event1'][1]).eql('undefined');
   });
 
   it('$emit', () => {
-    expect(vm.type).eql('parent');
-    expect(subVm.type).eql('child');
+    expect(vm._type).eql('parent');
+    expect(subVm._type).eql('child');
 
     let detail = { lunch: 'banana' };
     vm.$emit('event1', detail);
@@ -164,15 +164,15 @@ describe('api of communication between vm and data methods', () => {
   });
 
   it('$root', () => {
-    expect(subVm.$root().type).eql('parent');
+    expect(subVm.$root()._type).eql('parent');
   });
 
   it('$parent', () => {
-    expect(subVm.$parent().type).eql('parent');
+    expect(subVm.$parent()._type).eql('parent');
   });
 
   it('$child', () => {
-    expect(vm.$child('myChild').type).eql('child');
+    expect(vm.$child('myChild')._type).eql('child');
   });
 
   it('$element', () => {
@@ -199,13 +199,13 @@ describe('api of communication between vm and data methods', () => {
     };
 
     const app = { doc, customComponentMap, differ, options };
-    const vm = new Vm('foo', customComponentMap.foo, { _app: app, _rootVm: true }, null, data, null);
+    const vm = new Vm('foo', customComponentMap.foo, { __app: app, __rootVm: true }, null, data, null);
     doc.destroy();
     const detail = { aaa: 1 };
     vm.$set('test.aaa', detail);
-    expect(typeof vm.__data['test.aaa']).eql('object');
+    expect(typeof vm._data['test.aaa']).eql('object');
     vm.$delete('test.aaa');
-    expect(typeof vm.__data['test.aaa']).eql('undefined');
+    expect(typeof vm._data['test.aaa']).eql('undefined');
   });
 
   it('$watch', () => {
@@ -222,8 +222,8 @@ describe('api of communication between vm and data methods', () => {
     };
 
     const app = { doc, customComponentMap, differ, options };
-    const vm = new Vm('foo', customComponentMap.foo, { _app: app, _rootVm: true }, null, data, null);
-    expect(vm.app).to.deep.equal(app);
+    const vm = new Vm('foo', customComponentMap.foo, { __app: app, __rootVm: true }, null, data, null);
+    expect(vm._app).to.deep.equal(app);
     expect(typeof doc.body).eql('object');
 
     data.x.y = 5;
