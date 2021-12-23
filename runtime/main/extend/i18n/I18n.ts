@@ -171,7 +171,7 @@ class I18n {
         return '';
       });
     } else if (Object.prototype.toString.call(params) === '[object Number]') {
-      value = value.replace(/\{count\}/g, params);
+      value = value.replace(/\{count\}/g, params.toLocaleString(this.locale.replace('_', '-')));
     } else {
       return value;
     }

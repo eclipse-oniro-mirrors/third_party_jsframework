@@ -1,8 +1,8 @@
 import { paramMock } from "./utils"
 
 export const windowPropertiesMock = {
-  windowRect:'[PC preview] unknow windowRect',
-  type:'[PC preview] unknow type',
+  windowRect: '[PC preview] unknow windowRect',
+  type: '[PC preview] unknow type',
   brightness: '[PC preview] unknow brightness',
   isTransparent: '[PC preview] unknow isTransparent',
   isFullScreen: '[PC preview] unknow isFullScreen',
@@ -29,7 +29,7 @@ export const AvoidAreaMock = {
 export const windowMock = {
   setBrightness: function (...args) {
     console.warn("Window.setBrightness interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -41,7 +41,7 @@ export const windowMock = {
   },
   setBackgroundColor: function (...args) {
     console.warn("Window.setBackgroundColor interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -53,7 +53,7 @@ export const windowMock = {
   },
   setTransparent: function (...args) {
     console.warn("Window.setTransparent interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -65,7 +65,7 @@ export const windowMock = {
   },
   setFullScreen: function (...args) {
     console.warn("Window.setFullScreen interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -77,7 +77,7 @@ export const windowMock = {
   },
   setKeepScreenOn: function (...args) {
     console.warn("Window.setKeepScreenOn interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -89,7 +89,7 @@ export const windowMock = {
   },
   setDimBehind: function (...args) {
     console.warn("Window.setDimBehind interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -101,7 +101,7 @@ export const windowMock = {
   },
   setLayoutFullScreen: function (...args) {
     console.warn("Window.setLayoutFullScreen interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -113,7 +113,7 @@ export const windowMock = {
   },
   setFocusable: function (...args) {
     console.warn("Window.setFocusable interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -125,7 +125,7 @@ export const windowMock = {
   },
   setTouchable: function (...args) {
     console.warn("Window.setTouchable interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -137,7 +137,7 @@ export const windowMock = {
   },
   setPrivacyMode: function (...args) {
     console.warn("Window.setPrivacyMode interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -149,7 +149,7 @@ export const windowMock = {
   },
   setSystemBarEnable: function (...args) {
     console.warn("Window.setSystemBarEnable interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -161,7 +161,7 @@ export const windowMock = {
   },
   setSystemBarProperties: function (...args) {
     console.warn("Window.setSystemBarProperties interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -173,7 +173,7 @@ export const windowMock = {
   },
   getProperties: function (...args) {
     console.warn("Window.getProperties interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, windowPropertiesMock)
@@ -185,7 +185,7 @@ export const windowMock = {
   },
   getAvoidArea: function (...args) {
     console.warn("Window.getAvoidArea interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, AvoidAreaMock)
@@ -197,7 +197,7 @@ export const windowMock = {
   },
   moveTo: function (...args) {
     console.warn("Window.moveTo interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -209,7 +209,7 @@ export const windowMock = {
   },
   resetSize: function (...args) {
     console.warn("Window.resetSize interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -221,7 +221,7 @@ export const windowMock = {
   },
   loadContent: function (...args) {
     console.warn("Window.loadContent interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -233,7 +233,7 @@ export const windowMock = {
   },
   hide: function (...args) {
     console.warn("Window.hide interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -245,7 +245,7 @@ export const windowMock = {
   },
   show: function (...args) {
     console.warn("Window.show interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -257,7 +257,7 @@ export const windowMock = {
   },
   isShowing: function (...args) {
     console.warn("Window.isShowing interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
@@ -269,7 +269,7 @@ export const windowMock = {
   },
   destroy: function (...args) {
     console.warn("Window.destroy interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -281,7 +281,7 @@ export const windowMock = {
   },
   setOutsideTouchable: function (...args) {
     console.warn("Window.setOutsideTouchable interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+      " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -293,15 +293,19 @@ export const windowMock = {
   },
   on: function (...args) {
     console.warn("Window.on interface mocked in the Previewer. How this interface works on the Previewer may be" +
-        " different from that on a real device.")
+      " different from that on a real device.")
     const len = args.length
-    args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+    }
   },
   off: function (...args) {
     console.warn("Window.off interface mocked in the Previewer. How this interface works on the Previewer may be" +
-        " different from that on a real device.")
+      " different from that on a real device.")
     const len = args.length
-    args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+    }
   },
 }
 export function mockWindow() {
@@ -317,7 +321,7 @@ export function mockWindow() {
   global.systemplugin.window = {
     getTopWindow: function (...args) {
       console.warn("window.getTopWindow interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, windowMock)
@@ -329,7 +333,7 @@ export function mockWindow() {
     },
     create: function (...args) {
       console.warn("Window.create interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
+        " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, windowMock)
@@ -341,7 +345,7 @@ export function mockWindow() {
     },
     find: function (...args) {
       console.warn("Window.find interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
+        " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, windowMock)
@@ -351,8 +355,8 @@ export function mockWindow() {
         })
       }
     },
-    getWindowMode: function (...args) {
-      console.warn("Window.getWindowMode interface mocked in the Previewer. How this interface works on the Previewer" +
+    getAbilityWindowMode: function (...args) {
+      console.warn("Window.getAbilityWindowMode interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {

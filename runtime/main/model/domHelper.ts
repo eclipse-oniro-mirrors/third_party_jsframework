@@ -38,7 +38,7 @@ import { emitSubVmLife } from './pageLife';
  * @return {Node} Body of Node by type.
  */
 export function createBody(vm: Vm, type: string): Node {
-  const doc = vm.app.doc;
+  const doc = vm._app.doc;
   return doc.createBody(type);
 }
 
@@ -49,7 +49,7 @@ export function createBody(vm: Vm, type: string): Node {
  * @return {Element} Element of Node by type.
  */
 export function createElement(vm: Vm, type: string): Element {
-  const doc = vm.app.doc;
+  const doc = vm._app.doc;
   return doc.createElement(type);
 }
 
@@ -95,7 +95,7 @@ let lastestBlockId = 1;
  * @return {Comment} A block starter.
  */
 function createBlockStart(vm: Vm): Comment {
-  const doc = vm.app.doc;
+  const doc = vm._app.doc;
   const anchor = doc.createComment('start');
   return anchor;
 }
@@ -106,7 +106,7 @@ function createBlockStart(vm: Vm): Comment {
  * @return {Comment} A block starter.
  */
 function createBlockEnd(vm: Vm): Comment {
-  const doc = vm.app.doc;
+  const doc = vm._app.doc;
   const anchor = doc.createComment('end');
   anchor.destroyHook = function() {
     if (anchor.watchers !== undefined) {

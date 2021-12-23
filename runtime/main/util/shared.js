@@ -78,3 +78,19 @@ export function isObject(any) {
 export function isPlainObject(any) {
   return Object.prototype.toString.call(any) === '[object Object]';
 }
+
+/**
+ * Convert ArrayBuffer to Base64.
+ * @param {*} buffer - Binary data buffer.
+ * @return {string} Base64 encoding string.
+ */
+export function bufferToBase64 (buffer) {
+  if (typeof btoa !== 'function') {
+    return '';
+  }
+  const string = Array.prototype.map.call(
+    new Uint8Array(buffer),
+    code => String.fromCharCode(code)
+  ).join('');
+  return btoa(string);
+}

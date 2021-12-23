@@ -18,9 +18,9 @@ export function initState (vm) {
 }
 
 export function initData (vm) {
-  let data = vm._data;
+  let data = vm.__data;
   initDataSegment(vm, data);
-  let shareData = vm._shareData;
+  let shareData = vm.__shareData;
   initDataSegment(vm, shareData);
 }
 
@@ -40,7 +40,7 @@ export function initDataSegment (vm, data) {
 }
 
 export function initBases(vm) {
-  const options = vm.vmOptions
+  const options = vm.__vmOptions
   // mixins exist?
   if(hasOwn(options, 'mixins')) {
     options['mixins'].forEach(mixin => {
@@ -63,7 +63,7 @@ function noop () {
 }
 
 export function initComputed (vm) {
-  const computed = vm._computed;
+  const computed = vm.__computed;
   if (computed) {
     for (let key in computed) {
       const userDef = computed[key];
@@ -105,7 +105,7 @@ function makeComputedGetter (getter, owner) {
 }
 
 export function initMethods (vm) {
-  const options = vm._vmOptions;
+  const options = vm.__vmOptions;
   for (let key in options) {
     if (typeof options[key] === 'function' && key !== 'data') {
       vm._methods[key] = options[key].bind(vm);
@@ -119,10 +119,10 @@ function proxyMethods(vm, key) {
     configurable: true,
     enumerable: true,
     get: function proxyGetter () {
-      return vm._methods[key];
+      return vm.__methods[key];
     },
     set: function proxySetter(newValue) {
-      vm._methods[key] = typeof newValue === 'function' && key !== 'data' ?
+      vm.__methods[key] = typeof newValue === 'function' && key !== 'data' ?
         newValue.bind(vm) : newValue;
     }
   })

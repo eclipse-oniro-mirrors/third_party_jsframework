@@ -26,78 +26,78 @@ const ResultSetMock = {
   isClose: "[PC Preview] unknow isClose",
   getColumnIndex: function (...args) {
     console.warn("ResultSet.getColumnIndex interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramNumberMock;
   },
   getColumnName: function (...args) {
     console.warn("ResultSet.getColumnName interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramStringMock;
   },
   goTo: function (...args) {
     console.warn("ResultSet.goTo interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramBooleanMock;
   },
   goToRow: function (...args) {
     console.warn("ResultSet.goToRow interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramBooleanMock;
   },
   goToLastRow: function (...args) {
     console.warn("ResultSet.goToLastRow interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramBooleanMock;
   },
   goToFirstRow: function (...args) {
     console.warn("ResultSet.goToFirstRow interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramBooleanMock;
   },
   goToNextRow: function (...args) {
     console.warn("ResultSet.goToNextRow interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramBooleanMock;
   },
   goToPreviousRow: function (...args) {
     console.warn("ResultSet.goToPreviousRow interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramBooleanMock;
   },
   getBlob: function (...args) {
     console.warn("ResultSet.getBlob interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramArrayMock;
   },
   getString: function (...args) {
     console.warn("ResultSet.getString interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramStringMock;
   },
   getLong: function (...args) {
     console.warn("ResultSet.getLong interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramNumberMock;
   },
   getDouble: function (...args) {
     console.warn("ResultSet.getDouble interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramNumberMock;
   },
   isColumnNull: function (...args) {
     console.warn("ResultSet.isColumnNull interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramBooleanMock;
   },
   close: function () {
     console.warn("ResultSet.isColumnNull interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
   }
 }
 const DataAbilityHelperMock = {
   openFile: function (...args) {
     console.warn("DataAbilityHelper.openFile interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -109,7 +109,7 @@ const DataAbilityHelperMock = {
   },
   on: function (...args) {
     console.warn("DataAbilityHelper.on interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -117,7 +117,7 @@ const DataAbilityHelperMock = {
   },
   off: function (...args) {
     console.warn("DataAbilityHelper.off interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -125,7 +125,7 @@ const DataAbilityHelperMock = {
   },
   call: function (...args) {
     console.warn("DataAbilityHelper.call interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, PacMapTypeMock)
@@ -137,7 +137,7 @@ const DataAbilityHelperMock = {
   },
   getType: function (...args) {
     console.warn("DataAbilityHelper.getType interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
@@ -149,7 +149,7 @@ const DataAbilityHelperMock = {
   },
   getFileTypes: function (...args) {
     console.warn("DataAbilityHelper.getFileTypes interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, getFileTypesArrayMock)
@@ -161,7 +161,7 @@ const DataAbilityHelperMock = {
   },
   normalizeUri: function (...args) {
     console.warn("DataAbilityHelper.normalizeUri interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
@@ -173,7 +173,7 @@ const DataAbilityHelperMock = {
   },
   denormalizeUri: function (...args) {
     console.warn("DataAbilityHelper.denormalizeUri interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
@@ -185,7 +185,7 @@ const DataAbilityHelperMock = {
   },
   notifyChange: function (...args) {
     console.warn("DataAbilityHelper.notifyChange interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -197,7 +197,7 @@ const DataAbilityHelperMock = {
   },
   insert: function (...args) {
     console.warn("DataAbilityHelper.insert interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -209,7 +209,7 @@ const DataAbilityHelperMock = {
   },
   batchInsert: function (...args) {
     console.warn("DataAbilityHelper.batchInsert interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -221,7 +221,7 @@ const DataAbilityHelperMock = {
   },
   delete: function (...args) {
     console.warn("DataAbilityHelper.delete interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -233,7 +233,7 @@ const DataAbilityHelperMock = {
   },
   update: function (...args) {
     console.warn("DataAbilityHelper.update interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -245,7 +245,7 @@ const DataAbilityHelperMock = {
   },
   query: function (...args) {
     console.warn("DataAbilityHelper.query interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, ResultSetMock)
@@ -257,7 +257,7 @@ const DataAbilityHelperMock = {
   },
   executeBatch: function (...args) {
     console.warn("DataAbilityHelper.executeBatch interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, DataAbilityResultArrayMock)
@@ -287,9 +287,9 @@ export function mockAbilityFeatureAbility() {
     want: WantMock
   }
   const ContinuationStateMock = {
-    LOCAL_RUNNING : '0',
-    REMOTE_RUNNING : '1',
-    REPLICA_RUNNING : '2'
+    LOCAL_RUNNING: '0',
+    REMOTE_RUNNING: '1',
+    REPLICA_RUNNING: '2'
   }
   const PermissionRequestResultMock = {
     requestCode: "[PC Preview] unknow requestCode",
@@ -320,7 +320,7 @@ export function mockAbilityFeatureAbility() {
     permissions: ["[PC Preview] unknow permission", "[PC Preview] unknow permission"],
     moduleInfo: [ModuleInfoMock],
     entryDir: "[PC Preview] unknow entryDir",
-    customizeData:new Map([["[PC Preview] unknow customizeDataKey", CustomizeDataMock]])
+    customizeData: new Map([["[PC Preview] unknow customizeDataKey", CustomizeDataMock]])
   }
   const AbilityInfoMock = {
     bundleName: "[PC Preview] unknow bundleName",
@@ -391,7 +391,7 @@ export function mockAbilityFeatureAbility() {
   const ContextMock = {
     getCacheDir: function (...args) {
       console.warn("Context.getCacheDir interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
@@ -403,7 +403,7 @@ export function mockAbilityFeatureAbility() {
     },
     getFilesDir: function (...args) {
       console.warn("Context.getFilesDir interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
@@ -415,7 +415,7 @@ export function mockAbilityFeatureAbility() {
     },
     getExternalCacheDir: function (...args) {
       console.warn("Context.getExternalCacheDir interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
+        " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
@@ -427,7 +427,7 @@ export function mockAbilityFeatureAbility() {
     },
     getOrCreateLocalDir: function (...args) {
       console.warn("Context.getOrCreateLocalDir interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
@@ -439,7 +439,7 @@ export function mockAbilityFeatureAbility() {
     },
     getOrCreateDistributedDir: function (...args) {
       console.warn("Context.getOrCreateDistributedDir interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
@@ -451,7 +451,7 @@ export function mockAbilityFeatureAbility() {
     },
     verifyPermission: function (...args) {
       console.warn("Context.verifyPermission interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -463,7 +463,7 @@ export function mockAbilityFeatureAbility() {
     },
     compelVerifyPermission: function (...args) {
       console.warn("Context.compelVerifyPermission interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -475,7 +475,7 @@ export function mockAbilityFeatureAbility() {
     },
     authUriAccessPermission: function (...args) {
       console.warn("Context.authUriAccessPermission interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -487,7 +487,7 @@ export function mockAbilityFeatureAbility() {
     },
     unauthUriAccessPermission: function (...args) {
       console.warn("Context.unauthUriAccessPermission interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -499,7 +499,7 @@ export function mockAbilityFeatureAbility() {
     },
     requestPermissionsFromUser: function (...args) {
       console.warn("Context.requestPermissionsFromUser interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, PermissionRequestResultMock)
@@ -511,7 +511,7 @@ export function mockAbilityFeatureAbility() {
     },
     getApplicationInfo: function (...args) {
       console.warn("Context.getApplicationInfo interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, ApplicationInfoMock)
@@ -523,7 +523,7 @@ export function mockAbilityFeatureAbility() {
     },
     getBundleName: function (...args) {
       console.warn("Context.getBundleName interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
@@ -535,7 +535,7 @@ export function mockAbilityFeatureAbility() {
     },
     getDisplayOrientation: function (...args) {
       console.warn("Context.getDisplayOrientation interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -547,7 +547,7 @@ export function mockAbilityFeatureAbility() {
     },
     setDisplayOrientation: function (...args) {
       console.warn("Context.setDisplayOrientation interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -559,7 +559,7 @@ export function mockAbilityFeatureAbility() {
     },
     setShowOnLockScreen: function (...args) {
       console.warn("Context.setShowOnLockScreen interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -571,7 +571,7 @@ export function mockAbilityFeatureAbility() {
     },
     setWakeUpScreen: function (...args) {
       console.warn("Context.setWakeUpScreen interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -583,7 +583,7 @@ export function mockAbilityFeatureAbility() {
     },
     getProcessInfo: function (...args) {
       console.warn("Context.getProcessInfo interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, ProcessInfoMock)
@@ -595,7 +595,7 @@ export function mockAbilityFeatureAbility() {
     },
     getAppType: function (...args) {
       console.warn("Context.getAppType interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
@@ -607,7 +607,7 @@ export function mockAbilityFeatureAbility() {
     },
     getElementName: function (...args) {
       console.warn("Context.getElementName interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, ElementNameMock)
@@ -619,7 +619,7 @@ export function mockAbilityFeatureAbility() {
     },
     getHapModuleInfo: function (...args) {
       console.warn("Context.getHapModuleInfo interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, HapModuleInfoMock)
@@ -631,7 +631,7 @@ export function mockAbilityFeatureAbility() {
     },
     getProcessName: function (...args) {
       console.warn("Context.getProcessName interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
@@ -643,7 +643,7 @@ export function mockAbilityFeatureAbility() {
     },
     getCallingBundle: function (...args) {
       console.warn("Context.getCallingBundle interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
@@ -655,7 +655,7 @@ export function mockAbilityFeatureAbility() {
     },
     printDrawnCompleted: function (...args) {
       console.warn("Context.printDrawnCompleted interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -667,7 +667,7 @@ export function mockAbilityFeatureAbility() {
     },
     isUpdatingConfigurations: function (...args) {
       console.warn("Context.isUpdatingConfigurations interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
@@ -679,7 +679,7 @@ export function mockAbilityFeatureAbility() {
     },
     getAppVersionInfo: function (...args) {
       console.warn("Context.getAppVersionInfo interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, AppVersionInfoMock)
@@ -691,7 +691,7 @@ export function mockAbilityFeatureAbility() {
     },
     getAbilityInfo: function (...args) {
       console.warn("Context.getAbilityInfo interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, AbilityInfoMock)
@@ -703,7 +703,7 @@ export function mockAbilityFeatureAbility() {
     },
     getApplicationContext: function () {
       console.warn("Context.getApplicationContext interface mocked in the Previewer. How this interface works on" +
-          " the Previewer may be different from that on a real device.")
+        " the Previewer may be different from that on a real device.")
       return ContextMock;
     }
   }
@@ -734,12 +734,12 @@ export function mockAbilityFeatureAbility() {
     },
     connectAbility: function (...args) {
       console.warn("ability.featureAbility.connectAbility interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       return paramMock.paramNumberMock;
     },
     disconnectAbility: function (...args) {
       console.warn("ability.featureAbility.disconnectAbility interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -751,12 +751,12 @@ export function mockAbilityFeatureAbility() {
     },
     getContext: function () {
       console.warn("ability.featureAbility.getContext interface mocked in the Previewer. How this interface works on" +
-          " the Previewer may be different from that on a real device.")
+        " the Previewer may be different from that on a real device.")
       return ContextMock;
     },
     startAbilityForResult: function (...args) {
       console.warn("ability.featureAbility.startAbilityForResult interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, AbilityResultMock)
@@ -768,7 +768,7 @@ export function mockAbilityFeatureAbility() {
     },
     terminateSelfWithResult: function (...args) {
       console.warn("ability.featureAbility.terminateSelfWithResult interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -780,7 +780,7 @@ export function mockAbilityFeatureAbility() {
     },
     terminateSelf: function (...args) {
       console.warn("ability.featureAbility.terminateSelf interface mocked in the Previewer. How this interface works on" +
-          " the Previewer may be different from that on a real device.")
+        " the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -792,12 +792,12 @@ export function mockAbilityFeatureAbility() {
     },
     acquireDataAbilityHelper: function (...args) {
       console.warn("ability.featureAbility.acquireDataAbilityHelper mocked in the Previewer. How this interface works on the Previewer may be" +
-          " different from that on a real device.")
+        " different from that on a real device.")
       return DataAbilityHelperMock;
     },
     hasWindowFocus: function (...args) {
       console.warn("ability.featureAbility.hasWindowFocus interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
@@ -809,7 +809,7 @@ export function mockAbilityFeatureAbility() {
     },
     getAbilityMissionId: function (...args) {
       console.warn("ability.featureAbility.getAbilityMissionId interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -821,7 +821,7 @@ export function mockAbilityFeatureAbility() {
     },
     getWindow: function (...args) {
       console.warn("ability.featureAbility.getWindow interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, windowMock)
@@ -833,7 +833,7 @@ export function mockAbilityFeatureAbility() {
     },
     continueAbility: function (...args) {
       console.warn("ability.featureAbility.continueAbility interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -845,7 +845,7 @@ export function mockAbilityFeatureAbility() {
     },
     getContinuationState: function (...args) {
       console.warn("ability.featureAbility.getContinuationState interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, ContinuationStateMock)
@@ -857,7 +857,7 @@ export function mockAbilityFeatureAbility() {
     },
     getOriginalDeviceId: function (...args) {
       console.warn("ability.featureAbility.getOriginalDeviceId interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
@@ -869,7 +869,7 @@ export function mockAbilityFeatureAbility() {
     },
     reverseContinueAbility: function (...args) {
       console.warn("ability.featureAbility.reverseContinueAbility interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -881,11 +881,11 @@ export function mockAbilityFeatureAbility() {
     },
     finishTaskSyncAnimation: function (...args) {
       console.warn("ability.featureAbility.finishTaskSyncAnimation interface mocked in the Previewer. How this interface works on" +
-      " the Previewer may be different from that on a real device.")
+        " the Previewer may be different from that on a real device.")
     },
     setTaskSyncAnimationParams: function (...args) {
       console.warn("ability.featureAbility.setTaskSyncAnimationParams interface mocked in the Previewer. How this interface works on" +
-      " the Previewer may be different from that on a real device.")
+        " the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -897,11 +897,11 @@ export function mockAbilityFeatureAbility() {
     },
     startAssistAbility: function (...args) {
       console.warn("ability.featureAbility.startAssistAbility mocked in the Previewer. How this interface works on the Previewer may be" +
-          " different from that on a real device.")
+        " different from that on a real device.")
     },
     stopAssistAbility: function (...args) {
       console.warn("ability.featureAbility.stopAssistAbility interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -913,7 +913,7 @@ export function mockAbilityFeatureAbility() {
     },
     on: function (...args) {
       console.warn("ability.featureAbility.on interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'assistConnect') {
@@ -927,7 +927,7 @@ export function mockAbilityFeatureAbility() {
     },
     off: function (...args) {
       console.warn("ability.featureAbility.off interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'assistConnect') {
@@ -945,7 +945,7 @@ export function mockAbilityParticleAbility() {
   global.systemplugin.ability.particleAbility = {
     startAbility: function (...args) {
       console.warn("ability.particleAbility.startAbility interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -956,13 +956,13 @@ export function mockAbilityParticleAbility() {
       }
     },
     connectAbility: function (...args) {
-      console.warn("ability.featureAbility.connectAbility interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+      console.warn("ability.particleAbility.connectAbility interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
       return paramMock.paramNumberMock;
     },
     disconnectAbility: function (...args) {
-      console.warn("ability.featureAbility.disconnectAbility interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+      console.warn("ability.particleAbility.disconnectAbility interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -974,7 +974,7 @@ export function mockAbilityParticleAbility() {
     },
     terminateSelf: function (...args) {
       console.warn("ability.particleAbility.terminateSelf interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -986,12 +986,12 @@ export function mockAbilityParticleAbility() {
     },
     acquireDataAbilityHelper: function (...args) {
       console.warn("ability.particleAbility.acquireDataAbilityHelper interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       return DataAbilityHelperMock;
     },
     startBackgroundRunning: function (...args) {
       console.warn("ability.particleAbility.startBackgroundRunning interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -1003,7 +1003,7 @@ export function mockAbilityParticleAbility() {
     },
     cancelBackgroundRunning: function (...args) {
       console.warn("ability.particleAbility.cancelBackgroundRunning interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -1049,9 +1049,9 @@ export function mockAbilityFormManager() {
     entities: "[PC Preview] unknow entities"
   }
   const FormStateMock = {
-    UNKNOWN : '-1',
-    DEFAULT : '0',
-    READY : '1'
+    UNKNOWN: '-1',
+    DEFAULT: '0',
+    READY: '1'
   }
   const FormInfoArrayMock = [
     FormInfoMock
@@ -1063,7 +1063,7 @@ export function mockAbilityFormManager() {
   global.systemplugin.ability.formManager = {
     requestForm: function (...args) {
       console.warn("ability.formManager.requestForm interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -1075,7 +1075,7 @@ export function mockAbilityFormManager() {
     },
     deleteForm: function (...args) {
       console.warn("ability.formManager.deleteForm interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -1087,7 +1087,7 @@ export function mockAbilityFormManager() {
     },
     releaseForm: function (...args) {
       console.warn("ability.formManager.releaseForm interface mocked in the Previewer. How this interface works on the Previewer may" +
-          " be different from that on a real device.")
+        " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
@@ -1099,7 +1099,7 @@ export function mockAbilityFormManager() {
     },
     notifyVisibleForms: function (...args) {
       console.warn("ability.formManager.notifyVisibleForms interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -1111,7 +1111,7 @@ export function mockAbilityFormManager() {
     },
     notifyInvisibleForms: function (...args) {
       console.warn("ability.formManager.notifyInvisibleForms interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -1123,7 +1123,7 @@ export function mockAbilityFormManager() {
     },
     enableFormsUpdate: function (...args) {
       console.warn("ability.formManager.enableFormsUpdate interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -1135,7 +1135,7 @@ export function mockAbilityFormManager() {
     },
     disableFormsUpdate: function (...args) {
       console.warn("ability.formManager.disableFormsUpdate interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -1147,7 +1147,7 @@ export function mockAbilityFormManager() {
     },
     isSystemReady: function (...args) {
       console.warn("ability.formManager.isSystemReady interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
@@ -1159,7 +1159,7 @@ export function mockAbilityFormManager() {
     },
     castTempForm: function (...args) {
       console.warn("ability.formManager.castTempForm interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -1171,7 +1171,7 @@ export function mockAbilityFormManager() {
     },
     deleteInvalidForms: function (...args) {
       console.warn("ability.formManager.deleteInvalidForms interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -1183,7 +1183,7 @@ export function mockAbilityFormManager() {
     },
     acquireFormState: function (...args) {
       console.warn("ability.formManager.acquireFormState interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, AcquireFormStateMock)
@@ -1195,7 +1195,7 @@ export function mockAbilityFormManager() {
     },
     on: function (...args) {
       console.warn("ability.formManager.on interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.paramStringMock)
@@ -1203,7 +1203,7 @@ export function mockAbilityFormManager() {
     },
     off: function (...args) {
       console.warn("ability.formManager.off interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.paramStringMock)
@@ -1211,7 +1211,7 @@ export function mockAbilityFormManager() {
     },
     getAllFormsInfo: function (...args) {
       console.warn("ability.formManager.getAllFormsInfo interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, FormInfoArrayMock)
@@ -1223,7 +1223,7 @@ export function mockAbilityFormManager() {
     },
     getFormsInfo: function (...args) {
       console.warn("ability.formManager.getFormsInfo interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, FormInfoArrayMock)
@@ -1235,7 +1235,7 @@ export function mockAbilityFormManager() {
     },
     updateForm: function (...args) {
       console.warn("ability.formManager.updateForm interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -1256,7 +1256,7 @@ export function mockAbilityContinuationRegisterManager() {
   global.systemplugin.ability.continuationRegisterManager = {
     on: function (...args) {
       console.warn("ability.ContinuationRegisterManager.on interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (args[0] === 'deviceConnect') {
         if (typeof args[len - 1] === 'function') {
@@ -1270,7 +1270,7 @@ export function mockAbilityContinuationRegisterManager() {
     },
     off: function (...args) {
       console.warn("ability.ContinuationRegisterManager.off interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (args[0] === 'deviceConnect') {
         if (typeof args[len - 1] === 'function') {
@@ -1284,7 +1284,7 @@ export function mockAbilityContinuationRegisterManager() {
     },
     register: function (...args) {
       console.warn("ability.ContinuationRegisterManager.register interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -1296,7 +1296,7 @@ export function mockAbilityContinuationRegisterManager() {
     },
     unregister: function (...args) {
       console.warn("ability.ContinuationRegisterManager.unregister interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -1308,7 +1308,7 @@ export function mockAbilityContinuationRegisterManager() {
     },
     updateConnectStatus: function (...args) {
       console.warn("ability.ContinuationRegisterManager.updateConnectStatus interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -1320,7 +1320,7 @@ export function mockAbilityContinuationRegisterManager() {
     },
     showDeviceList: function (...args) {
       console.warn("ability.ContinuationRegisterManager.showDeviceList interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -1332,7 +1332,7 @@ export function mockAbilityContinuationRegisterManager() {
     },
     disconnect: function (...args) {
       console.warn("ability.ContinuationRegisterManager.disconnect interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -1348,22 +1348,22 @@ export function mockAbilityDataUriUtils() {
   global.systemplugin.ability.dataUriUtils = {
     getId: function (...args) {
       console.warn("ability.dataUriUtils.getId interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     attachId: function (...args) {
       console.warn("ability.dataUriUtils.attachId interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       return paramMock.paramStringMock
     },
     deleteId: function (...args) {
       console.warn("ability.dataUriUtils.deleteId interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       return paramMock.paramStringMock
     },
     updateId: function (...args) {
       console.warn("ability.dataUriUtils.updateId interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       return paramMock.paramStringMock
     }
   }
@@ -1372,7 +1372,7 @@ export function mockAbilityAbilityAgent() {
   global.systemplugin.ability.abilityAgent = {
     on: function (...args) {
       console.warn("ability.abilityAgent.on interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'message') {
@@ -1384,7 +1384,7 @@ export function mockAbilityAbilityAgent() {
     },
     off: function (...args) {
       console.warn("ability.abilityAgent.off interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'message') {
@@ -1396,7 +1396,7 @@ export function mockAbilityAbilityAgent() {
     },
     postMessage: function (...args) {
       console.warn("ability.abilityAgent.postMessage interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
@@ -1415,7 +1415,7 @@ export function mockAbilityFormBindingData() {
   global.systemplugin.ability.formBindingData = {
     createFormBindingData: function (...args) {
       console.warn("ability.formBindingData.createFormBindingData interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       return FormBindingDataMock;
     }
   }

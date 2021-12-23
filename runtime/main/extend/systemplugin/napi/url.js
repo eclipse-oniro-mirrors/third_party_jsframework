@@ -1,104 +1,136 @@
-import { paramMock } from "../utils"
+import {paramMock} from '../utils';
 
 export function mockUrl() {
-    const result = {
-        URLSearchParams: function(...args) {
-            console.warn("url.URLSearchParams interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return URLSearchParamsMock;
-        },
-        URL: function(...args) {
-            console.warn("url.URL interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return URLMock;
+  const URLSearchParamsClass = class URLSearchParams {
+    constructor(...args) {
+      console.warn('url.URLSearchParams.constructor interface mocked in the Previewer. How this interface works on' +
+        ' the Previewer' +
+        ' may be different from that on a real device.');
+      this.append = function(...args) {
+        console.warn('url.URLSearchParams.append interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+      };
+      this.delete = function(...args) {
+        console.warn('url.URLSearchParams.delete interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+      };
+      this.getAll = function(...args) {
+        console.warn('url.URLSearchParams.getAll interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+        return [paramMock.paramStringMock];
+      };
+      this.entries = function(...args) {
+        console.warn('url.URLSearchParams.entries interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+        const IteratorTwoStringMock = {
+          *[Symbol.iterator]() {
+            yield [paramMock.paramStringMock, paramMock.paramStringMock];
+          }
+        };
+        return IteratorTwoStringMock;
+      };
+      this.forEach = function(...args) {
+        console.warn('url.URLSearchParams.forEach interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+      };
+      this.get = function(...args) {
+        console.warn('url.URLSearchParams.get interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+        return paramMock.paramStringMock;
+      };
+      this.has = function(...args) {
+        console.warn('url.URLSearchParams.has interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+        return paramMock.paramBooleanMock;
+      };
+      this.set = function(...args) {
+        console.warn('url.URLSearchParams.set interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+      };
+      this.sort = function(...args) {
+        console.warn('url.URLSearchParams.sort interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+      };
+      this.keys = function(...args) {
+        console.warn('url.URLSearchParams.keys interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+        const IteratorStringMock = {
+          *[Symbol.iterator]() {
+            yield paramMock.paramStringMock;
+          }
+        };
+        return IteratorStringMock;
+      };
+      this.values = function(...args) {
+        console.warn('url.URLSearchParams.values interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+        const IteratorStringMock = {
+          *[Symbol.iterator]() {
+            yield paramMock.paramStringMock;
+          }
+        };
+        return IteratorStringMock;
+      };
+      this.toString = function(...args) {
+        console.warn('url.URLSearchParams.toString interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+        return paramMock.paramStringMock;
+      };
+    }
+    [Symbol.iterator]() {
+      console.warn('url.URLSearchParams.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer' +
+        ' may be different from that on a real device.');
+      let index = 0;
+      const IteratorTwoStringMock = {
+        next: () => {
+          if (index < 1) {
+            const returnValue = [paramMock.paramStringMock, paramMock.paramStringMock];
+            index++;
+            return {
+              value: returnValue,
+              done: false
+            };
+          } else {
+            return {
+              done: true
+            };
+          }
         }
+      };
+      return IteratorTwoStringMock;
     }
-    const URLSearchParamsMock = {
-        append: function(...args) {
-            console.warn("URLSearchParams.append interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-        },
-        delete: function(...args) {
-            console.warn("URLSearchParams.delete interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-        },
-        getAll: function(...args) {
-            console.warn("URLSearchParams.getAll interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            var arrStr =  new Array()
-            return arrStr;
-        },
-        entries: function(...args) {
-            console.warn("URLSearchParams.entries interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return paramMock.paramObjectMock;
-        },
-        forEach: function(...args) {
-            console.warn("URLSearchParams.forEach interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-        },
-        get: function(...args) {
-            console.warn("URLSearchParams.get interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return paramMock.paramStringMock;
-        },
-        has: function(...args) {
-            console.warn("URLSearchParams.has interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return paramMock.paramBooleanMock;
-        },
-        set: function(...args) {
-            console.warn("URLSearchParams.set interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-        },
-        sort: function(...args) {
-            console.warn("URLSearchParams.sort interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-        },
-        keys: function(...args) {
-            console.warn("URLSearchParams.keys interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return paramMock.paramObjectMock;
-        },
-        values: function(...args) {
-            console.warn("URLSearchParams.values interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return paramMock.paramObjectMock;
-        },
-        [Symbol.iterator]: function(...args) {
-            console.warn("URLSearchParams.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return paramMock.paramObjectMock;
-        },
-        toString: function(...args) {
-            console.warn("URLSearchParams.toString interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return paramMock.paramStringMock;
-        }
+  };
+  const URLClass = class URL {
+    constructor(...args) {
+      console.warn('url.URL.constructor interface mocked in the Previewer. How this interface works on the Previewer' +
+        ' may be different from that on a real device.');
+      this.toString = function(...args) {
+        console.warn('URL.toString interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+        return paramMock.paramStringMock;
+      };
+      this.toJSON = function(...args) {
+        console.warn('URL.toJSON interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+        return paramMock.paramStringMock;
+      };
+      this.hash = '[PC preview] unknow hash';
+      this.host = '[PC preview] unknow host';
+      this.hostname = '[PC preview] unknow hostname';
+      this.href = '[PC preview] unknow href';
+      this.origin = '[PC preview] unknow origin';
+      this.password = '[PC preview] unknow password';
+      this.pathname = '[PC preview] unknow pathname';
+      this.port = '[PC preview] unknow port';
+      this.protocol = '[PC preview] unknow protocol';
+      this.search = '[PC preview] unknow search';
+      this.searchParams = new URLSearchParamsClass();
+      this.username = '[PC preview] unknow username';
     }
-    const URLMock = {
-        toString: function(...args) {
-            console.warn("URL.toString interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return paramMock.paramStringMock;
-        },
-        toJSON: function(...args) {
-            console.warn("URL.toJSON interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return paramMock.paramStringMock;
-        },
-        hash: '[PC preview] unknow hash',
-        host: '[PC preview] unknow host',
-        hostname: '[PC preview] unknow hostname',
-        href: '[PC preview] unknow href',
-        origin: '[PC preview] unknow origin',
-        password: '[PC preview] unknow password',
-        pathname: '[PC preview] unknow pathname',
-        port: '[PC preview] unknow port',
-        protocol: '[PC preview] unknow protocol',
-        search: '[PC preview] unknow search',
-        searchParams: URLSearchParamsMock,
-        username: '[PC preview] unknow username',
-    }
-    return result;
+  };
+  const result = {
+    URLSearchParams: URLSearchParamsClass,
+    URL: URLClass
+  };
+  return result;
 }

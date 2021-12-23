@@ -45,7 +45,7 @@ describe('receiveTasks', () => {
     'aspect-ratio': 'string',
     'device-width': '1176',
     'device-height': '2400',
-    roundScreen: false,
+    'round-screen': false,
     width: '0',
     height: '0',
     isInit: true,

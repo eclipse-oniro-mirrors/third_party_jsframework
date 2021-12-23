@@ -1,4 +1,8 @@
 import { mockSystemParameter } from './systemParameter'
+import { mockAbility } from './applicationAbility'
+import { mockFormExtension } from './applicationFormExtension'
+import { mockServiceExtension } from './applicationServiceExtension'
+import { mockAbilityStage } from './applicationAbilityStage'
 import { mockFileio } from './fileio'
 import { mockWorker } from './worker'
 import { mockUtil } from './util'
@@ -11,7 +15,6 @@ import { mockwebgl } from './webgl'
 import { mockwebgl2 } from './webgl2'
 import { mockProcess } from './process'
 import { mockUrl } from './url'
-import { mockMediaQuery } from './mediaquery'
 import { mockHiAppEvent } from './hiAppEvent'
 import { mockHilog } from './hilog'
 import { mockTv } from './tv'
@@ -22,12 +25,24 @@ import { mockDistributedData } from './distributedData'
 import { mockDataAbility } from './dataAbility'
 import { mockStorage } from './storage'
 import { mockRdb } from './rdb'
+import { mockInputDevice } from './inputDevice'
+import { mockLight } from './light'
+import { mockVibrator } from './vibrator'
+import { mockSensor } from './sensor'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
       case "systemParameter":
         return mockSystemParameter();
+      case "application.Ability":
+        return mockAbility();
+      case "application.FormExtension":
+        return mockFormExtension();
+      case "application.ServiceExtension":
+        return mockServiceExtension();
+      case "application.AbilityStage":
+        return mockAbilityStage();
       case "fileio":
         return mockFileio();
       case "worker" :
@@ -52,8 +67,6 @@ export function mockRequireNapiFun() {
         return mockBytrace();
       case "url":
         return mockUrl();
-      case "mediaquery":
-        return mockMediaQuery();
       case "hiAppEvent":
         return mockHiAppEvent();
       case "hilog":
@@ -74,6 +87,16 @@ export function mockRequireNapiFun() {
         return mockStorage();
       case "data.dataAbility":
         return mockDataAbility();
+      case "multimodalInput.inputDevice":
+        return mockInputDevice();
+      case "light":
+        return mockLight();
+      case "vibrator":
+        return mockVibrator();
+      case "sensor":
+        return mockSensor();
+      default:
+        return global.requireNapiPreview(...args);
     }
   }
 }

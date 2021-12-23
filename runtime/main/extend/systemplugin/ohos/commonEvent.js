@@ -1,10 +1,10 @@
-import {paramMock} from "../utils"
+import { paramMock } from "../utils"
 
 export function mockCommonEvent() {
     const CommonEventSubscriberMock = {
         getCode: function (...args) {
             console.warn("CommonEventSubscriber.getCode interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
@@ -16,7 +16,7 @@ export function mockCommonEvent() {
         },
         setCode: function (...args) {
             console.warn("CommonEventSubscriber.setCode interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock);
@@ -28,7 +28,7 @@ export function mockCommonEvent() {
         },
         getData: function (...args) {
             console.warn("CommonEventSubscriber.getData interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
@@ -40,7 +40,7 @@ export function mockCommonEvent() {
         },
         setData: function (...args) {
             console.warn("CommonEventSubscriber.setData interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock);
@@ -52,7 +52,7 @@ export function mockCommonEvent() {
         },
         setCodeAndData: function (...args) {
             console.warn("CommonEventSubscriber.setCodeAndData interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock);
@@ -64,7 +64,7 @@ export function mockCommonEvent() {
         },
         isOrderedCommonEvent: function (...args) {
             console.warn("CommonEventSubscriber.isOrderedCommonEvent interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
@@ -76,7 +76,7 @@ export function mockCommonEvent() {
         },
         isStickyCommonEvent: function (...args) {
             console.warn("CommonEventSubscriber.isStickyCommonEvent interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
@@ -88,7 +88,7 @@ export function mockCommonEvent() {
         },
         abortCommonEvent: function (...args) {
             console.warn("CommonEventSubscriber.abortCommonEvent interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock);
@@ -100,7 +100,7 @@ export function mockCommonEvent() {
         },
         clearAbortCommonEvent: function (...args) {
             console.warn("CommonEventSubscriber.clearAbortCommonEvent interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock);
@@ -112,7 +112,7 @@ export function mockCommonEvent() {
         },
         getAbortCommonEvent: function (...args) {
             console.warn("CommonEventSubscriber.getAbortCommonEvent interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
@@ -124,7 +124,7 @@ export function mockCommonEvent() {
         },
         getSubscribeInfo: function (...args) {
             console.warn("CommonEventSubscriber.getSubscribeInfo interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, CommonEventSubscribeInfoMock);
@@ -152,7 +152,7 @@ export function mockCommonEvent() {
     global.ohosplugin.commonEvent = {
         publish: function (...args) {
             console.warn("commonEvent.publish interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock);
@@ -160,7 +160,7 @@ export function mockCommonEvent() {
         },
         createSubscriber: function (...args) {
             console.warn("commonEvent.createSubscriber interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, CommonEventSubscriberMock);
@@ -172,15 +172,15 @@ export function mockCommonEvent() {
         },
         subscribe: function (...args) {
             console.warn("commonEvent.subscribe interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, CommonEventDataMock);
             }
         },
         unsubscribe: function (...args) {
-            console.warn("commonEvent.subscribe interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.");
+            console.warn("commonEvent.unsubscribe interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.");
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock);

@@ -74,7 +74,9 @@ class DocumentElement extends Element {
         element.docId = document.id;
         element.ownerDocument = document;
         this.linkChild(this);
-        delete this.ownerDocument.nodeMap[element.nodeId];
+        if (this.ownerDocument) {
+          delete this.ownerDocument.nodeMap[element.nodeId];
+        }
       }
       this.pureChildren.push(element);
       this.ownerDocument.sentBodyToNative(element);

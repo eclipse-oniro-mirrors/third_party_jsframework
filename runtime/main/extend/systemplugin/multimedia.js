@@ -14,7 +14,7 @@ export const PixelMapMock = {
   isEditable: "[PC Preview]: unknow isEditable",
   readPixelsToBuffer: function (...args) {
     console.warn("PixelMap.readPixelsToBuffer interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock);
@@ -26,7 +26,7 @@ export const PixelMapMock = {
   },
   readPixels: function (...args) {
     console.warn("PixelMap.readPixels interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock);
@@ -38,7 +38,7 @@ export const PixelMapMock = {
   },
   writePixels: function (...args) {
     console.warn("PixelMap.writePixels interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock);
@@ -50,7 +50,7 @@ export const PixelMapMock = {
   },
   writeBufferToPixels: function (...args) {
     console.warn("PixelMap.writeBufferToPixels interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock);
@@ -62,7 +62,7 @@ export const PixelMapMock = {
   },
   getImageInfo: function (...args) {
     console.warn("PixelMap.getImageInfo interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (len > 0 && typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, imageInfoMock);
@@ -74,17 +74,17 @@ export const PixelMapMock = {
   },
   getBytesNumberPerRow: function (...args) {
     console.warn("PixelMap.getBytesNumberPerRow interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramNumberMock
   },
   getPixelBytesNumber: function (...args) {
     console.warn("PixelMap.getPixelBytesNumber interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     return paramMock.paramNumberMock
   },
   release: function (...args) {
     console.warn("PixelMap.release interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      " may be different from that on a real device.")
     const len = args.length
     if (len > 0 && typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock);
@@ -444,6 +444,127 @@ export function mockMultimediaMedia() {
       }
     }
   }
+  const MimeTypeMock = '[PC Preview] unknow mimeType'
+  const CodecDescriptionMock = {
+    name: "[PC Preview] unknow name",
+    mimeTypes: new Array(MimeTypeMock),
+    isAudio: "[PC Preview] unknow isAudio",
+    isEncoder: "[PC Preview] unknow isEncoder",
+    isSoftware: "[PC Preview] unknow isSoftware",
+  }
+  const codecDescriptionHelperMock = {
+    findDecoder: function (...args) {
+      console.warn("CodecDescriptionHelper.findDecoder interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, CodecDescriptionMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(CodecDescriptionMock);
+        })
+      }
+    },
+    findEncoder: function (...args) {
+      console.warn("CodecDescriptionHelper.findEncoder interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, CodecDescriptionMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(CodecDescriptionMock);
+        })
+      }
+    },
+    getSupportedDecoders: function (...args) {
+      console.warn("CodecDescriptionHelper.getSupportedDecoders interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+      const len = args.length
+      var CodecDescriptionArray = new Array(CodecDescriptionMock)
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, CodecDescriptionArray);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(CodecDescriptionArray);
+        })
+      }
+    },
+    getSupportedEncoders: function (...args) {
+      console.warn("CodecDescriptionHelper.getSupportedEncoders interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+      const len = args.length
+      var CodecDescriptionArray = new Array(CodecDescriptionMock)
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, CodecDescriptionArray);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(CodecDescriptionArray);
+        })
+      }
+    },
+    getSupportedMimes: function (...args) {
+      console.warn("CodecDescriptionHelper.getSupportedMimes interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+      const len = args.length
+      var MimeTypeArray = new Array(MimeTypeMock)
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, MimeTypeArray);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(MimeTypeArray);
+        })
+      }
+    },
+    isDecoderSupportedByFormat: function (...args) {
+      console.warn("CodecDescriptionHelper.isDecoderSupportedByFormat interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
+        })
+      }
+    },
+    isDecoderSupportedByMime: function (...args) {
+      console.warn("CodecDescriptionHelper.isDecoderSupportedByMime interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
+        })
+      }
+    },
+    isEncoderSupportedByFormat: function (...args) {
+      console.warn("CodecDescriptionHelper.isEncoderSupportedByFormat interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
+        })
+      }
+    },
+    isEncoderSupportedByMime: function (...args) {
+      console.warn("CodecDescriptionHelper.findDisEncoderSupportedByMime interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
+        })
+      }
+    }
+  }
   global.systemplugin.multimedia.media = {
     MediaType: {
       VIDEO: 0,
@@ -468,29 +589,34 @@ export function mockMultimediaMedia() {
       console.warn("multimedia.media.createMediaDecoder interface mocked in the Previewer. How this interface works" +
         " on the Previewer may be different from that on a real device.")
       return mediaDecoderMock;
+    },
+    getCodecDescriptionHelper: function () {
+      console.warn("multimedia.media.getCodecDescriptionHelper interface mocked in the Previewer. How this" +
+        " interface works on the Previewer may be different from that on a real device.")
+      return codecDescriptionHelperMock;
     }
   }
 }
 
 export function mockMultimediaMedialibrary() {
   const FileAssetMock = {
-     id: "[PC Preview] unknow id",
-     uri: "[PC Preview] unknow uri",
-     thumbnailUri: "[PC Preview] unknow thumbnailUri",
-     mimeType: "[PC Preview] unknow mimeType",
-     mediaType: "[PC Preview] unknow mediaType",
-     displayName: "[PC Preview] unknow displayName",
-     title: "[PC Preview] unknow title",
-     size: "[PC Preview] unknow size",
-     albumId: "[PC Preview] unknow albumId",
-     albumName: "[PC Preview] unknow albumName",
-     dateAdded: "[PC Preview] unknow dateAdded",
-     dateModified: "[PC Preview] unknow dateMidified",
-     dateTaken: "[PC Preview] unknow dateTaken",
-     orientation: "[PC Preview] unknow orientation",
-     width: "[PC Preview] unknow width",
-     height: "[PC Preview] unknow height",
-     extendedValues: "[PC Preview] unknow extendedValues",
+    id: "[PC Preview] unknow id",
+    uri: "[PC Preview] unknow uri",
+    thumbnailUri: "[PC Preview] unknow thumbnailUri",
+    mimeType: "[PC Preview] unknow mimeType",
+    mediaType: "[PC Preview] unknow mediaType",
+    displayName: "[PC Preview] unknow displayName",
+    title: "[PC Preview] unknow title",
+    size: "[PC Preview] unknow size",
+    albumId: "[PC Preview] unknow albumId",
+    albumName: "[PC Preview] unknow albumName",
+    dateAdded: "[PC Preview] unknow dateAdded",
+    dateModified: "[PC Preview] unknow dateMidified",
+    dateTaken: "[PC Preview] unknow dateTaken",
+    orientation: "[PC Preview] unknow orientation",
+    width: "[PC Preview] unknow width",
+    height: "[PC Preview] unknow height",
+    extendedValues: "[PC Preview] unknow extendedValues",
   }
   const MediaLibraryMock = {
     storeMediaAsset: function (...args) {
@@ -535,7 +661,7 @@ export function mockMultimediaMedialibrary() {
       const len = args.length
       var isCallBack = typeof args[len - 1] === 'function'
       return isCallBack ? args[len - 1].call(this, paramMock.businessErrorMock, FetchFileResultMock)
-      : new Promise((resolve, reject) => {
+        : new Promise((resolve, reject) => {
           resolve(FetchFileResultMock);
         })
     },
@@ -546,7 +672,7 @@ export function mockMultimediaMedialibrary() {
       var albumsMock = new Array(AlbumMock)
       var isCallBack = typeof args[len - 1] === 'function'
       return isCallBack ? args[len - 1].call(this, paramMock.businessErrorMock, albumsMock)
-      : new Promise((resolve, reject) => {
+        : new Promise((resolve, reject) => {
           resolve(albumsMock);
         })
     },
@@ -583,7 +709,7 @@ export function mockMultimediaMedialibrary() {
       const len = args.length
       var isCallBack = typeof args[len - 1] === 'function'
       return isCallBack ? args[len - 1].call(this, paramMock.businessErrorMock, FileAssetMock)
-      : new Promise((resolve, reject) => {
+        : new Promise((resolve, reject) => {
           resolve(FileAssetMock);
         })
     },
@@ -593,7 +719,7 @@ export function mockMultimediaMedialibrary() {
       const len = args.length
       var isCallBack = typeof args[len - 1] === 'function'
       return isCallBack ? args[len - 1].call(this, paramMock.businessErrorMock, FileAssetMock)
-      : new Promise((resolve, reject) => {
+        : new Promise((resolve, reject) => {
           resolve(FileAssetMock);
         })
     },
@@ -603,7 +729,7 @@ export function mockMultimediaMedialibrary() {
       const len = args.length
       var isCallBack = typeof args[len - 1] === 'function'
       return isCallBack ? args[len - 1].call(this, paramMock.businessErrorMock, FileAssetMock)
-      : new Promise((resolve, reject) => {
+        : new Promise((resolve, reject) => {
           resolve(FileAssetMock);
         })
     },
@@ -613,7 +739,7 @@ export function mockMultimediaMedialibrary() {
       const len = args.length
       var isCallBack = typeof args[len - 1] === 'function'
       return isCallBack ? args[len - 1].call(this, paramMock.businessErrorMock, FileAssetMock)
-      : new Promise((resolve, reject) => {
+        : new Promise((resolve, reject) => {
           resolve(FileAssetMock);
         })
     },
@@ -624,7 +750,7 @@ export function mockMultimediaMedialibrary() {
       var fileAssets = new Array(FileAssetMock)
       var isCallBack = typeof args[len - 1] === 'function'
       return isCallBack ? args[len - 1].call(this, paramMock.businessErrorMock, fileAssets)
-      : new Promise((resolve, reject) => {
+        : new Promise((resolve, reject) => {
           resolve(fileAssets);
         })
     }
@@ -640,9 +766,9 @@ export function mockMultimediaMedialibrary() {
       const len = args.length
       var isCallBack = typeof args[len - 1] === 'function'
       return isCallBack ? args[len - 1].call(this, paramMock.businessErrorMock, FetchFileResultMock)
-           : new Promise((resolve, reject) => {
-               resolve(FetchFileResultMock);
-             })
+        : new Promise((resolve, reject) => {
+          resolve(FetchFileResultMock);
+        })
     }
   }
   const AVMetadataHelperMock = {
@@ -652,9 +778,9 @@ export function mockMultimediaMedialibrary() {
       const len = args.length
       var isCallBack = typeof args[len - 1] === 'function'
       return isCallBack ? args[len - 1].call(this, paramMock.businessErrorMock)
-           : new Promise((resolve, reject) => {
-               resolve();
-             })
+        : new Promise((resolve, reject) => {
+          resolve();
+        })
     },
     fetchVideoPixelMapByTime: function (...args) {
       console.warn("AVMetadataHelper.fetchVideoPixelMapByTime interface mocked in the Previewer. How this interface" +
@@ -662,9 +788,9 @@ export function mockMultimediaMedialibrary() {
       const len = args.length
       var isCallBack = typeof args[len - 1] === 'function'
       return isCallBack ? args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramObjectMock)
-           : new Promise((resolve, reject) => {
-               resolve(paramMock.paramObjectMock);
-             })
+        : new Promise((resolve, reject) => {
+          resolve(paramMock.paramObjectMock);
+        })
     },
     resolveMetadata: function (...args) {
       console.warn("AVMetadataHelper.resolveMetadata interface mocked in the Previewer. How this interface" +
@@ -672,9 +798,9 @@ export function mockMultimediaMedialibrary() {
       const len = args.length
       var isCallBack = typeof args[len - 1] === 'function'
       return isCallBack ? args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
-           : new Promise((resolve, reject) => {
-               resolve(paramMock.paramStringMock);
-             })
+        : new Promise((resolve, reject) => {
+          resolve(paramMock.paramStringMock);
+        })
     },
     release: function (...args) {
       console.warn("AVMetadataHelper.release interface mocked in the Previewer. How this interface works on the" +
@@ -682,9 +808,9 @@ export function mockMultimediaMedialibrary() {
       const len = args.length
       var isCallBack = typeof args[len - 1] === 'function'
       return isCallBack ? args[len - 1].call(this, paramMock.businessErrorMock)
-           : new Promise((resolve, reject) => {
-               resolve();
-             })
+        : new Promise((resolve, reject) => {
+          resolve();
+        })
     }
   }
   global.systemplugin.multimedia.mediaLibrary = {
@@ -730,32 +856,32 @@ export function mockMultimediaAudio() {
   const AudioRingModeMock = '[PC Preview]: unknow AudioRingMode'
   const audioManagerMock = {
     on: function (...args) {
-        console.warn("AudioManager.on interface mocked in the Previewer. How this interface works on the Previewer" +
-            " may be different from that on a real device.")
-        const len = args.length
-        if (typeof args[len - 1] === 'function') {
-            if (args[0] == 'interrupt') {
-                args[len - 1].call(this, interruptActionMock);
-            } else if (args[0] == 'deviceChange') {
-                args[len - 1].call(this, DeviceChangeActionMock);
-            } else {
-                args[len - 1].call(this);
-            }
+      console.warn("AudioManager.on interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        if (args[0] == 'interrupt') {
+          args[len - 1].call(this, interruptActionMock);
+        } else if (args[0] == 'deviceChange') {
+          args[len - 1].call(this, DeviceChangeActionMock);
+        } else {
+          args[len - 1].call(this);
         }
+      }
     },
     off: function (...args) {
-        console.warn("AudioManager.off interface mocked in the Previewer. How this interface works on the Previewer" +
-            " may be different from that on a real device.")
-        const len = args.length
-        if (typeof args[len - 1] === 'function') {
-            if (args[0] == 'interrupt') {
-                args[len - 1].call(this, interruptActionMock);
-            } else if (args[0] == 'deviceChange') {
-                args[len - 1].call(this);
-            } else {
-                args[len - 1].call(this);
-            }
+      console.warn("AudioManager.off interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        if (args[0] == 'interrupt') {
+          args[len - 1].call(this, interruptActionMock);
+        } else if (args[0] == 'deviceChange') {
+          args[len - 1].call(this);
+        } else {
+          args[len - 1].call(this);
         }
+      }
     },
     getDevices: function (...args) {
       console.warn("AudioManager.getDevices interface mocked in the Previewer. How this interface works on the" +
@@ -766,7 +892,7 @@ export function mockMultimediaAudio() {
         args[len - 1].call(this, paramMock.businessErrorMock, AudioDeviceDescriptors);
       } else {
         return new Promise((resolve, reject) => {
-            resolve(AudioDeviceDescriptors);
+          resolve(AudioDeviceDescriptors);
         })
       }
     },
@@ -777,8 +903,8 @@ export function mockMultimediaAudio() {
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
-          return new Promise((resolve, reject) => {
-            resolve(paramMock.paramBooleanMock);
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
         })
       }
     },
@@ -790,7 +916,7 @@ export function mockMultimediaAudio() {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve, reject) => {
-            resolve();
+          resolve();
         })
       }
     },
@@ -802,7 +928,7 @@ export function mockMultimediaAudio() {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve, reject) => {
-            resolve();
+          resolve();
         })
       }
     },
@@ -814,7 +940,7 @@ export function mockMultimediaAudio() {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve, reject) => {
-            resolve();
+          resolve();
         })
       }
     },
@@ -825,8 +951,8 @@ export function mockMultimediaAudio() {
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-          return new Promise((resolve, reject) => {
-            resolve();
+        return new Promise((resolve, reject) => {
+          resolve();
         })
       }
     },
@@ -838,7 +964,7 @@ export function mockMultimediaAudio() {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
         return new Promise((resolve, reject) => {
-            resolve(paramMock.paramNumberMock);
+          resolve(paramMock.paramNumberMock);
         })
       }
     },
@@ -850,7 +976,7 @@ export function mockMultimediaAudio() {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
         return new Promise((resolve, reject) => {
-            resolve(paramMock.paramNumberMock);
+          resolve(paramMock.paramNumberMock);
         })
       }
     },
@@ -862,8 +988,8 @@ export function mockMultimediaAudio() {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
         return new Promise((resolve, reject) => {
-            resolve(paramMock.paramNumberMock);
-       })
+          resolve(paramMock.paramNumberMock);
+        })
       }
     },
     isMute: function (...args) {
@@ -874,7 +1000,7 @@ export function mockMultimediaAudio() {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
         return new Promise((resolve, reject) => {
-            resolve(paramMock.paramBooleanMock);
+          resolve(paramMock.paramBooleanMock);
         })
       }
     },
@@ -886,7 +1012,7 @@ export function mockMultimediaAudio() {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve, reject) => {
-            resolve();
+          resolve();
         })
       }
     },
@@ -898,8 +1024,8 @@ export function mockMultimediaAudio() {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
         return new Promise((resolve, reject) => {
-            resolve(paramMock.paramBooleanMock);
-       })
+          resolve(paramMock.paramBooleanMock);
+        })
       }
     },
     isMicrophoneMute: function (...args) {
@@ -907,22 +1033,22 @@ export function mockMultimediaAudio() {
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
         return new Promise((resolve, reject) => {
-            resolve(paramMock.paramBooleanMock);
+          resolve(paramMock.paramBooleanMock);
         })
       }
     },
     setMicrophoneMute: function (...args) {
-      console.warn("AudioManager.isMicrophoneMute interface mocked in the Previewer. How this interface works on the" +
+      console.warn("AudioManager.setMicrophoneMute interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-         args[len - 1].call(this, paramMock.businessErrorMock);
+        args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve, reject) => {
-           resolve();
+          resolve();
         })
       }
     },
@@ -934,7 +1060,7 @@ export function mockMultimediaAudio() {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
       } else {
         return new Promise((resolve, reject) => {
-            resolve(paramMock.paramStringMock);
+          resolve(paramMock.paramStringMock);
         })
       }
     },
@@ -946,7 +1072,7 @@ export function mockMultimediaAudio() {
         args[len - 1].call(this, paramMock.businessErrorMock, AudioRingModeMock);
       } else {
         return new Promise((resolve, reject) => {
-            resolve(AudioRingModeMock);
+          resolve(AudioRingModeMock);
         })
       }
     }
@@ -985,7 +1111,7 @@ export function mockMultimediaAudio() {
     },
     getAudioManager: function () {
       console.warn("multimedia.media.getAudioManager interface mocked in the Previewer. How this interface works" +
-          " on the Previewer may be different from that on a real device.")
+        " on the Previewer may be different from that on a real device.")
       return audioManagerMock;
     }
   }

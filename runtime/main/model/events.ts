@@ -136,7 +136,7 @@ export const LIFE_CYCLE_TYPES: Array<PageLifecycleHooks | string> = [
  * @param {ExternalEvent} externalEvents - External events.
  */
 export function initEvents(vm: Vm, externalEvents: ExternalEvent): void {
-  const options = vm.vmOptions || {};
+  const options = vm._vmOptions || {};
   for (const externalEvent in externalEvents) {
     vm.$on(externalEvent, externalEvents[externalEvent]);
   }

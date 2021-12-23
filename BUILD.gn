@@ -38,8 +38,15 @@ action("gen_snapshot") {
 
   if (is_standard_system) {
     node_modules = "//prebuilts/build-tools/common/js-framework/node_modules"
-    nodejs_path =
-        "//prebuilts/build-tools/common/nodejs/node-v12.18.4-linux-x64"
+    if (use_mac) {
+      nodejs_path =
+          "//prebuilts/build-tools/common/nodejs/node-v12.18.4-darwin-x64"
+      is_mac = "true"
+    } else {
+      nodejs_path =
+          "//prebuilts/build-tools/common/nodejs/node-v12.18.4-linux-x64"
+      is_mac = "false"
+    }
   } else {
     node_modules = "//prebuilts/ace-toolkit/js-framework/node_modules"
     if (use_mac) {

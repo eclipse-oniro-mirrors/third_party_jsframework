@@ -1,5 +1,37 @@
 import { paramMock } from "../utils"
 
+export const IRemoteObject = {
+  queryLocalInterface: function (...args) {
+    console.warn("rpc.queryLocalInterface interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    return IRemoteBroker
+  },
+  sendRequest: function (...args) {
+    console.warn("rpc.sendRequest interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    return paramMock.paramBooleanMock
+  },
+  addDeathRecipient: function (...args) {
+    console.warn("rpc.addDeathRecipient interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    return paramMock.paramBooleanMock
+  },
+  removeDeathRecipient: function (...args) {
+    console.warn("rpc.removeDeathRecipient interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    return paramMock.paramBooleanMock
+  },
+  getInterfaceDescriptor: function () {
+    console.warn("rpc.getInterfaceDescriptor interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    return paramMock.paramStringMock
+  },
+  isObjectDead: function () {
+    console.warn("rpc.isObjectDead interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    return paramMock.paramBooleanMock
+  }
+}
 export function mockRpc() {
   const MessageParcel = {
     reclaim: function () {
@@ -270,38 +302,6 @@ export function mockRpc() {
       console.warn("rpc.readStringArray interface mocked in the Previewer. How this interface works on the" +
           " Previewer may be different from that on a real device.")
       return paramMock.paramArrayMock;
-    }
-  };
-  const IRemoteObject = {
-    queryLocalInterface: function (...args) {
-      console.warn("rpc.queryLocalInterface interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return IRemoteBroker
-    },
-    sendRequest: function (...args) {
-      console.warn("rpc.sendRequest interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    addDeathRecipient: function (...args) {
-      console.warn("rpc.addDeathRecipient interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    removeDeathRecipient: function (...args) {
-      console.warn("rpc.removeDeathRecipient interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    getInterfaceDescriptor: function () {
-      console.warn("rpc.getInterfaceDescriptor interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramStringMock
-    },
-    isObjectDead: function () {
-      console.warn("rpc.isObjectDead interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
     }
   };
   const IRemoteBroker = {

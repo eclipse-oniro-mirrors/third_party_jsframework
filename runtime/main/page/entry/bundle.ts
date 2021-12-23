@@ -117,5 +117,5 @@ export function bootstrap(page: Page, name: string, data: any): any {
   }
 
   // Create a new Vm and mark rootVm.
-  page.vm = new Vm(componentName, null, { _app: page, _rootVm: true }, null, data, null);
+  page.vm = new Vm(componentName, null, { __app: page, __rootVm: true }, null, data, null);
 }

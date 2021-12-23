@@ -53,9 +53,11 @@ const SETTERS = {
   attr: 'setAttr',
   style: 'setStyle',
   data: 'setData',
+  $data: 'setData',
   event: 'addEvent',
   idStyle: 'setIdStyle',
-  tagStyle: 'setTagStyle'
+  tagStyle: 'setTagStyle',
+  universalStyle: 'setUniversalStyle'
 };
 
 /**
@@ -68,7 +70,7 @@ const SETTERS = {
 export function bindElement(vm: Vm, el: Element, template: TemplateInterface, parentElement: Element | FragBlockInterface): void {
   // Set descendant style.
   setDescendantStyle(
-    vm.selector,
+    vm._selector,
     {
       id: template.id,
       class: template.classList,
@@ -80,7 +82,7 @@ export function bindElement(vm: Vm, el: Element, template: TemplateInterface, pa
       if (!style) {
         return;
       }
-      const css = vm.css || {};
+      const css = vm._css || {};
       setAnimation(style, css);
       setFontFace(style, css);
       setStyle(vm, el, style);
@@ -108,6 +110,7 @@ export function bindElement(vm: Vm, el: Element, template: TemplateInterface, pa
   setIdStyle(vm, el, template.id);
   setClass(vm, el, template.classList);
   setTagStyle(vm, el, template.type);
+  setUniversalStyle(vm, el);
   applyStyle(vm, el);
 
   bindEvents(vm, el, template.events);
@@ -116,9 +119,9 @@ export function bindElement(vm: Vm, el: Element, template: TemplateInterface, pa
   bindEvents(vm, el, template.catchBubbleEvents, 'catchbubble');
   bindEvents(vm, el, template.catchCaptureEvents, 'catchcapture');
 
-  if (!vm.isHide && !vm.init) {
+  if (!vm._isHide && !vm._init) {
     el.addEvent('hide');
-    vm.isHide = true;
+    vm._isHide = true;
   }
 }
 
@@ -133,7 +136,7 @@ export function bindElement(vm: Vm, el: Element, template: TemplateInterface, pa
 export function bindSubVm(vm: Vm, rawSubVm: Vm, rawTemplate: TemplateInterface, repeatItem: object): void {
   const subVm: any = rawSubVm || {};
   const template: any = rawTemplate || {};
-  const options: any = subVm.vmOptions || {};
+  const options: any = subVm._vmOptions || {};
 
   let props = options.props;
   if (isArray(props) || !props) {
@@ -209,7 +212,7 @@ function bindSubEvent(vm: Vm, subVm: Vm, template: TemplateInterface): void {
  * @return {*} Sub vm object.
  */
 function mergePropsObject(key: string, value: any, vm: Vm, subVm: Vm): any {
-  subVm.props.push(key);
+  subVm._props.push(key);
   if (typeof value === 'function') {
     const returnValue = watch(vm, value, function(v) {
       subVm[key] = v;
@@ -241,7 +244,7 @@ function mergeProps(target: object, props: any, vm: Vm, subVm: Vm): void {
   }
   for (const key in target) {
     if (!props || props[key] || key === 'show') {
-      subVm.props.push(key);
+      subVm._props.push(key);
       const value = target[key];
       if (typeof value === 'function') {
         const returnValue = watch(vm, value, function(v) {
@@ -271,14 +274,14 @@ function mergeStyle(target: { [key: string]: any }, vm: Vm, subVm: Vm): void {
     const value = target[key];
     if (typeof value === 'function') {
       const returnValue = watch(vm, value, function(v) {
-        if (subVm.rootEl) {
-          subVm.rootEl.setStyle(key, v);
+        if (subVm._rootEl) {
+          subVm._rootEl.setStyle(key, v);
         }
       });
-      subVm.rootEl.setStyle(key, returnValue);
+      subVm._rootEl.setStyle(key, returnValue);
     } else {
-      if (subVm.rootEl) {
-        subVm.rootEl.setStyle(key, value);
+      if (subVm._rootEl) {
+        subVm._rootEl.setStyle(key, value);
       }
     }
   }
@@ -291,8 +294,8 @@ function mergeStyle(target: { [key: string]: any }, vm: Vm, subVm: Vm): void {
  * @param {Vm} subVm - Sub vm.
  */
 function mergeClassStyle(target: Function | string[], vm: Vm, subVm: Vm): void {
-  const css = vm.css || {};
-  if (!subVm.rootEl) {
+  const css = vm._css || {};
+  if (!subVm._rootEl) {
     return;
   }
 
@@ -301,7 +304,7 @@ function mergeClassStyle(target: Function | string[], vm: Vm, subVm: Vm): void {
    * @constant {string}
    */
   const CLASS_NAME = '@originalRootEl';
-  css['.' + CLASS_NAME] = subVm.rootEl.classStyle;
+  css['.' + CLASS_NAME] = subVm._rootEl.classStyle;
 
   function addClassName(list, name) {
     if (typof(list) === 'array') {
@@ -312,13 +315,13 @@ function mergeClassStyle(target: Function | string[], vm: Vm, subVm: Vm): void {
   if (typeof target === 'function') {
     const value = watch(vm, target, v => {
       addClassName(v, CLASS_NAME);
-      setClassStyle(subVm.rootEl, css, v);
+      setClassStyle(subVm._rootEl, css, v);
     });
     addClassName(value, CLASS_NAME);
-    setClassStyle(subVm.rootEl, css, value);
+    setClassStyle(subVm._rootEl, css, value);
   } else if (target !== undefined) {
     addClassName(target, CLASS_NAME);
-    setClassStyle(subVm.rootEl, css, target);
+    setClassStyle(subVm._rootEl, css, target);
   }
 }
 
@@ -338,7 +341,7 @@ export function setId(vm: Vm, el: Element, id: Function | string, target: Vm): v
       configurable: false
     },
     el: {
-      get: () => el || target.rootEl,
+      get: () => el || target._rootEl,
       configurable: false
     }
   });
@@ -347,17 +350,17 @@ export function setId(vm: Vm, el: Element, id: Function | string, target: Vm): v
     const newId = handler.call(vm);
     if (newId || newId === 0) {
       setElementId(el, newId);
-      vm.ids[newId] = map;
+      vm._ids[newId] = map;
     }
     watch(vm, handler, (newId) => {
       if (newId) {
         setElementId(el, newId);
-        vm.ids[newId] = map;
+        vm._ids[newId] = map;
       }
     });
   } else if (id && typeof id === 'string') {
     setElementId(el, id);
-    vm.ids[id] = map;
+    vm._ids[id] = map;
   }
 }
 
@@ -378,10 +381,14 @@ function setElementId(el: Element, id: string): void {
  * @param {Element} el - Element.
  * @param {AttrInterface} attr - Attr to bind.
  */
-function setAttr(vm: Vm, el: Element, attr: Partial<AttrInterface>): void {
-  if (attr && attr.data) {
-    // address data independently
-    bindDir(vm, el, 'data', attr.data);
+export function setAttr(vm: Vm, el: Element, attr: Partial<AttrInterface>): void {
+  if (attr) {
+    // address $data or data independently
+    if (attr.$data) {
+      bindDir(vm, el, '$data', attr.$data);
+    } else if (attr.data && Object.prototype.toString.call(attr.data) === '[object Object]') {
+      bindDir(vm, el, 'data', attr.data);
+    }
   }
   bindDir(vm, el, 'attr', attr);
 }
@@ -483,13 +490,13 @@ function selectStyle(css: object, key: string, vm: Vm): any {
   if (!vm) {
     return style;
   }
-  const mediaStatus = vm.mediaStatus;
+  const mediaStatus = vm._mediaStatus;
   if (!mediaStatus) {
     return style;
   }
   const mqArr = css['@MEDIA'];
   if (!mqArr) {
-    vm.init = true;
+    vm._init = true;
     return style;
   }
   const classStyle = {};
@@ -582,7 +589,9 @@ function setClassStyle(el: Element, css: object, classList: string[], vm?: Vm): 
     const animationName = classStyle['animationName'];
     if (animationName) {
       classStyle['animationName'] = keyframes[animationName];
-      classStyle['animationName'].push({'animationName': animationName});
+      if (classStyle['animationName']) {
+        classStyle['animationName'].push({'animationName': animationName});
+      }
     }
     const transitionEnter = classStyle['transitionEnter'];
     if (transitionEnter) {
@@ -620,7 +629,7 @@ export function setClass(vm: Vm, el: Element, classList: Function | string[]): v
     el.setClassStyle({});
     return;
   }
-  const style = vm.css || {};
+  const style = vm._css || {};
   if (typeof classList === 'function') {
     const value = watch(vm, classList, v => {
       setClassStyle(el, style, v, vm);
@@ -639,7 +648,7 @@ export function setClass(vm: Vm, el: Element, classList: Function | string[]): v
  */
 export function setIdStyle(vm: Vm, el: Element, id: Function | string): void {
   if (id) {
-    const css = vm.css || {};
+    const css = vm._css || {};
     if (typeof id === 'function') {
       const value = watch(vm, id, v => {
         doSetStyle(vm, el, selectIdStyle(css, v, vm), css, 'idStyle');
@@ -706,10 +715,20 @@ function setAnimation(style: any, css: any): void {
  * @param {string} tag - Tag.
  */
 export function setTagStyle(vm: Vm, el: Element, tag: string): void {
-  const css = vm.css || {};
+  const css = vm._css || {};
   if (tag && typeof tag === 'string') {
     doSetStyle(vm, el, selectStyle(css, tag, vm), css, 'tagStyle');
   }
+}
+
+/**
+ * Set * style.
+ * @param {Vm} vm - Vm object.
+ * @param {Element} el - ELement component.
+ */
+export function setUniversalStyle(vm: Vm, el: Element): void {
+  const css = vm._css || {};
+  doSetStyle(vm, el, selectStyle(css, "*", vm), css, 'universalStyle');
 }
 
 /**
@@ -769,7 +788,7 @@ function bindEvents(vm: Vm, el: Element, events: object, eventType?: string): vo
  * @param {string} name - Method name.
  * @param {Object} data - Data that needed.
  */
-function bindDir(vm: Vm, el: Element, name: string, data: object): void {
+export function bindDir(vm: Vm, el: Element, name: string, data: object): void {
   if (!data) {
     return;
   }
@@ -781,6 +800,11 @@ function bindDir(vm: Vm, el: Element, name: string, data: object): void {
   const methodName = SETTERS[name];
   const method = el[methodName];
   const isSetStyle = methodName === 'setStyle';
+  if (methodName === 'setIdStyle') {
+    for (const id in el.idStyle) {
+      el.idStyle[id] = '';
+    }
+  }
   while (i--) {
     const key = keys[i];
     const value = data[key];
@@ -815,7 +839,7 @@ function bindKey(vm: Vm, el: Element, setValue: Function, calc: Function): void 
     function handler() {
       setValue(value);
     }
-    const differ = vm && vm.app && vm.app.differ;
+    const differ = vm && vm._app && vm._app.differ;
     if (differ) {
       differ.append('element', el.ref, handler);
     } else {
@@ -833,7 +857,7 @@ function bindKey(vm: Vm, el: Element, setValue: Function, calc: Function): void 
  * @return {*} FontFamily Filter.
  */
 export function filterFontFamily(vm: Vm, fontFamilyName: string): any[] {
-  const css = vm.css || {};
+  const css = vm._css || {};
   return _getFontFamily(css, fontFamilyName);
 }
 
@@ -877,7 +901,7 @@ export function watch(vm: Vm, calc: Function, callback: Function): any {
  * @param {Element} el - Element object.
  */
 function applyStyle(vm: Vm, el: Element): void {
-  const css = vm.css || {};
+  const css = vm._css || {};
   const allStyle = el.style;
   setAnimation(allStyle, css);
 }
