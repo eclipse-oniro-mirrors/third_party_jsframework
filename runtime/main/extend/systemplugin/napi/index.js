@@ -26,7 +26,6 @@ import { mockDataAbility } from './dataAbility'
 import { mockStorage } from './storage'
 import { mockRdb } from './rdb'
 import { mockInputDevice } from './inputDevice'
-import { mockLight } from './light'
 import { mockVibrator } from './vibrator'
 import { mockSensor } from './sensor'
 
@@ -89,8 +88,6 @@ export function mockRequireNapiFun() {
         return mockDataAbility();
       case "multimodalInput.inputDevice":
         return mockInputDevice();
-      case "light":
-        return mockLight();
       case "vibrator":
         return mockVibrator();
       case "sensor":
