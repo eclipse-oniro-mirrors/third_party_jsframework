@@ -29,6 +29,8 @@ import { mockInputDevice } from './inputDevice'
 import { mockLight } from './light'
 import { mockVibrator } from './vibrator'
 import { mockSensor } from './sensor'
+import { mockBundle } from './bundle'
+import { mockInnerBundle } from './innerBundleManager'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -95,6 +97,10 @@ export function mockRequireNapiFun() {
         return mockVibrator();
       case "sensor":
         return mockSensor();
+      case "bundle":
+        return mockBundle();
+      case "bundle.innerBundleManager":
+        return mockInnerBundle();
       default:
         return global.requireNapiPreview(...args);
     }
