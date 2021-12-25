@@ -145,6 +145,20 @@ function ResourceManager(mgrId, module) {
         console.warn("ResourceManager.getJsonConfig interface mocked in the Previewer. " +
             "How this interface works on the Previewer may be different from that on a real device.")
     }
+
+    this.getRawFile = getRawFile;
+    async function getRawFile(path, callback) {
+        var data = "mock raw file";
+        console.warn("ResourceManager.getRawFile interface mocked in the Previewer. " +
+            "How this interface works on the Previewer may be different from that on a real device.")
+        if (typeof callback === 'function') {
+            callback.call(this, null, data);
+        } else {
+            return new Promise((resolve) => {
+                resolve(data);
+            })
+        }
+    }
 }
 
 var resourceManager = {
