@@ -3,19 +3,34 @@ import { paramMock } from "../utils"
 export function mockIntl() {
     const result = {
         DateTimeFormat: function(...args) {
-            console.warn("url.URLSearchParams interface mocked in the Previewer. How this interface works on the Previewer" +
+            console.warn("Intl.DateTimeFormat interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
             return DateTimeFormatMock;
         },
         NumberFormat: function(...args) {
-            console.warn("url.URL interface mocked in the Previewer. How this interface works on the Previewer" +
+            console.warn("Intl.NumberFormat interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
-            return NumberFormatMoc;
+            return NumberFormatMock;
         },
         Locale: function(locale) {
-            console.warn("url.URL interface mocked in the Previewer. How this interface works on the Previewer" +
+            console.warn("Intl.Locale interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
             return LocaleMock;
+        },
+        Collator: function(...args) {
+            console.warn("Intl.Collator interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return CollatorMock;
+        },
+        PluralRules: function(...args) {
+            console.warn("Intl.PluralRules interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return PluralRulesMock;
+        },
+        RelativeTimeFormat: function(...args) {
+            console.warn("Intl.RelativeTimeFormat interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return RelativeTimeFormatMock;
         }
     }
     const DateTimeFormatMock = {
@@ -35,7 +50,7 @@ export function mockIntl() {
             return DateTimeOptionsMock;
         }
     }
-    const NumberFormatMoc = {
+    const NumberFormatMock = {
         format: function(number) {
             console.warn("Intl.NumberFormat.format interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.");
@@ -72,6 +87,42 @@ export function mockIntl() {
             console.warn("Intl.Locale.minimize interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.");
             return LocaleMock;
+        }
+    }
+    const CollatorMock = {
+        compare: function(firstString, secondString) {
+            console.warn("Intl.Collator.compare interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.");
+            return paramMock.paramNumberMock;
+        },
+        resolvedOptions: function() {
+            console.warn("Intl.Collator.resolvedOptions interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.");
+            return CollatorOptionsMock;
+        }
+    }
+    const PluralRulesMock = {
+        select: function(number) {
+            console.warn("Intl.PluralRules.select interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.");
+            return paramMock.paramStringMock;
+        }
+    }
+    const RelativeTimeFormatMock = {
+        format: function(value, unit) {
+            console.warn("Intl.RelativeTimeFormat.format interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.");
+            return paramMock.paramStringMock;
+        },
+        formatToParts: function(value, unit) {
+            console.warn("Intl.RelativeTimeFormat.formatToParts interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.");
+            return paramMock.paramArrayMock;
+        },
+        resolvedOptions: function() {
+            console.warn("Intl.RelativeTimeFormat.resolvedOptions interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.");
+            return RelativeTimeFormatResolvedOptionsMock;
         }
     }
     const DateTimeOptionsMock = {
@@ -114,6 +165,29 @@ export function mockIntl() {
         maximumFractionDigits: '[PC preview] unknow maximumFractionDigits',
         minimumSignificantDigits: '[PC preview] unknow minimumSignificantDigits',
         maximumSignificantDigits: '[PC preview] unknow maximumSignificantDigits',
+    }
+    const CollatorOptionsMock = {
+        localeMatcher: '[PC preview] unknow localeMatcher',
+        usage: '[PC preview] unknow usage',
+        sensitivity: '[PC preview] unknow sensitivity',
+        ignorePunctuation: '[PC preview] unknow ignorePunctuation',
+        collation: '[PC preview] unknow collation',
+        numeric: '[PC preview] unknow numeric',
+        caseFirst: '[PC preview] unknow caseFirst',
+    }
+    const PluralRulesOptionsMock = {
+        localeMatcher: '[PC preview] unknow localeMatcher',
+        type: '[PC preview] unknow type',
+        minimumIntegerDigits: '[PC preview] unknow minimumIntegerDigits',
+        minimumFractionDigits: '[PC preview] unknow minimumFractionDigits',
+        maximumFractionDigits: '[PC preview] unknow maximumFractionDigits',
+        minimumSignificantDigits: '[PC preview] unknow minimumSignificantDigits',
+        maximumSignificantDigits: '[PC preview] unknow maximumSignificantDigits',
+    }
+    const RelativeTimeFormatResolvedOptionsMock = {
+        localeMatcher: '[PC preview] unknow localeMatcher',
+        numeric: '[PC preview] unknow numeric',
+        style: '[PC preview] unknow style',
     }
     return result;
 }
