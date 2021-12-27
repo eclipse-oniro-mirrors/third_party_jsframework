@@ -3,6 +3,7 @@ import { mockAbility } from './applicationAbility'
 import { mockFormExtension } from './applicationFormExtension'
 import { mockServiceExtension } from './applicationServiceExtension'
 import { mockAbilityStage } from './applicationAbilityStage'
+import { mockNotification } from './notification'
 import { mockFileio } from './fileio'
 import { mockWorker } from './worker'
 import { mockUtil } from './util'
@@ -29,6 +30,7 @@ import { mockInputDevice } from './inputDevice'
 import { mockVibrator } from './vibrator'
 import { mockSensor } from './sensor'
 import { mockUsb } from './usb'
+import { mockWifi } from './wifi'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -43,9 +45,11 @@ export function mockRequireNapiFun() {
         return mockServiceExtension();
       case "application.AbilityStage":
         return mockAbilityStage();
+      case "notification":
+        return mockNotification();
       case "fileio":
         return mockFileio();
-      case "worker" :
+      case "worker":
         return mockWorker();
       case "util":
         return mockUtil();
@@ -95,6 +99,8 @@ export function mockRequireNapiFun() {
         return mockSensor();
       case "usb":
         return mockUsb();
+      case "wifi":
+        return mockWifi();
       default:
         return global.requireNapiPreview(...args);
     }
