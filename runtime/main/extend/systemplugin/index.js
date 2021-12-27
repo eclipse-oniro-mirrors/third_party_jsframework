@@ -39,7 +39,6 @@ import {
 import { mockNetwork } from './network'
 import { mockOhosNfc } from './ohos/nfc'
 import { mockNotification } from './notification'
-import { mockOhosNotification } from './ohos/notification'
 import { mockCommonEvent } from './ohos/commonEvent'
 import { mockWantAgent } from './ohos/wantAgent'
 import { mockOhosBatteryinfo } from './batteryinfo'
@@ -92,7 +91,6 @@ export function mockSystemPlugin() {
   global.ohosplugin = {}
 
   mockNotification()
-  mockOhosNotification()
   mockCommonEvent()
   mockWantAgent()
   mockFetch()
