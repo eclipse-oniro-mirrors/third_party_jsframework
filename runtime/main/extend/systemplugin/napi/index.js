@@ -29,6 +29,7 @@ import { mockRdb } from './rdb'
 import { mockInputDevice } from './inputDevice'
 import { mockVibrator } from './vibrator'
 import { mockSensor } from './sensor'
+import { mockWifi } from './wifi'
 import { mockUsb } from './usb'
 import { mockBundle } from './bundle'
 import { mockInnerBundle } from './innerBundleManager'
@@ -98,6 +99,8 @@ export function mockRequireNapiFun() {
         return mockVibrator();
       case "sensor":
         return mockSensor();
+      case "wifi":
+        return mockWifi();
       case "usb":
         return mockUsb();
       case "bundle":
