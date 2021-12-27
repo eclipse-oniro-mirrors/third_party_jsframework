@@ -31,6 +31,7 @@ import { mockVibrator } from './vibrator'
 import { mockSensor } from './sensor'
 import { mockUsb } from './usb'
 import { mockWifi } from './wifi'
+import { mockSettings } from './settings'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -101,6 +102,8 @@ export function mockRequireNapiFun() {
         return mockUsb();
       case "wifi":
         return mockWifi();
+      case "settings":
+        return mockSettings();
       default:
         return global.requireNapiPreview(...args);
     }
