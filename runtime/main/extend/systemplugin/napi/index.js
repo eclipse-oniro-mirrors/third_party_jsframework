@@ -29,6 +29,7 @@ import { mockRdb } from './rdb'
 import { mockInputDevice } from './inputDevice'
 import { mockVibrator } from './vibrator'
 import { mockSensor } from './sensor'
+import { mockWifi } from './wifi'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -95,6 +96,8 @@ export function mockRequireNapiFun() {
         return mockVibrator();
       case "sensor":
         return mockSensor();
+      case "wifi":
+        return mockWifi();
       default:
         return global.requireNapiPreview(...args);
     }

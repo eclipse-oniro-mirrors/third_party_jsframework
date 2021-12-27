@@ -62,7 +62,6 @@ import { mockUserauth } from './userIAM'
 import { mockVibrator } from './vibrator'
 
 import { mockWebSocket, mockHttp, mockMdns, mockSocket, mockHotspot, mockStatistics, mockConnection } from './net'
-import { mockWifi } from './ohos/wifi'
 import { mockWindow } from './window'
 import { mockWorkScheduler } from './ohos/workScheduler'
 
@@ -139,7 +138,6 @@ export function mockSystemPlugin() {
   mockStatistics()
   mockConnection()
   mockDeviceInfo()
-  mockWifi()
   mockResourceManager()
   mockOhosNfc()
   mockDataStorage()
