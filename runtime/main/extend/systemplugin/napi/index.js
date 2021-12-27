@@ -29,6 +29,7 @@ import { mockRdb } from './rdb'
 import { mockInputDevice } from './inputDevice'
 import { mockVibrator } from './vibrator'
 import { mockSensor } from './sensor'
+import { mockUsb } from './usb'
 import { mockWifi } from './wifi'
 
 export function mockRequireNapiFun() {
@@ -96,6 +97,8 @@ export function mockRequireNapiFun() {
         return mockVibrator();
       case "sensor":
         return mockSensor();
+      case "usb":
+        return mockUsb();
       case "wifi":
         return mockWifi();
       default:
