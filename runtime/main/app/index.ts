@@ -118,6 +118,7 @@ export function appCreate(page: Page, options: Options, data: object, services: 
     $app_bootstrap$: appBootstrap,
     $app_require$: appRequireModule
   };
+  global.$app_require$ = appRequireModule;
 
   // Compile js bundle code and get result.
   if (typeof code === 'function') {
