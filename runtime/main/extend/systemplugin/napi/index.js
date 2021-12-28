@@ -3,6 +3,7 @@ import { mockAbility } from './applicationAbility'
 import { mockFormExtension } from './applicationFormExtension'
 import { mockServiceExtension } from './applicationServiceExtension'
 import { mockAbilityStage } from './applicationAbilityStage'
+import { mockFormBindingData } from './applicationFormBindingData'
 import { mockNotification } from './notification'
 import { mockFileio } from './fileio'
 import { mockWorker } from './worker'
@@ -48,6 +49,8 @@ export function mockRequireNapiFun() {
         return mockServiceExtension();
       case "application.AbilityStage":
         return mockAbilityStage();
+      case "application.formBindingData":
+        return mockFormBindingData();
       case "notification":
         return mockNotification();
       case "fileio":
