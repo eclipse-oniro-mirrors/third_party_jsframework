@@ -9,6 +9,7 @@ import { mockWorker } from './worker'
 import { mockUtil } from './util'
 import { mockPower } from './power'
 import { mockIntl } from './intl'
+import { mockI18N } from './i18n'
 import { mockRunningLock } from './runningLock'
 import { mockRpc } from './rpc'
 import { mockBytrace } from './bytrace'
@@ -57,6 +58,8 @@ export function mockRequireNapiFun() {
         return mockUtil();
       case "intl":
         return mockIntl();
+      case "i18n":
+        return mockI18N();
       case "power":
         return mockPower();
       case "runningLock":
