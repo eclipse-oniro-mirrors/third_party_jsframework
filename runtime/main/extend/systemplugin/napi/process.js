@@ -43,15 +43,66 @@ export function mockProcess() {
                 " may be different from that on a real device.")
             return paramMock.paramBooleanMock;
         },
-        getEgid: '[PC preview] unknow getEgid',
-        getEuid: '[PC preview] unknow getEuid',
-        getGid: '[PC preview] unknow getGid',
-        getUid: '[PC preview] unknow getUid',
-        getGroups: '[PC preview] unknow getGroups',
-        getPid: '[PC preview] unknow getPid',
-        getPpid: '[PC preview] unknow getPpid',
-
+        getStartRealtime: function(...args) {
+            console.warn("process.getStartRealtime interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramNumberMock;
+        },
+        getPastCputime: function(...args) {
+            console.warn("process.getPastCputime interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramNumberMock;
+        },
+        getAvailableCores: function(...args) {
+            console.warn("process.getAvailableCores interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramArrayMock;
+        },
+        isIsolatedProcess: function(...args) {
+            console.warn("process.isIsolatedProcess interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramBooleanMock;
+        },
+        is64Bit: function(...args) {
+            console.warn("process.is64Bit interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramBooleanMock;
+        },
+        isAppUid: function(...args) {
+            console.warn("process.isAppUid interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramBooleanMock;
+        },
+        getUidForName: function(...args) {
+            console.warn("process.getUidForName interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramNumberMock;
+        },
+        getThreadPriority: function(...args) {
+            console.warn("process.getThreadPriority interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramNumberMock;
+        },
+        getSystemConfig: function(...args) {
+            console.warn("process.getSystemConfig interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramNumberMock;
+        },
+        getEnvironmentVar: function(...args) {
+            console.warn("process.getEnvironmentVar interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramStringMock;
+        },
+        egid: '[PC preview] unknow egid',
+        euid: '[PC preview] unknow euid',
+        gid: '[PC preview] unknow gid',
+        uid: '[PC preview] unknow uid',
+        groups: '[PC preview] unknow groups',
+        pid: '[PC preview] unknow pid',
+        ppid: '[PC preview] unknow ppid',
+        tid: '[PC preview] unknow tid',
     }
+
     const ChildProcessMock = {
         pid: '[PC preview] unknow pid',
         ppid: '[PC preview] unknow ppid',
