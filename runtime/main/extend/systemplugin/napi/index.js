@@ -35,6 +35,8 @@ import { mockWifi } from './wifi'
 import { mockUsb } from './usb'
 import { mockBundle } from './bundle'
 import { mockInnerBundle } from './innerBundleManager'
+import { mockUri } from './uri'
+import { mockXml } from './xml'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -113,6 +115,10 @@ export function mockRequireNapiFun() {
         return mockBundle();
       case "bundle.innerBundleManager":
         return mockInnerBundle();
+      case "uri":
+        return mockUri();
+      case "xml":
+        return mockXml();
       default:
         return global.requireNapiPreview(...args);
     }
