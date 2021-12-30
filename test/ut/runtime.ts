@@ -36,6 +36,7 @@ import {
   allModules
 } from '../../runtime/main/page/register';
 import { App } from '../../runtime/main/app/App';
+import { PageLinkedMap } from '../../runtime/main/app/map';
 import Page from '../../runtime/main/page';
 
 const expect = chai.expect;
@@ -50,7 +51,7 @@ function clearRefs(json) {
 describe('framework entry', () => {
   fakeLog();
 
-  const pageMap: Map<string, Page> = App.pageMap;
+  const pageMap: PageLinkedMap = App.pageMap;
   let instanceId;
   const options = {
     orientation: 'portrait',
@@ -142,7 +143,7 @@ describe('framework entry', () => {
       }
     };
     framework.createInstance(instanceId, code, options, null);
-    expect(pageMap.get(instanceId).customComponentMap).eql(expectComponent);
+    expect(pageMap[instanceId].customComponentMap).eql(expectComponent);
   });
 
   describe('getRoot', () => {

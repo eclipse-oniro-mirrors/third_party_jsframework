@@ -13,13 +13,13 @@
  * limitations under the License.
  */
 
-import Page from '../page/index';
+import { pageMap, PageLinkedMap } from './map';
 
 /**
  * This class defines the information of a application.
  */
 export class App {
-  public static pageMap: Map<string, Page> = new Map();
+  public static pageMap: PageLinkedMap = pageMap;
   private _packageName: string;
   private _appInstanceId: string;
   private _events: object;
@@ -139,14 +139,6 @@ export class App {
     Object.keys(timerAPIs).forEach((api) => {
       that._appGlobal[api] = timerAPIs[api];
     });
-  }
-
-  /**
-   * Get page.
-   * @return {Page} Page.
-   */
-  public getAppInstance(): Page {
-    return App.pageMap.get(this._appInstanceId);
   }
 }
 
