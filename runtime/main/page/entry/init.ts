@@ -81,7 +81,7 @@ export function init(page: Page, code: string | Function, data: object, services
     if (packageName === 'notset') {
       return page;
     }
-    const instance = App.pageMap.get(page.id);
+    const instance = App.pageMap.getTop(packageName);
     return instance || page;
   };
 

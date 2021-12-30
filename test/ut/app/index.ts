@@ -53,12 +53,10 @@ describe('App Instance', () => {
     });
 
     it('with some apis', () => {
-      expect(typeof app.getAppInstance).eql('function');
       expect(typeof app.deleteGlobalKeys).eql('function');
     });
 
     it('run apis', () => {
-      expect(app.getAppInstance()).eql(appInstanceId);
       expect(app.deleteGlobalKeys()).to.be.undefined;
     });
   });

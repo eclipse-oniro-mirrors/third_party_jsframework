@@ -32,7 +32,7 @@ import {
   registerCustomComponent,
   requireModule
 } from '../page/register';
-import { appMap } from './map';
+import { pageMap, appMap } from './map';
 import { updateLocale, updateDpi } from './index';
 import Page from '../page/index';
 import { App } from './App';
@@ -58,7 +58,7 @@ export const defineFn = function(page: Page, packageName: string, name?: string,
     const pageRequire = (name: string) : any => {
       if (isModule(name)) {
         const appFunction = (): Page => {
-          return page || appMap[packageName].getAppInstance();
+          return pageMap.getTop(packageName) || page;
         };
         return requireModule(appFunction, removePrefix(name));
       }
