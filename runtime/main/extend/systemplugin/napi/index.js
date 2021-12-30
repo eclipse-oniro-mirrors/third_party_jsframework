@@ -34,6 +34,7 @@ import { mockWifi } from './wifi'
 import { mockSettings } from './settings'
 import { mockUri } from './uri'
 import { mockXml } from './xml'
+import { mockStatfs } from './statfs'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -110,6 +111,8 @@ export function mockRequireNapiFun() {
         return mockUri();
       case "xml":
         return mockXml();
+      case "statfs":
+        return mockStatfs();
       default:
         return global.requireNapiPreview(...args);
     }
