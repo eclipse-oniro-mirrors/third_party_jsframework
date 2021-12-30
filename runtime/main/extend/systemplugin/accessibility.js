@@ -167,8 +167,6 @@ export function mockAccessibility() {
       const len = args.length;
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, StateEventMock);
-      } else {
-        return;
       }
     },
     getAbilityLists: function(...args) {
