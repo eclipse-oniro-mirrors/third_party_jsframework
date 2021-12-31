@@ -18,9 +18,10 @@
  */
 
 import { App } from '../../app/App';
+import { PageLinkedMap } from '../../app/map';
 import Page from '../../page';
 
-const pageMap: Map<string, Page> = App.pageMap;
+const pageMap: PageLinkedMap = App.pageMap;
 
 /**
  * Get an element tree of a page.
@@ -28,7 +29,7 @@ const pageMap: Map<string, Page> = App.pageMap;
  * @return {Object} A virtual dom tree.
  */
 export function getRoot(id: string): object {
-  const page: Page = pageMap.get(id);
+  const page: Page = pageMap[id];
   let result: any;
   if (page) {
     const doc: any = page.doc || {};

@@ -22,6 +22,7 @@ import {
 import { appMap } from './map';
 import { getPageGlobal } from './helper';
 import { App } from './App';
+import { PageLinkedMap } from './map';
 import Page from '../page/index';
 import { destroy } from '../page/api/index';
 import { mockSystemPlugin } from '../extend/systemplugin/index';
@@ -77,7 +78,7 @@ interface ParseOptions {
   $app_require$(name: string): void; // eslint-disable-line camelcase
 }
 
-const pageMap: Map<string, Page> = App.pageMap;
+const pageMap: PageLinkedMap = App.pageMap;
 
 /**
  * Create app page, run jsbundle code.
@@ -96,7 +97,7 @@ export function appCreate(page: Page, options: Options, data: object, services: 
   }
   const packageName: string = page.packageName;
   const appPage: Page = new Page(options.appInstanceId, options, packageName, data);
-  pageMap.set(appPage.id, appPage);
+  pageMap.unshift(appPage);
   Log.debug(`Create a page with: ${packageName}.`);
   appMap[packageName] = new App(packageName, options.appInstanceId);
   const timerAPIs: object = genTimerAPI(appPage);
@@ -111,8 +112,10 @@ export function appCreate(page: Page, options: Options, data: object, services: 
     Log.debug(`After create a page(${page.id}).`);
   };
 
+  const appFunction = () => pageMap.getTop(packageName) || page;
+
   // require in top app(instance)
-  const appRequireModule = name => requireModule(page || appPage, removePrefix(name));
+  const appRequireModule = name => requireModule(appFunction, removePrefix(name));
   const parseOptions: ParseOptions = {
     $app_define$: appDefine,
     $app_bootstrap$: appBootstrap,
@@ -189,7 +192,7 @@ export function appDestroy(packageName: string): void {
   app.emitEvent('hook:onDestroy');
   app.deleteGlobalKeys();
   delete appMap[packageName];
-  const appPage: Page = pageMap.get(app.appInstanceId);
+  const appPage: Page = pageMap[app.appInstanceId];
   if (appPage) {
     if (appPage.doc.taskCenter.callbackIsEmpty()) {
       appPage.callTasks([{
@@ -198,7 +201,7 @@ export function appDestroy(packageName: string): void {
         args: []
       }]);
       destroy(appPage);
-      pageMap.delete(appPage.id);
+      pageMap.remove(appPage);
     } else {
       appPage.destroyed = true;
     }

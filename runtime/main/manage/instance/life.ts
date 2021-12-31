@@ -19,12 +19,13 @@
 
 import { destroy } from '../../page/api/index';
 import { App } from '../../app/App';
+import { PageLinkedMap } from '../../app/map';
 import { resetTarget } from '../../reactivity/dep';
 import Page from '../../page';
 import { init as initApp } from '../../page/api/index';
 import { appCreate, Options } from '../../app/index';
 
-const pageMap: Map<string, Page> = App.pageMap;
+const pageMap: PageLinkedMap = App.pageMap;
 
 /**
  * Create a page.
@@ -40,14 +41,14 @@ export function createInstance(id: string, code: string, options: Options, data:
   const { I18n, dpi } = services;
   resetTarget();
 
-  let page: Page = pageMap.get(id);
+  let page: Page = pageMap[id];
   let result: object;
   if (!page) {
     page = new Page(id, options, options.packageName, data);
     page.i18nService = I18n;
     page.dpiService = dpi;
     appCreate(page, options, data, services);
-    pageMap.set(id, page);
+    pageMap.push(page);
     result = initApp(page, code, data, services);
   } else {
     result = new Error(`invalid page id "${id}"`);
@@ -65,11 +66,11 @@ export function destroyInstance(id: string): object {
     markupState();
   }
   resetTarget();
-  const page: Page = pageMap.get(id);
+  const page: Page = pageMap[id];
   if (!page) {
     return new Error(`invalid page id '${id}'.`);
   }
-  pageMap.delete(id);
+  pageMap.remove(page);
   destroy(page);
 
   // Tell v8 to do a full Garbage Collection every eighteen times.

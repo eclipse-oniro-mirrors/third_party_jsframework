@@ -23,6 +23,7 @@
 
 import { Log } from '../../../utils/index';
 import { App } from '../../app/App';
+import { PageLinkedMap } from '../../app/map';
 import Page from '../../page';
 import {
   fireEvent,
@@ -31,7 +32,7 @@ import {
   destroy
 } from '../../page/api/index';
 
-const pageMap: Map<string, Page> = App.pageMap;
+const pageMap: PageLinkedMap = App.pageMap;
 
 const eventHandlers = {
   /**
@@ -40,7 +41,7 @@ const eventHandlers = {
    * @param {*} args - Args.
    */
   fireEvent: (id: string, ...args: any[]) => {
-    return fireEvent(pageMap.get(id), ...args);
+    return fireEvent(pageMap[id], ...args);
   },
 
   /**
@@ -49,7 +50,7 @@ const eventHandlers = {
    * @param {*} args - Args
    */
   callback: (id: string, ...args: any[]) => {
-    return callback(pageMap.get(id), ...args);
+    return callback(pageMap[id], ...args);
   },
 
   /**
@@ -58,7 +59,7 @@ const eventHandlers = {
    * @param {*} args - Args.
    */
   fireEventSync: (id: string, ...args: any[]) => {
-    return fireEventSync(pageMap.get(id), ...args);
+    return fireEventSync(pageMap[id], ...args);
   }
 };
 
@@ -71,7 +72,7 @@ const eventHandlers = {
 export function receiveTasks(id: string, tasks: any[]): any[] | Error {
   id = id.toString();
   Log.debug(`ReceiveTasks id ${id}, tasks: ${JSON.stringify(tasks)}`);
-  const page: Page = pageMap.get(id);
+  const page: Page = pageMap[id];
   if (page && Array.isArray(tasks)) {
     const results = [];
     tasks.forEach((task) => {
@@ -89,7 +90,7 @@ export function receiveTasks(id: string, tasks: any[]): any[] | Error {
         args: []
       }]);
       destroy(page);
-      pageMap.delete(id);
+      pageMap.remove(page);
     }
     return results;
   }
