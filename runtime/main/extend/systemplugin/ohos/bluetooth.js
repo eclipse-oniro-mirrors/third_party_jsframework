@@ -1,334 +1,334 @@
 import { paramMock } from "../utils"
 
 export function mockOhosBluetooth() {
-    const connectedBLEDevicesMock = [
-        {
-            connectedBLEDevice: "[PC Preview] unknow connectedBLEDevice",
-        }
+  const connectedBLEDevicesMock = [
+    {
+      connectedBLEDevice: "[PC Preview] unknow connectedBLEDevice",
+    }
+  ]
+  const gattServiceMock = {
+    serviceUuid: "[PC preview] unknown serviceUuid",
+    isPrimary: "[PC preview] unknown isPrimary",
+    characteristics: [
+      BLECharacteristicMock
+    ],
+    includeServices: [
+      gattServiceMock
     ]
-    const gattServiceMock = {
-        serviceUuid: "[PC preview] unknown serviceUuid",
-        isPrimary: "[PC preview] unknown isPrimary",
-        characteristics: [
-            BLECharacteristicMock
-        ],
-        includeServices: [
-            gattServiceMock
-        ]
-    }
-    const BLECharacteristicMock = {
-        serviceUuid: "[PC preview] unknown serviceUuid",
-        characteristicUuid: "[PC preview] unknown characteristicUuid",
-        characteristicValue: "[PC preview] unknown characteristicValue",
-        descriptors: [
-            BLEDescriptorMock
-        ]
-    }
-    const BLEDescriptorMock = {
-        serviceUuid: "[PC preview] unknown serviceUuid",
-        characteristicUuid: "[PC preview] unknown characteristicUuid",
-        descriptorUuid: "[PC preview] unknown descriptorUuid",
-        descriptorValue: "[PC preview] unknown descriptorValue"
-    }
-    const gattServicesMock = [
-        gattServiceMock
+  }
+  const BLECharacteristicMock = {
+    serviceUuid: "[PC preview] unknown serviceUuid",
+    characteristicUuid: "[PC preview] unknown characteristicUuid",
+    characteristicValue: "[PC preview] unknown characteristicValue",
+    descriptors: [
+      BLEDescriptorMock
     ]
-    const scanResultMock = {
-        deviceId: "[PC preview] unknown deviceId",
-        rssi: "[PC preview] unknown rssi",
-        data: "[PC preview] unknown data"
-    }
-    const characteristicReadReqMock = {
-        deviceId: "[PC preview] unknown deviceId",
-        transId: "[PC preview] unknown transId",
-        offset: "[PC preview] unknown offset",
-        characteristicUuid: "[PC preview] unknown characteristicUuid",
-        serviceUuid: "[PC preview] unknown serviceUuid"
-    }
-    const characteristicWriteReqMock = {
-        deviceId: "[PC preview] unknown deviceId",
-        transId: "[PC preview] unknown transId",
-        offset: "[PC preview] unknown offset",
-        isPrep: "[PC preview] unknown isPrep",
-        needRsp: "[PC preview] unknown needRsp",
-        value: "[PC preview] unknown value",
-        characteristicUuid: "[PC preview] unknown characteristicUuid",
-        serviceUuid: "[PC preview] unknown serviceUuid"
-    }
-    const descriptorReadReqMock = {
-        deviceId: "[PC preview] unknown v",
-        transId: "[PC preview] unknown transId",
-        offset: "[PC preview] unknown offset",
-        descriptorUuid: "[PC preview] unknown descriptorUuid",
-        characteristicUuid: "[PC preview] unknown characteristicUuid",
-        serviceUuid: "[PC preview] unknown serviceUuid"
-    }
-    const descriptorWriteReqMock = {
-        deviceId: "[PC preview] unknown deviceId",
-        transId: "[PC preview] unknown transId",
-        offset: "[PC preview] unknown offset",
-        isPrep: "[PC preview] unknown isPrep",
-        needRsp: "[PC preview] unknown needRsp",
-        value: "[PC preview] unknown value",
-        descriptorUuid: "[PC preview] unknown descriptorUuid",
-        characteristicUuid: "[PC preview] unknown characteristicUuid",
-        serviceUuid: "[PC preview] unknown serviceUuid"
-    }
-    const BLEConnectChangedStateMock = {
-        deviceId: "[PC preview] unknown deviceId",
-        state: "[PC preview] unknown state"
-    }
-    const GattServerMock = {
-        startAdvertising: function (...args) {
-            console.warn("GattServer.startAdvertising interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-        },
-        stopAdvertising: function () {
-            console.warn("GattServer.stopAdvertising interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-        },
-        addService: function (...args) {
-            console.warn("GattServer.addService interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramBooleanMock
-        },
-        removeService: function (...args) {
-            console.warn("GattServer.removeService interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramBooleanMock
-        },
-        close: function () {
-            console.warn("GattServer.close interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-        },
-        notifyCharacteristicChanged: function (...args) {
-            console.warn("GattServer.notifyCharacteristicChanged interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramBooleanMock
-        },
-        sendResponse: function (...args) {
-            console.warn("GattServer.sendResponse interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramBooleanMock
-        },
-        on: function (...args) {
-            console.warn("GattServer.on interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            const len = args.length
-            if (typeof args[len - 1] === 'function') {
-                if (args[0] == 'characteristicRead') {
-                    args[len - 1].call(this, characteristicReadReqMock);
-                } else if (args[0] == 'characteristicWrite') {
-                    args[len - 1].call(this, characteristicWriteReqMock);
-                } else if (args[0] == 'descriptorRead') {
-                    args[len - 1].call(this, descriptorReadReqMock);
-                } else if (args[0] == 'descriptorWrite') {
-                    args[len - 1].call(this, descriptorWriteReqMock);
-                } else if (args[0] == 'connectStateChange') {
-                    args[len - 1].call(this, BLEConnectChangedStateMock);
-                }
-            }
-        },
-        off: function (...args) {
-            console.warn("GattServer.off interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            const len = args.length
-            if (typeof args[len - 1] === 'function') {
-                if (args[0] == 'characteristicRead') {
-                    args[len - 1].call(this, characteristicReadReqMock);
-                } else if (args[0] == 'characteristicWrite') {
-                    args[len - 1].call(this, characteristicWriteReqMock);
-                } else if (args[0] == 'descriptorRead') {
-                    args[len - 1].call(this, descriptorReadReqMock);
-                } else if (args[0] == 'descriptorWrite') {
-                    args[len - 1].call(this, descriptorWriteReqMock);
-                } else if (args[0] == 'connectStateChange') {
-                    args[len - 1].call(this, BLEConnectChangedStateMock);
-                }
-            }
-        },
-    }
-    const GattClientDeviceMock = {
-        connect: function () {
-            console.warn("GattClientDevice.connect interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramBooleanMock
-        },
-        disconnect: function () {
-            console.warn("GattClientDevice.disconnect interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramBooleanMock
-        },
-        close: function () {
-            console.warn("GattClientDevice.close interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramBooleanMock
-        },
-        getDeviceName: function (...args) {
-            console.warn("GattClientDevice.getDeviceName interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            const len = args.length
-            if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
-            } else {
-                return new Promise((resolve, reject) => {
-                    resolve(paramMock.paramStringMock);
-                })
-            }
-        },
-        getServices: function (...args) {
-            console.warn("GattClientDevice.getServices interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            const len = args.length
-            if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, gattServicesMock);
-            } else {
-                return new Promise((resolve, reject) => {
-                    resolve(gattServicesMock);
-                })
-            }
-        },
-        readCharacteristicValue: function (...args) {
-            console.warn("GattClientDevice.readCharacteristicValue interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            const len = args.length
-            if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, BLECharacteristicMock);
-            } else {
-                return new Promise((resolve, reject) => {
-                    resolve(BLECharacteristicMock);
-                })
-            }
-        },
-        readDescriptorValue: function (...args) {
-            console.warn("GattClientDevice.readDescriptorValue interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            const len = args.length
-            if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, BLEDescriptorMock);
-            } else {
-                return new Promise((resolve, reject) => {
-                    resolve(BLEDescriptorMock);
-                })
-            }
-        },
-        writeCharacteristicValue: function (...args) {
-            console.warn("GattClientDevice.writeCharacteristicValue interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramBooleanMock
-        },
-        writeDescriptorValue: function (...args) {
-            console.warn("GattClientDevice.writeDescriptorValue interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramBooleanMock
-        },
-        getRssiValue: function (...args) {
-            console.warn("GattClientDevice.getRssiValue interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            const len = args.length
-            if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
-            } else {
-                return new Promise((resolve, reject) => {
-                    resolve(paramMock.paramNumberMock);
-                })
-            }
-        },
-        setBLEMtuSize: function (...args) {
-            console.warn("GattClientDevice.setBLEMtuSize interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramBooleanMock
-        },
-        setNotifyCharacteristicChanged: function (...args) {
-            console.warn("GattClientDevice.setNotifyCharacteristicChanged interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramBooleanMock
-        },
-        on: function (...args) {
-            console.warn("GattClientDevice.on interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            const len = args.length
-            if (typeof args[len - 1] === 'function') {
-                if (args[0] == 'BLECharacteristicChange') {
-                    args[len - 1].call(this, BLECharacteristicMock);
-                } else if (args[0] == 'BLEConnectionStateChange') {
-                    args[len - 1].call(this, BLEConnectChangedStateMock);
-                }
-            }
-        },
-        off: function (...args) {
-            console.warn("GattClientDevice.off interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            const len = args.length
-            if (typeof args[len - 1] === 'function') {
-                if (args[0] == 'BLECharacteristicChange') {
-                    args[len - 1].call(this, BLECharacteristicMock);
-                } else if (args[0] == 'BLEConnectionStateChange') {
-                    args[len - 1].call(this, BLEConnectChangedStateMock);
-                }
-            }
-        },
-    }
-    global.ohosplugin.bluetooth = {
-        getState: function () {
-            console.warn("bluetooth.getState interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramNumberMock
-        },
-        getBtConnectionState: function () {
-            console.warn("bluetooth.getBtConnectionState interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramNumberMock
-        },
-        pairDevice: function (...args) {
-            console.warn("bluetooth.pairDevice interface mocked in the Previewer." +
-                "How this interface works on the Previewer may be different from that on a real device.")
-            return paramMock.paramBooleanMock
-        },
+  }
+  const BLEDescriptorMock = {
+    serviceUuid: "[PC preview] unknown serviceUuid",
+    characteristicUuid: "[PC preview] unknown characteristicUuid",
+    descriptorUuid: "[PC preview] unknown descriptorUuid",
+    descriptorValue: "[PC preview] unknown descriptorValue"
+  }
+  const gattServicesMock = [
+    gattServiceMock
+  ]
+  const scanResultMock = {
+    deviceId: "[PC preview] unknown deviceId",
+    rssi: "[PC preview] unknown rssi",
+    data: "[PC preview] unknown data"
+  }
+  const characteristicReadReqMock = {
+    deviceId: "[PC preview] unknown deviceId",
+    transId: "[PC preview] unknown transId",
+    offset: "[PC preview] unknown offset",
+    characteristicUuid: "[PC preview] unknown characteristicUuid",
+    serviceUuid: "[PC preview] unknown serviceUuid"
+  }
+  const characteristicWriteReqMock = {
+    deviceId: "[PC preview] unknown deviceId",
+    transId: "[PC preview] unknown transId",
+    offset: "[PC preview] unknown offset",
+    isPrep: "[PC preview] unknown isPrep",
+    needRsp: "[PC preview] unknown needRsp",
+    value: "[PC preview] unknown value",
+    characteristicUuid: "[PC preview] unknown characteristicUuid",
+    serviceUuid: "[PC preview] unknown serviceUuid"
+  }
+  const descriptorReadReqMock = {
+    deviceId: "[PC preview] unknown v",
+    transId: "[PC preview] unknown transId",
+    offset: "[PC preview] unknown offset",
+    descriptorUuid: "[PC preview] unknown descriptorUuid",
+    characteristicUuid: "[PC preview] unknown characteristicUuid",
+    serviceUuid: "[PC preview] unknown serviceUuid"
+  }
+  const descriptorWriteReqMock = {
+    deviceId: "[PC preview] unknown deviceId",
+    transId: "[PC preview] unknown transId",
+    offset: "[PC preview] unknown offset",
+    isPrep: "[PC preview] unknown isPrep",
+    needRsp: "[PC preview] unknown needRsp",
+    value: "[PC preview] unknown value",
+    descriptorUuid: "[PC preview] unknown descriptorUuid",
+    characteristicUuid: "[PC preview] unknown characteristicUuid",
+    serviceUuid: "[PC preview] unknown serviceUuid"
+  }
+  const BLEConnectChangedStateMock = {
+    deviceId: "[PC preview] unknown deviceId",
+    state: "[PC preview] unknown state"
+  }
+  const GattServerMock = {
+    startAdvertising: function (...args) {
+      console.warn("GattServer.startAdvertising interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
     },
-        global.ohosplugin.bluetooth.BLE = {
-            createGattServer: function () {
-                console.warn("bluetooth.BLE.createGattServer interface mocked in the Previewer." +
-                    "How this interface works on the Previewer may be different from that on a real device.")
-                return GattServerMock
-            },
-            createGattClientDevice: function (...args) {
-                console.warn("bluetooth.BLE.createGattClientDevice interface mocked in the Previewer." +
-                    "How this interface works on the Previewer may be different from that on a real device.")
-                return GattClientDeviceMock
-            },
-            getConnectedBLEDevices: function () {
-                console.warn("bluetooth.BLE.getConnectedBLEDevices interface mocked in the Previewer." +
-                    "How this interface works on the Previewer may be different from that on a real device.")
-                return connectedBLEDevicesMock
-            },
-            startBLEScan: function (...args) {
-                console.warn("bluetooth.BLE.startBLEScan interface mocked in the Previewer." +
-                    "How this interface works on the Previewer may be different from that on a real device.")
-            },
-            stopBLEScan: function () {
-                console.warn("bluetooth.BLE.stopBLEScan interface mocked in the Previewer." +
-                    "How this interface works on the Previewer may be different from that on a real device.")
-            },
-            on: function (...args) {
-                console.warn("bluetooth.BLE.on interface mocked in the Previewer." +
-                    "How this interface works on the Previewer may be different from that on a real device.")
-                const len = args.length
-                if (typeof args[len - 1] === 'function') {
-                    if (args[0] == 'BLEDeviceFind') {
-                        args[len - 1].call(this, [scanResultMock]);
-                    }
-                }
-            },
-            off: function (...args) {
-                console.warn("bluetooth.BLE.off interface mocked in the Previewer." +
-                    "How this interface works on the Previewer may be different from that on a real device.")
-                const len = args.length
-                if (typeof args[len - 1] === 'function') {
-                    if (args[0] == 'BLEDeviceFind') {
-                        args[len - 1].call(this, [scanResultMock]);
-                    }
-                }
-            },
+    stopAdvertising: function () {
+      console.warn("GattServer.stopAdvertising interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+    },
+    addService: function (...args) {
+      console.warn("GattServer.addService interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    },
+    removeService: function (...args) {
+      console.warn("GattServer.removeService interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    },
+    close: function () {
+      console.warn("GattServer.close interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+    },
+    notifyCharacteristicChanged: function (...args) {
+      console.warn("GattServer.notifyCharacteristicChanged interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    },
+    sendResponse: function (...args) {
+      console.warn("GattServer.sendResponse interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    },
+    on: function (...args) {
+      console.warn("GattServer.on interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        if (args[0] == 'characteristicRead') {
+          args[len - 1].call(this, characteristicReadReqMock);
+        } else if (args[0] == 'characteristicWrite') {
+          args[len - 1].call(this, characteristicWriteReqMock);
+        } else if (args[0] == 'descriptorRead') {
+          args[len - 1].call(this, descriptorReadReqMock);
+        } else if (args[0] == 'descriptorWrite') {
+          args[len - 1].call(this, descriptorWriteReqMock);
+        } else if (args[0] == 'connectStateChange') {
+          args[len - 1].call(this, BLEConnectChangedStateMock);
         }
+      }
+    },
+    off: function (...args) {
+      console.warn("GattServer.off interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        if (args[0] == 'characteristicRead') {
+          args[len - 1].call(this, characteristicReadReqMock);
+        } else if (args[0] == 'characteristicWrite') {
+          args[len - 1].call(this, characteristicWriteReqMock);
+        } else if (args[0] == 'descriptorRead') {
+          args[len - 1].call(this, descriptorReadReqMock);
+        } else if (args[0] == 'descriptorWrite') {
+          args[len - 1].call(this, descriptorWriteReqMock);
+        } else if (args[0] == 'connectStateChange') {
+          args[len - 1].call(this, BLEConnectChangedStateMock);
+        }
+      }
+    },
+  }
+  const GattClientDeviceMock = {
+    connect: function () {
+      console.warn("GattClientDevice.connect interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    },
+    disconnect: function () {
+      console.warn("GattClientDevice.disconnect interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    },
+    close: function () {
+      console.warn("GattClientDevice.close interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    },
+    getDeviceName: function (...args) {
+      console.warn("GattClientDevice.getDeviceName interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramStringMock);
+        })
+      }
+    },
+    getServices: function (...args) {
+      console.warn("GattClientDevice.getServices interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, gattServicesMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(gattServicesMock);
+        })
+      }
+    },
+    readCharacteristicValue: function (...args) {
+      console.warn("GattClientDevice.readCharacteristicValue interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, BLECharacteristicMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(BLECharacteristicMock);
+        })
+      }
+    },
+    readDescriptorValue: function (...args) {
+      console.warn("GattClientDevice.readDescriptorValue interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, BLEDescriptorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(BLEDescriptorMock);
+        })
+      }
+    },
+    writeCharacteristicValue: function (...args) {
+      console.warn("GattClientDevice.writeCharacteristicValue interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    },
+    writeDescriptorValue: function (...args) {
+      console.warn("GattClientDevice.writeDescriptorValue interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    },
+    getRssiValue: function (...args) {
+      console.warn("GattClientDevice.getRssiValue interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramNumberMock);
+        })
+      }
+    },
+    setBLEMtuSize: function (...args) {
+      console.warn("GattClientDevice.setBLEMtuSize interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    },
+    setNotifyCharacteristicChanged: function (...args) {
+      console.warn("GattClientDevice.setNotifyCharacteristicChanged interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    },
+    on: function (...args) {
+      console.warn("GattClientDevice.on interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        if (args[0] == 'BLECharacteristicChange') {
+          args[len - 1].call(this, BLECharacteristicMock);
+        } else if (args[0] == 'BLEConnectionStateChange') {
+          args[len - 1].call(this, BLEConnectChangedStateMock);
+        }
+      }
+    },
+    off: function (...args) {
+      console.warn("GattClientDevice.off interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        if (args[0] == 'BLECharacteristicChange') {
+          args[len - 1].call(this, BLECharacteristicMock);
+        } else if (args[0] == 'BLEConnectionStateChange') {
+          args[len - 1].call(this, BLEConnectChangedStateMock);
+        }
+      }
+    },
+  }
+  global.ohosplugin.bluetooth = {
+    getState: function () {
+      console.warn("bluetooth.getState interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    },
+    getBtConnectionState: function () {
+      console.warn("bluetooth.getBtConnectionState interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    },
+    pairDevice: function (...args) {
+      console.warn("bluetooth.pairDevice interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    },
+  }
+  global.ohosplugin.bluetooth.BLE = {
+    createGattServer: function () {
+      console.warn("bluetooth.BLE.createGattServer interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return GattServerMock
+    },
+    createGattClientDevice: function (...args) {
+      console.warn("bluetooth.BLE.createGattClientDevice interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return GattClientDeviceMock
+    },
+    getConnectedBLEDevices: function () {
+      console.warn("bluetooth.BLE.getConnectedBLEDevices interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return connectedBLEDevicesMock
+    },
+    startBLEScan: function (...args) {
+      console.warn("bluetooth.BLE.startBLEScan interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+    },
+    stopBLEScan: function () {
+      console.warn("bluetooth.BLE.stopBLEScan interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+    },
+    on: function (...args) {
+      console.warn("bluetooth.BLE.on interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        if (args[0] == 'BLEDeviceFind') {
+          args[len - 1].call(this, [scanResultMock]);
+        }
+      }
+    },
+    off: function (...args) {
+      console.warn("bluetooth.BLE.off interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        if (args[0] == 'BLEDeviceFind') {
+          args[len - 1].call(this, [scanResultMock]);
+        }
+      }
+    },
+  }
 }

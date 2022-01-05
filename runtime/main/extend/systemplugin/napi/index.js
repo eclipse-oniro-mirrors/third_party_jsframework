@@ -3,12 +3,14 @@ import { mockAbility } from './applicationAbility'
 import { mockFormExtension } from './applicationFormExtension'
 import { mockServiceExtension } from './applicationServiceExtension'
 import { mockAbilityStage } from './applicationAbilityStage'
+import { mockFormBindingData } from './applicationFormBindingData'
 import { mockNotification } from './notification'
 import { mockFileio } from './fileio'
 import { mockWorker } from './worker'
 import { mockUtil } from './util'
 import { mockPower } from './power'
 import { mockIntl } from './intl'
+import { mockI18N } from './i18n'
 import { mockRunningLock } from './runningLock'
 import { mockRpc } from './rpc'
 import { mockBytrace } from './bytrace'
@@ -33,6 +35,9 @@ import { mockWifi } from './wifi'
 import { mockUsb } from './usb'
 import { mockBundle } from './bundle'
 import { mockInnerBundle } from './innerBundleManager'
+import { mockUri } from './uri'
+import { mockXml } from './xml'
+import { mockStatfs } from './statfs'
 import { mockSettings } from './settings'
 
 export function mockRequireNapiFun() {
@@ -48,6 +53,8 @@ export function mockRequireNapiFun() {
         return mockServiceExtension();
       case "application.AbilityStage":
         return mockAbilityStage();
+      case "application.formBindingData":
+        return mockFormBindingData();
       case "notification":
         return mockNotification();
       case "fileio":
@@ -58,6 +65,8 @@ export function mockRequireNapiFun() {
         return mockUtil();
       case "intl":
         return mockIntl();
+      case "i18n":
+        return mockI18N();
       case "power":
         return mockPower();
       case "runningLock":
@@ -108,6 +117,12 @@ export function mockRequireNapiFun() {
         return mockBundle();
       case "bundle.innerBundleManager":
         return mockInnerBundle();
+      case "uri":
+        return mockUri();
+      case "xml":
+        return mockXml();
+      case "statfs":
+        return mockStatfs();
       case "settings":
         return mockSettings();
       default:

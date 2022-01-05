@@ -1,424 +1,728 @@
 import { paramMock } from "../utils"
 
-export const IRemoteObject = {
-  queryLocalInterface: function (...args) {
-    console.warn("rpc.queryLocalInterface interface mocked in the Previewer. How this interface works on the" +
+export const MessageParcelClass = class MessageParcel {
+  constructor() {
+    console.warn('rpc.MessageParcel.constructor interface mocked in the Previewer. How this interface works on the' +
+      ' Previewer may be different from that on a real device.');
+    this.reclaim = function () {
+      console.warn("MessageParcel.reclaim interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-    return IRemoteBroker
+    };
+    this.writeRemoteObject = function (...args) {
+      console.warn("MessageParcel.writeRemoteObject interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.readRemoteObject = function () {
+      console.warn("MessageParcel.readRemoteObject interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return IRemoteObjectMock
+    };
+    this.writeInterfaceToken = function (...args) {
+      console.warn("MessageParcel.writeInterfaceToken interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.readInterfaceToken = function () {
+      console.warn("MessageParcel.readInterfaceToken interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramStringMock
+    };
+    this.getSize = function () {
+      console.warn("MessageParcel.getSize interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.getCapacity = function () {
+      console.warn("MessageParcel.getCapacity interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.setSize = function (...args) {
+      console.warn("MessageParcel.setSize interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.setCapacity = function (...args) {
+      console.warn("MessageParcel.setCapacity interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.getWritableBytes = function () {
+      console.warn("MessageParcel.getWritableBytes interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.getReadableBytes = function () {
+      console.warn("MessageParcel.getReadableBytes interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.getReadPosition = function () {
+      console.warn("MessageParcel.getReadPosition interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.getWritePosition = function () {
+      console.warn("MessageParcel.getWritePosition interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.rewindRead = function (...args) {
+      console.warn("MessageParcel.rewindRead interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.rewindWrite = function (...args) {
+      console.warn("MessageParcel.rewindWrite interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeNoException = function() {
+      console.warn("MessageParcel.writeNoException interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.readException = function() {
+      console.warn("MessageParcel.readException interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.writeByte = function (...args) {
+      console.warn("MessageParcel.writeByte interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeShort = function (...args) {
+      console.warn("MessageParcel.writeShort interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeInt = function (...args) {
+      console.warn("MessageParcel.writeInt interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeLong = function (...args) {
+      console.warn("MessageParcel.writeLong interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeFloat = function (...args) {
+      console.warn("MessageParcel.writeFloat interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeDouble = function (...args) {
+      console.warn("MessageParcel.writeDouble interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeBoolean = function (...args) {
+      console.warn("MessageParcel.writeBoolean interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeChar = function (...args) {
+      console.warn("MessageParcel.writeChar interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeString = function (...args) {
+      console.warn("MessageParcel.writeString interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeSequenceable = function (...args) {
+      console.warn("MessageParcel.writeSequenceable interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeByteArray = function (...args) {
+      console.warn("MessageParcel.writeByteArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeShortArray = function (...args) {
+      console.warn("MessageParcel.writeShortArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeIntArray = function (...args) {
+      console.warn("MessageParcel.writeIntArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeLongArray = function (...args) {
+      console.warn("MessageParcel.writeLongArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeFloatArray = function (...args) {
+      console.warn("MessageParcel.writeFloatArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeDoubleArray = function (...args) {
+      console.warn("MessageParcel.writeDoubleArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeBooleanArray = function (...args) {
+      console.warn("MessageParcel.writeBooleanArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeCharArray = function (...args) {
+      console.warn("MessageParcel.writeCharArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeStringArray = function (...args) {
+      console.warn("MessageParcel.writeStringArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeSequenceableArray = function (...args) {
+      console.warn("MessageParcel.writeSequenceableArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.writeRemoteObjectArray = function (...args) {
+      console.warn("MessageParcel.writeRemoteObjectArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.readByte = function () {
+      console.warn("MessageParcel.readByte interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.readShort = function () {
+      console.warn("MessageParcel.readShort interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.readInt = function () {
+      console.warn("MessageParcel.readInt interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.readLong = function () {
+      console.warn("MessageParcel.readLong interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.readFloat = function () {
+      console.warn("MessageParcel.readFloat interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.readDouble = function () {
+      console.warn("MessageParcel.readDouble interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.readBoolean = function () {
+      console.warn("MessageParcel.readBoolean interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.readChar = function () {
+      console.warn("MessageParcel.readChar interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.readString = function () {
+      console.warn("MessageParcel.readString interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramStringMock
+    };
+    this.readSequenceable = function (...args) {
+      console.warn("MessageParcel.readSequenceable interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.readByteArray = function (...args) {
+      console.warn("MessageParcel.readByteArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.readByteArray = function () {
+      console.warn("MessageParcel.readByteArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramArrayMock;
+    };
+    this.readShortArray = function (...args) {
+      console.warn("MessageParcel.readShortArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.readShortArray = function () {
+      console.warn("MessageParcel.readShortArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramArrayMock;
+    };
+    this.readIntArray = function (...args) {
+      console.warn("MessageParcel.readIntArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.readIntArray = function () {
+      console.warn("MessageParcel.readIntArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramArrayMock;
+    };
+    this.readLongArray = function (...args) {
+      console.warn("MessageParcel.readLongArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.readLongArray = function () {
+      console.warn("MessageParcel.readLongArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramArrayMock;
+    };
+    this.readFloatArray = function (...args) {
+      console.warn("MessageParcel.readFloatArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.readFloatArray = function () {
+      console.warn("MessageParcel.readFloatArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramArrayMock;
+    };
+    this.readDoubleArray = function (...args) {
+      console.warn("MessageParcel.readDoubleArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.readDoubleArray = function () {
+      console.warn("MessageParcel.readDoubleArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramArrayMock;
+    };
+    this.readBooleanArray = function (...args) {
+      console.warn("MessageParcel.readBooleanArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.readBooleanArray = function () {
+      console.warn("MessageParcel.readBooleanArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramArrayMock;
+    };
+    this.readCharArray = function (...args) {
+      console.warn("MessageParcel.readCharArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.readCharArray = function () {
+      console.warn("MessageParcel.readCharArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramArrayMock;
+    };
+    this.readStringArray = function (...args) {
+      console.warn("MessageParcel.readStringArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.readStringArray = function () {
+      console.warn("MessageParcel.readStringArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramArrayMock;
+    };
+    this.readSequenceableArray = function (...args) {
+      console.warn("MessageParcel.readSequenceableArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.readRemoteObjectArray = function (...args) {
+      console.warn("MessageParcel.readRemoteObjectArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.readRemoteObjectArray = function () {
+      console.warn("MessageParcel.readRemoteObjectArray interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramArrayMock;
+    };
+    this.containFileDescriptors = function () {
+      console.warn("MessageParcel.containFileDescriptors interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    };
+    this.writeFileDescriptor = function (...args) {
+      console.warn("MessageParcel.writeFileDescriptor interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    };
+    this.readFileDescriptor = function () {
+      console.warn("MessageParcel.readFileDescriptor interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock;
+    };
+    this.writeAshmem = function (...args) {
+      console.warn("MessageParcel.writeAshmem interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    };
+    this.readAshmem = function () {
+      console.warn("MessageParcel.readAshmem interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return new AshmemClass();
+    };
+    this.getRawDataCapacity = function () {
+      console.warn("MessageParcel.getRawDataCapacity interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock;
+    };
+    this.writeRawData = function (...args) {
+      console.warn("MessageParcel.writeRawData interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    };
+    this.readRawData = function (...args) {
+      console.warn("MessageParcel.readRawData interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramArrayMock;
+    };
+  }
+};
+MessageParcelClass.create = function() {
+  console.warn("MessageParcel.create interface mocked in the Previewer. How this interface works on the" +
+    " Previewer may be different from that on a real device.")
+  return new MessageParcelClass()
+};
+MessageParcelClass.closeFileDescriptor = function(...args) {
+  console.warn("MessageParcel.closeFileDescriptor interface mocked in the Previewer. How this interface works on the" +
+    " Previewer may be different from that on a real device.")
+};
+MessageParcelClass.dupFileDescriptor = function(...args) {
+  console.warn("MessageParcel.dupFileDescriptor interface mocked in the Previewer. How this interface works on the" +
+    " Previewer may be different from that on a real device.")
+  return paramMock.paramNumberMock
+};
+export const MessageOptionClass = class MessageOption {
+  constructor(...args) {
+    console.warn('rpc.MessageOption constructor interface mocked in the Previewer. How this interface works on the' +
+      ' Previewer may be different from that on a real device.')
+    this.getFlags = function() {
+      console.warn("MessageOption.getFlags interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.setFlags = function(...args) {
+      console.warn("MessageOption.setFlags interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.getWaitTime = function() {
+      console.warn("MessageOption.getWaitTime interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.setWaitTime = function(...args) {
+      console.warn("MessageOption.setWaitTime interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+  }
+};
+MessageOptionClass.TF_SYNC = '[PC preview] unknow TF_SYNC';
+MessageOptionClass.TF_ASYNC = '[PC preview] unknow TF_ASYNC';
+MessageOptionClass.TF_ACCEPT_FDS = '[PC preview] unknow TF_ACCEPT_FDS';
+MessageOptionClass.TF_WAIT_TIME = '[PC preview] unknow TF_WAIT_TIME';
+export const AshmemClass = class Ashmem {
+  constructor() {
+    console.warn('rpc.Ashmem constructor interface mocked in the Previewer. How this interface works on the' +
+      ' Previewer may be different from that on a real device.')
+    this.closeAshmem = function() {
+      console.warn('Ashmem.closeAshmem interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.')
+    };
+    this.unmapAshmem = function() {
+      console.warn('Ashmem.unmapAshmem interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.')
+    };
+    this.getAshmemSize = function() {
+      console.warn('Ashmem.getAshmemSize interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.')
+      return paramMock.paramNumberMock
+    };
+    this.mapAshmem = function(...args) {
+      console.warn('Ashmem.mapAshmem interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.')
+      return paramMock.paramBooleanMock
+    };
+    this.mapReadAndWriteAshmem = function() {
+      console.warn('Ashmem.mapReadAndWriteAshmem interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.')
+      return paramMock.paramBooleanMock
+    };
+    this.mapReadOnlyAshmem = function() {
+      console.warn('Ashmem.mapReadOnlyAshmem interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.')
+      return paramMock.paramBooleanMock
+    };
+    this.setProtection = function(...args) {
+      console.warn('Ashmem.setProtection interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.')
+      return paramMock.paramBooleanMock
+    };
+    this.writeToAshmem = function(...args) {
+      console.warn('Ashmem.writeToAshmem interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.')
+      return paramMock.paramBooleanMock
+    };
+    this.readFromAshmem = function(...args) {
+      console.warn('Ashmem.readFromAshmem interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.')
+      return paramMock.paramArrayMock
+    };
+  }
+};
+AshmemClass.createAshmem = function(...args) {
+  console.warn('Ashmem.createAshmem interface mocked in the Previewer. How this interface works on the' +
+    ' Previewer may be different from that on a real device.')
+  return new AshmemClass()
+};
+AshmemClass.createAshmemFromExisting = function(...args) {
+  console.warn('Ashmem.createAshmemFromExisting interface mocked in the Previewer. How this interface works on the' +
+    ' Previewer may be different from that on a real device.')
+  return new AshmemClass()
+};
+AshmemClass.PROT_EXEC = '[PC preview] unknow PROT_EXEC';
+AshmemClass.PROT_NONE = '[PC preview] unknow PROT_NONE';
+AshmemClass.PROT_READ = '[PC preview] unknow PROT_READ';
+AshmemClass.PROT_WRITE = '[PC preview] unknow PROT_WRITE';
+export const RemoteObjectClass = class RemoteObject {
+  constructor(...args) {
+    console.warn("rpc.RemoteObject constructor interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    this.queryLocalInterface = function(...args) {
+      console.warn("RemoteObject.queryLocalInterface interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return IRemoteBrokerMock
+    };
+    this.getInterfaceDescriptor = function() {
+      console.warn("RemoteObject.getInterfaceDescriptor interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramStringMock
+    };
+    this.onRemoteRequest = function(...args) {
+      console.warn("RemoteObject.onRemoteRequest interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.sendRequest = function(...args) {
+      console.warn("RemoteObject.sendRequest interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, SendRequestResultMock)
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(SendRequestResultMock)
+        })
+      }
+    };
+    this.getCallingPid = function() {
+      console.warn("RemoteObject.getCallingPid interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.getCallingUid = function() {
+      console.warn("RemoteObject.getCallingUid interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
+    this.attachLocalInterface = function(...args) {
+      console.warn("RemoteObject.attachLocalInterface interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    };
+    this.addDeathRecipient = function (...args) {
+      console.warn("RemoteObject.addDeathRecipient interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.removeDeathRecipient = function (...args) {
+      console.warn("RemoteObject.removeDeathRecipient interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.isObjectDead = function () {
+      console.warn("RemoteObject.isObjectDead interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+  }
+};
+export const RemoteProxyClass = class RemoteProxy {
+  constructor() {
+    console.warn("rpc.RemoteProxy constructor interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    this.queryLocalInterface = function(...args) {
+      console.warn("RemoteProxy.queryLocalInterface interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return IRemoteBrokerMock
+    };
+    this.getInterfaceDescriptor = function() {
+      console.warn("RemoteProxy.getInterfaceDescriptor interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramStringMock
+    };
+    this.addDeathRecipient = function (...args) {
+      console.warn("RemoteProxy.addDeathRecipient interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.removeDeathRecipient = function (...args) {
+      console.warn("RemoteProxy.removeDeathRecipient interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.isObjectDead = function () {
+      console.warn("RemoteProxy.isObjectDead interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock
+    };
+    this.sendRequest = function(...args) {
+      console.warn("RemoteProxy.sendRequest mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, SendRequestResultMock)
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(SendRequestResultMock)
+        })
+      }
+    };
+  }
+};
+RemoteProxyClass.PING_TRANSACTION = '[PC preview] unknow PING_TRANSACTION';
+RemoteProxyClass.DUMP_TRANSACTION = '[PC preview] unknow DUMP_TRANSACTION';
+RemoteProxyClass.INTERFACE_TRANSACTION = '[PC preview] unknow INTERFACE_TRANSACTION';
+RemoteProxyClass.MIN_TRANSACTION_ID = '[PC preview] unknow MIN_TRANSACTION_ID';
+RemoteProxyClass.MAX_TRANSACTION_ID = '[PC preview] unknow MAX_TRANSACTION_ID';
+export const IRemoteObjectMock = {
+  queryLocalInterface: function (...args) {
+    console.warn("IRemoteObject.queryLocalInterface interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return IRemoteBrokerMock
   },
   sendRequest: function (...args) {
-    console.warn("rpc.sendRequest interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-    return paramMock.paramBooleanMock
+    console.warn("IRemoteObject.sendRequest interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    const len = args.length
+    if (len > 0 && typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, SendRequestResultMock)
+    } else {
+      return new Promise((resolve, reject) => {
+        resolve(SendRequestResultMock)
+      })
+    }
   },
   addDeathRecipient: function (...args) {
-    console.warn("rpc.addDeathRecipient interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+    console.warn("IRemoteObject.addDeathRecipient interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
     return paramMock.paramBooleanMock
   },
   removeDeathRecipient: function (...args) {
-    console.warn("rpc.removeDeathRecipient interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+    console.warn("IRemoteObject.removeDeathRecipient interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
     return paramMock.paramBooleanMock
   },
   getInterfaceDescriptor: function () {
-    console.warn("rpc.getInterfaceDescriptor interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+    console.warn("IRemoteObject.getInterfaceDescriptor interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
     return paramMock.paramStringMock
   },
   isObjectDead: function () {
-    console.warn("rpc.isObjectDead interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+    console.warn("IRemoteObject.isObjectDead interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
     return paramMock.paramBooleanMock
   }
-}
-export function mockRpc() {
-  const MessageParcel = {
-    reclaim: function () {
-      console.warn("rpc.reclaim interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-    },
-    writeRemoteObject: function (...args) {
-      console.warn("rpc.writeRemoteObject interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    readRemoteObject: function () {
-      console.warn("rpc.readRemoteObject interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return IRemoteObject
-    },
-    writeInterfaceToken: function (...args) {
-      console.warn("rpc.writeInterfaceToken interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    readInterfaceToken: function () {
-      console.warn("rpc.readInterfaceToken interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramStringMock
-    },
-    getSize: function () {
-      console.warn("rpc.getSize interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock
-    },
-    getCapacity: function () {
-      console.warn("rpc.getCapacity interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock
-    },
-    setSize: function (...args) {
-      console.warn("rpc.setSize interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    setCapacity: function (...args) {
-      console.warn("rpc.setCapacity interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    getWritableBytes: function () {
-      console.warn("rpc.getWritableBytes interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock
-    },
-    getReadableBytes: function () {
-      console.warn("rpc.getReadableBytes interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock
-    },
-    getReadPosition: function () {
-      console.warn("rpc.getReadPosition interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock
-    },
-    getWritePosition: function () {
-      console.warn("rpc.getWritePosition interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock
-    },
-    rewindRead: function (...args) {
-      console.warn("rpc.rewindRead interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    rewindWrite: function (...args) {
-      console.warn("rpc.rewindWrite interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeByte: function (...args) {
-      console.warn("rpc.writeByte interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeShort: function (...args) {
-      console.warn("rpc.writeShort interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeInt: function (...args) {
-      console.warn("rpc.writeInt interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeLong: function (...args) {
-      console.warn("rpc.writeLong interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeFloat: function (...args) {
-      console.warn("rpc.writeFloat interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeDouble: function (...args) {
-      console.warn("rpc.writeDouble interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeBoolean: function (...args) {
-      console.warn("rpc.writeBoolean interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeChar: function (...args) {
-      console.warn("rpc.writeChar interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeString: function (...args) {
-      console.warn("rpc.writeString interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeSequenceable: function (...args) {
-      console.warn("rpc.writeSequenceable interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeByteArray: function (...args) {
-      console.warn("rpc.writeByteArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeShortArray: function (...args) {
-      console.warn("rpc.writeShortArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeIntArray: function (...args) {
-      console.warn("rpc.writeIntArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeLongArray: function (...args) {
-      console.warn("rpc.writeLongArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeFloatArray: function (...args) {
-      console.warn("rpc.writeFloatArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeDoubleArray: function (...args) {
-      console.warn("rpc.writeDoubleArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeBooleanArray: function (...args) {
-      console.warn("rpc.writeBooleanArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeCharArray: function (...args) {
-      console.warn("rpc.writeCharArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeStringArray: function (...args) {
-      console.warn("rpc.writeStringArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    writeSequenceableArray: function (...args) {
-      console.warn("rpc.writeSequenceableArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    readByte: function () {
-      console.warn("rpc.readByte interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock
-    },
-    readShort: function () {
-      console.warn("rpc.readShort interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock
-    },
-    readInt: function () {
-      console.warn("rpc.readInt interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock
-    },
-    readLong: function () {
-      console.warn("rpc.readLong interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock
-    },
-    readFloat: function () {
-      console.warn("rpc.readFloat interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock
-    },
-    readDouble: function () {
-      console.warn("rpc.readDouble interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock
-    },
-    readBoolean: function () {
-      console.warn("rpc.readBoolean interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    readChar: function () {
-      console.warn("rpc.readChar interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock
-    },
-    readString: function () {
-      console.warn("rpc.readString interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramStringMock
-    },
-    readSequenceable: function (...args) {
-      console.warn("rpc.readSequenceable interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    readByteArray: function () {
-      console.warn("rpc.readByteArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramArrayMock;
-    },
-    readShortArray: function () {
-      console.warn("rpc.readShortArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramArrayMock;
-    },
-    readIntArray: function () {
-      console.warn("rpc.readIntArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramArrayMock;
-    },
-    readLongArray: function () {
-      console.warn("rpc.readLongArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramArrayMock;
-    },
-    readFloatArray: function () {
-      console.warn("rpc.readFloatArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramArrayMock;
-    },
-    readDoubleArray: function () {
-      console.warn("rpc.readDoubleArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramArrayMock;
-    },
-    readBooleanArray: function () {
-      console.warn("rpc.readBooleanArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramArrayMock;
-    },
-    readCharArray: function () {
-      console.warn("rpc.readCharArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramArrayMock;
-    },
-    readStringArray: function () {
-      console.warn("rpc.readStringArray interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramArrayMock;
-    }
-  };
-  const IRemoteBroker = {
-    asObject: function () {
-      console.warn("rpc.asObject interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return IRemoteObject
-    }
-  };
-  const RemoteProxy = {
-    queryLocalInterface: function (...args) {
-      console.warn("rpc.queryLocalInterface interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return IRemoteObject
-    },
-    addDeathRecipient: function (...args) {
-      console.warn("rpc.addDeathRecipient interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    removeDeathRecipient: function (...args) {
-      console.warn("rpc.removeDeathRecipient interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    getInterfaceDescriptor: function () {
-      console.warn("rpc.getInterfaceDescriptor interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramStringMock
-    },
-    sendRequest: function (...args) {
-      console.warn("rpc.sendRequest interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    },
-    isObjectDead: function () {
-      console.warn("rpc.isObjectDead interface mocked in the Previewer. How this interface works on the" +
-          " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock
-    }
-  };
-  const rpc = {
-    MessageParcel: {
-      create: function () {
-        console.warn("rpc.create interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-        return MessageParcel
-      }
-    },
-    MessageOption: {
-      flags: '[PC preview] unknow flags',
-      waitTime: '[PC preview] unknow waitTime'
-    },
-    RemoteProxy: RemoteProxy,
-    IPCSkeleton: {
-      getContextObject: function () {
-        console.warn("rpc.getContextObject interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-        return IRemoteObject
-      },
-      getCallingPid: function () {
-        console.warn("rpc.getCallingPid interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-        return paramMock.paramNumberMock
-      },
-      getCallingUid: function () {
-        console.warn("rpc.getCallingUid interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-        return paramMock.paramNumberMock
-      },
-      getCallingDeviceID: function () {
-        console.warn("rpc.getCallingDeviceID interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-        return paramMock.paramStringMock
-      },
-      getLocalDeviceID: function () {
-        console.warn("rpc.getLocalDeviceID interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-        return paramMock.paramStringMock
-      },
-      getLocalAbility: function () {
-        console.warn("rpc.getLocalAbility interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-        return RemoteProxy
-      },
-      isLocalCalling: function () {
-        console.warn("rpc.isLocalCalling interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-        return paramMock.paramBooleanMock
-      },
-      flushCommands: function (...args) {
-        console.warn("rpc.flushCommands interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-        return paramMock.paramNumberMock
-      },
-      resetCallingIdentity: function () {
-        console.warn("rpc.resetCallingIdentity interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-        return paramMock.paramStringMock
-      },
-      setCallingIdentity: function (...args) {
-        console.warn("rpc.setCallingIdentity interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-        return paramMock.paramBooleanMock
-      }
-    },
-    RemoteObject: {
-      onRemoteRequest: function (...args) {
-        console.warn("rpc.onRemoteRequest interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-        return paramMock.paramBooleanMock
-      },
-      attachLocalInterface: function (...args) {
-        console.warn("rpc.attachLocalInterface interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-      }
-    }
+};
+export const IRemoteBrokerMock = {
+  asObject: function () {
+    console.warn("IRemoteBroker.asObject interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return IRemoteObjectMock
   }
-  return rpc
+};
+export const SendRequestResultMock = {
+  errCode: "[PC Preview]: unknow errCode",
+  code: "[PC Preview]: unknow code",
+  data: "[PC Preview]: unknow data",
+  reply: "[PC Preview]: unknow reply",
+};
+export const SequenceableMock = {
+  marshalling: function(...args) {
+    console.warn("Sequenceable.marshalling interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return paramMock.paramBooleanMock
+  },
+
+  unmarshalling: function(...args) {
+    console.warn("Sequenceable.unmarshalling interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return paramMock.paramBooleanMock
+  }
+};
+export const DeathRecipientMock = {
+  onRemoteDied: function() {
+    console.warn("DeathRecipient.onRemoteDied interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  }
+};
+export const IPCSkeletonMock = {
+  getContextObject: function () {
+    console.warn("IPCSkeleton.getContextObject interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return IRemoteObjectMock
+  },
+  getCallingPid: function () {
+    console.warn("IPCSkeleton.getCallingPid interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return paramMock.paramNumberMock
+  },
+  getCallingUid: function () {
+    console.warn("IPCSkeleton.getCallingUid interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return paramMock.paramNumberMock
+  },
+  getCallingDeviceID: function () {
+    console.warn("IPCSkeleton.getCallingDeviceID interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return paramMock.paramStringMock
+  },
+  getLocalDeviceID: function () {
+    console.warn("IPCSkeleton.getLocalDeviceID interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return paramMock.paramStringMock
+  },
+  isLocalCalling: function () {
+    console.warn("IPCSkeleton.isLocalCalling interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return paramMock.paramBooleanMock
+  },
+  flushCommands: function (...args) {
+    console.warn("IPCSkeleton.flushCommands interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return paramMock.paramNumberMock
+  },
+  resetCallingIdentity: function () {
+    console.warn("IPCSkeleton.resetCallingIdentity interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return paramMock.paramStringMock
+  },
+  setCallingIdentity: function (...args) {
+    console.warn("IPCSkeleton.setCallingIdentity interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return paramMock.paramBooleanMock
+  }
+};
+export function mockRpc() {
+  const rpcMock = {
+    IRemoteObject: IRemoteObjectMock,
+    IRemoteBroker: IRemoteBrokerMock,
+    SendRequestResult: SendRequestResultMock,
+    Sequenceable: SequenceableMock,
+    DeathRecipient: DeathRecipientMock,
+    IPCSkeleton: IPCSkeletonMock,
+    MessageParcel: MessageParcelClass,
+    MessageOption: MessageOptionClass,
+    Ashmem: AshmemClass,
+    RemoteObject: RemoteObjectClass,
+    RemoteProxy: RemoteProxyClass
+  };
+  return rpcMock
 }

@@ -31,7 +31,7 @@ import {
   registerCustomComponent,
   requireModule
 } from '../register';
-import { appMap } from '../../app/map';
+import { pageMap } from '../../app/map';
 import Vm from '../../model/index';
 import Page from '../index';
 import {updateDpi, updateLocale} from '../../app';
@@ -61,7 +61,7 @@ export const defineFn = function(page: Page, name?: string, ...args: any[] | nul
           if (packageName === 'notset') {
             return page;
           }
-          const appPage: Page = appMap[packageName].getAppInstance();
+          const appPage: Page = pageMap.getTop(packageName);
           return appPage || page;
         };
         const moduleName: string = removePrefix(name);

@@ -29,7 +29,6 @@ import { mockFile } from './file'
 import { mockGeolocation } from './geolocation'
 import { mockInputMethod } from './inputMethod'
 import { mockInputMethodEngine } from './inputMethodEngine'
-import { mockI18n } from './i18n'
 import {
   mockMultimediaImage,
   mockMultimediaMedia,
@@ -117,7 +116,6 @@ export function mockSystemPlugin() {
   mockWallpaper()
   mockInputMethod()
   mockInputMethodEngine()
-  mockI18n()
   mockOhosRequest()
   mockMultimediaImage()
   mockMultimediaMedia()
