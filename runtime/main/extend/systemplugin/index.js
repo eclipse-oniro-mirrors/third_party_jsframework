@@ -72,7 +72,6 @@ import { mockDeviceManager } from './deviceManager'
 import { mockScreenshot } from './screenshot'
 import {mockContact} from './contact'
 import {mockScreenLock} from "./screenLock"
-import {mockSettings} from "./settings"
 import { mockAppAccount} from './ohos/appAccount'
 import { mockOsAccount} from './ohos/osAccount'
 import { mockOhosGeolocation } from './ohos/geolocation'
@@ -158,7 +157,6 @@ export function mockSystemPlugin() {
   mockStorageInfoManager()
   mockContact()
   mockScreenLock()
-  mockSettings()
   mockAppAbilityManager()
   mockAppAccount()
   mockOsAccount()

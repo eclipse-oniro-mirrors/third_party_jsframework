@@ -38,6 +38,7 @@ import { mockInnerBundle } from './innerBundleManager'
 import { mockUri } from './uri'
 import { mockXml } from './xml'
 import { mockStatfs } from './statfs'
+import { mockSettings } from './settings'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -122,6 +123,8 @@ export function mockRequireNapiFun() {
         return mockXml();
       case "statfs":
         return mockStatfs();
+      case "settings":
+        return mockSettings();
       default:
         return global.requireNapiPreview(...args);
     }
