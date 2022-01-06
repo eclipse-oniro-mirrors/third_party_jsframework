@@ -483,15 +483,7 @@ class Element extends Node {
     } else {
       this.moveIndex(node, this.children.length, { changeSibling: true });
       if (node.nodeType === Node.NodeType.Element) {
-        const index = this.moveIndex(node, this.pureChildren.length, { isInPureChildren: true });
-        const taskCenter = this.getTaskCenter(this.docId);
-        if (taskCenter && index >= 0) {
-          return taskCenter.send(
-            'dom',
-            { action: 'moveElement' },
-            [node.ref, this.ref, index]
-          );
-        }
+        this.moveIndex(node, this.pureChildren.length, { isInPureChildren: true });
       }
     }
   }
@@ -543,21 +535,13 @@ class Element extends Node {
       this.moveIndex(node, this.children.indexOf(before), { changeSibling: true });
       if (node.nodeType === Node.NodeType.Element) {
         const pureBefore = this.nextElement(before);
-        const index = this.moveIndex(
+        this.moveIndex(
           node,
           pureBefore
             ? this.pureChildren.indexOf(pureBefore)
             : this.pureChildren.length,
           { isInPureChildren: true}
         );
-        const taskCenter = this.getTaskCenter(this.docId);
-        if (taskCenter && index >= 0) {
-          return taskCenter.send(
-            'dom',
-            { action: 'moveElement' },
-            [node.ref, this.ref, index]
-          );
-        }
       }
     }
   }
@@ -602,19 +586,11 @@ class Element extends Node {
     } else {
       this.moveIndex(node, this.children.indexOf(after) + 1, { changeSibling: true});
       if (node.nodeType === Node.NodeType.Element) {
-        const index = this.moveIndex(
+        this.moveIndex(
           node,
           this.pureChildren.indexOf(this.previousElement(after)) + 1,
           { isInPureChildren: true }
         );
-        const taskCenter = this.getTaskCenter(this.docId);
-        if (taskCenter && index >= 0) {
-          return taskCenter.send(
-            'dom',
-            { action: 'moveElement' },
-            [node.ref, this.ref, index]
-          );
-        }
       }
     }
   }
@@ -843,14 +819,6 @@ class Element extends Node {
     }
     if (!this._event[type]) {
       this._event[type] = { handler, params };
-      const taskCenter = this.getTaskCenter(this.docId);
-      if (taskCenter) {
-        taskCenter.send(
-          'dom',
-          { action: 'addEvent' },
-          [this.ref, type]
-        );
-      }
     }
   }
 
@@ -861,14 +829,6 @@ class Element extends Node {
   public removeEvent(type: string): void {
     if (this._event && this._event[type]) {
       delete this._event[type];
-      const taskCenter = this.getTaskCenter(this.docId);
-      if (taskCenter) {
-        taskCenter.send(
-          'dom',
-          { action: 'removeEvent' },
-          [this.ref, type]
-        );
-      }
     }
   }
 
