@@ -230,37 +230,30 @@ export function mockMultimediaMedia() {
     play: function () {
       console.warn("AudioPlayer.play interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     pause: function () {
       console.warn("AudioPlayer.pause interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     stop: function () {
       console.warn("AudioPlayer.stop interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     reset: function () {
       console.warn("AudioPlayer.stop interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     seek: function (...args) {
       console.warn("AudioPlayer.seek interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     setVolume: function (...args) {
       console.warn("AudioPlayer.setVolume interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-      return
     },
     release: function () {
       console.warn("AudioPlayer.release interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     src: "[PC Preview] unknow src",
     loop: "[PC Preview] unknow loop",
@@ -403,27 +396,22 @@ export function mockMultimediaMedia() {
     start: function (...args) {
       console.warn("MediaDecoder.start interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     seek: function (...args) {
       console.warn("MediaDecoder.seek interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     stop: function () {
       console.warn("MediaDecoder.stop interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     release: function () {
       console.warn("MediaDecoder.release interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-      return
     },
     requestFrame: function () {
       console.warn("MediaDecoder.requestFrame interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     on: function (...args) {
       console.warn("MediaDecoder.on interface mocked in the Previewer. How this interface works on the Previewer" +
@@ -679,12 +667,10 @@ export function mockMultimediaMedialibrary() {
     on: function (...args) {
       console.warn("MediaLibrary.on interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     off: function (...args) {
       console.warn("MediaLibrary.off interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     }
   }
   const FetchFileResultMock = {
@@ -701,7 +687,6 @@ export function mockMultimediaMedialibrary() {
     close: function (...args) {
       console.warn("FetchFileResult.close interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     getFirstObject: function (...args) {
       console.warn("FetchFileResult.getFirstObject interface mocked in the Previewer. How this interface works on the" +

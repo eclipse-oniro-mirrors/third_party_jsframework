@@ -1258,13 +1258,11 @@ export function mockAbilityContinuationRegisterManager() {
       console.warn("ability.ContinuationRegisterManager.on interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
-      if (args[0] === 'deviceConnect') {
-        if (typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, ContinuationResultMock)
-        }
-      } else {
-        if (typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.paramStringMock)
+      if(typeof args[len -1]==='function'){
+        if(args[0] ==='deviceConnect'){
+          args[len-1].call(this,ContinuationResultMock)
+        }else{
+          args[len-1].call(this,paramMock.paramStringMock)
         }
       }
     },
@@ -1272,13 +1270,11 @@ export function mockAbilityContinuationRegisterManager() {
       console.warn("ability.ContinuationRegisterManager.off interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
-      if (args[0] === 'deviceConnect') {
-        if (typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, ContinuationResultMock)
-        }
-      } else {
-        if (typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.paramStringMock)
+      if(typeof args[len -1]==='function'){
+        if(args[0] ==='deviceConnect'){
+          args[len-1].call(this,ContinuationResultMock)
+        }else{
+          args[len-1].call(this,paramMock.paramStringMock)
         }
       }
     },
