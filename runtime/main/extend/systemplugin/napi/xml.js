@@ -11,11 +11,6 @@ export function mockXml() {
             console.warn("xml.XmlPullParser interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
                 return XmlPullParserMock;
-        },
-        ConvertXML: function(...args) {
-            console.warn("xml.ConvertXML interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-                return ConvertXMLMock;
         }
     }
     const XmlSerializerMock = {
@@ -58,20 +53,13 @@ export function mockXml() {
         setDocType: function(...args) {
             console.warn("XmlSerializer.setDocType interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
-        },
+        }
     }
     const XmlPullParserMock = {
         parse: function(...args) {
             console.warn("XmlPullParser.parse interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
-        },
-    }
-    const ConvertXMLMock = {
-        convert: function(...args) {
-            console.warn("ConvertXML.convert interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return paramMock.paramObjectMock;
-        },
+        }
     }
     return result;
 }

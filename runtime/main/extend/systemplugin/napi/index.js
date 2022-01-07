@@ -37,6 +37,7 @@ import { mockBundle } from './bundle'
 import { mockInnerBundle } from './innerBundleManager'
 import { mockUri } from './uri'
 import { mockXml } from './xml'
+import { mockConvertXml } from './convertxml'
 import { mockStatfs } from './statfs'
 import { mockSettings } from './settings'
 
@@ -121,6 +122,8 @@ export function mockRequireNapiFun() {
         return mockUri();
       case "xml":
         return mockXml();
+      case "convertxml":
+        return mockConvertXml();
       case "statfs":
         return mockStatfs();
       case "settings":
