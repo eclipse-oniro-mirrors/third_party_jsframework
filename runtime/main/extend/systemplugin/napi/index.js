@@ -39,6 +39,7 @@ import { mockUri } from './uri'
 import { mockXml } from './xml'
 import { mockStatfs } from './statfs'
 import { mockSettings } from './settings'
+import { mockAbilityAccessCtrl } from './abilityAccessCtrl'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -125,6 +126,8 @@ export function mockRequireNapiFun() {
         return mockStatfs();
       case "settings":
         return mockSettings();
+      case "abilityAccessCtrl":
+        return mockAbilityAccessCtrl();
       default:
         return global.requireNapiPreview(...args);
     }
