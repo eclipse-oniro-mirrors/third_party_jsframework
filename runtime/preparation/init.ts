@@ -137,7 +137,7 @@ const ComponentsInfo: components<string>[] = [
     'type': 'canvas'
   },
   {
-    'methods': ['getXComponentContext', 'createIntersectionObserver', 'addChild'],
+    'methods': ['getXComponentContext', 'createIntersectionObserver', 'addChild', 'getXComponentSurfaceId'],
     'type': 'xcomponent'
   },
   {'methods': ['show', 'close', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver', 'addChild'], 'type': 'dialog'},
