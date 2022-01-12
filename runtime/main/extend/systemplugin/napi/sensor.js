@@ -124,6 +124,10 @@ export function mockSensor() {
     longitude: "[PC preview] unknown longitude",
     altitude: "[PC preview] unknown altitude",
   }
+  const CoordinatesOptions = {
+    x: "[PC preview] unknown x",
+    y: "[PC preview] unknown y"
+  }
   const SensorType = {
     SENSOR_TYPE_ID_ACCELEROMETER: 1,
     SENSOR_TYPE_ID_GYROSCOPE: 2,
@@ -260,6 +264,90 @@ export function mockSensor() {
       } else {
         return new Promise((resolve, reject) => {
           resolve(GeomagneticResponse);
+        })
+      }
+    },
+    getAltitude: function (...args) {
+      console.warn("sensor.getAltitude interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramNumberMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramNumberMock);
+        })
+      }
+    },
+    getGeomagneticDip: function (...args) {
+      console.warn("sensor.getGeomagneticDip interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramNumberMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramNumberMock);
+        })
+      }
+    },
+    getAngleModifiy: function (...args) {
+      console.warn("sensor.getAngleModifiy interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramArrayMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramArrayMock);
+        })
+      }
+    },
+    createRotationMatrix: function (...args) {
+      console.warn("sensor.createRotationMatrix interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramArrayMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramArrayMock);
+        })
+      }
+    },
+    transformCoordinateSystem: function (...args) {
+      console.warn("sensor.transformCoordinateSystem interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramArrayMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramArrayMock);
+        })
+      }
+    },
+    createQuaternion: function (...args) {
+      console.warn("sensor.createQuaternion interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramArrayMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramArrayMock);
+        })
+      }
+    },
+    getDirection: function (...args) {
+      console.warn("sensor.getDirection interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramArrayMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramArrayMock);
         })
       }
     }
