@@ -16,16 +16,16 @@
 import { paramMock } from "../utils"
 
 export function mockAbilityAccessCtrl() {
-    const atManagerMock = {
+    const AtManagerMock = {
         verifyAccessToken: function (...args) {
-            console.warn("atManager.verifyAccessToken interface mocked in the Previewer." +
+            console.warn("AtManager.verifyAccessToken interface mocked in the Previewer." +
                 " How this interface works on the Previewer may be different from that on a real device.")
             return new Promise((resolve, reject) => {
                 resolve(GrantStatusMock);
             })
         },
         grantUserGrantedPermission: function (...args) {
-            console.warn("atManager.grantUserGrantedPermission interface mocked in the Previewer." +
+            console.warn("AtManager.grantUserGrantedPermission interface mocked in the Previewer." +
                 " How this interface works on the Previewer may be different from that on a real device.")
             const len = args.length
             if (len > 0 && typeof args[len - 1] === 'function') {
@@ -37,7 +37,7 @@ export function mockAbilityAccessCtrl() {
             }
         },
         revokeUserGrantedPermission: function (...args) {
-            console.warn("atManager.revokeUserGrantedPermission interface mocked in the Previewer." +
+            console.warn("AtManager.revokeUserGrantedPermission interface mocked in the Previewer." +
                 " How this interface works on the Previewer may be different from that on a real device.")
             const len = args.length
             if (len > 0 && typeof args[len - 1] === 'function') {
@@ -49,7 +49,7 @@ export function mockAbilityAccessCtrl() {
             }
         },
         getPermissionFlags: function (...args) {
-            console.warn("atManager.getPermissionFlags interface mocked in the Previewer." +
+            console.warn("AtManager.getPermissionFlags interface mocked in the Previewer." +
                 " How this interface works on the Previewer may be different from that on a real device.")
             return new Promise((resolve, reject) => {
                 resolve(paramMock.paramNumberMock);
@@ -60,7 +60,7 @@ export function mockAbilityAccessCtrl() {
         createAtManager : function (...args) {
             console.warn("abilityAccessCtrl.createAtManager interface mocked in the Previewer." +
                 " How this interface works on the Previewer may be different from that on a real device.")
-            return atManagerMock;
+            return AtManagerMock;
         },
         GrantStatusMock:'[PC preview] unknow GrantStatusMock'
     };
