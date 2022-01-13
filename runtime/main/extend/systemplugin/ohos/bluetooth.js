@@ -1,6 +1,7 @@
 import { paramMock } from "../utils"
 
 export function mockOhosBluetooth() {
+  const ArrayStringMock = ["[PC preview] unknown array string"]
   const connectedBLEDevicesMock = [
     {
       connectedBLEDevice: "[PC Preview] unknow connectedBLEDevice",
@@ -77,6 +78,13 @@ export function mockOhosBluetooth() {
   const BLEConnectChangedStateMock = {
     deviceId: "[PC preview] unknown deviceId",
     state: "[PC preview] unknown state"
+  }
+  const pinRequiredParamMock = {
+    deviceId: "[PC preview] unknown deviceId",
+    pinCode: "[PC preview] unknown pinCode"
+  }
+  const sppReadMock = {
+    ArrayBuffer: "[PC preview] unknown ArrayBuffer"
   }
   const GattServerMock = {
     startAdvertising: function (...args) {
@@ -285,6 +293,149 @@ export function mockOhosBluetooth() {
         "How this interface works on the Previewer may be different from that on a real device.")
       return paramMock.paramBooleanMock
     },
+    enableBluetooth: function () {
+      console.warn("bluetooth.enableBluetooth interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+    disableBluetooth: function () {
+      console.warn("bluetooth.disableBluetooth interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+    getLocalName: function () {
+      console.warn("bluetooth.getLocalName interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramStringMock;
+    },
+    getPairedDevices: function () {
+      console.warn("bluetooth.getPairedDevices interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return ArrayStringMock;
+    },
+    setDevicePairingConfirmation: function (...args) {
+      console.warn("bluetooth.setDevicePairingConfirmation interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+    setLocalName: function (...args) {
+      console.warn("bluetooth.setLocalName interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+    setBluetoothScanMode: function (...args) {
+      console.warn("bluetooth.setBluetoothScanMode interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+    getBluetoothScanMode: function () {
+      console.warn("bluetooth.getBluetoothScanMode interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock;
+    },
+    startBluetoothDiscovery: function () {
+      console.warn("bluetooth.startBluetoothDiscovery interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+    stopBluetoothDiscovery: function () {
+      console.warn("bluetooth.stopBluetoothDiscovery interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+    on: function (...args) {
+      console.warn("bluetooth.on interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        if (args[0] == 'bluetoothDeviceFind') {
+          args[len - 1].call(this, ArrayStringMock);
+        } else if (args[0] == 'bondStateChange') {
+            args[len - 1].call(this, paramMock.paramNumberMock);
+        } else if (args[0] == 'pinRequired') {
+            args[len - 1].call(this, pinRequiredParamMock);
+        } else if (args[0] == 'stateChange') {
+            args[len - 1].call(this, paramMock.paramNumberMock);
+        } else if (args[0] == 'sppRead') {
+            args[len - 1].call(this, sppReadMock.ArrayBuffer);
+        }
+      }
+    },
+    off: function (...args) {
+      console.warn("bluetooth.off interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        if (args[0] == 'bluetoothDeviceFind') {
+          args[len - 1].call(this, ArrayStringMock);
+        } else if (args[0] == 'bondStateChange') {
+            args[len - 1].call(this, paramMock.paramNumberMock);
+        } else if (args[0] == 'pinRequired') {
+            args[len - 1].call(this, pinRequiredParamMock);
+        } else if (args[0] == 'stateChange') {
+            args[len - 1].call(this, paramMock.paramNumberMock);
+        } else if (args[0] == 'sppRead') {
+            args[len - 1].call(this, sppReadMock.ArrayBuffer);
+        }
+      }
+    },
+    sppListen: function (...args) {
+      console.warn("bluetooth.sppListen interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+      }
+    },
+    sppAccept: function (...args) {
+      console.warn("bluetooth.sppAccept interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+      }
+    },
+    sppConnect: function (...args) {
+      console.warn("bluetooth.sppConnect interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+      }
+    },
+    sppCloseServerSocket: function (...args) {
+      console.warn("bluetooth.sppCloseServerSocket interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+    },
+    sppCloseClientSocket: function (...args) {
+      console.warn("bluetooth.sppCloseClientSocket interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+    },
+    sppWrite: function (...args) {
+      console.warn("bluetooth.sppWrite interface mocked in the Previewer." +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+    ScanDuty: {
+      SCAN_MODE_LOW_POWER: 0,
+      SCAN_MODE_BALANCED: 1,
+      SCAN_MODE_LOW_LATENCY: 2
+    },
+    MatchMode: {
+      MATCH_MODE_AGGRESSIVE: 1,
+      MATCH_MODE_STICKY: 2
+    },
+    ScanMode: {
+      SCAN_MODE_NONE: 0,
+      SCAN_MODE_CONNECTABLE: 1,
+      SCAN_MODE_GENERAL_DISCOVERABLE: 2,
+      SCAN_MODE_LIMITED_DISCOVERABLE: 3,
+      SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE: 4,
+      SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE: 5
+    },
+    SppType: {
+      SPP_RFCOMM: 0
+    }
   }
   global.ohosplugin.bluetooth.BLE = {
     createGattServer: function () {

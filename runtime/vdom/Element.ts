@@ -804,7 +804,6 @@ class Element extends Node {
       result[key] = value;
       taskCenter.send('dom', { action: 'updateStyle' }, [this.ref, result]);
     }
-
   }
 
   /**
