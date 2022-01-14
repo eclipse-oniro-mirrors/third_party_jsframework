@@ -80,6 +80,7 @@ export interface AttrInterface {
   tid: number;
   append: string;
   slot: string;
+  slotScope: string;
   name: string;
   data: () => any | string;
   $data: () => any | string;
@@ -316,6 +317,15 @@ function compileSlot(vm: Vm, target: TemplateInterface, dest: Element): Element 
   if (!namedContent) {
     compileChildren(vm, slotItem.target, slotItem.dest);
   } else {
+    // Bind slot scope
+    if (Array.isArray(namedContent)) {
+      namedContent.forEach((item: TemplateInterface) => {
+        const slotScope = item.attr && item.attr.slotScope;
+        if (typeof slotScope === 'string') {
+          parentVm[slotScope] = vm._data;
+        }
+      });
+    }
     compileChildren(parentVm, { children: namedContent }, slotItem.dest);
   }
 }
