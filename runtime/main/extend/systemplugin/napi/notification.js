@@ -276,6 +276,20 @@ export function mockNotification() {
     template: '[PC preview] unknow template'
   };
   const notification = {
+    SlotType: {
+      UNKNOWN_TYPE : 0,
+      SOCIAL_COMMUNICATION: 1,
+      SERVICE_INFORMATION: 2,
+      CONTENT_INFORMATION: 3,
+      OTHER_TYPES: 0xFFFF,
+    },
+    ContentType: {
+      NOTIFICATION_CONTENT_BASIC_TEXT: 0,
+      NOTIFICATION_CONTENT_LONG_TEXT: 1,
+      NOTIFICATION_CONTENT_PICTURE: 2,
+      NOTIFICATION_CONTENT_CONVERSATION: 3,
+      NOTIFICATION_CONTENT_MULTILINE: 4,
+    },
     publish: function(...args) {
       console.warn('notification.publish interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
