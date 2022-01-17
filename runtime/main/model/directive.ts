@@ -728,7 +728,7 @@ export function setTagStyle(vm: Vm, el: Element, tag: string): void {
  */
 export function setUniversalStyle(vm: Vm, el: Element): void {
   const css = vm._css || {};
-  doSetStyle(vm, el, selectStyle(css, "*", vm), css, 'universalStyle');
+  doSetStyle(vm, el, selectStyle(css, '*', vm), css, 'universalStyle');
 }
 
 /**
