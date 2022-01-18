@@ -47,6 +47,8 @@ class Element extends Node {
   private _event: any;
   private _idStyle: any;
   private _tagStyle: any;
+  private _tagAndTagStyle: any;
+  private _firstOrLastChildStyle: any;
   private _universalStyle: any;
   private _id: string | null;
   private _classList: any[];
@@ -55,6 +57,9 @@ class Element extends Node {
   private _isCustomComponent: boolean;
   private _inheritedStyle: object;
   private _target:TemplateInterface;
+  private _hasBefore: boolean;
+  private _hasAfter: boolean;
+  private _isOpen: boolean;
 
   protected _children: Node[];
   protected _pureChildren: Element[];
@@ -104,6 +109,8 @@ class Element extends Node {
     this._event = {};
     this._idStyle = {};
     this._tagStyle = {};
+    this._tagAndTagStyle = {};
+    this._firstOrLastChildStyle = {};
     this._universalStyle = {};
     this._id = null;
     this._classList = [];
@@ -169,6 +176,30 @@ class Element extends Node {
 
   public set vm(newVm: Vm) {
     this._vm = newVm;
+  }
+
+  public get hasBefore() {
+    return this._hasBefore;
+  }
+
+  public set hasBefore(hasBefore: boolean) {
+    this._hasBefore = hasBefore;
+  }
+
+  public get hasAfter() {
+    return this._hasAfter;
+  }
+
+  public set hasAfter(hasAfter: boolean) {
+    this._hasAfter = hasAfter;
+  }
+
+  public get isOpen() {
+    return this._isOpen;
+  }
+
+  public set isOpen(isOpen: boolean) {
+    this._isOpen = isOpen;
   }
 
   /**
@@ -777,10 +808,44 @@ class Element extends Node {
       return;
     }
     // If inline id class style has define return.
-    if (this.style[key] || this._idStyle[key] || this._classStyle[key]) {
+    if (this.style[key] || this._idStyle[key] || this._classStyle[key] || this._firstOrLastChildStyle[key] || this._tagAndTagStyle[key]) {
       return;
     }
     this._tagStyle[key] = value;
+    const taskCenter = this.getTaskCenter(this.docId);
+    if (!silent && taskCenter) {
+      const result = {};
+      result[key] = value;
+      taskCenter.send('dom', { action: 'updateStyle' }, [this.ref, result]);
+    }
+  }
+
+  public setTagAndTagStyle(key: string, value: string | number, silent: boolean = false): void {
+    if (this._tagAndTagStyle[key] === value && silent !== false) {
+      return;
+    }
+    // If inline id class style has define return.
+    if (this.style[key] || this._idStyle[key] || this._classStyle[key] || this._firstOrLastChildStyle[key]) {
+      return;
+    }
+    this._tagAndTagStyle[key] = value;
+    const taskCenter = this.getTaskCenter(this.docId);
+    if (!silent && taskCenter) {
+      const result = {};
+      result[key] = value;
+      taskCenter.send('dom', { action: 'updateStyle' }, [this.ref, result]);
+    }
+  }
+
+  public setFirstOrLastChildStyle(key: string, value: string | number, silent: boolean = false): void {
+    if (this._firstOrLastChildStyle[key] === value && silent !== false) {
+      return;
+    }
+    // If inline id class style has define return.
+    if (this.style[key] || this._idStyle[key]) {
+      return;
+    }
+    this._firstOrLastChildStyle[key] = value;
     const taskCenter = this.getTaskCenter(this.docId);
     if (!silent && taskCenter) {
       const result = {};
@@ -794,7 +859,7 @@ class Element extends Node {
       return;
     }
     // If inline id class style has define return.
-    if (this.style[key] || this._idStyle[key] || this._classStyle[key] || this._tagStyle[key]) {
+    if (this.style[key] || this._idStyle[key] || this._classStyle[key] || this._tagStyle[key] || this._tagAndTagStyle[key]) {
       return;
     }
     this._universalStyle[key] = value;
@@ -881,7 +946,9 @@ class Element extends Node {
     const style = Object.assign({}, this._inheritedStyle);
     this.assignStyle(style, this._universalStyle);
     this.assignStyle(style, this._tagStyle);
+    this.assignStyle(style, this._tagAndTagStyle);
     this.assignStyle(style, this._classStyle);
+    this.assignStyle(style, this._firstOrLastChildStyle);
     this.assignStyle(style, this._idStyle);
     this.assignStyle(style, this.style);
     return style;
@@ -983,6 +1050,8 @@ class Element extends Node {
     this._event = {};
     this._idStyle = {};
     this._tagStyle = {};
+    this._tagAndTagStyle = {};
+    this._firstOrLastChildStyle = {};
     this._universalStyle = {};
     this._classList.length = 0;
 

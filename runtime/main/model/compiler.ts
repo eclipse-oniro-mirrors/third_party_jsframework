@@ -41,7 +41,8 @@ import {
   bindSubVm,
   bindSubVmAfterInitialized,
   newWatch,
-  bindDir
+  bindDir,
+  updateTagCounter
 } from './directive';
 import {
   createBlock,
@@ -58,6 +59,7 @@ import Vm from './index';
 import Element from '../../vdom/Element';
 import Comment from '../../vdom/Comment';
 import Node from '../../vdom/Node';
+import Document from '../../vdom/Document';
 import { VmOptions } from './vmOptions';
 
 export interface FragBlockInterface {
@@ -80,6 +82,7 @@ export interface AttrInterface {
   tid: number;
   append: string;
   slot: string;
+  slotScope: string;
   name: string;
   data: () => any | string;
   $data: () => any | string;
@@ -124,6 +127,12 @@ export function build(vm: Vm) {
   const opt: any = vm._vmOptions || {};
   const template: any = opt.template || {};
   compile(vm, template, vm._parentEl);
+  // foreach vm
+  const doc: Document = vm._app.doc;
+  const body: Node = doc.body;
+  compileVm(vm, body);
+  compileCounter(vm, body);
+  compileElementAndElement(vm, body);
   Log.debug(`"OnReady" lifecycle in Vm(${vm._type}).`);
   vm.$emit('hook:onReady');
   if (vm._parent) {
@@ -181,6 +190,66 @@ function compile(vm: Vm, target: TemplateInterface, dest: FragBlockInterface | E
     return;
   }
   compileNativeComponent(vm, target, dest, type);
+}
+
+function compileVm(vm: Vm, body: Node): void {
+  if (body.nodeType === Node.NodeType.Element) {
+    const node: Element = body as Element;
+    let count = 0;
+    node.children.forEach((child: Node) => {
+      const el = child as Element;
+      const tag = child.type;
+        if (count === 0) {
+          setTagStyle(vm, el, tag, true, false, false);
+        } else if (count === node.children.length - 1) {
+          setTagStyle(vm, el, tag, false, true, false);
+        }
+      count++;
+      compileVm(vm, child);
+    });
+  }
+}
+
+function compileCounter(vm: Vm, body: Node): void {
+  if (body.nodeType === Node.NodeType.Element) {
+    const node: Element = body as Element;
+    let count = {};
+
+    node.children.forEach((child: Node) => {
+      const el = child as Element;
+      const tag = child.type;
+      if (count[tag] == undefined) {
+        count[tag] = 1;
+      } else {
+        count[tag] = count[tag] + 1;
+      }
+      let css = vm._css || {};
+      if (css) {
+        let data =  css[tag] || {};
+        if (data){
+          let counterIncrement = data['counterIncrement'];
+          if (counterIncrement !== undefined) {
+            updateTagCounter(el, count[tag]);
+          }
+        }
+      }
+      compileCounter(vm, child);
+    });
+  }
+}
+
+function compileElementAndElement(vm: Vm, body: Node): void {
+  if (body.nodeType === Node.NodeType.Element) {
+    const node: Element = body as Element;
+    node.children.forEach((child: Node) => {
+      if (child.nextSibling) {
+        const el = child.nextSibling as Element;
+        const tag = child.type + '+' + child.nextSibling.type
+        setTagStyle(vm, el, tag, false, false, false);
+      }
+      compileElementAndElement(vm, child)
+    });
+  }
 }
 
 /**
@@ -316,6 +385,15 @@ function compileSlot(vm: Vm, target: TemplateInterface, dest: Element): Element 
   if (!namedContent) {
     compileChildren(vm, slotItem.target, slotItem.dest);
   } else {
+    // Bind slot scope
+    if (Array.isArray(namedContent)) {
+      namedContent.forEach((item: TemplateInterface) => {
+        const slotScope = item.attr && item.attr.slotScope;
+        if (typeof slotScope === 'string') {
+          parentVm[slotScope] = vm._data;
+        }
+      });
+    }
     compileChildren(parentVm, { children: namedContent }, slotItem.dest);
   }
 }
@@ -484,7 +562,7 @@ function resetElementStyle(vm: Vm, element: Element): void {
   }
   setUniversalStyle(vm, element);
   if (element.type) {
-    setTagStyle(vm, element, element.type);
+    setTagStyle(vm, element, element.type, false, false, false);
   }
   if (element.id) {
     setIdStyle(vm, element, element.id);

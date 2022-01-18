@@ -48,6 +48,7 @@ import {
 } from './compiler';
 import Vm from './index';
 import Element from '../../vdom/Element';
+import Node from '../../vdom/Node';
 
 const SETTERS = {
   attr: 'setAttr',
@@ -57,8 +58,18 @@ const SETTERS = {
   event: 'addEvent',
   idStyle: 'setIdStyle',
   tagStyle: 'setTagStyle',
+  tagAndTagStyle: 'setTagAndTagStyle',
+  tagAndIdStyle: 'setTagAndIdStyle',
   universalStyle: 'setUniversalStyle'
 };
+
+
+enum ContentType {Content_String, Content_Open_Quote, Content_Close_Quote, Content_Attr, Content_Counter};
+interface ContentObject {
+  value: string,
+  contentType: ContentType
+}
+let finallyItems: Array <ContentObject> = [];
 
 /**
  * Bind id, attr, classnames, style, events to an element.
@@ -109,7 +120,8 @@ export function bindElement(vm: Vm, el: Element, template: TemplateInterface, pa
   setStyle(vm, el, template.style);
   setIdStyle(vm, el, template.id);
   setClass(vm, el, template.classList);
-  setTagStyle(vm, el, template.type);
+  setTagStyle(vm, el, template.type, false, false, true);
+  setTagAndIdStyle(vm, el, template.type, template.id);
   setUniversalStyle(vm, el);
   applyStyle(vm, el);
 
@@ -464,6 +476,11 @@ function selectIdStyle(css: object, id: string, vm: Vm): any {
   return selectStyle(css, key, vm);
 }
 
+function selectTagAndIdStyle(css: object, tag: string, id: string, vm: Vm): any {
+  const key = tag + '#' + id;
+  return selectStyle(css, key, vm);
+}
+
 /**
  * Replace style.
  * @param {*} oStyle - Current style.
@@ -668,7 +685,7 @@ export function setIdStyle(vm: Vm, el: Element, id: Function | string): void {
  * @param {*} css - Css style.
  * @param {string} name - Bind by name.
  */
-function doSetStyle(vm: Vm, el: Element, style: any, css: any, name: string): void {
+function doSetStyle(vm: Vm, el: Element, style: any, css: any, name: string, isFirst?: boolean, isLast?: boolean, isSetContent?: boolean): void {
   if (!style) {
     return;
   }
@@ -676,7 +693,7 @@ function doSetStyle(vm: Vm, el: Element, style: any, css: any, name: string): vo
   Object.assign(typeStyle, style);
   setAnimation(typeStyle, css);
   setFontFace(typeStyle, css);
-  bindDir(vm, el, name, typeStyle);
+  bindDir(vm, el, name, typeStyle, isFirst, isLast, isSetContent);
 }
 
 /**
@@ -714,10 +731,23 @@ function setAnimation(style: any, css: any): void {
  * @param {Element} el - ELement component.
  * @param {string} tag - Tag.
  */
-export function setTagStyle(vm: Vm, el: Element, tag: string): void {
+export function setTagStyle(vm: Vm, el: Element, tag: string, isFirst?: boolean, isLast?: boolean, isSetContent?: boolean): void {
   const css = vm._css || {};
   if (tag && typeof tag === 'string') {
-    doSetStyle(vm, el, selectStyle(css, tag, vm), css, 'tagStyle');
+    let tagStyle = 'tagStyle';
+    if (tag.indexOf('+') > 0) {
+      tagStyle = 'tagAndTagStyle';
+    }
+    doSetStyle(vm, el, selectStyle(css, tag, vm), css, tagStyle, isFirst, isLast, isSetContent);
+  }
+}
+
+export function setTagAndIdStyle(vm: Vm, el: Element, tag: string, id: Function | string): void {
+  const css = vm._css || {};
+  if (typeof id === 'string') {
+    if (tag && typeof tag === 'string') {
+      doSetStyle(vm, el, selectTagAndIdStyle(css, tag, id, vm), css, 'tagAndIdStyle');
+    }
   }
 }
 
@@ -728,7 +758,7 @@ export function setTagStyle(vm: Vm, el: Element, tag: string): void {
  */
 export function setUniversalStyle(vm: Vm, el: Element): void {
   const css = vm._css || {};
-  doSetStyle(vm, el, selectStyle(css, "*", vm), css, 'universalStyle');
+  doSetStyle(vm, el, selectStyle(css, '*', vm), css, 'universalStyle');
 }
 
 /**
@@ -788,26 +818,72 @@ function bindEvents(vm: Vm, el: Element, events: object, eventType?: string): vo
  * @param {string} name - Method name.
  * @param {Object} data - Data that needed.
  */
-export function bindDir(vm: Vm, el: Element, name: string, data: object): void {
+export function bindDir(vm: Vm, el: Element, name: string, data: object, isFirst?: boolean, isLast?: boolean, isSetContent?: boolean): void {
   if (!data) {
     return;
   }
-  const keys = Object.keys(data);
+  let keys = Object.keys(data);
   let i = keys.length;
   if (!i) {
     return;
   }
-  const methodName = SETTERS[name];
-  const method = el[methodName];
+  let methodName = SETTERS[name];
+  let method = el[methodName];
   const isSetStyle = methodName === 'setStyle';
   if (methodName === 'setIdStyle') {
     for (const id in el.idStyle) {
       el.idStyle[id] = '';
     }
   }
+  if (name === 'tagStyle' || name === 'tagAndIdStyle') { // ??style keys??DD??D¨°¡ê???content::before???¨²content::after???¡ã
+    let j: number = 0;
+    let k: number = 0;
+    let temp: string = null;
+    for (j = 0; j < i - 1; j++) {
+      for (k = 0; k < i - 1 - j; k++) {
+        if (keys[k] > keys[k + 1]) {
+          temp = keys[k + 1];
+          keys[k + 1] = keys[k];
+          keys[k] = temp;
+        }
+      }
+    }
+  }
+  let isOpen = false;
   while (i--) {
-    const key = keys[i];
+    let key = keys[i];
     const value = data[key];
+    if (name === 'tagStyle') {
+      if (key.endsWith(':first-child') || key.endsWith(':last-child')) {
+        methodName = SETTERS['firstOrLastChildStyle'];
+      } else {
+        methodName = SETTERS[name];
+      }
+      if (key.endsWith(':first-child') && isFirst) {
+        key = key.replace(':first-child', '');
+      } else if (key.endsWith(':last-child') && isLast) {
+        key = key.replace(':last-child', '');
+      }
+
+      if (isSetContent && (key === 'content::before' || key === 'content::after')) {
+        finallyItems = [];
+        splitItems(value);
+        let newValue = setContent(el, key);
+        methodName = SETTERS['attr'];
+        method = el[methodName];
+        method.call(el, 'value', newValue);
+        continue;
+      }
+    }
+
+    if (name === 'tagAndIdStyle') {
+      let newValue = updateTagAndIdStyle(el, key, value);
+      methodName = SETTERS['attr'];
+      method = el[methodName];
+      method.call(el, 'value', newValue);
+      continue;
+    }
+    method = el[methodName];
     if (key === 'ref') {
       vm.$refs[value] = el;
     }
@@ -913,4 +989,270 @@ function applyStyle(vm: Vm, el: Element): void {
  */
 function isArray(params: any): params is Array<string> {
   return Array.isArray(params);
+}
+
+function splitItems(valueStr: string): void {
+  let i: number;
+  let item: string  = '';
+  let startQuote: boolean = false;
+  let itemList: string[] = [];
+  let len = valueStr.length;
+  for (i = 0; i < len; i++) {
+    if (!startQuote) {
+      if (valueStr[i] === '"') {
+        const itemLength = item.length;
+        if (itemLength > 0) {
+          const itemListLength = itemList.length;
+          itemList[itemListLength] = item;
+        }
+        item  = '"';
+        startQuote = true;
+        continue;
+      } else {
+        item = item + valueStr[i];
+        if (i == len - 1) {
+          const itemListLength = itemList.length;
+          itemList[itemListLength] = item;
+        }
+        continue;
+      }
+    } else {
+      if (valueStr[i] === '"') {
+        item = item + valueStr[i];
+        startQuote = false;
+        const itemListLength = itemList.length;
+        itemList[itemListLength] = item;
+        item = '';
+        continue;
+      } else {
+        item = item + valueStr[i];
+        continue;
+      }
+    }
+  }
+  doSplitItem(itemList);
+}
+
+function doSplitItem(itemList: string[]): void {
+  let i: number;
+  let isValidate: boolean = true;
+  let itemListLength = itemList.length;
+  for (i = 0; i < itemListLength; i++ ) {
+    let item = itemList[i].trim();
+    if (item.indexOf('"') === 0) {
+      item = item.replace('"', '');
+      item = item.replace('"', '');
+      let contentObject: ContentObject = {
+        value: item,
+        contentType: ContentType.Content_String
+      }
+      const finallyItemsLength = finallyItems.length;
+      finallyItems[finallyItemsLength] = contentObject;
+    } else {
+      splitItem(item.trim());
+      if (finallyItems.length > 0) {
+        continue;
+      } else {
+        return;
+      }
+    }
+  }
+  if (finallyItems.length > 0) {
+    let i: number;
+    const finallyItemsLength = finallyItems.length;
+    for (i = 0;i < finallyItemsLength; i++) {
+    }
+  }
+}
+
+function splitItem(item: string): void{
+  if (item.length == 0) {
+    return;
+  }
+  let finallyItemsLength = finallyItems.length;
+  if (item.indexOf('open-quote') === 0) {
+    let subItem = item.substr(0, 10);
+    let contentObject: ContentObject = {
+      value: subItem,
+      contentType: ContentType.Content_Open_Quote
+    }
+
+    finallyItems[finallyItemsLength] = contentObject;
+    splitItem(item.substr(10).trim());
+  } else if (item.indexOf('close-quote') === 0) {
+    let subItem = item.substr(0, 11);
+    let contentObject: ContentObject = {
+      value: subItem,
+      contentType: ContentType.Content_Close_Quote
+    }
+    finallyItems[finallyItemsLength] = contentObject;
+    splitItem(item.substr(11).trim());
+  } else if (item.indexOf('attr') === 0) {
+    let fromIndex = item.indexOf('(');
+    let toIndex = item.indexOf(')');
+    let subLen = toIndex - fromIndex - 1;
+    let subItem = item.substr(fromIndex + 1, subLen).trim();
+    let contentObject: ContentObject = {
+      value: subItem,
+      contentType: ContentType.Content_Attr
+    }
+    finallyItems[finallyItemsLength] = contentObject;
+    splitItem(item.substr(toIndex + 1).trim());
+  } else if (item.indexOf('counter') === 0) {
+    let fromIndex = item.indexOf('(');
+    let toIndex = item.indexOf(')');
+    let subItem = 'counter(0)';
+    let contentObject: ContentObject = {
+      value: subItem,
+      contentType: ContentType.Content_Counter
+    }
+    finallyItems[finallyItemsLength] = contentObject;
+    splitItem(item.substr(toIndex + 1).trim());
+  } else {
+    finallyItems = [];
+  }
+}
+
+function setContent(el: Element, key: string): string {
+  let itemLength = finallyItems.length;
+  let contentValue = '';
+  let newValue = '';
+  if (itemLength > 0) {
+    let i: number;
+    for (i = 0; i < itemLength; i++) {
+      const contentType = finallyItems[i].contentType;
+      switch (contentType) {
+        case ContentType.Content_String:
+          contentValue = contentValue + getContentString(finallyItems[i].value);
+          break;
+        case ContentType.Content_Open_Quote:
+          contentValue = contentValue + getContentOpenQuote(el, key);
+          break;
+        case ContentType.Content_Close_Quote:
+          contentValue = contentValue + getContentCloseQuote(el, key);
+          break;
+        case ContentType.Content_Attr:
+          contentValue = contentValue + getContentAttr(el, finallyItems[i].value);
+          break;
+        case ContentType.Content_Counter:
+          contentValue = contentValue + finallyItems[i].value;
+          break;
+      }
+    }
+    const oldValue = el.attr['value'];
+    
+    if (key === 'content::before') {
+      newValue = contentValue + oldValue;
+    } else if (key === 'content::after') {
+      newValue = oldValue + contentValue;
+    }
+  }
+  return newValue;
+}
+
+function getContentString(value: string): string {
+  let contentValue = value.replace('\"', '');
+  contentValue = contentValue.replace('\"', '');
+  return contentValue;
+}
+
+function getContentOpenQuote(el: Element, key: string): string {
+  let contentValue = '';
+  if (el.isOpen) {
+    contentValue = '\'';
+  } else {
+    contentValue = '\"';
+    el.isOpen = true;
+  }
+  if (key === 'content::before') {
+    el.hasBefore = true;
+  }
+  return contentValue;
+}
+
+function getContentCloseQuote(el: Element, key: string): string {
+  let contentValue = '';
+  if (el.isOpen) {
+    contentValue = '\"';
+  } else {
+    contentValue = '';
+  }
+  if (el.isOpen && key === 'content::after') {
+    el.hasAfter = true;
+  }
+  return contentValue;
+}
+
+function getContentAttr(el: Element, value: string): string {
+  let contentValue = el.attr[value];
+  if (contentValue === undefined) {
+    contentValue = '';
+  }
+  return contentValue;
+}
+
+export function updateTagCounter(el: Element, counter: number): void {
+  let value = el.attr['value'];
+  if (value !== undefined) {
+    let fromIndex = value.indexOf('counter');
+    if (fromIndex !== -1) {
+      value = value.replace('counter(0)', counter);
+      let methodName = SETTERS['attr'];
+      let method = el[methodName];
+      method.call(el, 'value', value);
+    }
+  }
+}
+
+function updateTagAndIdStyle(el: Element, key: string, value: string): string {
+  let newValue = '';
+  let contentValue = '';
+  let oldValue = el.attr['value'];
+  if (key === 'content::before') {
+    if (value === 'open-quote' || value === 'close-quote') {
+      if (value === 'open-quote' && key === 'content::before') {
+        contentValue = '\"';
+        if (el.hasBefore) {
+          oldValue = oldValue.substr(1, oldValue.length);
+        }
+        newValue = contentValue + oldValue;
+        oldValue = newValue;
+      } else if (el.hasBefore && value === 'close-quote' && key === 'content::before') {
+         el.hasBefore = false;
+         oldValue = oldValue.substr(1, oldValue.length);
+         newValue = oldValue;
+      }
+    }
+  } else if (key === 'content::after') {
+    if (value === 'open-quote' && key === 'content::after') {
+      contentValue = '\"';
+      if (el.hasBefore) {
+        contentValue = '\'';
+      }
+      if (el.hasAfter) {
+        oldValue = oldValue.substr(0, oldValue.length - 1);
+      }
+      newValue = oldValue + contentValue;
+    } else if (value === 'close-quote' && key === 'content::after' && el.hasBefore) {
+      contentValue = '\"';
+      if (el.hasAfter) {
+        oldValue = oldValue.substr(0, oldValue.length - 1);
+      }
+      newValue = oldValue + contentValue;
+    }
+  }
+  if (value === 'no-open-quote' || value === 'no-close-quote') {
+    newValue = oldValue;
+    if (key === 'content::before' && value === 'no-open-quote') {
+      if (el.hasBefore) {
+        newValue = oldValue.substr(1);
+      }
+    }
+    if (key === 'content::after') {
+      if (el.hasAfter) {
+        newValue = oldValue.substr(0, oldValue.length - 1);
+      }
+    }
+  }
+  return newValue;
 }
