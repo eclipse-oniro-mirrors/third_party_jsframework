@@ -835,7 +835,7 @@ export function bindDir(vm: Vm, el: Element, name: string, data: object, isFirst
       el.idStyle[id] = '';
     }
   }
-  if (name === 'tagStyle' || name === 'tagAndIdStyle') { // ??style keys??DD??D¨°¡ê???content::before???¨²content::after???¡ã
+  if (name === 'tagStyle' || name === 'tagAndIdStyle') {
     let j: number = 0;
     let k: number = 0;
     let temp: string = null;
