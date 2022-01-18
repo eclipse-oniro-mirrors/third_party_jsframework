@@ -1,46 +1,47 @@
-import { mockSystemParameter } from './systemParameter'
-import { mockAbility } from './applicationAbility'
-import { mockFormExtension } from './applicationFormExtension'
-import { mockServiceExtension } from './applicationServiceExtension'
-import { mockAbilityStage } from './applicationAbilityStage'
-import { mockFormBindingData } from './applicationFormBindingData'
-import { mockNotification } from './notification'
-import { mockFileio } from './fileio'
-import { mockWorker } from './worker'
-import { mockUtil } from './util'
-import { mockPower } from './power'
-import { mockIntl } from './intl'
-import { mockI18N } from './i18n'
-import { mockRunningLock } from './runningLock'
-import { mockRpc } from './rpc'
-import { mockBytrace } from './bytrace'
-import { mockwebgl } from './webgl'
-import { mockwebgl2 } from './webgl2'
-import { mockProcess } from './process'
-import { mockUrl } from './url'
-import { mockHiAppEvent } from './hiAppEvent'
-import { mockHilog } from './hilog'
-import { mockTv } from './tv'
-import { mockDtv } from './dtv'
-import { mockDistributedAccount } from './distributedAccount'
-import { mockEmitter } from './emitter'
-import { mockDistributedData } from './distributedData'
-import { mockDataAbility } from './dataAbility'
-import { mockStorage } from './storage'
-import { mockRdb } from './rdb'
-import { mockInputDevice } from './inputDevice'
-import { mockVibrator } from './vibrator'
-import { mockSensor } from './sensor'
-import { mockWifi } from './wifi'
-import { mockUsb } from './usb'
-import { mockBundle } from './bundle'
-import { mockInnerBundle } from './innerBundleManager'
-import { mockUri } from './uri'
-import { mockXml } from './xml'
-import { mockConvertXml } from './convertxml'
-import { mockStatfs } from './statfs'
-import { mockSettings } from './settings'
-import { mockAbilityAccessCtrl } from './abilityAccessCtrl'
+import { mockSystemParameter } from "./systemParameter";
+import { mockAbility } from "./applicationAbility";
+import { mockFormExtension } from "./applicationFormExtension";
+import { mockServiceExtension } from "./applicationServiceExtension";
+import { mockAbilityStage } from "./applicationAbilityStage";
+import { mockFormBindingData } from "./applicationFormBindingData";
+import { mockNotification } from "./notification";
+import { mockFileio } from "./fileio";
+import { mockWorker } from "./worker";
+import { mockUtil } from "./util";
+import { mockPower } from "./power";
+import { mockIntl } from "./intl";
+import { mockI18N } from "./i18n";
+import { mockRunningLock } from "./runningLock";
+import { mockRpc } from "./rpc";
+import { mockBytrace } from "./bytrace";
+import { mockwebgl } from "./webgl";
+import { mockwebgl2 } from "./webgl2";
+import { mockProcess } from "./process";
+import { mockUrl } from "./url";
+import { mockHiAppEvent } from "./hiAppEvent";
+import { mockHilog } from "./hilog";
+import { mockTv } from "./tv";
+import { mockDtv } from "./dtv";
+import { mockDistributedAccount } from "./distributedAccount";
+import { mockEmitter } from "./emitter";
+import { mockDistributedData } from "./distributedData";
+import { mockDataAbility } from "./dataAbility";
+import { mockStorage } from "./storage";
+import { mockRdb } from "./rdb";
+import { mockInputDevice } from "./inputDevice";
+import { mockVibrator } from "./vibrator";
+import { mockSensor } from "./sensor";
+import { mockWifi } from "./wifi";
+import { mockUsb } from "./usb";
+import { mockBundle } from "./bundle";
+import { mockInnerBundle } from "./innerBundleManager";
+import { mockUri } from "./uri";
+import { mockXml } from "./xml";
+import { mockConvertXml } from "./convertxml";
+import { mockStatfs } from "./statfs";
+import { mockFileManager } from "./filemanager";
+import { mockSettings } from "./settings";
+import { mockAbilityAccessCtrl } from "./abilityAccessCtrl";
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -127,6 +128,8 @@ export function mockRequireNapiFun() {
         return mockConvertXml();
       case "statfs":
         return mockStatfs();
+      case "filemanager":
+        return mockFileManager();
       case "settings":
         return mockSettings();
       case "abilityAccessCtrl":
@@ -134,5 +137,5 @@ export function mockRequireNapiFun() {
       default:
         return global.requireNapiPreview(...args);
     }
-  }
+  };
 }
