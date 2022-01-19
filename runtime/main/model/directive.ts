@@ -48,7 +48,6 @@ import {
 } from './compiler';
 import Vm from './index';
 import Element from '../../vdom/Element';
-import Node from '../../vdom/Node';
 
 const SETTERS = {
   attr: 'setAttr',
@@ -58,11 +57,12 @@ const SETTERS = {
   event: 'addEvent',
   idStyle: 'setIdStyle',
   tagStyle: 'setTagStyle',
+  attrStyle: 'setAttrStyle',
   tagAndTagStyle: 'setTagAndTagStyle',
   tagAndIdStyle: 'setTagAndIdStyle',
-  universalStyle: 'setUniversalStyle'
+  universalStyle: 'setUniversalStyle',
+  firstOrLastChildStyle: 'setFirstOrLastChildStyle'
 };
-
 
 enum ContentType {Content_String, Content_Open_Quote, Content_Close_Quote, Content_Attr, Content_Counter};
 interface ContentObject {
@@ -849,7 +849,6 @@ export function bindDir(vm: Vm, el: Element, name: string, data: object, isFirst
       }
     }
   }
-  let isOpen = false;
   while (i--) {
     let key = keys[i];
     const value = data[key];
@@ -877,12 +876,16 @@ export function bindDir(vm: Vm, el: Element, name: string, data: object, isFirst
     }
 
     if (name === 'tagAndIdStyle') {
-      let newValue = updateTagAndIdStyle(el, key, value);
+      const newValue = updateTagAndIdStyle(el, key, value);
       methodName = SETTERS['attr'];
       method = el[methodName];
       method.call(el, 'value', newValue);
       continue;
     }
+    if (name === 'attr') {
+      setAttributeStyle(vm, el);
+    }
+
     method = el[methodName];
     if (key === 'ref') {
       vm.$refs[value] = el;
@@ -993,10 +996,10 @@ function isArray(params: any): params is Array<string> {
 
 function splitItems(valueStr: string): void {
   let i: number;
-  let item: string  = '';
+  let item: string = '';
   let startQuote: boolean = false;
   let itemList: string[] = [];
-  let len = valueStr.length;
+  const len = valueStr.length;
   for (i = 0; i < len; i++) {
     if (!startQuote) {
       if (valueStr[i] === '"') {
@@ -1010,7 +1013,7 @@ function splitItems(valueStr: string): void {
         continue;
       } else {
         item = item + valueStr[i];
-        if (i == len - 1) {
+        if (i === len - 1) {
           const itemListLength = itemList.length;
           itemList[itemListLength] = item;
         }
@@ -1035,17 +1038,16 @@ function splitItems(valueStr: string): void {
 
 function doSplitItem(itemList: string[]): void {
   let i: number;
-  let isValidate: boolean = true;
   let itemListLength = itemList.length;
   for (i = 0; i < itemListLength; i++ ) {
     let item = itemList[i].trim();
     if (item.indexOf('"') === 0) {
       item = item.replace('"', '');
       item = item.replace('"', '');
-      let contentObject: ContentObject = {
+      const contentObject: ContentObject = {
         value: item,
         contentType: ContentType.Content_String
-      }
+      };
       const finallyItemsLength = finallyItems.length;
       finallyItems[finallyItemsLength] = contentObject;
     } else {
@@ -1057,55 +1059,47 @@ function doSplitItem(itemList: string[]): void {
       }
     }
   }
-  if (finallyItems.length > 0) {
-    let i: number;
-    const finallyItemsLength = finallyItems.length;
-    for (i = 0;i < finallyItemsLength; i++) {
-    }
-  }
 }
 
 function splitItem(item: string): void{
-  if (item.length == 0) {
+  if (item.length === 0) {
     return;
   }
   let finallyItemsLength = finallyItems.length;
   if (item.indexOf('open-quote') === 0) {
-    let subItem = item.substr(0, 10);
-    let contentObject: ContentObject = {
+    const subItem = item.substr(0, 10);
+    const contentObject: ContentObject = {
       value: subItem,
       contentType: ContentType.Content_Open_Quote
-    }
-
+    };
     finallyItems[finallyItemsLength] = contentObject;
     splitItem(item.substr(10).trim());
   } else if (item.indexOf('close-quote') === 0) {
-    let subItem = item.substr(0, 11);
-    let contentObject: ContentObject = {
+    const subItem = item.substr(0, 11);
+    const contentObject: ContentObject = {
       value: subItem,
       contentType: ContentType.Content_Close_Quote
-    }
+    };
     finallyItems[finallyItemsLength] = contentObject;
     splitItem(item.substr(11).trim());
   } else if (item.indexOf('attr') === 0) {
-    let fromIndex = item.indexOf('(');
-    let toIndex = item.indexOf(')');
-    let subLen = toIndex - fromIndex - 1;
-    let subItem = item.substr(fromIndex + 1, subLen).trim();
-    let contentObject: ContentObject = {
+    const fromIndex = item.indexOf('(');
+    const toIndex = item.indexOf(')');
+    const subLen = toIndex - fromIndex - 1;
+    const subItem = item.substr(fromIndex + 1, subLen).trim();
+    const contentObject: ContentObject = {
       value: subItem,
       contentType: ContentType.Content_Attr
-    }
+    };
     finallyItems[finallyItemsLength] = contentObject;
     splitItem(item.substr(toIndex + 1).trim());
   } else if (item.indexOf('counter') === 0) {
-    let fromIndex = item.indexOf('(');
-    let toIndex = item.indexOf(')');
-    let subItem = 'counter(0)';
-    let contentObject: ContentObject = {
+    const toIndex = item.indexOf(')');
+    const subItem = 'counter(0)';
+    const contentObject: ContentObject = {
       value: subItem,
       contentType: ContentType.Content_Counter
-    }
+    };
     finallyItems[finallyItemsLength] = contentObject;
     splitItem(item.substr(toIndex + 1).trim());
   } else {
@@ -1114,7 +1108,7 @@ function splitItem(item: string): void{
 }
 
 function setContent(el: Element, key: string): string {
-  let itemLength = finallyItems.length;
+  const itemLength = finallyItems.length;
   let contentValue = '';
   let newValue = '';
   if (itemLength > 0) {
@@ -1140,7 +1134,6 @@ function setContent(el: Element, key: string): string {
       }
     }
     const oldValue = el.attr['value'];
-    
     if (key === 'content::before') {
       newValue = contentValue + oldValue;
     } else if (key === 'content::after') {
@@ -1197,8 +1190,8 @@ export function updateTagCounter(el: Element, counter: number): void {
     let fromIndex = value.indexOf('counter');
     if (fromIndex !== -1) {
       value = value.replace('counter(0)', counter);
-      let methodName = SETTERS['attr'];
-      let method = el[methodName];
+      const methodName = SETTERS['attr'];
+      const method = el[methodName];
       method.call(el, 'value', value);
     }
   }
@@ -1218,9 +1211,9 @@ function updateTagAndIdStyle(el: Element, key: string, value: string): string {
         newValue = contentValue + oldValue;
         oldValue = newValue;
       } else if (el.hasBefore && value === 'close-quote' && key === 'content::before') {
-         el.hasBefore = false;
-         oldValue = oldValue.substr(1, oldValue.length);
-         newValue = oldValue;
+        el.hasBefore = false;
+        oldValue = oldValue.substr(1, oldValue.length);
+        newValue = oldValue;
       }
     }
   } else if (key === 'content::after') {
@@ -1255,4 +1248,35 @@ function updateTagAndIdStyle(el: Element, key: string, value: string): string {
     }
   }
   return newValue;
+}
+
+function setAttributeStyle(vm: Vm, el: Element): void {
+  const css = vm._css;
+  if (css) {
+    const keys = Object.keys(css);
+    if (keys !== undefined || keys !== null) {
+      const i = keys.length;
+      let j: number = 0;
+      for (j; j < i; j++) {
+        let cssKey = keys[j].trim();
+        if (cssKey.indexOf('[') === 0) {
+          cssKey = cssKey.substr(1, cssKey.length - 2);
+          let equalIndex = cssKey.indexOf('=');
+          if (equalIndex !== -1) {
+            const attrId = cssKey.substr(0, equalIndex).trim();
+            let attrValue = cssKey.substr(equalIndex + 1).trim();
+            if (attrValue.indexOf('\"') !== -1) {
+              attrValue = attrValue.replace('"', '').trim();
+              attrValue = attrValue.replace('"', '').trim();
+            }
+            const elValue = el.attr[attrId];
+            if (elValue !== undefined && elValue === attrValue) {
+              let newKey = keys[j];
+              bindDir(vm, el, 'attrStyle', css[newKey]);
+            }
+          }
+        }
+      }
+    }
+  }
 }

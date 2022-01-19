@@ -199,11 +199,11 @@ function compileVm(vm: Vm, body: Node): void {
     node.children.forEach((child: Node) => {
       const el = child as Element;
       const tag = child.type;
-        if (count === 0) {
-          setTagStyle(vm, el, tag, true, false, false);
-        } else if (count === node.children.length - 1) {
-          setTagStyle(vm, el, tag, false, true, false);
-        }
+      if (count === 0) {
+        setTagStyle(vm, el, tag, true, false, false);
+      } else if (count === node.children.length - 1) {
+        setTagStyle(vm, el, tag, false, true, false);
+      }
       count++;
       compileVm(vm, child);
     });
@@ -218,16 +218,16 @@ function compileCounter(vm: Vm, body: Node): void {
     node.children.forEach((child: Node) => {
       const el = child as Element;
       const tag = child.type;
-      if (count[tag] == undefined) {
+      if (count[tag] === undefined) {
         count[tag] = 1;
       } else {
         count[tag] = count[tag] + 1;
       }
-      let css = vm._css || {};
+      const css = vm._css || {};
       if (css) {
-        let data =  css[tag] || {};
-        if (data){
-          let counterIncrement = data['counterIncrement'];
+        const data = css[tag] || {};
+        if (data) {
+          const counterIncrement = data['counterIncrement'];
           if (counterIncrement !== undefined) {
             updateTagCounter(el, count[tag]);
           }
@@ -244,10 +244,10 @@ function compileElementAndElement(vm: Vm, body: Node): void {
     node.children.forEach((child: Node) => {
       if (child.nextSibling) {
         const el = child.nextSibling as Element;
-        const tag = child.type + '+' + child.nextSibling.type
+        const tag = child.type + '+' + child.nextSibling.type;
         setTagStyle(vm, el, tag, false, false, false);
       }
-      compileElementAndElement(vm, child)
+      compileElementAndElement(vm, child);
     });
   }
 }
@@ -636,7 +636,6 @@ function compileNativeComponent(vm: Vm, template: TemplateInterface, dest: FragB
 
   if (!vm._rootEl) {
     vm._rootEl = element;
-
     // Bind event earlier because of lifecycle issues.
     const binding: any = vm._externalBinding || {};
     const target = binding.template;
@@ -753,7 +752,6 @@ function bindRepeat(vm: Vm, target: TemplateInterface, fragBlock: FragBlockInter
         }
         trackMap[key] = item;
       });
-
       // Remove unused element foreach old item.
       const reusedList: any[] = [];
       const cacheList: any[] = [];
@@ -773,7 +771,6 @@ function bindRepeat(vm: Vm, target: TemplateInterface, fragBlock: FragBlockInter
           });
         }
       });
-
       // Create new element for each new item.
       children.length = 0;
       vms.length = 0;

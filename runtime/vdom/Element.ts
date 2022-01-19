@@ -47,6 +47,7 @@ class Element extends Node {
   private _event: any;
   private _idStyle: any;
   private _tagStyle: any;
+  private _attrStyle: any;
   private _tagAndTagStyle: any;
   private _firstOrLastChildStyle: any;
   private _universalStyle: any;
@@ -109,6 +110,7 @@ class Element extends Node {
     this._event = {};
     this._idStyle = {};
     this._tagStyle = {};
+    this._attrStyle = {};
     this._tagAndTagStyle = {};
     this._firstOrLastChildStyle = {};
     this._universalStyle = {};
@@ -808,10 +810,27 @@ class Element extends Node {
       return;
     }
     // If inline id class style has define return.
-    if (this.style[key] || this._idStyle[key] || this._classStyle[key] || this._firstOrLastChildStyle[key] || this._tagAndTagStyle[key]) {
+    if (this.style[key] || this._idStyle[key] || this._attrStyle[key] || this._classStyle[key] || this._firstOrLastChildStyle[key] || this._tagAndTagStyle[key]) {
       return;
     }
     this._tagStyle[key] = value;
+    const taskCenter = this.getTaskCenter(this.docId);
+    if (!silent && taskCenter) {
+      const result = {};
+      result[key] = value;
+      taskCenter.send('dom', { action: 'updateStyle' }, [this.ref, result]);
+    }
+  }
+
+  public setAttrStyle(key: string, value: string | number, silent: boolean = false): void {
+    if (this._attrStyle[key] === value && silent !== false) {
+      return;
+    }
+    // If inline id style define return.
+    if (this.style[key] || this._idStyle[key]) {
+      return;
+    }
+    this._attrStyle[key] = value;
     const taskCenter = this.getTaskCenter(this.docId);
     if (!silent && taskCenter) {
       const result = {};
@@ -825,7 +844,7 @@ class Element extends Node {
       return;
     }
     // If inline id class style has define return.
-    if (this.style[key] || this._idStyle[key] || this._classStyle[key] || this._firstOrLastChildStyle[key]) {
+    if (this.style[key] || this._idStyle[key] || this._attrStyle[key] || this._classStyle[key] || this._firstOrLastChildStyle[key]) {
       return;
     }
     this._tagAndTagStyle[key] = value;
@@ -842,7 +861,7 @@ class Element extends Node {
       return;
     }
     // If inline id class style has define return.
-    if (this.style[key] || this._idStyle[key]) {
+    if (this.style[key] || this._idStyle[key] || this._attrStyle[key]) {
       return;
     }
     this._firstOrLastChildStyle[key] = value;
@@ -948,6 +967,7 @@ class Element extends Node {
     this.assignStyle(style, this._tagStyle);
     this.assignStyle(style, this._tagAndTagStyle);
     this.assignStyle(style, this._classStyle);
+    this.assignStyle(style, this._attrStyle);
     this.assignStyle(style, this._firstOrLastChildStyle);
     this.assignStyle(style, this._idStyle);
     this.assignStyle(style, this.style);
@@ -1050,6 +1070,7 @@ class Element extends Node {
     this._event = {};
     this._idStyle = {};
     this._tagStyle = {};
+    this._attrStyle = {};
     this._tagAndTagStyle = {};
     this._firstOrLastChildStyle = {};
     this._universalStyle = {};
