@@ -39,6 +39,7 @@ import { mockUri } from './uri'
 import { mockXml } from './xml'
 import { mockConvertXml } from './convertxml'
 import { mockStatfs } from './statfs'
+import { mockFileManager } from "./filemanager"
 import { mockSettings } from './settings'
 import { mockAbilityAccessCtrl } from './abilityAccessCtrl'
 
@@ -127,6 +128,8 @@ export function mockRequireNapiFun() {
         return mockConvertXml();
       case "statfs":
         return mockStatfs();
+      case "filemanager":
+        return mockFileManager();
       case "settings":
         return mockSettings();
       case "abilityAccessCtrl":
