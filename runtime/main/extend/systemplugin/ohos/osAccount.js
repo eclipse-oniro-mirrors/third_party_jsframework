@@ -169,6 +169,18 @@ export function mockOsAccount() {
         })
       }
     },
+    getOsAccountLocalIdFromDomain: function (...args) {
+      console.warn("AccountManager.getOsAccountLocalIdFromDomain interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramNumberMock);
+        })
+      }
+    },
     queryMaxOsAccountNumber: function (...args) {
       console.warn("AccountManager.queryMaxOsAccountNumber interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
@@ -209,6 +221,18 @@ export function mockOsAccount() {
     },
     createOsAccount: function (...args) {
       console.warn("AccountManager.createOsAccount interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, osAccountInfoMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(osAccountInfoMock);
+        })
+      }
+    },
+    createOsAccountForDomain: function (...args) {
+      console.warn("AccountManager.createOsAccountForDomain interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
@@ -281,6 +305,30 @@ export function mockOsAccount() {
     },
     setOsAccountProfilePhoto: function (...args) {
       console.warn("AccountManager.setOsAccountProfilePhoto interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    getOsAccountLocalIdBySerialNumber: function (...args) {
+      console.warn("AccountManager.getOsAccountLocalIdBySerialNumber interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    getSerialNumberByOsAccountLocalId: function (...args) {
+      console.warn("AccountManager.getSerialNumberByOsAccountLocalId interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
