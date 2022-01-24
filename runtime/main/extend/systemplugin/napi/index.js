@@ -55,6 +55,7 @@ import { mockXml } from './xml'
 import { mockConvertXml } from './convertxml'
 import { mockStatfs } from './statfs'
 import { mockFileManager } from "./filemanager"
+import { mockEnvironment } from "./environment"
 import { mockSettings } from './settings'
 import { mockAbilityAccessCtrl } from './abilityAccessCtrl'
 
@@ -145,6 +146,8 @@ export function mockRequireNapiFun() {
         return mockStatfs();
       case "filemanager":
         return mockFileManager();
+      case "environment":
+        return mockEnvironment();
       case "settings":
         return mockSettings();
       case "abilityAccessCtrl":
