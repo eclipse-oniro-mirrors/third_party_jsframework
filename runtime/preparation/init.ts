@@ -111,90 +111,90 @@ type components<T> = {
 }
 
 const ComponentsInfo: components<string>[] = [
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'clock'},
-  {'methods': ['show'], 'type': 'colorpicker'},
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'image'},
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'label'},
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'list-item'},
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'list-item-group'},
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'progress'},
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'rating'},
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'select'},
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'switch'},
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'tabs'},
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'tab-bar'},
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'tab-content'},
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'text'},
-  {'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'div'},
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'clock' },
+  { 'methods': ['show'], 'type': 'colorpicker' },
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'image' },
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'label' },
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'list-item' },
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'list-item-group' },
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'progress' },
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'rating' },
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'select' },
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'switch' },
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'tabs' },
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'tab-bar' },
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'tab-content' },
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'text' },
+  { 'methods': ['focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'div' },
   {
-    'methods': ['setProgress', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
+    'methods': ['setProgress', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
     'type': 'button'
   },
-  {'methods': ['append', 'focus', 'addChild', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'chart'},
-  {'methods': ['goto', 'focus', 'addChild', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'calendar'},
+  { 'methods': ['append', 'focus', 'addChild', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'chart' },
+  { 'methods': ['goto', 'focus', 'addChild', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'calendar' },
   {
-    'methods': ['getContext', 'toDataURL', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
+    'methods': ['getContext', 'toDataURL', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
     'type': 'canvas'
   },
   {
     'methods': ['getXComponentContext', 'createIntersectionObserver', 'addChild', 'getXComponentSurfaceId'],
     'type': 'xcomponent'
   },
-  {'methods': ['show', 'close', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver', 'addChild'], 'type': 'dialog'},
-  {'methods': ['animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver', 'addChild'], 'type': 'divider'},
+  { 'methods': ['show', 'close', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver', 'addChild'], 'type': 'dialog' },
+  { 'methods': ['animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver', 'addChild'], 'type': 'divider' },
   {
-    'methods': ['getColumns', 'getColumnWidth', 'getGutterWidth', 'getSizeType', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver', 'addChild'],
+    'methods': ['getColumns', 'getColumnWidth', 'getGutterWidth', 'getSizeType', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver', 'addChild'],
     'type': 'grid-container'
   },
   {
-    'methods': ['start', 'stop', 'pause', 'resume', 'getState', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
+    'methods': ['start', 'stop', 'pause', 'resume', 'getState', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
     'type': 'image-animator'
   },
   {
-    'methods': ['showError', 'delete', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
+    'methods': ['showError', 'delete', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
     'type': 'input'
   },
   {
-    'methods': ['scrollTo', 'scrollBy', 'focus', 'addChild', 'scrollArrow', 'scrollTop', 'scrollBottom', 'scrollPage', 'collapseGroup', 'expandGroup', 'currentOffset', 'rotation', 'animate', 'chainanimation', 'getBoundingClientRect', 'getScrollOffset', 'createIntersectionObserver'],
+    'methods': ['scrollTo', 'scrollBy', 'focus', 'addChild', 'scrollArrow', 'scrollTop', 'scrollBottom', 'scrollPage', 'collapseGroup', 'expandGroup', 'currentOffset', 'rotation', 'animate', 'chainanimation', 'getBoundingClientRect', 'getInspector', 'getScrollOffset', 'createIntersectionObserver'],
     'type': 'list'
   },
   {
-    'methods': ['start', 'stop', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
+    'methods': ['start', 'stop', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
     'type': 'marquee'
   },
-  {'methods': ['show', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver', 'addChild'], 'type': 'menu'},
-  {'methods': ['focus', 'addChild', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'option'},
-  {'methods': ['show', 'close', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver', 'addChild'], 'type': 'panel'},
-  {'methods': ['show', 'animate', 'focus', 'addChild', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'picker'},
+  { 'methods': ['show', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver', 'addChild'], 'type': 'menu' },
+  { 'methods': ['focus', 'addChild', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'option' },
+  { 'methods': ['show', 'close', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver', 'addChild'], 'type': 'panel' },
+  { 'methods': ['show', 'animate', 'focus', 'addChild', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'picker' },
   {
-    'methods': ['rotation', 'animate', 'focus', 'addChild', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
+    'methods': ['rotation', 'animate', 'focus', 'addChild', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
     'type': 'picker-view'
   },
-  {'methods': ['focus', 'addChild', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'piece'},
-  {'methods': ['focus', 'addChild', 'show', 'hide', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'popup'},
-  {'methods': ['animate', 'focus', 'addChild', 'delete', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'search'},
+  { 'methods': ['focus', 'addChild', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'piece' },
+  { 'methods': ['focus', 'addChild', 'show', 'hide', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'popup' },
+  { 'methods': ['animate', 'focus', 'addChild', 'delete', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'], 'type': 'search' },
   {
-    'methods': ['rotation', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
+    'methods': ['rotation', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
     'type': 'slider'
   },
-  {'methods': ['focus', 'addChild', 'animate', 'getScrollOffset', 'scrollBy', 'getBoundingClientRect', 'scrollTo', 'createIntersectionObserver'], 'type': 'stack'},
+  { 'methods': ['focus', 'addChild', 'animate', 'getScrollOffset', 'scrollBy', 'getBoundingClientRect', 'getInspector', 'scrollTo', 'createIntersectionObserver'], 'type': 'stack' },
   {
-    'methods': ['swipeTo', 'focus', 'addChild', 'showPrevious', 'showNext', 'rotation', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
+    'methods': ['swipeTo', 'focus', 'addChild', 'showPrevious', 'showNext', 'rotation', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
     'type': 'swiper'
   },
   {
-    'methods': ['start', 'pause', 'stop', 'setCurrentTime', 'requestFullscreen', 'exitFullscreen', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
+    'methods': ['start', 'pause', 'stop', 'setCurrentTime', 'requestFullscreen', 'exitFullscreen', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
     'type': 'video'
   },
   {
-    'methods': ['setNextButtonStatus', 'focus', 'addChild', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
+    'methods': ['setNextButtonStatus', 'focus', 'addChild', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
     'type': 'stepper'
   },
   {
-    'methods': ['focus', 'addChild', 'animate', 'delete', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
+    'methods': ['focus', 'addChild', 'animate', 'delete', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
     'type': 'textarea'
   },
-  {'methods': ['reload', 'createIntersectionObserver', 'addChild'], 'type': 'web'},
+  { 'methods': ['reload', 'createIntersectionObserver', 'addChild'], 'type': 'web' },
   {
     'methods': ['takePhoto', 'startRecorder', 'closeRecorder', 'scrollTo', 'createIntersectionObserver', 'addChild'],
     'type': 'camera'
