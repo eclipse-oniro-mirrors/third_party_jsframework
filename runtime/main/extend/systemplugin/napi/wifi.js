@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import { paramMock } from "../utils"
 
 export function mockWifi() {
@@ -66,12 +81,10 @@ export function mockWifi() {
       this.on = function (...args) {
         console.warn("wifi.on interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
-        return;
       }
       this.off = function (...args) {
         console.warn("wifi.off interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
-        return;
       }
     }
   }
@@ -80,75 +93,75 @@ export function mockWifi() {
     enableWifi: function (...args) {
       console.warn("wifi.enableWifi interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+      return paramMock.paramBooleanMock;
     },
 
     disableWifi: function (...args) {
       console.warn("wifi.disableWifi interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+      return paramMock.paramBooleanMock;
     },
 
     isWifiActive: function (...args) {
       console.warn("wifi.isWifiActive interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+      return paramMock.paramBooleanMock;
     },
 
     scan: function (...args) {
       console.warn("wifi.scan interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+      return paramMock.paramBooleanMock;
     },
 
     getScanInfos: function (...args) {
       console.warn("wifi.getScanInfos interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-        const len = args.length
-        if (typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.businessErrorMock, [wifiScanInfoMock])
-        } else {
-          return new Promise((resolve) => {
-            resolve([wifiScanInfoMock])
-          })
-        }
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, [wifiScanInfoMock])
+      } else {
+        return new Promise((resolve) => {
+          resolve([wifiScanInfoMock])
+        })
+      }
     },
 
     addDeviceConfig: function (...args) {
       console.warn("wifi.addDeviceConfig interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        const len = args.length
-        if (typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
-        } else {
-          return new Promise((resolve) => {
-            resolve(paramMock.paramNumberMock)
-          })
-        }
+        " How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+      } else {
+        return new Promise((resolve) => {
+          resolve(paramMock.paramNumberMock)
+        })
+      }
     },
 
     connectToNetwork: function (...args) {
       console.warn("wifi.connectToNetwork interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+      return paramMock.paramBooleanMock;
     },
 
     connectToDevice: function (...args) {
       console.warn("wifi.connectToDevice interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+      return paramMock.paramBooleanMock;
     },
 
     disconnect: function (...args) {
       console.warn("wifi.disconnect interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+      return paramMock.paramBooleanMock;
     },
 
     getSignalLevel: function (...args) {
       console.warn("wifi.getSignalLevel interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-        return paramMock.paramNumberMock;
+      return paramMock.paramNumberMock;
     },
 
     getLinkedInfo: function (...args) {
@@ -167,115 +180,115 @@ export function mockWifi() {
     isConnected: function (...args) {
       console.warn("wifi.isConnected interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+      return paramMock.paramBooleanMock;
     },
 
     getSupportedFeatures: function (...args) {
       console.warn("wifi.getSupportedFeatures interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramNumberMock;
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock;
     },
 
     isFeatureSupported: function (...args) {
       console.warn("wifi.isFeatureSupported interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
     },
 
     getDeviceMacAddress: function (...args) {
       console.warn("wifi.getDeviceMacAddress interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return [paramMock.paramArrayMock];
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return [paramMock.paramArrayMock];
     },
 
     getIpInfo: function (...args) {
       console.warn("wifi.getIpInfo interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-        return ipInfoMock;
+      return ipInfoMock;
     },
 
     getCountryCode: function (...args) {
       console.warn("wifi.getCountryCode interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-        return paramMock.paramStringMock;
+      return paramMock.paramStringMock;
     },
 
     reassociate: function (...args) {
       console.warn("wifi.reassociate interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
     },
 
     reconnect: function (...args) {
       console.warn("wifi.reconnect interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
     },
 
     getDeviceConfigs: function (...args) {
       console.warn("wifi.getDeviceConfigs interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return [wifiDeviceConfigMock];
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return [wifiDeviceConfigMock];
     },
 
     updateNetwork: function (...args) {
       console.warn("wifi.updateNetwork interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramNumberMock;
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock;
     },
 
     disableNetwork: function (...args) {
       console.warn("wifi.disableNetwork interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
     },
 
     removeAllNetwork: function (...args) {
       console.warn("wifi.removeAllNetwork interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
     },
 
     removeDevice: function (...args) {
       console.warn("wifi.removeDevice interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
     },
 
     enableHotspot: function (...args) {
       console.warn("wifi.enableHotspot interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
     },
 
     disableHotspot: function (...args) {
       console.warn("wifi.disableHotspot interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
     },
 
     isHotspotActive: function (...args) {
       console.warn("wifi.isHotspotActive interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
     },
 
     setHotspotConfig: function (...args) {
       console.warn("wifi.setHotspotConfig interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramBooleanMock;
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
     },
 
     getHotspotConfig: function (...args) {
       console.warn("wifi.getHotspotConfig interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return wifiHotspotConfigMock;
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return wifiHotspotConfigMock;
     },
 
     getStations: function (...args) {
       console.warn("wifi.getStations interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-        return [wifiStationInfoMock];
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return [wifiStationInfoMock];
     },
 
     EventListener: EventListenerClass

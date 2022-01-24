@@ -1,4 +1,20 @@
-import {paramMock} from "../utils";
+/*
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { paramMock } from "../utils";
+
 const NOTIFY = "[PC Preview] unknow"
 const Properties = [
   'NETWORK_MOBILE',
@@ -45,7 +61,7 @@ export function mockOhosRequest() {
     SESSION_PENDING: 1,
     SESSION_RUNNING: 2,
     SESSION_PAUSED: 4,
-    SESSION_SUCCESSFUL:8,
+    SESSION_SUCCESSFUL: 8,
     SESSION_FAILED: 16,
   }
   const downloadInfo = {
@@ -62,35 +78,35 @@ export function mockOhosRequest() {
     downloadedBytes: 1
   }
   const DownloadTaskMock = {
-    on: function(...args) {
+    on: function (...args) {
       console.warn("DownloadTask.on interface mocked in the Previewer. How this interface works on the Previewer may" +
         " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-          if (args[0] == 'progress') {
-              args[len - 1].call(this, paramMock.paramNumberMock, paramMock.paramNumberMock);
-          } else if (args[0] == 'complete' || args[0] == 'pause' || args[0] == 'remove') {
-              args[len - 1].call(this, paramMock.businessErrorMock);
-          } else if (args[0] == 'fail') {
-            args[len - 1].call(this, paramMock.businessErrorMock, ErrorMock);
-          }
+        if (args[0] == 'progress') {
+          args[len - 1].call(this, paramMock.paramNumberMock, paramMock.paramNumberMock);
+        } else if (args[0] == 'complete' || args[0] == 'pause' || args[0] == 'remove') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
+        } else if (args[0] == 'fail') {
+          args[len - 1].call(this, paramMock.businessErrorMock, ErrorMock);
+        }
       }
     },
-    off: function(...args) {
+    off: function (...args) {
       console.warn("DownloadTask.off interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-          if (args[0] == 'progress') {
-              args[len - 1].call(this, paramMock.paramNumberMock, paramMock.paramNumberMock);
-          } else if (args[0] == 'complete' || args[0] == 'pause' || args[0] == 'remove') {
-              args[len - 1].call(this, paramMock.businessErrorMock);
-          } else if (args[0] == 'fail') {
-              args[len - 1].call(this, paramMock.businessErrorMock, ErrorMock);
-          }
+        if (args[0] == 'progress') {
+          args[len - 1].call(this, paramMock.paramNumberMock, paramMock.paramNumberMock);
+        } else if (args[0] == 'complete' || args[0] == 'pause' || args[0] == 'remove') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
+        } else if (args[0] == 'fail') {
+          args[len - 1].call(this, paramMock.businessErrorMock, ErrorMock);
+        }
       }
     },
-    remove: function(...args) {
+    remove: function (...args) {
       console.warn("DownloadTask.remove interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
@@ -102,7 +118,7 @@ export function mockOhosRequest() {
         })
       }
     },
-    pause: function(...args) {
+    pause: function (...args) {
       console.warn("DownloadTask.pause interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
@@ -114,7 +130,7 @@ export function mockOhosRequest() {
         })
       }
     },
-    resume: function(...args) {
+    resume: function (...args) {
       console.warn("DownloadTask.resume interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
@@ -126,7 +142,7 @@ export function mockOhosRequest() {
         })
       }
     },
-    queryMimeType: function(...args) {
+    queryMimeType: function (...args) {
       console.warn("DownloadTask.queryMimeType interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
@@ -138,7 +154,7 @@ export function mockOhosRequest() {
         })
       }
     },
-    query: function(...args) {
+    query: function (...args) {
       console.warn("DownloadTask.query interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
@@ -152,31 +168,31 @@ export function mockOhosRequest() {
     }
   }
   const UploadTaskMock = {
-    on: function(...args) {
+    on: function (...args) {
       console.warn("UploadTask.on interface mocked in the Previewer. How this interface works on the Previewer may" +
         " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-          if (args[0] == 'progress') {
-              args[len - 1].call(this, paramMock.paramNumberMock, paramMock.paramNumberMock);
-	  } else if (args[0] == 'headerReceive') {
-              args[len - 1].call(this, paramMock.paramObjectMock);
-	  }
+        if (args[0] == 'progress') {
+          args[len - 1].call(this, paramMock.paramNumberMock, paramMock.paramNumberMock);
+        } else if (args[0] == 'headerReceive') {
+          args[len - 1].call(this, paramMock.paramObjectMock);
+        }
       }
     },
-    off: function(...args) {
+    off: function (...args) {
       console.warn("UploadTask.off interface mocked in the Previewer. How this interface works on the Previewer may" +
         " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-          if (args[0] == 'progress') {
-              args[len - 1].call(this, paramMock.paramNumberMock, paramMock.paramNumberMock);
-	  } else if (args[0] == 'headerReceive') {
-              args[len - 1].call(this, paramMock.paramObjectMock);
-          }
+        if (args[0] == 'progress') {
+          args[len - 1].call(this, paramMock.paramNumberMock, paramMock.paramNumberMock);
+        } else if (args[0] == 'headerReceive') {
+          args[len - 1].call(this, paramMock.paramObjectMock);
+        }
       }
     },
-    remove: function(...args) {
+    remove: function (...args) {
       console.warn("UploadTask.remove interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
@@ -216,7 +232,7 @@ export function mockOhosRequest() {
     }
   }
 
-  for(let property of Properties) {
+  for (let property of Properties) {
     global.ohosplugin.request[property] = NOTIFY + " " + property
   }
 }

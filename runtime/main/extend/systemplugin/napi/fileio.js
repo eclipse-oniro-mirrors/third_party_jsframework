@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import { paramMock } from "../utils"
 
 export function mockFileio() {
@@ -200,7 +215,6 @@ export function mockFileio() {
     stop: function () {
       console.warn("Watcher.stop interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     }
   };
   const fileioMock = {
@@ -241,7 +255,6 @@ export function mockFileio() {
     chmodSync: function (...args) {
       console.warn("fileio.chmodSync interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     chown: function (...args) {
       console.warn("fileio.chown interface mocked in the Previewer. How this interface works on the Previewer may" +
@@ -258,7 +271,6 @@ export function mockFileio() {
     chownSync: function (...args) {
       console.warn("fileio.chownSync interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     close: function (...args) {
       console.warn("fileio.close interface mocked in the Previewer. How this interface works on the Previewer may" +
@@ -275,7 +287,6 @@ export function mockFileio() {
     closeSync: function (...args) {
       console.warn("fileio.closeSync interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     copyFile: function (...args) {
       console.warn("fileio.copyFile interface mocked in the Previewer. How this interface works on the Previewer may" +
@@ -335,7 +346,6 @@ export function mockFileio() {
     fchmodSync: function (...args) {
       console.warn("fileio.fchmodSync interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     fchown: function (...args) {
       console.warn("fileio.fchown interface mocked in the Previewer. How this interface works on the Previewer may" +
@@ -352,7 +362,6 @@ export function mockFileio() {
     fchownSync: function (...args) {
       console.warn("fileio.fchownSync interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     fdatasync: function (...args) {
       console.warn("fileio.fdatasync interface mocked in the Previewer. How this interface works on the Previewer may" +
@@ -369,7 +378,6 @@ export function mockFileio() {
     fdatasyncSync: function (...args) {
       console.warn("fileio.fdatasyncSync interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     fdopenStream: function (...args) {
       console.warn("fileio.fdopenStream interface mocked in the Previewer. How this interface works on the Previewer may be" +
@@ -420,7 +428,6 @@ export function mockFileio() {
     fsyncSync: function (...args) {
       console.warn("fileio.fsyncSync interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     ftruncate: function (...args) {
       console.warn("fileio.ftruncate interface mocked in the Previewer. How this interface works on the Previewer may" +
@@ -437,7 +444,6 @@ export function mockFileio() {
     ftruncateSync: function (...args) {
       console.warn("fileio.ftruncateSync interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     hash: function (...args) {
       console.warn("fileio.hash interface mocked in the Previewer. How this interface works on the Previewer may be" +
@@ -466,7 +472,6 @@ export function mockFileio() {
     lchownSync: function (...args) {
       console.warn("fileio.lchownSync interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     lstat: function (...args) {
       console.warn("fileio.lstat interface mocked in the Previewer. How this interface works on the Previewer may be" +
@@ -601,7 +606,6 @@ export function mockFileio() {
     renameSync: function (...args) {
       console.warn("fileio.renameSync interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     rmdir: function (...args) {
       console.warn("fileio.rmdir interface mocked in the Previewer. How this interface works on the Previewer may" +
@@ -651,7 +655,6 @@ export function mockFileio() {
     symlinkSync: function (...args) {
       console.warn("fileio.symlinkSync interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     truncate: function (...args) {
       console.warn("fileio.truncate interface mocked in the Previewer. How this interface works on the Previewer may" +
@@ -668,7 +671,6 @@ export function mockFileio() {
     truncateSync: function (...args) {
       console.warn("fileio.truncateSync interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return
     },
     unlink: function (...args) {
       console.warn("fileio.unlink interface mocked in the Previewer. How this interface works on the Previewer may" +
