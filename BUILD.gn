@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//ark/ts2abc/ts2panda/ts2abc_config.gni")
 import("//build/ohos.gni")
 import("//foundation/ace/ace_engine/ace_config.gni")
 
@@ -36,7 +35,7 @@ action("gen_snapshot") {
   js_framework = "//third_party/jsframework/runtime"
   is_mac = "false"
 
-  if (is_standard_system) {
+  if (is_standard_system || is_cross_platform_build) {
     node_modules = "//prebuilts/build-tools/common/js-framework/node_modules"
     if (use_mac) {
       nodejs_path =
@@ -181,7 +180,7 @@ action("gen_snapshot") {
   ]
 }
 
-if (!is_standard_system) {
+if (!is_standard_system && !is_cross_platform_build) {
   import("$v8_root/gni/snapshot_toolchain.gni")
 
   v8_snapshot_bin_path = get_label_info(":v8_snapshot_bin", "target_out_dir") +
@@ -287,22 +286,25 @@ ohos_static_library("jsf") {
   sources = [ jsfc_path ]
 }
 
-ark_abc_path =
-    get_label_info(":ark_build", "target_out_dir") + "/strip.native.min.abc"
+if (!is_cross_platform_build) {
+  import("//ark/ts2abc/ts2panda/ts2abc_config.gni")
+  ark_abc_path =
+      get_label_info(":ark_build", "target_out_dir") + "/strip.native.min.abc"
 
-ts2abc_gen_abc("ark_jsf") {
-  extra_visibility = [ ":*" ]  # Only targets in this file can depend on this
-  extra_dependencies = [ ":gen_snapshot" ]
+  ts2abc_gen_abc("ark_jsf") {
+    extra_visibility = [ ":*" ]  # Only targets in this file can depend on this
+    extra_dependencies = [ ":gen_snapshot" ]
 
-  src_js = rebase_path(prebuilt_js_path)
-  dst_file = rebase_path(ark_abc_path)
+    src_js = rebase_path(prebuilt_js_path)
+    dst_file = rebase_path(ark_abc_path)
 
-  in_puts = [ prebuilt_js_path ]
-  out_puts = [ ark_abc_path ]
-}
+    in_puts = [ prebuilt_js_path ]
+    out_puts = [ ark_abc_path ]
+  }
 
-ohos_prebuilt_etc("ark_build") {
-  deps = [ ":ark_jsf" ]
-  source = ark_abc_path
-  part_name = "ace_engine_standard"
+  ohos_prebuilt_etc("ark_build") {
+    deps = [ ":ark_jsf" ]
+    source = ark_abc_path
+    part_name = "ace_engine_standard"
+  }
 }
