@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import { paramMock } from "../utils"
 
 export function mockXml() {
@@ -11,11 +25,6 @@ export function mockXml() {
             console.warn("xml.XmlPullParser interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
                 return XmlPullParserMock;
-        },
-        ConvertXML: function(...args) {
-            console.warn("xml.ConvertXML interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-                return ConvertXMLMock;
         }
     }
     const XmlSerializerMock = {
@@ -58,20 +67,13 @@ export function mockXml() {
         setDocType: function(...args) {
             console.warn("XmlSerializer.setDocType interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
-        },
+        }
     }
     const XmlPullParserMock = {
         parse: function(...args) {
             console.warn("XmlPullParser.parse interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
-        },
-    }
-    const ConvertXMLMock = {
-        convert: function(...args) {
-            console.warn("ConvertXML.convert interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return paramMock.paramObjectMock;
-        },
+        }
     }
     return result;
 }
