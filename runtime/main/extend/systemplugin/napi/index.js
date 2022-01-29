@@ -40,6 +40,7 @@ import { mockDtv } from './dtv'
 import { mockDistributedAccount } from './distributedAccount'
 import { mockEmitter } from './emitter'
 import { mockDistributedData } from './distributedData'
+import { mockDistributedObject } from './distributedDataObject'
 import { mockDataAbility } from './dataAbility'
 import { mockStorage } from './storage'
 import { mockRdb } from './rdb'
@@ -116,6 +117,8 @@ export function mockRequireNapiFun() {
         return mockEmitter();
       case "data.distributedData":
         return mockDistributedData();
+      case "data.distributedDataObject":
+        return mockDistributedObject();
       case "data.rdb":
         return mockRdb();
       case "data.storage":
