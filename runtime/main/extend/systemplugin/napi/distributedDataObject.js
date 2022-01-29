@@ -42,6 +42,5 @@ export function mockDistributedObject() {
             return 'just test';
         }
     };
-    global.systemplugin.data = global.systemplugin.data || {};
-    global.systemplugin.data.distributedDataObject = distributedObjectMock;
+    return distributedObjectMock;
 }
