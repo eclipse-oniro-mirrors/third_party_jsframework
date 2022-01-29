@@ -42,7 +42,8 @@ import {
   bindSubVmAfterInitialized,
   newWatch,
   bindDir,
-  updateTagCounter
+  updateTagCounter,
+  setAttributeStyle
 } from './directive';
 import {
   createBlock,
@@ -133,6 +134,7 @@ export function build(vm: Vm) {
   compileVm(vm, body);
   compileCounter(vm, body);
   compileElementAndElement(vm, body);
+  compileAttrStyle(vm, body);
   Log.debug(`"OnReady" lifecycle in Vm(${vm._type}).`);
   vm.$emit('hook:onReady');
   if (vm._parent) {
@@ -205,6 +207,25 @@ function compileVm(vm: Vm, body: Node): void {
         setTagStyle(vm, el, tag, false, true, false);
       }
       count++;
+      compileVmChild(vm, child);
+
+    });
+  }
+}
+
+function compileVmChild(vm: Vm, body: Node): void {
+  if (body.nodeType === Node.NodeType.Element) {
+    const node: Element = body as Element;
+    let count = 0;
+    node.children.forEach((child: Node) => {
+      const el = child as Element;
+      const tag = child.type;
+      if (count === 0) {
+        setTagStyle(vm, el, tag, true, false, false);
+      } else if (count === node.children.length - 1) {
+        setTagStyle(vm, el, tag, false, true, false);
+      }
+      count++;
       compileVm(vm, child);
     });
   }
@@ -233,12 +254,76 @@ function compileCounter(vm: Vm, body: Node): void {
           }
         }
       }
+      compileCounterChild(vm, child);
+    });
+  }
+}
+
+function compileCounterChild(vm: Vm, body: Node): void {
+  if (body.nodeType === Node.NodeType.Element) {
+    const node: Element = body as Element;
+    let count = {};
+
+    node.children.forEach((child: Node) => {
+      const el = child as Element;
+      const tag = child.type;
+      if (count[tag] === undefined) {
+        count[tag] = 1;
+      } else {
+        count[tag] = count[tag] + 1;
+      }
+      const css = vm._css || {};
+      if (css) {
+        const data = css[tag] || {};
+        if (data) {
+          const counterIncrement = data['counterIncrement'];
+          if (counterIncrement !== undefined) {
+            updateTagCounter(el, count[tag]);
+          }
+        }
+      }
       compileCounter(vm, child);
     });
   }
 }
 
+function compileAttrStyle(vm: Vm, body: Node): void {
+  if (body.nodeType === Node.NodeType.Element) {
+    const node: Element = body as Element;
+    node.children.forEach((child: Node) => {
+      const el = child as Element;
+      setAttributeStyle(vm, el);
+      compileAttrStyleChild(vm, child);
+    });
+  }
+}
+
+function compileAttrStyleChild(vm: Vm, body: Node): void {
+  if (body.nodeType === Node.NodeType.Element) {
+    const node: Element = body as Element;
+    node.children.forEach((child: Node) => {
+      const el = child as Element;
+      setAttributeStyle(vm, el);
+      compileAttrStyle(vm, child);
+    });
+  }
+}
+
 function compileElementAndElement(vm: Vm, body: Node): void {
+  if (body.nodeType === Node.NodeType.Element) {
+    const node: Element = body as Element;
+    node.children.forEach((child: Node) => {
+      if (child.nextSibling) {
+        const el = child.nextSibling as Element;
+        const tag = child.type + '+' + child.nextSibling.type;
+        setTagStyle(vm, el, tag, false, false, false);
+      }
+      compileElementAndElementChild(vm, child);
+    });
+  }
+}
+
+function compileElementAndElementChild(vm: Vm, body: Node): void {
   if (body.nodeType === Node.NodeType.Element) {
     const node: Element = body as Element;
     node.children.forEach((child: Node) => {

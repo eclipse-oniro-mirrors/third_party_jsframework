@@ -882,10 +882,6 @@ export function bindDir(vm: Vm, el: Element, name: string, data: object, isFirst
       method.call(el, 'value', newValue);
       continue;
     }
-    if (name === 'attr') {
-      setAttributeStyle(vm, el);
-    }
-
     method = el[methodName];
     if (key === 'ref') {
       vm.$refs[value] = el;
@@ -1250,7 +1246,7 @@ function updateTagAndIdStyle(el: Element, key: string, value: string): string {
   return newValue;
 }
 
-function setAttributeStyle(vm: Vm, el: Element): void {
+export function setAttributeStyle(vm: Vm, el: Element): void {
   const css = vm._css;
   if (css) {
     const keys = Object.keys(css);
