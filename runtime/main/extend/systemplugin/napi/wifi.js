@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -74,19 +74,6 @@ export function mockWifi() {
     name: '[PC preview] unknow name',
     macAddress: '[PC preview] unknow macAddress',
     ipAddress: '[PC preview] unknow ipAddress',
-  }
-
-  const EventListenerClass = class EventListener {
-    constructor() {
-      this.on = function (...args) {
-        console.warn("wifi.on interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-      }
-      this.off = function (...args) {
-        console.warn("wifi.off interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-      }
-    }
   }
 
   const wifi = {
@@ -291,7 +278,15 @@ export function mockWifi() {
       return [wifiStationInfoMock];
     },
 
-    EventListener: EventListenerClass
+    on: function (...args) {
+      console.warn("wifi.on interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+    },
+
+    off: function (...args) {
+      console.warn("wifi.off interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+    },
   }
   return wifi;
 }
