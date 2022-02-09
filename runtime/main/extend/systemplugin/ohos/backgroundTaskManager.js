@@ -21,6 +21,17 @@ export function mockBackgroundTaskManager() {
     actualDelayTime: '[PC preview] unknown actualDelayTime',
   }
   global.ohosplugin.backgroundTaskManager = {
+    BackgroundMode : {
+      DATA_TRANSFER: 1,
+      AUDIO_PLAYBACK: 2,
+      AUDIO_RECORDING: 3,
+      LOCATION: 4,
+      BLUETOOTH_INTERACTION: 5,
+      MULTI_DEVICE_CONNECTION: 6,
+      WIFI_INTERACTION: 7,
+      VOIP: 8,
+      TASK_KEEPING: 9
+    },
     requestSuspendDelay: function (...args) {
       console.warn("backgroundTaskManager.requestSuspendDelay interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
@@ -43,6 +54,30 @@ export function mockBackgroundTaskManager() {
       } else {
         return new Promise((resolve) => {
           resolve(DelaySuspendInfoMock.actualDelayTime)
+        });
+      }
+    },
+    startBackgroundRunning: function (...args) {
+      console.warn("backgroundTaskManager.startBackgroundRunning interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve();
+        });
+      }
+    },
+    stopBackgroundRunning: function (...args) {
+      console.warn("backgroundTaskManager.stopBackgroundRunning interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve();
         });
       }
     }
