@@ -234,6 +234,18 @@ export const windowMock = {
       })
     }
   },
+  setWindowType: function (...args) {
+    console.warn("Window.setWindowType interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock)
+    } else {
+      return new Promise((resolve) => {
+        resolve()
+      })
+    }
+  },
   loadContent: function (...args) {
     console.warn("Window.loadContent interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
@@ -422,6 +434,16 @@ export function mockWindow() {
       TYPE_SYSTEM: 0,
       TYPE_CUTOUT: 1,
       TYPE_SYSTEM_GESTURE: 2
+    },
+    WindowType: {
+      TYPE_APP: 0,
+      TYPE_SYSTEM_ALERT: 1,
+      TYPE_INPUT_METHOD: 2,
+      TYPE_STATUS_BAR: 3,
+      TYPE_PANEL: 4,
+      TYPE_KEYGUARD: 5,
+      TYPE_VOLUME_OVERLAY: 6,
+      TYPE_NAVIGATION_BAR: 7
     },
   }
 }
