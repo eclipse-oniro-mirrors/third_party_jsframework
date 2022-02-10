@@ -151,7 +151,7 @@ const ComponentsInfo: components<string>[] = [
     'type': 'image-animator'
   },
   {
-    'methods': ['showError', 'delete', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
+    'methods': ['showError', 'insert', 'delete', 'focus', 'addChild', 'animate', 'getBoundingClientRect', 'getInspector', 'scrollBy', 'getScrollOffset', 'scrollTo', 'createIntersectionObserver'],
     'type': 'input'
   },
   {
