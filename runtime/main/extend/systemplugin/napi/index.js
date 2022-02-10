@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import { mockSystemParameter } from './systemParameter'
 import { mockAbility } from './applicationAbility'
 import { mockFormExtension } from './applicationFormExtension'
@@ -25,6 +40,7 @@ import { mockDtv } from './dtv'
 import { mockDistributedAccount } from './distributedAccount'
 import { mockEmitter } from './emitter'
 import { mockDistributedData } from './distributedData'
+import { mockDistributedObject } from './distributedDataObject'
 import { mockDataAbility } from './dataAbility'
 import { mockStorage } from './storage'
 import { mockRdb } from './rdb'
@@ -39,6 +55,8 @@ import { mockUri } from './uri'
 import { mockXml } from './xml'
 import { mockConvertXml } from './convertxml'
 import { mockStatfs } from './statfs'
+import { mockFileManager } from "./filemanager"
+import { mockEnvironment } from "./environment"
 import { mockSettings } from './settings'
 import { mockAbilityAccessCtrl } from './abilityAccessCtrl'
 
@@ -99,6 +117,8 @@ export function mockRequireNapiFun() {
         return mockEmitter();
       case "data.distributedData":
         return mockDistributedData();
+      case "data.distributedDataObject":
+        return mockDistributedObject();
       case "data.rdb":
         return mockRdb();
       case "data.storage":
@@ -127,6 +147,10 @@ export function mockRequireNapiFun() {
         return mockConvertXml();
       case "statfs":
         return mockStatfs();
+      case "filemanager":
+        return mockFileManager();
+      case "environment":
+        return mockEnvironment();
       case "settings":
         return mockSettings();
       case "abilityAccessCtrl":

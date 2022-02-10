@@ -1,4 +1,19 @@
-import {getRandomArbitrary, hasComplete, paramMock} from './utils'
+/*
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { getRandomArbitrary, hasComplete, paramMock } from './utils'
 
 export function mockSensor() {
   global.systemplugin.sensor = {}
@@ -18,7 +33,7 @@ export function mockSensor() {
 }
 
 function mockAccelerometer() {
-  global.systemplugin.sensor.subscribeAccelerometer = function(...args) {
+  global.systemplugin.sensor.subscribeAccelerometer = function (...args) {
     console.warn("sensor.subscribeAccelerometer interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     const time = {
@@ -42,7 +57,7 @@ function mockAccelerometer() {
       args[0].success(ret)
     }, timer)
   }
-  global.systemplugin.sensor.unsubscribeAccelerometer = function() {
+  global.systemplugin.sensor.unsubscribeAccelerometer = function () {
     console.warn("sensor.unsubscribeAccelerometer interface mocked in the Previewer. How this interface works on" +
       " the Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribeAcc)
@@ -51,7 +66,7 @@ function mockAccelerometer() {
 }
 
 function mockBarometer() {
-  global.systemplugin.sensor.subscribeBarometer = function(...args) {
+  global.systemplugin.sensor.subscribeBarometer = function (...args) {
     console.warn("sensor.subscribeBarometer interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     if (!this.unsubscribePressure) {
@@ -62,7 +77,7 @@ function mockBarometer() {
       }, 500)
     }
   }
-  global.systemplugin.sensor.unsubscribeBarometer = function() {
+  global.systemplugin.sensor.unsubscribeBarometer = function () {
     console.warn("sensor.unsubscribeBarometer interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribePressure)
@@ -71,7 +86,7 @@ function mockBarometer() {
 }
 
 function mockCompass() {
-  global.systemplugin.sensor.subscribeCompass = function(...args) {
+  global.systemplugin.sensor.subscribeCompass = function (...args) {
     console.warn("sensor.subscribeCompass interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     if (!this.unsubscribeDirection) {
@@ -82,7 +97,7 @@ function mockCompass() {
       }, 100)
     }
   }
-  global.systemplugin.sensor.unsubscribeCompass = function() {
+  global.systemplugin.sensor.unsubscribeCompass = function () {
     console.warn("sensor.unsubscribeCompass interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribeDirection)
@@ -91,7 +106,7 @@ function mockCompass() {
 }
 
 function mockGyroscope() {
-  global.systemplugin.sensor.subscribeGyroscope = function(...args) {
+  global.systemplugin.sensor.subscribeGyroscope = function (...args) {
     console.warn("sensor.subscribeGyroscope interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     const time = {
@@ -115,7 +130,7 @@ function mockGyroscope() {
       args[0].success(ret)
     }, timer)
   }
-  global.systemplugin.sensor.unsubscribeGyroscope = function() {
+  global.systemplugin.sensor.unsubscribeGyroscope = function () {
     console.warn("sensor.unsubscribeGyroscope interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribeGyr)
@@ -124,7 +139,7 @@ function mockGyroscope() {
 }
 
 function mockDeviceOrientation() {
-  global.systemplugin.sensor.subscribeDeviceOrientation = function(...args) {
+  global.systemplugin.sensor.subscribeDeviceOrientation = function (...args) {
     console.warn("sensor.subscribeDeviceOrientation interface mocked in the Previewer. How this interface works on" +
       " the Previewer may be different from that on a real device.")
     const time = {
@@ -148,7 +163,7 @@ function mockDeviceOrientation() {
       args[0].success(ret)
     }, timer)
   }
-  global.systemplugin.sensor.unsubscribeDeviceOrientation = function() {
+  global.systemplugin.sensor.unsubscribeDeviceOrientation = function () {
     console.warn("sensor.unsubscribeDeviceOrientation interface mocked in the Previewer. How this interface works" +
       " on the Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribeDevOri)
@@ -157,7 +172,7 @@ function mockDeviceOrientation() {
 }
 
 function mockHeartRate() {
-  global.systemplugin.sensor.subscribeHeartRate = function(...args) {
+  global.systemplugin.sensor.subscribeHeartRate = function (...args) {
     console.warn("sensor.subscribeHeartRate interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     if (!this.unsubscribeRate) {
@@ -167,8 +182,8 @@ function mockHeartRate() {
         args[0].success(ret)
       }, 500)
     }
-  },
-  global.systemplugin.sensor.unsubscribeHeartRate = function() {
+  }
+  global.systemplugin.sensor.unsubscribeHeartRate = function () {
     console.warn("sensor.unsubscribeHeartRate interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribeRate)
@@ -177,7 +192,7 @@ function mockHeartRate() {
 }
 
 function mockLight() {
-  global.systemplugin.sensor.subscribeLight = function(...args) {
+  global.systemplugin.sensor.subscribeLight = function (...args) {
     console.warn("sensor.subscribeLight interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     if (!this.unsubscribeIntensity) {
@@ -188,7 +203,7 @@ function mockLight() {
       }, 500)
     }
   }
-  global.systemplugin.sensor.unsubscribeLight = function() {
+  global.systemplugin.sensor.unsubscribeLight = function () {
     console.warn("sensor.unsubscribeLight interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribeIntensity)
@@ -197,7 +212,7 @@ function mockLight() {
 }
 
 function mockOnBodyState() {
-  global.systemplugin.sensor.subscribeOnBodyState = function(...args) {
+  global.systemplugin.sensor.subscribeOnBodyState = function (...args) {
     console.warn("sensor.subscribeOnBodyState interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     if (!this.unsubscribeBodyState) {
@@ -208,7 +223,7 @@ function mockOnBodyState() {
       }, 500)
     }
   }
-  global.systemplugin.sensor.unsubscribeOnBodyState = function() {
+  global.systemplugin.sensor.unsubscribeOnBodyState = function () {
     console.warn("sensor.unsubscribeOnBodyState interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribeBodyState)
@@ -226,7 +241,7 @@ function mockOnBodyState() {
 }
 
 function mockProximity() {
-  global.systemplugin.sensor.subscribeProximity = function(...args) {
+  global.systemplugin.sensor.subscribeProximity = function (...args) {
     console.warn("sensor.subscribeProximity interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     if (!this.unsubscribeDistance) {
@@ -237,7 +252,7 @@ function mockProximity() {
       }, 1000)
     }
   }
-  global.systemplugin.sensor.unsubscribeProximity = function() {
+  global.systemplugin.sensor.unsubscribeProximity = function () {
     console.warn("sensor.unsubscribeProximity interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribeDistance)
@@ -246,18 +261,18 @@ function mockProximity() {
 }
 
 function mockStepCounter() {
-  global.systemplugin.sensor.subscribeStepCounter = function(...args) {
+  global.systemplugin.sensor.subscribeStepCounter = function (...args) {
     console.warn("sensor.subscribeStepCounter interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     if (!this.unsubscribeSteps) {
-      let ret = {steps: 0}
+      let ret = { steps: 0 }
       this.unsubscribeSteps = setInterval(() => {
         ret.steps += 1
         args[0].success(ret)
       }, 1000)
     }
   }
-  global.systemplugin.sensor.unsubscribeStepCounter = function() {
+  global.systemplugin.sensor.unsubscribeStepCounter = function () {
     console.warn("sensor.unsubscribeStepCounter interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribeSteps)
@@ -266,7 +281,7 @@ function mockStepCounter() {
 }
 
 function mockGravity() {
-  global.systemplugin.sensor.subscribeGravity = function(...args) {
+  global.systemplugin.sensor.subscribeGravity = function (...args) {
     console.warn("sensor.subscribeGravity interface mocked in the Previewer. How this interface works on" +
       " the Previewer may be different from that on a real device.")
     const time = {
@@ -290,7 +305,7 @@ function mockGravity() {
       args[0].success(ret)
     }, timer)
   }
-  global.systemplugin.sensor.unsubscribeGravity = function() {
+  global.systemplugin.sensor.unsubscribeGravity = function () {
     console.warn("sensor.unsubscribeGravity interface mocked in the Previewer. How this interface works" +
       " on the Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribeGrav)
@@ -299,7 +314,7 @@ function mockGravity() {
 }
 
 function mockMagnetic() {
-  global.systemplugin.sensor.subscribeMagnetic = function(...args) {
+  global.systemplugin.sensor.subscribeMagnetic = function (...args) {
     console.warn("sensor.subscribeMagnetic interface mocked in the Previewer. How this interface works on" +
       " the Previewer may be different from that on a real device.")
     const time = {
@@ -323,7 +338,7 @@ function mockMagnetic() {
       args[0].success(ret)
     }, timer)
   }
-  global.systemplugin.sensor.unsubscribeMagnetic = function() {
+  global.systemplugin.sensor.unsubscribeMagnetic = function () {
     console.warn("sensor.unsubscribeMagnetic interface mocked in the Previewer. How this interface works" +
       " on the Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribeMag)
@@ -332,7 +347,7 @@ function mockMagnetic() {
 }
 
 function mockHall() {
-  global.systemplugin.sensor.subscribeHall = function(...args) {
+  global.systemplugin.sensor.subscribeHall = function (...args) {
     console.warn("sensor.subscribeHall interface mocked in the Previewer. How this interface works on" +
       " the Previewer may be different from that on a real device.")
     const time = {
@@ -354,7 +369,7 @@ function mockHall() {
       args[0].success(ret)
     }, timer)
   }
-  global.systemplugin.sensor.unsubscribeHall = function() {
+  global.systemplugin.sensor.unsubscribeHall = function () {
     console.warn("sensor.unsubscribeHall interface mocked in the Previewer. How this interface works" +
       " on the Previewer may be different from that on a real device.")
     clearInterval(this.unsubscribeHal)

@@ -1,225 +1,240 @@
+/*
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import { paramMock } from "../utils"
 
 export function mockNotification() {
   const DateMock = {
     toString: function () {
       console.warn("Date.toString interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramStringMock
     },
     toDateString: function () {
       console.warn("Date.toDateString interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramStringMock
     },
     toTimeString: function () {
       console.warn("Date.toTimeString interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramStringMock
     },
     toLocaleString: function () {
       console.warn("Date.toLocaleString interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramStringMock
     },
     toLocaleDateString: function () {
       console.warn("Date.toLocaleDateString interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramStringMock
     },
     toLocaleTimeString: function () {
       console.warn("Date.toLocaleTimeString interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramStringMock
     },
     valueOf: function () {
       console.warn("Date.valueOf interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getTime: function () {
       console.warn("Date.getTime interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getFullYear: function () {
       console.warn("Date.getFullYear interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getUTCFullYear: function () {
       console.warn("Date.getUTCFullYear interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getMonth: function () {
       console.warn("Date.getMonth interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getUTCMonth: function () {
       console.warn("Date.getUTCMonth interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getDate: function () {
       console.warn("Date.getDate interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getUTCDate: function () {
       console.warn("Date.getUTCDate interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getDay: function () {
       console.warn("Date.getDay interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getUTCDay: function () {
       console.warn("Date.getUTCDay interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getHours: function () {
       console.warn("Date.getHours interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getUTCHours: function () {
       console.warn("Date.getUTCHours interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getMinutes: function () {
       console.warn("Date.getMinutes interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getUTCMinutes: function () {
       console.warn("Date.getUTCMinutes interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getSeconds: function () {
       console.warn("Date.getSeconds interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getUTCSeconds: function () {
       console.warn("Date.getUTCSeconds interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getMilliseconds: function () {
       console.warn("Date.getMilliseconds interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getUTCMilliseconds: function () {
       console.warn("Date.getUTCMilliseconds interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     getTimezoneOffset: function () {
       console.warn("Date.getTimezoneOffset interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setTime: function (...args) {
       console.warn("Date.setTime interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setMilliseconds: function (...args) {
       console.warn("Date.setMilliseconds interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setUTCMilliseconds: function (...args) {
       console.warn("Date.setUTCMilliseconds interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setSeconds: function (...args) {
       console.warn("Date.setSeconds interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setUTCSeconds: function (...args) {
       console.warn("Date.setUTCSeconds interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setMinutes: function (...args) {
       console.warn("Date.setMinutes interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setUTCMinutes: function (...args) {
       console.warn("Date.setUTCMinutes interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setHours: function (...args) {
       console.warn("Date.setHours interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setUTCHours: function (...args) {
       console.warn("Date.setUTCHours interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setDate: function (...args) {
       console.warn("Date.setDate interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setUTCDate: function (...args) {
       console.warn("Date.setUTCDate interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setMonth: function (...args) {
       console.warn("Date.setMonth interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setUTCMonth: function (...args) {
       console.warn("Date.setUTCMonth interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setFullYear: function (...args) {
       console.warn("Date.setFullYear interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     setUTCFullYear: function (...args) {
       console.warn("Date.setUTCFullYear interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramNumberMock
     },
     toUTCString: function () {
       console.warn("Date.toUTCString interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramStringMock
     },
     toISOString: function () {
       console.warn("Date.toISOString interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramStringMock
     },
     toJSON: function (...args) {
       console.warn("Date.toJSON interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+        " may be different from that on a real device.")
       return paramMock.paramStringMock
     },
   }
   const DoNotDisturbDateMock = {
-    DoNotDisturbTypeMock:'[PC preview] unknow DoNotDisturbTypeMock',
+    DoNotDisturbTypeMock: '[PC preview] unknow DoNotDisturbTypeMock',
     begin: DateMock,
     end: DateMock
   }
@@ -277,7 +292,7 @@ export function mockNotification() {
   };
   const notification = {
     SlotType: {
-      UNKNOWN_TYPE : 0,
+      UNKNOWN_TYPE: 0,
       SOCIAL_COMMUNICATION: 1,
       SERVICE_INFORMATION: 2,
       CONTENT_INFORMATION: 3,
@@ -290,7 +305,7 @@ export function mockNotification() {
       NOTIFICATION_CONTENT_CONVERSATION: 3,
       NOTIFICATION_CONTENT_MULTILINE: 4,
     },
-    publish: function(...args) {
+    publish: function (...args) {
       console.warn('notification.publish interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -302,7 +317,7 @@ export function mockNotification() {
         });
       }
     },
-    cancel: function(...args) {
+    cancel: function (...args) {
       console.warn('notification.cancel interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -314,7 +329,7 @@ export function mockNotification() {
         });
       }
     },
-    cancelAll: function(...args) {
+    cancelAll: function (...args) {
       console.warn('notification.cancelAll interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -326,7 +341,7 @@ export function mockNotification() {
         });
       }
     },
-    addSlot: function(...args) {
+    addSlot: function (...args) {
       console.warn('notification.addSlot interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -338,7 +353,7 @@ export function mockNotification() {
         });
       }
     },
-    addSlots: function(...args) {
+    addSlots: function (...args) {
       console.warn('notification.addSlots interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -350,7 +365,7 @@ export function mockNotification() {
         });
       }
     },
-    getSlot: function(...args) {
+    getSlot: function (...args) {
       console.warn('notification.getSlot interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -362,7 +377,7 @@ export function mockNotification() {
         });
       }
     },
-    getSlots: function(...args) {
+    getSlots: function (...args) {
       console.warn('notification.getSlots interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -374,7 +389,7 @@ export function mockNotification() {
         });
       }
     },
-    removeSlot: function(...args) {
+    removeSlot: function (...args) {
       console.warn('notification.removeSlot interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -386,7 +401,7 @@ export function mockNotification() {
         });
       }
     },
-    removeAllSlots: function(...args) {
+    removeAllSlots: function (...args) {
       console.warn('notification.removeAllSlots interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -398,7 +413,7 @@ export function mockNotification() {
         });
       }
     },
-    subscribe: function(...args) {
+    subscribe: function (...args) {
       console.warn('notification.subscribe interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -410,7 +425,7 @@ export function mockNotification() {
         });
       }
     },
-    unsubscribe: function(...args) {
+    unsubscribe: function (...args) {
       console.warn('notification.unsubscribe interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -422,7 +437,7 @@ export function mockNotification() {
         });
       }
     },
-    enableNotification: function(...args) {
+    enableNotification: function (...args) {
       console.warn('notification.enableNotification interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -434,7 +449,7 @@ export function mockNotification() {
         });
       }
     },
-    isNotificationEnabled: function(...args) {
+    isNotificationEnabled: function (...args) {
       console.warn('notification.isNotificationEnabled interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -446,7 +461,7 @@ export function mockNotification() {
         });
       }
     },
-    displayBadge: function(...args) {
+    displayBadge: function (...args) {
       console.warn('notification.displayBadge interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -458,7 +473,7 @@ export function mockNotification() {
         });
       }
     },
-    isBadgeDisplayed: function(...args) {
+    isBadgeDisplayed: function (...args) {
       console.warn('notification.isBadgeDisplayed interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -470,7 +485,7 @@ export function mockNotification() {
         });
       }
     },
-    setSlotByBundle: function(...args) {
+    setSlotByBundle: function (...args) {
       console.warn('notification.setSlotByBundle interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -482,7 +497,7 @@ export function mockNotification() {
         });
       }
     },
-    getSlotsByBundle: function(...args) {
+    getSlotsByBundle: function (...args) {
       console.warn('notification.getSlotsByBundle interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -494,7 +509,7 @@ export function mockNotification() {
         });
       }
     },
-    getSlotNumByBundle: function(...args) {
+    getSlotNumByBundle: function (...args) {
       console.warn('notification.getSlotNumByBundle interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -506,7 +521,7 @@ export function mockNotification() {
         });
       }
     },
-    remove: function(...args) {
+    remove: function (...args) {
       console.warn('notification.remove interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -518,7 +533,7 @@ export function mockNotification() {
         });
       }
     },
-    removeAll: function(...args) {
+    removeAll: function (...args) {
       console.warn('notification.removeAll interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -530,7 +545,7 @@ export function mockNotification() {
         });
       }
     },
-    getAllActiveNotifications: function(...args) {
+    getAllActiveNotifications: function (...args) {
       console.warn('notification.getAllActiveNotifications interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -542,7 +557,7 @@ export function mockNotification() {
         });
       }
     },
-    getActiveNotificationCount: function(...args) {
+    getActiveNotificationCount: function (...args) {
       console.warn('notification.getActiveNotificationCount interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -554,7 +569,7 @@ export function mockNotification() {
         });
       }
     },
-    getActiveNotifications: function(...args) {
+    getActiveNotifications: function (...args) {
       console.warn('notification.getActiveNotifications interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
@@ -604,14 +619,14 @@ export function mockNotification() {
     },
     getDoNotDisturbDate: function (...args) {
       console.warn("notification.getDoNotDisturbDate interface mocked in the Previewer." +
-          " How this interface works on the Previewer may be different from that on a real device.")
+        " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.businessErrorMock, DoNotDisturbDateMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, DoNotDisturbDateMock);
       } else {
-          return new Promise((resolve, reject) => {
-              resolve(DoNotDisturbDateMock);
-          })
+        return new Promise((resolve, reject) => {
+          resolve(DoNotDisturbDateMock);
+        })
       }
     },
     supportDoNotDisturbMode: function (...args) {

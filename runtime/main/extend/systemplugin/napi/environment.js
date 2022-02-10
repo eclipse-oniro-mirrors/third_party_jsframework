@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,31 +12,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 import { paramMock } from "../utils"
 
-export function mockPower() {
-  const power = {
-    shutdownDevice: function (...args) {
-      console.warn("power.shutdownDevice interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-    },
-    rebootDevice: function (...args) {
-      console.warn("power.rebootDevice interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-    },
-    isScreenOn: function (...args) {
-      console.warn("power.isScreenOn interface mocked in the Previewer. How this interface works on the" +
+export function mockEnvironment() {
+  const environment = {
+    getStorageDataDir: function (...args) {
+      console.warn("environment.getStorageDataDir interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
       } else {
         return new Promise((resolve, reject) => {
-          resolve(paramMock.paramBooleanMock);
+          resolve(paramMock.paramStringMock);
+        })
+      }
+    },
+    getUserDataDir: function (...args) {
+      console.warn("environment.getUserDataDir interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramStringMock);
         })
       }
     }
   }
-  return power
+  return environment;
 }

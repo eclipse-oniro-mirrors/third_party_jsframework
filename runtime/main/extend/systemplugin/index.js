@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import regeneratorRuntime from 'babel-runtime/regenerator'
 
 import {
@@ -9,7 +24,7 @@ import {
   mockAbilityAbilityAgent,
   mockAbilityFormBindingData
 } from './ability'
-import {mockAppAbilityManager} from './ohos/app'
+import { mockAppAbilityManager } from './ohos/app'
 
 import { mockBackgroundTaskManager } from './ohos/backgroundTaskManager'
 import { mockBattery } from './battery'
@@ -54,7 +69,7 @@ import { mockResourceManager } from './resourceManager'
 
 import { mockSensor } from './sensor'
 import { mockStorage } from './storage'
-import { mockStorageInfoManager} from './ohos/storageInfoManager'
+import { mockStorageInfoManager } from './ohos/storageInfoManager'
 import { mockSystemPackage } from './systemPackage'
 
 import { mockUserauth } from './userIAM'
@@ -70,17 +85,17 @@ import { mockAI } from './ai'
 import { mockDisplay } from './display'
 import { mockDeviceManager } from './deviceManager'
 import { mockScreenshot } from './screenshot'
-import {mockContact} from './contact'
-import {mockScreenLock} from "./screenLock"
-import { mockAppAccount} from './ohos/appAccount'
-import { mockOsAccount} from './ohos/osAccount'
+import { mockContact } from './contact'
+import { mockScreenLock } from "./screenLock"
+import { mockAppAccount } from './ohos/appAccount'
+import { mockOsAccount } from './ohos/osAccount'
 import { mockOhosGeolocation } from './ohos/geolocation'
-import { mockInputMonitor} from './ohos/inputMonitor'
-import {mockUserIAMUserAuth} from './ohos/userIAMuserAuth.js'
+import { mockInputMonitor } from './ohos/inputMonitor'
+import { mockUserIAMUserAuth } from './ohos/userIAMuserAuth.js'
 import { mockBundleManager } from './ohos/bundleManager'
 import { mockPackageManager } from './ohos/packageManager'
 import { mockZlib } from './napi/zlib'
-import {mockCalendar} from "./calendar"
+import { mockCalendar } from "./calendar"
 
 export function mockSystemPlugin() {
   global.regeneratorRuntime = regeneratorRuntime
