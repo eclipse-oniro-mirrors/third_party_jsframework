@@ -1118,7 +1118,7 @@ function setContent(el: Element, key: string): string {
     for (i = 0; i < itemLength; i++) {
       const contentType = finallyItems[i].contentType;
       switch (contentType) {
-        case ContentType.CONTENTSTRING:
+        case ContentType.CONTENT_STRING:
           contentValue = contentValue + getContentString(finallyItems[i].value);
           break;
         case ContentType.CONTENT_OPEN_QUOTE:
