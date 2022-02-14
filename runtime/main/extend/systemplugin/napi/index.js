@@ -59,6 +59,7 @@ import { mockFileManager } from "./filemanager"
 import { mockEnvironment } from "./environment"
 import { mockSettings } from './settings'
 import { mockAbilityAccessCtrl } from './abilityAccessCtrl'
+import { mockBackgroundTaskManager } from './backgroundTaskManager'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
