@@ -155,6 +155,8 @@ export function mockRequireNapiFun() {
         return mockSettings();
       case "abilityAccessCtrl":
         return mockAbilityAccessCtrl();
+      case "backgroundTaskManager":
+        return mockBackgroundTaskManager();
       default:
         return global.requireNapiPreview(...args);
     }
