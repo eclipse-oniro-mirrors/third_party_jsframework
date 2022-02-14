@@ -64,17 +64,18 @@ const SETTERS = {
   firstOrLastChildStyle: 'setFirstOrLastChildStyle'
 };
 
-const ContentType = {
-  CONTENT_STRING: 0,
-  CONTENT_OPEN_QUOTE: 1,
-  CONTENT_CLOSE_QUOTE: 2,
-  CONTENT_ATTR: 3,
-  CONTENT_COUNTER: 4
+/* eslint-disable no-unused-vars */
+enum ContentType {
+  CONTENT_STRING,
+  CONTENT_OPEN_QUOTE,
+  CONTENT_CLOSE_QUOTE,
+  CONTENT_ATTR,
+  CONTENT_COUNTER
 };
 
 interface ContentObject {
   value: string,
-  contentType: number
+  contentType: ContentType
 }
 let finallyItems: Array <ContentObject> = [];
 
@@ -1049,7 +1050,7 @@ function doSplitItem(itemList: string[]): void {
       item = item.replace('"', '');
       const contentObject: ContentObject = {
         value: item,
-        contentType: ContentType['CONTENT_STRING']
+        contentType: ContentType.CONTENT_STRING
       };
       const finallyItemsLength = finallyItems.length;
       finallyItems[finallyItemsLength] = contentObject;
@@ -1073,7 +1074,7 @@ function splitItem(item: string): void{
     const subItem = item.substr(0, 10);
     const contentObject: ContentObject = {
       value: subItem,
-      contentType: ContentType['CONTENT_OPEN_QUOTE']
+      contentType: ContentType.CONTENT_OPEN_QUOTE
     };
     finallyItems[finallyItemsLength] = contentObject;
     splitItem(item.substr(10).trim());
@@ -1081,7 +1082,7 @@ function splitItem(item: string): void{
     const subItem = item.substr(0, 11);
     const contentObject: ContentObject = {
       value: subItem,
-      contentType: ContentType['CONTENT_CLOSE_QUOTE']
+      contentType: ContentType.CONTENT_CLOSE_QUOTE
     };
     finallyItems[finallyItemsLength] = contentObject;
     splitItem(item.substr(11).trim());
@@ -1092,7 +1093,7 @@ function splitItem(item: string): void{
     const subItem = item.substr(fromIndex + 1, subLen).trim();
     const contentObject: ContentObject = {
       value: subItem,
-      contentType: ContentType['CONTENT_ATTR']
+      contentType: ContentType.CONTENT_ATTR
     };
     finallyItems[finallyItemsLength] = contentObject;
     splitItem(item.substr(toIndex + 1).trim());
@@ -1101,7 +1102,7 @@ function splitItem(item: string): void{
     const subItem = 'counter(0)';
     const contentObject: ContentObject = {
       value: subItem,
-      contentType: ContentType['CONTENT_COUNTER']
+      contentType: ContentType.CONTENT_COUNTER
     };
     finallyItems[finallyItemsLength] = contentObject;
     splitItem(item.substr(toIndex + 1).trim());
@@ -1119,19 +1120,19 @@ function setContent(el: Element, key: string): string {
     for (i = 0; i < itemLength; i++) {
       const contentType = finallyItems[i].contentType;
       switch (contentType) {
-        case ContentType['CONTENT_STRING']:
+        case ContentType.CONTENT_STRING:
           contentValue = contentValue + getContentString(finallyItems[i].value);
           break;
-        case ContentType['CONTENT_OPEN_QUOTE']:
+        case ContentType.CONTENT_OPEN_QUOTE:
           contentValue = contentValue + getContentOpenQuote(el, key);
           break;
-        case ContentType['CONTENT_CLOSE_QUOTE']:
+        case ContentType.CONTENT_CLOSE_QUOTE:
           contentValue = contentValue + getContentCloseQuote(el, key);
           break;
-        case ContentType['CONTENT_ATTR']:
+        case ContentType.CONTENT_ATTR:
           contentValue = contentValue + getContentAttr(el, finallyItems[i].value);
           break;
-        case ContentType['CONTENT_COUNTER']:
+        case ContentType.CONTENT_COUNTER:
           contentValue = contentValue + finallyItems[i].value;
           break;
       }
