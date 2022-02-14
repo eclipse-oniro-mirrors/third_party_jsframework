@@ -64,7 +64,15 @@ const SETTERS = {
   firstOrLastChildStyle: 'setFirstOrLastChildStyle'
 };
 
-enum ContentType {Content_String, Content_Open_Quote, Content_Close_Quote, Content_Attr, Content_Counter};
+/* eslint-disable no-unused-vars */
+enum ContentType {
+  CONTENT_STRING,
+  CONTENT_OPEN_QUOTE,
+  CONTENT_CLOSE_QUOTE,
+  CONTENT_ATTR,
+  CONTENT_COUNTER
+};
+
 interface ContentObject {
   value: string,
   contentType: ContentType
@@ -822,7 +830,7 @@ export function bindDir(vm: Vm, el: Element, name: string, data: object, isFirst
   if (!data) {
     return;
   }
-  let keys = Object.keys(data);
+  const keys = Object.keys(data);
   let i = keys.length;
   if (!i) {
     return;
@@ -867,7 +875,7 @@ export function bindDir(vm: Vm, el: Element, name: string, data: object, isFirst
       if (isSetContent && (key === 'content::before' || key === 'content::after')) {
         finallyItems = [];
         splitItems(value);
-        let newValue = setContent(el, key);
+        const newValue = setContent(el, key);
         methodName = SETTERS['attr'];
         method = el[methodName];
         method.call(el, 'value', newValue);
@@ -994,7 +1002,7 @@ function splitItems(valueStr: string): void {
   let i: number;
   let item: string = '';
   let startQuote: boolean = false;
-  let itemList: string[] = [];
+  const itemList: string[] = [];
   const len = valueStr.length;
   for (i = 0; i < len; i++) {
     if (!startQuote) {
@@ -1004,7 +1012,7 @@ function splitItems(valueStr: string): void {
           const itemListLength = itemList.length;
           itemList[itemListLength] = item;
         }
-        item  = '"';
+        item = '"';
         startQuote = true;
         continue;
       } else {
@@ -1034,15 +1042,15 @@ function splitItems(valueStr: string): void {
 
 function doSplitItem(itemList: string[]): void {
   let i: number;
-  let itemListLength = itemList.length;
-  for (i = 0; i < itemListLength; i++ ) {
+  const itemListLength = itemList.length;
+  for (i = 0; i < itemListLength; i++) {
     let item = itemList[i].trim();
     if (item.indexOf('"') === 0) {
       item = item.replace('"', '');
       item = item.replace('"', '');
       const contentObject: ContentObject = {
         value: item,
-        contentType: ContentType.Content_String
+        contentType: ContentType.CONTENT_STRING
       };
       const finallyItemsLength = finallyItems.length;
       finallyItems[finallyItemsLength] = contentObject;
@@ -1061,12 +1069,12 @@ function splitItem(item: string): void{
   if (item.length === 0) {
     return;
   }
-  let finallyItemsLength = finallyItems.length;
+  const finallyItemsLength = finallyItems.length;
   if (item.indexOf('open-quote') === 0) {
     const subItem = item.substr(0, 10);
     const contentObject: ContentObject = {
       value: subItem,
-      contentType: ContentType.Content_Open_Quote
+      contentType: ContentType.CONTENT_OPEN_QUOTE
     };
     finallyItems[finallyItemsLength] = contentObject;
     splitItem(item.substr(10).trim());
@@ -1074,7 +1082,7 @@ function splitItem(item: string): void{
     const subItem = item.substr(0, 11);
     const contentObject: ContentObject = {
       value: subItem,
-      contentType: ContentType.Content_Close_Quote
+      contentType: ContentType.CONTENT_CLOSE_QUOTE
     };
     finallyItems[finallyItemsLength] = contentObject;
     splitItem(item.substr(11).trim());
@@ -1085,7 +1093,7 @@ function splitItem(item: string): void{
     const subItem = item.substr(fromIndex + 1, subLen).trim();
     const contentObject: ContentObject = {
       value: subItem,
-      contentType: ContentType.Content_Attr
+      contentType: ContentType.CONTENT_ATTR
     };
     finallyItems[finallyItemsLength] = contentObject;
     splitItem(item.substr(toIndex + 1).trim());
@@ -1094,7 +1102,7 @@ function splitItem(item: string): void{
     const subItem = 'counter(0)';
     const contentObject: ContentObject = {
       value: subItem,
-      contentType: ContentType.Content_Counter
+      contentType: ContentType.CONTENT_COUNTER
     };
     finallyItems[finallyItemsLength] = contentObject;
     splitItem(item.substr(toIndex + 1).trim());
@@ -1112,19 +1120,19 @@ function setContent(el: Element, key: string): string {
     for (i = 0; i < itemLength; i++) {
       const contentType = finallyItems[i].contentType;
       switch (contentType) {
-        case ContentType.Content_String:
+        case ContentType.CONTENT_STRING:
           contentValue = contentValue + getContentString(finallyItems[i].value);
           break;
-        case ContentType.Content_Open_Quote:
+        case ContentType.CONTENT_OPEN_QUOTE:
           contentValue = contentValue + getContentOpenQuote(el, key);
           break;
-        case ContentType.Content_Close_Quote:
+        case ContentType.CONTENT_CLOSE_QUOTE:
           contentValue = contentValue + getContentCloseQuote(el, key);
           break;
-        case ContentType.Content_Attr:
+        case ContentType.CONTENT_ATTR:
           contentValue = contentValue + getContentAttr(el, finallyItems[i].value);
           break;
-        case ContentType.Content_Counter:
+        case ContentType.CONTENT_COUNTER:
           contentValue = contentValue + finallyItems[i].value;
           break;
       }
@@ -1183,7 +1191,7 @@ function getContentAttr(el: Element, value: string): string {
 export function updateTagCounter(el: Element, counter: number): void {
   let value = el.attr['value'];
   if (value !== undefined) {
-    let fromIndex = value.indexOf('counter');
+    const fromIndex = value.indexOf('counter');
     if (fromIndex !== -1) {
       value = value.replace('counter(0)', counter);
       const methodName = SETTERS['attr'];
@@ -1257,7 +1265,7 @@ export function setAttributeStyle(vm: Vm, el: Element): void {
         let cssKey = keys[j].trim();
         if (cssKey.indexOf('[') === 0) {
           cssKey = cssKey.substr(1, cssKey.length - 2);
-          let equalIndex = cssKey.indexOf('=');
+          const equalIndex = cssKey.indexOf('=');
           if (equalIndex !== -1) {
             const attrId = cssKey.substr(0, equalIndex).trim();
             let attrValue = cssKey.substr(equalIndex + 1).trim();
@@ -1267,7 +1275,7 @@ export function setAttributeStyle(vm: Vm, el: Element): void {
             }
             const elValue = el.attr[attrId];
             if (elValue !== undefined && elValue === attrValue) {
-              let newKey = keys[j];
+              const newKey = keys[j];
               bindDir(vm, el, 'attrStyle', css[newKey]);
             }
           }
@@ -1276,3 +1284,4 @@ export function setAttributeStyle(vm: Vm, el: Element): void {
     }
   }
 }
+

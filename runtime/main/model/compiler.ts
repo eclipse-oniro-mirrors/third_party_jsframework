@@ -208,7 +208,6 @@ function compileVm(vm: Vm, body: Node): void {
       }
       count++;
       compileVmChild(vm, child);
-
     });
   }
 }
@@ -234,7 +233,7 @@ function compileVmChild(vm: Vm, body: Node): void {
 function compileCounter(vm: Vm, body: Node): void {
   if (body.nodeType === Node.NodeType.Element) {
     const node: Element = body as Element;
-    let count = {};
+    const count = {};
 
     node.children.forEach((child: Node) => {
       const el = child as Element;
@@ -262,7 +261,7 @@ function compileCounter(vm: Vm, body: Node): void {
 function compileCounterChild(vm: Vm, body: Node): void {
   if (body.nodeType === Node.NodeType.Element) {
     const node: Element = body as Element;
-    let count = {};
+    const count = {};
 
     node.children.forEach((child: Node) => {
       const el = child as Element;
