@@ -71,7 +71,7 @@ enum ContentType {
   CONTENT_CLOSE_QUOTE,
   CONTENT_ATTR,
   CONTENT_COUNTER
-};
+}
 
 interface ContentObject {
   value: string,
