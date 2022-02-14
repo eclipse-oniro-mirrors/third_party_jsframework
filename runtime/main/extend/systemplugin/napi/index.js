@@ -157,7 +157,7 @@ export function mockRequireNapiFun() {
       case "abilityAccessCtrl":
         return mockAbilityAccessCtrl();
       case "cust":
-          return mockCust();
+        return mockCust();
       default:
         return global.requireNapiPreview(...args);
     }
