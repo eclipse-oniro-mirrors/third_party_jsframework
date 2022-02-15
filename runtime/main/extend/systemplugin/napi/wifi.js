@@ -76,6 +76,32 @@ export function mockWifi() {
     ipAddress: '[PC preview] unknow ipAddress',
   }
 
+  const p2pLinkedInfoMock = {
+    connectState: '[PC preview] unknow connectState',
+    isGroupOwner: '[PC preview] unknow isGroupOwner',
+    groupOwnerAddr: '[PC preview] unknow groupOwnerAddr',
+  }
+
+  const WifiP2pDeviceMock = {
+    deviceName: '[PC preview] unknow deviceName',
+    deviceAddress: '[PC preview] unknow deviceAddress',
+    primaryDeviceType: '[PC preview] unknow primaryDeviceType',
+    deviceStatus: '[PC preview] unknow deviceStatus',
+    groupCapabilitys: '[PC preview] unknow groupCapabilitys',
+  }
+
+  const p2pGroupInfoMock = {
+    isP2pGo: '[PC preview] unknow connectState',
+    ownerInfo: WifiP2pDeviceMock,
+    passphrase: '[PC preview] unknow passphrase',
+    interface: '[PC preview] unknow interface',
+    groupName: '[PC preview] unknow groupName',
+    networkId: '[PC preview] unknow networkId',
+    frequency: '[PC preview] unknow frequency',
+    clientDevices: [WifiP2pDeviceMock],
+    goIpAddress: '[PC preview] unknow goIpAddress',
+  }
+
   const wifi = {
     enableWifi: function (...args) {
       console.warn("wifi.enableWifi interface mocked in the Previewer. How this interface works on the Previewer" +
@@ -128,8 +154,8 @@ export function mockWifi() {
     },
 
     connectToNetwork: function (...args) {
-      console.warn("wifi.connectToNetwork interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      console.warn("wifi.connectToNetwork interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
 
@@ -286,6 +312,93 @@ export function mockWifi() {
     off: function (...args) {
       console.warn("wifi.off interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
+    },
+
+    getP2pLinkedInfo: function (...args) {
+      console.warn("wifi.getP2pLinkedInfo interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, p2pLinkedInfoMock)
+      } else {
+        return new Promise((resolve) => {
+          resolve(p2pLinkedInfoMock)
+        })
+      }
+    },
+
+    getCurrentGroup: function (...args) {
+      console.warn("wifi.getCurrentGroup interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, p2pGroupInfoMock)
+      } else {
+        return new Promise((resolve) => {
+          resolve(p2pGroupInfoMock)
+        })
+      }
+    },
+
+    getP2pDevices: function (...args) {
+      console.warn("wifi.getP2pDevices interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, [WifiP2pDeviceMock])
+      } else {
+        return new Promise((resolve) => {
+          resolve([WifiP2pDeviceMock])
+        })
+      }
+    },
+
+    createGroup: function (...args) {
+      console.warn("wifi.createGroup interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+
+    removeGroup: function (...args) {
+      console.warn("wifi.removeGroup interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+
+    p2pConnect: function (...args) {
+      console.warn("wifi.p2pConnect interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+
+    p2pCancelConnect: function (...args) {
+      console.warn("wifi.p2pCancelConnect interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+
+    startDiscoverDevices: function (...args) {
+      console.warn("wifi.startDiscoverDevices interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+
+    stopDiscoverDevices: function (...args) {
+      console.warn("wifi.stopDiscoverDevices interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+
+    deletePersistentGroup: function (...args) {
+      console.warn("wifi.deletePersistentGroup interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+
+    setDeviceName: function (...args) {
+      console.warn("wifi.setDeviceName interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
     },
   }
   return wifi;
