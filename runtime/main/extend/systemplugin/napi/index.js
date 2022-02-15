@@ -60,6 +60,7 @@ import { mockEnvironment } from "./environment"
 import { mockSettings } from './settings'
 import { mockAbilityAccessCtrl } from './abilityAccessCtrl'
 import { mockConfigPolicy } from './configPolicy'
+import { mockBackgroundTaskManager } from './backgroundTaskManager'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -158,6 +159,8 @@ export function mockRequireNapiFun() {
         return mockAbilityAccessCtrl();
       case "configPolicy":
         return mockConfigPolicy();
+      case "backgroundTaskManager":
+        return mockBackgroundTaskManager();
       default:
         return global.requireNapiPreview(...args);
     }
