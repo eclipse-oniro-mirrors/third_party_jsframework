@@ -13,52 +13,52 @@
  * limitations under the License.
  */
 
-import { paramMock } from "../utils"
+import { paramMock } from '../utils';
 
 export function mockStorageStatistics() {
   const BundleStatsMock = {
     appSize: '[PC preview] unknow appSize',
     cacheSize: '[PC preview] unknow cacheSize',
-    dataSize: '[PC preview] unknow dataSize',
-    }
+    dataSize: '[PC preview] unknow dataSize'
+  };
   const storageStatistics = {
     BundleStats: BundleStatsMock,
-    getTotalSizeOfVolume: function (...args) {
-      console.warn("storageStatistics.getTotalSizeOfVolume interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
+    getTotalSizeOfVolume: function(...args) {
+      console.warn('storageStatistics.getTotalSizeOfVolume interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
         return new Promise((resolve, reject) => {
           resolve(paramMock.paramNumberMock);
-        })
+        });
       }
     },
-    getFreeSizeOfVolume: function (...args) {
-      console.warn("storageStatistics.getFreeSizeOfVolume interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
+    getFreeSizeOfVolume: function(...args) {
+      console.warn('storageStatistics.getFreeSizeOfVolume interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
         return new Promise((resolve, reject) => {
           resolve(paramMock.paramNumberMock);
-        })
+        });
       }
     },
-    getBundleStat: function (...args) {
-      console.warn("storageStatistics.getBundleStat interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
+    getBundleStats: function(...args) {
+      console.warn('storageStatistics.getBundleStats interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, BundleStatsMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleStatsMock);
       } else {
         return new Promise((resolve, reject) => {
           resolve(BundleStatsMock);
-        })
+        });
       }
-    },
-  }
+    }
+  };
   return storageStatistics;
 }

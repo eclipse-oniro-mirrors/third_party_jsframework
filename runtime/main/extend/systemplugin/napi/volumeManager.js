@@ -14,36 +14,28 @@
  */
 
 import { paramMock } from "../utils"
+import {VolumeMock} from './volume/volumeInfo'
 
 export function mockVolumeManager() {
-  const VolumeMock = {
-    id: '[PC preview] unknow id',
-    uuid: '[PC preview] unknow uuid',
-    description: '[PC preview] unknow description',
-    removeAble: '[PC preview] unknow removeAble', 
-    path: '[PC preview] unknow path', 
-    state: '[PC preview] unknow state', 
-    }
   const volumeManager = {
-    Volume: VolumeMock,
     getAllVolumes: function (...args) {
       console.warn("volumeManager.getAllVolumes interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, VolumeMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, Array(VolumeMock));
       } else {
         return new Promise((resolve, reject) => {
-          resolve(VolumeMock);
+          resolve(Array(VolumeMock));
         })
       }
     },
     mount: function (...args) {
       console.warn("volumeManager.mount interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
         return new Promise((resolve, reject) => {
           resolve(paramMock.paramBooleanMock);
@@ -52,13 +44,13 @@ export function mockVolumeManager() {
     },
     unmount: function (...args) {
       console.warn("volumeManager.unmount interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramBooleanMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(paramBooleanMock);
+          resolve(paramMock.paramBooleanMock);
         })
       }
     },
