@@ -59,7 +59,7 @@ import { mockFileManager } from "./filemanager"
 import { mockEnvironment } from "./environment"
 import { mockSettings } from './settings'
 import { mockAbilityAccessCtrl } from './abilityAccessCtrl'
-import { mockCust } from './cust'
+import { mockConfigPolicy } from './configPolicy'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -156,8 +156,8 @@ export function mockRequireNapiFun() {
         return mockSettings();
       case "abilityAccessCtrl":
         return mockAbilityAccessCtrl();
-      case "cust":
-        return mockCust();
+      case "configPolicy":
+        return mockConfigPolicy();
       default:
         return global.requireNapiPreview(...args);
     }
