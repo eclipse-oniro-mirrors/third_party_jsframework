@@ -60,6 +60,7 @@ import { mockEnvironment } from "./environment"
 import { mockSettings } from './settings'
 import { mockAbilityAccessCtrl } from './abilityAccessCtrl'
 import { mockBackgroundTaskManager } from './backgroundTaskManager'
+import { mockSecurityLabel } from './securitylabel'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -158,6 +159,8 @@ export function mockRequireNapiFun() {
         return mockAbilityAccessCtrl();
       case "backgroundTaskManager":
         return mockBackgroundTaskManager();
+      case "securitylabel":
+        return mockSecurityLabel();
       default:
         return global.requireNapiPreview(...args);
     }
