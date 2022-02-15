@@ -26,7 +26,6 @@ import {
 } from './ability'
 import { mockAppAbilityManager } from './ohos/app'
 
-import { mockBackgroundTaskManager } from './ohos/backgroundTaskManager'
 import { mockBattery } from './battery'
 import { mockBrightness } from './brightness'
 import { mockBluetooth } from './bluetooth'
@@ -168,7 +167,6 @@ export function mockSystemPlugin() {
   mockDisplay()
   mockDeviceManager()
   mockScreenshot()
-  mockBackgroundTaskManager()
   mockStorageInfoManager()
   mockContact()
   mockScreenLock()
