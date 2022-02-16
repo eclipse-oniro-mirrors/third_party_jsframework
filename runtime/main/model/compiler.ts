@@ -42,7 +42,6 @@ import {
   bindSubVmAfterInitialized,
   newWatch,
   bindDir,
-  updateTagCounter,
   setAttributeStyle
 } from './directive';
 import {
@@ -132,7 +131,6 @@ export function build(vm: Vm) {
   const doc: Document = vm._app.doc;
   const body: Node = doc.body;
   compileVm(vm, body);
-  compileCounter(vm, body);
   compileElementAndElement(vm, body);
   compileAttrStyle(vm, body);
   Log.debug(`"OnReady" lifecycle in Vm(${vm._type}).`);
@@ -226,62 +224,6 @@ function compileVmChild(vm: Vm, body: Node): void {
       }
       count++;
       compileVm(vm, child);
-    });
-  }
-}
-
-function compileCounter(vm: Vm, body: Node): void {
-  if (body.nodeType === Node.NodeType.Element) {
-    const node: Element = body as Element;
-    const count = {};
-
-    node.children.forEach((child: Node) => {
-      const el = child as Element;
-      const tag = child.type;
-      if (count[tag] === undefined) {
-        count[tag] = 1;
-      } else {
-        count[tag] = count[tag] + 1;
-      }
-      const css = vm._css || {};
-      if (css) {
-        const data = css[tag] || {};
-        if (data) {
-          const counterIncrement = data['counterIncrement'];
-          if (counterIncrement !== undefined) {
-            updateTagCounter(el, count[tag]);
-          }
-        }
-      }
-      compileCounterChild(vm, child);
-    });
-  }
-}
-
-function compileCounterChild(vm: Vm, body: Node): void {
-  if (body.nodeType === Node.NodeType.Element) {
-    const node: Element = body as Element;
-    const count = {};
-
-    node.children.forEach((child: Node) => {
-      const el = child as Element;
-      const tag = child.type;
-      if (count[tag] === undefined) {
-        count[tag] = 1;
-      } else {
-        count[tag] = count[tag] + 1;
-      }
-      const css = vm._css || {};
-      if (css) {
-        const data = css[tag] || {};
-        if (data) {
-          const counterIncrement = data['counterIncrement'];
-          if (counterIncrement !== undefined) {
-            updateTagCounter(el, count[tag]);
-          }
-        }
-      }
-      compileCounter(vm, child);
     });
   }
 }
