@@ -59,6 +59,7 @@ import { mockFileManager } from "./filemanager"
 import { mockEnvironment } from "./environment"
 import { mockSettings } from './settings'
 import { mockAbilityAccessCtrl } from './abilityAccessCtrl'
+import { mockConfigPolicy } from './configPolicy'
 import { mockUpdate } from './update'
 import { mockBackgroundTaskManager } from './backgroundTaskManager'
 import { mockSecurityLabel } from './securitylabel'
@@ -158,6 +159,8 @@ export function mockRequireNapiFun() {
         return mockSettings();
       case "abilityAccessCtrl":
         return mockAbilityAccessCtrl();
+      case "configPolicy":
+        return mockConfigPolicy();
       case "update":
         return mockUpdate();
       case "backgroundTaskManager":
