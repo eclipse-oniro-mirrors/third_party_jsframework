@@ -57,6 +57,8 @@ import { mockConvertXml } from './convertxml'
 import { mockStatfs } from './statfs'
 import { mockFileManager } from "./filemanager"
 import { mockEnvironment } from "./environment"
+import { mockStorageStatistics } from "./storageStatistics"
+import { mockVolumeManager } from "./volumeManager"
 import { mockSettings } from './settings'
 import { mockAbilityAccessCtrl } from './abilityAccessCtrl'
 import { mockConfigPolicy } from './configPolicy'
@@ -155,6 +157,10 @@ export function mockRequireNapiFun() {
         return mockFileManager();
       case "environment":
         return mockEnvironment();
+      case "storagestatistics":
+        return mockStorageStatistics();
+      case "volumemanager":
+        return mockVolumeManager();
       case "settings":
         return mockSettings();
       case "abilityAccessCtrl":
