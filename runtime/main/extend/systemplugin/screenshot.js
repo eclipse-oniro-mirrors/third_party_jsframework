@@ -16,6 +16,23 @@
 import { paramMock } from "./utils"
 
 export function mockScreenshot() {
+  const RectMock = { 
+    left: '[PC preview] unknow Rect.left',
+    top: '[PC preview] unknow  Rect.top',
+    width: '[PC preview] unknow Rect.width',
+    height: '[PC preview] unknow Rect.height'
+  }
+  const SizeMock = { 
+    width: '[PC preview] unknow Size.width',
+    height: '[PC preview] unknow Size.height',
+  }
+  const ScreenshotOptionsMock= { 
+    screenRect: RectMock,
+    imageSize: SizeMock,
+    rotation: '[PC preview] unknow Size.width',
+    displayId: '[PC preview] unknow Size.width', 
+  }
+
   const screenshotMock = {
     ImageSource: '[PC preview] unknow ImageSource'
   }
