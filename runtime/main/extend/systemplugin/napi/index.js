@@ -19,6 +19,7 @@ import { mockFormExtension } from './applicationFormExtension'
 import { mockServiceExtension } from './applicationServiceExtension'
 import { mockAbilityStage } from './applicationAbilityStage'
 import { mockFormBindingData } from './applicationFormBindingData'
+import { mockCommonEvent } from './commonEvent'
 import { mockNotification } from './notification'
 import { mockFileio } from './fileio'
 import { mockWorker } from './worker'
@@ -79,6 +80,8 @@ export function mockRequireNapiFun() {
         return mockAbilityStage();
       case "application.formBindingData":
         return mockFormBindingData();
+      case "commonEvent":
+        return mockCommonEvent();
       case "notification":
         return mockNotification();
       case "fileio":
