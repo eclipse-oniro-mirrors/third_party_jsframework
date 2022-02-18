@@ -76,7 +76,6 @@ import { mockVibrator } from './vibrator'
 
 import { mockWebSocket, mockHttp, mockMdns, mockSocket, mockHotspot, mockStatistics, mockConnection } from './net'
 import { mockWindow } from './window'
-import { mockWorkScheduler } from './ohos/workScheduler'
 
 import { mockRequireNapiFun } from './napi'
 import { mockAccessibility } from './accessibility'
@@ -174,7 +173,6 @@ export function mockSystemPlugin() {
   mockAppAccount()
   mockOsAccount()
   mockBundleState()
-  mockWorkScheduler()
   mockOhosGeolocation()
   mockUserIAMUserAuth()
   mockInputMonitor()
