@@ -17,7 +17,7 @@ import { paramMock } from "../utils"
 
 export function mockWorkScheduler() {
     const WorkInfoMock = {
-        workId: '[PC preview] unknown requestId',
+        workId: '[PC preview] unknown workId',
         bundleName: '[PC preview] unknown bundleName',
         abilityName: '[PC preview] unknown abilityName',
         isPersisted: '[PC preview] unknown isPersisted',
@@ -96,6 +96,7 @@ export function mockWorkScheduler() {
         stopAndClearWorks: function (...args) {
             console.warn("workScheduler.stopAndClearWorks interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
+            return paramMock.paramBooleanMock;
         },
         isLastWorkTimeOut: function (...args) {
             console.warn("workScheduler.isLastWorkTimeOut interface mocked in the Previewer. How this interface works on the" +
