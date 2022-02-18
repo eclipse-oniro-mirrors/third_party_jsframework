@@ -528,6 +528,7 @@ function selectStyle(css: object, key: string, vm: Vm): any {
   if (style) {
     Object.keys(style).forEach(function(key) {
       classStyle[key] = style[key];
+      setCounterValue(vm, key, style[key]);
     });
   }
   for (let i$1 = 0; i$1 < mqArr.length; i$1++) {
@@ -564,6 +565,7 @@ function setClassStyle(el: Element, css: object, classList: string[], vm?: Vm): 
     if (style) {
       Object.keys(style).forEach((key) => {
         classStyle[key] = style[key];
+        setCounterValue(vm, key, style[key]);
       });
     }
   } else {
@@ -582,6 +584,7 @@ function setClassStyle(el: Element, css: object, classList: string[], vm?: Vm): 
       if (style) {
         Object.keys(style).forEach((key) => {
           classStyle[key] = style[key];
+          setCounterValue(vm, key, style[key]);
         });
       }
     } else if (rets.length > 1) {
@@ -602,6 +605,7 @@ function setClassStyle(el: Element, css: object, classList: string[], vm?: Vm): 
       });
       Object.keys(retStyle).forEach((key) => {
         classStyle[key] = retStyle[key];
+        setCounterValue(vm, key, retStyle[key]);
       });
     }
   }
@@ -871,11 +875,19 @@ export function bindDir(vm: Vm, el: Element, name: string, data: object, isFirst
       } else if (key.endsWith(':last-child') && isLast) {
         key = key.replace(':last-child', '');
       }
+      if (key === 'counterIncrement::before' || key === 'counterIncrement::after' || key === 'counterIncrement') {
+        if (vm._counterMapping.has(value)) {
+          let counter = vm.$getCounterMapping(value);
+          vm.$setCounterMapping(value, ++counter);
+        } else {
+          vm.$setCounterMapping(value, 1);
+        }
+      }
 
       if (isSetContent && (key === 'content::before' || key === 'content::after')) {
         finallyItems = [];
         splitItems(value);
-        const newValue = setContent(el, key);
+        const newValue = setContent(vm, el, key);
         methodName = SETTERS['attr'];
         method = el[methodName];
         method.call(el, 'value', newValue);
@@ -1099,7 +1111,7 @@ function splitItem(item: string): void{
     splitItem(item.substr(toIndex + 1).trim());
   } else if (item.indexOf('counter') === 0) {
     const toIndex = item.indexOf(')');
-    const subItem = 'counter(0)';
+    const subItem = item.substr(0, toIndex + 1).trim();
     const contentObject: ContentObject = {
       value: subItem,
       contentType: ContentType.CONTENT_COUNTER
@@ -1111,7 +1123,7 @@ function splitItem(item: string): void{
   }
 }
 
-function setContent(el: Element, key: string): string {
+function setContent(vm: Vm, el: Element, key: string): string {
   const itemLength = finallyItems.length;
   let contentValue = '';
   let newValue = '';
@@ -1133,7 +1145,7 @@ function setContent(el: Element, key: string): string {
           contentValue = contentValue + getContentAttr(el, finallyItems[i].value);
           break;
         case ContentType.CONTENT_COUNTER:
-          contentValue = contentValue + finallyItems[i].value;
+          contentValue = contentValue + getCounter(vm, el, finallyItems[i].value);
           break;
       }
     }
@@ -1188,17 +1200,14 @@ function getContentAttr(el: Element, value: string): string {
   return contentValue;
 }
 
-export function updateTagCounter(el: Element, counter: number): void {
-  let value = el.attr['value'];
-  if (value !== undefined) {
-    const fromIndex = value.indexOf('counter');
-    if (fromIndex !== -1) {
-      value = value.replace('counter(0)', counter);
-      const methodName = SETTERS['attr'];
-      const method = el[methodName];
-      method.call(el, 'value', value);
-    }
+function getCounter(vm: Vm, el: Element, key: string): string {
+  const fromIndex = key.indexOf('(');
+  const toIndex = key.indexOf(')');
+  const counterName = key.substr(fromIndex + 1, toIndex - fromIndex - 1);
+  if (vm._counterMapping.has(counterName)) {
+    return vm.$getCounterMapping(counterName) + '';
   }
+  return '';
 }
 
 function updateTagAndIdStyle(el: Element, key: string, value: string): string {
@@ -1281,6 +1290,20 @@ export function setAttributeStyle(vm: Vm, el: Element): void {
           }
         }
       }
+    }
+  }
+}
+
+function setCounterValue(vm: Vm, key: string, value: string): void {
+  if (key === 'counterReset') {
+    vm.$setCounterMapping(value, 0);
+  }
+  if (key === 'counterIncrement') {
+    if (vm._counterMapping.has(value)) {
+      let counter = vm.$getCounterMapping(value);
+      vm.$setCounterMapping(value, ++counter);
+    } else {
+      vm.$setCounterMapping(value, 1);
     }
   }
 }

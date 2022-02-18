@@ -106,6 +106,7 @@ export default class Vm {
   private __mediaStatus: Partial<MediaStatusInterface<string, boolean>>;
   private _$refs: Record<string, Element>;
   private __slotContext: { content: Record<string, any>, parentVm: Vm };
+  private __counterMapping = new Map();
 
   constructor(
     type: string,
@@ -541,6 +542,18 @@ export default class Vm {
    */
   public get _methods() {
     return this.__methods;
+  }
+
+  public $getCounterMapping(key: string): number {
+    return this.__counterMapping.get(key);
+  }
+
+  public $setCounterMapping(key: string, value: number) {
+    this.__counterMapping.set(key, value);
+  }
+
+  public get _counterMapping() {
+    return this.__counterMapping;
   }
 
   /**
