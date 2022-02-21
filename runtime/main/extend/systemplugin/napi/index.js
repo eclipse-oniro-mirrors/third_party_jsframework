@@ -45,6 +45,7 @@ import { mockDistributedObject } from './distributedDataObject'
 import { mockDataAbility } from './dataAbility'
 import { mockStorage } from './storage'
 import { mockRdb } from './rdb'
+import { mockDataShare } from './dataShare'
 import { mockInputDevice } from './inputDevice'
 import { mockVibrator } from './vibrator'
 import { mockSensor } from './sensor'
@@ -134,6 +135,8 @@ export function mockRequireNapiFun() {
         return mockRdb();
       case "data.storage":
         return mockStorage();
+      case "data.dataShare":
+        return mockDataShare();
       case "data.dataAbility":
         return mockDataAbility();
       case "multimodalInput.inputDevice":
