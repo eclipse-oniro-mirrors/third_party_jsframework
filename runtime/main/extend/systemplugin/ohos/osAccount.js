@@ -219,6 +219,20 @@ export function mockOsAccount() {
         })
       }
     },
+    queryActivatedOsAccountIds: function (...args) {
+      console.warn("AccountManager.queryActivatedOsAccountIds interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      var osAccountIdsArrayMock = new Array();
+      osAccountIdsArrayMock.push(osAccountInfoMock);
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, osAccountIdsArrayMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(osAccountIdsArrayMock);
+        })
+      }
+    },
     createOsAccount: function (...args) {
       console.warn("AccountManager.createOsAccount interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
