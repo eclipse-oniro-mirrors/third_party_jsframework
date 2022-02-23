@@ -694,6 +694,11 @@ export const IPCSkeletonMock = {
       " Previewer may be different from that on a real device.")
     return paramMock.paramNumberMock
   },
+  getCallingTokenId: function () {
+    console.warn("IPCSkeleton.getCallingTokenId interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    return paramMock.paramNumberMock
+  },
   getCallingDeviceID: function () {
     console.warn("IPCSkeleton.getCallingDeviceID interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
