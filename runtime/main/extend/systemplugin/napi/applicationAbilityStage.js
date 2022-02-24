@@ -14,6 +14,7 @@
  */
 
 import { abilityStageContextClass } from "./application/abilityContext"
+import { paramMock } from "../utils"
 
 export function mockAbilityStage() {
   const AbilityStageClass = class AbilityStage {
@@ -24,6 +25,11 @@ export function mockAbilityStage() {
       this.onCreate = function () {
         console.warn("application.AbilityStage.onCreate interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
+      };
+      this.onAcceptWant = function () {
+        console.warn("application.AbilityStage.onAcceptWant interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        return paramMock.paramStringMock;
       }
     }
   }
