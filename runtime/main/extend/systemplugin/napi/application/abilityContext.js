@@ -248,6 +248,7 @@ export const ExtensionContextClass = class ExtensionContext extends contextClass
     super();
     console.warn('Context.ExtensionContext.constructor interface mocked in the Previewer. How this interface works on' +
       ' the Previewer may be different from that on a real device.');
+    this.currentHapModuleInfo = HapModuleInfoMock;
   }
 };
 export const AbilityResultMock = {

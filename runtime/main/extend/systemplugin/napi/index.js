@@ -19,6 +19,11 @@ import { mockFormExtension } from './applicationFormExtension'
 import { mockServiceExtension } from './applicationServiceExtension'
 import { mockAbilityStage } from './applicationAbilityStage'
 import { mockFormBindingData } from './applicationFormBindingData'
+import { mockAbilityManager } from './applicationAbilityManager'
+import { mockAppManager } from './applicationAppManager'
+import { mockDataShareExtensionAbility } from './applicationDataShareExtensionAbility'
+import { mockMissionManager } from "./applicationMissionManager"
+import { mockServiceExtAbility } from "./applicationServiceExtAbility"
 import { mockCommonEvent } from './commonEvent'
 import { mockNotification } from './notification'
 import { mockFileio } from './fileio'
@@ -85,6 +90,16 @@ export function mockRequireNapiFun() {
         return mockAbilityStage();
       case "application.formBindingData":
         return mockFormBindingData();
+      case "application.abilityManager":
+        return mockAbilityManager();
+      case "application.appManager":
+        return mockAppManager();
+      case "application.DataShareExtensionAbility":
+        return mockDataShareExtensionAbility();
+      case "application.missionManager":
+        return mockMissionManager();
+      case "application.ServiceExtAbility":
+        return mockServiceExtAbility();
       case "commonEvent":
         return mockCommonEvent();
       case "notification":

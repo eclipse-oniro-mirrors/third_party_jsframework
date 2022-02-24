@@ -31,6 +31,16 @@ const WantClass = class Want {
     this.entities = [paramMock.paramStringMock];
   }
 }
+const calleeMock = {
+  on: function (...args) {
+    console.warn("Ability.calleeClass.on interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+  },
+  off: function (...args) {
+    console.warn("Ability.calleeClass.off interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+  },
+}
 export function mockAbility() {
   const AbilityClass = class Ability {
     constructor() {
@@ -39,6 +49,7 @@ export function mockAbility() {
       this.context = new AbilityContextClass();
       this.launchWant = new WantClass();
       this.lastRequestWant = new WantClass();
+      this.callee = calleeMock;
       this.onCreate = function (...args) {
         console.warn("application.Ability.onCreate interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
@@ -61,6 +72,19 @@ export function mockAbility() {
       };
       this.onBackground = function () {
         console.warn("application.Ability.onBackground interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+      };
+      this.onContinue = function () {
+        console.warn("application.Ability.onContinue interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        return paramMock.paramBooleanMock;
+      };
+      this.onNewWant = function () {
+        console.warn("application.Ability.onNewWant interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+      };
+      this.onConfigurationUpdated = function () {
+        console.warn("application.Ability.onConfigurationUpdated interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
       };
     }
