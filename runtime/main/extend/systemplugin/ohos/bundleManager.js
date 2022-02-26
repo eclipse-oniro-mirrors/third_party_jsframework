@@ -886,6 +886,25 @@ export function mockBundleManager() {
     installTime: "[PC preview] unknown install time",
   }
 
+const ExtensionAbilityInfoMock = [
+  {
+    bundleName: "[PC preview] unknown bundle name",
+    moduleName: "[PC preview] unknown module name",
+    name: "[PC preview] unknown name",
+    labelId: "[PC preview] unknown label id",
+    descriptionId: "[PC preview] unknown description id",
+    iconId: "[PC preview] unknown icon id",
+    isVisible: "[PC preview] unknown is visible",
+    extensionAbilityType: "[PC preview] unknown extension abilityType",
+    permissions: "[PC preview] unknown permissions",
+    applicationInfo: "[PC preview] unknown application info",
+    metadata: "[PC preview] unknown metadata",
+    enabled: "[PC preview] unknown enabled",
+    readPermission: "[PC preview] unknown read permission",
+    writePermission: "[PC preview] unknown write permission",
+  }
+]
+
   const ModuleUpdateFlagMock = {
     FLAG_MODULE_UPGRADE_CHECK: 0,
     FLAG_MODULE_UPGRADE_INSTALL: 1,
@@ -1509,5 +1528,41 @@ export function mockBundleManager() {
         });
       }
     },
+    getAllShortcutInfo: function (...args) {
+      console.warn("bundle.getAllShortcutInfo interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, ShortcutInfosMock)
+      } else {
+        return new Promise((resolve) => {
+          resolve(ShortcutInfosMock)
+        });
+      }
+    },
+    getModuleUsageRecords: function (...args) {
+      console.warn("bundle.getModuleUsageRecords interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this,paramMock.businessErrorMock,ModeleUsageRecordsMock)
+      } else {
+        return new Promise((resolve) => {
+          resolve(ModeleUsageRecordsMock)
+        });
+      }
+    },
+    queryExtensionAbilityInfosByWant: function (...args) {
+      console.warn("bundle.queryExtensionAbilityInfosByWant interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this,paramMock.businessErrorMock,ExtensionAbilityInfoMock)
+      } else {
+        return new Promise((resolve) => {
+          resolve(ExtensionAbilityInfoMock)
+        });
+      }
+    }
   }
 }
