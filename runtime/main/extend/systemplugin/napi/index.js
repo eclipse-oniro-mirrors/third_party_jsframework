@@ -24,6 +24,7 @@ import { mockAppManager } from './applicationAppManager'
 import { mockDataShareExtensionAbility } from './applicationDataShareExtensionAbility'
 import { mockMissionManager } from "./applicationMissionManager"
 import { mockServiceExtAbility } from "./applicationServiceExtAbility"
+import { mockUriPermissionManager } from "./applicationUriPermissionManager"
 import { mockCommonEvent } from './commonEvent'
 import { mockNotification } from './notification'
 import { mockFileio } from './fileio'
@@ -100,6 +101,8 @@ export function mockRequireNapiFun() {
         return mockMissionManager();
       case "application.ServiceExtAbility":
         return mockServiceExtAbility();
+      case "application.UriPermissionManager":
+        return mockUriPermissionManager();
       case "commonEvent":
         return mockCommonEvent();
       case "notification":
