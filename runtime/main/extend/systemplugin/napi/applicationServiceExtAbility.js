@@ -16,28 +16,83 @@
 import { paramMock } from "../utils"
 import { RemoteObjectClass } from "./applicationServiceExtension"
 
-export function mockServiceExtAbility() {
-  const ApplicationInfoMock = {
-    name: '[PC preview] unknow name',
-    description: '[PC preview] unknow description',
-    descriptionId: '[PC preview] unknow descriptionId',
-    systemApp: '[PC preview] unknow systemApp',
-    enabled: '[PC preview] unknow enabled',
-    label: '[PC preview] unknow label',
-    labelId: '[PC preview] unknow labelId',
-    icon: '[PC preview] unknow icon',
-    iconId: '[PC preview] unknow iconId',
-    process: '[PC preview] unknow process',
-    supportedModes: '[PC preview] unknow supportedModes',
-    moduleSourceDirs: [paramMock.paramStringMock],
-    permissions: [paramMock.paramStringMock],
-    entryDir: '[PC preview] unknow entryDir',
-    codePath: '[PC preview] unknow codePath',
-    removable: '[PC preview] unknow removable',
-    accessTokenId: '[PC preview] unknow accessTokenId',
-    uid: '[PC preview] unknow uid',
-    entityType: '[PC preview] unknow entityType'
+const ApplicationInfoMock = {
+  name: '[PC preview] unknow name',
+  description: '[PC preview] unknow description',
+  descriptionId: '[PC preview] unknow descriptionId',
+  systemApp: '[PC preview] unknow systemApp',
+  enabled: '[PC preview] unknow enabled',
+  label: '[PC preview] unknow label',
+  labelId: '[PC preview] unknow labelId',
+  icon: '[PC preview] unknow icon',
+  iconId: '[PC preview] unknow iconId',
+  process: '[PC preview] unknow process',
+  supportedModes: '[PC preview] unknow supportedModes',
+  moduleSourceDirs: [paramMock.paramStringMock],
+  permissions: [paramMock.paramStringMock],
+  entryDir: '[PC preview] unknow entryDir',
+  codePath: '[PC preview] unknow codePath',
+  removable: '[PC preview] unknow removable',
+  accessTokenId: '[PC preview] unknow accessTokenId',
+  uid: '[PC preview] unknow uid',
+  entityType: '[PC preview] unknow entityType'
+}
+const EventHubClass = class EventHub {
+  constructor() {
+    console.warn('EventHub.constructor interface mocked in the Previewer. How this interface works on' +
+      ' the Previewer may be different from that on a real device.');
+    this.on = function (...args) {
+      console.warn("EventHub.on interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+    };
+    this.off = function (...args) {
+      console.warn("EventHub.off interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+    };
+    this.emit = function (...args) {
+      console.warn("EventHub.emit interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+    };
   }
+}
+const BaseContextClass = class BaseContext {
+  constructor() {
+    console.warn('BaseContext.constructor interface mocked in the Previewer. How this interface works on' +
+      ' the Previewer may be different from that on a real device.');
+    this.stageMode = "[PC Preview] unknow stageMode";
+  }
+}
+export const ContextClass = class Context extends BaseContextClass {
+  constructor() {
+    super();
+    console.warn('Context.constructor interface mocked in the Previewer. How this interface works on' +
+      ' the Previewer may be different from that on a real device.');
+    this.applicationInfo = ApplicationInfoMock;
+    this.cacheDir = "[PC Preview] unknow cacheDir";
+    this.tempDir = "[PC Preview] unknow tempDir";
+    this.filesDir = "[PC Preview] unknow filesDir";
+    this.databaseDir = "[PC Preview] unknow databaseDir";
+    this.storageDir = "[PC Preview] unknow storageDir";
+    this.bundleCodeDir = "[PC Preview] unknow bundleCodeDir";
+    this.distributedFilesDir = "[PC Preview] unknow distributedFilesDir";
+    this.eventHub = new EventHubClass();
+    this.createBundleContext = function (...args) {
+      console.warn("Context.createBundleContext interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      return new ContextClass();
+    };
+    this.getApplicationContext = function () {
+      console.warn("Context.getApplicationContext interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      return new ContextClass();
+    };
+    this.switchArea = function (...args) {
+      console.warn("Context.switchArea interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+    };
+  }
+}
+export function mockServiceExtAbility() {
   const HapModuleInfoMock = {
     name: '[PC preview] unknow name',
     description: '[PC preview] unknow description',
@@ -54,43 +109,6 @@ export function mockServiceExtAbility() {
     mainAbilityName: '[PC preview] unknow mainAbilityName',
     installationFree: '[PC preview] unknow installationFree',
     mainElementName: '[PC preview] unknow mainElementName',
-  }
-  const BaseContextClass = class BaseContext {
-    constructor() {
-      console.warn('BaseContext.constructor interface mocked in the Previewer. How this interface works on' +
-        ' the Previewer may be different from that on a real device.');
-      this.stageMode = "[PC Preview] unknow stageMode";
-    }
-  }
-  const ContextClass = class Context extends BaseContextClass {
-    constructor() {
-      super();
-      console.warn('Context.constructor interface mocked in the Previewer. How this interface works on' +
-        ' the Previewer may be different from that on a real device.');
-      this.applicationInfo = ApplicationInfoMock;
-      this.cacheDir = "[PC Preview] unknow cacheDir";
-      this.tempDir = "[PC Preview] unknow tempDir";
-      this.filesDir = "[PC Preview] unknow filesDir";
-      this.databaseDir = "[PC Preview] unknow databaseDir";
-      this.storageDir = "[PC Preview] unknow storageDir";
-      this.bundleCodeDir = "[PC Preview] unknow bundleCodeDir";
-      this.distributedFilesDir = "[PC Preview] unknow distributedFilesDir";
-      this.eventHub = "[PC Preview] unknow eventHub";
-      this.createBundleContext = function (...args) {
-        console.warn("Context.createBundleContext interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-        return new ContextClass();
-      };
-      this.getApplicationContext = function () {
-        console.warn("Context.getApplicationContext interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-        return new ContextClass();
-      };
-      this.switchArea = function (...args) {
-        console.warn("Context.switchArea interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-      };
-    }
   }
   const ExtAbilityContextClass = class ExtAbilityContext extends ContextClass {
     constructor() {

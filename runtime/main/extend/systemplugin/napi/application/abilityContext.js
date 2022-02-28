@@ -14,6 +14,8 @@
  */
 
 import { paramMock } from "../../utils"
+import { MessageParcelClass } from "../rpc"
+import { ContextClass } from "../applicationServiceExtAbility"
 
 const ModuleInfoMock = {
   moduleName: '[PC preview] unknow moduleName',
@@ -219,23 +221,7 @@ const resourceManagerMock = {
     }
   },
 }
-export const contextClass = class context {
-  constructor() {
-    console.warn('context.constructor interface mocked in the Previewer. How this interface works on' +
-      ' the Previewer may be different from that on a real device.');
-    this.resourceManager = resourceManagerMock;
-    this.applicationInfo = applicationInfoMock;
-    this.HapModuleInfo = HapModuleInfoMock;
-    this.cacheDir = '[PC preview] unknow cacheDir';
-    this.tempDir = '[PC preview] unknow tempDir';
-    this.filesDir = '[PC preview] unknow filesDir';
-    this.databaseDir = '[PC preview] unknow databaseDir';
-    this.storageDir = '[PC preview] unknow storageDir';
-    this.bundleCodeDir = '[PC preview] unknow bundleCodeDir';
-    this.distributedFilesDir = '[PC preview] unknow distributedFilesDir';
-  }
-};
-export const abilityStageContextClass = class abilityStageContext extends contextClass {
+export const abilityStageContextClass = class abilityStageContext extends ContextClass {
   constructor() {
     super();
     console.warn('Context.abilityStageContext.constructor interface mocked in the Previewer. How this interface works on' +
@@ -243,7 +229,7 @@ export const abilityStageContextClass = class abilityStageContext extends contex
     this.currentHapModuleInfo = HapModuleInfoMock;
   }
 }
-export const ExtensionContextClass = class ExtensionContext extends contextClass {
+export const ExtensionContextClass = class ExtensionContext extends ContextClass {
   constructor() {
     super();
     console.warn('Context.ExtensionContext.constructor interface mocked in the Previewer. How this interface works on' +
@@ -254,13 +240,45 @@ export const ExtensionContextClass = class ExtensionContext extends contextClass
 export const AbilityResultMock = {
   resultCode: "[PC Preview] unknow resultCode",
 }
-export const AbilityContextClass = class AbilityContext extends contextClass {
+const ConfigurationMock = {
+  language: '[PC preview] unknow language'
+}
+const PermissionRequestResultMock = {
+  permissions: [paramMock.paramStringMock],
+  authResults: [paramMock.paramNumberMock]
+}
+const CallerMock = {
+  call: function (...args) {
+    console.warn("AbilityContext.Caller.call interface mocked in the Previewer." +
+      " How this interface works on the Previewer may be different from that on a real device.")
+    return new Promise((resolve, reject) => {
+      resolve();
+    })
+  },
+  callWithResult: function (...args) {
+    console.warn("AbilityContext.Caller.callWithResult interface mocked in the Previewer." +
+      " How this interface works on the Previewer may be different from that on a real device.")
+    return new Promise((resolve, reject) => {
+      resolve(new MessageParcelClass());
+    })
+  },
+  release: function (...args) {
+    console.warn("AbilityContext.Caller.release interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+  },
+  onRelease: function (...args) {
+    console.warn("AbilityContext.Caller.onRelease interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+  },
+}
+export const AbilityContextClass = class AbilityContext extends ContextClass {
   constructor() {
     super();
     console.warn('Ability.AbilityContext.constructor interface mocked in the Previewer. How this interface works on' +
       ' the Previewer may be different from that on a real device.');
     this.abilityInfo = AbilityInfoMock;
     this.currentHapModuleInfo = HapModuleInfoMock;
+    this.config = ConfigurationMock;
     this.startAbility = function (...args) {
       console.warn("Ability.AbilityContext.startAbility interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
@@ -273,8 +291,39 @@ export const AbilityContextClass = class AbilityContext extends contextClass {
         })
       }
     };
+    this.startAbilityByCall = function (...args) {
+      console.warn("Ability.AbilityContext.startAbilityByCall interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return new Promise((resolve, reject) => {
+        resolve(CallerMock);
+      })
+    };
+    this.startAbilityWithAccount = function (...args) {
+      console.warn("Ability.AbilityContext.startAbilityWithAccount interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    };
     this.startAbilityForResult = function (...args) {
       console.warn("Ability.AbilityContext.startAbilityForResult interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, AbilityResultMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(AbilityResultMock);
+        })
+      }
+    };
+    this.startAbilityForResultWithAccount = function (...args) {
+      console.warn("Ability.AbilityContext.startAbilityForResultWithAccount interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
@@ -314,6 +363,11 @@ export const AbilityContextClass = class AbilityContext extends contextClass {
         " may be different from that on a real device.")
       return paramMock.paramNumberMock
     };
+    this.connectAbilityWithAccount = function (...args) {
+      console.warn("Ability.AbilityContext.connectAbilityWithAccount interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      return paramMock.paramNumberMock
+    };
     this.disconnectAbility = function (...args) {
       console.warn("Ability.AbilityContext.disconnectAbility interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
@@ -323,6 +377,30 @@ export const AbilityContextClass = class AbilityContext extends contextClass {
       } else {
         return new Promise((resolve, reject) => {
           resolve();
+        })
+      }
+    };
+    this.setMissionLabel = function (...args) {
+      console.warn("Ability.AbilityContext.setMissionLabel interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    };
+    this.requestPermissionsFromUser = function (...args) {
+      console.warn("Ability.AbilityContext.requestPermissionsFromUser interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, PermissionRequestResultMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(PermissionRequestResultMock);
         })
       }
     };
