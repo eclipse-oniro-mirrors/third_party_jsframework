@@ -34,6 +34,7 @@ action("gen_snapshot") {
 
   js_framework = "//third_party/jsframework/runtime"
   is_mac = "false"
+  use_mac = host_os == "mac"
 
   if (is_standard_system || is_cross_platform_build) {
     node_modules = "//prebuilts/build-tools/common/js-framework/node_modules"
