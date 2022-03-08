@@ -74,7 +74,7 @@ import { mockUpdate } from './update'
 import { mockBackgroundTaskManager } from './backgroundTaskManager'
 import { mockSecurityLabel } from './securitylabel'
 import { mockWorkScheduler } from './workScheduler'
-import { mockWorkSchedulerExtension } from './workSchedulerExtension'
+import { mockWorkSchedulerExtensionAbility } from './WorkSchedulerExtensionAbility'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -201,8 +201,8 @@ export function mockRequireNapiFun() {
         return mockSecurityLabel();
       case "workScheduler":
         return mockWorkScheduler();
-      case "workSchedulerExtension":
-        return mockWorkSchedulerExtension();
+      case "WorkSchedulerExtensionAbility":
+        return mockWorkSchedulerExtensionAbility();
       default:
         return global.requireNapiPreview(...args);
     }
