@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-export function mockWorkSchedulerExtension() {
-    const WorkSchedulerExtensionClass = class WorkSchedulerExtension {
+export function mockWorkSchedulerExtensionAbility() {
+    const WorkSchedulerExtensionAbilityClass = class WorkSchedulerExtensionAbility {
         constructor() {
             this.onWorkStart = function () {
-                console.warn("workSchedulerExtension.onWorkStart interface mocked in the Previewer. How this interface works on the Previewer" +
+                console.warn("WorkSchedulerExtensionAbility.onWorkStart interface mocked in the Previewer. How this interface works on the Previewer" +
                     " may be different from that on a real device.")
             };
             this.onWorkStop = function () {
-                console.warn("workSchedulerExtension.onWorkStop interface mocked in the Previewer. How this interface works on the Previewer" +
+                console.warn("WorkSchedulerExtensionAbility.onWorkStop interface mocked in the Previewer. How this interface works on the Previewer" +
                     " may be different from that on a real device.")
             };
         }
     }
-    return new WorkSchedulerExtensionClass();
+    return new WorkSchedulerExtensionAbilityClass();
 }
