@@ -40,9 +40,9 @@ export function mockSensor() {
     z: "[PC preview] unknown z"
   }
   const OrientationResponse = {
-    x: "[PC preview] unknown x",
-    y: "[PC preview] unknown y",
-    z: "[PC preview] unknown z"
+    alpha: "[PC preview] unknown alpha",
+    beta: "[PC preview] unknown beta",
+    gamma: "[PC preview] unknown gamma"
   }
   const RotationVectorResponse = {
     x: "[PC preview] unknown x",
