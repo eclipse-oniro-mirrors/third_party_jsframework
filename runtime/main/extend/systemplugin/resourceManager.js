@@ -17,12 +17,12 @@ export function mockResourceManager() {
 function Configuration(direction, locale) {
     this.direction = direction;
     this.locale = locale;
-};
+}
 
 function DeviceCapability(screenDensity, deviceType) {
     this.screenDensity = screenDensity;
     this.deviceType = deviceType;
-};
+}
 
 function ResourceManager(mgrId, module) {
     var resMgrId = mgrId;
@@ -47,20 +47,6 @@ function ResourceManager(mgrId, module) {
         var data = [ "mock string1", "mock string2"];
         console.warn("ResourceManager.getStringArray interface mocked in the Previewer. " +
             "How this interface works on the Previewer may be different from that on a real device.")
-        if (typeof callback === 'function') {
-            callback.call(this, null, data);
-        } else {
-            return new Promise((resolve) => {
-                resolve(data);
-            })
-        }
-    }
-
-    this.getJsonConfig = getJsonConfig;
-    async function getJsonConfig(resId, callback) {
-        var data = {"data" : { "name": "mock string1"} };
-        console.warn("ResourceManager.getJsonConfig interface mocked in the Previewer." +
-            " How this interface works on the Previewer may be different from that on a real device.")
         if (typeof callback === 'function') {
             callback.call(this, null, data);
         } else {
@@ -142,7 +128,7 @@ function ResourceManager(mgrId, module) {
 
     this.release = release;
     async function release(callback) {
-        console.warn("ResourceManager.getJsonConfig interface mocked in the Previewer. " +
+        console.warn("ResourceManager.release interface mocked in the Previewer. " +
             "How this interface works on the Previewer may be different from that on a real device.")
     }
 
@@ -150,6 +136,34 @@ function ResourceManager(mgrId, module) {
     async function getRawFile(path, callback) {
         var data = "mock raw file";
         console.warn("ResourceManager.getRawFile interface mocked in the Previewer. " +
+            "How this interface works on the Previewer may be different from that on a real device.")
+        if (typeof callback === 'function') {
+            callback.call(this, null, data);
+        } else {
+            return new Promise((resolve) => {
+                resolve(data);
+            })
+        }
+    }
+
+    this.getRawFileDescriptor = getRawFileDescriptor;
+    async function getRawFileDescriptor(path, callback) {
+        var data = "mock raw file descriptor";
+        console.warn("ResourceManager.getRawFileDescriptor interface mocked in the Previewer. " +
+            "How this interface works on the Previewer may be different from that on a real device.")
+        if (typeof callback === 'function') {
+            callback.call(this, null, data);
+        } else {
+            return new Promise((resolve) => {
+                resolve(data);
+            })
+        }
+    }
+
+    this.closeRawFileDescriptor = closeRawFileDescriptor;
+    async function closeRawFileDescriptor(path, callback) {
+        var data = "mock close raw file descriptor";
+        console.warn("ResourceManager.closeRawFileDescriptor interface mocked in the Previewer. " +
             "How this interface works on the Previewer may be different from that on a real device.")
         if (typeof callback === 'function') {
             callback.call(this, null, data);
@@ -183,34 +197,10 @@ var resourceManager = {
                 resolve(data);
             })
         }
-    },
-    getAResourceManager: async function getAResourceManager(optBundleName, optCallback) {
-        let bundleName = '';
-        let callback;
-        if (typeof optCallback == 'function') {
-            bundleName = optBundleName ? optBundleName : '';
-            callback = optCallback;
-        } else if (typeof optBundleName == 'function') {
-            callback = optBundleName;
-        } else {
-            bundleName = optBundleName ? optBundleName : '';
-        }
-
-        let data = new ResourceManager(1, null);
-        console.warn("ResourceManager.getAResourceManager interface mocked in the Previewer. " +
-            "How this interface works on the Previewer may be different from that on a real device.")
-        if (typeof callback === 'function') {
-            callback.call(this, 1, data);
-        } else {
-            return new Promise((resolve) => {
-                resolve(data);
-            })
-        }
     }
 };
 
 global.systemplugin.resourceManager = {
-    getResourceManager: resourceManager.getResourceManager,
-    getAResourceManager: resourceManager.getAResourceManager
+    getResourceManager: resourceManager.getResourceManager
 };
-};
+}
