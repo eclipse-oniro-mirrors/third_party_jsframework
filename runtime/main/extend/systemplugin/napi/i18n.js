@@ -92,6 +92,11 @@ export function mockI18N() {
                 " may be different from that on a real device.")
             return BreakIteratorMock;
         },
+        getTimeZone: function(...args) {
+            console.warn("I18N.getTimeZone interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return TimeZoneMock;
+        },
         Util: {
             unitConvert: function(...args) {
                 console.warn("I18N.Util.unitConvert interface mocked in the Previewer. How this interface works on the Previewer" +
@@ -307,6 +312,28 @@ export function mockI18N() {
             console.warn("I18N.IndexUtil.getIndex interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
             return paramMock.paramStringMock;
+        }
+    }
+    const TimeZoneMock = {
+        getID: function() {
+            console.warn("I18N.TimeZone.getID interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramStringMock;
+        },
+        getDisplayName: function(...args) {
+            console.warn("I18N.TimeZone.getDisplayName interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramStringMock;
+        },
+        getRawOffset: function() {
+            console.warn("I18N.TimeZone.getRawOffset interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramNumberMock;
+        },
+        getOffset: function(...args) {
+            console.warn("I18N.TimeZone.getOffset interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramNumberMock;
         }
     }
     return result;
