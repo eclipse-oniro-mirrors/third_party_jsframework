@@ -160,6 +160,23 @@ export function bindSubVm(vm: Vm, rawSubVm: Vm, rawTemplate: TemplateInterface, 
       mergePropsObject(key, value, vm, subVm);
     });
   }
+
+  const attr = template.attr || {};
+  for (const key in attr) {
+    const value = attr[key];
+    if (key === 'inhertClass') {
+      const inhertClasss = value.split(' ');
+      for (let x = 0; x < inhertClasss.length; x++) {
+        const cssName = '.' + inhertClasss[x];
+        const cssParent = vm._css[cssName];
+        if (cssParent) {
+          subVm._css[cssName] = cssParent;
+        } else {
+          console.error('cssParent is null');
+        }
+      }
+    }
+  }
 }
 
 /**
