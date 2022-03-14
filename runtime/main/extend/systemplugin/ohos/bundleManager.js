@@ -1026,18 +1026,6 @@ const ExtensionAbilityInfoMock = [
         });
       }
     },
-    checkPermission: function (...args) {
-      console.warn("bundle.checkPermission interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, GrantStatusMock.PERMISSION_GRANTED)
-      } else {
-        return new Promise((resolve) => {
-          resolve(GrantStatusMock.PERMISSION_GRANTED)
-        });
-      }
-    },
     queryAbilityByWant: function (...args) {
       console.warn("bundle.queryAbilityByWant interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
@@ -1227,18 +1215,6 @@ const ExtensionAbilityInfoMock = [
       } else {
         return new Promise((resolve) => {
           resolve(paramMock.paramBooleanMock)
-        });
-      }
-    },
-    getAllShortcutInfo: function (...args) {
-      console.warn("bundle.getAllShortcutInfo interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, ShortcutInfosMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve(ShortcutInfosMock)
         });
       }
     },
