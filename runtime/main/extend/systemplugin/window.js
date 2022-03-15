@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -334,6 +334,42 @@ export const windowMock = {
       args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
     }
   },
+  setColorSpace: function (...args) {
+    console.warn("Window.setColorSpace interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock)
+    } else {
+      return new Promise((resolve) => {
+        resolve()
+      })
+    }
+  },
+  getColorSpace: function (...args) {
+    console.warn("Window.getColorSpace interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+    } else {
+      return new Promise((resolve) => {
+        resolve(paramMock.paramNumberMock)
+      })
+    }
+  },
+  isSupportWideGamut: function (...args) {
+    console.warn("Window.isSupportWideGamut interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
+    } else {
+      return new Promise((resolve) => {
+        resolve(paramMock.paramBooleanMock)
+      })
+    }
+  },
 }
 export function mockWindow() {
   const SizeMock = {
@@ -444,6 +480,10 @@ export function mockWindow() {
       TYPE_KEYGUARD: 5,
       TYPE_VOLUME_OVERLAY: 6,
       TYPE_NAVIGATION_BAR: 7
+    },
+    ColorSpace: {
+      DEFAULT: 0,
+      WIDE_GAMUT: 1
     },
   }
 }
