@@ -27,13 +27,11 @@ export function mockUserAuth() {
     onResult: function (...args) {
       console.warn("uerAuth.onResult interface mocked in the Previewer. How this interface works" +
         " on the Previewer may be different from that on a real device.")
-      return;
     },
 
     onAcquireInfo: function (...args) {
       console.warn("uerAuth.onAcquireInfo interface mocked in the Previewer. How this interface works" +
         " on the Previewer may be different from that on a real device.")
-      return;
     }
   }
 
@@ -78,7 +76,6 @@ export function mockUserAuth() {
         const len = args.length
         if (len > 0 && typeof args[len - 1] === 'function') {
           args[len - 1].call(this, IUserAuthCallback);
-          console.warn("uerAuth.execute")
         }
         return contextId;
       };
