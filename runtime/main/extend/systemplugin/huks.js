@@ -16,7 +16,7 @@
 import { paramMock } from "./utils"
 
 export function mockHuks() {
-	
+
   const HuksParamMock = {
     tag: '[PC preview] unknow tag',
     value: '[PC preview] unknow value',
@@ -413,7 +413,7 @@ export function mockHuks() {
       HUKS_TAG_KEY_WRAP_TYPE : 1004,
       HUKS_TAG_KEY_AUTH_ID : 1005,
       HUKS_TAG_KEY_ROLE :1006,
-      HUKS_TAG_KEY_FLAG : 1007, 
+      HUKS_TAG_KEY_FLAG : 1007,
       HUKS_TAG_IS_ASYNCHRONIZED: 1008,
       HUKS_TAG_SECURE_KEY_ALIAS : 1009,
       HUKS_TAG_SECURE_KEY_UUID :1010,
