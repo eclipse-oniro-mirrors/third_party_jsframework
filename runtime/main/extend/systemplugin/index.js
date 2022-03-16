@@ -94,6 +94,7 @@ import { mockBundleManager } from './ohos/bundleManager'
 import { mockPackageManager } from './ohos/packageManager'
 import { mockZlib } from './napi/zlib'
 import { mockCalendar } from "./calendar"
+import { mockHuks } from "./huks"
 
 export function mockSystemPlugin() {
   global.regeneratorRuntime = regeneratorRuntime
@@ -180,4 +181,5 @@ export function mockSystemPlugin() {
   mockPackageManager()
   mockZlib()
   mockCalendar()
+  mockHuks()
 }
