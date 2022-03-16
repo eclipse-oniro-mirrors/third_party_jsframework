@@ -75,6 +75,7 @@ import { mockBackgroundTaskManager } from './backgroundTaskManager'
 import { mockSecurityLabel } from './securitylabel'
 import { mockWorkScheduler } from './workScheduler'
 import { mockWorkSchedulerExtensionAbility } from './WorkSchedulerExtensionAbility'
+import { mockUserAuth } from './userAuth'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -203,6 +204,8 @@ export function mockRequireNapiFun() {
         return mockWorkScheduler();
       case "WorkSchedulerExtensionAbility":
         return mockWorkSchedulerExtensionAbility();
+      case "userIAM.userAuth":
+          return mockUserAuth();
       default:
         return global.requireNapiPreview(...args);
     }
