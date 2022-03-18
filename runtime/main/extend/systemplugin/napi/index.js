@@ -76,6 +76,20 @@ import { mockSecurityLabel } from './securitylabel'
 import { mockWorkScheduler } from './workScheduler'
 import { mockWorkSchedulerExtensionAbility } from './WorkSchedulerExtensionAbility'
 import { mockUserAuth } from './userAuth'
+import { mockArrayList } from './arraylist'
+import { mockDeque } from './deque'
+import { mockHashMap } from './hashmap'
+import { mockHashSet } from './hashset'
+import { mockLightWeightMap } from './lightweightmap'
+import { mockLightWeightSet } from './lightweightset'
+import { mockLinkedList } from './linkedlist'
+import { mockList } from './list'
+import { mockPlainArray } from './plainarray'
+import { mockQueue } from './queue'
+import { mockStack } from './stack'
+import { mockTreeMap } from './treemap'
+import { mockTreeSet } from './treeset'
+import { mockVector } from './vector'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -206,6 +220,34 @@ export function mockRequireNapiFun() {
         return mockWorkSchedulerExtensionAbility();
       case "userIAM.userAuth":
           return mockUserAuth();
+      case "util.ArrayList":
+        return mockArrayList();
+      case "util.Deque":
+        return mockDeque();
+      case "util.HashMap":
+        return mockHashMap();
+      case "util.HashSet":
+        return mockHashSet();
+      case "util.LightWeightMap":
+        return mockLightWeightMap();
+      case "util.LightWeightSet":
+        return mockLightWeightSet();
+      case "util.LinkedList":
+        return mockLinkedList();
+      case "util.List":
+        return mockList();
+      case "util.PlainArray":
+        return mockPlainArray();
+      case "util.Queue":
+        return mockQueue();
+      case "util.Stack":
+        return mockStack();
+      case "util.TreeMap":
+        return mockTreeMap();
+      case "util.TreeSet":
+        return mockTreeSet();
+      case "util.Vector":
+        return mockVector();
       default:
         return global.requireNapiPreview(...args);
     }
