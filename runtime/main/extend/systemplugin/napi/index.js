@@ -16,7 +16,7 @@
 import { mockSystemParameter } from './systemParameter'
 import { mockAbility } from './applicationAbility'
 import { mockFormExtension } from './applicationFormExtension'
-import { mockServiceExtension } from './applicationServiceExtension'
+import { mockServiceExtensionAbility } from './applicationServiceExtensionAbility'
 import { mockAbilityStage } from './applicationAbilityStage'
 import { mockFormBindingData } from './applicationFormBindingData'
 import { mockAbilityManager } from './applicationAbilityManager'
@@ -100,8 +100,8 @@ export function mockRequireNapiFun() {
         return mockAbility();
       case "application.FormExtension":
         return mockFormExtension();
-      case "application.ServiceExtension":
-        return mockServiceExtension();
+      case "application.ServiceExtensionAbility":
+        return mockServiceExtensionAbility();
       case "application.AbilityStage":
         return mockAbilityStage();
       case "application.formBindingData":
