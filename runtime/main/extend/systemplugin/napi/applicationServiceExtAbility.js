@@ -14,7 +14,7 @@
  */
 
 import { paramMock } from "../utils"
-import { RemoteObjectClass } from "./applicationServiceExtension"
+import { RemoteObjectClass } from "./applicationServiceExtensionAbility"
 
 const ApplicationInfoMock = {
   name: '[PC preview] unknow name',
