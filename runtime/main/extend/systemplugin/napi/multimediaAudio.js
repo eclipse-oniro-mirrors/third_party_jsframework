@@ -22,18 +22,9 @@ export function mockMultimediaAudio() {
     hint: "[PC Preview] unknow hint",
     activated: "[PC Preview] unknow activated",
   }
-  const AudioEncodingFormatMock = "[PC Preview] unknow AudioEncodingFormat"
   const DeviceRoleMock = "[PC Preview] unknow DeviceRole"
   const DeviceTypeMock = "[PC Preview] unknow DeviceType"
   const AudioDeviceDescriptorMock = {
-    id: "[PC Preview] unknow id",
-    name: "[PC Preview] unknow name",
-    address: "[PC Preview] unknow address",
-    sampleRates: new Array(paramMock.paramNumberMock),
-    channelCounts: new Array(paramMock.paramNumberMock),
-    channelIndexMasks: new Array(paramMock.paramNumberMock),
-    channelMasks: new Array(paramMock.paramNumberMock),
-    encodingFormats: new Array(AudioEncodingFormatMock),
     deviceRole: DeviceRoleMock,
     deviceType: DeviceTypeMock,
   }
@@ -350,24 +341,12 @@ export function mockMultimediaAudio() {
           args[len - 1].call(this, VolumeEventMock);
         } else if (args[0] == 'ringerModeChange') {
           args[len - 1].call(this, AudioRingModeMock);
-        } else {
-          args[len - 1].call(this);
         }
       }
     },
     off: function (...args) {
       console.warn("AudioManager.off interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        if (args[0] == 'interrupt') {
-          args[len - 1].call(this, interruptActionMock);
-        } else if (args[0] == 'deviceChange') {
-          args[len - 1].call(this);
-        } else {
-          args[len - 1].call(this);
-        }
-      }
     },
     getDevices: function (...args) {
       console.warn("AudioManager.getDevices interface mocked in the Previewer. How this interface works on the" +

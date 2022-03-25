@@ -18,27 +18,27 @@ import { PixelMapMock } from "./multimediaImage"
 
 export function mockMultimediaMediaLibrary() {
   const mockFileAsset = {
-    id: paramMock.paramNumberMock,
-    uri: paramMock.paramStringMock,
-    mimeType: paramMock.paramStringMock,
-    mediaType: paramMock.paramNumberMock,
-    displayName: paramMock.paramStringMock,
-    title: paramMock.paramStringMock,
-    relativePath: paramMock.paramStringMock,
-    parent: paramMock.paramNumberMock,
-    size: paramMock.paramNumberMock,
-    dateAdded: paramMock.paramNumberMock,
-    dateModified: paramMock.paramNumberMock,
-    dateTaken: paramMock.paramNumberMock,
-    artist: paramMock.paramStringMock,
-    audioAlbum: paramMock.paramStringMock,
-    width: paramMock.paramNumberMock,
-    height: paramMock.paramNumberMock,
-    orientation: paramMock.paramNumberMock,
-    duration: paramMock.paramNumberMock,
-    albumId: paramMock.paramNumberMock,
-    albumUri: paramMock.paramStringMock,
-    albumName: paramMock.paramStringMock,
+    id: "[PC Preview] unknow id",
+    uri: "[PC Preview] unknow uri",
+    mimeType: "[PC Preview] unknow mimeType",
+    mediaType: "[PC Preview] unknow mediaType",
+    displayName: "[PC Preview] unknow displayName",
+    title: "[PC Preview] unknow title",
+    relativePath: "[PC Preview] unknow relativePath",
+    parent: "[PC Preview] unknow parent",
+    size: "[PC Preview] unknow size",
+    dateAdded: "[PC Preview] unknow dateAdded",
+    dateModified: "[PC Preview] unknow dateModified",
+    dateTaken: "[PC Preview] unknow dateTaken",
+    artist: "[PC Preview] unknow artist",
+    audioAlbum: "[PC Preview] unknow audioAlbum",
+    width: "[PC Preview] unknow width",
+    height: "[PC Preview] unknow height",
+    orientation: "[PC Preview] unknow orientation",
+    duration: "[PC Preview] unknow duration",
+    albumId: "[PC Preview] unknow albumId",
+    albumUri: "[PC Preview] unknow albumUri",
+    albumName: "[PC Preview] unknow albumName",
     isDirectory: function(...args) {
       console.warn("FileAsset.isDirectory interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
@@ -227,22 +227,22 @@ export function mockMultimediaMediaLibrary() {
   };
 
   const mockPeerInfo = {
-    deviceName: paramMock.paramStringMock,
-    networkId: paramMock.paramStringMock,
-    deviceType: paramMock.paramStringMock,
-    isOnline: paramMock.paramBooleanMock
+    deviceName: "[PC Preview] unknow deviceName",
+    networkId: "[PC Preview] unknow networkId",
+    deviceType: "[PC Preview] unknow deviceType",
+    isOnline: "[PC Preview] unknow isOnline"
   };
 
   const mockImagePixelMap = PixelMapMock;
 
   const mockAlbum = {
-    albumId: paramMock.paramNumberMock,
-    albumName: paramMock.paramStringMock,
-    albumUri: paramMock.paramStringMock,
-    dateModified: paramMock.paramNumberMock,
-    count: paramMock.paramNumberMock,
-    relativePath: paramMock.paramStringMock,
-    coverUri: paramMock.paramStringMock,
+    albumId: "[PC Preview] unknow albumId",
+    albumName: "[PC Preview] unknow albumName",
+    albumUri: "[PC Preview] unknow albumUri",
+    dateModified: "[PC Preview] unknow dateModified",
+    count: "[PC Preview] unknow count",
+    relativePath: "[PC Preview] unknow relativePath",
+    coverUri: "[PC Preview] unknow coverUri",
     commitModify: function(...args) {
       console.warn("Album.commitModify interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
