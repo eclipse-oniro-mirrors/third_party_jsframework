@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -43,12 +43,6 @@ import { mockFile } from './file'
 import { mockGeolocation } from './geolocation'
 import { mockInputMethod } from './inputMethod'
 import { mockInputMethodEngine } from './inputMethodEngine'
-import {
-  mockMultimediaImage,
-  mockMultimediaMedia,
-  mockMultimediaMedialibrary,
-  mockMultimediaAudio
-} from './multimedia'
 import { mockNetwork } from './network'
 import { mockOhosNfc } from './ohos/nfc'
 import { mockNotification } from './notification'
@@ -131,10 +125,6 @@ export function mockSystemPlugin() {
   mockInputMethod()
   mockInputMethodEngine()
   mockOhosRequest()
-  mockMultimediaImage()
-  mockMultimediaMedia()
-  mockMultimediaMedialibrary()
-  mockMultimediaAudio()
   mockCall()
   mockData()
   mockRadio()
