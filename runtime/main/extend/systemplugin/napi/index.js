@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -90,6 +90,13 @@ import { mockStack } from './stack'
 import { mockTreeMap } from './treemap'
 import { mockTreeSet } from './treeset'
 import { mockVector } from './vector'
+import { mockMultimediaCamera } from './multimediaCamera'
+import { mockMultimediaAudio } from './multimediaAudio'
+import { mockMultimediaImage } from './multimediaImage'
+import { mockMultimediaMedia } from './multimediaMedia'
+import { mockMultimediaMediaLibrary } from './multimediaMediaLibrary'
+
+
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -248,6 +255,16 @@ export function mockRequireNapiFun() {
         return mockTreeSet();
       case "util.Vector":
         return mockVector();
+      case "multimedia.mediaLibrary":
+         return mockMultimediaMediaLibrary();
+      case "multimedia.media":
+        return mockMultimediaMedia();
+      case "multimedia.image":
+        return mockMultimediaImage();
+      case "multimedia.camera":
+        return mockMultimediaCamera();
+      case "multimedia.audio":
+        return mockMultimediaAudio();
       default:
         return global.requireNapiPreview(...args);
     }
