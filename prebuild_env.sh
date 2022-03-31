@@ -17,8 +17,23 @@ set -e
 script_path=$(cd $(dirname $0);pwd)
 code_dir=$(dirname ${script_path})/../
 
+case $(uname -s) in
+    Linux)
+        host_platform=linux
+        ;;
+    Darwin)
+        host_platform=darwin
+        ;;
+    *)
+        echo "Unsupported host platform: $(uname -s)"
+        exit 1
+esac
+
+node_js_ver=v12.18.4
+node_js_name=node-${node_js_ver}-${host_platform}-x64
+
 cd ${code_dir}/third_party/jsframework/
-export PATH=${code_dir}/prebuilts/build-tools/common/nodejs/node-v12.18.4-linux-x64/bin:$PATH
+export PATH=${code_dir}/prebuilts/build-tools/common/nodejs/${node_js_name}/bin:$PATH
 npm config set registry http://registry.npm.taobao.org
 npm install
 
