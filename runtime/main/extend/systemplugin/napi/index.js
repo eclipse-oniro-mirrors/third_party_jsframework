@@ -31,9 +31,11 @@ import { mockFileio } from './fileio'
 import { mockWorker } from './worker'
 import { mockUtil } from './util'
 import { mockPower } from './power'
+import { mockRunninglock } from './runninglock'
+import { mockThermal } from './thermal'
+import { mockBatteryStatistics } from './batteryStatistics'
 import { mockIntl } from './intl'
 import { mockI18N } from './i18n'
-import { mockRunningLock } from './runningLock'
 import { mockRpc } from './rpc'
 import { mockBytrace } from './bytrace'
 import { mockwebgl } from './webgl'
@@ -141,8 +143,12 @@ export function mockRequireNapiFun() {
         return mockI18N();
       case "power":
         return mockPower();
-      case "runningLock":
-        return mockRunningLock();
+      case "runninglock":
+        return mockRunninglock();
+      case "thermal":
+        return mockThermal();
+      case "batteryStatistics":
+        return mockBatteryStatistics();
       case "rpc":
         return mockRpc();
       case "webgl":
