@@ -29,7 +29,7 @@ export function mockInputDevice() {
     axisRanges: [AxisRange]
   }
 
-  const EventType = ['add', 'update']
+  const EventType = ['add', 'remove']
   const DeviceIds = [0, 1, 2, 3, 4, 5, 6, 7]
   const inputDevice = {
     on: function (...args) {
