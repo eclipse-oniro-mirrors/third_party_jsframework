@@ -96,7 +96,11 @@ export const enum PageLifecycleHooks {
   /**
    * ONLAYOUTREADY Type
    */
-  ONINACTIVE = 'onInactive'
+  ONINACTIVE = 'onInactive',
+  /**
+   * ONDIALOGUPDATED Type
+   */
+  ONDIALOGUPDATED = 'onDialogUpdated'
 }
 /* eslint-enable no-unused-vars */
 
@@ -114,7 +118,8 @@ const PAGE_LIFE_CYCLE_TYPES: Array<PageLifecycleHooks> = [
   PageLifecycleHooks.ONCONFIGURATIONUPDATED,
   PageLifecycleHooks.ONLAYOUTREADY,
   PageLifecycleHooks.ONACTIVE,
-  PageLifecycleHooks.ONINACTIVE
+  PageLifecycleHooks.ONINACTIVE,
+  PageLifecycleHooks.ONDIALOGUPDATED
 ];
 
 /**
@@ -184,6 +189,8 @@ export function bindPageLifeCycle(vm: Vm, element: Element): void {
           return handleRestoreData(args[0]);
         } else if (type === PageLifecycleHooks.ONCOMPLETECONTINUATION) {
           return vm.$emitDirect(`hook:${type}`, ...args);
+        } else if (type === PageLifecycleHooks.ONDIALOGUPDATED) {
+          return vm.$emitDirect(`hook:${type}`, args[0]);
         } else {
           return vm.$emit(`hook:${type}`, {}, ...args);
         }
