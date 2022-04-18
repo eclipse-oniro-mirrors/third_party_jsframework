@@ -29,8 +29,8 @@ export function mockInputDevice() {
     axisRanges: [AxisRange]
   }
 
-  const EventType = ['add', 'remove', 'update']
-  const DeviceIds = [-1, 0, 1, 2, 3, 4, 5, 6, 7]
+  const EventType = ['add', 'remove']
+  const DeviceIds = [0, 1, 2, 3, 4, 5, 6, 7]
   const inputDevice = {
     on: function (...args) {
       console.warn("inputDevice.on interface mocked in the Previewer. How this interface works on the" +
@@ -38,7 +38,7 @@ export function mockInputDevice() {
       const len = args.length;
       if (len === 2) {
         if (EventType.indexOf(args[0]) === -1) {
-          console.warn("the first parameter must be 'add'|'remove'|'update'")
+          console.warn("the first parameter must be 'add'|'remove'")
         }
         if (typeof args[1] != 'function') {
           console.warn("the second parameter type must be 'function'")
@@ -55,11 +55,11 @@ export function mockInputDevice() {
         console.warn("the number of parameter must be one or two")
       } else if (len === 1) {
         if (EventType.indexOf(args[0]) === -1) {
-          console.warn("first parameter must be 'add'|'remove'|'update'")
+          console.warn("first parameter must be 'add'|'remove'")
         }
       } else {
         if (EventType.indexOf(args[0]) === -1) {
-          console.warn("first parameter must be 'add'|'remove'|'update'")
+          console.warn("first parameter must be 'add'|'remove'")
         }
         if (typeof args[1] != 'function') {
           console.warn("second parameter type must be 'function'")
@@ -90,30 +90,88 @@ export function mockInputDevice() {
       console.warn("inputDevice.getDeviceIds interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length;
-      if (len != 1) {
+      if (len > 1) {
         console.warn("the number of parameter must be one")
+        return;
       }
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, DeviceIds);
+      if (len === 1) {
+        if (typeof args[0] === 'function') {
+          args[0].call(this, DeviceIds);
+        } else {
+          console.warn("parameter type must be 'function'")
+        }
       } else {
-        console.warn("parameter type must be 'function")
+        return new Promise((resolve, reject) => {
+          resolve(DeviceIds);
+        })
       }
     },
     getDevice: function (...args) {
       console.warn("inputDevice.getDevice interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+        " Previewer may be different from that on a real device.");
       const len = args.length;
-      if (len != 2) {
-        console.warn("the number of parameter must be two")
+      if (len < 1 || len > 2) {
+        console.warn("the number of parameter must be two");
+        return;
       }
-      if (DeviceIds.indexOf(args[0]) === -1) {
-        console.warn("the first parameter error")
+      if (typeof args[0] !== 'number') {
+        console.warn("the first parameter error");
+        return;
       }
-      if (typeof args[1] === 'function') {
-        console.warn("asynchronous callback")
-        args[1].call(this, InputDeviceData);
+      if (len === 1) {
+        return new Promise((resolve, reject) => {
+          resolve(InputDeviceData);
+        })
       } else {
-        console.warn("the second parameter type must be 'function'")
+        if (typeof args[1] !== 'function') {
+          console.warn("the second parameter type must be 'function'");
+          return;
+        }
+        args[1].call(this, InputDeviceData);
+      }
+    },
+    getKeystrokeAbility: function(...args) {
+      console.warn("inputDevice.getKeystrokeAbility interface mocked in the Previewer." + 
+      "How this interface works on the" + " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (len < 2 || len > 3) {
+        console.warn("parameter number error");
+        return;
+      }
+      if (typeof args[0] !== 'number') {
+        console.warn("the first parameter error");
+        return;
+      }
+      if (typeof args[1] !== 'object') {
+        console.warn("the second parameter type must be array");
+        return;
+      }
+      if (len === 2) {
+        var KeystrokeAbilityArr = [];
+        for (var i = 0; i < args[1].length; ++i) {
+          var KeystrokeAbility = {
+            keyCode: args[1][i],
+            isSupport: '[PC preview] unknow isSupport',
+          }
+          KeystrokeAbilityArr[i] = KeystrokeAbility;
+        }
+        return new Promise((resolve, reject) => {
+          resolve(KeystrokeAbilityArr);
+        })
+      } else {
+        if (typeof args[2] !== 'function') {
+          console.warn("the second parameter type must be array");
+          return;
+        }
+        var KeystrokeAbilityArr = [];
+        for (var i = 0; i < args[1].length; ++i) {
+          var KeystrokeAbility = {
+            keyCode: args[1][i],
+            isSupport: '[PC preview] unknow isSupport',
+          }
+          KeystrokeAbilityArr[i] = KeystrokeAbility;
+        }
+        args[2].call(this, KeystrokeAbilityArr);
       }
     }
   }
