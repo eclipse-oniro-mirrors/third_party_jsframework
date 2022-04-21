@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//foundation/ace/ace_engine/ace_config.gni")
+import("//foundation/arkui/ace_engine/ace_config.gni")
 
 prebuilt_js_path =
     get_label_info(":gen_jsf_c", "target_out_dir") + "/dist/strip.native.min.js"
@@ -201,7 +201,7 @@ if (!is_standard_system && !is_cross_platform_build) {
           rebase_path("${aosp_libs_dir}/ndk/libcxx/linux_x86_64"),
       rebase_path(
           get_label_info("$v8_root:mksnapshot($v8_snapshot_toolchain)",
-                         "root_out_dir") + "/ace/ace_engine_full/mksnapshot"),
+                         "root_out_dir") + "/arkui/ace_engine_full/mksnapshot"),
       rebase_path(prebuilt_js_path),
       "--startup_blob=" + rebase_path(v8_snapshot_bin_path),
       "--turbo_instruction_scheduling",
@@ -266,7 +266,7 @@ action("gen_jsf_c") {
   deps += [ "//third_party/quickjs:qjsc(${host_toolchain})" ]
 
   script = get_label_info("//third_party/quickjs:qjsc(${host_toolchain})",
-                          "root_out_dir") + "/ace/ace_engine_full/qjsc"
+                          "root_out_dir") + "/arkui/ace_engine_full/qjsc"
 
   args = [
     "-o",
