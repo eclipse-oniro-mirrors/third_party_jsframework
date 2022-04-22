@@ -29,7 +29,7 @@ export function mockInputDevice() {
     axisRanges: [AxisRange]
   }
 
-  const EventType = ['add', 'remove']
+  const EventType = ['changed']
   const DeviceIds = [0, 1, 2, 3, 4, 5, 6, 7]
   const inputDevice = {
     on: function (...args) {
@@ -38,7 +38,7 @@ export function mockInputDevice() {
       const len = args.length;
       if (len === 2) {
         if (EventType.indexOf(args[0]) === -1) {
-          console.warn("the first parameter must be 'add'|'remove'")
+          console.warn("the first parameter must be 'changed'")
         }
         if (typeof args[1] != 'function') {
           console.warn("the second parameter type must be 'function'")
@@ -52,14 +52,14 @@ export function mockInputDevice() {
         " Previewer may be different from that on a real device.")
       const len = args.length;
       if (len < 1 || len > 2) {
-        console.warn("the number of parameter must be one or two")
+        console.warn("a maximum of two parameters")
       } else if (len === 1) {
         if (EventType.indexOf(args[0]) === -1) {
-          console.warn("first parameter must be 'add'|'remove'")
+          console.warn("first parameter must be 'changed'")
         }
       } else {
         if (EventType.indexOf(args[0]) === -1) {
-          console.warn("first parameter must be 'add'|'remove'")
+          console.warn("first parameter must be 'changed'")
         }
         if (typeof args[1] != 'function') {
           console.warn("second parameter type must be 'function'")
