@@ -65,14 +65,14 @@ export function mockPower() {
       }
     },
     setPowerMode: function (...args) {
-      console.warn("power.getPowerMode interface mocked in the Previewer. How this interface works on the" +
+      console.warn("power.setPowerMode interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, DevicePowerMode);
+        args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(DevicePowerMode);
+          resolve();
         })
       }
     },
