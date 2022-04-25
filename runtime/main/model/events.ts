@@ -123,6 +123,7 @@ export const LIFE_CYCLE_TYPES: Array<PageLifecycleHooks | string> = [
   PageLifecycleHooks.ONACTIVE,
   PageLifecycleHooks.ONINACTIVE,
   PageLifecycleHooks.ONLAYOUTREADY,
+  PageLifecycleHooks.ONDIALOGUPDATED,
   'onAttached',
   'onDetached',
   'onPageShow',
