@@ -36,6 +36,14 @@ export function mockPower() {
           resolve(paramMock.paramBooleanMock);
         })
       }
+    },
+    wakeupDevice: function (...args) {
+      console.warn("power.wakeupDevice interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    },
+    suspendDevice: function (...args) {
+      console.warn("power.suspendDevice interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
     }
   }
   return power
