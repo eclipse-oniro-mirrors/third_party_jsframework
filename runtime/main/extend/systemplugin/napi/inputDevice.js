@@ -20,17 +20,26 @@ export function mockInputDevice() {
     source: '[PC preview] unknow source',
     axis: '[PC preview] unknow axis',
     max: '[PC preview] unknow max',
-    min: '[PC preview] unknow min'
+    min: '[PC preview] unknow min',
+    fuzz: '[PC preview] unknow fuzz',
+    flat: '[PC preview] unknow flat',
+    resolution: '[PC preview] unknow resolution',
   }
   const InputDeviceData = {
     id: '[PC preview] unknow id',
     name: '[PC preview] unknow name',
     sources: ['[PC preview] unknow sources'],
-    axisRanges: [AxisRange]
+    axisRanges: [AxisRange],
+    bus: '[PC preview] unknow bus',
+    product: '[PC preview] unknow product',
+    vendor: '[PC preview] unknow vendor',
+    version: '[PC preview] unknow version',
+    phys: '[PC preview] unknow phys',
+    uniq: '[PC preview] unknow uniq',
   }
 
   const EventType = ['changed']
-  const DeviceIds = [0, 1, 2, 3, 4, 5, 6, 7]
+  const DeviceIds = [0, 1, 2, 3, 4]
   const inputDevice = {
     on: function (...args) {
       console.warn("inputDevice.on interface mocked in the Previewer. How this interface works on the" +
@@ -130,8 +139,8 @@ export function mockInputDevice() {
         args[1].call(this, InputDeviceData);
       }
     },
-    getKeystrokeAbility: function(...args) {
-      console.warn("inputDevice.getKeystrokeAbility interface mocked in the Previewer." + 
+    supportKeys: function(...args) {
+      console.warn("inputDevice.supportKeys interface mocked in the Previewer." + 
       "How this interface works on the" + " Previewer may be different from that on a real device.");
       const len = args.length;
       if (len < 2 || len > 3) {
@@ -149,11 +158,7 @@ export function mockInputDevice() {
       if (len === 2) {
         var KeystrokeAbilityArr = [];
         for (var i = 0; i < args[1].length; ++i) {
-          var KeystrokeAbility = {
-            keyCode: args[1][i],
-            isSupport: '[PC preview] unknow isSupport',
-          }
-          KeystrokeAbilityArr[i] = KeystrokeAbility;
+          KeystrokeAbilityArr.unshift('[PC preview] unknow boolean');
         }
         return new Promise((resolve, reject) => {
           resolve(KeystrokeAbilityArr);
@@ -165,11 +170,7 @@ export function mockInputDevice() {
         }
         var KeystrokeAbilityArr = [];
         for (var i = 0; i < args[1].length; ++i) {
-          var KeystrokeAbility = {
-            keyCode: args[1][i],
-            isSupport: '[PC preview] unknow isSupport',
-          }
-          KeystrokeAbilityArr[i] = KeystrokeAbility;
+          KeystrokeAbilityArr.unshift('[PC preview] unknow boolean');
         }
         args[2].call(this, KeystrokeAbilityArr);
       }
