@@ -14,8 +14,8 @@
  */
 
 import { paramMock } from "../../utils"
-import { MessageParcelClass } from "../rpc"
-import { ContextClass } from "../applicationServiceExtAbility"
+import { MessageParcelClass } from "../ohos_rpc"
+import { ContextClass } from "../ohos_application_ServiceExtAbility"
 
 const ModuleInfoMock = {
   moduleName: '[PC preview] unknow moduleName',
