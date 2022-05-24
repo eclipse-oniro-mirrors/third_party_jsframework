@@ -14,7 +14,7 @@
  */
 
 import { paramMock } from "./utils"
-import { windowMock } from "./window"
+import { windowMock } from "./napi/ohos_window"
 
 const DataAbilityResultMock = {
   uri: "[PC Preview] unknow uri",

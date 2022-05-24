@@ -13,99 +13,218 @@
  * limitations under the License.
  */
 
-import { mockSystemParameter } from './systemParameter'
-import { mockAbility } from './applicationAbility'
-import { mockFormExtension } from './applicationFormExtension'
-import { mockServiceExtensionAbility } from './applicationServiceExtensionAbility'
-import { mockAbilityStage } from './applicationAbilityStage'
-import { mockFormBindingData } from './applicationFormBindingData'
-import { mockAbilityManager } from './applicationAbilityManager'
-import { mockAppManager } from './applicationAppManager'
-import { mockDataShareExtensionAbility } from './applicationDataShareExtensionAbility'
-import { mockMissionManager } from "./applicationMissionManager"
-import { mockServiceExtAbility } from "./applicationServiceExtAbility"
-import { mockUriPermissionManager } from "./applicationUriPermissionManager"
-import { mockCommonEvent } from './commonEvent'
-import { mockNotification } from './notification'
-import { mockFileio } from './fileio'
-import { mockWorker } from './worker'
-import { mockUtil } from './util'
-import { mockPower } from './power'
-import { mockRunninglock } from './runninglock'
-import { mockThermal } from './thermal'
-import { mockBatteryStatistics } from './batteryStatistics'
-import { mockIntl } from './intl'
-import { mockI18N } from './i18n'
-import { mockRpc } from './rpc'
-import { mockBytrace } from './bytrace'
+import { mockSystemParameter } from './ohos_systemparameter'
+import { mockAbility } from './ohos_application_Ability'
+import { mockFormExtension } from './ohos_application_FormExtension'
+import { mockServiceExtensionAbility } from './ohos_application_ServiceExtensionAbility'
+import { mockAbilityStage } from './ohos_application_AbilityStage'
+import { mockFormBindingData } from './ohos_application_formBindingData'
+import { mockAbilityManager } from './ohos_application_abilityManager'
+import { mockAppManager } from './ohos_application_appManager'
+import { mockDataShareExtensionAbility } from './ohos_application_DataShareExtensionAbility'
+import { mockMissionManager } from "./ohos_application_missionManager"
+import { mockServiceExtAbility } from "./ohos_application_ServiceExtAbility"
+import { mockUriPermissionManager } from "./ohos_application_uriPermissionManager"
+import { mockCommonEvent } from './ohos_commonEvent'
+import { mockNotification } from './ohos_notification'
+import { mockFileio } from './ohos_fileio'
+import { mockWorker } from './ohos_worker'
+import { mockUtil } from './ohos_util'
+import { mockPower } from './ohos_power'
+import { mockRunninglock } from './ohos_runninglock'
+import { mockThermal } from './ohos_thermal'
+import { mockBatteryStatistics } from './ohos_batteryStatistics'
+import { mockIntl } from './ohos_intl'
+import { mockI18N } from './ohos_i18n'
+import { mockRpc } from './ohos_rpc'
 import { mockwebgl } from './webgl'
 import { mockwebgl2 } from './webgl2'
-import { mockProcess } from './process'
-import { mockUrl } from './url'
-import { mockHiAppEvent } from './hiAppEvent'
-import { mockHilog } from './hilog'
+import { mockProcess } from './ohos_process'
+import { mockUrl } from './ohos_url'
+import { mockHiAppEvent } from './ohos_hiAppEvent'
+import { mockHilog } from './ohos_hilog'
 import { mockTv } from './tv'
 import { mockDtv } from './dtv'
-import { mockDistributedAccount } from './distributedAccount'
-import { mockEmitter } from './emitter'
-import { mockDistributedData } from './distributedData'
-import { mockDistributedObject } from './distributedDataObject'
-import { mockDataAbility } from './dataAbility'
-import { mockStorage } from './storage'
-import { mockRdb } from './rdb'
-import { mockDataShare } from './dataShare'
-import { mockInputDevice } from './inputDevice'
-import { mockVibrator } from './vibrator'
-import { mockSensor } from './sensor'
-import { mockWifi } from './wifi'
-import { mockUsb } from './usb'
-import { mockBundle } from './bundle'
-import { mockInnerBundle } from './innerBundleManager'
-import { mockUri } from './uri'
-import { mockXml } from './xml'
-import { mockConvertXml } from './convertxml'
-import { mockStatfs } from './statfs'
-import { mockFileManager } from "./filemanager"
-import { mockEnvironment } from "./environment"
-import { mockStorageStatistics } from "./storageStatistics"
-import { mockVolumeManager } from "./volumeManager"
-import { mockSettings } from './settings'
-import { mockAbilityAccessCtrl } from './abilityAccessCtrl'
-import { mockConfigPolicy } from './configPolicy'
-import { mockUpdate } from './update'
-import { mockBackgroundTaskManager } from './backgroundTaskManager'
-import { mockSecurityLabel } from './securitylabel'
-import { mockWorkScheduler } from './workScheduler'
-import { mockWorkSchedulerExtensionAbility } from './WorkSchedulerExtensionAbility'
-import { mockUserAuth } from './userAuth'
-import { mockArrayList } from './arraylist'
-import { mockDeque } from './deque'
-import { mockHashMap } from './hashmap'
-import { mockHashSet } from './hashset'
-import { mockLightWeightMap } from './lightweightmap'
-import { mockLightWeightSet } from './lightweightset'
-import { mockLinkedList } from './linkedlist'
-import { mockList } from './list'
-import { mockPlainArray } from './plainarray'
-import { mockQueue } from './queue'
-import { mockStack } from './stack'
-import { mockTreeMap } from './treemap'
-import { mockTreeSet } from './treeset'
-import { mockVector } from './vector'
-import { mockMultimediaCamera } from './multimediaCamera'
-import { mockMultimediaAudio } from './multimediaAudio'
-import { mockMultimediaImage } from './multimediaImage'
-import { mockMultimediaMedia } from './multimediaMedia'
-import { mockMultimediaMediaLibrary } from './multimediaMediaLibrary'
-
-
-
+import { mockDistributedAccount } from './ohos_account_distributedAccount'
+import { mockEmitter } from './ohos_events_emitter'
+import { mockDistributedData } from './ohos_data_distributedData'
+import { mockDistributedObject } from './ohos_data_distributedDataObject'
+import { mockDataAbility } from './ohos_data_dataAbility'
+import { mockStorage } from './system_storage'
+import { mockRdb } from './ohos_data_rdb'
+import { mockDataShare } from './ohos_data_dataShare'
+import { mockInputDevice } from './ohos_multimodalInput_inputDevice'
+import { mockVibrator } from './ohos_vibrator'
+import { mockSensor } from './ohos_sensor'
+import { mockWifi } from './ohos_wifi'
+import { mockUsb } from './ohos_usb'
+import { mockBundle } from './ohos_bundle'
+import { mockInnerBundle } from './ohos_bundle_innerBundleManager'
+import { mockUri } from './ohos_uri'
+import { mockXml } from './ohos_xml'
+import { mockConvertXml } from './ohos_convertxml'
+import { mockStatfs } from './ohos_statfs'
+import { mockFileManager } from "./ohos_fileManager"
+import { mockEnvironment } from "./ohos_environment"
+import { mockStorageStatistics } from "./ohos_storageStatistics"
+import { mockVolumeManager } from "./ohos_volumeManager"
+import { mockSettings } from './ohos_settings'
+import { mockAbilityAccessCtrl } from './ohos_abilityAccessCtrl'
+import { mockConfigPolicy } from './ohos_configPolicy'
+import { mockUpdate } from './ohos_update'
+import { mockBackgroundTaskManager } from './ohos_backgroundTaskManager'
+import { mockSecurityLabel } from './ohos_securitylabel'
+import { mockWorkScheduler } from './ohos_workScheduler'
+import { mockWorkSchedulerExtensionAbility } from './ohos_WorkSchedulerExtensionAbility'
+import { mockUserAuth } from './ohos_userIAM_userAuth'
+import { mockArrayList } from './ohos_util_Arraylist'
+import { mockDeque } from './ohos_util_Deque'
+import { mockHashMap } from './ohos_util_HashMap'
+import { mockHashSet } from './ohos_util_HashSet'
+import { mockLightWeightMap } from './ohos_util_LightWeightMap'
+import { mockLightWeightSet } from './ohos_util_LightWeightSet'
+import { mockLinkedList } from './ohos_util_LinkedList'
+import { mockList } from './ohos_util_List'
+import { mockPlainArray } from './ohos_util_PlainArray'
+import { mockQueue } from './ohos_util_Queue'
+import { mockStack } from './ohos_util_Stack'
+import { mockTreeMap } from './ohos_util_TreeMap'
+import { mockTreeSet } from './ohos_util_TreeSet'
+import { mockVector } from './ohos_util_Vector'
+import { mockMultimediaCamera } from './ohos_multimedia_camera'
+import { mockMultimediaAudio } from './ohos_multimedia_audio'
+import { mockMultimediaImage } from './ohos_multimedia_image'
+import { mockMultimediaMedia } from './ohos_multimedia_media'
+import { mockMultimediaMediaLibrary } from './ohos_multimedia_mediaLibrary'
+import { mockOhosBatteryinfo } from './ohos_batteryInfo'
+import { mockBluetooth } from './ohos_bluetooth'
+import { mockBrightness } from './ohos_brightness'
+import { mockBytrace } from './ohos_bytrace'
+import { mockCipher } from './system_cipher'
+import { mockContact } from './ohos_contact'
+import { mockDataStorage } from './ohos_data_Storage'
+import { mockDeviceInfo } from './ohos_deviceInfo'
+import { mockDeviceManager } from './ohos_distributedHardware_deviceManager'
+import { mockDisplay } from './ohos_display'
+import { mockHuks } from './ohos_security_huks'
+import { mockInputMethod } from './ohos_inputmethod'
+import { mockInputMethodEngine } from './ohos_inputmethodengine'
+import { mockConnection } from './ohos_net_connection'
+import { mockHttp } from './ohos_net_http'
+import { mockSocket } from './ohos_net_socket'
+import { mockWebSocket } from './ohos_net_webSocket'
+import { mockNetwork } from './ohos_network'
+import { mockNfcCardEmulation } from './ohos_nfc_cardEmulation'
+import { mockController } from './ohos_nfc_controller'
+import { mockTag } from './ohos_nfc_tag'
+import { mockPasteBoard } from './ohos_pasteboard'
+import { mockRequest } from './ohos_request'
+import { mockScreenLock } from './ohos_screenLock'
+import { mockCall } from './ohos_telephony_call'
+import { mockData } from './ohos_telephony_data'
+import { mockObserver } from './ohos_telephony_observer'
+import { mockRadio } from './ohos_telephony_radio'
+import { mockSim } from './ohos_telephony_sim'
+import { mockSMS } from './ohos_telephony_sms'
+import { mockWindow } from './ohos_window'
+import { mockAppAccount } from './ohos_account_appAccount'
+import { mockOhosGeolocation } from './ohos_geolocation'
+import { mockInputMonitor } from './ohos_multimodalInput_inputMonitor'
+import { mockOsAccount } from './ohos_account_osAccount'
+import { mockReminderAgent } from './ohos_reminderAgent'
+import { mockSystemTime } from './ohos_systemTime'
+import { mockSystemTimer } from './ohos_systemTimer'
+import { mockWallpaper } from './ohos_wallpaper'
+import { mockWantAgent } from './ohos_wantAgent'
+import { mockScreenshot } from './ohos_screenshot'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
+      case "screenshot":
+        return mockScreenshot();
+      case "WantAgent":
+        return mockWantAgent();
+      case "wallpaper":
+        return mockWallpaper();
+      case "systemTimer":
+        return mockSystemTimer();
+      case "systemTime":
+        return mockSystemTime();
+      case "reminderAgent":
+        return mockReminderAgent();
+      case "account.osAccount":
+        return mockOsAccount();
+      case "multimodalInput.inputMonitor":
+        return mockInputMonitor();
+      case "geolocation":
+        return mockOhosGeolocation();
+      case "account.appAccount":
+        return mockAppAccount();
+      case "window":
+        return mockWindow();
+      case "telephony.call":
+        return mockCall();
+      case "telephony.data":
+        return mockData();
+      case "telephony.observer":
+        return mockObserver();
+      case "telephony.radio":
+        return mockRadio();
+      case "telephony.sim":
+        return mockSim();
+      case "telephony.sms":
+        return mockSMS();
+      case "pasteboard":
+        return mockPasteBoard();
+      case "request":
+        return mockRequest();
+      case "screenLock":
+        return mockScreenLock();
+      case "nfc.cardEmulation":
+        return mockNfcCardEmulation();
+      case "nfc.controller":
+        return mockController();
+      case "nfc.tag":
+        return mockTag();
+      case "network":
+        return mockNetwork();
+      case "net.connection":
+        return mockConnection();
+      case "net.http":
+        return mockHttp();
+      case "net.socket":
+        return mockSocket();
+      case "net.webSocket":
+        return mockWebSocket();
+      case "inputmethodengine":
+        return mockInputMethodEngine();
+      case "inputmethod":
+        return mockInputMethod();
+      case "security.huks":
+        return mockHuks();
+      case "display":
+        return mockDisplay();
+      case "distributedHardware.deviceManager":
+        return mockDeviceManager();
+      case "deviceInfo":
+        return mockDeviceInfo();
+      case "data.storage":
+        return mockDataStorage();
+      case "contact":
+        return mockContact();
+      case "cipher":
+        return mockCipher();
+      case "bytrace":
+        return mockBytrace();
+      case "brightness":
+        return mockBrightness();
+      case "bluetooth":
+        return mockBluetooth();
+      case "batteryInfo":
+        return mockOhosBatteryinfo();
       case "systemParameter":
         return mockSystemParameter();
-      case "application.Ability":
+      case "11.Ability":
         return mockAbility();
       case "application.FormExtension":
         return mockFormExtension();
@@ -157,8 +276,6 @@ export function mockRequireNapiFun() {
         return mockwebgl2();
       case "process":
         return mockProcess();
-      case "bytrace":
-        return mockBytrace();
       case "url":
         return mockUrl();
       case "hiAppEvent":
@@ -232,7 +349,7 @@ export function mockRequireNapiFun() {
       case "WorkSchedulerExtensionAbility":
         return mockWorkSchedulerExtensionAbility();
       case "userIAM.userAuth":
-          return mockUserAuth();
+        return mockUserAuth();
       case "util.ArrayList":
         return mockArrayList();
       case "util.Deque":
@@ -262,7 +379,7 @@ export function mockRequireNapiFun() {
       case "util.Vector":
         return mockVector();
       case "multimedia.mediaLibrary":
-         return mockMultimediaMediaLibrary();
+        return mockMultimediaMediaLibrary();
       case "multimedia.media":
         return mockMultimediaMedia();
       case "multimedia.image":
