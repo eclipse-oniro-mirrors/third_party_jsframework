@@ -389,7 +389,11 @@ function parseDeviceTypeCondition(condition: string, mediaStatus: object, failRe
     failReason.type = MEDIAERROR.SYNTAX;
     return false;
   }
-  return deviceType[1] === mediaStatus['device-type'];
+  if (deviceType[1] === 'default') {
+    return mediaStatus['device-type'] === 'phone';
+  } else {
+    return deviceType[1] === mediaStatus['device-type'];
+  }  
 }
 
 /**
