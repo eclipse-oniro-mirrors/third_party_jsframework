@@ -30,7 +30,8 @@ export function mockInputDevice() {
   }
 
   const EventType = ['changed']
-  const DeviceIds = [0, 1, 2, 3, 4, 5, 6, 7]
+  const DeviceIds = [0, 1, 2, 3, 4]
+  const GetKeyboardType = 3
   const inputDevice = {
     on: function (...args) {
       console.warn("inputDevice.on interface mocked in the Previewer. How this interface works on the" +
@@ -173,7 +174,31 @@ export function mockInputDevice() {
         }
         args[2].call(this, KeystrokeAbilityArr);
       }
-    }
-  }
+    },
+    getKeyboardType: function(...args) {
+      console.warn("inputDevice.getKeyboardType interface mocked in the Previewer." +
+      "How this interface works on the" + " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (len < 1 || len > 2) {
+        console.warn("parameter number error");
+        return;
+      }
+      if (typeof args[0] !== 'number') {
+        console.warn("the first parameter error");
+        return;
+      }
+      if (len == 1) {
+        return new Promise((resolve, reject) => {
+          resolve(GetKeyboardType);
+        })
+      } else {
+        if (typeof args[1] !== 'function') {
+          console.warn("the second parameter type must be function");
+          return;
+        }
+        args[1].call(this, GetKeyboardType);
+      }
+    },
+  };
   return inputDevice
 }
