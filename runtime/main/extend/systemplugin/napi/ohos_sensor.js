@@ -128,6 +128,16 @@ export function mockSensor() {
     x: "[PC preview] unknown x",
     y: "[PC preview] unknown y"
   }
+  const Sensor = {
+    sensorName: "[PC preview] unknown sensorName",
+    venderName: "[PC preview] unknown venderName",
+    firmwareVersion: "[PC preview] unknown firmwareVersion",
+    hardwareVersion: "[PC preview] unknown hardwareVersion",
+    sensorTypeId: "[PC preview] unknown sensorTypeId",
+    maxRange: "[PC preview] unknown maxRange",
+    precision: "[PC preview] unknown precision",
+    power: "[PC preview] unknown power"
+  }
   const SensorType = {
     SENSOR_TYPE_ID_ACCELEROMETER: 1,
     SENSOR_TYPE_ID_GYROSCOPE: 2,
