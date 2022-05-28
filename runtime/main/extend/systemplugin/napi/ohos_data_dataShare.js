@@ -20,11 +20,13 @@ export const ResultSetMock = {
   columnCount: "[PC Preview] unknow columnCount",
   rowCount: "[PC Preview] unknow rowCount",
   rowIndex: "[PC Preview] unknow rowIndex",
-  isAtFirstRow: "[PC Preview] unknow isAtFirstRow",
-  isAtLastRow: "[PC Preview] unknow isAtLastRow",
+  goToFirstRow: "[PC Preview] unknow goToFirstRow",
+  goToLastRow: "[PC Preview] unknow goToLastRow",
+  goToNextRow: "[PC Preview] unknow goToNextRow",
+  goToPreviousRow: "[PC Preview] unknow goToPreviousRow",
   isEnded: "[PC Preview] unknow isEnded",
   isStarted: "[PC Preview] unknow isStarted",
-  isClose: "[PC Preview] unknow isClose",
+  isClosed: "[PC Preview] unknow isClosed",
   getColumnIndex: function (...args) {
     console.warn("ResultSet.getColumnIndex interface mocked in the Previewer. How this interface works on the Previewer" +
       " may be different from that on a real device.")
@@ -89,6 +91,11 @@ export const ResultSetMock = {
     console.warn("ResultSet.isColumnNull interface mocked in the Previewer. How this interface works on the Previewer" +
       " may be different from that on a real device.")
     return paramMock.paramBooleanMock;
+  },
+  getDataType: function (...args) {
+    console.warn("ResultSet.getDataType interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    return paramMock.paramNumberMock;
   },
   close: function () {
     console.warn("ResultSet.isColumnNull interface mocked in the Previewer. How this interface works on the Previewer" +
@@ -236,6 +243,18 @@ export function mockDataShare() {
       } else {
         return new Promise((resolve) => {
           resolve(ResultSetMock);
+        })
+      }
+    },
+    openFile: function (...args) {
+      console.warn("DataShareHelper.OpenFile interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+      } else {
+        return new Promise((resolve) => {
+          resolve(paramMock.paramNumberMock);
         })
       }
     }

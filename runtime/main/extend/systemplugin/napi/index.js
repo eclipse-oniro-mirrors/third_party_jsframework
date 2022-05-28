@@ -53,6 +53,7 @@ import { mockDataAbility } from './ohos_data_dataAbility'
 import { mockStorage } from './system_storage'
 import { mockRdb } from './ohos_data_rdb'
 import { mockDataShare } from './ohos_data_dataShare'
+import { mockDataSharePredicates } from './dataSharePredicates'
 import { mockInputDevice } from './ohos_multimodalInput_inputDevice'
 import { mockVibrator } from './ohos_vibrator'
 import { mockSensor } from './ohos_sensor'
@@ -300,6 +301,8 @@ export function mockRequireNapiFun() {
         return mockStorage();
       case "data.dataShare":
         return mockDataShare();
+      case "data.DataSharePredicates":
+        return mockDataSharePredicates();
       case "data.dataAbility":
         return mockDataAbility();
       case "multimodalInput.inputDevice":
