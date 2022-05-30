@@ -137,6 +137,7 @@ import { mockSystemTimer } from './ohos_systemTimer'
 import { mockWallpaper } from './ohos_wallpaper'
 import { mockWantAgent } from './ohos_wantAgent'
 import { mockScreenshot } from './ohos_screenshot'
+import { mockPrivacyManager } from './ohos_privacyManager'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
@@ -388,6 +389,8 @@ export function mockRequireNapiFun() {
         return mockMultimediaCamera();
       case "multimedia.audio":
         return mockMultimediaAudio();
+      case "privacyManager":
+        return mockPrivacyManager();
       default:
         return global.requireNapiPreview(...args);
     }
