@@ -65,7 +65,7 @@ export function mockPrivacyManager() {
             if (len > 0 && typeof args[len - 1] === 'function') {
                   args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
             } else {
-                return new Promise(resolve, reject => {
+                return new Promise((resolve, reject) => {
                     resolve(paramMock.paramNumberMock);
                 });
             }
@@ -77,7 +77,7 @@ export function mockPrivacyManager() {
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, PermissionUsedResponseMock)
             } else {
-                return new Promise(resolve, reject => {
+                return new Promise((resolve, reject) => {
                     resolve(PermissionUsedResponseMock);
                 })
             }
