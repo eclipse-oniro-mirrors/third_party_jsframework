@@ -16,9 +16,15 @@
 import { paramMock } from "../utils"
 
 export function mockPrivacyManager() {
-    const PermissionUsageFlagMock = {
-        FLAG_PERMISSION_USAGE_SUMMARY: "[PC Preview] unknown FLAG_PERMISSION_USAGE_SUMMARY",
-        FLAG_PERMISSION_USAGE_DETAIL : "[PC Preview] unknown FLAG_PERMISSION_USAGE_DETAIL ",
+    const PermissionUsedRequestMock = {
+        tokenId: "[PC Preview] unknown tokenId",
+        isRemote: "[PC Preview] unknown isRemote",
+        deviceId: "[PC Preview] unknown deviceId",
+        bundleName: "[PC Preview] unknown bundleName",
+        permissionNames: "[PC Preview] unknown permissionNames",
+        beginTime: "[PC Preview] unknown beginTime",
+        endTime: "[PC Preview] unknown endTime",
+        flag: "[PC Preview] unknown flag",
     };
     const UsedRecordDetailMock = {
         status: "[PC Preview] unknown status",
@@ -48,6 +54,10 @@ export function mockPrivacyManager() {
         bundleRecords: [BundleUsedRecordMock],
     };
     const privacyManager = {
+        PermissionUsageFlag : {
+            FLAG_PERMISSION_USAGE_SUMMARY: 0,
+            FLAG_PERMISSION_USAGE_DETAIL: 1,
+        },  
         addPermissionUsedRecord: function (...args) {
             console.warn("privacyManager.addPermissionUsedRecord interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
