@@ -366,7 +366,7 @@ export function mockSensor() {
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.OrientationResponse);
+        args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.Sensor);
       } else {
         return new Promise((resolve, reject) => {
           resolve(paramMock.paramArrayMock);
