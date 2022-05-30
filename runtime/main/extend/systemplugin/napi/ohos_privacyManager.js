@@ -48,7 +48,7 @@ export function mockPrivacyManager() {
         bundleName: "[PC Preview] unknown bundleName",
         permissionRecords: [PermissionUsedRecordMock]
     };
-    const resultMock = {
+    const PermissionUsedResponseMock = {
         beginTime: '[PC preview] unknow beginTime',
         endTime: '[PC preview] unknow endTime',
         bundleRecords: [BundleUsedRecordMock],
@@ -75,10 +75,10 @@ export function mockPrivacyManager() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, resultMock)
+                args[len - 1].call(this, paramMock.businessErrorMock, PermissionUsedResponseMock)
             } else {
                 return new Promise(resolve, reject => {
-                    resolve(resultMock);
+                    resolve(PermissionUsedResponseMock);
                 })
             }
         },
