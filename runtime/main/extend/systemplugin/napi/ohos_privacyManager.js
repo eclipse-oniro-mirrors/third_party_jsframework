@@ -16,6 +16,10 @@
 import { paramMock } from "../utils"
 
 export function mockPrivacyManager() {
+    const PermissionUsageFlagMock = {
+        FLAG_PERMISSION_USAGE_SUMMARY: "[PC Preview] unknown FLAG_PERMISSION_USAGE_SUMMARY",
+        FLAG_PERMISSION_USAGE_DETAIL : "[PC Preview] unknown FLAG_PERMISSION_USAGE_DETAIL ",
+    };
     const UsedRecordDetailMock = {
         status: "[PC Preview] unknown status",
         timestamp: "[PC Preview] unknown timestamp",
