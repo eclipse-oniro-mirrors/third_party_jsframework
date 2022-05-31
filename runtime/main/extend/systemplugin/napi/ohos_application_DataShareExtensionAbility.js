@@ -15,7 +15,7 @@
 
 import { paramMock } from "../utils"
 import { ExtensionContextClass } from "./application/abilityContext"
-import { ResultSetMock } from "./ohos_data_dataShare"
+import { DataShareResultSetMock } from "./ohos_data_DataShareResultSet"
 
 export function mockDataShareExtensionAbility() {
   const DataShareExtensionAbilityClass = class DataShareExtensionAbility {
@@ -50,7 +50,7 @@ export function mockDataShareExtensionAbility() {
       this.query = function () {
         console.warn("application.DataShareExtensionAbility.query interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
-        return ResultSetMock;
+        return DataShareResultSetMock;
       };
       this.getType = function () {
         console.warn("application.DataShareExtensionAbility.getType interface mocked in the Previewer. How this interface works on the Previewer" +

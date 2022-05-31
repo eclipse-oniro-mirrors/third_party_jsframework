@@ -14,7 +14,7 @@
  */
 
 import { paramMock } from "../utils"
-export function mockDataSharePredicates() {
+export function DataSharePredicates() {
     const DataSharePredicatesClass = class data_DataSharePredicates {
       constructor() {
         this.equalTo = function (...args) {
@@ -170,12 +170,7 @@ export function mockDataSharePredicates() {
       }
     }
       const dataSharePredicatesMock = {
-        createDataSharePredicates: function (...args) {
-          console.warn('DataAbility.createDataSharePredicates.constructor interface mocked in the Previewer. How this interface works on' +
-            ' the Previewer may be different from that on a real device.');
-          return new DataSharePredicatesClass();
-        },
         DataSharePredicates: DataSharePredicatesClass
-      }
-      return dataSharePredicatesMock;
     }
+    return dataSharePredicatesMock;
+}
