@@ -140,6 +140,8 @@ import { mockWallpaper } from './ohos_wallpaper'
 import { mockWantAgent } from './ohos_wantAgent'
 import { mockScreenshot } from './ohos_screenshot'
 import { mockPrivacyManager } from './ohos_privacyManager'
+import { mockFormProvider } from './ohos_application_formProvider'
+
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
@@ -397,6 +399,8 @@ export function mockRequireNapiFun() {
         return mockMultimediaAudio();
       case "privacyManager":
         return mockPrivacyManager();
+      case "application.formProvider":
+        return mockFormProvider();
       default:
         return global.requireNapiPreview(...args);
     }
