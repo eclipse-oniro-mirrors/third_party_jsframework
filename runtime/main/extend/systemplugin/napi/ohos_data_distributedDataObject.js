@@ -28,7 +28,39 @@ export function mockDistributedObject() {
     off: function (...args) {
       console.warn("DistributedObject.off interface mocked in the Previewer. How this interface works" +
         " on the Previewer may be different from that on a real device.")
+    },
+    save: function (...args) {
+      console.warn("DistributedObject.save interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, SaveSuccessResponse);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(SaveSuccessResponse);
+        })
+      }
+    },
+    revokeSave: function (...args) {
+      console.warn("DistributedObject.revokeSave interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, RevokeSaveSuccessResponse);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(RevokeSaveSuccessResponse);
+        })
+      }
     }
+  };
+  const SaveSuccessResponse = {
+    sessionId: "[[PC Preview] unknow sessionId]",
+    version: "[[PC Preview] unknow version]",
+    deviceId: "[[PC Preview] unknow deviceId]"
+  };
+  const RevokeSaveSuccessResponse = {
+    sessionId: "[[PC Preview] unknow sessionId]"
   };
   const distributedObjectMock = {
     createDistributedObject: function (...args) {

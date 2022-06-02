@@ -53,6 +53,8 @@ import { mockDataAbility } from './ohos_data_dataAbility'
 import { mockStorage } from './system_storage'
 import { mockRdb } from './ohos_data_rdb'
 import { mockDataShare } from './ohos_data_dataShare'
+import { DataSharePredicates } from './ohos_data_dataSharePredicates'
+import { DataShareResultSet } from './ohos_data_DataShareResultSet'
 import { mockInputDevice } from './ohos_multimodalInput_inputDevice'
 import { mockVibrator } from './ohos_vibrator'
 import { mockSensor } from './ohos_sensor'
@@ -138,6 +140,7 @@ import { mockWallpaper } from './ohos_wallpaper'
 import { mockWantAgent } from './ohos_wantAgent'
 import { mockScreenshot } from './ohos_screenshot'
 import { mockZlib } from './ohos_zlib'
+import { mockPrivacyManager } from './ohos_privacyManager'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
@@ -303,6 +306,10 @@ export function mockRequireNapiFun() {
         return mockStorage();
       case "data.dataShare":
         return mockDataShare();
+      case "data.DataSharePredicates":
+        return DataSharePredicates();
+      case "data.DataShareResultSet":
+        return DataShareResultSet();
       case "data.dataAbility":
         return mockDataAbility();
       case "multimodalInput.inputDevice":
@@ -391,6 +398,8 @@ export function mockRequireNapiFun() {
         return mockMultimediaCamera();
       case "multimedia.audio":
         return mockMultimediaAudio();
+      case "privacyManager":
+        return mockPrivacyManager();
       default:
         return global.requireNapiPreview(...args);
     }
