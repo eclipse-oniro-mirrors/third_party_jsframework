@@ -73,6 +73,18 @@ export function mockHuks() {
         })
       }
     },
+    importWrappedKey: function (...args) {
+      console.warn("huks.importWrappedKey interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, HuksResultMock)
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(HuksResultMock)
+        })
+      }
+    },
     exportKey: function (...args) {
       console.warn("huks.exportKey interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
@@ -229,6 +241,8 @@ export function mockHuks() {
       HUKS_ERROR_INVALID_SALT: -123,
       HUKS_ERROR_INVALID_ITERATION: -124,
       HUKS_ERROR_INVALID_OPERATION: -125,
+      HUKS_ERROR_INVALID_WRAPPED_FORMAT: -126,
+      HUKS_ERROR_INVALID_USAGE_OF_KEY: -127,
 
       HUKS_ERROR_INTERNAL_ERROR: -999,
       HUKS_ERROR_UNKNOWN_ERROR: -1000,
@@ -249,6 +263,7 @@ export function mockHuks() {
     HuksKeyDigest: {
       HUKS_DIGEST_NONE: 0,
       HUKS_DIGEST_MD5: 1,
+      HUKS_DIGEST_SM3: 2,
       HUKS_DIGEST_SHA1: 10,
       HUKS_DIGEST_SHA224: 11,
       HUKS_DIGEST_SHA256: 12,
@@ -297,6 +312,9 @@ export function mockHuks() {
       HUKS_DH_KEY_SIZE_2048: 2048,
       HUKS_DH_KEY_SIZE_3072: 3072,
       HUKS_DH_KEY_SIZE_4096: 4096,
+
+      HUKS_SM2_KEY_SIZE_256: 256,
+      HUKS_SM4_KEY_SIZE_128: 128,
     },
 
     HuksKeyAlg: {
@@ -313,6 +331,15 @@ export function mockHuks() {
       HUKS_ALG_X25519: 101,
       HUKS_ALG_ED25519: 102,
       HUKS_ALG_DH: 103,
+
+      HUKS_ALG_SM2: 150,
+      HUKS_ALG_SM3: 151,
+      HUKS_ALG_SM4: 152,
+    },
+
+    HuksUnwrapSuite: {
+      HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: 1,
+      HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: 2,
     },
 
     HuksKeyGenerateType: {
@@ -331,6 +358,12 @@ export function mockHuks() {
     HuksKeyStorageType: {
       HUKS_STORAGE_TEMP: 0,
       HUKS_STORAGE_PERSISTENT: 1,
+    },
+
+    HuksImportKeyType: {
+      HUKS_KEY_TYPE_PUBLIC_KEY: 0,
+      HUKS_KEY_TYPE_PRIVATE_KEY: 1,
+      HUKS_KEY_TYPE_KEY_PAIR: 2,
     },
 
     HuksSendType: {
@@ -375,6 +408,8 @@ export function mockHuks() {
       HUKS_TAG_AGREE_PUBLIC_KEY: 22,
       HUKS_TAG_KEY_ALIAS: 23,
       HUKS_TAG_DERIVE_KEY_SIZE: 24,
+      HUKS_TAG_IMPORT_KEY_TYPE: 25,
+      HUKS_TAG_UNWRAP_ALGORITHM_SUITE: 26,
 
       HUKS_TAG_ACTIVE_DATETIME: 201,
 
