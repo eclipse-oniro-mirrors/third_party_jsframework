@@ -48,7 +48,6 @@ import { mockAI } from './ai'
 import { mockUserIAMUserAuth } from './ohos/userIAMuserAuth.js'
 import { mockBundleManager } from './ohos/bundleManager'
 import { mockPackageManager } from './ohos/packageManager'
-import { mockZlib } from './napi/ohos_zlib'
 import { mockCalendar } from "./calendar"
 
 export function mockSystemPlugin() {
@@ -86,6 +85,5 @@ export function mockSystemPlugin() {
   mockUserIAMUserAuth()
   mockBundleManager()
   mockPackageManager()
-  mockZlib()
   mockCalendar()
 }
