@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,6 +15,12 @@
 
 import { paramMock } from "../utils"
 
+export const constraintSourceType = {
+  CONSTRAINT_NOT_EXIST: 0,
+  CONSTRAINT_TYPE_BASE: 1,
+  CONSTRAINT_TYPE_DEVICE_OWNER: 2,
+  CONSTRAINT_TYPE_PROFILE_OWNER: 3
+};
 export function mockOsAccount() {
   const osAccountInfoMock = {
     localId: "[PC Preview] unknown id",
@@ -22,6 +28,10 @@ export function mockOsAccount() {
     type: "[PC Preview] unknown type",
     constraints: "[PC Preview] unknown constraints",
     distributedInfo: "[PC Preview] unknown distributedInfo"
+  };
+  const constraintSourceTypeInfoMock = {
+    localId: "[PC Preview] unknown id",
+    type: constraintSourceType,
   };
   const osAccountTypeMock = "[PC Preview] unknown type";
   const accountManagerMock = {
@@ -376,7 +386,45 @@ export function mockOsAccount() {
           resolve(paramMock.paramNumberMock);
         })
       }
-    }
+    },
+    isMainOsAccount: function (...args) {
+      console.warn("AccountManager.isMainOsAccount interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
+        })
+      }
+    },
+    getBundleIdFromUid: function (...args) {
+      console.warn("AccountManager.getBundleIdFromUid interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramNumberMock);
+        })
+      }
+    },
+    queryOsAccountConstraintSourceTypes: function (...args) {
+      console.warn("AccountManager.queryOsAccountConstraintSourceTypes interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+        var constraintSourceTypeInfoArrayMock = new Array();
+        constraintSourceTypeInfoArrayMock.push(constraintSourceTypeInfoMock);
+        const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, constraintSourceTypeInfoArrayMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(constraintSourceTypeInfoArrayMock);
+        })
+      }
+    },
   };
   const osAccount = {
     getAccountManager: function (...args) {
@@ -388,7 +436,8 @@ export function mockOsAccount() {
       ADMIN: "[PC Preview] unknown ADMIN",
       NORMAL: "[PC Preview] unknown NORMAL",
       GUEST: "[PC Preview] unknown GUEST"
-    }
+    },
+    constraintSourceType,
   }
   return osAccount
 }
