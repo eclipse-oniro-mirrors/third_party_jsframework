@@ -15,6 +15,14 @@
 import { paramMock } from "../utils"
 
 export function mockFormProvider() {
+  const FormType = {
+    JS: 1,
+  }
+  const ColorMode = {
+    MODE_AUTO : -1,
+    MODE_DARK : 0,
+    MODE_LIGHT : 1,
+  }
   // A mock version of formInfo.
   const FormInfoMock = {
     bundleName: '[PC preview] unknow bundleName',
@@ -22,9 +30,9 @@ export function mockFormProvider() {
     abilityName: '[PC preview] unknow abilityName',
     name: '[PC preview] unknow name',
     description: '[PC preview] unknow description',
-    type: '[PC preview] unknow type',
+    type: FormType,
     jsComponentName: '[PC preview] unknow jsComponentName',
-    colorMode: '[PC preview] unknow colorMode',
+    colorMode: ColorMode,
     isDefault: '[PC preview] unknow isDefault',
     updateEnabled: '[PC preview] unknow updateEnabled',
     formVisibleNotify: '[PC preview] unknow formVisibleNotify',
@@ -33,8 +41,8 @@ export function mockFormProvider() {
     formConfigAbility: '[PC preview] unknow formConfigAbility',
     updateDuration: '[PC preview] unknow updateDuration',
     defaultDimension: '[PC preview] unknow defaultDimension',
-    supportDimensions: '[PC preview] unknow supportDimensions',
-    customizeData: '[PC preview] unknow customizeData',
+    supportDimensions: [paramMock.paramNumberMock],
+    customizeData: {"key": paramMock.paramStringMock},
   }
   const formProvider = {
     getFormsInfo: function (...args) {
