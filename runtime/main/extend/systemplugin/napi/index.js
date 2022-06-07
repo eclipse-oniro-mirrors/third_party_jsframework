@@ -137,9 +137,12 @@ import { mockSystemTimer } from './ohos_systemTimer'
 import { mockWallpaper } from './ohos_wallpaper'
 import { mockWantAgent } from './ohos_wantAgent'
 import { mockScreenshot } from './ohos_screenshot'
+import { mockZlib } from './ohos_zlib'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
+      case "zlib":
+        return mockZlib();
       case "screenshot":
         return mockScreenshot();
       case "WantAgent":
