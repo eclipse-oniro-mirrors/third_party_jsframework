@@ -65,8 +65,20 @@ export function mockFormProvider() {
           resolve(array);
         });
       }
+    },
+    requestPublishForm: function (...args) {
+      console.warn('formProvider.requestPublishForm interface mocked in the Previewer. How this interface works on' +
+        ' the Previewer may be different from that on a real device.');
+      const len = args.length;
+      // callback
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve(paramMock.paramStringMock);
+        });
+      }
     }
   }
-
   return formProvider;
 }
