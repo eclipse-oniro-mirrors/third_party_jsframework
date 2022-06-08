@@ -142,10 +142,13 @@ import { mockScreenshot } from './ohos_screenshot'
 import { mockZlib } from './ohos_zlib'
 import { mockPrivacyManager } from './ohos_privacyManager'
 import { mockFormProvider } from './ohos_application_formProvider'
+import { mockScreen } from './ohos_screen'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
+      case "screen":
+        return mockScreen();
       case "zlib":
         return mockZlib();
       case "screenshot":
