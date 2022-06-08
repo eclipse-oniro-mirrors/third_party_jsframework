@@ -331,10 +331,10 @@ export function mockMultimediaAudio() {
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock,paramMock.paramNumberMock);
+        args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(paramMock.paramNumberMock);
+          resolve();
         })
       }
     }
@@ -582,10 +582,10 @@ export function mockMultimediaAudio() {
         " Previewer may be different from that on a real device.")
         const len = args.length
         if (typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.businessErrorMock,paramMock.paramNumberMock);
+          args[len - 1].call(this, paramMock.businessErrorMock,paramMock.paramBooleanMock);
         } else {
           return new Promise((resolve, reject) => {
-            resolve(paramMock.paramNumberMock);
+            resolve(paramMock.paramBooleanMock);
           })
         }
     },
@@ -594,10 +594,10 @@ export function mockMultimediaAudio() {
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock,paramMock.paramNumberMock);
+        args[len - 1].call(this, paramMock.businessErrorMock,paramMock.paramBooleanMock);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(paramMock.paramNumberMock);
+          resolve(paramMock.paramBooleanMock);
         })
       }
     }
