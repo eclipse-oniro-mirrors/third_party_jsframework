@@ -81,6 +81,11 @@ export const ContextClass = class Context extends BaseContextClass {
         " may be different from that on a real device.")
       return new ContextClass();
     };
+    this.createModuleContext = function (...args) {
+      console.warn("Context.createModuleContext interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      return new ContextClass();
+    };
     this.getApplicationContext = function () {
       console.warn("Context.getApplicationContext interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
