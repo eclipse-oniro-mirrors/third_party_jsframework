@@ -886,7 +886,7 @@ export function mockBundleManager() {
     installTime: "[PC preview] unknown install time",
   }
 
-const ExtensionAbilityInfoMock = [
+  const ExtensionAbilityInfoMock = [
   {
     bundleName: "[PC preview] unknown bundle name",
     moduleName: "[PC preview] unknown module name",
@@ -895,15 +895,31 @@ const ExtensionAbilityInfoMock = [
     descriptionId: "[PC preview] unknown description id",
     iconId: "[PC preview] unknown icon id",
     isVisible: "[PC preview] unknown is visible",
-    extensionAbilityType: "[PC preview] unknown extension abilityType",
-    permissions: "[PC preview] unknown permissions",
+    extensionAbilityType: {
+      FORM: "[PC preview] unknown is FORM",
+      WORK_SCHEDULER: "[PC preview] unknown is WORK_SCHEDULER",
+      INPUT_METHOD: "[PC preview] unknown is INPUT_METHOD",
+      SERVICE: "[PC preview] unknown is SERVICE",
+      ACCESSIBILITY: "[PC preview] unknown is ACCESSIBILITY",
+      DATA_SHARE: "[PC preview] unknown is DATA_SHARE",
+      FILE_SHARE: "[PC preview] unknown is FILE_SHARE",
+      STATIC_SUBSCRIBER: "[PC preview] unknown is STATIC_SUBSCRIBER",
+      WALLPAPER: "[PC preview] unknown is WALLPAPER",
+      BACKUP: "[PC preview] unknown is BACKUP",
+      WINDOW: "[PC preview] unknown is WINDOW",
+      UNSPECIFIED: "[PC preview] unknown is UNSPECIFIED",
+    },
+    permissions: ["[PC preview] unknown permissions"],
     applicationInfo: "[PC preview] unknown application info",
-    metadata: "[PC preview] unknown metadata",
+    metadata: [{
+      name: "[PC preview] unknown name",
+      value: "[PC preview] unknown value",
+      resource: "[PC preview] unknown resource",
+    }],
     enabled: "[PC preview] unknown enabled",
     readPermission: "[PC preview] unknown read permission",
     writePermission: "[PC preview] unknown write permission",
   }
-]
 
   const ModuleUpdateFlagMock = {
     FLAG_MODULE_UPGRADE_CHECK: 0,
