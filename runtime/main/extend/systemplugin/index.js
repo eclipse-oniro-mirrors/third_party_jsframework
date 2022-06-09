@@ -46,8 +46,7 @@ import { mockRequireNapiFun } from './napi'
 import { mockAccessibility } from './accessibility'
 import { mockAI } from './ai'
 import { mockUserIAMUserAuth } from './ohos/userIAMuserAuth.js'
-import { mockBundleManager } from './ohos/bundleManager'
-import { mockDistributedBundle } from './ohos/distributedBundle'
+import { mockBundleManager } from './ohos/bundleManager's
 import { mockPackageManager } from './ohos/packageManager'
 import { mockCalendar } from "./calendar"
 
@@ -85,7 +84,6 @@ export function mockSystemPlugin() {
   mockAppAbilityManager()
   mockUserIAMUserAuth()
   mockBundleManager()
-  mockDistributedBundle()
   mockPackageManager()
   mockCalendar()
 }
