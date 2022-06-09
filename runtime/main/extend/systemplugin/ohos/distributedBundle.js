@@ -31,7 +31,7 @@ export function mockDistributedBundle() {
     },
   ]
 
-  global.ohosplugin.bundle = {
+  global.ohosplugin.distributedBundle = {
     getRemoteAbilityInfo: function (...args) {
     console.warn("distributedBundle.getRemoteAbilityInfo interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
