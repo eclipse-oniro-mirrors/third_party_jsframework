@@ -44,6 +44,7 @@ import { mockUrl } from './ohos_url'
 import { mockHiAppEvent } from './ohos_hiAppEvent'
 import { mockHilog } from './ohos_hilog'
 import { mockHiSysEvent } from './ohos_hiSysEvent'
+import { mockHiTraceChain } from './ohos_hiTraceChain'
 import { mockTv } from './tv'
 import { mockDtv } from './dtv'
 import { mockDistributedAccount } from './ohos_account_distributedAccount'
@@ -296,6 +297,8 @@ export function mockRequireNapiFun() {
         return mockHilog();
       case "hiSysEvent":
         return mockHiSysEvent();
+      case "hiTraceChain":
+        return mockHiTraceChain();
       case "tv":
         return mockTv();
       case "dtv":
