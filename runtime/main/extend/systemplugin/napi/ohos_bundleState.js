@@ -41,8 +41,35 @@ export function mockBundleState() {
     stateOccurredTime: '[PC preview] unknown stateOccurredTime',
     stateType: '[PC preview] unknown stateType',
   }]
+  const bundleActiveEventStateMock = [{
+    name: '[PC preview] unknown name',
+    eventId: '[PC preview] unknown eventId',
+    count: '[PC preview] unknown count',
+  }]
   const bundleActiveInfoResponseMock = {
     "key": bundleStateInfomMock
+  }
+  const BundleActiveGroupCallbackInfoMock = {
+    appUsageOldGroup : '[PC preview] unknown appUsageOldGroup',
+    appUsageNewGroup : '[PC preview] unknown appUsageNewGroup',
+    userId : '[PC preview] unknown userId',
+    changeReason : '[PC preview] unknown changeReason',
+    bundleName : '[PC preview] unknown bundleName',
+  }
+  const BundleActiveModuleInfoMock = {
+    deviceId : '[PC preview] unknown deviceId',
+    bundleName : '[PC preview] unknown bundleName',
+    moduleName : '[PC preview] unknown moduleName',
+    abilityName : '[PC preview] unknown abilityName',
+    appLabelId : '[PC preview] unknown appLabelId',
+    labelId : '[PC preview] unknown labelId',
+    descriptionId : '[PC preview] unknown descriptionId',
+    abilityLableId : '[PC preview] unknown abilityLableId',
+    abilityDescriptionId : '[PC preview] unknown abilityDescriptionId',
+    abilityIconId : '[PC preview] unknown abilityIconId',
+    launchedCount : '[PC preview] unknown launchedCount',
+    lastModuleUsedTime : '[PC preview] unknown lastModuleUsedTime',
+    formRecords : '[PC preview] unknown formRecords',
   }
   const intervalTypeMock = {
     BY_OPTIMIZED: 0,
@@ -50,6 +77,14 @@ export function mockBundleState() {
     BY_WEEKLY: 2,
     BY_MONTHLY: 3,
     BY_ANNUALLY: 4
+  }
+  const groupType = {
+    ACTIVE_GROUP_ALIVE : 10,
+    ACTIVE_GROUP_DAILY : 20,
+    ACTIVE_GROUP_FIXED : 30,
+    ACTIVE_GROUP_RARE : 40,
+    ACTIVE_GROUP_LIMIT : 50,
+    ACTIVE_GROUP_NEVER : 60,
   }
   const bundleState = {
     isIdleState: function (...args) {
@@ -123,7 +158,79 @@ export function mockBundleState() {
           resolve(bundleActiveStateMock)
         });
       }
-    }
+    },
+    queryBundleActiveEventStates: function (...args) {
+      console.warn("bundleState.queryBundleActiveEventStates interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, bundleActiveEventStateMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve(bundleActiveEventStateMock)
+        });
+      }
+    },
+    queryAppNotificationNumber: function (...args) {
+      console.warn("bundleState.queryAppNotificationNumber interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, bundleActiveEventStateMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve(bundleActiveEventStateMock)
+        });
+      }
+    },
+    setBundleGroup: function (...args) {
+      console.warn("bundleState.setBundleGroup interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve()
+        });
+      }
+    },
+    registerGroupCallBack: function (...args) {
+      console.warn("bundleState.registerGroupCallBack interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve()
+        });
+      }
+    },
+    unRegisterGroupCallBack: function (...args) {
+      console.warn("bundleState.unRegisterGroupCallBack interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve()
+        });
+      }
+    },
+    getRecentlyUsedModules: function (...args) {
+      console.warn("bundleState.getRecentlyUsedModules interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveModuleInfoMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve(BundleActiveModuleInfoMock)
+        });
+      }
+    },
   }
   return bundleState
 }
