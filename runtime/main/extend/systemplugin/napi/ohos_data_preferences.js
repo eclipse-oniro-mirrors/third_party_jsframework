@@ -19,6 +19,14 @@ const ValueTypes = {
   unknow: '[PC Preview] unknow value type'
 };
 
+const key = {
+  unknow: '[PC Preview] unknow string'
+};
+
+const MAX_KEY_LENGTH = 80;
+
+const MAX_VALUE_LENGTH = 8192;
+
 export function mockPreferences() {
   const preferencesMock = {
     getPreferences: function (...args) {
@@ -65,6 +73,18 @@ export function mockPreferences() {
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, ValueTypes.unknow);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(ValueTypes.unknow);
+        })
+      }
+    },
+    getAll: function (...args) {
+      console.warn("Preferences.getAll interface mocked in the Previewer. How this interface works on the" +
+          " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve, reject) => {
           resolve(ValueTypes.unknow);
@@ -134,15 +154,17 @@ export function mockPreferences() {
     on: function (...args) {
       console.warn("Preferences.on interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
+      const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
       }
     },
     off: function (...args) {
       console.warn("Preferences.off interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
+      const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
       }
     },
   };
