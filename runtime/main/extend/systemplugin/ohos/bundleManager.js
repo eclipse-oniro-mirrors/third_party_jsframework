@@ -895,27 +895,10 @@ const ExtensionAbilityInfoMock = [
     descriptionId: "[PC preview] unknown description id",
     iconId: "[PC preview] unknown icon id",
     isVisible: "[PC preview] unknown is visible",
-    extensionAbilityType: {
-      FORM: "[PC preview] unknown is FORM",
-      WORK_SCHEDULER: "[PC preview] unknown is WORK_SCHEDULER",
-      INPUT_METHOD: "[PC preview] unknown is INPUT_METHOD",
-      SERVICE: "[PC preview] unknown is SERVICE",
-      ACCESSIBILITY: "[PC preview] unknown is ACCESSIBILITY",
-      DATA_SHARE: "[PC preview] unknown is DATA_SHARE",
-      FILE_SHARE: "[PC preview] unknown is FILE_SHARE",
-      STATIC_SUBSCRIBER: "[PC preview] unknown is STATIC_SUBSCRIBER",
-      WALLPAPER: "[PC preview] unknown is WALLPAPER",
-      BACKUP: "[PC preview] unknown is BACKUP",
-      WINDOW: "[PC preview] unknown is WINDOW",
-      UNSPECIFIED: "[PC preview] unknown is UNSPECIFIED",
-    },
-    permissions: ["[PC preview] unknown permissions"],
+    extensionAbilityType: "[PC preview] unknown extension abilityType",
+    permissions: "[PC preview] unknown permissions",
     applicationInfo: "[PC preview] unknown application info",
-    metadata: [{
-      name: "[PC preview] unknown name",
-      value: "[PC preview] unknown value",
-      resource: "[PC preview] unknown resource",
-    }],
+    metadata: "[PC preview] unknown metadata",
     enabled: "[PC preview] unknown enabled",
     readPermission: "[PC preview] unknown read permission",
     writePermission: "[PC preview] unknown write permission",
@@ -1359,7 +1342,7 @@ const ExtensionAbilityInfoMock = [
       console.warn("bundle.getAppsGrantedPermissions interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
-      if (typeof args[len - 1] === 'function') {fgetPermissionDef
+      if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, ArrayStringMock)
       } else {
         return new Promise((resolve) => {
@@ -1604,6 +1587,6 @@ const ExtensionAbilityInfoMock = [
           resolve(ExtensionAbilityInfoMock)
         });
       }
-    },
+    }
   }
 }

@@ -43,6 +43,7 @@ import { mockProcess } from './ohos_process'
 import { mockUrl } from './ohos_url'
 import { mockHiAppEvent } from './ohos_hiAppEvent'
 import { mockHilog } from './ohos_hilog'
+import { mockHiSysEvent } from './ohos_hiSysEvent'
 import { mockTv } from './tv'
 import { mockDtv } from './dtv'
 import { mockDistributedAccount } from './ohos_account_distributedAccount'
@@ -52,6 +53,7 @@ import { mockDistributedObject } from './ohos_data_distributedDataObject'
 import { mockDataAbility } from './ohos_data_dataAbility'
 import { mockStorage } from './system_storage'
 import { mockRdb } from './ohos_data_rdb'
+import { mockPreferences } from './ohos_data_preferences'
 import { mockDataShare } from './ohos_data_dataShare'
 import { DataSharePredicates } from './ohos_data_dataSharePredicates'
 import { DataShareResultSet } from './ohos_data_DataShareResultSet'
@@ -294,6 +296,8 @@ export function mockRequireNapiFun() {
         return mockHiAppEvent();
       case "hilog":
         return mockHilog();
+      case "hiSysEvent":
+        return mockHiSysEvent();
       case "tv":
         return mockTv();
       case "dtv":
@@ -310,6 +314,8 @@ export function mockRequireNapiFun() {
         return mockRdb();
       case "data.storage":
         return mockStorage();
+      case "data.preferences":
+        return mockPreferences();
       case "data.dataShare":
         return mockDataShare();
       case "data.DataSharePredicates":
