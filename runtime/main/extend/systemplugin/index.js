@@ -46,7 +46,7 @@ import { mockRequireNapiFun } from './napi'
 import { mockAccessibility } from './accessibility'
 import { mockAI } from './ai'
 import { mockUserIAMUserAuth } from './ohos/userIAMuserAuth.js'
-import { mockBundleManager } from './ohos/bundleManager's
+import { mockBundleManager } from './ohos/bundleManager'
 import { mockPackageManager } from './ohos/packageManager'
 import { mockCalendar } from "./calendar"
 
