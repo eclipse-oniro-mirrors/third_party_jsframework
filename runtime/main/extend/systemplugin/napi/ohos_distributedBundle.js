@@ -31,7 +31,7 @@ export function mockDistributedBundle() {
         },
     ]
 
-    const bundleDistributedBundle = {
+    const DistributedBundle = {
         getRemoteAbilityInfo: function (...args) {
             console.warn("distributedBundle.getRemoteAbilityInfo interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
@@ -57,5 +57,5 @@ export function mockDistributedBundle() {
             }
             }
     };
-    return bundleDistributedBundle;
+    return DistributedBundle;
 }
