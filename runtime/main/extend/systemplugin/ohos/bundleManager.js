@@ -886,71 +886,24 @@ export function mockBundleManager() {
     installTime: "[PC preview] unknown install time",
   }
 
-  const ExtensionAbilityInfoMock = [
+const ExtensionAbilityInfoMock = [
   {
-      bundleName: "[PC preview] unknown bundle name",
-      moduleName: "[PC preview] unknown module name",
-      name: "[PC preview] unknown name",
-      labelId: "[PC preview] unknown label id",
-      descriptionId: "[PC preview] unknown description id",
-      iconId: "[PC preview] unknown icon id",
-      isVisible: "[PC preview] unknown is visible",
-      extensionAbilityType: {
-        FORM: "[PC preview] unknown is FORM:0",
-        WORK_SCHEDULER: "[PC preview] unknown is WORK_SCHEDULER:1",
-        INPUT_METHOD: "[PC preview] unknown is INPUT_METHOD:2",
-        SERVICE: "[PC preview] unknown is SERVICE:3",
-        ACCESSIBILITY: "[PC preview] unknown is ACCESSIBILITY:4",
-        DATA_SHARE: "[PC preview] unknown is DATA_SHARE:5",
-        FILE_SHARE: "[PC preview] unknown is FILE_SHARE:6",
-        STATIC_SUBSCRIBER: "[PC preview] unknown is STATIC_SUBSCRIBER:7",
-        WALLPAPER: "[PC preview] unknown is WALLPAPER:8",
-        BACKUP: "[PC preview] unknown is BACKUP:9",
-        WINDOW: "[PC preview] unknown is WINDOW:10",
-        UNSPECIFIED: "[PC preview] unknown is UNSPECIFIED:20",
-      },
-      permissions: ["[PC preview] unknown permissions"],
-      applicationInfo: {
-        name: "[PC preview] unknown is name",
-        description: "[PC preview] unknown is description",
-        descriptionId: "[PC preview] unknown is descriptionId",
-        systemApp: "[PC preview] unknown is systemApp",
-        enabled: "[PC preview] unknown is enabled",
-        labelId: "[PC preview] unknown is labelId",
-        icon: "[PC preview] unknown is icon",
-        iconId: "[PC preview] unknown is iconId",
-        process: "[PC preview] unknown is process",
-        supportedModes: "[PC preview] unknown is supportedModes",
-        moduleSourceDirs: "[PC preview] unknown is moduleSourceDirs",
-        permissions: ["[PC preview] unknown is permissions"],
-        moduleInfos: ["[PC preview] unknown is moduleSourceDirs"],
-        entryDir: "[PC preview] unknown is entryDir",
-        metaData: [{
-            name: "[PC preview] unknown name",
-            value: "[PC preview] unknown value",
-            resource: "[PC preview] unknown resource",
-        }],
-        metadata: [{
-            name: "[PC preview] unknown name",
-            value: "[PC preview] unknown value",
-            resource: "[PC preview] unknown resource",
-        }],
-        removable: "[PC preview] unknown is removable",
-        accessTokenId: "[PC preview] unknown is accessTokenId",
-        uid: "[PC preview] unknown is uid",
-        entityType: "[PC preview] unknown is entityType",
-        fingerprint: "[PC preview] unknown is fingerprint"
-      },
-      metadata: [{
-        name: "[PC preview] unknown name",
-        value: "[PC preview] unknown value",
-        resource: "[PC preview] unknown resource",
-      }],
-      enabled: "[PC preview] unknown enabled",
-      readPermission: "[PC preview] unknown read permission",
-      writePermission: "[PC preview] unknown write permission",
-    }
-  ]
+    bundleName: "[PC preview] unknown bundle name",
+    moduleName: "[PC preview] unknown module name",
+    name: "[PC preview] unknown name",
+    labelId: "[PC preview] unknown label id",
+    descriptionId: "[PC preview] unknown description id",
+    iconId: "[PC preview] unknown icon id",
+    isVisible: "[PC preview] unknown is visible",
+    extensionAbilityType: "[PC preview] unknown extension abilityType",
+    permissions: "[PC preview] unknown permissions",
+    applicationInfo: "[PC preview] unknown application info",
+    metadata: "[PC preview] unknown metadata",
+    enabled: "[PC preview] unknown enabled",
+    readPermission: "[PC preview] unknown read permission",
+    writePermission: "[PC preview] unknown write permission",
+  }
+]
 
   const ModuleUpdateFlagMock = {
     FLAG_MODULE_UPGRADE_CHECK: 0,
@@ -1565,66 +1518,6 @@ export function mockBundleManager() {
     },
     queryExtensionAbilityInfosByWant: function (...args) {
       console.warn("bundle.queryExtensionAbilityInfosByWant interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this,paramMock.businessErrorMock,ExtensionAbilityInfoMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve(ExtensionAbilityInfoMock)
-        });
-      }
-    },
-    setModuleUpgradeFlag: function (...args) {
-      console.warn("bundle.setModuleUpgradeFlag interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve()
-        });
-      }
-    },
-    isModuleRemovable: function (...args) {
-      console.warn("bundle.isModuleRemovable interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve(paramMock.paramBooleanMock)
-        });
-      }
-    },
-    getProfileByAbility: function (...args) {
-      console.warn("bundle.getProfileByAbility interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, new Array(paramMock.paramStringMock))
-      } else {
-        return new Promise((resolve) => {
-          resolve(new Array(paramMock.paramStringMock))
-        });
-      }
-    },
-    getProfileByExtensionAbility: function (...args) {
-      console.warn("bundle.getProfileByExtensionAbility interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, new Array(paramMock.paramStringMock))
-      } else {
-        return new Promise((resolve) => {
-          resolve(new Array(paramMock.paramStringMock))
-        });
-      }
-    },
-    queryExtensionAbilityInfos: function (...args) {
-      console.warn("bundle.queryExtensionAbilityInfos interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
