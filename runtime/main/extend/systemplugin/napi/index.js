@@ -148,6 +148,8 @@ import { mockPrivacyManager } from './ohos_privacyManager'
 import { mockFormProvider } from './ohos_application_formProvider'
 import { mockScreen } from './ohos_screen'
 import { mockDistributedBundle } from './ohos_distributedBundle'
+import { mockInputConsumer } from './ohos_multimodalInput_inputConsumer'
+import { mockMouse } from './ohos_multimodalInput_mouse'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -422,6 +424,10 @@ export function mockRequireNapiFun() {
         return mockPrivacyManager();
       case "application.formProvider":
         return mockFormProvider();
+      case "multimodalInput.inputConsumer":
+        return mockInputConsumer();
+      case "multimodalInput.mouse":
+        return mockMouse();
       default:
         return global.requireNapiPreview(...args);
     }
