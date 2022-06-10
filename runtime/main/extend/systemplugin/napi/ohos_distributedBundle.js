@@ -16,7 +16,7 @@
 import { paramMock } from "../utils"
 
 export function mockDistributedBundle() {
-    const distributedBundle = [
+    const RemoteAbilityInfo = [
         {
           elementName: {
             deviceId: "[PC preview] unknown deviceId",
@@ -37,10 +37,10 @@ export function mockDistributedBundle() {
                 " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, Array(distributedBundle))
+                args[len - 1].call(this, paramMock.businessErrorMock, Array(RemoteAbilityInfo))
             } else {
                 return new Promise((resolve) => {
-                resolve(Array(distributedBundle))
+                resolve(Array(RemoteAbilityInfo))
                 });
             }
             },
@@ -49,10 +49,10 @@ export function mockDistributedBundle() {
                 " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock,  Array(distributedBundle))
+                args[len - 1].call(this, paramMock.businessErrorMock,  Array(RemoteAbilityInfo))
             } else {
                 return new Promise((resolve) => {
-                resolve(Array(distributedBundle))
+                resolve(Array(RemoteAbilityInfo))
                 });
             }
             }
