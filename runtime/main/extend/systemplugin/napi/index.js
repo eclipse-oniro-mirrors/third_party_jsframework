@@ -147,6 +147,7 @@ import { mockZlib } from './ohos_zlib'
 import { mockPrivacyManager } from './ohos_privacyManager'
 import { mockFormProvider } from './ohos_application_formProvider'
 import { mockScreen } from './ohos_screen'
+import { mockDistributedBundle } from './ohos_distributedBundle'
 
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
@@ -339,6 +340,8 @@ export function mockRequireNapiFun() {
         return mockUsb();
       case "bundle":
         return mockBundle();
+      case "distributedBundle":
+        return mockDistributedBundle();
       case "bundle.innerBundleManager":
         return mockInnerBundle();
       case "uri":
