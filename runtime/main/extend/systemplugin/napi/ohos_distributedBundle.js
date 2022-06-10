@@ -20,11 +20,11 @@ export function mockDistributedBundle() {
         {
           elementName: {
             deviceId: "[PC preview] unknown deviceId",
-            bundleName: "[PC preview] unknown deviceId",
-            abilityName: "[PC preview] unknown deviceId",
-            uri: "[PC preview] unknown deviceId",
-            shortName: "[PC preview] unknown deviceId",
-            moduleName: "[PC preview] unknown deviceId",
+            bundleName: "[PC preview] unknown bundleName",
+            abilityName: "[PC preview] unknown abilityName",
+            uri: "[PC preview] unknown uri",
+            shortName: "[PC preview] unknown shortName",
+            moduleName: "[PC preview] unknown moduleName",
           },
           label: "[PC preview] unknown app label",
           icon: "[PC preview] unknown icon",
