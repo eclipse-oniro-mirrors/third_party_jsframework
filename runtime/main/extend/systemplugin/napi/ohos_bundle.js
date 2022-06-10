@@ -23,6 +23,21 @@ import {ShortcutInfoMock} from './bundle/applicationInfo'
 import {ModuleUsageRecordMock} from './bundle/applicationInfo'
 
 export function mockBundle() {
+    const extensionAbilityType = {
+        FORM: 0,
+        WORK_SCHEDULER: 1,
+        INPUT_METHOD: 2,
+        SERVICE: 3,
+        ACCESSIBILITY: 4,
+        DATA_SHARE: 5,
+        FILE_SHARE: 6,
+        STATIC_SUBSCRIBER: 7,
+        WALLPAPER: 8,
+        BACKUP: 9,
+        WINDOW: 10,
+        UNSPECIFIED: 20,
+    }
+
     const ExtensionAbilityInfoMock = [
         {
           bundleName: "[PC preview] unknown bundle name",
@@ -32,20 +47,7 @@ export function mockBundle() {
           descriptionId: "[PC preview] unknown description id",
           iconId: "[PC preview] unknown icon id",
           isVisible: "[PC preview] unknown is visible",
-          extensionAbilityType: {
-            FORM: "[PC preview] unknown is FORM:0",
-            WORK_SCHEDULER: "[PC preview] unknown is WORK_SCHEDULER:1",
-            INPUT_METHOD: "[PC preview] unknown is INPUT_METHOD:2",
-            SERVICE: "[PC preview] unknown is SERVICE:3",
-            ACCESSIBILITY: "[PC preview] unknown is ACCESSIBILITY:4",
-            DATA_SHARE: "[PC preview] unknown is DATA_SHARE:5",
-            FILE_SHARE: "[PC preview] unknown is FILE_SHARE:6",
-            STATIC_SUBSCRIBER: "[PC preview] unknown is STATIC_SUBSCRIBER:7",
-            WALLPAPER: "[PC preview] unknown is WALLPAPER:8",
-            BACKUP: "[PC preview] unknown is BACKUP:9",
-            WINDOW: "[PC preview] unknown is WINDOW:10",
-            UNSPECIFIED: "[PC preview] unknown is UNSPECIFIED:20",
-          },
+          extensionAbilityType: extensionAbilityType,
           permissions: ["[PC preview] unknown permissions"],
           applicationInfo: {
             name: "[PC preview] unknown is name",

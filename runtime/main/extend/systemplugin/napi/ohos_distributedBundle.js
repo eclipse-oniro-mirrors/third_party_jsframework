@@ -16,7 +16,7 @@
 import { paramMock } from "../utils"
 
 export function mockDistributedBundle() {
-    const ModeleDistributedBundleMock = [
+    const distributedBundle = [
         {
           elementName: {
             deviceId: "[PC preview] unknown deviceId",
@@ -31,16 +31,16 @@ export function mockDistributedBundle() {
         },
     ]
 
-    const bundistributedBundledle = {
+    const bundleDistributedBundle = {
         getRemoteAbilityInfo: function (...args) {
             console.warn("distributedBundle.getRemoteAbilityInfo interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, Array(ModeleDistributedBundleMock))
+                args[len - 1].call(this, paramMock.businessErrorMock, Array(distributedBundle))
             } else {
                 return new Promise((resolve) => {
-                resolve(Array(ModeleDistributedBundleMock))
+                resolve(Array(distributedBundle))
                 });
             }
             },
@@ -49,13 +49,13 @@ export function mockDistributedBundle() {
                 " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock,  Array(ModeleDistributedBundleMock))
+                args[len - 1].call(this, paramMock.businessErrorMock,  Array(distributedBundle))
             } else {
                 return new Promise((resolve) => {
-                resolve(Array(ModeleDistributedBundleMock))
+                resolve(Array(distributedBundle))
                 });
             }
             }
     };
-    return bundistributedBundledle;
+    return bundleDistributedBundle;
 }
