@@ -37,10 +37,10 @@ export function mockDistributedBundle() {
                 " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, ModeleDistributedBundleMock)
+                args[len - 1].call(this, paramMock.businessErrorMock, Array(ModeleDistributedBundleMock))
             } else {
                 return new Promise((resolve) => {
-                resolve(ModeleDistributedBundleMock)
+                resolve(Array(ModeleDistributedBundleMock))
                 });
             }
             },
@@ -49,10 +49,10 @@ export function mockDistributedBundle() {
                 " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, ModeleDistributedBundleMock)
+                args[len - 1].call(this, paramMock.businessErrorMock,  Array(ModeleDistributedBundleMock))
             } else {
                 return new Promise((resolve) => {
-                resolve(ModeleDistributedBundleMock)
+                resolve(Array(ModeleDistributedBundleMock))
                 });
             }
             }

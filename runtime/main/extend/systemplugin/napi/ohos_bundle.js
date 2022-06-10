@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -47,7 +47,37 @@ export function mockBundle() {
             UNSPECIFIED: "[PC preview] unknown is 20",
           },
           permissions: ["[PC preview] unknown permissions"],
-          applicationInfo: "[PC preview] unknown application info",
+          applicationInfo: {
+            name: "[PC preview] unknown is name",
+            description: "[PC preview] unknown is description",
+            descriptionId: "[PC preview] unknown is descriptionId",
+            systemApp: "[PC preview] unknown is systemApp",
+            enabled: "[PC preview] unknown is enabled",
+            labelId: "[PC preview] unknown is labelId",
+            icon: "[PC preview] unknown is icon",
+            iconId: "[PC preview] unknown is iconId",
+            process: "[PC preview] unknown is process",
+            supportedModes: "[PC preview] unknown is supportedModes",
+            moduleSourceDirs: "[PC preview] unknown is moduleSourceDirs",
+            permissions: ["[PC preview] unknown is permissions"],
+            moduleInfos: ["[PC preview] unknown is moduleSourceDirs"],
+            entryDir: "[PC preview] unknown is entryDir",
+            metaData: [{
+                name: "[PC preview] unknown name",
+                value: "[PC preview] unknown value",
+                resource: "[PC preview] unknown resource",
+            }],
+            metadata: [{
+                name: "[PC preview] unknown name",
+                value: "[PC preview] unknown value",
+                resource: "[PC preview] unknown resource",
+            }],
+            removable: "[PC preview] unknown is removable",
+            accessTokenId: "[PC preview] unknown is accessTokenId",
+            uid: "[PC preview] unknown is uid",
+            entityType: "[PC preview] unknown is entityType",
+            fingerprint: "[PC preview] unknown is fingerprint",
+          },
           metadata: [{
             name: "[PC preview] unknown name",
             value: "[PC preview] unknown value",
@@ -281,10 +311,10 @@ export function mockBundle() {
               " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-              args[len - 1].call(this,paramMock.businessErrorMock,ExtensionAbilityInfoMock)
+              args[len - 1].call(this,paramMock.businessErrorMock, Array(ExtensionAbilityInfoMock))
             } else {
               return new Promise((resolve) => {
-                resolve(ExtensionAbilityInfoMock)
+                resolve(Array(ExtensionAbilityInfoMock))
               });
             }
           }
