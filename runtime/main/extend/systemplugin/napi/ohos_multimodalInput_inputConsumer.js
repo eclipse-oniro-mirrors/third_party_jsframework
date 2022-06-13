@@ -56,6 +56,12 @@ export function mockInputConsumer() {
             console.warn("second parameter type must be 'object'");
             return;
         }
+        if (len === 3) {
+            if (typeof args[2] != 'function') {
+                console.warn("the third parameter type must be 'function'");
+                return; 
+            } 
+        }
     }
   }
   return inputConsumer;
