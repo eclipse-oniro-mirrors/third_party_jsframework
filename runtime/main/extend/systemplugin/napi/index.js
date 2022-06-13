@@ -148,10 +148,21 @@ import { mockPrivacyManager } from './ohos_privacyManager'
 import { mockFormProvider } from './ohos_application_formProvider'
 import { mockScreen } from './ohos_screen'
 import { mockDistributedBundle } from './ohos_distributedBundle'
-
+import { mockDocument } from './ohos_document'
+import { mockMediaQuery } from './ohos_mediaquery'
+import { mockResourceManager } from './ohos_resourceManager'
+import { mockFile } from './system_file'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
+      case "file":
+        return mockFile();
+      case "resourceManager":
+        return mockResourceManager();
+      case "mediaquery":
+        return mockMediaQuery();
+      case "document":
+        return mockDocument();
       case "screen":
         return mockScreen();
       case "zlib":

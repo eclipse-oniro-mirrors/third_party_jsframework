@@ -175,7 +175,7 @@ export function mockResourceManager() {
     }
   }
 
-  var resourceManager = {
+  var resourceManagerMock = {
     getResourceManager: async function getResourceManager(optBundleName, optCallback) {
       let bundleName = '';
       let callback;
@@ -201,7 +201,7 @@ export function mockResourceManager() {
   };
 
   const resourceManager = {
-    getResourceManager: resourceManager.getResourceManager
+    getResourceManager: resourceManagerMock.getResourceManager
   }
   return resourceManager
 }
