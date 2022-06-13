@@ -22,25 +22,29 @@ export function mockInputConsumer() {
         console.warn("inputConsumer.on interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.");
         const len = args.length;
-        if (len !== 2) {
-            console.warn("the number of parameter must be two");
+        if (len !== 3) {
+            console.warn("Must be three parameters");
             return;
         }
         if (EventType.indexOf(args[0]) === -1) {
             console.warn("the first parameter must be 'key'");
             return;
         }
-        if (typeof args[1] != 'function') {
-            console.warn("the second parameter type must be 'function'");
+        if (typeof args[1] != 'object') {
+            console.warn("the second parameter type must be 'object'");
             return; 
         }
-        args[1].call(this, paramMock.paramObjectMock);
+        if (typeof args[2] != 'function') {
+            console.warn("the third parameter type must be 'function'");
+            return; 
+        }
+        args[2].call(this, paramMock.paramObjectMock);
     },
     off: function (...args) {
         console.warn("inputConsumer.off interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.");
         const len = args.length;
-        if (len < 1 || len > 2) {
+        if (len < 2 || len > 3) {
             console.warn("a maximum of two parameters");
             return;
         }
@@ -48,11 +52,9 @@ export function mockInputConsumer() {
             console.warn("first parameter must be 'key'")
             return;
         }
-        if (len === 2) {
-            if (typeof args[1] != 'function') {
-                console.warn("second parameter type must be 'function'");
-                return;
-            }
+        if (typeof args[1] != 'object') {
+            console.warn("second parameter type must be 'object'");
+            return;
         }
     }
   }

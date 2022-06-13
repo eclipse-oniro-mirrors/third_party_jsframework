@@ -133,7 +133,7 @@ export function mockInputDevice() {
     },
     supportKeys: function(...args) {
       console.warn("inputDevice.supportKeys interface mocked in the Previewer." + 
-      "How this interface works on the" + " Previewer may be different from that on a real device.");
+        "How this interface works on the" + " Previewer may be different from that on a real device.");
       const len = args.length;
       if (len < 2 || len > 3) {
         console.warn("parameter number error");
@@ -169,7 +169,7 @@ export function mockInputDevice() {
     },
     getKeyboardType: function(...args) {
       console.warn("inputDevice.getKeyboardType interface mocked in the Previewer." +
-      "How this interface works on the" + " Previewer may be different from that on a real device.");
+        "How this interface works on the" + " Previewer may be different from that on a real device.");
       const len = args.length;
       if (len < 1 || len > 2) {
         console.warn("parameter number error");
