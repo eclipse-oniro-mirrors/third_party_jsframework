@@ -43,6 +43,7 @@ import { mockProcess } from './ohos_process'
 import { mockUrl } from './ohos_url'
 import { mockHiAppEvent } from './ohos_hiAppEvent'
 import { mockHilog } from './ohos_hilog'
+import { mockHiTraceChain } from './ohos_hiTraceChain'
 import { mockTv } from './tv'
 import { mockDtv } from './dtv'
 import { mockDistributedAccount } from './ohos_account_distributedAccount'
@@ -137,6 +138,7 @@ import { mockSystemTimer } from './ohos_systemTimer'
 import { mockWallpaper } from './ohos_wallpaper'
 import { mockWantAgent } from './ohos_wantAgent'
 import { mockScreenshot } from './ohos_screenshot'
+import { mockZlib } from './ohos_zlib'
 import { mockDocument } from './ohos_document'
 import { mockMediaQuery } from './ohos_mediaquery'
 import { mockResourceManager } from './ohos_resourceManager'
@@ -152,6 +154,8 @@ export function mockRequireNapiFun() {
         return mockMediaQuery();
       case "document":
         return mockDocument();
+      case "zlib":
+        return mockZlib();
       case "screenshot":
         return mockScreenshot();
       case "WantAgent":
@@ -294,6 +298,8 @@ export function mockRequireNapiFun() {
         return mockHiAppEvent();
       case "hilog":
         return mockHilog();
+      case "hiTraceChain":
+        return mockHiTraceChain();
       case "tv":
         return mockTv();
       case "dtv":

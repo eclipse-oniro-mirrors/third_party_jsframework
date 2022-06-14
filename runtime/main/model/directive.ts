@@ -625,10 +625,12 @@ function setClassStyle(el: Element, css: object, classList: string[], vm?: Vm): 
     const transitionEnter = classStyle['transitionEnter'];
     if (transitionEnter) {
       classStyle['transitionEnter'] = keyframes[transitionEnter];
+      classStyle['transitionEnterName'] = transitionEnter;
     }
     const transitionExit = classStyle['transitionExit'];
     if (transitionExit) {
       classStyle['transitionExit'] = keyframes[transitionExit];
+      classStyle['transitionExitName'] = transitionExit;
     }
     const sharedTransitionName = classStyle['sharedTransitionName'];
     if (sharedTransitionName) {
