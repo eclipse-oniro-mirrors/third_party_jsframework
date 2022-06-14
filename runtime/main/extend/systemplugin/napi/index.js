@@ -139,9 +139,21 @@ import { mockWallpaper } from './ohos_wallpaper'
 import { mockWantAgent } from './ohos_wantAgent'
 import { mockScreenshot } from './ohos_screenshot'
 import { mockZlib } from './ohos_zlib'
+import { mockDocument } from './ohos_document'
+import { mockMediaQuery } from './ohos_mediaquery'
+import { mockResourceManager } from './ohos_resourceManager'
+import { mockFile } from './system_file'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
+      case "file":
+        return mockFile();
+      case "resourceManager":
+        return mockResourceManager();
+      case "mediaquery":
+        return mockMediaQuery();
+      case "document":
+        return mockDocument();
       case "zlib":
         return mockZlib();
       case "screenshot":
