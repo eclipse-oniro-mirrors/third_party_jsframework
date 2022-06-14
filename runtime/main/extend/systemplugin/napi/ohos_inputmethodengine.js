@@ -419,4 +419,5 @@ export function mockInputMethodEngine() {
   for (let Property of Properties) {
     inputMethodEngine[Property] = NOTIFY + " " + Property
   }
+  return inputMethodEngine
 }
