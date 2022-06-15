@@ -369,7 +369,7 @@ export function mockSensor() {
         args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.Sensor);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(paramMock.paramArrayMock);
+          resolve(paramMock.Sensor);
         })
       }
     },
