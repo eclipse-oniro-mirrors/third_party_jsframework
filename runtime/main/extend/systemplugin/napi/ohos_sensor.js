@@ -273,8 +273,8 @@ export function mockSensor() {
                 args[len - 1].call(this, paramMock.businessErrorMoc, GeomagneticResponse);
             } else {
                 return new Promise((resolve, reject) => {
-                  resolve(GeomagneticResponse);
-              });
+                    resolve(GeomagneticResponse);
+                });
             }
         },
         getAltitude: function (...args) {
@@ -285,8 +285,8 @@ export function mockSensor() {
                 args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramNumberMock);
             } else {
                 return new Promise((resolve, reject) => {
-                  resolve(paramMock.paramNumberMock);
-              });
+                    resolve(paramMock.paramNumberMock);
+                });
             }
         },
         getGeomagneticDip: function (...args) {
@@ -297,8 +297,8 @@ export function mockSensor() {
                 args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramNumberMock);
             } else {
                 return new Promise((resolve, reject) => {
-                  resolve(paramMock.paramNumberMock);
-              });
+                    resolve(paramMock.paramNumberMock);
+                });
             }
         },
         getAngleModifiy: function (...args) {
@@ -309,8 +309,8 @@ export function mockSensor() {
                 args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramArrayMock);
             } else {
                 return new Promise((resolve, reject) => {
-                  resolve(paramMock.paramArrayMock);
-              });
+                    resolve(paramMock.paramArrayMock);
+                });
             }
         },
         createRotationMatrix: function (...args) {
@@ -321,8 +321,8 @@ export function mockSensor() {
                 args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramArrayMock);
             } else {
                 return new Promise((resolve, reject) => {
-                  resolve(paramMock.paramArrayMock);
-              });
+                    resolve(paramMock.paramArrayMock);
+                });
             }
         },
         transformCoordinateSystem: function (...args) {
@@ -332,9 +332,9 @@ export function mockSensor() {
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramArrayMock);
             } else {
-                  return new Promise((resolve, reject) => {
+                return new Promise((resolve, reject) => {
                     resolve(paramMock.paramArrayMock);
-              });
+                });
             }
         },
         createQuaternion: function (...args) {
@@ -345,8 +345,8 @@ export function mockSensor() {
                 args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramArrayMock);
           } else {
                 return new Promise((resolve, reject) => {
-                  resolve(paramMock.paramArrayMock);
-              });
+                    resolve(paramMock.paramArrayMock);
+                });
             }
         },
         getDirection: function (...args) {
@@ -357,8 +357,8 @@ export function mockSensor() {
                 args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramArrayMock);
             } else {
                 return new Promise((resolve, reject) => {
-                  resolve(paramMock.paramArrayMock);
-              });
+                    resolve(paramMock.paramArrayMock);
+                });
             }
         },
         getSingleSensor: function (...args) {
@@ -370,7 +370,7 @@ export function mockSensor() {
             } else {
                 return new Promise((resolve, reject) => {
                     resolve(paramMock.Sensor);
-              });
+                });
             }
         },
         getSensorLists: function (...args) {
@@ -382,7 +382,7 @@ export function mockSensor() {
             } else {
                 return new Promise((resolve, reject) => {
                     resolve(paramMock.paramArrayMock);
-              });
+                });
             }
         }
     };
