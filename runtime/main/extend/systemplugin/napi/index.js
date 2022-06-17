@@ -43,6 +43,8 @@ import { mockProcess } from './ohos_process'
 import { mockUrl } from './ohos_url'
 import { mockHiAppEvent } from './ohos_hiAppEvent'
 import { mockHilog } from './ohos_hilog'
+import { mockHiSysEvent } from './ohos_hiSysEvent'
+import { mockHiTraceChain } from './ohos_hiTraceChain'
 import { mockTv } from './tv'
 import { mockDtv } from './dtv'
 import { mockDistributedAccount } from './ohos_account_distributedAccount'
@@ -52,7 +54,10 @@ import { mockDistributedObject } from './ohos_data_distributedDataObject'
 import { mockDataAbility } from './ohos_data_dataAbility'
 import { mockStorage } from './system_storage'
 import { mockRdb } from './ohos_data_rdb'
+import { mockPreferences } from './ohos_data_preferences'
 import { mockDataShare } from './ohos_data_dataShare'
+import { DataSharePredicates } from './ohos_data_dataSharePredicates'
+import { DataShareResultSet } from './ohos_data_DataShareResultSet'
 import { mockInputDevice } from './ohos_multimodalInput_inputDevice'
 import { mockVibrator } from './ohos_vibrator'
 import { mockSensor } from './ohos_sensor'
@@ -73,6 +78,7 @@ import { mockAbilityAccessCtrl } from './ohos_abilityAccessCtrl'
 import { mockConfigPolicy } from './ohos_configPolicy'
 import { mockUpdate } from './ohos_update'
 import { mockBackgroundTaskManager } from './ohos_backgroundTaskManager'
+import { mockBundleState } from './ohos_bundleState'
 import { mockSecurityLabel } from './ohos_securitylabel'
 import { mockWorkScheduler } from './ohos_workScheduler'
 import { mockWorkSchedulerExtensionAbility } from './ohos_WorkSchedulerExtensionAbility'
@@ -137,9 +143,31 @@ import { mockSystemTimer } from './ohos_systemTimer'
 import { mockWallpaper } from './ohos_wallpaper'
 import { mockWantAgent } from './ohos_wantAgent'
 import { mockScreenshot } from './ohos_screenshot'
+import { mockZlib } from './ohos_zlib'
+import { mockPrivacyManager } from './ohos_privacyManager'
+import { mockFormProvider } from './ohos_application_formProvider'
+import { mockScreen } from './ohos_screen'
+import { mockDistributedBundle } from './ohos_distributedBundle'
+import { mockDocument } from './ohos_document'
+import { mockMediaQuery } from './ohos_mediaquery'
+import { mockResourceManager } from './ohos_resourceManager'
+import { mockFile } from './system_file'
+import { mockEnterpriseDeviceManager } from './ohos_enterpriseDeviceManager'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
+      case "file":
+        return mockFile();
+      case "resourceManager":
+        return mockResourceManager();
+      case "mediaquery":
+        return mockMediaQuery();
+      case "document":
+        return mockDocument();
+      case "screen":
+        return mockScreen();
+      case "zlib":
+        return mockZlib();
       case "screenshot":
         return mockScreenshot();
       case "WantAgent":
@@ -282,6 +310,10 @@ export function mockRequireNapiFun() {
         return mockHiAppEvent();
       case "hilog":
         return mockHilog();
+      case "hiSysEvent":
+        return mockHiSysEvent();
+      case "hiTraceChain":
+        return mockHiTraceChain();
       case "tv":
         return mockTv();
       case "dtv":
@@ -298,8 +330,14 @@ export function mockRequireNapiFun() {
         return mockRdb();
       case "data.storage":
         return mockStorage();
+      case "data.preferences":
+        return mockPreferences();
       case "data.dataShare":
         return mockDataShare();
+      case "data.DataSharePredicates":
+        return DataSharePredicates();
+      case "data.DataShareResultSet":
+        return DataShareResultSet();
       case "data.dataAbility":
         return mockDataAbility();
       case "multimodalInput.inputDevice":
@@ -314,6 +352,8 @@ export function mockRequireNapiFun() {
         return mockUsb();
       case "bundle":
         return mockBundle();
+      case "distributedBundle":
+        return mockDistributedBundle();
       case "bundle.innerBundleManager":
         return mockInnerBundle();
       case "uri":
@@ -342,6 +382,8 @@ export function mockRequireNapiFun() {
         return mockUpdate();
       case "backgroundTaskManager":
         return mockBackgroundTaskManager();
+      case "bundleState":
+        return mockBundleState();
       case "securitylabel":
         return mockSecurityLabel();
       case "workScheduler":
@@ -388,6 +430,12 @@ export function mockRequireNapiFun() {
         return mockMultimediaCamera();
       case "multimedia.audio":
         return mockMultimediaAudio();
+      case "privacyManager":
+        return mockPrivacyManager();
+      case "application.formProvider":
+        return mockFormProvider();
+      case "enterpriseDeviceManager":
+        return mockEnterpriseDeviceManager();
       default:
         return global.requireNapiPreview(...args);
     }

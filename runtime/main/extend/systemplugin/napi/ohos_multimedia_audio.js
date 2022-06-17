@@ -326,6 +326,18 @@ export function mockMultimediaAudio() {
       console.warn("AudioRenderer.off interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
     },
+    setInterruptMode: function (...args) {
+      console.warn("AudioRenderer.setInterruptMode interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    }
   }
   const audioManagerMock = {
     on: function (...args) {
@@ -564,6 +576,30 @@ export function mockMultimediaAudio() {
           resolve(AudioSceneMock);
         })
       }
+    },
+    requestIndependentInterrupt: function (...args) {
+      console.warn("AudioManager.requestIndependentInterrupt interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+        const len = args.length
+        if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock,paramMock.paramBooleanMock);
+        } else {
+          return new Promise((resolve, reject) => {
+            resolve(paramMock.paramBooleanMock);
+          })
+        }
+    },
+    abandonIndependentInterrupt: function (...args) {
+      console.warn("AudioManager.abandonIndependentInterrupt interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock,paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
+        })
+      }
     }
   }
   const audio = {
@@ -669,6 +705,13 @@ export function mockMultimediaAudio() {
     InterruptForceType: {
       INTERRUPT_FORCE: 0,
       INTERRUPT_SHARE: 1,
+    },
+    FocusType: {
+      FOCUS_TYPE_RECORDING: 0,
+    },
+    InterruptMode: {
+      SHARE_MODE: 0,
+      INDEPENDENT_MODE: 1
     },
     getAudioManager: function () {
       console.warn("audio.getAudioManager interface mocked in the Previewer. How this interface works" +
