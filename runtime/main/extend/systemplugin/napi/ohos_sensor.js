@@ -126,19 +126,20 @@ export function mockSensor() {
   }
   const CoordinatesOptions = {
     x: "[PC preview] unknown x",
-    y: "[PC preview] unknown y"
-  }
+    y: '[PC preview] unknown y'
+  };
   const Sensor = {
-    sensorName: "[PC preview] unknown sensorName",
-    venderName: "[PC preview] unknown venderName",
-    firmwareVersion: "[PC preview] unknown firmwareVersion",
-    hardwareVersion: "[PC preview] unknown hardwareVersion",
-    sensorTypeId: "[PC preview] unknown sensorTypeId",
-    maxRange: "[PC preview] unknown maxRange",
-    precision: "[PC preview] unknown precision",
-    power: "[PC preview] unknown power"
-  }
-  const SensorType = {
+    sensorName: '[PC preview] unknown sensorName',
+    venderName: '[PC preview] unknown venderName',
+    firmwareVersion: '[PC preview] unknown firmwareVersion',
+    hardwareVersion: '[PC preview] unknown hardwareVersion',
+    sensorTypeId: '[PC preview] unknown sensorTypeId',
+    maxRange: '[PC preview] unknown maxRange',
+    precision: '[PC preview] unknown precision',
+    power: '[PC preview] unknown power'
+};
+
+    const SensorType = {
     SENSOR_TYPE_ID_ACCELEROMETER: 1,
     SENSOR_TYPE_ID_GYROSCOPE: 2,
     SENSOR_TYPE_ID_AMBIENT_LIGHT: 5,
@@ -338,7 +339,7 @@ export function mockSensor() {
       }
     },
     createQuaternion: function (...args) {
-      console.warn("sensor.createQuaternion interface mocked in the Previewer. How this interface works on the" +
+        console.warn("sensor.createQuaternion interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -350,7 +351,7 @@ export function mockSensor() {
       }
     },
     getDirection: function (...args) {
-      console.warn("sensor.getDirection interface mocked in the Previewer. How this interface works on the" +
+        console.warn("sensor.getDirection interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -358,33 +359,33 @@ export function mockSensor() {
       } else {
         return new Promise((resolve, reject) => {
           resolve(paramMock.paramArrayMock);
-        })
+        });
       }
     },
     getSingleSensor: function (...args) {
-      console.warn("sensor.getSingleSensor interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
+        console.warn('sensor.getSingleSensor interface mocked in the Previewer. How this interface works on the'
+      + ' Previewer may be different from that on a real device.');
+      const len = args.length;
+        if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.Sensor);
       } else {
         return new Promise((resolve, reject) => {
           resolve(paramMock.Sensor);
-        })
+        });
       }
     },
     getSensorLists: function (...args) {
-      console.warn("sensor.getSensorLists interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
+        console.warn('sensor.getSensorLists interface mocked in the Previewer. How this interface works on the'
+        + " Previewer may be different from that on a real device.");
+      const len = args.length;
+        if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramArrayMock);
       } else {
         return new Promise((resolve, reject) => {
           resolve(paramMock.paramArrayMock);
-        })
+        });
       }
-    }
+    },
   }
-  return sensor
+    return sensor;
 }
