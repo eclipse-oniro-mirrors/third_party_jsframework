@@ -128,7 +128,7 @@ export function mockSensor() {
         x: '[PC preview] unknown x',
         y: '[PC preview] unknown y'
     }
-      const Sensor = {
+    const Sensor = {
         sensorName: '[PC preview] unknown sensorName',
         venderName: '[PC preview] unknown venderName',
         firmwareVersion: '[PC preview] unknown firmwareVersion',
@@ -210,7 +210,7 @@ export function mockSensor() {
                 } else if (args[0] == 281) {
                   callback.call(this, paramMock.businessErrorMock, AccelerometerUncalibratedResponse);
                 }
-          },
+        },
         once: function (...args) {
             console.warn('sensor.once interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
@@ -258,13 +258,13 @@ export function mockSensor() {
                 } else if (args[0] == 281) {
                   args[len - 1].call(this, paramMock.businessErrorMock, AccelerometerUncalibratedResponse);
                 }
-          },
+        },
         off: function (...args) {
             console.warn('sensor.off interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
             const len = args.length
             args[len - 1].call(this, paramMock.businessErrorMock);
-          },
+        },
         getGeomagneticField: function (...args) {
             console.warn('sensor.getGeomagneticField interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
@@ -276,7 +276,7 @@ export function mockSensor() {
                   resolve(GeomagneticResponse);
               });
             }
-          },
+        },
         getAltitude: function (...args) {
             console.warn('sensor.getAltitude interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
@@ -288,7 +288,7 @@ export function mockSensor() {
                   resolve(paramMock.paramNumberMock);
               });
             }
-          },
+        },
         getGeomagneticDip: function (...args) {
             console.warn('sensor.getGeomagneticDip interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
@@ -300,7 +300,7 @@ export function mockSensor() {
                   resolve(paramMock.paramNumberMock);
               });
             }
-          },
+        },
         getAngleModifiy: function (...args) {
             console.warn('sensor.getAngleModifiy interface mocked in the Previewer. How this interface works on the'
               + 'Previewer may be different from that on a real device.')
@@ -312,7 +312,7 @@ export function mockSensor() {
                   resolve(paramMock.paramArrayMock);
               });
             }
-          },
+        },
         createRotationMatrix: function (...args) {
             console.warn('sensor.createRotationMatrix interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
@@ -324,7 +324,7 @@ export function mockSensor() {
                   resolve(paramMock.paramArrayMock);
               });
             }
-          },
+        },
         transformCoordinateSystem: function (...args) {
             console.warn('sensor.transformCoordinateSystem interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
@@ -336,7 +336,7 @@ export function mockSensor() {
                     resolve(paramMock.paramArrayMock);
               });
             }
-          },
+        },
         createQuaternion: function (...args) {
           console.warn('sensor.createQuaternion interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
@@ -348,7 +348,7 @@ export function mockSensor() {
                   resolve(paramMock.paramArrayMock);
               });
             }
-          },
+        },
         getDirection: function (...args) {
             console.warn('sensor.getDirection interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
@@ -360,7 +360,7 @@ export function mockSensor() {
                   resolve(paramMock.paramArrayMock);
               });
             }
-          },
+        },
         getSingleSensor: function (...args) {
             console.warn('sensor.getSingleSensor interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
@@ -372,7 +372,7 @@ export function mockSensor() {
                     resolve(paramMock.Sensor);
               });
             }
-          },
+        },
         getSensorLists: function (...args) {
             console.warn('sensor.getSensorLists interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
@@ -384,7 +384,7 @@ export function mockSensor() {
                     resolve(paramMock.paramArrayMock);
               });
             }
-          }
+        }
     };
     return sensor
 }
