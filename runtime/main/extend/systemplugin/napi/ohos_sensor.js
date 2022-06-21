@@ -162,6 +162,7 @@ export function mockSensor() {
         SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED: 281
     }
     const sensor = {
+      Sensor,
         on: function (...args) {
             console.warn('sensor.on interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
@@ -366,10 +367,10 @@ export function mockSensor() {
                 + 'Previewer may be different from that on a real device.')
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.Sensor);
+                args[len - 1].call(this, paramMock.businessErrorMoc, Sensor);
             } else {
                 return new Promise((resolve, reject) => {
-                    resolve(paramMock.Sensor);
+                    resolve(Sensor);
                 });
             }
         },
@@ -378,10 +379,10 @@ export function mockSensor() {
                 + 'Previewer may be different from that on a real device.')
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramArrayMock);
+                args[len - 1].call(this, paramMock.businessErrorMoc, Array(Sensor));
             } else {
                 return new Promise((resolve, reject) => {
-                    resolve(paramMock.paramArrayMock);
+                    resolve(Array(Sensor));
                 });
             }
         }
