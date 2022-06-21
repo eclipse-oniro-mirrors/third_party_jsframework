@@ -461,21 +461,6 @@ export const windowMock = {
       }else {
         console.warn("on：please check param!")
       }
-      return 0
-    }else{
-      return new Promise((resolve) => {
-        if (args[0]==='keyboardHeightChange'){
-          resolve(paramMock.paramNumberMock)
-        }else if (args[0]==='systemAvoidAreaChange'){
-          resolve(AvoidAreaMock)
-        }else if (args[0]==='windowSizeChange'){
-          resolve(SizeMock)
-        }else if (args[0]==='touchOutside'){
-          resolve()
-        }else {
-          console.warn("off：please check param!")
-        }
-      })
     }
   },
   off: function (...args) {
@@ -494,21 +479,6 @@ export const windowMock = {
       }else {
         console.warn("handleOnOff(error param)：please check param!")
       }
-      return 0
-    }else{
-      return new Promise((resolve) => {
-        if (args[0] === 'keyboardHeightChange') {
-          resolve(paramMock.paramNumberMock)
-        } else if (args[0] === 'systemAvoidAreaChange') {
-          resolve(AvoidAreaMock)
-        } else if (args[0] === 'windowSizeChange') {
-          resolve(SizeMock)
-        } else if (args[0] === 'touchOutside') {
-          resolve()
-        } else {
-          console.warn("handleOnOff(error param)：please check param!")
-        }
-      })
     }
   },
   setColorSpace: function (...args) {
