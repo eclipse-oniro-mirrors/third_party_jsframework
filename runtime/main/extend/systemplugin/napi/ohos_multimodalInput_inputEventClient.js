@@ -38,7 +38,7 @@ export function mockInputEventClient() {
         return; 
       }
       if (typeof args[0].keyDownDuration !== 'number') {
-        console.warn("Field keyDownDuration must be boolean");
+        console.warn("Field keyDownDuration must be number");
         return; 
       }
       if (typeof args[0].isIntercepted !== 'boolean') {
