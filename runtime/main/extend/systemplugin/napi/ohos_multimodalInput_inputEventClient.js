@@ -18,7 +18,7 @@ import { paramMock } from "../utils"
 export function mockInputEventClient() {
   const inputEventClient = {
     injectEvent: function(...args) {
-      console.warn("inputDevice.injectEvent interface mocked in the Previewer. How this interface works on the" +
+      console.warn("inputEventClient.injectEvent interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (len !== 1) {

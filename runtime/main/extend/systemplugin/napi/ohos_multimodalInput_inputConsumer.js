@@ -38,7 +38,7 @@ export function mockInputConsumer() {
             console.warn("the third parameter type must be 'function'");
             return; 
         }
-        args[2].call(this, paramMock.paramObjectMock);
+        args[2].call(this, args[1]);
     },
     off: function (...args) {
         console.warn("inputConsumer.off interface mocked in the Previewer. How this interface works on the" +
