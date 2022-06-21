@@ -356,6 +356,30 @@ export function mockRdb() {
         })
       }
     },
+    backup: function (...args) {
+      console.warn("RdbStore.backup interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    restore: function (...args) {
+      console.warn("RdbStore.restore interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
     setDistributedTables: function (...args) {
       console.warn("RdbStore.setDistributedTables interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
