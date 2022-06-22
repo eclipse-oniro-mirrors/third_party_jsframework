@@ -127,11 +127,13 @@ export const WindowStageMock= {
       " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
-      args[len - 1].call(this, paramMock.businessErrorMock,WindowStageEventTypeMock)
-    } else {
-      return new Promise((resolve, reject) => {
-        resolve(WindowStageEventTypeMock)
-      })
+      if (args[0]==='windowStageEvent'){
+        console.warn(`you has registered ${args[0]} event`)
+      }else {
+        console.warn("on：please check first param!")
+      }
+    }else {
+      console.warn("on：please check param!")
     }
   },
   off: function (...args) {
@@ -139,11 +141,13 @@ export const WindowStageMock= {
       " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
-      args[len - 1].call(this, paramMock.businessErrorMock,WindowStageEventTypeMock)
-    } else {
-      return new Promise((resolve, reject) => {
-        resolve(WindowStageEventTypeMock)
-      })
+      if (args[0]==='windowStageEvent'){
+        console.warn(`you has registered ${args[0]} event`)
+      }else {
+        console.warn("off：please check first param!")
+      }
+    }else {
+      console.warn("off：please check param!")
     }
   },
   disableWindowDecor: function (){
@@ -450,17 +454,15 @@ export const windowMock = {
       " different from that on a real device.")
     const len = args.length;
     if (typeof args[len - 1] === 'function') {
-      if (args[0]==='keyboardHeightChange'){
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
-      }else if (args[0]==='systemAvoidAreaChange'){
-        args[len - 1].call(this, paramMock.businessErrorMock, AvoidAreaMock)
-      }else if (args[0]==='windowSizeChange'){
-        args[len - 1].call(this, paramMock.businessErrorMock, SizeMock)
-      }else if (args[0]==='touchOutside'){
-        args[len - 1].call(this, paramMock.businessErrorMock)
+      if (args[0]==='keyboardHeightChange'||args[0]==='systemAvoidAreaChange'
+        ||args[0]==='windowSizeChange'||args[0]==='touchOutside'
+      ){
+        console.warn(`you has registered ${args[0]} event`)
       }else {
-        console.warn("on：please check param!")
+        console.warn("on：please check first param!")
       }
+    }else {
+      console.warn("on：please check param!")
     }
   },
   off: function (...args) {
@@ -468,17 +470,15 @@ export const windowMock = {
       " different from that on a real device.")
     const len = args.length;
     if (typeof args[len - 1] === 'function') {
-      if (args[0]==='keyboardHeightChange'){
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
-      }else if (args[0]==='systemAvoidAreaChange'){
-        args[len - 1].call(this, paramMock.businessErrorMock, AvoidAreaMock)
-      }else if (args[0]==='windowSizeChange'){
-        args[len - 1].call(this, paramMock.businessErrorMock, SizeMock)
-      }else if (args[0]==='touchOutside'){
-        args[len - 1].call(this, paramMock.businessErrorMock)
+      if (args[0]==='keyboardHeightChange'||args[0]==='systemAvoidAreaChange'
+        ||args[0]==='windowSizeChange'||args[0]==='touchOutside'
+      ){
+        console.warn(`you has registered ${args[0]} event`)
       }else {
-        console.warn("handleOnOff(error param)：please check param!")
+        console.warn("off：please check first param!")
       }
+    }else {
+      console.warn("off：please check param!")
     }
   },
   setColorSpace: function (...args) {
@@ -655,11 +655,13 @@ export function mockWindow() {
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, SystemBarTintStateMock)
-      } else {
-        return new Promise((resolve, reject) => {
-          resolve(SystemBarTintStateMock)
-        })
+        if (args[0]==='systemBarTintChange'){
+          console.warn(`you has registered ${args[0]} event`)
+        }else {
+          console.warn("on：please check first param!")
+        }
+      }else {
+        console.warn("on：please check param!")
       }
     },
     off: function (...args) {
@@ -667,11 +669,13 @@ export function mockWindow() {
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock,SystemBarTintStateMock)
-      } else {
-        return new Promise((resolve, reject) => {
-          resolve(SystemBarTintStateMock)
-        })
+        if (args[0]==='systemBarTintChange'){
+          console.warn(`you has registered ${args[0]} event`)
+        }else {
+          console.warn("off：please check first param!")
+        }
+      }else {
+        console.warn("off：please check param!")
       }
     },
     WindowType: WindowTypeMock,
