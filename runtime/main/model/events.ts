@@ -53,6 +53,28 @@ export class Evt {
   }
 
   /**
+   * Override toJSON function to fix version compatibility issues.
+   */
+  toJSON() {
+    const jsonObj: Record<string, any> = {};
+    for (const p in this) {
+      if (!p.startsWith('_')) {
+        jsonObj[p as string] = this[p];
+      }
+    }
+    const proto = Object.getPrototypeOf(this);
+    const protoNames = Object.getOwnPropertyNames(proto);
+    for (const key of protoNames) {
+      const desc = Object.getOwnPropertyDescriptor(proto, key);
+      const hasGetter = desc && typeof desc.get === 'function';
+      if (hasGetter) {
+        jsonObj[key] = this[key];
+      }
+    }
+    return jsonObj;
+  }
+
+  /**
    * Stop dispatch and broadcast.
    */
   public stop() {

@@ -393,7 +393,7 @@ function parseDeviceTypeCondition(condition: string, mediaStatus: object, failRe
     return mediaStatus['device-type'] === 'phone';
   } else {
     return deviceType[1] === mediaStatus['device-type'];
-  }  
+  }
 }
 
 /**

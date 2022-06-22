@@ -78,7 +78,7 @@ import {
  * @param {ExternalEvent} externalEvents - External events.
  */
 export default class Vm {
-  private _$app: any;
+  private $app: any;
   private __methods: Record<string, (...args: unknown[]) => any>;
   private __type: string;
   private __css: cssType;
@@ -104,7 +104,7 @@ export default class Vm {
   private readonly __descriptor: string;
   private __isHide: boolean;
   private __mediaStatus: Partial<MediaStatusInterface<string, boolean>>;
-  private _$refs: Record<string, Element>;
+  public $refs: Record<string, Element>;
   private __slotContext: { content: Record<string, any>, parentVm: Vm };
   private __counterMapping = new Map();
 
@@ -116,7 +116,7 @@ export default class Vm {
     mergedData: object,
     externalEvents: ExternalEvent
   ) {
-    this._$app = global.aceapp;
+    this.$app = global.aceapp;
     this.__parent = parentVm.__realParent ? parentVm.__realParent : parentVm;
     this.__app = parentVm.__app;
     parentVm.__childrenVms && parentVm.__childrenVms.push(this);
@@ -131,7 +131,7 @@ export default class Vm {
     this.__css = options.style;
     this.__selector = selector(this.__css);
     this.__ids = {};
-    this._$refs = {};
+    this.$refs = {};
     this.__vmEvents = {};
     this.__childrenVms = [];
     this.__type = type;
@@ -486,7 +486,7 @@ export default class Vm {
     delete this.__parent;
     delete this.__parentEl;
     delete this.__rootEl;
-    delete this._$refs;
+    delete this.$refs;
 
     // Destroy child vms recursively.
     if (this.__childrenVms) {
@@ -525,14 +525,6 @@ export default class Vm {
    */
   public $r(key: string): string {
     return key;
-  }
-
-  /**
-   * $app function.
-   * @return {*} - aceapp.
-   */
-  public get $app(): any {
-    return this._$app;
   }
 
   /**
@@ -815,15 +807,6 @@ export default class Vm {
 
   public set _mediaStatus(newMediaStatus: Partial<MediaStatusInterface<string, boolean>>) {
     this.__mediaStatus = newMediaStatus;
-  }
-
-  /**
-   * $refs of this Vm.
-   * @type {[key: string]: Element}
-   * @readonly
-   */
-  public get $refs() {
-    return this._$refs;
   }
 
   /**
