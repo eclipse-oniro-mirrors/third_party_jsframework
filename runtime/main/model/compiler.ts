@@ -441,7 +441,7 @@ function compileRepeat(vm: Vm, target: TemplateInterface, dest: Element): void {
     getter = repeat.exp;
     key = repeat.key || '$idx';
     value = repeat.value;
-    trackBy = repeat.tid;
+    trackBy = target.attr && target.attr.tid;
   } else {
     getter = repeat;
     key = '$idx';
