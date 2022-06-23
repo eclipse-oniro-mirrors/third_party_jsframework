@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -29,7 +29,7 @@ export function mockInputDevice() {
     axisRanges: [AxisRange]
   }
 
-  const EventType = ['changed']
+  const EventType = ['change']
   const DeviceIds = [0, 1, 2, 3, 4]
   const GetKeyboardType = 3
   const inputDevice = {
@@ -39,7 +39,7 @@ export function mockInputDevice() {
       const len = args.length;
       if (len === 2) {
         if (EventType.indexOf(args[0]) === -1) {
-          console.warn("the first parameter must be 'changed'")
+          console.warn("the first parameter must be 'change'")
         }
         if (typeof args[1] != 'function') {
           console.warn("the second parameter type must be 'function'")
@@ -56,11 +56,11 @@ export function mockInputDevice() {
         console.warn("a maximum of two parameters")
       } else if (len === 1) {
         if (EventType.indexOf(args[0]) === -1) {
-          console.warn("first parameter must be 'changed'")
+          console.warn("first parameter must be 'change'")
         }
       } else {
         if (EventType.indexOf(args[0]) === -1) {
-          console.warn("first parameter must be 'changed'")
+          console.warn("first parameter must be 'change'")
         }
         if (typeof args[1] != 'function') {
           console.warn("second parameter type must be 'function'")
@@ -131,9 +131,9 @@ export function mockInputDevice() {
         args[1].call(this, InputDeviceData);
       }
     },
-    getKeystrokeAbility: function(...args) {
-      console.warn("inputDevice.getKeystrokeAbility interface mocked in the Previewer." + 
-      "How this interface works on the" + " Previewer may be different from that on a real device.");
+    supportKeys: function(...args) {
+      console.warn("inputDevice.supportKeys interface mocked in the Previewer." + 
+        "How this interface works on the" + " Previewer may be different from that on a real device.");
       const len = args.length;
       if (len < 2 || len > 3) {
         console.warn("parameter number error");
@@ -147,37 +147,29 @@ export function mockInputDevice() {
         console.warn("the second parameter type must be array");
         return;
       }
+      if (args[1].length < 1 || args[1].length > 5) {
+        console.warn("the number of keys is incorrect, the range is 1 to 5");
+        return;
+      }
+      var supportKeysRet = [];
+      for (var i = 0; i < args[1].length; ++i) {
+        supportKeysRet.unshift('[PC preview] unknow boolean');
+      }
       if (len === 2) {
-        var KeystrokeAbilityArr = [];
-        for (var i = 0; i < args[1].length; ++i) {
-          var KeystrokeAbility = {
-            keyCode: args[1][i],
-            isSupport: '[PC preview] unknow isSupport',
-          }
-          KeystrokeAbilityArr[i] = KeystrokeAbility;
-        }
         return new Promise((resolve, reject) => {
-          resolve(KeystrokeAbilityArr);
+          resolve(supportKeysRet);
         })
       } else {
         if (typeof args[2] !== 'function') {
-          console.warn("the second parameter type must be array");
+          console.warn("the third parameter type is wrong");
           return;
         }
-        var KeystrokeAbilityArr = [];
-        for (var i = 0; i < args[1].length; ++i) {
-          var KeystrokeAbility = {
-            keyCode: args[1][i],
-            isSupport: '[PC preview] unknow isSupport',
-          }
-          KeystrokeAbilityArr[i] = KeystrokeAbility;
-        }
-        args[2].call(this, KeystrokeAbilityArr);
+        args[2].call(this, supportKeysRet);
       }
     },
     getKeyboardType: function(...args) {
       console.warn("inputDevice.getKeyboardType interface mocked in the Previewer." +
-      "How this interface works on the" + " Previewer may be different from that on a real device.");
+        "How this interface works on the" + " Previewer may be different from that on a real device.");
       const len = args.length;
       if (len < 1 || len > 2) {
         console.warn("parameter number error");
