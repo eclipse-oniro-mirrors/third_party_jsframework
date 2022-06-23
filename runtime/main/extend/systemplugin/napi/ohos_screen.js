@@ -122,11 +122,15 @@ export function mockScreen() {
         ' different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
-      } else {
-        return new Promise((resolve) => {
-          resolve(paramMock.paramNumberMock);
-        });
+        if (args[0]==='connect'||args[0]==='disconnect'
+          ||args[0]==='change'
+        ){
+          console.warn(`you has registered ${args[0]} event`)
+        }else {
+          console.warn("on：please check first param!")
+        }
+      }else {
+        console.warn("on：please check param!")
       }
     },
     off: function(...args) {
@@ -134,12 +138,16 @@ export function mockScreen() {
         ' different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
-      } else {
-        return new Promise((resolve) => {
-          resolve(paramMock.paramNumberMock);
-        });
-      }
+          if (args[0]==='connect'||args[0]==='disconnect'
+            ||args[0]==='change'
+          ){
+            console.warn(`you has registered ${args[0]} event`)
+          }else {
+            console.warn("off：please check first param!")
+          }
+        }else {
+          console.warn("off：please check param!")
+        }
     },
     makeExpand: function(...args) {
       console.warn('Screen.makeExpand interface mocked in the Previewer. How this interface works on the' +
