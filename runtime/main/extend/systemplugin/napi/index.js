@@ -156,6 +156,7 @@ import { mockFile } from './system_file'
 import { mockEnterpriseDeviceManager } from './ohos_enterpriseDeviceManager'
 import { mockKeyCode } from './ohos_multimodalInput_keyCode'
 import { mockInputEventClient } from './ohos_multimodalInput_inputEventClient'
+import { mockDefaultAppManager } from './ohos_bundle_defaultAppManager'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
@@ -359,6 +360,8 @@ export function mockRequireNapiFun() {
         return mockDistributedBundle();
       case "bundle.innerBundleManager":
         return mockInnerBundle();
+      case "bundle.defaultAppManager":
+        return mockDefaultAppManager();
       case "uri":
         return mockUri();
       case "xml":
