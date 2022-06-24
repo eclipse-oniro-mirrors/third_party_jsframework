@@ -50,7 +50,7 @@ export function mockDefaultAppManager() {
                 args[len - 1].call(this, paramMock.businessErrorMock);
             } else {
                 return new Promise((resolve) => {
-                    resolve(paramMock.businessErrorMock);
+                    resolve();
                 })
             }
         },
@@ -62,7 +62,7 @@ export function mockDefaultAppManager() {
                 args[len - 1].call(this, paramMock.businessErrorMock);
             } else {
                 return new Promise((resolve) => {
-                    resolve(paramMock.businessErrorMock);
+                    resolve();
                 })
             }
         }
