@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Copyright (c) 2021-2022 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -34,7 +34,7 @@ node_js_name=node-${node_js_ver}-${host_platform}-x64
 
 cd ${code_dir}/third_party/jsframework/
 export PATH=${code_dir}/prebuilts/build-tools/common/nodejs/${node_js_name}/bin:$PATH
-npm config set registry http://registry.npm.taobao.org
+npm config set registry https://repo.huaweicloud.com/repository/npm/
 npm install
 
 cd ${code_dir}
