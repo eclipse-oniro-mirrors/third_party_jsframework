@@ -36,6 +36,7 @@ export const RectMock = {
   height: '[PC preview] unknow Rect.height'
 }
 export const AvoidAreaMock = {
+  visible: '[PC preview] unknow visible',
   leftRect: RectMock,
   topRect: RectMock,
   rightRect: RectMock,
@@ -450,35 +451,33 @@ export const windowMock = {
     }
   },
   on: function (...args) {
-    console.warn("Window.on interface mocked in the Previewer. How this interface works on the Previewer may be" +
-      " different from that on a real device.")
+    console.warn('Window.on interface mocked in the Previewer. How this interface works on the Previewer may be' +
+      ' different from that on a real device.')
     const len = args.length;
     if (typeof args[len - 1] === 'function') {
-      if (args[0]==='keyboardHeightChange'||args[0]==='systemAvoidAreaChange'
-        ||args[0]==='windowSizeChange'||args[0]==='touchOutside'
-      ){
+      if (args[0] === 'keyboardHeightChange' || args[0] === 'systemAvoidAreaChange'
+        || args[0] === 'avoidAreaChange' || args[0] === 'windowSizeChange' || args[0] === 'touchOutside') {
         console.warn(`you has registered ${args[0]} event`)
-      }else {
-        console.warn("on：please check first param!")
+      } else {
+        console.warn('on: please check first param!')
       }
-    }else {
-      console.warn("on：please check param!")
+    } else {
+      console.warn('on：please check param!')
     }
   },
   off: function (...args) {
-    console.warn("Window.off interface mocked in the Previewer. How this interface works on the Previewer may be" +
-      " different from that on a real device.")
+    console.warn('Window.off interface mocked in the Previewer. How this interface works on the Previewer may be' +
+      ' different from that on a real device.')
     const len = args.length;
     if (typeof args[len - 1] === 'function') {
-      if (args[0]==='keyboardHeightChange'||args[0]==='systemAvoidAreaChange'
-        ||args[0]==='windowSizeChange'||args[0]==='touchOutside'
-      ){
+      if (args[0] === 'keyboardHeightChange' || args[0] === 'systemAvoidAreaChange'
+        || args[0] === 'avoidAreaChange' || args[0] === 'windowSizeChange' || args[0] === 'touchOutside') {
         console.warn(`you has registered ${args[0]} event`)
-      }else {
-        console.warn("off：please check first param!")
+      } else {
+        console.warn('off:please check first param!')
       }
-    }else {
-      console.warn("off：please check param!")
+    } else {
+      console.warn('off:please check param!')
     }
   },
   setColorSpace: function (...args) {
@@ -682,7 +681,8 @@ export function mockWindow() {
     AvoidAreaType: {
       TYPE_SYSTEM: 0,
       TYPE_CUTOUT: 1,
-      TYPE_SYSTEM_GESTURE: 2
+      TYPE_SYSTEM_GESTURE: 2,
+      TYPE_KEYBOARD: 3
     },
     WindowMode: {
       UNDEFINED: 1,

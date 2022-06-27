@@ -122,15 +122,13 @@ export function mockScreen() {
         ' different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        if (args[0]==='connect'||args[0]==='disconnect'
-          ||args[0]==='change'
-        ){
+        if (args[0] === 'connect' || args[0] === 'disconnect' || args[0] === 'change') {
           console.warn(`you has registered ${args[0]} event`)
-        }else {
-          console.warn("on：please check first param!")
+        } else {
+          console.warn('on: please check first param!')
         }
-      }else {
-        console.warn("on：please check param!")
+      } else {
+        console.warn('on: please check param!')
       }
     },
     off: function(...args) {
@@ -138,15 +136,13 @@ export function mockScreen() {
         ' different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-          if (args[0]==='connect'||args[0]==='disconnect'
-            ||args[0]==='change'
-          ){
+          if (args[0] === 'connect' || args[0] === 'disconnect' || args[0] === 'change') {
             console.warn(`you has registered ${args[0]} event`)
-          }else {
-            console.warn("off：please check first param!")
+          } else {
+            console.warn('off: please check first param!')
           }
-        }else {
-          console.warn("off：please check param!")
+        } else {
+          console.warn('off: please check param!')
         }
     },
     makeExpand: function(...args) {
