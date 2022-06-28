@@ -14,22 +14,39 @@
  */
 
 import { paramMock } from "../utils"
+import { RemoteObjectClass } from "./ohos_rpc"
 
 export function mockAppAccount() {
-  const appAccountInfoMock = {
+  const AppAccountInfoMock = {
     owner: "[PC Preview] unknown owner",
     name: "[PC Preview] unknown name"
   };
   const OAuthTokenInfoMock = {
     authType: "[PC preview] unknown authType",
-    token: "[PC preview] unknown token"
+    token: "[PC preview] unknown token",
+    account: AppAccountInfoMock,
   };
   const AuthenticatorInfoMock = {
     owner: "[PC preview] unknown owner",
     iconId: "[PC preview] unknown iconId",
     labelId: "[PC preview] unknown labelId",
   };
-
+  const appAccountInfoArrayMock = new Array();
+  appAccountInfoArrayMock.push(AppAccountInfoMock);
+  const SelectAccountsOptions = {
+    allowedAccounts: appAccountInfoArrayMock,
+    allowedOwners: [paramMock.paramString],
+    requiredLabels: [paramMock.paramString],
+  }
+  const VerifyCredentialOptions  = {
+    credentialType: paramMock.paramStringMock,
+    credential: paramMock.paramStringMock,
+    parameters:{"unknown key":paramMock.paramObjectMock},
+  }
+  const SetPropertiesOptions  = {
+    properties: {"unknown key":paramMock.paramObjectMock},
+    parameters: {"unknown key":paramMock.paramObjectMock},
+  }
   const appAccountManagerMock = {
     addAccount: function (...args) {
       console.warn("AppAccountManager.addAccount interface mocked in the Previewer. " +
@@ -84,6 +101,18 @@ export function mockAppAccount() {
       } else {
         return new Promise((resolve, reject) => {
           resolve();
+        })
+      }
+    },
+    checkAppAccess: function (...args) {
+      console.warn("AppAccountManager.checkAppAccess interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
         })
       }
     },
@@ -151,7 +180,7 @@ export function mockAppAccount() {
       console.warn("AppAccountManager.getAllAccessibleAccounts interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
       var appAccountInfoArrayMock = new Array();
-      appAccountInfoArrayMock.push(appAccountInfoMock);
+      appAccountInfoArrayMock.push(AppAccountInfoMock);
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, appAccountInfoArrayMock);
@@ -165,7 +194,7 @@ export function mockAppAccount() {
       console.warn("AppAccountManager.getAllAccounts interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
       var appAccountInfoArrayMock = new Array();
-      appAccountInfoArrayMock.push(appAccountInfoMock);
+      appAccountInfoArrayMock.push(AppAccountInfoMock);
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, appAccountInfoArrayMock);
@@ -215,7 +244,7 @@ export function mockAppAccount() {
       console.warn("AppAccountManager.on interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
       var appAccountInfoArrayMock = new Array();
-      appAccountInfoArrayMock.push(appAccountInfoMock);
+      appAccountInfoArrayMock.push(AppAccountInfoMock);
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, appAccountInfoArrayMock);
@@ -229,7 +258,7 @@ export function mockAppAccount() {
       console.warn("AppAccountManager.off interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
       var appAccountInfoArrayMock = new Array();
-      appAccountInfoArrayMock.push(appAccountInfoMock);
+      appAccountInfoArrayMock.push(AppAccountInfoMock);
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, appAccountInfoArrayMock);
@@ -354,6 +383,60 @@ export function mockAppAccount() {
           resolve(AuthenticatorInfoMock)
         })
       }
+    },
+    checkAccountLabels: function (...args) {
+      console.warn("AppAccountManager.checkAccountLabels interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
+        })
+      }
+    },
+    deleteAccountCredential: function (...args) {
+      console.warn("AppAccountManager.deleteAccountCredential interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve()
+        })
+      }
+    },
+    selectAccountsByOptions: function (...args) {
+      console.warn("AppAccountManager.selectAccountsByOptions interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      var appAccountInfoArrayMock = new Array();
+      appAccountInfoArrayMock.push(AppAccountInfoMock);
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, appAccountInfoArrayMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(appAccountInfoArrayMock);
+        })
+      }
+    },
+    verifyCredential: function (...args) {
+      console.warn("AppAccountManager.verifyCredential interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, AuthenticatorCallbackMock);
+      }
+    },
+    setAuthenticatorProperties: function (...args) {
+      console.warn("AppAccountManager.setAuthenticatorProperties interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, AuthenticatorCallbackMock);
+      }
     }
   };
   const AuthenticatorCallbackMock = {
@@ -364,7 +447,11 @@ export function mockAppAccount() {
     onRequestRedirected: function (...args) {
       console.warn("AuthenticatorCallback.onRequestRedirected interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
-    }
+    },
+    onRequestContinued: function (...args) {
+      console.warn("AuthenticatorCallback.onRequestContinued interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+    },
   };
   const AuthenticatorClass = class Authenticator {
     constructor() {
@@ -386,41 +473,80 @@ export function mockAppAccount() {
           args[len - 1].call(this, paramMock.businessErrorMock, AuthenticatorCallbackMock);
         }
       };
+      this.verifyCredential = function (...args) {
+        console.warn("Authenticator.verifyCredential interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+        const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, AuthenticatorCallbackMock);
+        }
+      };
+      this.setProperties = function (...args) {
+        console.warn("Authenticator.setProperties interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+        const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, AuthenticatorCallbackMock);
+        }
+      };
+      this.checkAccountLabels = function (...args) {
+        console.warn("Authenticator.checkAccountLabels interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+        const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, AuthenticatorCallbackMock);
+        }
+      };
+      this.isAccountRemovable = function (...args) {
+        console.warn("Authenticator.isAccountRemovable interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+        const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, AuthenticatorCallbackMock);
+        }
+      };
+      this.getRemoteObject = function (...args) {
+        console.warn("Authenticator.getRemoteObject interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+          return new RemoteObjectClass;
+      };
     }
   };
   const ConstantsMock = {
-    ACTION_ADD_ACCOUNT_IMPLICITLY: '[PC preview] unknow string',
-    ACTION_AUTHENTICATE: '[PC preview] unknow string',
-    KEY_NAME: '[PC preview] unknow string',
-    KEY_OWNER: '[PC preview] unknow string',
-    KEY_TOKEN: '[PC preview] unknow string',
-    KEY_ACTION: '[PC preview] unknow string',
-    KEY_AUTH_TYPE: '[PC preview] unknow string',
-    KEY_SESSION_ID: '[PC preview] unknow string',
-    KEY_CALLER_PID: '[PC preview] unknow string',
-    KEY_CALLER_UID: '[PC preview] unknow string',
-    KEY_CALLER_BUNDLE_NAME: '[PC preview] unknow string'
+    ACTION_ADD_ACCOUNT_IMPLICITLY: "addAccountImplicitly",
+    ACTION_AUTHENTICATE: "authenticate",
+    KEY_NAME: "name",
+    KEY_OWNER: "owner",
+    KEY_TOKEN: "token",
+    KEY_ACTION: "action",
+    KEY_AUTH_TYPE: "authType",
+    KEY_SESSION_ID: "sessionId",
+    KEY_CALLER_PID: "callerPid",
+    KEY_CALLER_UID: "callerUid",
+    KEY_CALLER_BUNDLE_NAME: "callerBundleName",
+    KEY_REQUIRED_LABELS: "requiredLabels",
+    KEY_BOOLEAN_RESULT: "booleanResult"
   };
   const ResultCodeMock = {
-    SUCCESS: '[PC preview] unknow resultCode',
-    ERROR_ACCOUNT_NOT_EXIST: '[PC preview] unknow resultCode',
-    ERROR_APP_ACCOUNT_SERVICE_EXCEPTION: '[PC preview] unknow resultCode',
-    ERROR_INVALID_PASSWORD: '[PC preview] unknow resultCode',
-    ERROR_INVALID_REQUEST: '[PC preview] unknow resultCode',
-    ERROR_INVALID_RESPONSE: '[PC preview] unknow resultCode',
-    ERROR_NETWORK_EXCEPTION: '[PC preview] unknow resultCode',
-    ERROR_OAUTH_AUTHENTICATOR_NOT_EXIST: '[PC preview] unknow resultCode',
-    ERROR_OAUTH_CANCELED: '[PC preview] unknow resultCode',
-    ERROR_OAUTH_LIST_TOO_LARGE: '[PC preview] unknow resultCode',
-    ERROR_OAUTH_SERVICE_BUSY: '[PC preview] unknow resultCode',
-    ERROR_OAUTH_SERVICE_EXCEPTION: '[PC preview] unknow resultCode',
-    ERROR_OAUTH_SESSION_NOT_EXIST: '[PC preview] unknow resultCode',
-    ERROR_OAUTH_TIMEOUT: '[PC preview] unknow resultCode',
-    ERROR_OAUTH_TOKEN_NOT_EXIST: '[PC preview] unknow resultCode',
-    ERROR_OAUTH_TOKEN_TOO_MANY: '[PC preview] unknow resultCode',
-    ERROR_OAUTH_UNSUPPORT_ACTION: '[PC preview] unknow resultCode',
-    ERROR_OAUTH_UNSUPPORT_AUTH_TYPE: '[PC preview] unknow resultCode',
-    ERROR_PERMISSION_DENIED: '[PC preview] unknow resultCode'
+    SUCCESS: 0,
+    ERROR_ACCOUNT_NOT_EXIST: 10001,
+    ERROR_APP_ACCOUNT_SERVICE_EXCEPTION: 10002,
+    ERROR_INVALID_PASSWORD: 10003,
+    ERROR_INVALID_REQUEST: 10004,
+    ERROR_INVALID_RESPONSE: 10005,
+    ERROR_NETWORK_EXCEPTION: 10006,
+    ERROR_OAUTH_AUTHENTICATOR_NOT_EXIST: 10007,
+    ERROR_OAUTH_CANCELED: 10008,
+    ERROR_OAUTH_LIST_TOO_LARGE: 10009,
+    ERROR_OAUTH_SERVICE_BUSY: 10010,
+    ERROR_OAUTH_SERVICE_EXCEPTION: 10011,
+    ERROR_OAUTH_SESSION_NOT_EXIST: 10012,
+    ERROR_OAUTH_TIMEOUT: 10013,
+    ERROR_OAUTH_TOKEN_NOT_EXIST: 10014,
+    ERROR_OAUTH_TOKEN_TOO_MANY: 10015,
+    ERROR_OAUTH_UNSUPPORT_ACTION: 10016,
+    ERROR_OAUTH_UNSUPPORT_AUTH_TYPE: 10017,
+    ERROR_PERMISSION_DENIED: 10018
   };
   const appAccount = {
     createAppAccountManager: function (...args) {
