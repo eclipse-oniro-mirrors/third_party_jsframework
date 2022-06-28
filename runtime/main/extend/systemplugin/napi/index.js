@@ -157,6 +157,9 @@ import { mockEnterpriseDeviceManager } from './ohos_enterpriseDeviceManager'
 import { mockKeyCode } from './ohos_multimodalInput_keyCode'
 import { mockInputEventClient } from './ohos_multimodalInput_inputEventClient'
 import { mockDefaultAppManager } from './ohos_bundle_defaultAppManager'
+import { mockKeyEvent } from './ohos_multimodalInput_keyEvent'
+import { mockMouseEvent } from './ohos_multimodalInput_mouseEvent'
+import { mockTouchEvent } from './ohos_multimodalInput_touchEvent'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
@@ -448,6 +451,12 @@ export function mockRequireNapiFun() {
         return mockKeyCode();
       case "multimodalInput.inputEventClient":
         return mockInputEventClient();
+      case "multimodalInput.keyEvent":
+        return mockKeyEvent();
+      case "multimodalInput.mouseEvent":
+        return mockMouseEvent();
+      case "multimodalInput.touchEvent":
+        return mockTouchEvent();
       default:
         return global.requireNapiPreview(...args);
     }
