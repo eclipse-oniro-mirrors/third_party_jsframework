@@ -28,11 +28,20 @@ export function mockInputDevice() {
     sources: ['[PC preview] unknow sources'],
     axisRanges: [AxisRange]
   }
+  const KeyboardType = {
+    NONE: 0,
+    UNKNOWN: 1,
+    ALPHABETIC_KEYBOARD: 2,
+    DIGITAL_KEYBOARD: 3,
+    HANDWRITING_PEN: 4,
+    REMOTE_CONTROL: 5,
+  }
 
   const EventType = ['change']
   const DeviceIds = [0, 1, 2, 3, 4]
   const GetKeyboardType = 3
   const inputDevice = {
+    KeyboardType,
     on: function (...args) {
       console.warn("inputDevice.on interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
