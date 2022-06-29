@@ -15,7 +15,7 @@
 
 import { paramMock } from "../utils"
 import {resolve} from 'path/posix'
-import {BundleInfoMock} from './bundle/bundleInfo'
+import {BundleInfoMock, BundlePackInfo, DispatchInfoMock} from './bundle/bundleInfo'
 import {ApplicationInfoMock} from './bundle/applicationInfo'
 import {AbilityInfoMock} from './bundle/abilityInfo'
 import {WantMock} from './bundle/applicationInfo'
@@ -249,7 +249,7 @@ export function mockBundle() {
             }
         },
         setAbilityEnabled: function(...args) {
-            console.warn("bundle.setApplicationEnabled interface mocked in the Previewer. How this interface works on the" +
+            console.warn("bundle.setAbilityEnabled interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
@@ -272,7 +272,7 @@ export function mockBundle() {
               });
             }
           },
-          isModuleRemovable: function (...args) {
+        isModuleRemovable: function (...args) {
             console.warn("bundle.isModuleRemovable interface mocked in the Previewer. How this interface works on the" +
               " Previewer may be different from that on a real device.")
             const len = args.length
@@ -284,7 +284,7 @@ export function mockBundle() {
               });
             }
           },
-          getProfileByAbility: function (...args) {
+        getProfileByAbility: function (...args) {
             console.warn("bundle.getProfileByAbility interface mocked in the Previewer. How this interface works on the" +
               " Previewer may be different from that on a real device.")
             const len = args.length
@@ -296,7 +296,7 @@ export function mockBundle() {
               });
             }
           },
-          getProfileByExtensionAbility: function (...args) {
+        getProfileByExtensionAbility: function (...args) {
             console.warn("bundle.getProfileByExtensionAbility interface mocked in the Previewer. How this interface works on the" +
               " Previewer may be different from that on a real device.")
             const len = args.length
@@ -308,7 +308,7 @@ export function mockBundle() {
               });
             }
           },
-          queryExtensionAbilityInfos: function (...args) {
+        queryExtensionAbilityInfos: function (...args) {
             console.warn("bundle.queryExtensionAbilityInfos interface mocked in the Previewer. How this interface works on the" +
               " Previewer may be different from that on a real device.")
             const len = args.length
@@ -319,7 +319,31 @@ export function mockBundle() {
                 resolve(Array(ExtensionAbilityInfoMock))
               });
             }
-          }
+          },
+        getBundlePackInfo: function(...args) {
+            console.warn("bundle.getBundlePackInfo interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, BundlePackInfo);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(BundlePackInfo);
+                })
+            }
+        },
+        getDispatcherVersion: function(...args) {
+            console.warn("bundle.getDispatcherVersion interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, DispatchInfoMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(DispatchInfoMock);
+                })
+            }
+        }
     };
     return bundle;
 }
