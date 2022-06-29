@@ -154,6 +154,7 @@ import { mockMediaQuery } from './ohos_mediaquery'
 import { mockResourceManager } from './ohos_resourceManager'
 import { mockFile } from './system_file'
 import { mockEnterpriseDeviceManager } from './ohos_enterpriseDeviceManager'
+import { mockEnterpriseAdminExtensionAbility } from './ohos_EnterpriseAdminExtensionAbility'
 import { mockKeyCode } from './ohos_multimodalInput_keyCode'
 import { mockInputEventClient } from './ohos_multimodalInput_inputEventClient'
 import { mockDefaultAppManager } from './ohos_bundle_defaultAppManager'
@@ -447,6 +448,8 @@ export function mockRequireNapiFun() {
         return mockInputConsumer();
       case "enterpriseDeviceManager":
         return mockEnterpriseDeviceManager();
+      case "EnterpriseAdminExtensionAbility":
+        return mockEnterpriseAdminExtensionAbility();
       case "multimodalInput.keyCode":
         return mockKeyCode();
       case "multimodalInput.inputEventClient":
