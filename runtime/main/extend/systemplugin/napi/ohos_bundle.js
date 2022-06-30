@@ -271,7 +271,7 @@ export function mockBundle() {
                 resolve()
               });
             }
-          },
+        },
         isModuleRemovable: function (...args) {
             console.warn("bundle.isModuleRemovable interface mocked in the Previewer. How this interface works on the" +
               " Previewer may be different from that on a real device.")
@@ -283,7 +283,7 @@ export function mockBundle() {
                 resolve(paramMock.paramBooleanMock)
               });
             }
-          },
+        },
         getProfileByAbility: function (...args) {
             console.warn("bundle.getProfileByAbility interface mocked in the Previewer. How this interface works on the" +
               " Previewer may be different from that on a real device.")
@@ -295,7 +295,7 @@ export function mockBundle() {
                 resolve(new Array(paramMock.paramStringMock))
               });
             }
-          },
+        },
         getProfileByExtensionAbility: function (...args) {
             console.warn("bundle.getProfileByExtensionAbility interface mocked in the Previewer. How this interface works on the" +
               " Previewer may be different from that on a real device.")
@@ -307,7 +307,7 @@ export function mockBundle() {
                 resolve(new Array(paramMock.paramStringMock))
               });
             }
-          },
+        },
         queryExtensionAbilityInfos: function (...args) {
             console.warn("bundle.queryExtensionAbilityInfos interface mocked in the Previewer. How this interface works on the" +
               " Previewer may be different from that on a real device.")
@@ -319,7 +319,7 @@ export function mockBundle() {
                 resolve(Array(ExtensionAbilityInfoMock))
               });
             }
-          },
+        },
         getBundlePackInfo: function(...args) {
             console.warn("bundle.getBundlePackInfo interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
@@ -355,8 +355,8 @@ export function mockBundle() {
                 resolve()
               });
             }
-          },
-          getDisposedStatus: function (...args) {
+        },
+        getDisposedStatus: function (...args) {
             console.warn("bundle.getDisposedStatus interface mocked in the Previewer. How this interface works on the" +
               " Previewer may be different from that on a real device.")
             const len = args.length
@@ -367,7 +367,7 @@ export function mockBundle() {
                 resolve(paramMock.paramNumberMock)
               });
             }
-          },
+        },
     };
     return bundle;
 }
