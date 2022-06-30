@@ -15,12 +15,12 @@
 
 export const LauncherAbilityInfoMock = {
     applicationInfo: {
-        packageName: "[PC preview] unknown package name",
-        className: "[PC preview] unknown class name",
+        packageName: "[PC preview] unknown packageName",
+        className: "[PC preview] unknown className",
         name: "[PC preview] unknown name",
         labelId: 1,
         iconId: 2,
-        sourceDir: "[PC preview] unknown source dir",
+        sourceDir: "[PC preview] unknown sourceDir",
         flags: 3,
         customizeData: {
             key: "[PC preview] unknown key",
