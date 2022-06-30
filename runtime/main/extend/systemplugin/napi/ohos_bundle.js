@@ -267,9 +267,9 @@ export function mockBundle() {
             if (typeof args[len - 1] === 'function') {
               args[len - 1].call(this, paramMock.businessErrorMock)
             } else {
-              return new Promise((resolve) => {
-                resolve()
-              });
+                return new Promise((resolve) => {
+                    resolve()
+                });
             }
         },
         isModuleRemovable: function (...args) {
@@ -279,9 +279,9 @@ export function mockBundle() {
             if (typeof args[len - 1] === 'function') {
               args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
             } else {
-              return new Promise((resolve) => {
-                resolve(paramMock.paramBooleanMock)
-              });
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock)
+                });
             }
         },
         getProfileByAbility: function (...args) {
@@ -291,9 +291,9 @@ export function mockBundle() {
             if (typeof args[len - 1] === 'function') {
               args[len - 1].call(this, paramMock.businessErrorMock, new Array(paramMock.paramStringMock))
             } else {
-              return new Promise((resolve) => {
-                resolve(new Array(paramMock.paramStringMock))
-              });
+                return new Promise((resolve) => {
+                    resolve(new Array(paramMock.paramStringMock))
+                });
             }
         },
         getProfileByExtensionAbility: function (...args) {
@@ -303,9 +303,9 @@ export function mockBundle() {
             if (typeof args[len - 1] === 'function') {
               args[len - 1].call(this, paramMock.businessErrorMock, new Array(paramMock.paramStringMock))
             } else {
-              return new Promise((resolve) => {
-                resolve(new Array(paramMock.paramStringMock))
-              });
+                return new Promise((resolve) => {
+                    resolve(new Array(paramMock.paramStringMock))
+                });
             }
         },
         queryExtensionAbilityInfos: function (...args) {
@@ -315,9 +315,9 @@ export function mockBundle() {
             if (typeof args[len - 1] === 'function') {
               args[len - 1].call(this,paramMock.businessErrorMock, Array(ExtensionAbilityInfoMock))
             } else {
-              return new Promise((resolve) => {
-                resolve(Array(ExtensionAbilityInfoMock))
-              });
+                return new Promise((resolve) => {
+                    resolve(Array(ExtensionAbilityInfoMock))
+                });
             }
         },
         getBundlePackInfo: function(...args) {
@@ -351,9 +351,9 @@ export function mockBundle() {
             if (typeof args[len - 1] === 'function') {
               args[len - 1].call(this, paramMock.businessErrorMock)
             } else {
-              return new Promise((resolve) => {
-                resolve()
-              });
+                return new Promise((resolve) => {
+                    resolve()
+                });
             }
         },
         getDisposedStatus: function (...args) {
@@ -363,9 +363,9 @@ export function mockBundle() {
             if (typeof args[len - 1] === 'function') {
               args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
             } else {
-              return new Promise((resolve) => {
-                resolve(paramMock.paramNumberMock)
-              });
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramNumberMock)
+                });
             }
         },
     };
