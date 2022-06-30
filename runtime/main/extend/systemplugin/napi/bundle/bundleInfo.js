@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -200,3 +200,79 @@ export const BundleInfoMock = {
     minCompatibleVersionCode: 7,
     entryInstallationFree: true,
 };
+
+export const BundlePackInfo = {
+    packages: [{
+        deviceType: ["[PC preview] unknown deviceType"],
+        name: "[PC preview] unknown name",
+        moduleType: "[PC preview] unknown moduleType",
+        deliveryWithInstall: "[PC preview] unknown deliveryWithInstall",
+    }],
+    summary: {
+        app: {
+            bundleName: "[PC preview] unknown bundleName",
+            version: {
+                minCompatibleVersionCode: "[PC preview] unknown minCompatibleVersionCode",
+                name: "[PC preview] unknown name",
+                code: "[PC preview] unknown code",
+            },
+        },
+        modules: [
+            {
+                apiVersion: {
+                    releaseType: "[PC preview] unknown releaseType",
+                    compatible: "[PC preview] unknown compatible",
+                    target: "[PC preview] unknown target",
+                },
+                deviceType: ["[PC preview] unknown deviceType"],
+                distro: {
+                    mainAbility: "[PC preview] unknown mainAbility",
+                    deliveryWithInstall: "[PC preview] unknown deliveryWithInstall",
+                    installationFree: "[PC preview] unknown installationFree",
+                    moduleName: "[PC preview] unknown moduleName",
+                    moduleType: "[PC preview] unknown moduleType",
+                },
+                abilities: [
+                    {
+                        name: "[PC preview] unknown name",
+                        label: "[PC preview] unknown label",
+                        visible: "[PC preview] unknown visible",
+                        forms: [
+                            {
+                                name: "[PC preview] unknown name",
+                                type: "[PC preview] unknown type",
+                                updateEnabled: "[PC preview] unknown updateEnabled",
+                                scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
+                                updateDuration: "[PC preview] unknown updateDuration",
+                                supportDimensions: ["[PC preview] unknown supportDimensions"],
+                                defaultDimension: "[PC preview] unknown defaultDimension",
+                            }
+                        ],
+
+                    }
+                ],
+                extensionAbilities: [
+                    {
+                        name: "[PC preview] unknown name",
+                        forms: [
+                            {
+                                name: "[PC preview] unknown name",
+                                type: "[PC preview] unknown type",
+                                updateEnabled: "[PC preview] unknown updateEnabled",
+                                scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
+                                updateDuration: "[PC preview] unknown updateDuration",
+                                supportDimensions: ["[PC preview] unknown supportDimensions"],
+                                defaultDimension: "[PC preview] unknown defaultDimension",
+                            }
+                        ],
+                    }
+                ]
+            }
+        ]
+    }
+};
+
+export const DispatchInfoMock = {
+    verison: "[PC preview] unknown verison",
+    dispatchAPI: "[PC preview] unknown dispatchAPI",
+}
