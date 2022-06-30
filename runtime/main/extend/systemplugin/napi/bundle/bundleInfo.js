@@ -16,17 +16,17 @@
 export const BundleInfoMock = {
     name: "[PC preview] unknown name",
     type: "[PC preview] unknown type",
-    appId: "[PC preview] unknown app id",
+    appId: "[PC preview] unknown appId",
     uid: "[PC preview] unknown uid",
-    installTime: "[PC preview] unknown install time",
-    updateTime: "[PC preview] unknown up date time",
+    installTime: "[PC preview] unknown installTime",
+    updateTime: "[PC preview] unknown updateTime",
     appInfo: {
-        packageName: "[PC preview] unknown package name",
-        className: "[PC preview] unknown class name",
+        packageName: "[PC preview] unknown packageName",
+        className: "[PC preview] unknown className",
         name: "[PC preview] unknown name",
-        labelId: "[PC preview] unknown label id",
-        iconId: "[PC preview] unknown icon id",
-        sourceDir: "[PC preview] unknown source dir",
+        labelId: "[PC preview] unknown labelId",
+        iconId: "[PC preview] unknown iconId",
+        sourceDir: "[PC preview] unknown sourceDir",
         flags: "[PC preview] unknown flags",
         customizeData: {
             key: "[PC preview] unknown key",
@@ -66,11 +66,11 @@ export const BundleInfoMock = {
                     }
                 }
             },
-            formEntity: "[PC preview] unknown form entity",
-            minFormHeight: "[PC preview] unknown min form height",
-            defaultFormHeight: "[PC preview] unknown default form height",
-            minFormWidth: "[PC preview] unknown min form width",
-            defaultFormWidth: "[PC preview] unknown default form width",
+            formEntity: "[PC preview] unknown formEntity",
+            minFormHeight: "[PC preview] unknown minFormHeight",
+            defaultFormHeight: "[PC preview] unknown defaultFormHeight",
+            minFormWidth: "[PC preview] unknown minFormWidth",
+            defaultFormWidth: "[PC preview] unknown defaultFormWidth",
             uri: "[PC preview] unknown uri",
             customizeData: {
                 key: "[PC preview] unknown key",
@@ -147,12 +147,12 @@ export const BundleInfoMock = {
                     readPermission: "string",
                     writePermission: "string",
                     applicationInfo: {
-                        packageName: "[PC preview] unknown package name",
-                        className: "[PC preview] unknown class name",
+                        packageName: "[PC preview] unknown packageName",
+                        className: "[PC preview] unknown className",
                         name: "[PC preview] unknown name",
                         labelId: 2,
                         iconId: 3,
-                        sourceDir: "[PC preview] unknown source dir",
+                        sourceDir: "[PC preview] unknown sourceDir",
                         flags: 1,
                         customizeData: {
                             key: "[PC preview] unknown key",

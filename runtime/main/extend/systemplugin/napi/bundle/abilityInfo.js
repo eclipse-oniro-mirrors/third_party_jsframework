@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -38,12 +38,12 @@ export const AbilityInfoMock = {
     readPermission: "string",
     writePermission: "string",
     applicationInfo: {
-        packageName: "[PC preview] unknown package name",
-        className: "[PC preview] unknown class name",
+        packageName: "[PC preview] unknown packageName",
+        className: "[PC preview] unknown className",
         name: "[PC preview] unknown name",
         labelId: 1,
         iconId: 2,
-        sourceDir: "[PC preview] unknown source dir",
+        sourceDir: "[PC preview] unknown sourceDir",
         flags: 3,
         customizeData: {
             key: "[PC preview] unknown key",
