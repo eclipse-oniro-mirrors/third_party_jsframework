@@ -16,84 +16,93 @@
 import { paramMock } from './utils';
 
 export function mockAccessibility() {
-  const AbilityTypeMock = {
-    audible: 'audible',
-    generic: 'generic',
-    haptic: 'haptic',
-    spoken: 'spoken',
-    visual: 'visual'
-  };
+  const AbilityTypeMock = '[PC Preview] unknown AbilityType';
 
-  const CapabilityMock = {
-    retrieve: 'retrieve',
-    touchGuide: 'touchGuide',
-    keyEventObserver: 'keyEventObserver',
-    zoom: 'zoom',
-    gesture: 'gesture'
-  };
+  const CapabilityMock = '[PC Preview] unknown Capability';
 
-  const EventTypeMock = '[PC Preview] unknow EventType';
+  const EventTypeMock = '[PC Preview] unknown EventType';
 
   const AccessibilityAbilityInfoMock = {
-    id: '[PC Preview] unknow id',
-    name: '[PC Preview] unknow name',
-    bundleName: '[PC Preview] unknow bundleName',
+    id: '[PC Preview] unknown id',
+    name: '[PC Preview] unknown name',
+    bundleName: '[PC Preview] unknown bundleName',
+    TargetBundleName: ['[PC Preview] unknown TargetBundleName'],
     abilityTypes: [AbilityTypeMock],
     capabilities: [CapabilityMock],
-    description: '[PC Preview] unknow description',
+    description: '[PC Preview] unknown description',
     eventTypes: [EventTypeMock]
   };
 
-  const CaptionsFontEdgeTypeMock = '[PC Preview] unknow CaptionsFontEdgeType';
+  const CaptionsFontEdgeTypeMock = '[PC Preview] unknown CaptionsFontEdgeType';
 
-  const CaptionsFontFamilyMock = '[PC Preview] unknow CaptionsFontFamily';
+  const CaptionsFontFamilyMock = '[PC Preview] unknown CaptionsFontFamily';
 
   const CaptionStyleMock = {
-    fontFamily: [CaptionsFontFamilyMock],
-    fontScale: '[PC Preview] unknow fontScale',
-    fontColor: '[PC Preview] unknow fontColor',
-    fontEdgeType: [CaptionsFontEdgeTypeMock],
-    backgroundColor: '[PC Preview] unknow backgroundColor',
-    windowColor: '[PC Preview] unknow windowColor'
+    fontFamily: CaptionsFontFamilyMock,
+    fontScale: '[PC Preview] unknown fontScale',
+    fontColor: '[PC Preview] unknown fontColor',
+    fontEdgeType: CaptionsFontEdgeTypeMock,
+    backgroundColor: '[PC Preview] unknown backgroundColor',
+    windowColor: '[PC Preview] unknown windowColor'
   };
 
   const CaptionsManagerMock = {
-    enabled: '[PC Preview] unknow enabled',
-    style: [CaptionStyleMock]
+    enabled: '[PC Preview] unknown enabled',
+    style: CaptionStyleMock,
+    on: function (...args) {
+      console.warn('CaptionsManager.on interface mocked in the Previewer. How this interface works on the Previewer may be' +
+        ' different from that on a real device.');
+      const len = args.length;
+      if (len > 1 && typeof args[len - 1] === 'function') {
+        if (args[0] === 'enableChange') {
+          args[len - 1].call(this, paramMock.paramBooleanMock);
+        } else if (args[0] === 'styleChange') {
+          args[len - 1].call(this, CaptionStyleMock);
+        }
+      }
+    },
+    off: function (...args) {
+      console.warn('CaptionsManager.off interface mocked in the Previewer. How this interface works on the Previewer may be' +
+        ' different from that on a real device.');
+      const len = args.length;
+      if (len > 1 && typeof args[len - 1] === 'function') {
+        if (args[0] === 'enableChange') {
+          args[len - 1].call(this, paramMock.paramBooleanMock);
+        } else if (args[0] === 'styleChange') {
+          args[len - 1].call(this, CaptionStyleMock);
+        }
+      }
+    },
   };
 
-  const WindowUpdateTypeMock = '[PC Preview] unknow WindowUpdateType';
+  const WindowUpdateTypeMock = '[PC Preview] unknown WindowUpdateType';
 
-  const ActionMock = '[PC Preview] unknow Action';
+  const ActionMock = '[PC Preview] unknown Action';
 
-  const TextMoveUnitMock = '[PC Preview] unknow TextMoveUnit';
+  const TextMoveUnitMock = '[PC Preview] unknown TextMoveUnit';
+
   const EventInfoClass = class EventInfo {
     constructor(jsonObject) {
       console.warn('accessibility.EventInfoClass.constructor interface mocked in the Previewer. How this interface works on' +
         ' the Previewer may be different from that on a real device.');
       this.type = EventTypeMock;
       this.windowUpdateType = WindowUpdateTypeMock;
-      this.bundleName = '[PC Preview] unknow bundleName';
-      this.componentType = '[PC Preview] unknow componentType';
-      this.pageId = '[PC Preview] unknow pageId';
-      this.description = '[PC Preview] unknow description';
+      this.bundleName = '[PC Preview] unknown bundleName';
+      this.componentType = '[PC Preview] unknown componentType';
+      this.pageId = '[PC Preview] unknown pageId';
+      this.description = '[PC Preview] unknown description';
       this.triggerAction = ActionMock;
       this.textMoveUnit = TextMoveUnitMock;
-      this.contents = '[PC Preview] unknow contents';
-      this.lastContent = '[PC Preview] unknow lastContent';
-      this.beginIndex = '[PC Preview] unknow beginIndex';
-      this.currentIndex = '[PC Preview] unknow currentIndex';
-      this.endIndex = '[PC Preview] unknow endIndex';
-      this.itemCount = '[PC Preview] unknow itemCount';
+      this.contents = '[PC Preview] unknown contents';
+      this.lastContent = '[PC Preview] unknown lastContent';
+      this.beginIndex = '[PC Preview] unknown beginIndex';
+      this.currentIndex = '[PC Preview] unknown currentIndex';
+      this.endIndex = '[PC Preview] unknown endIndex';
+      this.itemCount = '[PC Preview] unknown itemCount';
     }
   };
-  const StateEventMock = {
-    eventType: '[PC Preview] unknow eventType',
-    state: '[PC Preview] unknow state',
-    description: '[PC Preview] unknow description'
-  };
 
-  global.systemplugin.accessibility = {
+  const accessibility = {
     EventInfo: EventInfoClass,
     isOpenAccessibility: function (...args) {
       console.warn('accessibility.isOpenAccessibility interface mocked in the Previewer. How this interface works on the' +
@@ -123,14 +132,26 @@ export function mockAccessibility() {
       console.warn('accessibility.on interface mocked in the Previewer. How this interface works on the Previewer may be' +
         ' different from that on a real device.');
       const len = args.length;
-      args[len - 1].call(this, paramMock.businessErrorMock, StateEventMock);
+      if (typeof args[len - 1] === 'function') {
+        if (args[0] == 'accessibilityStateChange') {
+          args[len - 1].call(this, this, paramMock.paramBooleanMock);
+        } else if (args[0] == 'touchGuideStateChange') {
+          args[len - 1].call(this, paramMock.paramBooleanMock);
+        } else {
+          args[len - 1].call(this, this, paramMock.paramBooleanMock);
+        }
+      }
     },
     off: function (...args) {
       console.warn('accessibility.off interface mocked in the Previewer. How this interface works on the Previewer may be' +
         ' different from that on a real device.');
       const len = args.length;
-      if (len > 0 && typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, StateEventMock);
+      if (len > 1 && typeof args[len - 1] === 'function') {
+        if (args[0] === 'accessibilityStateChange') {
+          args[len - 1].call(this, paramMock.paramBooleanMock);
+        } else if (args[0] === 'touchGuideStateChange') {
+          args[len - 1].call(this, paramMock.paramBooleanMock);
+        }
       }
     },
     getAbilityLists: function (...args) {
@@ -157,17 +178,12 @@ export function mockAccessibility() {
         });
       }
     },
-    getCaptionsManager: function (...args) {
+    getCaptionsManager: function () {
       console.warn('accessibility.getCaptionsManager interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
-      const len = args.length;
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [CaptionsManagerMock]);
-      } else {
-        return new Promise((resolve, reject) => {
-          resolve([CaptionsManagerMock]);
-        });
-      }
+      return CaptionsManagerMock;
     }
   };
+
+  return accessibility;
 }
