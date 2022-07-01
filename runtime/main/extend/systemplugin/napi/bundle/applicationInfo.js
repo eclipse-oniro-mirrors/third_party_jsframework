@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,22 +14,59 @@
  */
 
 export const ApplicationInfoMock = {
-    packageName: "[PC preview] unknown packageName",
-    className: "[PC preview] unknown className",
     name: "[PC preview] unknown name",
-    labelId: 1,
-    iconId: 2,
-    sourceDir: "[PC preview] unknown sourceDir",
-    flags: 3,
-    customizeData: {
-        key: "[PC preview] unknown key",
-        value: {
-            CustomizeData: {
-                name: "[PC preview] unknown name",
-                value: "[PC preview] unknown value",
-            }
+    description: "[PC preview] unknown description",
+    descriptionId: "[PC preview] unknown descriptionId",
+    systemApp: "[PC preview] unknown systemApp",
+    enabled: "[PC preview] unknown enabled",
+    label: "[PC preview] unknown label",
+    labelId: "[PC preview] unknown labelId",
+    icon: "[PC preview] unknown icon",
+    iconId: "[PC preview] unknown iconId",
+    process: "[PC preview] unknown process",
+    supportedModes: "[PC preview] unknown supportedModes",
+    moduleSourceDirs: ["[PC preview] unknown moduleSourceDirs"],
+    permissions: ["[PC preview] unknown permissions"],
+    moduleInfos: [
+        {
+            moduleName: "[PC preview] unknown moduleName",
+            moduleSourceDir: "[PC preview] unknown moduleSourceDir",
         }
-    }
+    ],
+    entryDir: "[PC preview] unknown entryDir",
+    codePath: "[PC preview] unknown codePath",
+    metaData: [{
+        name: "[PC preview] unknown name",
+        value: "[PC preview] unknown value",
+        extra: "[PC preview] unknown extra",
+    }],
+    metadata: [{
+        name: "[PC preview] unknown name",
+        value: "[PC preview] unknown value",
+        resource: "[PC preview] unknown resource",
+    }],
+    removable: "[PC preview] unknown removable",
+    accessTokenId: "[PC preview] unknown accessTokenId",
+    uid: "[PC preview] unknown uid",
+    entityType: "[PC preview] unknown entityType",
+    fingerprint: "[PC preview] unknown fingerprint",
+    iconResource: {
+        bundleName: "[PC preview] unknown bundleName",
+        moduleName: "[PC preview] unknown moduleName",
+        id: "[PC preview] unknown id"
+    },
+    labelResource: {
+        bundleName: "[PC preview] unknown bundleName",
+        moduleName: "[PC preview] unknown moduleName",
+        id: "[PC preview] unknown id"
+    },
+    descriptionResource: {
+        bundleName: "[PC preview] unknown bundleName",
+        moduleName: "[PC preview] unknown moduleName",
+        id: "[PC preview] unknown id"
+    },
+    appDistributionType: "[PC preview] unknown appDistributionType",
+    appProvisionType: "[PC preview] unknown appProvisionType", 
 }
 
 export const WantMock = {
@@ -41,7 +78,8 @@ export const WantMock = {
     flag: "[PC Preview] unknow flag",
     action: "[PC Preview] unknow action",
     parameters: "[PC Preview] unknow parameters",
-    entities: "[PC Preview] unknow entities"
+    entities: "[PC Preview] unknow entities",
+    moduleName: "[PC Preview] unknow moduleName"
  }
 
 export const ShortcutInfoMock =  {

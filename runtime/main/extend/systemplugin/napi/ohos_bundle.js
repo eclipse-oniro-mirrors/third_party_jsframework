@@ -14,13 +14,9 @@
  */
 
 import { paramMock } from "../utils"
-import {resolve} from 'path/posix'
 import {BundleInfoMock, BundlePackInfo, DispatchInfoMock} from './bundle/bundleInfo'
 import {ApplicationInfoMock} from './bundle/applicationInfo'
-import {AbilityInfoMock} from './bundle/abilityInfo'
 import {WantMock} from './bundle/applicationInfo'
-import {ShortcutInfoMock} from './bundle/applicationInfo'
-import {ModuleUsageRecordMock} from './bundle/applicationInfo'
 
 export function mockBundle() {
     const extensionAbilityType = {
@@ -94,7 +90,7 @@ export function mockBundle() {
     const bundle = {
         getBundleInfo: function(...args) {
             console.warn("bundle.getBundleInfo interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, BundleInfoMock);
@@ -106,7 +102,7 @@ export function mockBundle() {
         },
         getBundleInstaller: function(...args) {
             console.warn("bundle.getBundleInstaller interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock);
@@ -118,7 +114,7 @@ export function mockBundle() {
         },
         getApplicationInfo: function(...args) {
             console.warn("bundle.getApplicationInfo interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, ApplicationInfoMock);
@@ -128,21 +124,9 @@ export function mockBundle() {
                 })
             }
         },
-        checkPermission: function(...args) {
-            console.warn("bundle.checkPermission interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-            const len = args.length;
-            if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
-            } else {
-                return new Promise((resolve) => {
-                    resolve(paramMock.paramNumberMock);
-                })
-            }
-        },
         queryAbilityByWant: function(...args) {
             console.warn("bundle.queryAbilityByWant interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, Array(BundleInfoMock));
@@ -154,7 +138,7 @@ export function mockBundle() {
         },
         getAllApplicationInfo: function(...args){
             console.warn("bundle.getAllApplicationInfo interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, Array(BundleInfoMock));
@@ -166,7 +150,7 @@ export function mockBundle() {
         },
         getAllBundleInfo: function(...args) {
             console.warn("bundle.getAllBundleInfo interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, Array(ApplicationInfoMock));
@@ -178,7 +162,7 @@ export function mockBundle() {
         },
         getBundleArchiveInfo:  function(...args) {
             console.warn("bundle.getBundleArchiveInfo interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, Array(BundleInfoMock));
@@ -190,7 +174,7 @@ export function mockBundle() {
         },
         getLaunchWantForBundle: function(...args) {
             console.warn("bundle.getBundleArchiveInfo interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, Array(WantMock));
@@ -200,33 +184,9 @@ export function mockBundle() {
                 })
             }
         },
-        getAllShortcutInfo: function(...args) {
-            console.warn("bundle.getAllShortcutInfo interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-            const len = args.length;
-            if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, Array(ShortcutInfoMock));
-            } else {
-                return new Promise((resolve) => {
-                    resolve(Array(ShortcutInfoMock));
-                })
-            }
-        },
-        getModuleUsageRecords: function(...args) {
-            console.warn("bundle.getAllShortcutInfo interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
-            const len = args.length;
-            if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, Array(ModuleUsageRecordMock));
-            } else {
-                return new Promise((resolve) => {
-                    resolve(Array(ModuleUsageRecordMock));
-                })
-            }
-        },
         cleanBundleCacheFiles: function(...args) {
             console.warn("bundle.cleanBundleCacheFiles interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock);
@@ -238,7 +198,7 @@ export function mockBundle() {
         },
         setApplicationEnabled: function(...args) {
             console.warn("bundle.setApplicationEnabled interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock);
@@ -250,7 +210,7 @@ export function mockBundle() {
         },
         setAbilityEnabled: function(...args) {
             console.warn("bundle.setAbilityEnabled interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock);
@@ -262,10 +222,10 @@ export function mockBundle() {
         },
         setModuleUpgradeFlag: function (...args) {
             console.warn("bundle.setModuleUpgradeFlag interface mocked in the Previewer. How this interface works on the" +
-              " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-              args[len - 1].call(this, paramMock.businessErrorMock)
+                args[len - 1].call(this, paramMock.businessErrorMock)
             } else {
                 return new Promise((resolve) => {
                     resolve()
@@ -274,10 +234,10 @@ export function mockBundle() {
         },
         isModuleRemovable: function (...args) {
             console.warn("bundle.isModuleRemovable interface mocked in the Previewer. How this interface works on the" +
-              " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-              args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
             } else {
                 return new Promise((resolve) => {
                     resolve(paramMock.paramBooleanMock)
@@ -286,10 +246,10 @@ export function mockBundle() {
         },
         getProfileByAbility: function (...args) {
             console.warn("bundle.getProfileByAbility interface mocked in the Previewer. How this interface works on the" +
-              " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-              args[len - 1].call(this, paramMock.businessErrorMock, new Array(paramMock.paramStringMock))
+                args[len - 1].call(this, paramMock.businessErrorMock, new Array(paramMock.paramStringMock))
             } else {
                 return new Promise((resolve) => {
                     resolve(new Array(paramMock.paramStringMock))
@@ -298,10 +258,10 @@ export function mockBundle() {
         },
         getProfileByExtensionAbility: function (...args) {
             console.warn("bundle.getProfileByExtensionAbility interface mocked in the Previewer. How this interface works on the" +
-              " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-              args[len - 1].call(this, paramMock.businessErrorMock, new Array(paramMock.paramStringMock))
+                args[len - 1].call(this, paramMock.businessErrorMock, new Array(paramMock.paramStringMock))
             } else {
                 return new Promise((resolve) => {
                     resolve(new Array(paramMock.paramStringMock))
@@ -310,10 +270,10 @@ export function mockBundle() {
         },
         queryExtensionAbilityInfos: function (...args) {
             console.warn("bundle.queryExtensionAbilityInfos interface mocked in the Previewer. How this interface works on the" +
-              " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-              args[len - 1].call(this,paramMock.businessErrorMock, Array(ExtensionAbilityInfoMock))
+                args[len - 1].call(this,paramMock.businessErrorMock, Array(ExtensionAbilityInfoMock))
             } else {
                 return new Promise((resolve) => {
                     resolve(Array(ExtensionAbilityInfoMock))
@@ -322,7 +282,7 @@ export function mockBundle() {
         },
         getBundlePackInfo: function(...args) {
             console.warn("bundle.getBundlePackInfo interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, BundlePackInfo);
@@ -334,7 +294,7 @@ export function mockBundle() {
         },
         getDispatcherVersion: function(...args) {
             console.warn("bundle.getDispatcherVersion interface mocked in the Previewer. How this interface works on the" +
-            " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, DispatchInfoMock);
@@ -346,10 +306,10 @@ export function mockBundle() {
         },
         setDisposedStatus: function (...args) {
             console.warn("bundle.setDisposedStatus interface mocked in the Previewer. How this interface works on the" +
-              " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-              args[len - 1].call(this, paramMock.businessErrorMock)
+                args[len - 1].call(this, paramMock.businessErrorMock)
             } else {
                 return new Promise((resolve) => {
                     resolve()
@@ -358,10 +318,10 @@ export function mockBundle() {
         },
         getDisposedStatus: function (...args) {
             console.warn("bundle.getDisposedStatus interface mocked in the Previewer. How this interface works on the" +
-              " Previewer may be different from that on a real device.")
+                " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-              args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
             } else {
                 return new Promise((resolve) => {
                     resolve(paramMock.paramNumberMock)

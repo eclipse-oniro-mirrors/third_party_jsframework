@@ -14,8 +14,8 @@
  */
 
 import { paramMock } from "../utils"
-import {resolve} from 'path/posix'
-import {BundleInfoMock} from './bundle/bundleInfo'
+import { resolve } from 'path/posix'
+import { BundleInfoMock } from './bundle/bundleInfo'
 import {ApplicationInfoMock} from './bundle/applicationInfo'
 import {AbilityInfoMock} from './bundle/abilityInfo'
 import {WantMock} from './bundle/applicationInfo'
