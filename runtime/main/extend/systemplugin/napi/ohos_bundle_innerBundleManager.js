@@ -14,14 +14,8 @@
  */
 
 import { paramMock } from "../utils"
-import { resolve } from 'path/posix'
-import { BundleInfoMock } from './bundle/bundleInfo'
-import {ApplicationInfoMock} from './bundle/applicationInfo'
-import {AbilityInfoMock} from './bundle/abilityInfo'
-import {WantMock} from './bundle/applicationInfo'
-import {ShortcutInfoMock} from './bundle/applicationInfo'
-import {ModuleUsageRecordMock} from './bundle/applicationInfo'
-import {LauncherAbilityInfoMock} from './bundle/launcherAbilityInfo'
+import { ShortcutInfoMock } from './bundle/applicationInfo'
+import { LauncherAbilityInfoMock } from './bundle/launcherAbilityInfo'
 
 export function mockInnerBundle() {
     const innerBundleManager = {

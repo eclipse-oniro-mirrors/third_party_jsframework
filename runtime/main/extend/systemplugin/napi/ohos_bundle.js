@@ -14,9 +14,9 @@
  */
 
 import { paramMock } from "../utils"
-import {BundleInfoMock, BundlePackInfo, DispatchInfoMock} from './bundle/bundleInfo'
-import {ApplicationInfoMock} from './bundle/applicationInfo'
-import {WantMock} from './bundle/applicationInfo'
+import { BundleInfoMock, BundlePackInfo, DispatchInfoMock } from './bundle/bundleInfo'
+import { ApplicationInfoMock } from './bundle/applicationInfo'
+import { WantMock } from './bundle/applicationInfo'
 
 export function mockBundle() {
     const extensionAbilityType = {
