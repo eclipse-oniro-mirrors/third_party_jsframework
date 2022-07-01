@@ -264,7 +264,8 @@ export function mockDistributedData() {
   };
   const kvManagerConfigMock = {
     userInfo: "[PC Preview] unknown userInfo",
-    bundleName: "[PC Preview] unknown bundleName"
+    bundleName: "[PC Preview] unknown bundleName",
+    context : "[PC Preview] unknown context"
   };
   const constantsMock = {
     MAX_KEY_LENGTH: "[PC Preview] unknown MAX_KEY_LENGTH",
