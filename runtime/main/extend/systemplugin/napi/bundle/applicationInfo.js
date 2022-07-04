@@ -14,12 +14,12 @@
  */
 
 export const ApplicationInfoMock = {
-    packageName: "[PC preview] unknown package name",
-    className: "[PC preview] unknown class name",
+    packageName: "[PC preview] unknown packageName",
+    className: "[PC preview] unknown className",
     name: "[PC preview] unknown name",
     labelId: 1,
     iconId: 2,
-    sourceDir: "[PC preview] unknown source dir",
+    sourceDir: "[PC preview] unknown sourceDir",
     flags: 3,
     customizeData: {
         key: "[PC preview] unknown key",
@@ -46,19 +46,19 @@ export const WantMock = {
 
 export const ShortcutInfoMock =  {
     id: "[PC preview] unknown id",
-    bundleName: "[PC preview] unknown bundle name",
-    hostAbility: "[PC preview] unknown host ability",
+    bundleName: "[PC preview] unknown bundleName",
+    hostAbility: "[PC preview] unknown hostAbility",
     icon: "[PC preview] unknown icon",
     label: "[PC preview] unknown label",
-    disableMessage: "[PC preview] unknown disable message",
+    disableMessage: "[PC preview] unknown disableMessage",
     wants: [
         {
-            targetBundle: "[PC preview] unknown target bundle",
-            targetClass: "[PC preview] unknown target class",
+            targetBundle: "[PC preview] unknown targetBundle",
+            targetClass: "[PC preview] unknown targetClass",
         }],
-    isStatic: "[PC preview] unknown is static",
-    isHomeShortcut: "[PC preview] unknown is home shortcut",
-    isEnabled: "[PC preview] unknown is enabled",
+    isStatic: "[PC preview] unknown isStatic",
+    isHomeShortcut: "[PC preview] unknown isHomeShortcut",
+    isEnabled: "[PC preview] unknown isEnabled",
 }
 
 export const ModuleUsageRecordMock = {

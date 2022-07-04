@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,17 +16,17 @@
 export const BundleInfoMock = {
     name: "[PC preview] unknown name",
     type: "[PC preview] unknown type",
-    appId: "[PC preview] unknown app id",
+    appId: "[PC preview] unknown appId",
     uid: "[PC preview] unknown uid",
-    installTime: "[PC preview] unknown install time",
-    updateTime: "[PC preview] unknown up date time",
+    installTime: "[PC preview] unknown installTime",
+    updateTime: "[PC preview] unknown updateTime",
     appInfo: {
-        packageName: "[PC preview] unknown package name",
-        className: "[PC preview] unknown class name",
+        packageName: "[PC preview] unknown packageName",
+        className: "[PC preview] unknown className",
         name: "[PC preview] unknown name",
-        labelId: "[PC preview] unknown label id",
-        iconId: "[PC preview] unknown icon id",
-        sourceDir: "[PC preview] unknown source dir",
+        labelId: "[PC preview] unknown labelId",
+        iconId: "[PC preview] unknown iconId",
+        sourceDir: "[PC preview] unknown sourceDir",
         flags: "[PC preview] unknown flags",
         customizeData: {
             key: "[PC preview] unknown key",
@@ -66,11 +66,11 @@ export const BundleInfoMock = {
                     }
                 }
             },
-            formEntity: "[PC preview] unknown form entity",
-            minFormHeight: "[PC preview] unknown min form height",
-            defaultFormHeight: "[PC preview] unknown default form height",
-            minFormWidth: "[PC preview] unknown min form width",
-            defaultFormWidth: "[PC preview] unknown default form width",
+            formEntity: "[PC preview] unknown formEntity",
+            minFormHeight: "[PC preview] unknown minFormHeight",
+            defaultFormHeight: "[PC preview] unknown defaultFormHeight",
+            minFormWidth: "[PC preview] unknown minFormWidth",
+            defaultFormWidth: "[PC preview] unknown defaultFormWidth",
             uri: "[PC preview] unknown uri",
             customizeData: {
                 key: "[PC preview] unknown key",
@@ -147,12 +147,12 @@ export const BundleInfoMock = {
                     readPermission: "string",
                     writePermission: "string",
                     applicationInfo: {
-                        packageName: "[PC preview] unknown package name",
-                        className: "[PC preview] unknown class name",
+                        packageName: "[PC preview] unknown packageName",
+                        className: "[PC preview] unknown className",
                         name: "[PC preview] unknown name",
                         labelId: 2,
                         iconId: 3,
-                        sourceDir: "[PC preview] unknown source dir",
+                        sourceDir: "[PC preview] unknown sourceDir",
                         flags: 1,
                         customizeData: {
                             key: "[PC preview] unknown key",
@@ -200,3 +200,79 @@ export const BundleInfoMock = {
     minCompatibleVersionCode: 7,
     entryInstallationFree: true,
 };
+
+export const BundlePackInfo = {
+    packages: [{
+        deviceType: ["[PC preview] unknown deviceType"],
+        name: "[PC preview] unknown name",
+        moduleType: "[PC preview] unknown moduleType",
+        deliveryWithInstall: "[PC preview] unknown deliveryWithInstall",
+    }],
+    summary: {
+        app: {
+            bundleName: "[PC preview] unknown bundleName",
+            version: {
+                minCompatibleVersionCode: "[PC preview] unknown minCompatibleVersionCode",
+                name: "[PC preview] unknown name",
+                code: "[PC preview] unknown code",
+            },
+        },
+        modules: [
+            {
+                apiVersion: {
+                    releaseType: "[PC preview] unknown releaseType",
+                    compatible: "[PC preview] unknown compatible",
+                    target: "[PC preview] unknown target",
+                },
+                deviceType: ["[PC preview] unknown deviceType"],
+                distro: {
+                    mainAbility: "[PC preview] unknown mainAbility",
+                    deliveryWithInstall: "[PC preview] unknown deliveryWithInstall",
+                    installationFree: "[PC preview] unknown installationFree",
+                    moduleName: "[PC preview] unknown moduleName",
+                    moduleType: "[PC preview] unknown moduleType",
+                },
+                abilities: [
+                    {
+                        name: "[PC preview] unknown name",
+                        label: "[PC preview] unknown label",
+                        visible: "[PC preview] unknown visible",
+                        forms: [
+                            {
+                                name: "[PC preview] unknown name",
+                                type: "[PC preview] unknown type",
+                                updateEnabled: "[PC preview] unknown updateEnabled",
+                                scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
+                                updateDuration: "[PC preview] unknown updateDuration",
+                                supportDimensions: ["[PC preview] unknown supportDimensions"],
+                                defaultDimension: "[PC preview] unknown defaultDimension",
+                            }
+                        ],
+
+                    }
+                ],
+                extensionAbilities: [
+                    {
+                        name: "[PC preview] unknown name",
+                        forms: [
+                            {
+                                name: "[PC preview] unknown name",
+                                type: "[PC preview] unknown type",
+                                updateEnabled: "[PC preview] unknown updateEnabled",
+                                scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
+                                updateDuration: "[PC preview] unknown updateDuration",
+                                supportDimensions: ["[PC preview] unknown supportDimensions"],
+                                defaultDimension: "[PC preview] unknown defaultDimension",
+                            }
+                        ],
+                    }
+                ]
+            }
+        ]
+    }
+};
+
+export const DispatchInfoMock = {
+    verison: "[PC preview] unknown verison",
+    dispatchAPI: "[PC preview] unknown dispatchAPI",
+}

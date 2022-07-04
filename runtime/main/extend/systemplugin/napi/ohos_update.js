@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,57 +13,189 @@
  * limitations under the License.
  */
 
-import {paramMock} from "../utils"
+import { paramMock } from "../utils"
 
 export function mockUpdate() {
-    const updater = {
+    const Updater = {
         checkNewVersion: function (...args) {
             console.warn("Updater.checkNewVersion interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, CheckResult);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve(CheckResult);
+                })
+            }
+        },
+        getNewVersionInfo: function (...args) {
+            console.warn("Updater.getNewVersionInfo interface mocked in the Previewer. How this interface works" +
+            " on the Previewer may be different from that on a real device.")
             const len = args.length
             if (len > 0 && typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, NewVersionInfo);
             } else {
                 return new Promise((resolve, reject) => {
                     resolve(NewVersionInfo);
+                })
+            }
+        },
+        getCurrentVersionInfo: function (...args) {
+            console.warn("Updater.getCurrentVersionInfo interface mocked in the Previewer. How this interface works" +
+            " on the Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, CurrentVersionInfo);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve(CurrentVersionInfo);
+                })
+            }
+        },
+        getTaskInfo: function (...args) {
+            console.warn("Updater.getTaskInfo interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, TaskInfo);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve(TaskInfo);
                 })
             }
         },
         download: function (...args) {
             console.warn("Updater.download interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve();
+                })
+            }
+        },
+        resumeDownload: function (...args) {
+            console.warn("Updater.resumeDownload interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve();
+                })
+            }
+        },
+        pauseDownload: function (...args) {
+            console.warn("Updater.pauseDownload interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve();
+                })
+            }
         },
         upgrade: function (...args) {
             console.warn("Updater.upgrade interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
-        },
-        getNewVersionInfo: function (...args) {
-            console.warn("Updater.getNewVersionInfo interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
+            " Previewer may be different from that on a real device.")
             const len = args.length
             if (len > 0 && typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, NewVersionInfo);
+                args[len - 1].call(this, paramMock.businessErrorMock);
             } else {
                 return new Promise((resolve, reject) => {
-                    resolve(NewVersionInfo);
+                    resolve();
                 })
             }
         },
-        getUpdatePolicy: function (...args) {
-            console.warn("Updater.getUpdatePolicy interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
+        clearError: function (...args) {
+            console.warn("Updater.clearError interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
             const len = args.length
             if (len > 0 && typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, UpdatePolicy);
+                args[len - 1].call(this, paramMock.businessErrorMock);
             } else {
                 return new Promise((resolve, reject) => {
-                    resolve(UpdatePolicy);
+                    resolve();
                 })
             }
         },
-        setUpdatePolicy: function (...args) {
-            console.warn("Updater.setUpdatePolicy interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
+        getUpgradePolicy: function (...args) {
+            console.warn("Updater.getUpgradePolicy interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, UpgradePolicy);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve(UpgradePolicy);
+                })
+            }
+        },
+        setUpgradePolicy: function (...args) {
+            console.warn("Updater.setUpgradePolicy interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve(paramMock.paramNumberMock);
+                })
+            }
+        },
+        terminateUpgrade: function (...args) {
+            console.warn("Updater.terminateUpgrade interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve();
+                })
+            }
+        },
+        on: function (...args) {
+            console.warn("Updater.on interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, EventInfo);
+            }
+        },
+        off: function (...args) {
+            console.warn("Updater.off interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, EventInfo);
+            }
+        },
+    }
+    const Restorer = {
+        factoryReset: function (...args) {
+            console.warn("Restorer.factoryReset interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve();
+                })
+            }
+        },
+    }
+    const LocalUpdater = {
+        verifyUpgradePackage: function (...args) {
+            console.warn("LocalUpdater.verifyUpgradePackage interface mocked in the Previewer. How this interface" +
+            " works on the Previewer may be different from that on a real device.")
             const len = args.length
             if (len > 0 && typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
@@ -74,154 +206,210 @@ export function mockUpdate() {
             }
         },
         applyNewVersion: function (...args) {
-            console.warn("Updater.applyNewVersion interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
+            console.warn("LocalUpdater.applyNewVersion interface mocked in the Previewer. How this interface works" +
+            " on the Previewer may be different from that on a real device.")
             const len = args.length
             if (len > 0 && typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+                args[len - 1].call(this, paramMock.businessErrorMock);
             } else {
                 return new Promise((resolve, reject) => {
-                    resolve(paramMock.paramNumberMock);
+                    resolve();
                 })
             }
-        },
-        rebootAndCleanCache: function (...args) {
-            console.warn("Updater.rebootAndCleanCache interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
-            const len = args.length
-            if (len > 0 && typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
-            } else {
-                return new Promise((resolve, reject) => {
-                    resolve(paramMock.paramNumberMock);
-                })
-            }
-        },
-        verifyUpdatePackage: function (...args) {
-            console.warn("Updater.verifyUpdatePackage interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
         },
         on: function (...args) {
-            console.warn("Updater.on interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
+            console.warn("LocalUpdater.on interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
             const len = args.length
             if (len > 0 && typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, Progress);
+                args[len - 1].call(this, EventInfo);
             }
         },
         off: function (...args) {
-            console.warn("Updater.off interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
+            console.warn("LocalUpdater.off interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
             const len = args.length
             if (len > 0 && typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, Progress);
+                args[len - 1].call(this, EventInfo);
             }
-        },
-        cancel: function (...args) {
-            console.warn("Updater.cancel interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
         },
     }
     const update = {
-        PackageTypes,
-        NewVersionStatus,
-        UpdateState,
-        InstallMode,
-        getUpdater: function (...args) {
-            console.warn("update.getUpdater interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
-            return updater;
+        BusinessVendor,
+        BusinessSubType,
+        ComponentType,
+        UpgradeAction,
+        EffectiveMode,
+        DescriptionType,
+        NetType,
+        Order,
+        UpgradeStatus,
+        EventClassify,
+        EventId,
+        getOnlineUpdater: function (...args) {
+            console.warn("update.getOnlineUpdater interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            return Updater;
         },
-        getUpdaterForOther: function (...args) {
-            console.warn("update.getUpdaterForOther interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
-            return updater;
+        getRestorer: function (...args) {
+            console.warn("update.getRestorer interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            return Restorer;
         },
-        getUpdaterFromOther: function (...args) {
-            console.warn("update.getUpdaterFromOther interface mocked in the Previewer. How this interface works on the" +
-                " Previewer may be different from that on a real device.")
-            return updater;
+        getLocalUpdater: function (...args) {
+            console.warn("update.getLocalUpdater interface mocked in the Previewer. How this interface works on the" +
+            " Previewer may be different from that on a real device.")
+            return LocalUpdater;
         }
     }
     return update;
 }
 
-const PackageTypes = {
-    PACKAGE_TYPE_NORMAL: 1,
-    PACKAGE_TYPE_BASE: 2,
-    PACKAGE_TYPE_CUST: 3,
-    PACKAGE_TYPE_PRELOAD: 4,
-    PACKAGE_TYPE_COTA: 5,
-    PACKAGE_TYPE_VERSION: 6,
-    PACKAGE_TYPE_PATCH: 7,
+const BusinessVendor = {
+    PUBLIC: "public",
 }
 
-const CheckResult = {
-    versionName: "[PC Preview] unknow versionName",
-    versionCode: "[PC Preview] unknow versionCode",
-    size: "[PC Preview] unknow size",
-    verifyInfo: "[PC Preview] unknow verifyInfo",
-    packageType: PackageTypes.PACKAGE_TYPE_NORMAL,
-    descriptionId: "[PC Preview] unknow descriptionId",
+const BusinessSubType = {
+    FIRMWARE: 1,
+    PARAM: 2,
+}
+
+const ComponentType = {
+    OTA: 1,
+}
+
+const UpgradeAction = {
+    UPGRADE: "upgrade",
+    RECOVERY: "recovery",
+}
+
+const EffectiveMode = {
+    COLD: 1,
+    LIVE: 2,
+    LIVE_AND_COLD: 3,
+}
+
+const DescriptionType = {
+    CONTENT: 0,
+    URI: 1,
+}
+
+const NetType = {
+    CELLULAR: 1,
+    METERED_WIFI: 2,
+    NOT_METERED_WIFI: 4,
+}
+
+const Order = {
+    DOWNLOAD: 1,
+    INSTALL: 2,
+    APPLY: 4,
+}
+
+const UpgradeStatus = {
+    WAITING_DOWNLOAD: 20,
+    DOWNLOADING: 21,
+    DOWNLOAD_PAUSED: 22,
+    DOWNLOAD_FAIL: 23,
+    WAITING_INSTALL: 30,
+    UPDATING: 31,
+    WAITING_APPLY: 40,
+    APPLYING: 41,
+    UPGRADE_SUCCESS: 50,
+    UPGRADE_FAIL: 51,
+}
+
+const EventClassify = {
+    TASK: 0x01000000,
+}
+
+const EventId = {
+    EVENT_TASK_BASE: 0x01000000,
+    EVENT_TASK_RECEIVE: 0x01000001,
+    EVENT_TASK_CANCEL: 0x01000002,
+    EVENT_DOWNLOAD_WAIT: 0x01000003,
+    EVENT_DOWNLOAD_START: 0x01000004,
+    EVENT_DOWNLOAD_UPDATE: 0x01000005,
+    EVENT_DOWNLOAD_PAUSE: 0x01000006,
+    EVENT_DOWNLOAD_RESUME: 0x01000007,
+    EVENT_DOWNLOAD_SUCCESS: 0x01000008,
+    EVENT_DOWNLOAD_FAIL: 0x01000009,
+    EVENT_UPGRADE_WAIT: 0x01000010,
+    EVENT_UPGRADE_START: 0x01000011,
+    EVENT_UPGRADE_UPDATE: 0x01000012,
+    EVENT_APPLY_WAIT: 0x01000013,
+    EVENT_APPLY_START: 0x01000014,
+    EVENT_UPGRADE_SUCCESS: 0x01000015,
+    EVENT_UPGRADE_FAIL: 0x01000016,
+}
+
+const VersionDigestInfo = {
+    versionDigest: "[PC Preview] unknown versionDigest",
 }
 
 const DescriptionInfo = {
-    descriptionId: "[PC Preview] unknow descriptionId",
-    content: "[PC Preview] unknow content",
+    descriptionType: DescriptionType.CONTENT,
+    content: "[PC Preview] unknown content",
 }
 
-const NewVersionStatus = {
-    VERSION_STATUS_ERR: -1,
-    VERSION_STATUS_NEW: 0,
-    VERSION_STATUS_NONE: 1,
-    VERSION_STATUS_BUSY: 2,
+const VersionComponent = {
+    componentType: ComponentType.OTA,
+    upgradeAction: UpgradeAction.UPGRADE,
+    displayVersion: "[PC Preview] unknown displayVersion",
+    innerVersion: "[PC Preview] unknown innerVersion",
+    size: "[PC Preview] unknown size",
+    effectiveMode: EffectiveMode.COLD,
+    descriptionInfo: DescriptionInfo,
 }
 
 const NewVersionInfo = {
-    status: NewVersionStatus.VERSION_STATUS_NEW,
-    errMsg: "[PC Preview] unknow errMsg",
-    checkResults: [CheckResult],
-    descriptionInfo: [DescriptionInfo]
+    versionDigestInfo: VersionDigestInfo,
+    versionComponents: [VersionComponent],
 }
 
-const UpdateState = {
-    UPDATE_STATE_INIT: 0,
-    UPDATE_STATE_CHECK_VERSION_ON: 10,
-    UPDATE_STATE_CHECK_VERSION_FAIL: 11,
-    UPDATE_STATE_CHECK_VERSION_SUCCESS: 12,
-    UPDATE_STATE_DOWNLOAD_ON: 20,
-    UPDATE_STATE_DOWNLOAD_PAUSE: 21,
-    UPDATE_STATE_DOWNLOAD_CANCEL: 22,
-    UPDATE_STATE_DOWNLOAD_FAIL: 23,
-    UPDATE_STATE_DOWNLOAD_SUCCESS: 24,
-    UPDATE_STATE_VERIFY_ON: 30,
-    UPDATE_STATE_VERIFY_FAIL: 31,
-    UPDATE_STATE_VERIFY_SUCCESS: 32,
-    UPDATE_STATE_PACKAGE_TRANS_ON: 70,
-    UPDATE_STATE_PACKAGE_TRANS_FAIL: 71,
-    UPDATE_STATE_PACKAGE_TRANS_SUCCESS: 72,
-    UPDATE_STATE_INSTALL_ON: 80,
-    UPDATE_STATE_INSTALL_FAIL: 81,
-    UPDATE_STATE_INSTALL_SUCCESS: 82,
-    UPDATE_STATE_UPDATE_ON: 90,
-    UPDATE_STATE_UPDATE_FAIL: 91,
-    UPDATE_STATE_UPDATE_SUCCESS: 92
+const CheckResult = {
+    isExistNewVersion: "[PC Preview] unknown isExistNewVersion",
+    newVersionInfo: NewVersionInfo,
 }
 
-const Progress = {
-    percent: "[PC Preview] unknow percent",
-    status: UpdateState.UPDATE_STATE_INIT,
-    endReason: "[PC Preview] unknow endReason"
+const CurrentVersionInfo = {
+    osVersion: "[PC Preview] unknown osVersion",
+    deviceName: "[PC Preview] unknown deviceName",
+    versionComponents: [VersionComponent],
 }
 
-const InstallMode = {
-    INSTALL_MODE_NORMAL: "[PC Preview] unknow INSTALL_MODE_NORMAL",
-    INSTALL_MODE_NIGHT: "[PC Preview] unknow INSTALL_MODE_NIGHT",
-    INSTALL_MODE_AUTO: "[PC Preview] unknow INSTALL_MODE_AUTO"
+const UpgradePeriod = {
+    start: "[PC Preview] unknown start",
+    end: "[PC Preview] unknown end",
 }
 
-const UpdatePolicy = {
-    autoDownload: "[PC Preview] unknow autoDownload",
-    installMode: InstallMode.INSTALL_MODE_NORMAL,
-    autoUpgradeInterval: [0]
+const UpgradePolicy = {
+    downloadStrategy: "[PC Preview] unknown downloadStrategy",
+    autoUpgradeStrategy: "[PC Preview] unknown autoUpgradeStrategy",
+    autoUpgradePeriods: [UpgradePeriod],
+}
+
+const ErrorMessage = {
+    errorCode: "[PC Preview] unknown errorCode",
+    errorMessage: "[PC Preview] unknown errorMessage",
+}
+
+const TaskBody = {
+    versionDigestInfo: VersionDigestInfo,
+    status: UpgradeStatus.WAITING_DOWNLOAD,
+    subStatus: "[PC Preview] unknown subStatus",
+    progress: "[PC Preview] unknown progress",
+    installMode: "[PC Preview] unknown installMode",
+    errorMessages: [ErrorMessage],
+    versionComponents: [VersionComponent],
+}
+
+const TaskInfo = {
+    existTask: "[PC Preview] unknown existTask",
+    taskBody: TaskBody,
+}
+
+const EventInfo = {
+    eventId: EventId.EVENT_TASK_RECEIVE,
+    taskBody: TaskBody,
 }
