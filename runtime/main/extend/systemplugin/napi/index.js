@@ -161,13 +161,13 @@ import { mockDefaultAppManager } from './ohos_bundle_defaultAppManager'
 import { mockKeyEvent } from './ohos_multimodalInput_keyEvent'
 import { mockMouseEvent } from './ohos_multimodalInput_mouseEvent'
 import { mockTouchEvent } from './ohos_multimodalInput_touchEvent'
-import { mockUiAppearance } from './ohos_uiappearance'
+import { mockUiAppearance } from './ohos_uiAppearance'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
       case "file":
         return mockFile();
-      case "uiappearance":
+      case "uiAppearance":
         return mockUiAppearance();
       case "resourceManager":
         return mockResourceManager();
