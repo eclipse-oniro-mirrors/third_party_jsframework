@@ -341,7 +341,6 @@ const EventId = {
     EVENT_APPLY_START: 0x01001110,
     EVENT_UPGRADE_SUCCESS: 0x01001111,
     EVENT_UPGRADE_FAIL: 0x01010000,
-
 }
 
 const VersionDigestInfo = {
