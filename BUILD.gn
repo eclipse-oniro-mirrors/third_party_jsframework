@@ -78,6 +78,7 @@ action("gen_snapshot") {
     rebase_path(target_out_dir, root_build_dir),
     rebase_path(babel, root_build_dir),
     is_mac,
+    rebase_path("//prebuilts", root_build_dir),
   ]
 
   inputs = [
@@ -275,7 +276,7 @@ action("gen_jsf_c") {
     "-N",
     "js_framework",
     "-c",
-    rebase_path(prebuilt_js_path, "."),
+    rebase_path(prebuilt_js_path, root_build_dir),
   ]
 
   inputs = [ prebuilt_js_path ]

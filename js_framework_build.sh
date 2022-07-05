@@ -14,7 +14,7 @@
 
 set -e
 echo "copy source code..."
-prebuilts_path="../../prebuilts"
+prebuilts_path=${12}
 # copy dependency file to generate dir of gn
 # the params come from .gn
 
