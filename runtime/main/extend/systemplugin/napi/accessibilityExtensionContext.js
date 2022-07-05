@@ -113,12 +113,12 @@ export function mockAccessibilityExtensionContext() {
   };
 
   const gesturePathClass = class GesturePath {
-    positions = null;
+    points = null;
     durationTime = null;
     constructor(d) {
       console.warn('gesturePathClass.constructor interface mocked in the Previewer.' +
         ' How this interface works on the Previewer may be different from that on a real device.');
-      this.positions = [];
+      this.points = [];
       this.durationTime = d;
     }
   }
