@@ -32,64 +32,107 @@ export function mockAccessibilityExtensionContext() {
 
   const AccessibilityElementMock = {
     attributeNames: function (...args) {
-      console.warn('AccessibilityElement.attributeNames interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
-      return new Promise((resolve, reject) => {
-        resolve([ElementAttributeNameMock]);
-      });
+      console.warn('AccessibilityElement.attributeNames interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, [ElementAttributeNameMock]);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve([ElementAttributeNameMock]);
+        });
+      }
     },
     attributeValue: function (...args) {
       console.warn('AccessibilityElement.attributeValue interface mocked in the Previewer.' +
         ' How this interface works on the Previewer may be different from that on a real device.');
+      let value = null;
       switch (args[0]) {
         case 'rect':
         case 'screenRect':
-          return new Promise((resolve, reject) => {
-            resolve(RectMock);
-          });
+          value = RectMock;
+          break;
         case 'parent':
         case 'rootElement':
-          return new Promise((resolve, reject) => {
-            resolve(AccessibilityElementMock);
-          });
+          value = AccessibilityElementMock;
+          break;
         case 'children':
-          return new Promise((resolve, reject) => {
-            resolve([AccessibilityElementMock]);
-          });
+          value = [AccessibilityElementMock];
+          break;
         default:
-          return new Promise((resolve, reject) => {
-            resolve(ElementAttributeValueMock);
-          });
+          value = ElementAttributeValueMock;
+          break;
+        }
+
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, value);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(value);
+        });
       }
     },
     actionNames: function (...args) {
       console.warn('AccessibilityElement.actionNames interface mocked in the Previewer.' +
         ' How this interface works on the Previewer may be different from that on a real device.');
-      return new Promise((resolve, reject) => {
-        resolve([ActionNameMock]);
-      });
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, ActionNameMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(ActionNameMock);
+        });
+      }
     },
     performAction: function (...args) {
       console.warn('AccessibilityElement.performAction interface mocked in the Previewer.' +
         ' How this interface works on the Previewer may be different from that on a real device.');
-      return new Promise((resolve, reject) => {
-        resolve(paramMock.paramBooleanMock);
-      });
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
+        });
+      }
     },
     findElement: function (...args) {
       console.warn('AccessibilityElement.performAction interface mocked in the Previewer.' +
         ' How this interface works on the Previewer may be different from that on a real device.');
-      if (args[0] === 'content') {
-        return new Promise((resolve, reject) => {
-          resolve([AccessibilityElementMock]);
-        });
+      const result = (args[0] === 'content') ? [AccessibilityElementMock] : AccessibilityElementMock;
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, result);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AccessibilityElementMock);
+          resolve(result);
         });
       }
     },
   };
+
+  const gesturePathClass = class GesturePath {
+    positions = null;
+    durationTime = null;
+    constructor(d) {
+      console.warn('gesturePathClass.constructor interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
+      this.positions = [];
+      this.durationTime = d;
+    }
+  }
+
+  const gesturePointClass = class GesturePoint {
+    positionX = null;
+    positionY = null;
+    constructor(x, y) {
+      console.warn('gesturePointClass.constructor interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
+      this.positionX = y;
+      this.positionY = y;
+    }
+  }
 
   const accessibilityExtensionContextClass = class accessibilityExtensionContext extends ExtensionContextClass {
     setEventTypeFilter = null;
@@ -101,8 +144,8 @@ export function mockAccessibilityExtensionContext() {
     gestureInject = null;
     constructor() {
       super();
-      console.warn('accessibilityExtensionContext.constructor interface mocked in the Previewer. How this interface works on' +
-        ' the Previewer may be different from that on a real device.');
+      console.warn('accessibilityExtensionContext.constructor interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
 
       this.setEventTypeFilter = function (...args) {
         console.warn('accessibilityExtensionContext.setEventTypeFilter interface mocked in the Previewer.' +

@@ -33,23 +33,23 @@ export function mockAccessibilityExtensionAbility() {
     constructor() {
       this.context = mockAccessibilityExtensionContext();
       this.onConnect = function (...args) {
-        console.warn('accessibilityExtensionAbility.onConnect interface mocked in the Previewer. How this interface works on the' +
-          ' Previewer may be different from that on a real device.');
+        console.warn('accessibilityExtensionAbility.onConnect interface mocked in the Previewer.' +
+          ' How this interface works on the Previewer may be different from that on a real device.');
         return;
       };
       this.onDisconnect = function (...args) {
-        console.warn('accessibilityExtensionAbility.onDisconnect interface mocked in the Previewer. How this interface works on the' +
-          ' Previewer may be different from that on a real device.');
+        console.warn('accessibilityExtensionAbility.onDisconnect interface mocked in the Previewer.' +
+          ' How this interface works on the Previewer may be different from that on a real device.');
         return;
       };
       this.onAccessibilityEvent = function (...args) {
-        console.warn('accessibilityExtensionAbility.onAccessibilityEvent interface mocked in the Previewer. How this interface works on the' +
-          ' Previewer may be different from that on a real device.');
+        console.warn('accessibilityExtensionAbility.onAccessibilityEvent interface mocked in the Previewer.' +
+          ' How this interface works on the Previewer may be different from that on a real device.');
         return;
       };
       this.onKeyEvent = function (...args) {
-        console.warn('accessibilityExtensionAbility.onKeyEvent interface mocked in the Previewer. How this interface works on the' +
-          ' Previewer may be different from that on a real device.');
+        console.warn('accessibilityExtensionAbility.onKeyEvent interface mocked in the Previewer.' +
+          ' How this interface works on the Previewer may be different from that on a real device.');
         return;
       };
     }

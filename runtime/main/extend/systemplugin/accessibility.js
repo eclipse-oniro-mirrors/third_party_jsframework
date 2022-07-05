@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -50,8 +50,8 @@ export function mockAccessibility() {
     enabled: '[PC Preview] unknown enabled',
     style: CaptionStyleMock,
     on: function (...args) {
-      console.warn('CaptionsManager.on interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('CaptionsManager.on interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 1 && typeof args[len - 1] === 'function') {
         if (args[0] === 'enableChange') {
@@ -62,8 +62,8 @@ export function mockAccessibility() {
       }
     },
     off: function (...args) {
-      console.warn('CaptionsManager.off interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('CaptionsManager.off interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 1 && typeof args[len - 1] === 'function') {
         if (args[0] === 'enableChange') {
@@ -82,9 +82,24 @@ export function mockAccessibility() {
   const TextMoveUnitMock = '[PC Preview] unknown TextMoveUnit';
 
   const EventInfoClass = class EventInfo {
+    type = null;
+    windowUpdateType = null;
+    bundleName = null;
+    componentType = null;
+    pageId = null;
+    description = null;
+    triggerAction = null;
+    textMoveUnit = null;
+    contents = null;
+    lastContent = null;
+    beginIndex = null;
+    currentIndex = null;
+    endIndex = null;
+    itemCount = null;
+
     constructor(jsonObject) {
-      console.warn('accessibility.EventInfoClass.constructor interface mocked in the Previewer. How this interface works on' +
-        ' the Previewer may be different from that on a real device.');
+      console.warn('accessibility.EventInfoClass.constructor interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       this.type = EventTypeMock;
       this.windowUpdateType = WindowUpdateTypeMock;
       this.bundleName = '[PC Preview] unknown bundleName';
@@ -105,8 +120,8 @@ export function mockAccessibility() {
   const accessibility = {
     EventInfo: EventInfoClass,
     isOpenAccessibility: function (...args) {
-      console.warn('accessibility.isOpenAccessibility interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibility.isOpenAccessibility interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
@@ -117,8 +132,8 @@ export function mockAccessibility() {
       }
     },
     isOpenTouchGuide: function (...args) {
-      console.warn('accessibility.isOpenTouchGuide interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibility.isOpenTouchGuide interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
@@ -129,8 +144,8 @@ export function mockAccessibility() {
       }
     },
     on: function (...args) {
-      console.warn('accessibility.on interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibility.on interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'accessibilityStateChange') {
@@ -143,8 +158,8 @@ export function mockAccessibility() {
       }
     },
     off: function (...args) {
-      console.warn('accessibility.off interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibility.off interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 1 && typeof args[len - 1] === 'function') {
         if (args[0] === 'accessibilityStateChange') {
@@ -155,8 +170,8 @@ export function mockAccessibility() {
       }
     },
     getAbilityLists: function (...args) {
-      console.warn('accessibility.getAbilityLists interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibility.getAbilityLists interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, [AccessibilityAbilityInfoMock]);
@@ -167,14 +182,14 @@ export function mockAccessibility() {
       }
     },
     sendEvent: function (...args) {
-      console.warn('accessibility.sendEvent interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibility.sendEvent interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve, reject) => {
-          resolve();
+          resolve(null);
         });
       }
     },

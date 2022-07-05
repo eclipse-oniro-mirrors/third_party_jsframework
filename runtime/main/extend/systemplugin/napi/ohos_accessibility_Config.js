@@ -33,20 +33,20 @@ export function mockAccessibilityConfig() {
 
   const configBoolMock = {
     set: function (...args) {
-      console.warn('accessibilityConfig configBoolMock.set interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibilityConfig configBoolMock.set interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve, reject) => {
-          resolve();
+          resolve(null);
         });
       }
     },
     get: function (...args) {
-      console.warn('accessibilityConfig configBoolMock.get interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibilityConfig configBoolMock.get interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
@@ -57,16 +57,16 @@ export function mockAccessibilityConfig() {
       }
     },
     on: function (...args) {
-      console.warn('accessibilityConfig configBoolMock.on interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibilityConfig configBoolMock.on interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 1 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.paramBooleanMock);
       }
     },
     off: function (...args) {
-      console.warn('accessibilityConfig configBoolMock.off interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibilityConfig configBoolMock.off interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 1 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.paramBooleanMock);
@@ -76,8 +76,8 @@ export function mockAccessibilityConfig() {
 
   const daltonizationColorFilterMock = {
     set: function (...args) {
-      console.warn('accessibilityConfig daltonizationColorFilterMock.set interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibilityConfig daltonizationColorFilterMock.set interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
@@ -88,8 +88,8 @@ export function mockAccessibilityConfig() {
       }
     },
     get: function (...args) {
-      console.warn('accessibilityConfig daltonizationColorFilterMock.get interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibilityConfig daltonizationColorFilterMock.get interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, DaltonizationColorFilterMock);
@@ -100,16 +100,16 @@ export function mockAccessibilityConfig() {
       }
     },
     on: function (...args) {
-      console.warn('accessibilityConfig highContrastText.on interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibilityConfig highContrastText.on interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 1 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, DaltonizationColorFilterMock);
       }
     },
     off: function (...args) {
-      console.warn('accessibilityConfig highContrastText.off interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibilityConfig highContrastText.off interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 1 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, DaltonizationColorFilterMock);
@@ -119,8 +119,8 @@ export function mockAccessibilityConfig() {
 
   const configNumberBlock = {
     set: function (...args) {
-      console.warn('accessibilityConfig configNumberBlock.set interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibilityConfig configNumberBlock.set interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
@@ -131,8 +131,8 @@ export function mockAccessibilityConfig() {
       }
     },
     get: function (...args) {
-      console.warn('accessibilityConfig configNumberBlock.get interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibilityConfig configNumberBlock.get interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
@@ -143,16 +143,16 @@ export function mockAccessibilityConfig() {
       }
     },
     on: function (...args) {
-      console.warn('accessibilityConfig configNumberBlock.on interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibilityConfig configNumberBlock.on interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 1 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.paramNumberMock);
       }
     },
     off: function (...args) {
-      console.warn('accessibilityConfig configNumberBlock.off interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibilityConfig configNumberBlock.off interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 1 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.paramNumberMock);
@@ -162,8 +162,8 @@ export function mockAccessibilityConfig() {
 
   const configShortkeyTargetBlock = {
     set: function (...args) {
-      console.warn('accessibilityConfig configShortkeyTargetBlock.set interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibilityConfig configShortkeyTargetBlock.set interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
@@ -174,8 +174,8 @@ export function mockAccessibilityConfig() {
       }
     },
     get: function (...args) {
-      console.warn('accessibilityConfig configShortkeyTargetBlock.get interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibilityConfig configShortkeyTargetBlock.get interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
@@ -186,16 +186,16 @@ export function mockAccessibilityConfig() {
       }
     },
     on: function (...args) {
-      console.warn('accessibilityConfig configNumbconfigShortkeyTargetBlockerBlock.on interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibilityConfig configShortkeyTargetBlock.on interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 1 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.paramStringMock);
       }
     },
     off: function (...args) {
-      console.warn('accessibilityConfig configShortkeyTargetBlock.off interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibilityConfig configShortkeyTargetBlock.off interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 1 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.paramStringMock);
@@ -205,8 +205,8 @@ export function mockAccessibilityConfig() {
 
   const captionStyleMock = {
     set: function (...args) {
-      console.warn('accessibilityConfig captionStyleMock.set interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibilityConfig captionStyleMock.set interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
@@ -217,8 +217,8 @@ export function mockAccessibilityConfig() {
       }
     },
     get: function (...args) {
-      console.warn('accessibilityConfig captionStyleMock.get interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibilityConfig captionStyleMock.get interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, CaptionStyleMock);
@@ -229,16 +229,16 @@ export function mockAccessibilityConfig() {
       }
     },
     on: function (...args) {
-      console.warn('accessibilityConfig captionStyleMock.on interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibilityConfig captionStyleMock.on interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 1 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, CaptionStyleMock);
       }
     },
     off: function (...args) {
-      console.warn('accessibilityConfig captionStyleMock.off interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibilityConfig captionStyleMock.off interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, CaptionStyleMock);
@@ -248,8 +248,8 @@ export function mockAccessibilityConfig() {
 
   const config = {
     enableAbility: function (...args) {
-      console.warn('accessibilityConfig config.enableAbility interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibilityConfig config.enableAbility interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
@@ -260,8 +260,8 @@ export function mockAccessibilityConfig() {
       }
     },
     disableAbility: function (...args) {
-      console.warn('accessibilityConfig config.disableAbility interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn('accessibilityConfig config.disableAbility interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
@@ -272,8 +272,8 @@ export function mockAccessibilityConfig() {
       }
     },
     on: function (...args) {
-      console.warn('accessibilityConfig config.on interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibilityConfig config.on interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (len > 1 && typeof args[len - 1] === 'function') {
         if (args[0] === 'enableAbilityListsStateChanged') {
@@ -282,8 +282,8 @@ export function mockAccessibilityConfig() {
       }
     },
     off: function (...args) {
-      console.warn('accessibilityConfig config.off interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn('accessibilityConfig config.off interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
         const len = args.length;
         if (len > 1 && typeof args[len - 1] === 'function') {
           if (args[0] === 'enableAbilityListsStateChanged') {
