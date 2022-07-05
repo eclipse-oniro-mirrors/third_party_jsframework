@@ -19,11 +19,11 @@ export function mockUiAppearance() {
     const DarkMode = {
         ALWAYS_DARK: 0,
         ALWAYS_LIGHT: 1
-    };
-    const uiappearance = {
+    }
+    const uiAppearance = {
         DarkMode,
         setDarkMode: function (...args) {
-            console.warn("uiappearance.setDarkMode interface mocked in the Previewer." +
+            console.warn("uiAppearance.setDarkMode interface mocked in the Previewer." +
               " How this interface works on the Previewer may be different from that on a real device.")
             const len = args.length;
             if (len > 0 && typeof args[len - 1] === 'function') {
@@ -35,10 +35,10 @@ export function mockUiAppearance() {
             }
         },
         getDarkMode: function () {
-            console.warn("uiappearance.getDarkMode interface mocked in the Previewer." +
+            console.warn("uiAppearance.getDarkMode interface mocked in the Previewer." +
               " How this interface works on the Previewer may be different from that on a real device.")
             return DarkMode;
         }
     }
-    return uiappearance;
+    return uiAppearance;
 }
