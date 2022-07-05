@@ -16,13 +16,20 @@
 import { paramMock } from "../utils"
 
 export function mockAbilityAccessCtrl() {
-    const AtManagerMock = {
+    const GrantStatus = "[PC preview] unknow GrantStatus";
+
+    const AtManager = {
         verifyAccessToken: function (...args) {
             console.warn("AtManager.verifyAccessToken interface mocked in the Previewer." +
                 " How this interface works on the Previewer may be different from that on a real device.")
             return new Promise((resolve, reject) => {
-                resolve(GrantStatusMock);
+                resolve(GrantStatus);
             })
+        },
+        verifyAccessTokenSync: function (...args) {
+            console.warn("AtManager.verifyAccessTokenSync interface mocked in the Previewer." +
+                " How this interface works on the Previewer may be different from that on a real device.")
+            return GrantStatus;
         },
         grantUserGrantedPermission: function (...args) {
             console.warn("AtManager.grantUserGrantedPermission interface mocked in the Previewer." +
@@ -60,9 +67,8 @@ export function mockAbilityAccessCtrl() {
         createAtManager : function (...args) {
             console.warn("abilityAccessCtrl.createAtManager interface mocked in the Previewer." +
                 " How this interface works on the Previewer may be different from that on a real device.")
-            return AtManagerMock;
+            return AtManager;
         },
-        GrantStatusMock:'[PC preview] unknow GrantStatusMock'
     };
     
     return abilityAccessCtrl;
