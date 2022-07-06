@@ -77,26 +77,30 @@ export const WantMock = {
     type: "[PC Preview] unknow type",
     flag: "[PC Preview] unknow flag",
     action: "[PC Preview] unknow action",
-    parameters: "[PC Preview] unknow parameters",
-    entities: "[PC Preview] unknow entities",
-    moduleName: "[PC Preview] unknow moduleName"
- }
+    parameters: ["[PC Preview] unknow parameters"],
+    entities: ["[PC Preview] unknow entities"],
+    moduleName: "[PC Preview] unknow moduleName",
+}
 
 export const ShortcutInfoMock =  {
     id: "[PC preview] unknown id",
     bundleName: "[PC preview] unknown bundleName",
     hostAbility: "[PC preview] unknown hostAbility",
     icon: "[PC preview] unknown icon",
+    iconId: "[PC preview] unknown iconId",
     label: "[PC preview] unknown label",
+    labelId: "[PC preview] unknown labelId",
     disableMessage: "[PC preview] unknown disableMessage",
     wants: [
         {
             targetBundle: "[PC preview] unknown targetBundle",
+            targetModule: "[PC preview] unknown targetModule",
             targetClass: "[PC preview] unknown targetClass",
         }],
     isStatic: "[PC preview] unknown isStatic",
     isHomeShortcut: "[PC preview] unknown isHomeShortcut",
     isEnabled: "[PC preview] unknown isEnabled",
+    moduleName: "[PC preview] unknown moduleName",
 }
 
 export const ModuleUsageRecordMock = {
