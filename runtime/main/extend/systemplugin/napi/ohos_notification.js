@@ -317,6 +317,18 @@ export function mockNotification() {
         });
       }
     },
+    publishAsBundle: function (...args) {
+      console.warn('notification.publishAsBundle interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        });
+      }
+    },
     cancel: function (...args) {
       console.warn('notification.cancel interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
@@ -325,6 +337,18 @@ export function mockNotification() {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve) => {
+          resolve();
+        });
+      }
+    },
+    cancelAsBundle: function (...args) {
+      console.warn('notification.cancelAsBundle interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
           resolve();
         });
       }
@@ -653,8 +677,20 @@ export function mockNotification() {
         })
       }
     },
-    isNotificationEnabledSelf: function (...args) {
-      console.warn("notification.isNotificationEnabledSelf interface mocked in the Previewer. How this interface works on the" +
+    requestEnableNotification: function (...args) {
+      console.warn("notification.requestEnableNotification interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    isNotificationSlotEnabled: function (...args) {
+      console.warn("notification.isNotificationSlotEnabled interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
@@ -665,8 +701,8 @@ export function mockNotification() {
         })
       }
     },
-    requestEnableNotification: function (...args) {
-      console.warn("notification.requestEnableNotification interface mocked in the Previewer. How this interface works on the" +
+    setSyncNotificationEnabledForUninstallApp: function (...args) {
+      console.warn("notification.setSyncNotificationEnabledForUninstallApp interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
@@ -689,8 +725,8 @@ export function mockNotification() {
         })
       }
     },
-    isNotificationSlotEnabled: function (...args) {
-      console.warn("notification.isNotificationSlotEnabled interface mocked in the Previewer. How this interface works on the" +
+    getSyncNotificationEnabledForUninstallApp: function (...args) {
+      console.warn("notification.getSyncNotificationEnabledForUninstallApp interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
