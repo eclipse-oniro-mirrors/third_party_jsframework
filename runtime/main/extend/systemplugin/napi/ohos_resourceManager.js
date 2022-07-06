@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,169 +13,290 @@
  * limitations under the License.
  */
 
+import { paramMock } from "../utils";
+import { RawFileDescriptor } from "./global/rawFileDescriptor"
+
 export function mockResourceManager() {
-  function Configuration(direction, locale) {
-    this.direction = direction;
-    this.locale = locale;
+  const Direction = {
+    DIRECTION_VERTICAL : 0,
+    DIRECTION_HORIZONTAL : 1
   }
 
-  function DeviceCapability(screenDensity, deviceType) {
-    this.screenDensity = screenDensity;
-    this.deviceType = deviceType;
+  const ConfigurationClass = class Configuration {
+    constructor() {
+      console.warn('resourceManager.Configuration.constructor interface mocked in the Previewer. How this interface works on' +
+        ' the Previewer may be different from that on a real device.');
+      this.direction = Direction;
+      this.locale = '[PC Preview] unknow string';
+    }
   }
 
-  function ResourceManager(mgrId, module) {
-    var resMgrId = mgrId;
-    var resourcemgrModuleGroup = module;
+  const ScreenDensity = {
+    SCREEN_SDPI : 120,
+    SCREEN_MDPI : 160,
+    SCREEN_LDPI : 240,
+    SCREEN_XLDPI : 320,
+    SCREEN_XXLDPI : 480
+  }
 
-    this.getString = getString;
-    async function getString(resId, callback) {
-      var data = "mock string";
+  const DeviceType = {
+    DEVICE_TYPE_PHONE : 0x00,
+    DEVICE_TYPE_TABLET : 0x01,
+    DEVICE_TYPE_CAR : 0x02,
+    DEVICE_TYPE_PC : 0x03,
+    DEVICE_TYPE_TV : 0x04,
+    DEVICE_TYPE_WEARABLE : 0x06
+  }
+
+  const DeviceCapabilityClass = class DeviceCapability {
+    constructor() {
+      console.warn('resourceManager.DeviceCapability.constructor interface mocked in the Previewer. How this interface works on' +
+        ' the Previewer may be different from that on a real device.');
+      this.screenDensity = ScreenDensity;
+      this.deviceType = DeviceType;
+    }
+  }
+
+  const ResourceManager = {
+    getString: function(...args) {
       console.warn("ResourceManager.getString interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
-      if (typeof callback === 'function') {
-        callback.call(this, null, data);
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
       } else {
-        return new Promise((resolve) => {
-          resolve(data);
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramStringMock);
         })
       }
-    }
+    },
 
-    this.getStringArray = getStringArray;
-    async function getStringArray(resId, callback) {
-      var data = ["mock string1", "mock string2"];
+    getStringArray: function(...args) {
       console.warn("ResourceManager.getStringArray interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
-      if (typeof callback === 'function') {
-        callback.call(this, null, data);
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, [paramMock.paramStringMock]);
       } else {
-        return new Promise((resolve) => {
-          resolve(data);
+        return new Promise((resolve, reject) => {
+          resolve([paramMock.paramStringMock]);
         })
       }
-    }
+    },
 
-    this.getMedia = getMedia;
-    async function getMedia(resId, callback) {
-      var data = "mock media data";
+    getMedia: function(...args) {
       console.warn("ResourceManager.getMedia interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
-      if (typeof callback === 'function') {
-        callback.call(this, 1, data);
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock);
       } else {
         return new Promise((resolve, reject) => {
-          reject(data);
+          resolve(paramMock.paramArrayMock);
         })
       }
-    }
+    },
 
-    this.getMediaBase64 = getMediaBase64;
-    async function getMediaBase64(resId, callback) {
-      var data = "mock media data";
+    getMediaBase64: function(...args) {
       console.warn("ResourceManager.getMediaBase64 interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
-      if (typeof callback === 'function') {
-        callback.call(this, 1, data);
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock);
       } else {
         return new Promise((resolve, reject) => {
-          reject(data);
+          resolve(paramMock.paramArrayMock);
         })
       }
-    }
+    },
 
-    this.getPluralString = getPluralString;
-    async function getPluralString(resId, num, callback) {
-      var data = "mock plural string";
+    getPluralString: function(...args) {
       console.warn("ResourceManager.getPluralString interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
-      if (typeof callback === 'function') {
-        callback.call(this, null, data);
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
       } else {
-        return new Promise((resolve) => {
-          resolve(data);
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramStringMock);
         })
       }
-    }
+    },
 
-    this.getConfiguration = getConfiguration;
-    async function getConfiguration(callback) {
-      var data = { "direction": 0, "locale": "zh_CN" };
+    getConfiguration: function(...args) {
       console.warn("ResourceManager.getConfiguration interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
-      if (typeof callback === 'function') {
-        callback.call(this, null, data);
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, new ConfigurationClass());
       } else {
-        return new Promise((resolve) => {
-          resolve(data);
+        return new Promise((resolve, reject) => {
+          resolve(new ConfigurationClass());
         })
       }
-    }
+    },
 
-    this.getDeviceCapability = getDeviceCapability;
-    async function getDeviceCapability(callback) {
-      var data = { "deviceType": 0, "screenDensity": 480 };
+    getDeviceCapability: function(...args) {
       console.warn("ResourceManager.getDeviceCapability interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
-      if (typeof callback === 'function') {
-        callback.call(this, null, data);
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, new DeviceCapabilityClass());
       } else {
-        return new Promise((resolve) => {
-          resolve(data);
+        return new Promise((resolve, reject) => {
+          resolve(new DeviceCapabilityClass());
         })
       }
-    }
+    },
 
-    this.release = release;
-    async function release(callback) {
+    release: function() {
       console.warn("ResourceManager.release interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
-    }
+    },
 
-    this.getRawFile = getRawFile;
-    async function getRawFile(path, callback) {
-      var data = "mock raw file";
+    getRawFile: function(...args) {
       console.warn("ResourceManager.getRawFile interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
-      if (typeof callback === 'function') {
-        callback.call(this, null, data);
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock);
       } else {
-        return new Promise((resolve) => {
-          resolve(data);
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramArrayMock);
         })
       }
-    }
+    },
 
-    this.getRawFileDescriptor = getRawFileDescriptor;
-    async function getRawFileDescriptor(path, callback) {
-      var data = "mock raw file descriptor";
+    getRawFileDescriptor: function(...args) {
       console.warn("ResourceManager.getRawFileDescriptor interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
-      if (typeof callback === 'function') {
-        callback.call(this, null, data);
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, RawFileDescriptor);
       } else {
-        return new Promise((resolve) => {
-          resolve(data);
+        return new Promise((resolve, reject) => {
+          resolve(RawFileDescriptor);
         })
       }
-    }
+    },
 
-    this.closeRawFileDescriptor = closeRawFileDescriptor;
-    async function closeRawFileDescriptor(path, callback) {
-      var data = "mock close raw file descriptor";
+    closeRawFileDescriptor: function(...args) {
       console.warn("ResourceManager.closeRawFileDescriptor interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
-      if (typeof callback === 'function') {
-        callback.call(this, null, data);
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
       } else {
-        return new Promise((resolve) => {
-          resolve(data);
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramStringMock);
         })
       }
+    },
+
+    getStringByName: function(...args) {
+      console.warn("ResourceManager.getStringByName interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramStringMock);
+        })
+      }
+    },
+
+    getStringArrayByName: function(...args) {
+      console.warn("ResourceManager.getStringArrayByName interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, [paramMock.paramStringMock]);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve([paramMock.paramStringMock]);
+        })
+      }
+    },
+
+    getMediaByName: function(...args) {
+      console.warn("ResourceManager.getMediaByName interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramArrayMock);
+        })
+      }
+    },
+
+    getMediaBase64ByName: function(...args) {
+      console.warn("ResourceManager.getMediaBase64ByName interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramArrayMock);
+        })
+      }
+    },
+
+    getPluralStringByName: function(...args) {
+      console.warn("ResourceManager.getPluralStringByName interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramStringMock);
+        })
+      }
+    },
+
+    getStringSync: function(...args) {
+      console.warn("ResourceManager.getStringSync interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramStringMock;
+    },
+
+    getStringByNameSync: function(...args) {
+      console.warn("ResourceManager.getStringByNameSync interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramStringMock;
+    },
+
+    getBoolean: function(...args) {
+      console.warn("ResourceManager.getBoolean interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+
+    getBooleanByName: function(...args) {
+      console.warn("ResourceManager.getBooleanByName interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
+
+    getNumber: function(...args) {
+      console.warn("ResourceManager.getNumber interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock;
+    },
+
+    getNumberByName: function(...args) {
+      console.warn("ResourceManager.getNumberByName interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock;
     }
   }
 
-  var resourceManagerMock = {
+  const resourceManager = {
+    ResourceManager,
     getResourceManager: async function getResourceManager(optBundleName, optCallback) {
       let bundleName = '';
       let callback;
@@ -187,21 +308,18 @@ export function mockResourceManager() {
       } else {
         bundleName = optBundleName ? optBundleName : '';
       }
-      let data = new ResourceManager(1, null);
       console.warn("ResourceManager.getResourceManager interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
       if (typeof callback === 'function') {
-        callback.call(this, 1, data);
+        callback.call(this, paramMock.businessErrorMock, ResourceManager);
       } else {
-        return new Promise((resolve) => {
-          resolve(data);
+        return new Promise((resolve, reject) => {
+          resolve(ResourceManager);
         })
       }
-    }
-  };
-
-  const resourceManager = {
-    getResourceManager: resourceManagerMock.getResourceManager
+    },
   }
-  return resourceManager
+  return resourceManager;
 }
+ 
+
