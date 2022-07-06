@@ -25,34 +25,34 @@ export function mockDistributedMissionManager() {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve) => {
-        resolve();
+          resolve();
         });
       }
     },
     stopSyncRemoteMissions: function (...args) {
-        console.warn('distributedMissionManager.stopSyncRemoteMission interface mocked in the Previewer. How this interface works on the' +
-          ' Previewer may be different from that on a real device.');
-        const len = args.length;
-        if (typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.businessErrorMock);
-        } else {
-          return new Promise((resolve) => {
+      console.warn('distributedMissionManager.stopSyncRemoteMission interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve) => {
           resolve();
-          });
-        }
-      },
+        });
+      }
+    },
     registerMissionListener: function (...args) {
-        console.warn('distributedMissionManager.registerMissionListener interface mocked in the Previewer. How this interface works on the' +
-          ' Previewer may be different from that on a real device.');
-        const len = args.length;
-        if (typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.businessErrorMock);
-        } else {
-          return new Promise((resolve) => {
-            resolve();
-          });
-        }
-      },
+      console.warn('distributedMissionManager.registerMissionListener interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve();
+        });
+      }
+    },
     unRegisterMissionListener: function (...args) {
       console.warn('distributedMissionManager.unRegisterMissionListener interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
