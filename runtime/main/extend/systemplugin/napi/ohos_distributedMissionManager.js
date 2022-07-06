@@ -24,7 +24,7 @@ export function mockDistributedMissionManager() {
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve) => {
+        return new Promise((resolve,reject) => {
           resolve();
         });
       }
@@ -36,7 +36,7 @@ export function mockDistributedMissionManager() {
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve) => {
+        return new Promise((resolve,reject) => {
           resolve();
         });
       }
@@ -48,7 +48,7 @@ export function mockDistributedMissionManager() {
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve) => {
+        return new Promise((resolve,reject) => {
           resolve();
         });
       }
@@ -60,7 +60,7 @@ export function mockDistributedMissionManager() {
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve) => {
+        return new Promise((resolve,reject) => {
           resolve();
         });
       }
