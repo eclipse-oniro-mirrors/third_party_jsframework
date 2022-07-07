@@ -111,6 +111,7 @@ import { mockContact } from './ohos_contact'
 import { mockDataStorage } from './ohos_data_Storage'
 import { mockDeviceInfo } from './ohos_deviceInfo'
 import { mockDeviceManager } from './ohos_distributedHardware_deviceManager'
+import { mockDistributedMissionManager } from "./ohos_distributedMissionManager"
 import { mockDisplay } from './ohos_display'
 import { mockHuks } from './ohos_security_huks'
 import { mockInputMethod } from './ohos_inputmethod'
@@ -246,6 +247,8 @@ export function mockRequireNapiFun() {
         return mockDisplay();
       case "distributedHardware.deviceManager":
         return mockDeviceManager();
+      case "distributedMissionManager":
+        return mockDistributedMissionManager();
       case "deviceInfo":
         return mockDeviceInfo();
       case "data.storage":
