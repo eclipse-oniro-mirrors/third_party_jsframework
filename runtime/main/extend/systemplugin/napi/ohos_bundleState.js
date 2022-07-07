@@ -16,7 +16,7 @@
 import { paramMock } from "../utils"
 
 export function mockBundleState() {
-  const bundleStateInfomMock = [{
+  const BundleStateInfo = [{
     abilityInFgTotalTime: '[PC preview] unknown abilityInFgTotalTime',
     abilityPrevAccessTime: '[PC preview] unknown abilityPrevAccessTime',
     abilityPrevSeenTime: '[PC preview] unknown abilityPrevSeenTime',
@@ -33,7 +33,7 @@ export function mockBundleState() {
         " Previewer may be different from that on a real device.");
     },
   }]
-  const bundleActiveStateMock = [{
+  const BundleActiveState = [{
     appUsagePriorityGroup: '[PC preview] unknown appUsagePriorityGroup',
     bundleName: '[PC preview] unknown bundleName',
     indexOfLink: '[PC preview] unknown indexOfLink',
@@ -41,22 +41,22 @@ export function mockBundleState() {
     stateOccurredTime: '[PC preview] unknown stateOccurredTime',
     stateType: '[PC preview] unknown stateType',
   }]
-  const bundleActiveEventStateMock = [{
+  const BundleActiveEventState = [{
     name: '[PC preview] unknown name',
     eventId: '[PC preview] unknown eventId',
     count: '[PC preview] unknown count',
   }]
-  const bundleActiveInfoResponseMock = {
-    "key": bundleStateInfomMock
+  const BundleActiveInfoResponse = {
+    "key": BundleStateInfo
   }
-  const BundleActiveGroupCallbackInfoMock = {
+  const BundleActiveGroupCallbackInfo = {
     appUsageOldGroup : '[PC preview] unknown appUsageOldGroup',
     appUsageNewGroup : '[PC preview] unknown appUsageNewGroup',
     userId : '[PC preview] unknown userId',
     changeReason : '[PC preview] unknown changeReason',
     bundleName : '[PC preview] unknown bundleName',
   }
-  const BundleActiveModuleInfoMock = {
+  const BundleActiveModuleInfo = {
     deviceId : '[PC preview] unknown deviceId',
     bundleName : '[PC preview] unknown bundleName',
     moduleName : '[PC preview] unknown moduleName',
@@ -71,14 +71,14 @@ export function mockBundleState() {
     lastModuleUsedTime : '[PC preview] unknown lastModuleUsedTime',
     formRecords : '[PC preview] unknown formRecords',
   }
-  const intervalTypeMock = {
+  const IntervalType = {
     BY_OPTIMIZED: 0,
     BY_DAILY: 1,
     BY_WEEKLY: 2,
     BY_MONTHLY: 3,
     BY_ANNUALLY: 4
   }
-  const groupType = {
+  const GroupType = {
     ACTIVE_GROUP_ALIVE : 10,
     ACTIVE_GROUP_DAILY : 20,
     ACTIVE_GROUP_FIXED : 30,
@@ -116,10 +116,10 @@ export function mockBundleState() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, bundleActiveInfoResponseMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveInfoResponse);
       } else {
         return new Promise((resolve) => {
-          resolve(bundleActiveInfoResponseMock)
+          resolve(BundleActiveInfoResponse)
         });
       }
     },
@@ -128,10 +128,10 @@ export function mockBundleState() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, bundleStateInfomMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleStateInfo);
       } else {
         return new Promise((resolve) => {
-          resolve(bundleStateInfomMock)
+          resolve(BundleStateInfo)
         });
       }
     },
@@ -140,10 +140,10 @@ export function mockBundleState() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, bundleActiveStateMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveState);
       } else {
         return new Promise((resolve) => {
-          resolve(bundleActiveStateMock)
+          resolve(BundleActiveState)
         });
       }
     },
@@ -152,10 +152,10 @@ export function mockBundleState() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, bundleActiveStateMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveState);
       } else {
         return new Promise((resolve) => {
-          resolve(bundleActiveStateMock)
+          resolve(BundleActiveState)
         });
       }
     },
@@ -164,10 +164,10 @@ export function mockBundleState() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, bundleActiveEventStateMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveEventState);
       } else {
         return new Promise((resolve) => {
-          resolve(bundleActiveEventStateMock)
+          resolve(BundleActiveEventState)
         });
       }
     },
@@ -176,10 +176,10 @@ export function mockBundleState() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, bundleActiveEventStateMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveEventState);
       } else {
         return new Promise((resolve) => {
-          resolve(bundleActiveEventStateMock)
+          resolve(BundleActiveEventState)
         });
       }
     },
@@ -224,10 +224,10 @@ export function mockBundleState() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveModuleInfoMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveModuleInfo);
       } else {
         return new Promise((resolve) => {
-          resolve(BundleActiveModuleInfoMock)
+          resolve(BundleActiveModuleInfo)
         });
       }
     },

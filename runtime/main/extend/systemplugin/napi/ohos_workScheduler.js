@@ -16,7 +16,7 @@
 import { paramMock } from "../utils"
 
 export function mockWorkScheduler() {
-    const WorkInfoMock = {
+    const WorkInfo = {
         workId: '[PC preview] unknown workId',
         bundleName: '[PC preview] unknown bundleName',
         abilityName: '[PC preview] unknown abilityName',
@@ -33,7 +33,7 @@ export function mockWorkScheduler() {
         isDeepIdle: '[PC preview] unknown isDeepIdle',
         idleWaitTime: '[PC preview] unknown idleWaitTime',
     };
-    const WorkInfoArrayMock = [WorkInfoMock]
+    const WorkInfoArray = [WorkInfo]
     const workScheduler = {
         NetworkType : {
             NETWORK_TYPE_ANY: 0,
@@ -74,10 +74,10 @@ export function mockWorkScheduler() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, WorkInfoMock)
+                args[len - 1].call(this, paramMock.businessErrorMock, WorkInfo)
             } else {
                 return new Promise(resolve => {
-                    resolve(WorkInfoMock);
+                    resolve(WorkInfo);
                 })
             }
         },
@@ -86,10 +86,10 @@ export function mockWorkScheduler() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, WorkInfoArrayMock)
+                args[len - 1].call(this, paramMock.businessErrorMock, WorkInfoArray)
             } else {
                 return new Promise(resolve => {
-                  resolve(WorkInfoArrayMock);
+                  resolve(WorkInfoArray);
                 })
             }
         },
