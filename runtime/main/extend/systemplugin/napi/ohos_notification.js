@@ -290,6 +290,12 @@ export function mockNotification() {
     source: '[PC preview] unknow source',
     template: '[PC preview] unknow template'
   };
+  const DeviceRemindType = {
+    IDLE_DONOT_REMIND: 0,
+    IDLE_REMIND: 1,
+    ACTIVE_DONOT_REMIND: 2,
+    ACTIVE_REMIND: 3,
+  };
   const notification = {
     SlotType: {
       UNKNOWN_TYPE: 0,
@@ -674,6 +680,66 @@ export function mockNotification() {
       } else {
         return new Promise((resolve, reject) => {
           resolve();
+        })
+      }
+    },
+    enableDistributed: function (...args) {
+      console.warn("notification.enableDistributed interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    isDistributedEnabled: function (...args) {
+      console.warn("notification.isDistributedEnabled interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
+        })
+      }
+    },
+    enableDistributedByBundle: function (...args) {
+      console.warn("notification.enableDistributedByBundle interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    isDistributedEnabledByBundle: function (...args) {
+      console.warn("notification.isDistributedEnabledByBundle interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
+        })
+      }
+    },
+    getDeviceRemindType: function (...args) {
+      console.warn("notification.getDeviceRemindType interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, DeviceRemindType);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(DeviceRemindType);
         })
       }
     }
