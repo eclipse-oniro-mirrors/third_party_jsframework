@@ -15,6 +15,9 @@
 
 import { mockSystemParameter } from './ohos_systemparameter'
 import { mockAbility } from './ohos_application_Ability'
+import { mockDataUriUtils } from './ohos_ability_dataUriUtils'
+import { mockAbilityDelegatorRegistry } from './ohos_application_abilityDelegatorRegistry'
+import { mockAbilityLifecycleCallback } from './ohos_application_AbilityLifecycleCallback'
 import { mockFormExtension } from './ohos_application_FormExtension'
 import { mockServiceExtensionAbility } from './ohos_application_ServiceExtensionAbility'
 import { mockAbilityStage } from './ohos_application_AbilityStage'
@@ -252,12 +255,18 @@ export function mockRequireNapiFun() {
         return mockOhosBatteryinfo();
       case "systemParameter":
         return mockSystemParameter();
-      case "11.Ability":
+      case "ability.dataUriUtils":
+        return mockDataUriUtils();
+      case "application.Ability":
         return mockAbility();
       case "application.FormExtension":
         return mockFormExtension();
       case "application.ServiceExtensionAbility":
         return mockServiceExtensionAbility();
+      case "application.abilityDelegatorRegistry":
+        return mockAbilityDelegatorRegistry();
+      case "application.AbilityLifecycleCallback":
+        return mockAbilityLifecycleCallback();
       case "application.AbilityStage":
         return mockAbilityStage();
       case "application.formBindingData":
