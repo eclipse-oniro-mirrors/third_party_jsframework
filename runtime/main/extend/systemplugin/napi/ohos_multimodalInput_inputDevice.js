@@ -16,17 +16,30 @@
 import { paramMock } from "../utils"
 
 export function mockInputDevice() {
+  const DeviceListener = {
+    type: '[PC preview] unknow type',
+    deviceId: '[PC preview] unknow deviceId',
+  }
   const AxisRange = {
     source: '[PC preview] unknow source',
     axis: '[PC preview] unknow axis',
     max: '[PC preview] unknow max',
-    min: '[PC preview] unknow min'
+    min: '[PC preview] unknow min',
+    fuzz: '[PC preview] unknow fuzz',
+    flat: '[PC preview] unknow flat',
+    resolution: '[PC preview] unknow resolution',
   }
   const InputDeviceData = {
     id: '[PC preview] unknow id',
     name: '[PC preview] unknow name',
     sources: ['[PC preview] unknow sources'],
-    axisRanges: [AxisRange]
+    axisRanges: [AxisRange],
+    bus: '[PC preview] unknow bus',
+    product: '[PC preview] unknow product',
+    vendor: '[PC preview] unknow vendor',
+    version: '[PC preview] unknow version',
+    phys: '[PC preview] unknow phys',
+    uniq: '[PC preview] unknow uniq',
   }
   const KeyboardType = {
     NONE: 0,

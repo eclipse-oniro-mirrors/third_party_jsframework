@@ -16,6 +16,12 @@
 import { paramMock } from "../utils"
 
 export function mockInputConsumer() {
+  const KeyOptions = {
+    preKeys: ["[PC preview] unknown preKeys"],
+    finalKey: "[PC preview] unknown finalKey",
+    isFinalKeyDown: "[PC preview] unknown isFinalKeyDown",
+    finalKeyDownDuration: "[PC preview] unknown finalKeyDownDuration",
+  }
   const EventType = ['key']
   const inputConsumer = {   
     on: function (...args) {

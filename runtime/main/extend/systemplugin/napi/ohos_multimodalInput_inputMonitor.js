@@ -14,6 +14,9 @@
  */
 
 export function mockInputMonitor() {
+  const TouchEventReceiver = {
+    "touchEvent": '[PC preview] unknow boolean'
+  }
   const touches = [{
     force: 1.67,
     globalX: 122,
