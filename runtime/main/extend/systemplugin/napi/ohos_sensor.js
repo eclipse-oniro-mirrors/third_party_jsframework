@@ -47,7 +47,8 @@ export function mockSensor() {
     const RotationVectorResponse = {
         x: '[PC preview] unknown x',
         y: '[PC preview] unknown y',
-        z: '[PC preview] unknown z'
+        z: '[PC preview] unknown z',
+        w: '[PC preview] unknown w'
     }
     const GyroscopeResponse = {
         x: '[PC preview] unknown x',
@@ -115,14 +116,21 @@ export function mockSensor() {
         x: '[PC preview] unknown x',
         y: '[PC preview] unknown y',
         z: '[PC preview] unknown z',
-        biasX: '[PC preview] unknown biasX',
-        biasY: '[PC preview] unknown biasY',
-        biasZ: '[PC preview] unknown biasZ'
+        geomagneticDip: '[PC preview] unknown geomagneticDip',
+        deflectionAngle: '[PC preview] unknown deflectionAngle',
+        levelIntensity: '[PC preview] unknown levelIntensity',
+        totalIntensity: '[PC preview] unknown totalIntensity'
+    }
+    const PedometerDetectionResponse = {
+        scalar: '[PC preview] unknown scalar'
+    }
+    const Response  = {
+        timestamp: '[PC preview] unknown z'
     }
     const LocationOptions = {
         latitude: '[PC preview] unknown latitude',
         longitude: '[PC preview] unknown longitude',
-        altitude: '[PC preview] unknown altitude',
+        altitude: '[PC preview] unknown altitude'
     }
     const CoordinatesOptions = {
         x: '[PC preview] unknown x',
