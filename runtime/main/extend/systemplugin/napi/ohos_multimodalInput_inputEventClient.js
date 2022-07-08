@@ -16,6 +16,12 @@
 import { paramMock } from "../utils"
 
 export function mockInputEventClient() {
+  const KeyEvent = {
+    isPressed: '[PC preview] unknow isPressed',
+    keyCode: '[PC preview] unknow keyCode',
+    keyDownDuration: '[PC preview] unknow keyDownDuration',
+    isIntercepted: '[PC preview] unknow isIntercepted',
+  }
   const inputEventClient = {
     injectEvent: function(...args) {
       console.warn("inputEventClient.injectEvent interface mocked in the Previewer. How this interface works on the" +

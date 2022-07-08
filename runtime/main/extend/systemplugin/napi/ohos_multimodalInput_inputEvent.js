@@ -21,4 +21,5 @@ export function mockInputEvent() {
     screenId: '[PC preview] unknow screenId',
     windowId: '[PC preview] unknow windowId',
   }
+  return InputEvent;
 }
