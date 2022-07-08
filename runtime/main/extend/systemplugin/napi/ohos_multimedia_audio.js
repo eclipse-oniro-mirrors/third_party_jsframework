@@ -16,111 +16,86 @@
 import { paramMock } from "../utils"
 
 export function mockMultimediaAudio() {
-  const interruptActionMock = {
+  const interruptAction = {
     actionType: "[PC Preview] unknow actionType",
     type: "[PC Preview] unknow type",
     hint: "[PC Preview] unknow hint",
     activated: "[PC Preview] unknow activated",
   }
-  const DeviceRoleMock = "[PC Preview] unknow DeviceRole"
-  const DeviceTypeMock = "[PC Preview] unknow DeviceType"
-  const AudioDeviceDescriptorMock = {
-    deviceRole: DeviceRoleMock,
-    deviceType: DeviceTypeMock,
+  const DeviceRole = "[PC Preview] unknow DeviceRole"
+  const DeviceType = "[PC Preview] unknow DeviceType"
+  const AudioDeviceDescriptor = {
+    deviceRole: DeviceRole,
+    deviceType: DeviceType,
     id: "[PC Preview] unknow id",
     name: "[PC Preview] unknow name",
     address: "[PC Preview] unknow address",
-    sampleRates: function () {
-      console.warn("AudioDeviceDescriptorMock.sampleRates interface mocked in the Previewer." +
-        " How this interface works on the Previewer may be different from that on a real device.")
-      var sampleRatesArray = new Array();
-      return sampleRatesArray;
-    },
-    channelCounts: function () {
-      console.warn("AudioDeviceDescriptorMock.channelCounts interface mocked in the Previewer." +
-        " How this interface works on the Previewer may be different from that on a real device.")
-      var channelCountsArray = new Array();
-      return channelCountsArray;
-    },
-    channelMasks: function () {
-      console.warn("AudioDeviceDescriptorMock.channelMasks interface mocked in the Previewer." +
-        " How this interface works on the Previewer may be different from that on a real device.")
-      var channelMasksArray = new Array();
-      return channelMasksArray;
-    },
+    sampleRates: [paramMock.paramNumberMock],
+    channelCounts: [paramMock.paramNumberMock],
+    channelMasks: [paramMock.paramNumberMock],
   }
-  const DeviceChangeActionMock = {
+  const DeviceChangeAction = {
     type: "[PC Preview] unknow type",
-    deviceDescriptors: AudioDeviceDescriptorMock,
+    deviceDescriptors: AudioDeviceDescriptor,
   }
-  const AudioRingModeMock = '[PC Preview] unknow AudioRingMode'
-  const VolumeEventMock = {
+  const AudioRingMode = '[PC Preview] unknow AudioRingMode'
+  const VolumeEvent = {
     volumeType: "[PC Preview] unknow volumeType",
     volume: "[PC Preview] unknow volume",
     updateUi: "[PC Preview] unknow updateUi",
   }
-  const AudioSceneMock = '[PC Preview] unknow AudioScene'
-  const AudioStreamInfoMock = {
+  const AudioScene = '[PC Preview] unknow AudioScene'
+  const AudioStreamInfo = {
     samplingRate: "[PC Preview] unknow samplingRate",
     channels: "[PC Preview] unknow channels",
     sampleFormat: "[PC Preview] unknow sampleFormat",
     encodingType: "[PC Preview] unknow encodingType",
   }
-  const AudioRendererInfoMock = {
+  const AudioRendererInfo = {
     content: "[PC Preview] unknow content",
     usage: "[PC Preview] unknow usage",
     rendererFlags: "[PC Preview] unknow rendererFlags",
   }
-  const AudioRendererOptionsMock = {
-    streamInfo: AudioStreamInfoMock,
-    rendererInfo: AudioRendererInfoMock,
+  const AudioRendererOptions = {
+    streamInfo: AudioStreamInfo,
+    rendererInfo: AudioRendererInfo,
   }
-  const AudioCapturerInfoMock = {
+  const AudioCapturerInfo = {
     source: "[PC Preview] unknow source",
     capturerFlags: "[PC Preview] unknow capturerFlags",
   }
-  const AudioCapturerOptionsMock = {
-    streamInfo: AudioStreamInfoMock,
-    capturerInfo: AudioCapturerInfoMock,
+  const AudioCapturerOptions = {
+    streamInfo: AudioStreamInfo,
+    capturerInfo: AudioCapturerInfo,
   }
-  const AudioStateMock = '[PC Preview] unknow AudioState'
-  const AudioRendererRateMock = '[PC Preview] unknow AudioRendererRate'
-  const InterruptEventMock = '[PC Preview] unknow InterruptEvent'
-  const AudioRendererChangeInfoMock = {
+  const AudioState = '[PC Preview] unknow AudioState'
+  const AudioRendererRate = '[PC Preview] unknow AudioRendererRate'
+  const InterruptEvent = '[PC Preview] unknow InterruptEvent'
+  const AudioRendererChangeInfo = {
     streamId: "[PC Preview] unknow streamId",
     clientUid: "[PC Preview] unknow clientUid",
-    rendererInfo: AudioRendererInfoMock,
-    rendererState: AudioStateMock,
-    deviceDescriptors: function () {
-      console.warn("AudioRendererChangeInfoMock.deviceDescriptors interface mocked in the Previewer." +
-        " How this interface works on the Previewer may be different from that on a real device.")
-      var audioDeviceDescriptors = new Array(AudioDeviceDescriptorMock);
-      return audioDeviceDescriptors;
-    },
+    rendererInfo: AudioRendererInfo,
+    rendererState: AudioState,
+    deviceDescriptors: [AudioDeviceDescriptor],
   }
-  const AudioCapturerChangeInfoMock = {
+  const AudioCapturerChangeInfo = {
     streamId: "[PC Preview] unknow streamId",
     clientUid: "[PC Preview] unknow clientUid",
-    capturerInfo: AudioRendererInfoMock,
-    capturerState: AudioStateMock,
-    deviceDescriptors: function () {
-      console.warn("AudioCapturerChangeInfoMock.deviceDescriptors interface mocked in the Previewer." +
-        " How this interface works on the Previewer may be different from that on a real device.")
-      var audioDeviceDescriptors = new Array(AudioDeviceDescriptorMock);
-      return audioDeviceDescriptors;
-    },
+    capturerInfo: AudioRendererInfo,
+    capturerState: AudioState,
+    deviceDescriptors: [AudioDeviceDescriptor],
   }
-  const AudioCapturerMock = {
+  const AudioCapturer = {
     state: "[PC Preview] unknow state",
     getCapturerInfo: function (...args) {
       console.warn("AudioCapturer.getCapturerInfo interface mocked in the Previewer." +
       " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AudioCapturerInfoMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AudioCapturerInfo);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AudioCapturerInfoMock);
+          resolve(AudioCapturerInfo);
         })
       }
     },
@@ -129,10 +104,10 @@ export function mockMultimediaAudio() {
         " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AudioStreamInfoMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AudioStreamInfo);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AudioStreamInfoMock);
+          resolve(AudioStreamInfo);
         })
       }
     },
@@ -217,17 +192,17 @@ export function mockMultimediaAudio() {
         " How this interface works on the Previewer may be different from that on a real device.")
     },
   }
-  const AudioRendererMock ={
+  const AudioRenderer = {
     state: "[PC Preview] unknow state",
     getRendererInfo: function (...args) {
       console.warn("AudioRenderer.getRendererInfo interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AudioRendererInfoMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AudioRendererInfo);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AudioRendererInfoMock);
+          resolve(AudioRendererInfo);
         })
       }
     },
@@ -236,10 +211,10 @@ export function mockMultimediaAudio() {
         " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AudioStreamInfoMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AudioStreamInfo);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AudioStreamInfoMock);
+          resolve(AudioStreamInfo);
         })
       }
     },
@@ -356,10 +331,10 @@ export function mockMultimediaAudio() {
         " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AudioRendererRateMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AudioRendererRate);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AudioRendererRateMock);
+          resolve(AudioRendererRate);
         })
       }
     },
@@ -384,20 +359,20 @@ export function mockMultimediaAudio() {
       }
     }
   }
-  const AudioManagerMock = {
+  const AudioManager = {
     on: function (...args) {
       console.warn("AudioManager.on interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'interrupt') {
-          args[len - 1].call(this, interruptActionMock);
+          args[len - 1].call(this, interruptAction);
         } else if (args[0] == 'deviceChange') {
-          args[len - 1].call(this, DeviceChangeActionMock);
+          args[len - 1].call(this, DeviceChangeAction);
         } else if (args[0] == 'volumeChange') {
-          args[len - 1].call(this, VolumeEventMock);
+          args[len - 1].call(this, VolumeEvent);
         } else if (args[0] == 'ringerModeChange') {
-          args[len - 1].call(this, AudioRingModeMock);
+          args[len - 1].call(this, AudioRingMode);
         }
       }
     },
@@ -408,7 +383,7 @@ export function mockMultimediaAudio() {
     getDevices: function (...args) {
       console.warn("AudioManager.getDevices interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
-      var AudioDeviceDescriptors = new Array(AudioDeviceDescriptorMock)
+      var AudioDeviceDescriptors = new Array(AudioDeviceDescriptor)
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, AudioDeviceDescriptors);
@@ -591,10 +566,10 @@ export function mockMultimediaAudio() {
         " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AudioRingModeMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AudioRingMode);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AudioRingModeMock);
+          resolve(AudioRingMode);
         })
       }
     },
@@ -615,10 +590,10 @@ export function mockMultimediaAudio() {
         " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AudioSceneMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AudioScene);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AudioSceneMock);
+          resolve(AudioScene);
         })
       }
     },
@@ -651,15 +626,15 @@ export function mockMultimediaAudio() {
         " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AudioStreamManagerMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AudioStreamManager);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AudioStreamManagerMock);
+          resolve(AudioStreamManager);
         })
       }
     }
   }
-  const AudioStreamManagerMock = {
+  const AudioStreamManager = {
     on: function (...args) {
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -679,7 +654,7 @@ export function mockMultimediaAudio() {
     getCurrentAudioRendererInfoArray: function (...args) {
       console.warn("AudioStreamManager.getCurrentAudioRendererInfoArray interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
-      var AudioRendererChangeInfoArray = new Array(AudioRendererChangeInfoMock)
+      var AudioRendererChangeInfoArray = new Array(AudioRendererChangeInfo)
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, AudioRendererChangeInfoArray);
@@ -692,7 +667,7 @@ export function mockMultimediaAudio() {
     getCurrentAudioCapturerInfoArray: function (...args) {
       console.warn("AudioStreamManager.getCurrentAudioCapturerInfoArray interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
-      var AudioCapturerChangeInfoArray = new Array(AudioCapturerChangeInfoMock)
+      var AudioCapturerChangeInfoArray = new Array(AudioCapturerChangeInfo)
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, AudioCapturerChangeInfoArray);
@@ -811,17 +786,17 @@ export function mockMultimediaAudio() {
     getAudioManager: function () {
       console.warn("audio.getAudioManager interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
-      return AudioManagerMock;
+      return AudioManager;
     },
     createAudioCapturer: function (...args) {
       console.warn("audio.createAudioCapturer interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AudioCapturerMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AudioCapturer);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AudioCapturerMock);
+          resolve(AudioCapturer);
         })
       }
     },
@@ -830,10 +805,10 @@ export function mockMultimediaAudio() {
         " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AudioRendererMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AudioRenderer);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AudioRendererMock);
+          resolve(AudioRenderer);
         })
       }
     }
