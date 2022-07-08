@@ -14,8 +14,8 @@
  */
 
 import { paramMock } from "../utils"
-import { ShortcutInfoMock } from './bundle/applicationInfo'
-import { LauncherAbilityInfoMock } from './bundle/launcherAbilityInfo'
+import { ShortcutInfo } from './bundle/applicationInfo'
+import { LauncherAbilityInfo } from './bundle/launcherAbilityInfo'
 
 export function mockInnerBundle() {
     const innerBundleManager = {
@@ -24,10 +24,10 @@ export function mockInnerBundle() {
             " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, LauncherAbilityInfoMock);
+                args[len - 1].call(this, paramMock.businessErrorMock, LauncherAbilityInfo);
             } else {
                 return new Promise((resolve) => {
-                    resolve(LauncherAbilityInfoMock);
+                    resolve(LauncherAbilityInfo);
                 })
             }
         },
@@ -44,10 +44,10 @@ export function mockInnerBundle() {
             " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, Array(LauncherAbilityInfoMock));
+                args[len - 1].call(this, paramMock.businessErrorMock, Array(LauncherAbilityInfo));
             } else {
                 return new Promise((resolve) => {
-                    resolve(Array(LauncherAbilityInfoMock));
+                    resolve(Array(LauncherAbilityInfo));
                 })
             }
         },
@@ -56,10 +56,10 @@ export function mockInnerBundle() {
             " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, Array(ShortcutInfoMock));
+                args[len - 1].call(this, paramMock.businessErrorMock, Array(ShortcutInfo));
             } else {
                 return new Promise((resolve) => {
-                    resolve(Array(ShortcutInfoMock));
+                    resolve(Array(ShortcutInfo));
                 })
             }
         },

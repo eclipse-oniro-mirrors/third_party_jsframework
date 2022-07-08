@@ -13,13 +13,9 @@
  * limitations under the License.
  */
 
-export const DefaultAppManager = {
-    BROWSER: "[PC preview] unknown BROWSER",
-    IMAGE: "[PC preview] unknown IMAGE",
-    AUDIO: "[PC preview] unknown AUDIO",
-    VIDEO: "[PC preview] unknown VIDEO",
-    PDF: "[PC preview] unknown PDF",
-    WORD: "[PC preview] unknown WORD",
-    EXCEL: "[PC preview] unknown EXCEL",
-    PPT: "[PC preview] unknown PPT",
+export const PermissionDef = {
+    permissionName: "[PC preview] unknown permissionName",
+    grantMode: "[PC preview] unknown grantMode",
+    labelId: "[PC preview] unknown labelId",
+    descriptionId: "[PC preview] unknown descriptionId",
 }

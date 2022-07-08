@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-export const AbilityInfoMock = {
+import { paramMock } from "../../utils"
+
+export const AbilityInfo = {
     name: "[PC preview] unknown name",
     bundleName: "[PC preview] unknown bundleName",
     moduleName: "[PC preview] unknown moduleName",
@@ -51,9 +53,9 @@ export const AbilityInfoMock = {
         SINGLETON: 0,
         STANDARD: 1,
     },
-    permissions: ['[PC Preview] unknow permissions'],
-    deviceTypes: ['[PC Preview] unknow deviceTypes'],
-    deviceCapabilities: ['[PC Preview] unknow deviceCapabilities'],
+    permissions: [paramMock.paramStringMock],
+    deviceTypes: [paramMock.paramStringMock],
+    deviceCapabilities: [paramMock.paramNumberMock],
     readPermission: '[PC Preview] unknow readPermission',
     writePermission: '[PC Preview] unknow writePermission',
     appId: '[PC Preview] unknow appId',
@@ -77,14 +79,14 @@ export const AbilityInfoMock = {
         iconId: "[PC preview] unknown iconId",
         process: "[PC preview] unknown process",
         sourceDir: "[PC preview] unknown sourceDir",
-        moduleSourceDirs: ["[PC preview] unknown moduleSourceDirs"],
-        permissions: ["[PC preview] unknown permissions"],
+        moduleSourceDirs: [paramMock.paramStringMock],
+        permissions: [paramMock.paramStringMock],
         moduleInfos: [{
             moduleName: "[PC preview] unknown moduleName",
             moduleSourceDir: "[PC preview] unknown moduleSourceDir",
         }],
-        entryDir: ["[PC preview] unknown entryDir"],
-        codePath: ["[PC preview] unknown codePath"],
+        entryDir: "[PC preview] unknown entryDir",
+        codePath: "[PC preview] unknown codePath",
         metaData: [{
             name: "[PC preview] unknown name",
             value: "[PC preview] unknown value",

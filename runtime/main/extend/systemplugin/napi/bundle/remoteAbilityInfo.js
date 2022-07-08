@@ -13,13 +13,10 @@
  * limitations under the License.
  */
 
-export const DefaultAppManager = {
-    BROWSER: "[PC preview] unknown BROWSER",
-    IMAGE: "[PC preview] unknown IMAGE",
-    AUDIO: "[PC preview] unknown AUDIO",
-    VIDEO: "[PC preview] unknown VIDEO",
-    PDF: "[PC preview] unknown PDF",
-    WORD: "[PC preview] unknown WORD",
-    EXCEL: "[PC preview] unknown EXCEL",
-    PPT: "[PC preview] unknown PPT",
+import { ElementName }  from './elementName';
+
+export const RemoteAbilityInfo = {
+    elementName: ElementName,
+    label: "[PC preview] unknown IMAGE",
+    icon: "[PC preview] unknown AUDIO",
 }

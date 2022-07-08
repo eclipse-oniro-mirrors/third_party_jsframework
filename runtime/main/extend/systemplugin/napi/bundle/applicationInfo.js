@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-export const ApplicationInfoMock = {
+import { paramMock } from "../../utils"
+
+export const ApplicationInfo = {
     name: "[PC preview] unknown name",
     description: "[PC preview] unknown description",
     descriptionId: "[PC preview] unknown descriptionId",
@@ -25,8 +27,8 @@ export const ApplicationInfoMock = {
     iconId: "[PC preview] unknown iconId",
     process: "[PC preview] unknown process",
     supportedModes: "[PC preview] unknown supportedModes",
-    moduleSourceDirs: ["[PC preview] unknown moduleSourceDirs"],
-    permissions: ["[PC preview] unknown permissions"],
+    moduleSourceDirs: [paramMock.paramNumberMock],
+    permissions: [paramMock.paramNumberMock],
     moduleInfos: [
         {
             moduleName: "[PC preview] unknown moduleName",
@@ -69,7 +71,7 @@ export const ApplicationInfoMock = {
     appProvisionType: "[PC preview] unknown appProvisionType", 
 }
 
-export const WantMock = {
+export const Want = {
     deviceId: "[PC Preview] unknow deviceId",
     bundleName: "[PC Preview] unknow bundleName",
     abilityName: "[PC Preview] unknow abilityName",
@@ -77,12 +79,12 @@ export const WantMock = {
     type: "[PC Preview] unknow type",
     flag: "[PC Preview] unknow flag",
     action: "[PC Preview] unknow action",
-    parameters: ["[PC Preview] unknow parameters"],
-    entities: ["[PC Preview] unknow entities"],
+    parameters: [paramMock.paramStringMock],
+    entities: [paramMock.paramStringMock],
     moduleName: "[PC Preview] unknow moduleName",
 }
 
-export const ShortcutInfoMock =  {
+export const ShortcutInfo =  {
     id: "[PC preview] unknown id",
     bundleName: "[PC preview] unknown bundleName",
     hostAbility: "[PC preview] unknown hostAbility",
@@ -96,14 +98,15 @@ export const ShortcutInfoMock =  {
             targetBundle: "[PC preview] unknown targetBundle",
             targetModule: "[PC preview] unknown targetModule",
             targetClass: "[PC preview] unknown targetClass",
-        }],
+        }
+    ],
     isStatic: "[PC preview] unknown isStatic",
     isHomeShortcut: "[PC preview] unknown isHomeShortcut",
     isEnabled: "[PC preview] unknown isEnabled",
     moduleName: "[PC preview] unknown moduleName",
 }
 
-export const ModuleUsageRecordMock = {
+export const ModuleUsageRecord = {
     bundleName: "[PC preview] unknown bundleName",
     appLabelId: "[PC preview] unknown appLabelId",
     name: "[PC preview] unknown name",
