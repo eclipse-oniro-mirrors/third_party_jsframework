@@ -24,7 +24,6 @@ export const AbilityLifecycleState = {
   DESTROY: '[PC preview] unknow DESTROY',
 }
 
-
 export function mockAbilityDelegatorRegistry() {
   const abilityDelegatorRegistry = {
     getAbilityDelegator: function () {
