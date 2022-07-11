@@ -16,7 +16,7 @@
 import { paramMock } from "../utils"
 
 export function mockOhosGeolocation() {
-  const LocationMock = {
+  const Location = {
     latitude: '[PC preview] unknow latitude',
     longitude: '[PC preview] unknow longitude',
     altitude: '[PC preview] unknow altitude',
@@ -25,10 +25,10 @@ export function mockOhosGeolocation() {
     timeStamp: '[PC preview] unknow timeStamp',
     direction: '[PC preview] unknow direction',
     timeSinceBoot: '[PC preview] unknow timeSinceBoot',
-    additions: '[PC preview] unknow additions',
+    additions: [paramMock.paramStringMock],
     additionSize: '[PC preview] unknow additionSize',
   }
-  const GeoAddressMock = {
+  const GeoAddress = {
     latitude: '[PC preview] unknow latitude',
     longitude: '[PC preview] unknow longitude',
     locale: '[PC preview] unknow locale',
@@ -45,8 +45,26 @@ export function mockOhosGeolocation() {
     postalCode: '[PC preview] unknow postalCode',
     phoneNumber: '[PC preview] unknow phoneNumber',
     addressUrl: '[PC preview] unknow addressUrl',
-    descriptions: '[PC preview] unknow descriptions',
+    descriptions: [paramMock.paramStringMock],
     descriptionsSize: '[PC preview] unknow descriptionsSize',
+  }
+  const SatelliteStatusInfo = {
+    satellitesNumber: '[PC preview] unknow satellitesNumber',
+    satelliteIds: [paramMock.paramNumberMock],
+    carrierToNoiseDensitys: [paramMock.paramNumberMock],
+    altitudes: [paramMock.paramNumberMock],
+    azimuths: [paramMock.paramNumberMock],
+    carrierFrequencies: [paramMock.paramNumberMock],
+  }
+  const CountryCodeType = {
+    COUNTRY_CODE_FROM_LOCALE: 1,
+    COUNTRY_CODE_FROM_SIM: 2,
+    COUNTRY_CODE_FROM_LOCATION: 3,
+    COUNTRY_CODE_FROM_NETWORK: 4,
+  }
+  const CountryCode = {
+    country: '[PC preview] unknow country',
+    type: CountryCodeType,
   }
   const geolocation = {
     on: function (...args) {
@@ -55,9 +73,17 @@ export function mockOhosGeolocation() {
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'locationChange') {
-          args[len - 1].call(this, LocationMock);
+            args[len - 1].call(this, Location);
         } else if (args[0] == 'locationServiceState') {
-          args[len - 1].call(this, paramMock.paramBooleanMock);
+            args[len - 1].call(this, paramMock.paramBooleanMock);
+        } else if (args[0] == 'cachedGnssLocationsReporting') {
+            args[len - 1].call(this, [Location]);
+        } else if (args[0] == 'gnssStatusChange') {
+            args[len - 1].call(this, SatelliteStatusInfo);
+        } else if (args[0] == 'nmeaMessageChange') {
+            args[len - 1].call(this, paramMock.paramStringMock);
+        } else if (args[0] == 'countryCodeChange') {
+            args[len - 1].call(this, CountryCode);
         }
       }
     },
@@ -67,9 +93,17 @@ export function mockOhosGeolocation() {
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'locationChange') {
-          args[len - 1].call(this, LocationMock);
+            args[len - 1].call(this, Location);
         } else if (args[0] == 'locationServiceState') {
-          args[len - 1].call(this, paramMock.paramBooleanMock);
+            args[len - 1].call(this, paramMock.paramBooleanMock);
+        } else if (args[0] == 'cachedGnssLocationsReporting') {
+            args[len - 1].call(this, [Location]);
+        } else if (args[0] == 'gnssStatusChange') {
+            args[len - 1].call(this, SatelliteStatusInfo);
+        } else if (args[0] == 'nmeaMessageChange') {
+            args[len - 1].call(this, paramMock.paramStringMock);
+        } else if (args[0] == 'countryCodeChange') {
+            args[len - 1].call(this, CountryCode);
         }
       }
     },
@@ -78,10 +112,10 @@ export function mockOhosGeolocation() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, LocationMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, Location);
       } else {
         return new Promise((resolve) => {
-          resolve(LocationMock);
+          resolve(Location);
         });
       }
     },
@@ -90,10 +124,10 @@ export function mockOhosGeolocation() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, LocationMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, Location);
       } else {
         return new Promise((resolve) => {
-          resolve(LocationMock);
+          resolve(Location);
         });
       }
     },
@@ -150,10 +184,10 @@ export function mockOhosGeolocation() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [GeoAddressMock]);
+        args[len - 1].call(this, paramMock.businessErrorMock, [GeoAddress]);
       } else {
         return new Promise((resolve) => {
-          resolve([GeoAddressMock]);
+          resolve([GeoAddress]);
         });
       }
     },
@@ -162,10 +196,10 @@ export function mockOhosGeolocation() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [GeoAddressMock]);
+        args[len - 1].call(this, paramMock.businessErrorMock, [GeoAddress]);
       } else {
         return new Promise((resolve) => {
-          resolve([GeoAddressMock]);
+          resolve([GeoAddress]);
         });
       }
     },
@@ -179,6 +213,150 @@ export function mockOhosGeolocation() {
         return new Promise((resolve) => {
           resolve(paramMock.paramBooleanMock);
         });
+      }
+    },
+    getCachedGnssLocationsSize: function (...args) {
+      console.warn("geolocation.getCachedGnssLocationsSize interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+      } else {
+          return new Promise((resolve) => {
+              resolve(paramMock.paramNumberMock);
+          });
+      }
+    },
+    flushCachedGnssLocations: function (...args) {
+      console.warn("geolocation.flushCachedGnssLocations interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+          return new Promise((resolve) => {
+              resolve(paramMock.paramBooleanMock);
+          });
+      }
+    },
+    sendCommand: function (...args) {
+      console.warn("geolocation.sendCommand interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+          return new Promise((resolve) => {
+              resolve(paramMock.paramBooleanMock);
+          });
+      }
+    },
+    getCountryCode: function (...args) {
+      console.warn("geolocation.getCountryCode interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, CountryCode);
+      } else {
+          return new Promise((resolve) => {
+              resolve(CountryCode);
+          });
+      }
+    },
+    enableLocationMock: function (...args) {
+      console.warn("geolocation.enableLocationMock interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+          return new Promise((resolve) => {
+              resolve();
+          });
+      }
+    },
+    disableLocationMock: function (...args) {
+      console.warn("geolocation.disableLocationMock interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+          return new Promise((resolve) => {
+              resolve();
+          });
+      }
+    },
+    setMockedLocations: function (...args) {
+      console.warn("geolocation.setMockedLocations interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+          return new Promise((resolve) => {
+              resolve();
+          });
+      }
+    },
+    enableReverseGeocodingMock: function (...args) {
+      console.warn("geolocation.enableReverseGeocodingMock interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+          return new Promise((resolve) => {
+              resolve();
+          });
+      }
+    },
+    disableReverseGeocodingMock: function (...args) {
+      console.warn("geolocation.disableReverseGeocodingMock interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+          return new Promise((resolve) => {
+              resolve();
+          });
+      }
+    },
+    setReverseGeocodingMockInfo: function (...args) {
+      console.warn("geolocation.setReverseGeocodingMockInfo interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+          return new Promise((resolve) => {
+              resolve();
+          });
+      }
+    },
+    isLocationPrivacyConfirmed: function (...args) {
+      console.warn("geolocation.isLocationPrivacyConfirmed interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+          return new Promise((resolve) => {
+              resolve(paramMock.paramBooleanMock);
+          });
+      }
+    },
+    setLocationPrivacyConfirmStatus: function (...args) {
+      console.warn("geolocation.setLocationPrivacyConfirmStatus interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+          return new Promise((resolve) => {
+              resolve(paramMock.paramBooleanMock);
+          });
       }
     },
   }
