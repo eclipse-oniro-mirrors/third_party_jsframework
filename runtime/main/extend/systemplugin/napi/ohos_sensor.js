@@ -180,97 +180,97 @@ export function mockSensor() {
                 + 'Previewer may be different from that on a real device.')
             const len = args.length;
             const callback = typeof args[len - 1] === 'function' ? args[len - 1] : args[len - 2];
-                if (args[0] == 1) {
-                  callback.call(this, AccelerometerResponse);
-                } else if (args[0] == 2) {
-                  callback.call(this, GyroscopeResponse);
-                } else if (args[0] == 5) {
-                  callback.call(this, LightResponse);
-                } else if (args[0] == 6) {
-                  callback.call(this, MagneticFieldResponse);
-                } else if (args[0] == 8) {
-                  callback.call(this, BarometerResponse);
-                } else if (args[0] == 10) {
-                  callback.call(this, HallResponse);
-                } else if (args[0] == 12) {
-                  callback.call(this, ProximityResponse);
-                } else if (args[0] == 13) {
-                  callback.call(this, HumidityResponse);
-                } else if (args[0] == 256) {
-                  callback.call(this, OrientationResponse);
-                } else if (args[0] == 257) {
-                  callback.call(this, GravityResponse);
-                } else if (args[0] == 258) {
-                  callback.call(this, LinearAccelerometerResponse);
-                } else if (args[0] == 259) {
-                  callback.call(this, RotationVectorResponse);
-                } else if (args[0] == 260) {
-                  callback.call(this, AmbientTemperatureResponse);
-                } else if (args[0] == 261) {
-                  callback.call(this, MagneticFieldUncalibratedResponse);
-                } else if (args[0] == 263) {
-                  callback.call(this, GyroscopeUncalibratedResponse);
-                } else if (args[0] == 264) {
-                  callback.call(this, SignificantMotionResponse);
-                } else if (args[0] == 265) {
-                  callback.call(this, PedometerDetectResponse);
-                } else if (args[0] == 266) {
-                  callback.call(this, PedometerResponse);
-                } else if (args[0] == 278) {
-                  callback.call(this, HeartRateResponse);
-                } else if (args[0] == 280) {
-                  callback.call(this, WearDetectionResponse);
-                } else if (args[0] == 281) {
-                  callback.call(this, AccelerometerUncalibratedResponse);
-                }
+            if (args[0] == 1) {
+                callback.call(this, AccelerometerResponse);
+            } else if (args[0] == 2) {
+                callback.call(this, GyroscopeResponse);
+            } else if (args[0] == 5) {
+                callback.call(this, LightResponse);
+            } else if (args[0] == 6) {
+                callback.call(this, MagneticFieldResponse);
+            } else if (args[0] == 8) {
+                callback.call(this, BarometerResponse);
+            } else if (args[0] == 10) {
+                callback.call(this, HallResponse);
+            } else if (args[0] == 12) {
+                callback.call(this, ProximityResponse);
+            } else if (args[0] == 13) {
+                callback.call(this, HumidityResponse);
+            } else if (args[0] == 256) {
+                callback.call(this, OrientationResponse);
+            } else if (args[0] == 257) {
+                callback.call(this, GravityResponse);
+            } else if (args[0] == 258) {
+                callback.call(this, LinearAccelerometerResponse);
+            } else if (args[0] == 259) {
+                callback.call(this, RotationVectorResponse);
+            } else if (args[0] == 260) {
+                callback.call(this, AmbientTemperatureResponse);
+            } else if (args[0] == 261) {
+                callback.call(this, MagneticFieldUncalibratedResponse);
+            } else if (args[0] == 263) {
+                callback.call(this, GyroscopeUncalibratedResponse);
+            } else if (args[0] == 264) {
+                callback.call(this, SignificantMotionResponse);
+            } else if (args[0] == 265) {
+                callback.call(this, PedometerDetectResponse);
+            } else if (args[0] == 266) {
+                callback.call(this, PedometerResponse);
+            } else if (args[0] == 278) {
+                callback.call(this, HeartRateResponse);
+            } else if (args[0] == 280) {
+                callback.call(this, WearDetectionResponse);
+            } else if (args[0] == 281) {
+                callback.call(this, AccelerometerUncalibratedResponse);
+            }
         },
         once: function (...args) {
             console.warn('sensor.once interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
             const len = args.length
-                if (args[0] == 1) {
-                  args[len - 1].call(this, AccelerometerResponse);
-                } else if (args[0] == 2) {
-                  args[len - 1].call(this, GyroscopeResponse);
-                } else if (args[0] == 5) {
-                  args[len - 1].call(this, LightResponse);
-                } else if (args[0] == 6) {
-                  args[len - 1].call(this, MagneticFieldResponse);
-                } else if (args[0] == 8) {
-                  args[len - 1].call(this, BarometerResponse);
-                } else if (args[0] == 10) {
-                  args[len - 1].call(this, HallResponse);
-                } else if (args[0] == 12) {
-                  args[len - 1].call(this, ProximityResponse);
-                } else if (args[0] == 13) {
-                  args[len - 1].call(this, HumidityResponse);
-                } else if (args[0] == 256) {
-                  args[len - 1].call(this, OrientationResponse);
-                } else if (args[0] == 257) {
-                  args[len - 1].call(this, GravityResponse);
-                } else if (args[0] == 258) {
-                  args[len - 1].call(this, LinearAccelerometerResponse);
-                } else if (args[0] == 259) {
-                  args[len - 1].call(this, RotationVectorResponse);
-                } else if (args[0] == 260) {
-                  args[len - 1].call(this, AmbientTemperatureResponse);
-                } else if (args[0] == 261) {
-                  args[len - 1].call(this, MagneticFieldUncalibratedResponse);
-                } else if (args[0] == 263) {
-                  args[len - 1].call(this, GyroscopeUncalibratedResponse);
-                } else if (args[0] == 264) {
-                  args[len - 1].call(this, SignificantMotionResponse);
-                } else if (args[0] == 265) {
-                  args[len - 1].call(this, PedometerDetectResponse);
-                } else if (args[0] == 266) {
-                  args[len - 1].call(this, PedometerResponse);
-                } else if (args[0] == 278) {
-                  args[len - 1].call(this, HeartRateResponse);
-                } else if (args[0] == 280) {
-                  args[len - 1].call(this, WearDetectionResponse);
-                } else if (args[0] == 281) {
-                  args[len - 1].call(this, AccelerometerUncalibratedResponse);
-                }
+            if (args[0] == 1) {
+                args[len - 1].call(this, AccelerometerResponse);
+            } else if (args[0] == 2) {
+                args[len - 1].call(this, GyroscopeResponse);
+            } else if (args[0] == 5) {
+                args[len - 1].call(this, LightResponse);
+            } else if (args[0] == 6) {
+                args[len - 1].call(this, MagneticFieldResponse);
+            } else if (args[0] == 8) {
+                args[len - 1].call(this, BarometerResponse);
+            } else if (args[0] == 10) {
+                args[len - 1].call(this, HallResponse);
+            } else if (args[0] == 12) {
+                args[len - 1].call(this, ProximityResponse);
+            } else if (args[0] == 13) {
+                args[len - 1].call(this, HumidityResponse);
+            } else if (args[0] == 256) {
+                args[len - 1].call(this, OrientationResponse);
+            } else if (args[0] == 257) {
+                args[len - 1].call(this, GravityResponse);
+            } else if (args[0] == 258) {
+                args[len - 1].call(this, LinearAccelerometerResponse);
+            } else if (args[0] == 259) {
+                args[len - 1].call(this, RotationVectorResponse);
+            } else if (args[0] == 260) {
+                args[len - 1].call(this, AmbientTemperatureResponse);
+            } else if (args[0] == 261) {
+                args[len - 1].call(this, MagneticFieldUncalibratedResponse);
+            } else if (args[0] == 263) {
+                args[len - 1].call(this, GyroscopeUncalibratedResponse);
+            } else if (args[0] == 264) {
+                args[len - 1].call(this, SignificantMotionResponse);
+            } else if (args[0] == 265) {
+                args[len - 1].call(this, PedometerDetectResponse);
+            } else if (args[0] == 266) {
+                args[len - 1].call(this, PedometerResponse);
+            } else if (args[0] == 278) {
+                args[len - 1].call(this, HeartRateResponse);
+            } else if (args[0] == 280) {
+                args[len - 1].call(this, WearDetectionResponse);
+            } else if (args[0] == 281) {
+                args[len - 1].call(this, AccelerometerUncalibratedResponse);
+            }
         },
         off: function (...args) {
             console.warn('sensor.off interface mocked in the Previewer. How this interface works on the'
