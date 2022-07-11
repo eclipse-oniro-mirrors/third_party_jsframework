@@ -20,7 +20,6 @@ import {
   mockAbilityParticleAbility,
   mockAbilityFormManager,
   mockAbilityContinuationRegisterManager,
-  mockAbilityDataUriUtils,
   mockAbilityAbilityAgent,
   mockAbilityFormBindingData
 } from './ability'
@@ -73,7 +72,6 @@ export function mockSystemPlugin() {
   mockAbilityFeatureAbility()
   mockAbilityContinuationRegisterManager()
   mockRequireNapiFun()
-  mockAbilityDataUriUtils()
   mockAccessibility()
   mockAbilityParticleAbility()
   mockAbilityFormManager()
