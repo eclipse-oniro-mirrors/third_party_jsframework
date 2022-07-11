@@ -337,7 +337,7 @@ export function mockSensor() {
                     args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock);
                 } else {
                     return new Promise((resolve, reject) => {
-                        resolve(paramMock.RotationMatrixResponse);
+                      resolve(RotationMatrixResponse);
                     });
                 }
             } else if (len == 3) {
@@ -362,7 +362,7 @@ export function mockSensor() {
                 + 'Previewer may be different from that on a real device.')
           const len = args.length
           if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.[paramMock.paraNumberMock]);
+                args[len - 1].call(this, paramMock.businessErrorMock, [paramMock.paraNumberMock]);
           } else {
                 return new Promise((resolve, reject) => {
                     resolve([paramMock.paraNumberMock]);
@@ -398,7 +398,7 @@ export function mockSensor() {
                 + 'Previewer may be different from that on a real device.')
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, Array(Sensor));
+                args[len - 1].call(this, paramMock.businessErrorMock,new Array(Sensor));
             } else {
                 return new Promise((resolve, reject) => {
                     resolve(Array(Sensor));
