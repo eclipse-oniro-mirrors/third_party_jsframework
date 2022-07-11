@@ -178,8 +178,8 @@ export function mockSensor() {
         on: function (...args) {
             console.warn('sensor.on interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
-                const len = args.length;
-                const callback = typeof args[len - 1] === 'function' ? args[len - 1] : args[len - 2];
+            const len = args.length;
+            const callback = typeof args[len - 1] === 'function' ? args[len - 1] : args[len - 2];
                 if (args[0] == 1) {
                   callback.call(this, AccelerometerResponse);
                 } else if (args[0] == 2) {
@@ -227,7 +227,7 @@ export function mockSensor() {
         once: function (...args) {
             console.warn('sensor.once interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
-                const len = args.length
+            const len = args.length
                 if (args[0] == 1) {
                   args[len - 1].call(this, AccelerometerResponse);
                 } else if (args[0] == 2) {
@@ -337,7 +337,7 @@ export function mockSensor() {
                     args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock);
                 } else {
                     return new Promise((resolve, reject) => {
-                      resolve(RotationMatrixResponse);
+                        resolve(RotationMatrixResponse);
                     });
                 }
             } else if (len == 3) {
@@ -358,10 +358,10 @@ export function mockSensor() {
             }
         },
         createQuaternion: function (...args) {
-          console.warn('sensor.createQuaternion interface mocked in the Previewer. How this interface works on the'
+            console.warn('sensor.createQuaternion interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
-          const len = args.length
-          if (typeof args[len - 1] === 'function') {
+            const len = args.length
+            if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock, [paramMock.paraNumberMock]);
           } else {
                 return new Promise((resolve, reject) => {
