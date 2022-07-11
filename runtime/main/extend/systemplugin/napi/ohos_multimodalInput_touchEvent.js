@@ -38,6 +38,32 @@ export const SourceType = {
  }
 
 export function mockTouchEvent() {
+    const Touch = {
+        id: '[PC preview] unknow id',
+        pressedTime: '[PC preview] unknow pressedTime',
+        screenX: '[PC preview] unknow screenX',
+        screenY: '[PC preview] unknow screenY',
+        windowX: '[PC preview] unknow windowX',
+        windowY: '[PC preview] unknow windowY',
+        pressure: '[PC preview] unknow pressure',
+        width: '[PC preview] unknow width',
+        height: '[PC preview] unknow height',
+        tiltX: '[PC preview] unknow tiltX',
+        tiltY: '[PC preview] unknow tiltY',
+        toolX: '[PC preview] unknow toolX',
+        toolY: '[PC preview] unknow toolY',
+        toolWidth: '[PC preview] unknow toolWidth',
+        toolHeight: '[PC preview] unknow toolHeight',
+        rawX: '[PC preview] unknow rawX',
+        rawY: '[PC preview] unknow rawY',
+        toolType: '[PC preview] unknow toolType',
+    }
+    const TouchEvent = {
+        action: '[PC preview] unknow action',
+        touch: '[PC preview] unknow Touch',
+        touches: ['[PC preview] unknow Touch'],
+        sourceType: '[PC preview] unknow SourceType',
+    }
     const touchEvent = {
         Action,
         ToolType,
