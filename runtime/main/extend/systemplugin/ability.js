@@ -14,7 +14,7 @@
  */
 
 import { paramMock } from "./utils"
-import { windowMock } from "./napi/ohos_window"
+import { Window } from "./napi/ohos_window"
 
 const DataAbilityResultMock = {
   uri: "[PC Preview] unknow uri",
@@ -839,10 +839,10 @@ export function mockAbilityFeatureAbility() {
         " on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, windowMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, Window)
       } else {
         return new Promise((resolve) => {
-          resolve(windowMock)
+          resolve(Window)
         })
       }
     },
