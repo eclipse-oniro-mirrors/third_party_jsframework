@@ -16,7 +16,7 @@
 import { paramMock } from "../utils"
 
 export function mockMultimediaAVSession() {
-  const AVMetadataMock = {
+  const AVMetadata = {
     assetId: "[PC Preview] unknow assetId",
     title: "[PC Preview] unknow title",
     artist: "[PC Preview] unknow artist",
@@ -34,37 +34,40 @@ export function mockMultimediaAVSession() {
     nextAssetId: "[PC Preview] unknow nextAssetId"
   }
   
-  const AVPlaybackStateMock = {
+  const AVPlaybackState = {
     state: "[PC Preview] unknow state",
     speed: "[PC Preview] unknow speed",
-    position: PlaybackPositionMock,
+    position: PlaybackPosition,
     bufferedTime: "[PC Preview] unknow bufferedTime",
     loopMode: "[PC Preview] unknow loopMode",
     isFavorite: "[PC Preview] unknow isFavorite"
   }
   
-  const PlaybackPositionMock = {
+  const PlaybackPosition = {
     elapsedTime: "[PC Preview] unknow elapsedTime",
     updateTime: "[PC Preview] unknow updateTime"
   }
   
-  const OutputDeviceInfoMock = {
+  const OutputDeviceInfo = {
     isRemote: "[PC Preview] unknow isRemote",
     deviceId: [paramMock.paramStringMock],
     deviceName: [paramMock.paramStringMock]
   }
   
-  const AVSessionDescriptorMock = {
+  const AVSessionDescriptor = {
     sessionId: "[PC Preview] unknow sessionId",
     type: "[PC Preview] unknow type",
     sessionTag: "[PC Preview] unknow sessionTag",
     elementName: "[PC Preview] unknow elementName",
     isActive: "[PC Preview] unknow isActive",
     isTopSession: "[PC Preview] unknow isTopSession",
-    outputDevice: "[PC Preview] unknow outputDevice"
+    outputDevice:
+     "[PC Preview] unknow outputDevice"
   }
-  
-  const AVSessionMock = {
+
+  const AVControlCommandType = ['play', 'pause', 'stop', 'playNext', 'playPrevious', 'fastForward', 'rewind', 'seek', 'setSpeed', 'setLoopMode', 'toggleFavorite'];
+
+  const AVSession = {
     sessionId: "[PC Preview] unknow sessionId",
     setAVMetadata: function (...args) {
       console.warn("AVSession.setAVMetadata interface mocked in the Previewer. How this interface works on the Previewer" +
@@ -119,10 +122,10 @@ export function mockMultimediaAVSession() {
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AVSessionControllerMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AVSessionController);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AVSessionControllerMock);
+          resolve(AVSessionController);
       })
       }
     },
@@ -131,10 +134,10 @@ export function mockMultimediaAVSession() {
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, OutputDeviceInfoMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, OutputDeviceInfo);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(OutputDeviceInfoMock);
+          resolve(OutputDeviceInfo);
       })
       }
     },
@@ -148,14 +151,14 @@ export function mockMultimediaAVSession() {
         } else if(args[0] == 'seek' || args[0] == 'setSpeed') {
           args[len - 1].call(this, paramMock.paramNumberMock);
         } else if(args[0] == 'setLoopMode') {
-          var loopModeMock = "[PC Preview] unknow LoopMode";
-          args[len - 1].call(this, loopModeMock);
+          var loopMode = "[PC Preview] unknow LoopMode";
+          args[len - 1].call(this, loopMode);
         } else if(args[0] == 'toggleFavorite') {
           args[len - 1].call(this, paramMock.paramStringMock);
         } else if(args[0] == 'handleKeyEvent') {
           args[len - 1].call(this, paramMock.paramObjectMock);
         } else if(args[0] == 'outputDeviceChanged') {
-          args[len - 1].call(this, OutputDeviceInfoMock);
+          args[len - 1].call(this, OutputDeviceInfo);
         } 
     },
     off: function (...args) {
@@ -200,17 +203,17 @@ export function mockMultimediaAVSession() {
     }
   }
   
-  const AVSessionControllerMock = {
+  const AVSessionController = {
     sessionId: "[PC Preview] unknow sessionId",
     getAVPlaybackState: function (...args) {
       console.warn("AVSessionController.getAVPlaybackState interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AVPlaybackStateMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AVPlaybackState);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AVPlaybackStateMock);
+          resolve(AVPlaybackState);
       })
       }
     },
@@ -219,10 +222,10 @@ export function mockMultimediaAVSession() {
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AVMetadataMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AVMetadata);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AVMetadataMock);
+          resolve(AVMetadata);
       })
       }
     },
@@ -231,10 +234,10 @@ export function mockMultimediaAVSession() {
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, OutputDeviceInfoMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, OutputDeviceInfo);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(OutputDeviceInfoMock);
+          resolve(OutputDeviceInfo);
       })
       }
     },
@@ -295,7 +298,6 @@ export function mockMultimediaAVSession() {
       console.warn("AVSessionController.getValidCommands interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
-      let AVControlCommandType = ['play','pause','stop', 'playNext', 'playPrevious', 'fastForward', 'rewind', 'seek', 'setSpeed', 'setLoopMode', 'toggleFavorite'];
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, AVControlCommandType);
       } else {
@@ -321,18 +323,17 @@ export function mockMultimediaAVSession() {
       " may be different from that on a real device.")
       const len = args.length
       if (args[0] == 'metadataChanged') {
-        args[len-1].call(this, AVMetadataMock);
+        args[len-1].call(this, AVMetadata);
       } else if (args[0] == 'playbackStateChanged') {
-        args[len-1].call(this, AVPlaybackStateMock);
+        args[len-1].call(this, AVPlaybackState);
       } else if (args[0] == 'sessionDestroyed') {
         args[len-1].call(this);
       } else if (args[0] == 'activeStateChanged') {
         args[len-1].call(this, paramMock.paramBooleanMock);
       } else if (args[0] == 'validCommandChanged') {
-        let AVControlCommandType = ['play', 'pause', 'stop', 'playNext', 'playPrevious', 'fastForward', 'rewind', 'seek', 'setSpeed', 'setLoopMode', 'toggleFavorite'];
         args[len-1].call(this, AVControlCommandType);
       } else if (args[0] == 'outputDeviceChanged') {
-        args[len-1].call(this, OutputDeviceInfoMock);
+        args[len-1].call(this, OutputDeviceInfo);
       }
     },
     off: function (...args) {
@@ -347,10 +348,10 @@ export function mockMultimediaAVSession() {
         " may be different from that on a real device.")
         const len = args.length
         if (typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.businessErrorMock, AVSessionMock);
+          args[len - 1].call(this, paramMock.businessErrorMock, AVSession);
         } else {
           return new Promise((resolve, reject) => {
-            resolve(AVSessionMock);
+            resolve(AVSession);
           })
         }  
       
@@ -359,7 +360,7 @@ export function mockMultimediaAVSession() {
       console.warn("AVSession.getAllSessionDescriptors interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
-      var desArr = Array(AVSessionDescriptorMock);
+      var desArr = Array(AVSessionDescriptor);
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, desArr);
       } else {
@@ -373,10 +374,10 @@ export function mockMultimediaAVSession() {
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, AVSessionControllerMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, AVSessionController);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AVSessionControllerMock);
+          resolve(AVSessionController);
       })
       }
     },
@@ -397,7 +398,7 @@ export function mockMultimediaAVSession() {
         " may be different from that on a real device.")
         const len = args.length
         if (args[0] == 'sessionCreated' || args[0] == 'sessionDestroyed' || args[0] == 'topSessionChanged') {
-          args[len - 1].call(this, AVSessionDescriptorMock);
+          args[len - 1].call(this, AVSessionDescriptor);
         } else if (args[0] == 'sessionServiceDied') {
           args[len - 1].call(this);
         }
