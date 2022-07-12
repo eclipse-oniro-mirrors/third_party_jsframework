@@ -100,6 +100,7 @@ import { mockStack } from './ohos_util_Stack'
 import { mockTreeMap } from './ohos_util_TreeMap'
 import { mockTreeSet } from './ohos_util_TreeSet'
 import { mockVector } from './ohos_util_Vector'
+import { mockMultimediaAVSession } from './ohos_multimedia_av_session'
 import { mockMultimediaCamera } from './ohos_multimedia_camera'
 import { mockMultimediaAudio } from './ohos_multimedia_audio'
 import { mockMultimediaImage } from './ohos_multimedia_image'
@@ -452,6 +453,8 @@ export function mockRequireNapiFun() {
         return mockMultimediaMedia();
       case "multimedia.image":
         return mockMultimediaImage();
+      case "multimedia.avsession":
+        return mockMultimediaAVSession();
       case "multimedia.camera":
         return mockMultimediaCamera();
       case "multimedia.audio":
