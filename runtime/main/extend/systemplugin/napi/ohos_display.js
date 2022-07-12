@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -34,7 +34,7 @@ export const Display = {
   id: '[PC preview] unknow id',
   name: '[PC preview] unknow name',
   alive: '[PC preview] unknow alive',
-  state: '[PC preview] unknow state',
+  state: DisplayState,
   refreshRate: '[PC preview] unknow refreshRate',
   rotation: '[PC preview] unknow rotation',
   width: '[PC preview] unknow width',
@@ -50,8 +50,8 @@ export function mockDisplay() {
 
   const display = {
     getDefaultDisplay: function (...args) {
-      console.warn("Display.getDefaultDisplay interface mocked in the Previewer. How this interface works on the Previewer" +
-                     " may be different from that on a real device.")
+      console.warn("Display.getDefaultDisplay interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, Display)
@@ -61,9 +61,14 @@ export function mockDisplay() {
         })
       }
     },
+    getDefaultDisplaySync: function (...args) {
+      console.warn("Display.getDefaultDisplay interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      return Display
+    },
     getAllDisplay: function (...args) {
       console.warn("Display.getAllDisplay interface mocked in the Previewer. How this interface works on the Previewer" +
-                     " may be different from that on a real device.")
+        " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, [Display])
@@ -75,7 +80,7 @@ export function mockDisplay() {
     },
     on: function (...args) {
       console.warn("Display.on interface mocked in the Previewer. How this interface works on the Previewer may be" +
-                     " different from that on a real device.")
+        " different from that on a real device.")
       const len = args.length
       if (len!==2){
         console.warn("Display.on：please check params !")
@@ -93,7 +98,7 @@ export function mockDisplay() {
     },
     off: function (...args) {
       console.warn("Display.off interface mocked in the Previewer. How this interface works on the Previewer may be" +
-                     " different from that on a real device.")
+        " different from that on a real device.")
       const len = args.length
       if (len!==2){
         console.warn("Display.off：please check params!")
@@ -109,8 +114,7 @@ export function mockDisplay() {
         console.warn("Display.off：please check params, the second parma must be a function!")
       }
     },
-    DisplayState: DisplayState,
-    Type: DisplayType
+    DisplayState
   }
   return display
 }
