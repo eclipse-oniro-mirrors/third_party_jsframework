@@ -82,20 +82,6 @@ export function mockAccessibility() {
   const TextMoveUnitMock = '[PC Preview] unknown TextMoveUnit';
 
   const EventInfoClass = class EventInfo {
-    type = null;
-    windowUpdateType = null;
-    bundleName = null;
-    componentType = null;
-    pageId = null;
-    description = null;
-    triggerAction = null;
-    textMoveUnit = null;
-    contents = null;
-    lastContent = null;
-    beginIndex = null;
-    currentIndex = null;
-    endIndex = null;
-    itemCount = null;
 
     constructor(jsonObject) {
       console.warn('accessibility.EventInfoClass.constructor interface mocked in the Previewer.' +
@@ -189,7 +175,7 @@ export function mockAccessibility() {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(null);
+          resolve();
         });
       }
     },

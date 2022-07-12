@@ -40,7 +40,7 @@ export function mockAccessibilityConfig() {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(null);
+          resolve();
         });
       }
     },
