@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-import {paramMock} from '../utils';
+import { paramMock } from '../utils';
 
-export const OrientationMock = {
+export const Orientation = {
   UNSPECIFIED: 0,
   VERTICAL: 1,
   HORIZONTAL: 2,
@@ -26,15 +26,15 @@ export const OrientationMock = {
   SENSOR_HORIZONTAL: 7
 };
 
-export const screenMock = {
+export const Screen = {
   id: 'PC preview] unknown  id',
   parent: '[PC preview] unknown parent',
-  supportedModeInfo: supportedModeInfoMock,
+  supportedModeInfo: supportedModeInfoArray,
   activeModeIndex: '[PC preview] unknown activeModeIndex',
-  orientation: OrientationMock,
+  orientation: Orientation,
   setOrientation: function(...args) {
     console.warn('Screen.setOrientation interface mocked in the Previewer. How this interface works on the' +
-      ' Previewer may be different from that on a real device.');
+                   ' Previewer may be different from that on a real device.');
     const len = args.length;
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock);
@@ -46,7 +46,7 @@ export const screenMock = {
   },
   setScreenActiveMode: function(...args) {
     console.warn('Screen.setScreenActiveMode interface mocked in the Previewer. How this interface works on the' +
-      ' Previewer may be different from that on a real device.');
+                   ' Previewer may be different from that on a real device.');
     const len = args.length;
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock);
@@ -58,7 +58,7 @@ export const screenMock = {
   },
   setDensityDpi: function(...args) {
     console.warn('Screen.setDensityDpi interface mocked in the Previewer. How this interface works on the' +
-      ' Previewer may be different from that on a real device.');
+                   ' Previewer may be different from that on a real device.');
     const len = args.length;
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock);
@@ -71,16 +71,16 @@ export const screenMock = {
 };
 
 export const allScreenMock = [
-  screenMock
+  Screen
 ];
 
-export const ExpandOptionMock = {
+export const ExpandOption = {
   screenId: '[PC preview] unknown screenId',
   startX: '[PC preview] unknown  startX',
   startY: '[PC preview] unknown startY'
 };
 
-export const VirtualScreenOptionMock = {
+export const VirtualScreenOption = {
   name: '[PC preview] unknown name',
   width: '[PC preview] unknown width',
   height: '[PC preview] unknown height',
@@ -88,26 +88,31 @@ export const VirtualScreenOptionMock = {
   surfaceId: '[PC preview] unknown surfaceId'
 };
 
-export const screenModeInfoMock = {
+export const ScreenModeInfo = {
   id: '[PC preview] unknown id',
   width: '[PC preview] unknown width',
   height: '[PC preview] unknown height',
   refreshRate: '[PC preview] unknown refreshRate'
 };
 
-export const supportedModeInfoMock = [
-  screenModeInfoMock
+export const supportedModeInfoArray = [
+  ScreenModeInfo
 ]
-
+const EventTypeMock = {
+  connect: 'connect',
+  disconnect: 'disconnect',
+  change: 'change'
+}
 export function mockScreen() {
-  const screen = {
-    ExpandOption: ExpandOptionMock,
-    VirtualScreenOption: VirtualScreenOptionMock,
-    Orientation: OrientationMock,
-    ScreenModeInfo: screenModeInfoMock,
+  const screen =  {
+    ExpandOption: ExpandOption,
+    VirtualScreenOption: VirtualScreenOption,
+    Orientation: Orientation,
+    ScreenModeInfo: ScreenModeInfo,
+    EventType: EventTypeMock,
     getAllScreens: function(...args) {
-      console.warn('Screen.getAllScreens interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn(
+        'Screen.getAllScreens interface mocked in the Previewer. How this interface works on the' + ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, allScreenMock);
@@ -118,36 +123,44 @@ export function mockScreen() {
       }
     },
     on: function(...args) {
-      console.warn('Screen.on interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn(
+        'Screen.on interface mocked in the Previewer. How this interface works on the Previewer may be' + ' different from that on a real device.');
       const len = args.length;
+      if (len!==2){
+        console.warn("Screen.on please check params!")
+        return
+      }
       if (typeof args[len - 1] === 'function') {
-        if (args[0] === 'connect' || args[0] === 'disconnect' || args[0] === 'change') {
-          console.warn(`you has registered ${args[0]} event`)
+        if (args[0] === EventTypeMock.connect || args[0] === EventTypeMock.disconnect || args[0] === EventTypeMock.change) {
+          console.warn(`Screen.on you has registered ${args[0]} event`)
         } else {
-          console.warn('on: please check first param!')
+          console.warn('Screen.on please check first param!')
         }
       } else {
-        console.warn('on: please check param!')
+        console.warn('Screen.on please check param!')
       }
     },
     off: function(...args) {
-      console.warn('Screen.off interface mocked in the Previewer. How this interface works on the Previewer may be' +
-        ' different from that on a real device.');
+      console.warn(
+        'Screen.off interface mocked in the Previewer. How this interface works on the Previewer may be' + ' different from that on a real device.');
       const len = args.length;
+      if (len!==2){
+        console.warn("Screen.off please check params!")
+        return
+      }
       if (typeof args[len - 1] === 'function') {
-          if (args[0] === 'connect' || args[0] === 'disconnect' || args[0] === 'change') {
-            console.warn(`you has registered ${args[0]} event`)
-          } else {
-            console.warn('off: please check first param!')
-          }
+        if (args[0] === EventTypeMock.connect || args[0] === EventTypeMock.disconnect || args[0] === EventTypeMock.change) {
+          console.warn(`Screen.off you has registered ${args[0]} event`)
         } else {
-          console.warn('off: please check param!')
+          console.warn('Screen.off please check first param!')
         }
+      } else {
+        console.warn('Screen.off please check param!')
+      }
     },
     makeExpand: function(...args) {
-      console.warn('Screen.makeExpand interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn(
+        'Screen.makeExpand interface mocked in the Previewer. How this interface works on the' + ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
@@ -158,8 +171,8 @@ export function mockScreen() {
       }
     },
     makeMirror: function(...args) {
-      console.warn('Screen.makeMirror interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn(
+        'Screen.makeMirror interface mocked in the Previewer. How this interface works on the' + ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
@@ -170,20 +183,20 @@ export function mockScreen() {
       }
     },
     createVirtualScreen: function(...args) {
-      console.warn('Screen.createVirtualScreen interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn(
+        'Screen.createVirtualScreen interface mocked in the Previewer. How this interface works on the' + ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, screenMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, Screen);
       } else {
         return new Promise((resolve) => {
-          resolve(screenMock);
+          resolve(Screen);
         });
       }
     },
     destroyVirtualScreen: function(...args) {
-      console.warn('Screen.destroyVirtualScreen interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn(
+        'Screen.destroyVirtualScreen interface mocked in the Previewer. How this interface works on the' + ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
@@ -194,8 +207,8 @@ export function mockScreen() {
       }
     },
     setVirtualScreenSurface: function(...args) {
-      console.warn('Screen.setVirtualScreenSurface interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
+      console.warn(
+        'Screen.setVirtualScreenSurface interface mocked in the Previewer. How this interface works on the' + ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);

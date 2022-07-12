@@ -13,9 +13,88 @@
  * limitations under the License.
  */
 
-import {paramMock} from "../utils"
+import { paramMock } from "../utils"
 
-export const windowPropertiesMock = {
+export const WindowType = {
+  TYPE_APP: 0,
+  TYPE_SYSTEM_ALERT: 1,
+  TYPE_INPUT_METHOD: 2,
+  TYPE_STATUS_BAR: 3,
+  TYPE_PANEL: 4,
+  TYPE_KEYGUARD: 5,
+  TYPE_VOLUME_OVERLAY: 6,
+  TYPE_NAVIGATION_BAR: 7,
+  TYPE_FLOAT: 8,
+  TYPE_WALLPAPER: 9,
+  TYPE_DESKTOP: 10,
+  TYPE_LAUNCHER_RECENT: 11,
+  TYPE_LAUNCHER_DOCK: 12,
+  TYPE_VOICE_INTERACTION: 13,
+  TYPE_POINTER: 14
+}
+
+export const AvoidAreaType= {
+  TYPE_SYSTEM: 0,
+  TYPE_CUTOUT: 1,
+  TYPE_SYSTEM_GESTURE: 2,
+  TYPE_KEYBOARD: 3
+}
+
+export const WindowMode= {
+  UNDEFINED: 1,
+  FULLSCREEN: 2,
+  PRIMARY: 3,
+  SECONDARY: 4,
+  FLOATING: 5
+}
+
+export const WindowLayoutMode= {
+  WINDOW_LAYOUT_MODE_CASCADE: 0,
+  WINDOW_LAYOUT_MODE_TILE: 1
+}
+
+export const SystemBarProperties= {
+  statusBarColor: '[PC preview] unknow statusBarColor',
+  isStatusBarLightIcon: '[PC preview] unknow isStatusBarLightIcon',
+  statusBarContentColor: '[PC preview] unknow statusBarContentColor',
+  navigationBarColor: '[PC preview] unknow navigationBarColor',
+  isNavigationBarLightIcon: '[PC preview] unknow isNavigationBarLightIcon',
+  navigationBarContentColor: '[PC preview] unknow navigationBarContentColor'
+}
+
+export const Rect = {
+  left: '[PC preview] unknow Rect.left',
+  top: '[PC preview] unknow  Rect.top',
+  width: '[PC preview] unknow Rect.width',
+  height: '[PC preview] unknow Rect.height'
+}
+
+export const SystemBarRegionTint = {
+  type: WindowType,
+  isEnable: '[PC preview] unknow isEnable',
+  region: Rect,
+  backgroundColor: '[PC preview] unknow backgroundColor',
+  contentColor: '[PC preview] unknow contentColor'
+}
+
+export const SystemBarTintState = {
+  displayId: '[PC preview] unknow brightness',
+  regionTint:[SystemBarRegionTint]
+}
+
+export const AvoidArea = {
+  visible: '[PC preview] unknow AvoidArea.visible',
+  leftRect: Rect,
+  topRect: Rect,
+  rightRect: Rect,
+  bottomRect: Rect
+}
+export const Size = {
+  width: '[PC preview] unknow width',
+  height: '[PC preview] unknow height'
+}
+
+export const WindowProperties = {
   windowRect: '[PC preview] unknow windowRect',
   type: '[PC preview] unknow type',
   brightness: '[PC preview] unknow brightness',
@@ -29,142 +108,111 @@ export const windowPropertiesMock = {
   isPrivacyMode: '[PC preview] unknow isPrivacyMode',
   isRoundCorner: '[PC preview] unknow isRoundCorner'
 }
-export const RectMock = {
-  left: '[PC preview] unknow Rect.left',
-  top: '[PC preview] unknow  Rect.top',
-  width: '[PC preview] unknow Rect.width',
-  height: '[PC preview] unknow Rect.height'
+
+export const ColorSpace = {
+  DEFAULT: 0,
+  WIDE_GAMUT: 1
 }
-export const AvoidAreaMock = {
-  visible: '[PC preview] unknow visible',
-  leftRect: RectMock,
-  topRect: RectMock,
-  rightRect: RectMock,
-  bottomRect: RectMock
-}
-export const WindowTypeMock = {
-  TYPE_APP: 0,
-  TYPE_SYSTEM_ALERT: 1,
-  TYPE_INPUT_METHOD: 2,
-  TYPE_STATUS_BAR: 3,
-  TYPE_PANEL: 4,
-  TYPE_KEYGUARD: 5,
-  TYPE_VOLUME_OVERLAY: 6,
-  TYPE_NAVIGATION_BAR: 7
-}
-export const SystemBarRegionTintMock={
-  type: WindowTypeMock,
-  isEnable: '[PC preview] unknow isEnable',
-  region: RectMock,
-  backgroundColor: '[PC preview] unknow backgroundColor',
-  contentColor: '[PC preview] unknow contentColor'
-}
-export const SystemBarTintStateMock= {
-  displayId: '[PC preview] unknow brightness',
-  regionTint:[SystemBarRegionTintMock]
-}
-export const SizeMock = {
-  width: '[PC preview] unknow width',
-  height: '[PC preview] unknow height'
-}
-export const WindowStageEventTypeMock = {
+
+export const WindowStageEventType = {
   FOREGROUND: 1,
   ACTIVE: 2,
   INACTIVE: 3,
   BACKGROUND: 4
 }
 
-export const WindowStageMock= {
-  getMainWindow: function (...args) {
-    console.warn("windowStage.getMainWindow interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+export const WindowStage = {
+  getMainWindow: function(...args) {
+    console.warn("WindowStage.getMainWindow interface mocked in the Previewer. How this interface works on the Previewer" +
+                   " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
-      args[len - 1].call(this, paramMock.businessErrorMock,windowMock)
+      args[len - 1].call(this, paramMock.businessErrorMock, Window)
     } else {
-      return new Promise((resolve, reject) => {
-        resolve(windowMock)
+      return new Promise((resolve) => {
+        resolve(Window)
       })
     }
   },
-  createSubWindow: function (...args) {
-    console.warn("windowStage.createSubWindow interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+  createSubWindow: function(...args) {
+    console.warn("WindowStage.createSubWindow interface mocked in the Previewer. How this interface works on the Previewer" +
+                   " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
-      args[len - 1].call(this, paramMock.businessErrorMock,windowMock)
+      args[len - 1].call(this, paramMock.businessErrorMock, Window)
     } else {
-      return new Promise((resolve, reject) => {
-        resolve(windowMock)
+      return new Promise((resolve) => {
+        resolve(Window)
       })
     }
   },
-  getSubWindow: function (...args) {
-    console.warn("windowStage.getSubWindow interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+  getSubWindow: function(...args) {
+    console.warn("WindowStage.getSubWindow interface mocked in the Previewer. How this interface works on the Previewer" +
+                   " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
-      args[len - 1].call(this, paramMock.businessErrorMock,[windowMock])
+      args[len - 1].call(this, paramMock.businessErrorMock, [Window])
     } else {
-      return new Promise((resolve, reject) => {
-        resolve([windowMock])
+      return new Promise((resolve) => {
+        resolve([Window])
       })
     }
   },
-  loadContent: function (...args) {
-    console.warn("windowStage.loadContent interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+  loadContent: function(...args) {
+    console.warn("WindowStage.loadContent interface mocked in the Previewer. How this interface works on the Previewer" +
+                   " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
     } else {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         resolve()
       })
     }
   },
-  on: function (...args) {
-    console.warn("windowStage.on interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+  on: function(...args) {
+    console.warn("WindowStage.on interface mocked in the Previewer. How this interface works on the Previewer" +
+                   " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
-      if (args[0]==='windowStageEvent'){
-        console.warn(`you has registered ${args[0]} event`)
-      }else {
-        console.warn("on：please check first param!")
+      if (args[0] === 'windowStageEvent') {
+        console.warn(`WindowStage.on you has registered ${args[0]} event`)
+      } else {
+        console.warn("WindowStage.on：please check first param!")
       }
-    }else {
-      console.warn("on：please check param!")
+    } else {
+      console.warn("WindowStage.on：please check param!")
     }
   },
-  off: function (...args) {
-    console.warn("windowStage.off interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+  off: function(...args) {
+    console.warn("WindowStage.off interface mocked in the Previewer. How this interface works on the Previewer" +
+                   " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
-      if (args[0]==='windowStageEvent'){
+      if (args[0] === 'windowStageEvent') {
         console.warn(`you has registered ${args[0]} event`)
       }else {
-        console.warn("off：please check first param!")
+        console.warn("WindowStage.off：please check first param!")
       }
     }else {
-      console.warn("off：please check param!")
+      console.warn("WindowStage.off：please check param!")
     }
   },
-  disableWindowDecor: function (){
-    console.warn("windowStage.disableWindowDecor interface mocked in the Previewer. How this interface works on the Previewer" +
-    " may be different from that on a real device.")
+  disableWindowDecor: function() {
+    console.warn("WindowStage.disableWindowDecor interface mocked in the Previewer. How this interface works on the Previewer" +
+                   " may be different from that on a real device.")
   },
-  setShowOnLockScreen: function (){
-    console.warn("windowStage.setShowOnLockScreen interface mocked in the Previewer. How this interface works on the Previewer" +
-    " may be different from that on a real device.")
+  setShowOnLockScreen: function() {
+    console.warn("WindowStage.setShowOnLockScreen interface mocked in the Previewer. How this interface works on the" +
+                   " Previewer" +
+                   " may be different from that on a real device.")
   }
 }
 
-export const windowMock = {
-  setBrightness: function (...args) {
+export const Window = {
+  setBrightness: function(...args) {
     console.warn("Window.setBrightness interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -174,9 +222,9 @@ export const windowMock = {
       })
     }
   },
-  setBackgroundColor: function (...args) {
+  setBackgroundColor: function(...args) {
     console.warn("Window.setBackgroundColor interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -186,9 +234,9 @@ export const windowMock = {
       })
     }
   },
-  setTransparent: function (...args) {
+  setTransparent: function(...args) {
     console.warn("Window.setTransparent interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -198,9 +246,9 @@ export const windowMock = {
       })
     }
   },
-  setFullScreen: function (...args) {
+  setFullScreen: function(...args) {
     console.warn("Window.setFullScreen interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -210,9 +258,9 @@ export const windowMock = {
       })
     }
   },
-  setKeepScreenOn: function (...args) {
+  setKeepScreenOn: function(...args) {
     console.warn("Window.setKeepScreenOn interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -222,9 +270,9 @@ export const windowMock = {
       })
     }
   },
-  setDimBehind: function (...args) {
+  setDimBehind: function(...args) {
     console.warn("Window.setDimBehind interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -234,9 +282,9 @@ export const windowMock = {
       })
     }
   },
-  setLayoutFullScreen: function (...args) {
+  setLayoutFullScreen: function(...args) {
     console.warn("Window.setLayoutFullScreen interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -246,9 +294,9 @@ export const windowMock = {
       })
     }
   },
-  setFocusable: function (...args) {
+  setFocusable: function(...args) {
     console.warn("Window.setFocusable interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -258,9 +306,9 @@ export const windowMock = {
       })
     }
   },
-  setTouchable: function (...args) {
+  setTouchable: function(...args) {
     console.warn("Window.setTouchable interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -270,9 +318,9 @@ export const windowMock = {
       })
     }
   },
-  setPrivacyMode: function (...args) {
+  setPrivacyMode: function(...args) {
     console.warn("Window.setPrivacyMode interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -282,9 +330,9 @@ export const windowMock = {
       })
     }
   },
-  setSystemBarEnable: function (...args) {
+  setSystemBarEnable: function(...args) {
     console.warn("Window.setSystemBarEnable interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -294,9 +342,9 @@ export const windowMock = {
       })
     }
   },
-  setSystemBarProperties: function (...args) {
+  setSystemBarProperties: function(...args) {
     console.warn("Window.setSystemBarProperties interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -306,9 +354,9 @@ export const windowMock = {
       })
     }
   },
-  setForbidSplitMove: function (...args) {
+  setForbidSplitMove: function(...args) {
     console.warn("Window.setForbidSplitMove interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -318,33 +366,33 @@ export const windowMock = {
       })
     }
   },
-  getProperties: function (...args) {
+  getProperties: function(...args) {
     console.warn("Window.getProperties interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
-      args[len - 1].call(this, paramMock.businessErrorMock, windowPropertiesMock)
+      args[len - 1].call(this, paramMock.businessErrorMock, WindowProperties)
     } else {
       return new Promise((resolve) => {
-        resolve(windowPropertiesMock)
+        resolve(WindowProperties)
       })
     }
   },
-  getAvoidArea: function (...args) {
+  getAvoidArea: function(...args) {
     console.warn("Window.getAvoidArea interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
-      args[len - 1].call(this, paramMock.businessErrorMock, AvoidAreaMock)
+      args[len - 1].call(this, paramMock.businessErrorMock, AvoidArea)
     } else {
       return new Promise((resolve) => {
-        resolve(AvoidAreaMock)
+        resolve(AvoidArea)
       })
     }
   },
-  moveTo: function (...args) {
+  moveTo: function(...args) {
     console.warn("Window.moveTo interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -354,9 +402,9 @@ export const windowMock = {
       })
     }
   },
-  resetSize: function (...args) {
+  resetSize: function(...args) {
     console.warn("Window.resetSize interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -366,9 +414,9 @@ export const windowMock = {
       })
     }
   },
-  setWindowType: function (...args) {
+  setWindowType: function(...args) {
     console.warn("Window.setWindowType interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -378,9 +426,9 @@ export const windowMock = {
       })
     }
   },
-  loadContent: function (...args) {
+  loadContent: function(...args) {
     console.warn("Window.loadContent interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -390,9 +438,9 @@ export const windowMock = {
       })
     }
   },
-  hide: function (...args) {
+  hide: function(...args) {
     console.warn("Window.hide interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -402,9 +450,9 @@ export const windowMock = {
       })
     }
   },
-  show: function (...args) {
+  show: function(...args) {
     console.warn("Window.show interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -414,9 +462,9 @@ export const windowMock = {
       })
     }
   },
-  isShowing: function (...args) {
+  isShowing: function(...args) {
     console.warn("Window.isShowing interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
@@ -426,9 +474,9 @@ export const windowMock = {
       })
     }
   },
-  destroy: function (...args) {
+  destroy: function(...args) {
     console.warn("Window.destroy interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -438,9 +486,9 @@ export const windowMock = {
       })
     }
   },
-  setOutsideTouchable: function (...args) {
+  setOutsideTouchable: function(...args) {
     console.warn("Window.setOutsideTouchable interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -450,39 +498,41 @@ export const windowMock = {
       })
     }
   },
-  on: function (...args) {
-    console.warn('Window.on interface mocked in the Previewer. How this interface works on the Previewer may be' +
-      ' different from that on a real device.')
+  on: function(...args) {
+    console.warn("Window.on interface mocked in the Previewer. How this interface works on the Previewer may be" +
+                   " different from that on a real device.")
     const len = args.length;
     if (typeof args[len - 1] === 'function') {
-      if (args[0] === 'keyboardHeightChange' || args[0] === 'systemAvoidAreaChange'
-        || args[0] === 'avoidAreaChange' || args[0] === 'windowSizeChange' || args[0] === 'touchOutside') {
+      if (args[0] === 'keyboardHeightChange'|| args[0] === 'systemAvoidAreaChange'
+        || args[0] === 'windowSizeChange'|| args[0] === 'touchOutside'|| args[0] === 'avoidAreaChange'
+      ){
         console.warn(`you has registered ${args[0]} event`)
       } else {
-        console.warn('on: please check first param!')
+        console.warn("on：please check first param!")
       }
     } else {
-      console.warn('on：please check param!')
+      console.warn("on：please check param!")
     }
   },
-  off: function (...args) {
-    console.warn('Window.off interface mocked in the Previewer. How this interface works on the Previewer may be' +
-      ' different from that on a real device.')
+  off: function(...args) {
+    console.warn("Window.off interface mocked in the Previewer. How this interface works on the Previewer may be" +
+                   " different from that on a real device.")
     const len = args.length;
     if (typeof args[len - 1] === 'function') {
-      if (args[0] === 'keyboardHeightChange' || args[0] === 'systemAvoidAreaChange'
-        || args[0] === 'avoidAreaChange' || args[0] === 'windowSizeChange' || args[0] === 'touchOutside') {
+      if (args[0] === 'keyboardHeightChange'|| args[0] === 'systemAvoidAreaChange'
+        || args[0] === 'windowSizeChange'|| args[0] === 'touchOutside'|| args[0] === 'avoidAreaChange'
+      ){
         console.warn(`you has registered ${args[0]} event`)
       } else {
-        console.warn('off:please check first param!')
+        console.warn("off：please check first param!")
       }
     } else {
-      console.warn('off:please check param!')
+      console.warn("off：please check param!")
     }
   },
-  setColorSpace: function (...args) {
+  setColorSpace: function(...args) {
     console.warn("Window.setColorSpace interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+                   " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock)
@@ -492,9 +542,9 @@ export const windowMock = {
       })
     }
   },
-  getColorSpace: function (...args) {
+  getColorSpace: function(...args) {
     console.warn("Window.getColorSpace interface mocked in the Previewer. How this interface works on the Previewer" +
-      " may be different from that on a real device.")
+                   " may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
@@ -504,9 +554,9 @@ export const windowMock = {
       })
     }
   },
-  isSupportWideGamut: function (...args) {
+  isSupportWideGamut: function(...args) {
     console.warn("Window.isSupportWideGamut interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
+                   " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
       args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
@@ -519,220 +569,146 @@ export const windowMock = {
 }
 
 export function mockWindow() {
-  const SizeMock = {
-    width: '[PC preview] unknow width',
-    height: '[PC preview] unknow height'
-  }
-  const getSplitScreenBoundsMock = {
-    splitMode: '[PC preview] unknow splitMode',
-    primaryBounds: RectMock,
-    secondaryBounds: RectMock,
-  }
-  const window = {
-    getTopWindow: function (...args) {
-      console.warn("window.getTopWindow interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+
+  const window =  {
+    getTopWindow: function(...args) {
+      console.warn(
+        "Window.getTopWindow interface mocked in the Previewer. How this interface works on the Previewer" + " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, windowMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, Window)
       } else {
-        return new Promise((resolve, reject) => {
-          resolve(windowMock)
+        return new Promise((resolve) => {
+          resolve(Window)
         })
       }
     },
-    create: function (...args) {
-      console.warn("Window.create interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+    create: function(...args) {
+      console.warn(
+        "Window.create interface mocked in the Previewer. How this interface works on the" + " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, windowMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, Window)
       } else {
-        return new Promise((resolve, reject) => {
-          resolve(windowMock)
+        return new Promise((resolve) => {
+          resolve(Window)
         })
       }
     },
-    find: function (...args) {
-      console.warn("Window.find interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
+    find: function(...args) {
+      console.warn(
+        "Window.find interface mocked in the Previewer. How this interface works on the" + " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, windowMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, Window)
       } else {
-        return new Promise((resolve, reject) => {
-          resolve(windowMock)
+        return new Promise((resolve) => {
+          resolve(Window)
         })
       }
     },
-    getAbilityWindowMode: function (...args) {
-      console.warn("Window.getAbilityWindowMode interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
-      } else {
-        return new Promise((resolve, reject) => {
-          resolve(paramMock.paramNumberMock)
-        })
-      }
-    },
-    getSplitScreenBounds: function (...args) {
-      console.warn("window.getSplitScreenBounds interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, getSplitScreenBoundsMock)
-      } else {
-        return new Promise((resolve, reject) => {
-          resolve(getSplitScreenBoundsMock)
-        })
-      }
-    },
-    isFloatingAbilityWindowVisible: function (...args) {
-      console.warn("window.isFloatingAbilityWindowVisible interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+    isFloatingAbilityWindowVisible: function(...args) {
+      console.warn(
+        "Window.isFloatingAbilityWindowVisible interface mocked in the Previewer. How this interface works on the Previewer" + " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
           resolve(paramMock.paramBooleanMock)
         })
       }
     },
-    setSplitBarVisibility: function (...args) {
-      console.warn("window.setSplitBarVisibility interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+    setSplitBarVisibility: function(...args) {
+      console.warn(
+        "Window.setSplitBarVisibility interface mocked in the Previewer. How this interface works on the Previewer" + " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
           resolve()
         })
       }
     },
-    minimizeAll: function (...args) {
-      console.warn("window.minimizeAll interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+    minimizeAll: function(...args) {
+      console.warn(
+        "Window.minimizeAll interface mocked in the Previewer. How this interface works on the Previewer" + " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
           resolve()
         })
       }
     },
-    toggleShownStateForAllAppWindows: function (...args) {
-      console.warn("window.toggleShownStateForAllAppWindows interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+    toggleShownStateForAllAppWindows: function(...args) {
+      console.warn(
+        "Window.toggleShownStateForAllAppWindows interface mocked in the Previewer. How this interface works on the Previewer" + " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
           resolve()
         })
       }
     },
-    setWindowLayoutMode: function (...args) {
-      console.warn("window.setWindowLayoutMode interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+    setWindowLayoutMode: function(...args) {
+      console.warn(
+        "Window.setWindowLayoutMode interface mocked in the Previewer. How this interface works on the Previewer" + " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
           resolve()
         })
       }
     },
-    on: function (...args) {
-      console.warn("window.on interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+    on: function(...args) {
+      console.warn(
+        "Window.on interface mocked in the Previewer. How this interface works on the Previewer" + " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        if (args[0]==='systemBarTintChange'){
+        if (args[0] === 'systemBarTintChange') {
           console.warn(`you has registered ${args[0]} event`)
-        }else {
+        } else {
           console.warn("on：please check first param!")
         }
-      }else {
+      } else {
         console.warn("on：please check param!")
       }
     },
-    off: function (...args) {
-      console.warn("window.off interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+    off: function(...args) {
+      console.warn(
+        "Window.off interface mocked in the Previewer. How this interface works on the Previewer" + " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        if (args[0]==='systemBarTintChange'){
+        if (args[0] === 'systemBarTintChange') {
           console.warn(`you has registered ${args[0]} event`)
-        }else {
+        } else {
           console.warn("off：please check first param!")
         }
-      }else {
+      } else {
         console.warn("off：please check param!")
       }
     },
-    WindowType: WindowTypeMock,
-    AvoidAreaType: {
-      TYPE_SYSTEM: 0,
-      TYPE_CUTOUT: 1,
-      TYPE_SYSTEM_GESTURE: 2,
-      TYPE_KEYBOARD: 3
-    },
-    WindowMode: {
-      UNDEFINED: 1,
-      FULLSCREEN: 2,
-      PRIMARY: 3,
-      SECONDARY: 4,
-      FLOATING: 5
-    },
-    WindowLayoutMode: {
-      WINDOW_LAYOUT_MODE_CASCADE: 0,
-      WINDOW_LAYOUT_MODE_TILE: 1
-    },
-    SystemBarProperties: {
-      statusBarColor: '[PC preview] unknow statusBarColor',
-      isStatusBarLightIcon: '[PC preview] unknow isStatusBarLightIcon',
-      statusBarContentColor: '[PC preview] unknow statusBarContentColor',
-      navigationBarColor: '[PC preview] unknow navigationBarColor',
-      isNavigationBarLightIcon: '[PC preview] unknow isNavigationBarLightIcon',
-      navigationBarContentColor: '[PC preview] unknow navigationBarContentColor'
-    },
-    SystemBarRegionTint: SystemBarRegionTintMock,
-    SystemBarTintState: SystemBarTintStateMock,
-    Rect: {
-      left: '[PC preview] unknow left',
-      top: '[PC preview] unknow top',
-      width: '[PC preview] unknow width',
-      height: '[PC preview] unknow height'
-    },
-    AvoidArea:AvoidAreaMock,
-    Size: SizeMock,
-    WindowProperties: {
-      windowRect: RectMock,
-      type: WindowTypeMock,
-      isFullScreen: '[PC preview] unknow isFullScreen',
-      isLayoutFullScreen: '[PC preview] unknow isLayoutFullScreen',
-      focusable: '[PC preview] unknow focusable',
-      touchable: '[PC preview] unknow touchable',
-      brightness: '[PC preview] unknow brightness',
-      dimBehindValue: '[PC preview] unknow dimBehindValue',
-      isKeepScreenOn: '[PC preview] unknow isKeepScreenOn',
-      isPrivacyMode: '[PC preview] unknow isPrivacyMode',
-      isRoundCorner: '[PC preview] unknow isRoundCorner',
-      isTransparent: '[PC preview] unknow isTransparent'
-    },
-    ColorSpace: {
-      DEFAULT: 0,
-      WIDE_GAMUT: 1
-    },
-    WindowStageEventType: WindowStageEventTypeMock,
-    WindowStage: WindowStageMock
+    WindowType: WindowType,
+    AvoidAreaType: AvoidAreaType,
+    WindowMode: WindowMode,
+    WindowLayoutMode: WindowLayoutMode,
+    SystemBarProperties: SystemBarProperties,
+    SystemBarRegionTint: SystemBarRegionTint,
+    SystemBarTintState: SystemBarTintState,
+    Rect: Rect,
+    AvoidArea: AvoidArea,
+    Size: Size,
+    WindowProperties: WindowProperties,
+    ColorSpace: ColorSpace,
+    WindowStageEventType: WindowStageEventType,
+    WindowStage: WindowStage
   }
   return window
 }

@@ -15,74 +15,102 @@
 
 import { paramMock } from "../utils"
 
+const DisplayState = {
+  STATE_UNKNOWN: 0,
+  STATE_OFF: 1,
+  STATE_ON: 2,
+  STATE_DOZE: 3,
+  STATE_DOZE_SUSPEND: 4,
+  STATE_VR: 5,
+  STATE_ON_SUSPEND: 6
+}
+const DisplayType = {
+  add: 'add',
+  remove: 'remove',
+  change: 'change'
+}
+
+export const Display = {
+  id: '[PC preview] unknow id',
+  name: '[PC preview] unknow name',
+  alive: '[PC preview] unknow alive',
+  state: '[PC preview] unknow state',
+  refreshRate: '[PC preview] unknow refreshRate',
+  rotation: '[PC preview] unknow rotation',
+  width: '[PC preview] unknow width',
+  height: '[PC preview] unknow height',
+  densityDPI: '[PC preview] unknow densityDPI',
+  densityPixels: '[PC preview] unknow densityPixels',
+  scaledDensity: '[PC preview] unknow scaledDensity',
+  xDPI: '[PC preview] unknow xDPI',
+  yDPI: '[PC preview] unknow yDPI'
+}
+
 export function mockDisplay() {
-  const displayMock = {
-    densityDPI: '[PC preview] unknow densityDPI',
-    densityPixels: '[PC preview] unknow densityPixels',
-    scaledDensity: '[PC preview] unknow scaledDensity',
-    xDPI: '[PC preview] unknow xDPI',
-    yDPI: '[PC preview] unknow yDPI',
-    width: '[PC preview] unknow width',
-    height: '[PC preview] unknow height',
-    alive: '[PC preview] unknow alive',
-    refreshRate: '[PC preview] unknow refreshRate',
-    id: '[PC preview] unknow id',
-    state: '[PC preview] unknow state',
-    rotation: '[PC preview] unknow rotation',
-    name: '[PC preview] unknow name'
-  }
-  const allDisplayMock = [{
-    densityDPI: '[PC preview] unknow densityDPI',
-    densityPixels: '[PC preview] unknow densityPixels',
-    scaledDensity: '[PC preview] unknow scaledDensity',
-    xDPI: '[PC preview] unknow xDPI',
-    yDPI: '[PC preview] unknow yDPI',
-    width: '[PC preview] unknow width',
-    height: '[PC preview] unknow height',
-    alive: '[PC preview] unknow alive',
-    refreshRate: '[PC preview] unknow refreshRate',
-    id: '[PC preview] unknow id',
-    state: '[PC preview] unknow state',
-    rotation: '[PC preview] unknow rotation',
-    name: '[PC preview] unknow name'
-  }]
+
   const display = {
     getDefaultDisplay: function (...args) {
-      console.warn("display.getDefaultDisplay interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      console.warn("Display.getDefaultDisplay interface mocked in the Previewer. How this interface works on the Previewer" +
+                     " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, displayMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, Display)
       } else {
         return new Promise((resolve, reject) => {
-          resolve(displayMock)
+          resolve(Display)
         })
       }
     },
     getAllDisplay: function (...args) {
-      console.warn("display.getAllDisplay interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
+      console.warn("Display.getAllDisplay interface mocked in the Previewer. How this interface works on the Previewer" +
+                     " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, allDisplayMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, [Display])
       } else {
         return new Promise((resolve, reject) => {
-          resolve(allDisplayMock)
+          resolve([Display])
         })
       }
     },
     on: function (...args) {
-      console.warn("display.on interface mocked in the Previewer. How this interface works on the Previewer may be" +
-        " different from that on a real device.")
+      console.warn("Display.on interface mocked in the Previewer. How this interface works on the Previewer may be" +
+                     " different from that on a real device.")
       const len = args.length
-      args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+      if (len!==2){
+        console.warn("Display.on：please check params !")
+        return
+      }
+      if (typeof args[len - 1] === 'function') {
+        if (args[0] === DisplayType.add|| args[0] === DisplayType.remove || args[0] === DisplayType.change){
+          console.warn(`Display.on: you has registered ${args[0]} event.`)
+        } else {
+          console.warn("Display.on：please check first param!")
+        }
+      } else {
+        console.warn("Display.on：please check params, the second parma must be a function!")
+      }
     },
     off: function (...args) {
-      console.warn("display.off interface mocked in the Previewer. How this interface works on the Previewer may be" +
-        " different from that on a real device.")
+      console.warn("Display.off interface mocked in the Previewer. How this interface works on the Previewer may be" +
+                     " different from that on a real device.")
       const len = args.length
-      args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+      if (len!==2){
+        console.warn("Display.off：please check params!")
+        return
+      }
+      if (typeof args[len - 1] === 'function') {
+        if (args[0] === DisplayType.add|| args[0] === DisplayType.remove || args[0] === DisplayType.change){
+          console.warn(`Display.off: you has registered ${args[0]} event`)
+        } else {
+          console.warn("Display.off：please check first param!")
+        }
+      } else {
+        console.warn("Display.off：please check params, the second parma must be a function!")
+      }
     },
+    DisplayState: DisplayState,
+    Type: DisplayType
   }
   return display
 }
