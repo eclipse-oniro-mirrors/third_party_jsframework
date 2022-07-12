@@ -79,7 +79,7 @@ export function mockBundleState() {
     abilityIconId : '[PC preview] unknown abilityIconId',
     launchedCount : '[PC preview] unknown launchedCount',
     lastModuleUsedTime : '[PC preview] unknown lastModuleUsedTime',
-    formRecords : BundleActiveFormInfo,
+    formRecords : [BundleActiveFormInfo],
   }
   const IntervalType = {
     BY_OPTIMIZED: 0,
