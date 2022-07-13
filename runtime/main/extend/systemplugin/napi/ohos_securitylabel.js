@@ -29,6 +29,10 @@ export function mockSecurityLabel() {
         })
       }
     },
+    setSecurityLabelSync: function (...args) {
+      console.warn("securitylabel.setSecurityLabelSync interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    },
     getSecurityLabel: function (...args) {
       console.warn("securitylabel.getSecurityLabel interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
@@ -40,6 +44,11 @@ export function mockSecurityLabel() {
           resolve(paramMock.paramStringMock);
         })
       }
+    },
+    getSecurityLabelSync: function (...args) {
+      console.warn("securitylabel.getSecurityLabelSync interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+        return paramMock.paramStringMock;
     },
   }
   return securitylabel;

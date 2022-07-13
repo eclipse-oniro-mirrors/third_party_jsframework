@@ -390,7 +390,7 @@ export function mockRequireNapiFun() {
         return mockConvertXml();
       case "statfs":
         return mockStatfs();
-      case "filemanager":
+      case "fileManager":
         return mockFileManager();
       case "environment":
         return mockEnvironment();
@@ -410,7 +410,7 @@ export function mockRequireNapiFun() {
         return mockBackgroundTaskManager();
       case "bundleState":
         return mockBundleState();
-      case "securitylabel":
+      case "securityLabel":
         return mockSecurityLabel();
       case "workScheduler":
         return mockWorkScheduler();
