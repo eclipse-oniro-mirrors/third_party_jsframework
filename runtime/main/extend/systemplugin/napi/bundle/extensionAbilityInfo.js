@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,29 +15,54 @@
 
 import { paramMock } from "../../utils"
 
-export const LauncherAbilityInfo = {
+export const ExtensionAbilityInfo = {
+    bundleName: "[PC preview] unknown bundleName",
+    moduleName: "[PC preview] unknown moduleName",
+    name: "[PC preview] unknown name",
+    labelId: "[PC preview] unknown labelId",
+    descriptionId: "[PC preview] unknown descriptionId",
+    iconId: "[PC preview] unknown iconId",
+    isVisible: "[PC preview] unknown isVisible",
+    extensionAbilityType: {
+        FORM: 0,
+        WORK_SCHEDULER: 1,
+        INPUT_METHOD: 2,
+        SERVICE: 3,
+        ACCESSIBILITY: 4,
+        DATA_SHARE: 5,
+        FILE_SHARE: 6,
+        STATIC_SUBSCRIBER: 7,
+        WALLPAPER: 8,
+        BACKUP: 9,
+        WINDOW: 10,
+        ENTERPRISE_ADMIN: 11,
+        UNSPECIFIED: 20,
+    },
+    metadata: [{
+        name: "[PC preview] unknown name",
+        value: "[PC preview] unknown value",
+        resource: "[PC preview] unknown resource",
+    }],
+    permissions: [paramMock.paramStringMock],
     applicationInfo: {
         packageName: "[PC preview] unknown packageName",
         description: "[PC preview] unknown description",
         descriptionId: "[PC preview] unknown descriptionId",
-        systemApp: "[PC preview] unknown systemApp",
         enabled: "[PC preview] unknown enabled",
+        systemApp: "[PC preview] unknown systemApp",
         className: "[PC preview] unknown className",
         name: "[PC preview] unknown name",
-        labelId: "[PC preview] unknown labelId",
         label: "[PC preview] unknown label",
+        labelId: "[PC preview] unknown labelId",
         icon: "[PC preview] unknown icon",
         iconId: "[PC preview] unknown iconId",
         process: "[PC preview] unknown process",
-        supportedModes: "[PC preview] unknown supportedModes",
         moduleSourceDirs: [paramMock.paramStringMock],
         permissions: [paramMock.paramStringMock],
-        sourceDir: "[PC preview] unknown sourceDir",
         moduleInfos: [{
             moduleName: "[PC preview] unknown moduleName",
             moduleSourceDir: "[PC preview] unknown moduleSourceDir",
         }],
-        flags: "[PC preview] unknown flags",
         entryDir: "[PC preview] unknown entryDir",
         codePath: "[PC preview] unknown codePath",
         metaData: [{
@@ -55,34 +80,19 @@ export const LauncherAbilityInfo = {
         uid: "[PC preview] unknown uid",
         entityType: "[PC preview] unknown entityType",
         fingerprint: "[PC preview] unknown fingerprint",
-        iconResource: {
-            bundleName: "[PC preview] unknown bundleName",
-            moduleName: "[PC preview] unknown moduleName",
-            id: "[PC preview] unknown id",  
-        },
-        labelResource: {
-            bundleName: "[PC preview] unknown bundleName",
-            moduleName: "[PC preview] unknown moduleName",
-            id: "[PC preview] unknown id",  
-        },
-        descriptionResource: {
-            bundleName: "[PC preview] unknown bundleName",
-            moduleName: "[PC preview] unknown moduleName",
-            id: "[PC preview] unknown id",  
-        },
+        iconResource: "[PC preview] unknown iconResource",
+        labelResource: "[PC preview] unknown labelResource",
+        descriptionResource: "[PC preview] unknown descriptionResource",
         appDistributionType: "[PC preview] unknown appDistributionType",
         appProvisionType: "[PC preview] unknown appProvisionType",
+        supportedModes: "[PC preview] unknown supportedModes",
     },
-    elementName: {
-        deviceId: "[PC preview] unknown deviceId",
-        bundleName: "[PC preview] unknown bundleName",
-        abilityName: "[PC preview] unknown abilityName",
-        uri: "[PC preview] unknown uri",
-        shortName: "[PC preview] unknown shortName",
-        moduleName: "[PC preview] unknown moduleName",
-    },
-    labelId: "[PC preview] unknown labelId",
-    iconId: "[PC preview] unknown iconId",
-    userId: "[PC preview] unknown userId",
-    installTime: "[PC preview] unknown installTime",
+    metadata: [{
+        name: "[PC preview] unknown name",
+        value: "[PC preview] unknown value",
+        resource: "[PC preview] unknown resource",
+    }],
+    enabled: "[PC preview] unknown enabled",
+    readPermission: "[PC preview] unknown readPermission",
+    writePermission: "[PC preview] unknown writePermission",
 }

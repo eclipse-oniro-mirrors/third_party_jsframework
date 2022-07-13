@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-export const BundleInfoMock = {
+import { paramMock } from "../../utils"
+
+export const BundleInfo = {
     name: "[PC preview] unknown name",
     type: "[PC preview] unknown type",
     appId: "[PC preview] unknown appId",
@@ -34,8 +36,8 @@ export const BundleInfoMock = {
         iconId: "[PC preview] unknown iconId",
         process: "[PC preview] unknown process",
         supportedModes: "[PC preview] unknown supportedModes",
-        moduleSourceDirs: ["[PC preview] unknown moduleSourceDirs"],
-        permissions: ["[PC preview] unknown permissions"],
+        moduleSourceDirs: [paramMock.paramStringMock],
+        permissions: [paramMock.paramStringMock],
         sourceDir: "[PC preview] unknown sourceDir",
         moduleInfos: [{
             moduleName: "[PC preview] unknown moduleName",
@@ -125,9 +127,9 @@ export const BundleInfoMock = {
                 SINGLETON: 0,
                 STANDARD: 1,
             },
-            permissions: ['[PC Preview] unknow permissions'],
-            deviceTypes: ['[PC Preview] unknow deviceTypes'],
-            deviceCapabilities: ['[PC Preview] unknow deviceCapabilities'],
+            permissions: [paramMock.paramStringMock],
+            deviceTypes: [paramMock.paramStringMock],
+            deviceCapabilities: [paramMock.paramStringMock],
             readPermission: '[PC Preview] unknow readPermission',
             writePermission: '[PC Preview] unknow writePermission',
             appId: '[PC Preview] unknow appId',
@@ -151,14 +153,14 @@ export const BundleInfoMock = {
                 iconId: "[PC preview] unknown iconId",
                 process: "[PC preview] unknown process",
                 sourceDir: "[PC preview] unknown sourceDir",
-                moduleSourceDirs: ["[PC preview] unknown moduleSourceDirs"],
-                permissions: ["[PC preview] unknown permissions"],
+                moduleSourceDirs: [paramMock.paramStringMock],
+                permissions: [paramMock.paramStringMock],
                 moduleInfos: [{
                     moduleName: "[PC preview] unknown moduleName",
                     moduleSourceDir: "[PC preview] unknown moduleSourceDir",
                 }],
-                entryDir: ["[PC preview] unknown entryDir"],
-                codePath: ["[PC preview] unknown codePath"],
+                entryDir: [paramMock.paramStringMock],
+                codePath: [paramMock.paramStringMock],
                 metaData: [{
                     name: "[PC preview] unknown name",
                     value: "[PC preview] unknown value",
@@ -238,14 +240,14 @@ export const BundleInfoMock = {
             },
         }
     ],
-    reqPermissions: ["[PC preview] unknown repermission"],
+    reqPermissions: [paramMock.paramStringMock],
     reqPermissionDetails: [
         {
             name: "[PC preview] unknown name",
             reason: "[PC preview] unknown reason",
             reasonId: "[PC preview] unknown reasonId",
             usedScene: {
-                abilities: ["[PC preview] unknown ability"],
+                abilities: [paramMock.paramStringMock],
                 when: "[PC preview] unknown when",
             }
         }
@@ -266,8 +268,8 @@ export const BundleInfoMock = {
         iconId: "[PC preview] unknown iconId",
         backgroundImg: "[PC preview] unknown backgroundImg",
         supportedModes: "[PC preview] unknown supportedModes",
-        reqCapabilities: ["[PC preview] unknown reqCapabilities"],
-        deviceTypes: ["[PC preview] unknown deviceTypes"],
+        reqCapabilities: [paramMock.paramStringMock],
+        deviceTypes: [paramMock.paramStringMock],
         abilityInfo: [
             {
                 name: "[PC preview] unknown name",
@@ -307,9 +309,9 @@ export const BundleInfoMock = {
                     SINGLETON: 0,
                     STANDARD: 1,
                 },
-                permissions: ['[PC Preview] unknow permissions'],
-                deviceTypes: ['[PC Preview] unknow deviceTypes'],
-                deviceCapabilities: ['[PC Preview] unknow deviceCapabilities'],
+                permissions: [paramMock.paramNumberMock],
+                deviceTypes: [paramMock.paramNumberMock],
+                deviceCapabilities: [paramMock.paramNumberMock],
                 readPermission: '[PC Preview] unknow readPermission',
                 writePermission: '[PC Preview] unknow writePermission',
                 appId: '[PC Preview] unknow appId',
@@ -333,14 +335,14 @@ export const BundleInfoMock = {
                     iconId: "[PC preview] unknown iconId",
                     process: "[PC preview] unknown process",
                     sourceDir: "[PC preview] unknown sourceDir",
-                    moduleSourceDirs: ["[PC preview] unknown moduleSourceDirs"],
-                    permissions: ["[PC preview] unknown permissions"],
+                    moduleSourceDirs: [paramMock.paramStringMock],
+                    permissions: [paramMock.paramStringMock],
                     moduleInfos: [{
                         moduleName: "[PC preview] unknown moduleName",
                         moduleSourceDir: "[PC preview] unknown moduleSourceDir",
                     }],
-                    entryDir: ["[PC preview] unknown entryDir"],
-                    codePath: ["[PC preview] unknown codePath"],
+                    entryDir: [paramMock.paramStringMock],
+                    codePath: [paramMock.paramStringMock],
                     metaData: [{
                         name: "[PC preview] unknown name",
                         value: "[PC preview] unknown value",
@@ -461,50 +463,50 @@ export const BundleInfoMock = {
     }],
     hapModuleInfo: [
         {
-            name: "string",
-            description: "string",
-            descriptionId: 1,
-            icon: "string",
-            label: "string",
-            labelId: 2,
-            iconId: 3,
-            backgroundImg: "string",
-            supportedModes: 4,
-            reqCapabilities: ["1", "2"],
-            deviceTypes: ["1", "2"],
+            name: "[PC preview] unknown name",
+            description: "[PC preview] unknown description",
+            descriptionId: "[PC preview] unknown descriptionId",
+            icon: "[PC preview] unknown icon",
+            label: "[PC preview] unknown label",
+            labelId: "[PC preview] unknown labelId",
+            iconId: "[PC preview] unknown iconId",
+            backgroundImg: "[PC preview] unknown backgroundImg",
+            supportedModes: "[PC preview] unknown supportedModes",
+            reqCapabilities: [paramMock.paramStringMock],
+            deviceTypes: [paramMock.paramStringMock],
             abilityInfo: [
                 {
-                    bundleName: "string",
-                    name: "string",
-                    label: "string",
-                    description: "string",
-                    icon: "string",
-                    labelId: 1,
-                    descriptionId: 2,
-                    iconId: 3,
-                    moduleName: "string",
-                    process: "string",
-                    targetAbility: "string",
-                    backgroundModes: 4,
-                    isVisible: true,
-                    formEnabled: true,
-                    type: "bundle.AbilityType",
-                    subType: "bundle.AbilitySubType",
-                    orientation: "bundle.DisplayOrientation",
-                    launchMode: "bundle.LaunchMode",
-                    permissions: ["1"],
-                    deviceTypes: ["2"],
-                    deviceCapabilities: ["3"],
-                    readPermission: "string",
-                    writePermission: "string",
+                    bundleName: "[PC preview] unknown bundleName",
+                    name: "[PC preview] unknown name",
+                    label: "[PC preview] unknown label",
+                    description: "[PC preview] unknown description",
+                    icon: "[PC preview] unknown icon",
+                    labelId: "[PC preview] unknown labelId",
+                    descriptionId: "[PC preview] unknown descriptionId",
+                    iconId: "[PC preview] unknown iconId",
+                    moduleName: "[PC preview] unknown moduleName",
+                    process: "[PC preview] unknown process",
+                    targetAbility: "[PC preview] unknown targetAbility",
+                    backgroundModes: "[PC preview] unknown backgroundModes",
+                    isVisible: "[PC preview] unknown isVisible",
+                    formEnabled: "[PC preview] unknown formEnabled",
+                    type: "[PC preview] unknown type",
+                    subType: "[PC preview] unknown subType",
+                    orientation: "[PC preview] unknown orientation",
+                    launchMode: "[PC preview] unknown launchMode",
+                    permissions: [paramMock.paramStringMock],
+                    deviceTypes: [paramMock.paramStringMock],
+                    deviceCapabilities: [paramMock.paramStringMock],
+                    readPermission: "[PC preview] unknown readPermission",
+                    writePermission: "[PC preview] unknown writePermission",
                     applicationInfo: {
                         packageName: "[PC preview] unknown packageName",
                         className: "[PC preview] unknown className",
                         name: "[PC preview] unknown name",
-                        labelId: 2,
-                        iconId: 3,
+                        labelId: "[PC preview] unknown labelId",
+                        iconId: "[PC preview] unknown iconId",
                         sourceDir: "[PC preview] unknown sourceDir",
-                        flags: 1,
+                        flags: "[PC preview] unknown flags",
                         customizeData: {
                             key: "[PC preview] unknown key",
                             value: {
@@ -515,12 +517,12 @@ export const BundleInfoMock = {
                             }
                         }
                     },
-                    formEntity: 5,
-                    minFormHeight: 6,
-                    defaultFormHeight: 7,
-                    minFormWidth: 8,
-                    defaultFormWidth: 9,
-                    uri: "string",
+                    formEntity: "[PC preview] unknown formEntity",
+                    minFormHeight: "[PC preview] unknown minFormHeight",
+                    defaultFormHeight: "[PC preview] unknown defaultFormHeight",
+                    minFormWidth: "[PC preview] unknown minFormWidth",
+                    defaultFormWidth: "[PC preview] unknown defaultFormWidth",
+                    uri: "[PC preview] unknown uri",
                     customizeData: {
                         key: "[PC preview] unknown key",
                         value: [
@@ -540,9 +542,9 @@ export const BundleInfoMock = {
                     },
                 }
             ],
-            moduleName: "string",
-            mainAbilityName: "string",
-            installationFree: true,
+            moduleName: "[PC preview] unknown moduleName",
+            mainAbilityName: "[PC preview] unknown mainAbilityName",
+            installationFree: "[PC preview] unknown installationFree",
         }
     ],
     entryModuleName: "string",
@@ -550,7 +552,7 @@ export const BundleInfoMock = {
     isSilentInstallation: "string",
     minCompatibleVersionCode: 7,
     entryInstallationFree: true,
-    reqPermissionStates: ["[PC preview] unknown reqPermissionStates"],
+    reqPermissionStates: [paramMock.paramStringMock],
     extensionAbilityInfo: [{
         bundleName: "[PC preview] unknown bundleName",
         moduleName: "[PC preview] unknown moduleName",
@@ -579,7 +581,7 @@ export const BundleInfoMock = {
             value: "[PC preview] unknown value",
             resource: "[PC preview] unknown resource",
         }],
-        permissions: ["[PC preview] unknown hashValue"],
+        permissions: [paramMock.paramStringMock],
         applicationInfo: {
             packageName: "[PC preview] unknown packageName",
             description: "[PC preview] unknown description",
@@ -593,14 +595,14 @@ export const BundleInfoMock = {
             icon: "[PC preview] unknown icon",
             iconId: "[PC preview] unknown iconId",
             process: "[PC preview] unknown process",
-            moduleSourceDirs: ["[PC preview] unknown moduleSourceDirs"],
-            permissions: ["[PC preview] unknown permissions"],
+            moduleSourceDirs: [paramMock.paramStringMock],
+            permissions: [paramMock.paramStringMock],
             moduleInfos: [{
                 moduleName: "[PC preview] unknown moduleName",
                 moduleSourceDir: "[PC preview] unknown moduleSourceDir",
             }],
-            entryDir: ["[PC preview] unknown entryDir"],
-            codePath: ["[PC preview] unknown codePath"],
+            entryDir: [paramMock.paramStringMock],
+            codePath: [paramMock.paramStringMock],
             metaData: [{
                 name: "[PC preview] unknown name",
                 value: "[PC preview] unknown value",
@@ -636,7 +638,7 @@ export const BundleInfoMock = {
 
 export const BundlePackInfo = {
     packages: [{
-        deviceType: ["[PC preview] unknown deviceType"],
+        deviceType: [paramMock.paramStringMock],
         name: "[PC preview] unknown name",
         moduleType: "[PC preview] unknown moduleType",
         deliveryWithInstall: "[PC preview] unknown deliveryWithInstall",
@@ -657,7 +659,7 @@ export const BundlePackInfo = {
                     compatible: "[PC preview] unknown compatible",
                     target: "[PC preview] unknown target",
                 },
-                deviceType: ["[PC preview] unknown deviceType"],
+                deviceType: [paramMock.paramStringMock],
                 distro: {
                     mainAbility: "[PC preview] unknown mainAbility",
                     deliveryWithInstall: "[PC preview] unknown deliveryWithInstall",
@@ -677,7 +679,7 @@ export const BundlePackInfo = {
                                 updateEnabled: "[PC preview] unknown updateEnabled",
                                 scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
                                 updateDuration: "[PC preview] unknown updateDuration",
-                                supportDimensions: ["[PC preview] unknown supportDimensions"],
+                                supportDimensions: [paramMock.paramNumberMock],
                                 defaultDimension: "[PC preview] unknown defaultDimension",
                             }
                         ],
@@ -694,7 +696,7 @@ export const BundlePackInfo = {
                                 updateEnabled: "[PC preview] unknown updateEnabled",
                                 scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
                                 updateDuration: "[PC preview] unknown updateDuration",
-                                supportDimensions: ["[PC preview] unknown supportDimensions"],
+                                supportDimensions: [paramMock.paramNumberMock],
                                 defaultDimension: "[PC preview] unknown defaultDimension",
                             }
                         ],
@@ -705,7 +707,8 @@ export const BundlePackInfo = {
     }
 };
 
-export const DispatchInfoMock = {
-    verison: "[PC preview] unknown verison",
-    dispatchAPI: "[PC preview] unknown dispatchAPI",
+export const PixelMapFormat = {
+    UNKNOWN: 0,
+    RGB_565: 2,
+    RGBA_8888: 3,
 }

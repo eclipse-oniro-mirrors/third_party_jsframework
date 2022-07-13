@@ -13,13 +13,8 @@
  * limitations under the License.
  */
 
-export const DefaultAppManager = {
-    BROWSER: "[PC preview] unknown BROWSER",
-    IMAGE: "[PC preview] unknown IMAGE",
-    AUDIO: "[PC preview] unknown AUDIO",
-    VIDEO: "[PC preview] unknown VIDEO",
-    PDF: "[PC preview] unknown PDF",
-    WORD: "[PC preview] unknown WORD",
-    EXCEL: "[PC preview] unknown EXCEL",
-    PPT: "[PC preview] unknown PPT",
+export const Metadata = {
+    name: "[PC preview] unknown name",
+    value: "[PC preview] unknown value",
+    resource: "[PC preview] unknown resource",
 }
