@@ -36,7 +36,8 @@ export function mockResourceManager() {
     SCREEN_MDPI : 160,
     SCREEN_LDPI : 240,
     SCREEN_XLDPI : 320,
-    SCREEN_XXLDPI : 480
+    SCREEN_XXLDPI : 480,
+    SCREEN_XXXLDPI : 640
   }
 
   const DeviceType = {
