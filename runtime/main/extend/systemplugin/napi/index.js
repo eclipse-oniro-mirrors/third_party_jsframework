@@ -68,7 +68,6 @@ import { mockStatfs } from './ohos_statfs'
 import { mockFileManager } from "./ohos_fileManager"
 import { mockEnvironment } from "./ohos_environment"
 import { mockStorageStatistics } from "./ohos_storageStatistics"
-import { mockVolumeManager } from "./ohos_volumeManager"
 import { mockSettings } from './ohos_settings'
 import { mockAbilityAccessCtrl } from './ohos_abilityAccessCtrl'
 import { mockConfigPolicy } from './ohos_configPolicy'
@@ -347,8 +346,6 @@ export function mockRequireNapiFun() {
         return mockEnvironment();
       case "storageStatistics":
         return mockStorageStatistics();
-      case "volumemManager":
-        return mockVolumeManager();
       case "settings":
         return mockSettings();
       case "abilityAccessCtrl":
