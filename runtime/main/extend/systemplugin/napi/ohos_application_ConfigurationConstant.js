@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,18 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import { paramMock } from "../utils"
-export const FormBindingData = {
-  data: paramMock.paramObjectMock
+export const ColorMode = {
+    COLOR_MODE_NOT_SET: -1,
+    COLOR_MODE_DARK: 0,
+    COLOR_MODE_LIGHT: 1,
 }
-export function mockFormBindingData() {
-  const formBindingData = {
-    createFormBindingData: function (...args) {
-      console.warn("formBindingData.createFormBindingData interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return FormBindingData;
-    },
-  }
-  return formBindingData;
+export const Direction = {
+    DIRECTION_NOT_SET: -1,
+    DIRECTION_VERTICAL: 0,
+    DIRECTION_HORIZONTAL: 1,
+}
+export const ScreenDensity = {
+    SCREEN_DENSITY_NOT_SET: 0,
+    SCREEN_DENSITY_SDPI: 120,
+    SCREEN_DENSITY_MDPI: 160,
+    SCREEN_DENSITY_LDPI: 240,
+    SCREEN_DENSITY_XLDPI: 320,
+    SCREEN_DENSITY_XXLDPI: 480,
+    SCREEN_DENSITY_XXXLDPI: 640,
 }

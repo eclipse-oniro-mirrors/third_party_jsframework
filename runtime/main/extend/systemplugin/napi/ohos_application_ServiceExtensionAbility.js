@@ -14,7 +14,7 @@
  */
 
 import { paramMock } from "../utils"
-import { ExtensionContextClass } from "./application/abilityContext"
+import { ExtensionContextClass } from "./application/AbilityContext"
 
 export const RemoteObjectClass = class RemoteObject {
   constructor() {
@@ -230,6 +230,11 @@ export function mockServiceExtensionAbility() {
       this.onConfigurationUpdated = function (...args) {
         console.warn("application.ServiceExtensionAbility.onConfigurationUpdated interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
+      };
+      this.dump = function (...args) {
+        console.warn("application.ServiceExtensionAbility.dump interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        return [paramMock.paramStringMock];
       };
     }
   }

@@ -12,24 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-export const LaunchParam = {
-    launchReason: LaunchReason,
-    lastExitReason: LastExitReason,
-}
-export const LaunchReason = {
-    UNKNOWN: 0,
-    START_ABILITY: 1,
-    CALL: 2,
-    CONTINUATION: 3,
-}
-export const LastExitReason = {
-    UNKNOWN: 0,
-    ABILITY_NOT_RESPONDING: 1,
-    NORMAL: 2,
-}
-export const OnContinueResult = {
-    AGREE: 0,
-    REJECT: 1,
-    MISMATCH: 2,
+export function mockTestRunner() {
+    const TestRunner = {
+        onPrepare: function () {
+            console.warn('TestRunner.onPrepare interface mocked in the Previewer. How this interface works on the' +
+              ' Previewer may be different from that on a real device.');
+        },
+        onRun: function () {
+            console.warn('TestRunner.onRun interface mocked in the Previewer. How this interface works on the' +
+              ' Previewer may be different from that on a real device.');
+        },
+    }
+    return TestRunner;
 }

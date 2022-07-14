@@ -14,11 +14,36 @@
  */
 
 import { paramMock } from "../utils"
-import { AbilityContextClass } from "./application/abilityContext"
+import { AbilityContextClass } from "./application/AbilityContext"
 import { WantClass } from "./ohos_application_Want"
 import { OnContinueResult } from "./ohos_application_AbilityConstant"
+import { MessageParcelClass } from "./ohos_rpc"
 
-const calleeMock = {
+export const Caller = {
+  call: function (...args) {
+    console.warn("Caller.call interface mocked in the Previewer." +
+      " How this interface works on the Previewer may be different from that on a real device.")
+    return new Promise((resolve, reject) => {
+      resolve();
+    })
+  },
+  callWithResult: function (...args) {
+    console.warn("Caller.callWithResult interface mocked in the Previewer." +
+      " How this interface works on the Previewer may be different from that on a real device.")
+    return new Promise((resolve, reject) => {
+      resolve(new MessageParcelClass());
+    })
+  },
+  release: function () {
+    console.warn("Caller.release interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+  },
+  onRelease: function (...args) {
+    console.warn("Caller.onRelease interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+  },
+}
+export const Callee = {
   on: function (...args) {
     console.warn("Ability.calleeClass.on interface mocked in the Previewer. How this interface works on the Previewer" +
       " may be different from that on a real device.")
@@ -35,7 +60,7 @@ export const AbilityClass = class Ability {
     this.context = new AbilityContextClass();
     this.launchWant = new WantClass();
     this.lastRequestWant = new WantClass();
-    this.callee = calleeMock;
+    this.callee = Callee;
     this.onCreate = function (...args) {
       console.warn("application.Ability.onCreate interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")

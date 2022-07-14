@@ -202,7 +202,9 @@ export const Support = {
   COMMON_EVENT_ACCOUNT_DELETED: "usual.event.data.ACCOUNT_DELETED",
   COMMON_EVENT_FOUNDATION_READY: "common.event.FOUNDATION_READY",
   COMMON_EVENT_AIRPLANE_MODE_CHANGED: "usual.event.AIRPLANE_MODE",
-  COMMON_EVENT_SPLIT_SCREEN: "common.event.SPLIT_SCREEN"
+  COMMON_EVENT_SPLIT_SCREEN: "common.event.SPLIT_SCREEN",
+  COMMON_EVENT_SLOT_CHANGE: "usual.event.SLOT_CHANGE",
+  COMMON_EVENT_SPN_INFO_CHANGED: "usual.event.SPN_INFO_CHANGED"
 }
 export function mockCommonEvent() {
   const commonEvent = {

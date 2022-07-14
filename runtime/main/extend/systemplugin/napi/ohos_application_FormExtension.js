@@ -14,7 +14,8 @@
  */
 
 import { paramMock } from "../utils"
-import { ExtensionContextClass } from "./application/abilityContext"
+import { ExtensionContextClass } from "./application/AbilityContext"
+import { FormState } from "./ohos_application_formInfo"
 
 export function mockFormExtension() {
   const formBindingDataMock = {
@@ -81,7 +82,16 @@ export function mockFormExtension() {
         console.warn("application.formExtension.onDestroy interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
       };
+      this.onConfigurationUpdated = function (...args) {
+        console.warn("application.formExtension.onConfigurationUpdated interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+      };
+      this.onAcquireFormState = function (...args) {
+        console.warn("application.formExtension.onAcquireFormState interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        return FormState;
+      };
     }
   }
-  return formExtensionClass;
+  return new formExtensionClass();
 }
