@@ -16,12 +16,12 @@
 import { paramMock } from '../utils';
 
 export function mockStorageStatistics() {
-  const BundleStatsMock = {
+  const BundleStats = {
     appSize: '[PC preview] unknow appSize',
     cacheSize: '[PC preview] unknow cacheSize',
     dataSize: '[PC preview] unknow dataSize'
   };
-  const StorageStatsMock = {
+  const StorageStats= {
     total: '[PC preview] unknow total',
     audio: '[PC preview] unknow audio',
     video: '[PC preview] unknow video',
@@ -30,8 +30,8 @@ export function mockStorageStatistics() {
     app: '[PC preview] unknow app'
   }
   const storageStatistics = {
-    BundleStats: BundleStatsMock,
-    StorageStats: StorageStatsMock,
+    BundleStats: BundleStats,
+    StorageStats: StorageStats,
     getTotalSizeOfVolume: function(...args) {
       console.warn('storageStatistics.getTotalSizeOfVolume interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
@@ -73,10 +73,10 @@ export function mockStorageStatistics() {
         ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, BundleStatsMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleStats);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(BundleStatsMock);
+          resolve(BundleStats);
         });
       }
     },
@@ -97,10 +97,10 @@ export function mockStorageStatistics() {
         ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, StorageStatsMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, StorageStats);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(StorageStatsMock);
+          resolve(StorageStats);
         });
       }
     },

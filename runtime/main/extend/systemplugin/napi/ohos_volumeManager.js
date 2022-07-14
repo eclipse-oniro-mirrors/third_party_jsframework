@@ -16,7 +16,7 @@
 import { paramMock } from "../utils"
 
 export function mockVolumeManager() {
-  const VolumeMock = {
+  const Volume = {
     id: '[PC preview] unknow id',
     uuid: '[PC preview] unknow uuid',
     description: '[PC preview] unknow description',
@@ -25,16 +25,16 @@ export function mockVolumeManager() {
     state: '[PC preview] unknow state' 
   };
   const volumeManager = {
-    Volume: VolumeMock,
+    Volume: Volume,
     getAllVolumes: function (...args) {
       console.warn("volumeManager.getAllVolumes interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, Array(VolumeMock));
+        args[len - 1].call(this, paramMock.businessErrorMock, Array(Volume));
       } else {
         return new Promise((resolve, reject) => {
-          resolve(Array(VolumeMock));
+          resolve(Array(Volume));
         })
       }
     },
@@ -67,10 +67,10 @@ export function mockVolumeManager() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, VolumeMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, Volume);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(VolumeMock);
+          resolve(Volume);
         })
       }
     },
@@ -79,10 +79,10 @@ export function mockVolumeManager() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, VolumeMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, Volume);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(VolumeMock);
+          resolve(Volume);
         })
       }
     },
