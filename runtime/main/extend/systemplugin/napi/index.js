@@ -74,7 +74,6 @@ import { mockAbilityAccessCtrl } from './ohos_abilityAccessCtrl'
 import { mockConfigPolicy } from './ohos_configPolicy'
 import { mockUpdate } from './ohos_update'
 import { mockBackgroundTaskManager } from './ohos_backgroundTaskManager'
-import { mockSecurityLabel } from './ohos_securitylabel'
 import { mockWorkScheduler } from './ohos_workScheduler'
 import { mockWorkSchedulerExtensionAbility } from './ohos_WorkSchedulerExtensionAbility'
 import { mockUserAuth } from './ohos_userIAM_userAuth'
@@ -342,7 +341,7 @@ export function mockRequireNapiFun() {
         return mockConvertXml();
       case "statfs":
         return mockStatfs();
-      case "filemanager":
+      case "fileManager":
         return mockFileManager();
       case "environment":
         return mockEnvironment();
@@ -360,8 +359,6 @@ export function mockRequireNapiFun() {
         return mockUpdate();
       case "backgroundTaskManager":
         return mockBackgroundTaskManager();
-      case "securitylabel":
-        return mockSecurityLabel();
       case "workScheduler":
         return mockWorkScheduler();
       case "WorkSchedulerExtensionAbility":
