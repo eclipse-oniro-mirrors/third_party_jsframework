@@ -14,6 +14,8 @@
  */
 
 import { paramMock } from "../../utils"
+import { AbilityInfo } from './abilityInfo';
+
 
 export const HapModuleInfo = {
     name: "[PC preview] unknown name",
@@ -27,74 +29,7 @@ export const HapModuleInfo = {
     supportedModes: "[PC preview] unknown supportedModes",
     reqCapabilities: [paramMock.paramStringMock],
     deviceTypes: [paramMock.paramStringMock],
-    abilityInfo: [
-        {
-            bundleName: "[PC preview] unknown bundleName",
-            name: "[PC preview] unknown name",
-            label: "[PC preview] unknown label",
-            description: "[PC preview] unknown description",
-            icon: "[PC preview] unknown icon",
-            labelId: "[PC preview] unknown labelId",
-            descriptionId: "[PC preview] unknown descriptionId",
-            iconId: "[PC preview] unknown iconId",
-            moduleName: "[PC preview] unknown moduleName",
-            process: "[PC preview] unknown process",
-            targetAbility: "[PC preview] unknown targetAbility",
-            backgroundModes: "[PC preview] unknown backgroundModes",
-            isVisible: "[PC preview] unknown isVisible",
-            formEnabled: "[PC preview] unknown formEnabled",
-            type: "[PC preview] unknown type",
-            subType: "[PC preview] unknown subType",
-            orientation: "[PC preview] unknown orientation",
-            launchMode: "[PC preview] unknown launchMode",
-            permissions: [paramMock.paramStringMock],
-            deviceTypes: [paramMock.paramStringMock],
-            deviceCapabilities: [paramMock.paramStringMock],
-            readPermission: "[PC preview] unknown readPermission",
-            writePermission: "[PC preview] unknown writePermission",
-            applicationInfo: {
-                packageName: "[PC preview] unknown packageName",
-                className: "[PC preview] unknown className",
-                name: "[PC preview] unknown name",
-                labelId: "[PC preview] unknown name",
-                iconId: "[PC preview] unknown name",
-                sourceDir: "[PC preview] unknown sourceDir",
-                flags: "[PC preview] unknown name",
-                customizeData: {
-                    key: "[PC preview] unknown key",
-                    value: {
-                        CustomizeData: {
-                            name: "[PC preview] unknown name",
-                            value: "[PC preview] unknown value",
-                        }
-                    }
-                }
-            },
-            formEntity: "[PC preview] unknown formEntity",
-            minFormHeight: "[PC preview] unknown minFormHeight",
-            defaultFormHeight: "[PC preview] unknown defaultFormHeight",
-            minFormWidth: "[PC preview] unknown minFormWidth",
-            defaultFormWidth: "[PC preview] unknown defaultFormWidth",
-            uri: "[PC preview] unknown uri",
-            customizeData: {
-                key: "[PC preview] unknown key",
-                value: [
-                    {
-                        CustomizeData: {
-                            name: "[PC preview] unknown name",
-                            value: "[PC preview] unknown value",
-                        },
-                    },
-                    {
-                        CustomizeData: {
-                            name: "[PC preview] unknown name",
-                            value: "[PC preview] unknown value",
-                        },
-                    }
-                ]
-            },
-        }
-    ],
+    abilityInfo: [AbilityInfo],
     moduleName: "[PC preview] unknown moduleName",
     mainAbilityName: "[PC preview] unknown mainAbilityName",
     installationFree: "[PC preview] unknown installationFree",

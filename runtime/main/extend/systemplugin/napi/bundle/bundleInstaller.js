@@ -24,16 +24,12 @@ export const HashParam = {
 export const InstallParam = {
     userId: "[PC preview] unknown userId",
     installFlag: "[PC preview] unknown installFlag",
-    hashParams: [
-        HashParam
-    ],
+    hashParams: [HashParam],
     crowdtestDeadline: "[PC preview] unknown crowdtestDeadline",
 }
 
 export const InstallStatus = {
-    status: {
-        InstallErrorCode
-    },
+    status: InstallErrorCode,
     statusMessage: "[PC preview] unknown statusMessage",
 }
 

@@ -28,12 +28,7 @@ export const ShortcutInfo =  {
     label: "[PC preview] unknown label",
     labelId: "[PC preview] unknown labelId",
     disableMessage: "[PC preview] unknown disableMessage",
-    wants: [
-        {
-            targetBundle: "[PC preview] unknown targetBundle",
-            targetModule: "[PC preview] unknown targetModule",
-            targetClass: "[PC preview] unknown targetClass",
-        }],
+    wants: [ShortcutWant],
     isStatic: "[PC preview] unknown isStatic",
     isHomeShortcut: "[PC preview] unknown isHomeShortcut",
     isEnabled: "[PC preview] unknown isEnabled",

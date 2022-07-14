@@ -15,77 +15,6 @@
 
 import { paramMock } from "../../utils"
 
-export const BundlePackInfo = {
-    packages: [{
-        deviceType: [paramMock.paramStringMock],
-        name: "[PC preview] unknown name",
-        moduleType: "[PC preview] unknown moduleType",
-        deliveryWithInstall: "[PC preview] unknown deliveryWithInstall",
-    }],
-    summary: {
-        app: {
-            bundleName: "[PC preview] unknown bundleName",
-            version: {
-                minCompatibleVersionCode: "[PC preview] unknown minCompatibleVersionCode",
-                name: "[PC preview] unknown name",
-                code: "[PC preview] unknown code",
-            },
-        },
-        modules: [
-            {
-                apiVersion: {
-                    releaseType: "[PC preview] unknown releaseType",
-                    compatible: "[PC preview] unknown compatible",
-                    target: "[PC preview] unknown target",
-                },
-                deviceType: [paramMock.paramStringMock],
-                distro: {
-                    mainAbility: "[PC preview] unknown mainAbility",
-                    deliveryWithInstall: "[PC preview] unknown deliveryWithInstall",
-                    installationFree: "[PC preview] unknown installationFree",
-                    moduleName: "[PC preview] unknown moduleName",
-                    moduleType: "[PC preview] unknown moduleType",
-                },
-                abilities: [
-                    {
-                        name: "[PC preview] unknown name",
-                        label: "[PC preview] unknown label",
-                        visible: "[PC preview] unknown visible",
-                        forms: [
-                            {
-                                name: "[PC preview] unknown name",
-                                type: "[PC preview] unknown type",
-                                updateEnabled: "[PC preview] unknown updateEnabled",
-                                scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
-                                updateDuration: "[PC preview] unknown updateDuration",
-                                supportDimensions: [paramMock.paramNumberMock],
-                                defaultDimension: "[PC preview] unknown defaultDimension",
-                            }
-                        ],
-
-                    }
-                ],
-                extensionAbilities: [
-                    {
-                        name: "[PC preview] unknown name",
-                        forms: [
-                            {
-                                name: "[PC preview] unknown name",
-                                type: "[PC preview] unknown type",
-                                updateEnabled: "[PC preview] unknown updateEnabled",
-                                scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
-                                updateDuration: "[PC preview] unknown updateDuration",
-                                supportDimensions: [paramMock.paramNumberMock],
-                                defaultDimension: "[PC preview] unknown defaultDimension",
-                            }
-                        ],
-                    }
-                ]
-            }
-        ]
-    }
-}
-
 export const PackageConfig = {
     deviceType: [paramMock.paramStringMock],
     name: "[PC preview] unknown name",
@@ -93,65 +22,74 @@ export const PackageConfig = {
     deliveryWithInstall: "[PC preview] unknown deliveryWithInstall",
 }
 
-export const PackageSummary = {
-    app: {
-        bundleName: "[PC preview] unknown bundleName",
-        version: {
-            minCompatibleVersionCode: "[PC preview] unknown minCompatibleVersionCode",
-            name: "[PC preview] unknown name",
-            code: "[PC preview] unknown code",
-        },
-    },
-    modules: [
-        {
-            apiVersion: {
-                releaseType: "[PC preview] unknown releaseType",
-                compatible: "[PC preview] unknown compatible",
-                target: "[PC preview] unknown target",
-            },
-            deviceType: [paramMock.paramStringMock],
-            distro: {
-                mainAbility: "[PC preview] unknown mainAbility",
-                deliveryWithInstall: "[PC preview] unknown deliveryWithInstall",
-                installationFree: "[PC preview] unknown installationFree",
-                moduleName: "[PC preview] unknown moduleName",
-                moduleType: "[PC preview] unknown moduleType",
-            },
-            abilities: [
-                {
-                    name: "[PC preview] unknown name",
-                    label: "[PC preview] unknown label",
-                    visible: "[PC preview] unknown visible",
-                    forms: [
-                        {
-                            name: "[PC preview] unknown name",
-                            type: "[PC preview] unknown type",
-                            updateEnabled: "[PC preview] unknown updateEnabled",
-                            scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
-                            updateDuration: "[PC preview] unknown updateDuration",
-                            supportDimensions: [paramMock.paramNumberMock],
-                            defaultDimension: "[PC preview] unknown defaultDimension",
-                        }
-                    ],
+export const ModuleDistroInfo = {
+    mainAbility: "[PC preview] unknown mainAbility",
+    deliveryWithInstall: "[PC preview] unknown deliveryWithInstall",
+    installationFree: "[PC preview] unknown installationFree",
+    moduleName: "[PC preview] unknown moduleName",
+    moduleType: "[PC preview] unknown moduleType",
+}
 
-                }
-            ],
-            extensionAbilities: [
-                {
-                    name: "[PC preview] unknown name",
-                    forms: [
-                        {
-                            name: "[PC preview] unknown name",
-                            type: "[PC preview] unknown type",
-                            updateEnabled: "[PC preview] unknown updateEnabled",
-                            scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
-                            updateDuration: "[PC preview] unknown updateDuration",
-                            supportDimensions: [paramMock.paramNumberMock],
-                            defaultDimension: "[PC preview] unknown defaultDimension",
-                        }
-                    ],
-                }
-            ]
-        }
-    ]
+export const AbilityFormInfo = {
+    name: "[PC preview] unknown name",
+    type: "[PC preview] unknown type",
+    updateEnabledtype: "[PC preview] unknown updateEnabled",
+    scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
+    updateDuration: "[PC preview] unknown updateDuration",
+    supportDimensions: [paramMock.paramNumberMock],
+    defaultDimension: "[PC preview] unknown defaultDimension",
+}
+
+export const ApiVersion = {
+    releaseType: "[PC preview] unknown releaseType",
+    compatible: "[PC preview] unknown compatible",
+    target: "[PC preview] unknown target",
+}
+
+export const Version = {
+    minCompatibleVersionCode: "[PC preview] unknown minCompatibleVersionCode",
+    name: "[PC preview] unknown name",
+    code: "[PC preview] unknown code",
+}
+
+export const ModuleAbilityInfo = {
+    name: "[PC preview] unknown name",
+    label: "[PC preview] unknown label",
+    visible: "[PC preview] unknown visible",
+    forms: [AbilityFormInfo],
+}
+
+export const ExtensionAbilities = {
+    name: "[PC preview] unknown name",
+    forms: [AbilityFormInfo],
+}
+
+export const ModuleConfigInfo = {
+    apiVersion: ApiVersion,
+    deviceType: [paramMock.paramStringMock],
+    distro: [paramMock.paramStringMock],
+    abilities: [ModuleAbilityInfo],
+    extensionAbilities: [ExtensionAbilities],
+}
+
+export const BundleConfigInfo = {
+    bundleName: "[PC preview] unknown bundleName",
+    version: Version,
+}
+
+export const PackageSummary = {
+    app: BundleConfigInfo,
+    modules: [ModuleConfigInfo]
+}
+
+export const BundlePackFlag = {
+    GET_PACK_INFO_ALL: 0x00000000,
+    GET_PACKAGES: 0x00000001,
+    GET_BUNDLE_SUMMARY: 0x00000002,
+    GET_MODULE_SUMMARY: 0x00000004,
+}
+
+export const BundlePackInfo = {
+    packages: [PackageConfig],
+    summary: PackageSummary
 }
