@@ -394,9 +394,9 @@ export function mockRequireNapiFun() {
         return mockFileManager();
       case "environment":
         return mockEnvironment();
-      case "storagestatistics":
+      case "storageStatistics":
         return mockStorageStatistics();
-      case "volumemanager":
+      case "volumeManager":
         return mockVolumeManager();
       case "settings":
         return mockSettings();
