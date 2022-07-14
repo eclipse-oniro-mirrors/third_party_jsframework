@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,17 +15,28 @@
 
 import { paramMock } from "../utils"
 
+export const EventPriority = {
+  IMMEDIATE: 0,
+  HIGH: 1,
+  LOW: 2,
+  IDLE: 3,
+}
+export const EventData = {
+  data: '[PC preview] unknow data',
+}
+export const InnerEvent = {
+  eventId: '[PC preview] unknow eventId',
+  priority: EventPriority,
+}
+
 export function mockEmitter() {
-  const EventDataMock = {
-    data: '[PC preview] unknow data',
-  };
   const emitter = {
     on: function (...args) {
       console.warn("emitter.on interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, EventDataMock);
+        args[len - 1].call(this, EventData);
       }
     },
     once: function (...args) {
@@ -33,7 +44,7 @@ export function mockEmitter() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, EventDataMock);
+        args[len - 1].call(this, EventData);
       }
     },
     off: function (...args) {
