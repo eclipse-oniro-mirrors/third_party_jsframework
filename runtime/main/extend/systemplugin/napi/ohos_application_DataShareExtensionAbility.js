@@ -32,6 +32,11 @@ export function mockDataShareExtensionAbility() {
           " may be different from that on a real device.")
         return [paramMock.paramStringMock];
       };
+       this.openFile = function () {
+        console.warn("application.DataShareExtensionAbility.openFile interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        return paramMock.paramNumberMock;
+      };
       this.insert = function () {
         console.warn("application.DataShareExtensionAbility.insert interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
@@ -74,5 +79,5 @@ export function mockDataShareExtensionAbility() {
       };
     }
   }
-  return new DataShareExtensionAbilityClass();
+  return DataShareExtensionAbilityClass;
 }

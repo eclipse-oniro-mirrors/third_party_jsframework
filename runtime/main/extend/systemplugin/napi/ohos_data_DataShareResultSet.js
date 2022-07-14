@@ -98,7 +98,7 @@ export const DataShareResultSetMock = {
     return paramMock.paramNumberMock;
   },
   close: function () {
-    console.warn("ResultSet.isColumnNull interface mocked in the Previewer. How this interface works on the Previewer" +
+    console.warn("ResultSet.close interface mocked in the Previewer. How this interface works on the Previewer" +
       " may be different from that on a real device.")
   }
 }
