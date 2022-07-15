@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,18 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import { paramMock } from "../utils"
-export const FormBindingData = {
-  data: paramMock.paramObjectMock
-}
-export function mockFormBindingData() {
-  const formBindingData = {
-    createFormBindingData: function (...args) {
-      console.warn("formBindingData.createFormBindingData interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return FormBindingData;
-    },
-  }
-  return formBindingData;
+export const ErrorCode = {
+    PERMISSION_DENY: -3,
+    ABILITY_NOT_FOUND: -2,
+    INVALID_PARAMETER: -1,
+    NO_ERROR: 0,
 }

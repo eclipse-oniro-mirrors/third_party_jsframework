@@ -15,6 +15,13 @@
 
 import { paramMock } from "../utils"
 
+export const AbilityState = {
+  INITIAL: 0,
+  FOREGROUND: 9,
+  BACKGROUND: 10,
+  FOREGROUNDING: 11,
+  BACKGROUNDING: 12
+}
 export function mockAbilityManager() {
   const AbilityRunningInfoMock = {
     ability: ElementNameMock,
@@ -39,6 +46,14 @@ export function mockAbilityManager() {
     startTime: '[PC preview] unknow startTime',
     clientPackage: [paramMock.paramStringMock],
     ExtensionAbilityTypeMock: '[PC preview] unknow ExtensionAbilityTypeMock',
+  }
+  const elementName = {
+    deviceId: "[PC preview] unknown deviceId",
+    bundleName: "[PC preview] unknown bundleName",
+    abilityName: "[PC preview] unknown abilityName",
+    uri: "[PC preview] unknown uri",
+    shortName: "[PC preview] unknown shortName",
+    moduleName: "[PC preview] unknown moduleName",
   }
   const abilityManager = {
     updateConfiguration: function (...args) {
@@ -74,6 +89,18 @@ export function mockAbilityManager() {
       } else {
         return new Promise((resolve) => {
           resolve([ExtensionRunningInfoMock]);
+        });
+      }
+    },
+    getTopAbility: function (...args) {
+      console.warn('abilityManager.getTopAbility interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, elementName);
+      } else {
+        return new Promise((resolve) => {
+          resolve(elementName);
         });
       }
     }
