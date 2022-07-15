@@ -229,6 +229,18 @@ export function mockDistributedData() {
       S4: 6,
     },
 
+    SyncMode: {
+      PULL_ONLY: 0,
+      PUSH_ONLY: 1,
+      PUSH_PULL: 2,
+    },
+
+    SubscribeType: {
+      SUBSCRIBE_TYPE_LOCAL: 0,
+      SUBSCRIBE_TYPE_REMOTE: 1,
+      SUBSCRIBE_TYPE_ALL: 2,
+    },
+
     createKVManager: function (...args) {
       console.warn("distributedData.createKVManager interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
@@ -262,6 +274,17 @@ export function mockDistributedData() {
     MAX_QUERY_LENGTH: "[PC Preview] unknown MAX_QUERY_LENGTH",
     MAX_BATCH_SIZE: "[PC Preview] unknown MAX_BATCH_SIZE"
   };
+  const schemaMock = {
+    root: "[PC Preview] unknown root",
+    indexes: "[PC Preview] unknown indexes",
+    mode: "[PC Preview] unknown mode",
+    skip: "[PC Preview] unknown skip"
+  };
+  const fieldnodeMock = {
+    default: "[PC Preview] unknown default",
+    nullable: "[PC Preview] unknown nullable",
+    type: "[PC Preview] unknown type"
+  };
   const valueTypeMock = {
     STRING: "[PC Preview] unknown STRING",
     INTEGER: "[PC Preview] unknown INTEGER",
@@ -284,17 +307,6 @@ export function mockDistributedData() {
     deleteEntries: new Array(entryMock),
     deviceId: "[PC Preview] unknown deviceId"
   };
-  const syncModeMock = {
-    PULL_ONLY: "[PC Preview] unknown PULL_ONLY",
-    PUSH_ONLY: "[PC Preview] unknown PUSH_ONLY",
-    PUSH_PULL: "[PC Preview] unknown PUSH_PULL"
-  };
-  const subscribeTypeMock = {
-    SUBSCRIBE_TYPE_LOCAL: "[PC Preview] unknown SUBSCRIBE_TYPE_LOCAL",
-    SUBSCRIBE_TYPE_REMOTE: "[PC Preview] unknown SUBSCRIBE_TYPE_REMOTE",
-    SUBSCRIBE_TYPE_ALL: "[PC Preview] unknown SUBSCRIBE_TYPE_ALL"
-  };
-
   const optionsMock = {
     createIfMissing: "[PC Preview] unknown createIfMissing",
     encrypt: "[PC Preview] unknown encrypt",
@@ -302,6 +314,7 @@ export function mockDistributedData() {
     autoSync: "[PC Preview] unknown autoSync",
     kvStoreType: "[PC Preview] unknown kvStoreType",
     securityLevel: "[PC Preview] unknown securityLevel",
+    schema: "[PC Preview] unknown schema"
   };
 
   const KVStoreClass = class KVStore {
@@ -354,6 +367,9 @@ export function mockDistributedData() {
         if (typeof args[len - 1] === 'function') {
           if (args[0] == 'dataChange') {
             args[len - 1].call(this, paramMock.businessErrorMock, changeNotificationMock)
+          } else if (args[0] === 'syncComplete') {
+            var array = new Array([paramMock.paramStringMock, paramMock.paramNumberMock]);
+            args[len - 1].call(this, array);
           }
         }
       };
@@ -365,6 +381,9 @@ export function mockDistributedData() {
         if (typeof args[len - 1] === 'function') {
           if (args[0] == 'dataChange') {
             args[len - 1].call(this, paramMock.businessErrorMock, changeNotificationMock)
+          } else if (args[0] === 'syncComplete') {
+            var array = new Array([paramMock.paramStringMock, paramMock.paramNumberMock]);
+            args[len - 1].call(this, array);
           }
         }
       };
