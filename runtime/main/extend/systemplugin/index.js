@@ -26,6 +26,7 @@ import {
 import { mockAppAbilityManager } from './ohos/app'
 
 import { mockBattery } from './battery'
+import { mockBrightness } from './brightness'
 import { mockOhosBluetooth } from './ohos/bluetooth'
 import { mockDistributedSchedule } from './distributedSchedule'
 import { mockFetch } from './fetch'
@@ -63,6 +64,7 @@ export function mockSystemPlugin() {
   mockSensor()
   mockGeolocation()
   mockBattery()
+  mockBrightness()
   mockSystemPackage()
   mockFeatureAbility()
   mockOhosBluetooth()
