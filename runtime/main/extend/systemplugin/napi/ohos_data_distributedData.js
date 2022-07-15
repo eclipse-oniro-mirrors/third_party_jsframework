@@ -314,7 +314,7 @@ export function mockDistributedData() {
     autoSync: "[PC Preview] unknown autoSync",
     kvStoreType: "[PC Preview] unknown kvStoreType",
     securityLevel: "[PC Preview] unknown securityLevel",
-    schema : "[PC Preview] unknown schema"
+    schema: "[PC Preview] unknown schema"
   };
 
   const KVStoreClass = class KVStore {
