@@ -70,7 +70,16 @@ export function mockMultimediaAudio() {
   }
   const AudioState = '[PC Preview] unknow AudioState'
   const AudioRendererRate = '[PC Preview] unknow AudioRendererRate'
-  const InterruptEvent = '[PC Preview] unknow InterruptEvent'
+  const InterruptEvent = {
+    eventType: "[PC Preview] unknow eventType",
+    forceType: "[PC Preview] unknow forceType",
+    hintType: "[PC Preview] unknow hintType",
+  }
+  const AudioInterrupt = {
+    streamUsage: "[PC Preview] unknow streamUsage",
+    contentType: "[PC Preview] unknow contentType",
+    pauseWhenDucked: "[PC Preview] unknow pauseWhenDucked",
+  }
   const AudioRendererChangeInfo = {
     streamId: "[PC Preview] unknow streamId",
     clientUid: "[PC Preview] unknow clientUid",
