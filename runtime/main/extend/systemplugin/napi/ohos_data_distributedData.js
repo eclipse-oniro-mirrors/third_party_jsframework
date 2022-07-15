@@ -229,13 +229,13 @@ export function mockDistributedData() {
       S4: 6,
     },
 
-    SyncMode :{
+    SyncMode: {
       PULL_ONLY: 0,
       PUSH_ONLY: 1,
       PUSH_PULL: 2,
     },
 
-    SubscribeType : {
+    SubscribeType: {
       SUBSCRIBE_TYPE_LOCAL: 0,
       SUBSCRIBE_TYPE_REMOTE: 1,
       SUBSCRIBE_TYPE_ALL: 2,
@@ -275,6 +275,17 @@ export function mockDistributedData() {
     MAX_QUERY_LENGTH: "[PC Preview] unknown MAX_QUERY_LENGTH",
     MAX_BATCH_SIZE: "[PC Preview] unknown MAX_BATCH_SIZE"
   };
+  const schemaMock = {
+    root: "[PC Preview] unknown root",
+    indexes: "[PC Preview] unknown indexes",
+    mode: "[PC Preview] unknown mode",
+    skip: "[PC Preview] unknown skip"
+  };
+  const fieldnodeMock = {
+    default: "[PC Preview] unknown default",
+    nullable: "[PC Preview] unknown nullable",
+    type: "[PC Preview] unknown type"
+  };
   const valueTypeMock = {
     STRING: "[PC Preview] unknown STRING",
     INTEGER: "[PC Preview] unknown INTEGER",
@@ -304,6 +315,7 @@ export function mockDistributedData() {
     autoSync: "[PC Preview] unknown autoSync",
     kvStoreType: "[PC Preview] unknown kvStoreType",
     securityLevel: "[PC Preview] unknown securityLevel",
+    schema: "[PC Preview] unknown schema"
   };
 
   const KVStoreClass = class KVStore {
@@ -356,6 +368,9 @@ export function mockDistributedData() {
         if (typeof args[len - 1] === 'function') {
           if (args[0] == 'dataChange') {
             args[len - 1].call(this, paramMock.businessErrorMock, changeNotificationMock)
+          } else if (args[0] === 'syncComplete') {
+            var array = new Array([paramMock.paramStringMock, paramMock.paramNumberMock]);
+            args[len - 1].call(this, array);
           }
         }
       };
@@ -367,6 +382,9 @@ export function mockDistributedData() {
         if (typeof args[len - 1] === 'function') {
           if (args[0] == 'dataChange') {
             args[len - 1].call(this, paramMock.businessErrorMock, changeNotificationMock)
+          } else if (args[0] === 'syncComplete') {
+            var array = new Array([paramMock.paramStringMock, paramMock.paramNumberMock]);
+            args[len - 1].call(this, array);
           }
         }
       };
