@@ -368,6 +368,9 @@ export function mockDistributedData() {
         if (typeof args[len - 1] === 'function') {
           if (args[0] == 'dataChange') {
             args[len - 1].call(this, paramMock.businessErrorMock, changeNotificationMock)
+          } else if (args[0] === 'syncComplete') {
+            var array = new Array([paramMock.paramStringMock, paramMock.paramNumberMock]);
+            args[len - 1].call(this, array);
           }
         }
       };
@@ -379,6 +382,9 @@ export function mockDistributedData() {
         if (typeof args[len - 1] === 'function') {
           if (args[0] == 'dataChange') {
             args[len - 1].call(this, paramMock.businessErrorMock, changeNotificationMock)
+          } else if (args[0] === 'syncComplete') {
+            var array = new Array([paramMock.paramStringMock, paramMock.paramNumberMock]);
+            args[len - 1].call(this, array);
           }
         }
       };
