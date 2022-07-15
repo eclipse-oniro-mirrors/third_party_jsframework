@@ -229,8 +229,6 @@ export function mockDistributedData() {
       S4: 6,
     },
 
-<<<<<<< HEAD
-=======
     SyncMode: {
       PULL_ONLY: 0,
       PUSH_ONLY: 1,
@@ -243,7 +241,6 @@ export function mockDistributedData() {
       SUBSCRIBE_TYPE_ALL: 2,
     },
 
->>>>>>> 21b6c42... api mock change
     createKVManager: function (...args) {
       console.warn("distributedData.createKVManager interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
@@ -310,17 +307,6 @@ export function mockDistributedData() {
     deleteEntries: new Array(entryMock),
     deviceId: "[PC Preview] unknown deviceId"
   };
-  const syncModeMock = {
-    PULL_ONLY: "[PC Preview] unknown PULL_ONLY",
-    PUSH_ONLY: "[PC Preview] unknown PUSH_ONLY",
-    PUSH_PULL: "[PC Preview] unknown PUSH_PULL"
-  };
-  const subscribeTypeMock = {
-    SUBSCRIBE_TYPE_LOCAL: "[PC Preview] unknown SUBSCRIBE_TYPE_LOCAL",
-    SUBSCRIBE_TYPE_REMOTE: "[PC Preview] unknown SUBSCRIBE_TYPE_REMOTE",
-    SUBSCRIBE_TYPE_ALL: "[PC Preview] unknown SUBSCRIBE_TYPE_ALL"
-  };
-
   const optionsMock = {
     createIfMissing: "[PC Preview] unknown createIfMissing",
     encrypt: "[PC Preview] unknown encrypt",
