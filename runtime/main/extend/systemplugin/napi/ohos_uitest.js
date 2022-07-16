@@ -74,63 +74,63 @@ const ByMockClass = class ByMock {
     console.warn('uitest.By.constructor' + warnMessage);
     this.id = function(...args) {
       console.warn('uitest.By.id' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.text = function(...args) {
       console.warn('uitest.By.text' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.key = function(...args) {
       console.warn('uitest.By.key' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.type = function(...args) {
       console.warn('uitest.By.type' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.enabled = function(...args) {
       console.warn('uitest.By.enabled' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.focused = function(...args) {
       console.warn('uitest.By.focused' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.selected = function(...args) {
       console.warn('uitest.By.selected' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.clickable = function(...args) {
       console.warn('uitest.By.clickable' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.enabled = function(...args) {
       console.warn('uitest.By.enabled' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.longClickable = function(...args) {
       console.warn('uitest.By.longClickable' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.scrollable = function(...args) {
       console.warn('uitest.By.scrollable' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.checkable = function(...args) {
       console.warn('uitest.By.checkable' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.checked = function(...args) {
       console.warn('uitest.By.checked' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.isBefore = function(...args) {
       console.warn('uitest.By.isBefore' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
     this.isAfter = function(...args) {
       console.warn('uitest.By.isAfter' + warnMessage)
-      return new BYMock()
+      return new ByMock()
     };
   }
 }
@@ -492,7 +492,7 @@ export function mockUiTest() {
     Point: PointMockClass,
     Rect: RectMockClass,
     WindowFilter: WindowFilterMockClass,
-    BY: ByMockClass,
+    BY: new ByMockClass(),
     UiDriver: UiDriverClass,
     UiComponent: UiComponentClass,
     UiWindow: UiWindowClass
