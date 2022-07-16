@@ -60,7 +60,7 @@ export function mockScreenLock() {
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'beginWakeUp' || args[0] == 'endWakeUp' || args[0] == 'beginScreenOn' || args[0] == 'endScreenOn'
            || args[0] == 'beginScreenOff' || args[0] == 'endScreenOff' || args[0] == 'unlockScreen' || args[0] == 'beginExitAnimation') {
-          args[len - 1].call(this, paramMock.businessErrorMock);
+          args[len - 1].call(this);
         } else if (args[0] == 'beginSleep' || args[0] == 'endSleep' || args[0] == 'changeUser') {
           args[len - 1].call(this, paramMock.paramNumberMock);
         } else if (args[0] == 'screenlockEnabled') {
@@ -76,7 +76,7 @@ export function mockScreenLock() {
         if (args[0] == 'beginWakeUp' || args[0] == 'endWakeUp' || args[0] == 'beginScreenOn' || args[0] == 'endScreenOn'
          || args[0] == 'beginScreenOff' || args[0] == 'endScreenOff' || args[0] == 'unlockScreen' || args[0] == 'beginExitAnimation'
          || args[0] == 'screenlockEnabled' || args[0] == 'beginSleep' || args[0] == 'endSleep' || args[0] == 'changeUser') {
-          args[len - 1].call(this, paramMock.businessErrorMock);
+          args[len - 1].call(this);
         }
       }
     },
