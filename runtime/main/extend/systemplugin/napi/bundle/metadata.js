@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,15 +13,8 @@
  * limitations under the License.
  */
 
-import { paramMock } from "../../utils"
-import { ApplicationInfo } from './applicationInfo';
-import { ElementName } from './elementName'
-
-export const LauncherAbilityInfo = {
-    applicationInfo: ApplicationInfo,
-    elementName: ElementName,
-    labelId: "[PC preview] unknown labelId",
-    iconId: "[PC preview] unknown iconId",
-    userId: "[PC preview] unknown userId",
-    installTime: "[PC preview] unknown installTime",
+export const Metadata = {
+    name: "[PC preview] unknown name",
+    value: "[PC preview] unknown value",
+    resource: "[PC preview] unknown resource",
 }
