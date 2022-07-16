@@ -350,7 +350,7 @@ export function mockInputMethodEngine() {
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'keyDown' || args[0] == 'keyUp') {
-          args[len - 1].call(this, paramMock.paramObjectMock);
+          args[len - 1].call(this, KeyEvent);
         } else if (args[0] == 'selectionChange') {
           args[len - 1].call(this, paramMock.paramNumberMock, paramMock.paramNumberMock, paramMock.paramNumberMock, paramMock.paramNumberMock);
         } else if (args[0] == 'cursorContextChange') {
