@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,36 +14,6 @@
  */
 
 import { paramMock } from "../utils"
-
-const NOTIFY = "[PC Preview] unknow"
-const Properties = [
-  'ENTER_KEY_TYPE_NEXT',
-  'ENTER_KEY_TYPE_PREVIOUS',
-  'ENTER_KEY_TYPE_UNSPECIFIED',
-  'ENTER_KEY_TYPE_SEARCH',
-  'ENTER_KEY_TYPE_GO',
-  'ENTER_KEY_TYPE_SEND',
-  'ENTER_KEY_TYPE_DONE',
-  'DISPLAY_MODE_PART',
-  'DISPLAY_MODE_FULL',
-  'OPTION_AUTO_CAP_CHARACTERS',
-  'OPTION_AUTO_CAP_WORDS',
-  'OPTION_AUTO_CAP_SENTENCES',
-  'OPTION_NO_FULLSCREEN',
-  'OPTION_ASCII',
-  'OPTION_NONE',
-  'OPTION_MULTI_LINE',
-  'FLAG_SINGLE_LINE',
-  'FLAG_SELECTING',
-  'PATTERN_TEXT',
-  'PATTERN_NUMBER',
-  'PATTERN_NULL',
-  'PATTERN_PHONE',
-  'PATTERN_DATETIME',
-  'PATTERN_URI',
-  'PATTERN_EMAIL',
-  'PATTERN_PASSWORD'
-]
 
 export function mockInputMethodEngine() {
   const EditingText = {
@@ -64,6 +34,10 @@ export function mockInputMethodEngine() {
     inputPattern: 1,
     enterKeyType: 2,
     inputOption: 3
+  }
+  const KeyEvent = {
+    keyCode: 1,
+    keyAction: 2,
   }
   const RichContent = {
     contentURI: "[PC Preview] unknow contentURI",
@@ -376,7 +350,7 @@ export function mockInputMethodEngine() {
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'keyDown' || args[0] == 'keyUp') {
-          args[len - 1].call(this, paramMock.paramObjectMock);
+          args[len - 1].call(this, KeyEvent);
         } else if (args[0] == 'selectionChange') {
           args[len - 1].call(this, paramMock.paramNumberMock, paramMock.paramNumberMock, paramMock.paramNumberMock, paramMock.paramNumberMock);
         } else if (args[0] == 'cursorContextChange') {
@@ -413,11 +387,33 @@ export function mockInputMethodEngine() {
       console.warn("inputMethodEngine.createKeyboardDelegate interface mocked in the Previewer. How this interface works" +
         " on the Previewer may be different from that on a real device.")
       return KeyboardDelegateMock;
-    }
-  }
-
-  for (let Property of Properties) {
-    inputMethodEngine[Property] = NOTIFY + " " + Property
+    },
+    ENTER_KEY_TYPE_UNSPECIFIED: "[PC Preview] unknow ENTER_KEY_TYPE_UNSPECIFIED",
+    ENTER_KEY_TYPE_GO: "[PC Preview] unknow ENTER_KEY_TYPE_GO",
+    ENTER_KEY_TYPE_SEARCH: "[PC Preview] unknow ENTER_KEY_TYPE_SEARCH",
+    ENTER_KEY_TYPE_SEND: "[PC Preview] unknow ENTER_KEY_TYPE_SEND",
+    ENTER_KEY_TYPE_NEXT: "[PC Preview] unknow ENTER_KEY_TYPE_NEXT",
+    ENTER_KEY_TYPE_DONE: "[PC Preview] unknow ENTER_KEY_TYPE_DONE",
+    ENTER_KEY_TYPE_PREVIOUS: "[PC Preview] unknow ENTER_KEY_TYPE_PREVIOUS",
+    PATTERN_NULL: "[PC Preview] unknow PATTERN_NULL",
+    PATTERN_TEXT: "[PC Preview] unknow PATTERN_TEXT",
+    PATTERN_NUMBER: "[PC Preview] unknow PATTERN_NUMBER",
+    PATTERN_PHONE: "[PC Preview] unknow PATTERN_PHONE",
+    PATTERN_DATETIME: "[PC Preview] unknow PATTERN_DATETIME",
+    PATTERN_EMAIL: "[PC Preview] unknow PATTERN_EMAIL",
+    PATTERN_URI: "[PC Preview] unknow PATTERN_URI",
+    PATTERN_PASSWORD: "[PC Preview] unknow PATTERN_PASSWORD",
+    FLAG_SELECTING: "[PC Preview] unknow FLAG_SELECTING",
+    FLAG_SINGLE_LINE: "[PC Preview] unknow FLAG_SINGLE_LINE",
+    DISPLAY_MODE_PART: "[PC Preview] unknow DISPLAY_MODE_PART",
+    DISPLAY_MODE_FULL: "[PC Preview] unknow DISPLAY_MODE_FULL",
+    OPTION_ASCII: "[PC Preview] unknow OPTION_ASCII",
+    OPTION_NONE: "[PC Preview] unknow OPTION_NONE",
+    OPTION_AUTO_CAP_CHARACTERS: "[PC Preview] unknow OPTION_AUTO_CAP_CHARACTERS",
+    OPTION_AUTO_CAP_SENTENCES: "[PC Preview] unknow OPTION_AUTO_CAP_SENTENCES",
+    OPTION_AUTO_WORDS: "[PC Preview] unknow OPTION_AUTO_WORDS",
+    OPTION_MULTI_LINE: "[PC Preview] unknow OPTION_MULTI_LINE",
+    OPTION_NO_FULLSCREEN: "[PC Preview] unknow OPTION_NO_FULLSCREEN"
   }
   return inputMethodEngine
 }
