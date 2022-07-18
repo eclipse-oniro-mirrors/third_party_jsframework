@@ -12,11 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { NotificationUserInput } from "./notificationUserInput"
 
-export const NotificationActionButton = {
-    title: '[PC preview] unknow title',
-    wantAgent: '[PC preview] unknow wantAgent',
-    extras: {"key": "unknown any"},
-    userInput: NotificationUserInput,
+import { paramMock } from "../../utils"
+import { mockDataAbility } from "../ohos_data_dataAbility"
+
+export const DataAbilityOperation = {
+  uri: "[PC Preview] unknow uri",
+  type: {
+    TYPE_INSERT: 1,
+    TYPE_UPDATE: 2,
+    TYPE_DELETE: 3,
+    TYPE_ASSERT: 4
+  },
+  valuesBucket: {key:{}},
+  valueBackReferences: {key:{}},
+  predicates: mockDataAbility().DataAbilityPredicates,
+  predicatesBackReferences: new Map([[paramMock.paramNumberMock, paramMock.paramNumberMock]]),
+  interrupted: "[PC Preview] unknow interrupted",
+  expectedCount: "[PC Preview] unknow expectedCount"
 }

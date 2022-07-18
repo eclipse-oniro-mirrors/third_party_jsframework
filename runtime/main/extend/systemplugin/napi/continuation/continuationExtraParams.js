@@ -23,5 +23,5 @@ export const ContinuationExtraParams = {
     description: "[PC Preview] unknow description",
     filter: "[PC Preview] unknow filter",
     continuationMode: ContinuationMode,
-    authInfo: {}
+    authInfo: {"key":"unknow any"}
 }

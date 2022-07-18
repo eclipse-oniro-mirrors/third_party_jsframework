@@ -28,6 +28,7 @@ import { mockServiceExtensionAbility } from './ohos_application_ServiceExtension
 import { mockAbilityStage } from './ohos_application_AbilityStage'
 import { mockFormBindingData } from './ohos_application_formBindingData'
 import { mockAbilityManager } from './ohos_application_abilityManager'
+import { mockParticleAbility } from './ohos_ability_particleAbility'
 import { mockAppManager } from './ohos_application_appManager'
 import { mockDataShareExtensionAbility } from './ohos_application_DataShareExtensionAbility'
 import { mockMissionManager } from "./ohos_application_missionManager"
@@ -276,6 +277,8 @@ export function mockRequireNapiFun() {
         return mockSystemParameter();
       case "ability.dataUriUtils":
         return mockDataUriUtils();
+      case "ability.particleAbility":
+        return mockParticleAbility();
       case "ability.featureAbility":
         return mockFeatureAbility();
       case "application.Ability":

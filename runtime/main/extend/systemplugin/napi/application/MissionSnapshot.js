@@ -12,11 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { NotificationUserInput } from "./notificationUserInput"
 
-export const NotificationActionButton = {
-    title: '[PC preview] unknow title',
-    wantAgent: '[PC preview] unknow wantAgent',
-    extras: {"key": "unknown any"},
-    userInput: NotificationUserInput,
+import { PixelMapMock } from "../../multimedia"
+
+const ElementName = {
+    deviceId: '[PC preview] unknown deviceId',
+    bundleName: '[PC preview] unknown bundleName',
+    abilityName: '[PC preview] unknown abilityName',
+    uri: '[PC preview] unknown uri',
+    shortName: '[PC preview] unknown shortName',
+    moduleName: '[PC preview] unknown moduleName'
+}
+
+export const MissionSnapshot = {
+    abality: ElementName,
+    snapshot: PixelMapMock
 }

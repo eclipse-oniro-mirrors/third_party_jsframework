@@ -12,14 +12,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { paramMock } from "../../utils"
 
-export const CommonEventPublishData = {
+const ElementName = {
+    deviceId: '[PC preview] unknow deviceId',
     bundleName: '[PC preview] unknow bundleName',
-    code: '[PC preview] unknow code',
-    data: '[PC preview] unknow data',
-    subscriberPermissions: [paramMock.paramStringMock],
-    isOrdered: '[PC preview] unknow isOrdered',
-    isSticky: '[PC preview] unknow isSticky',
-    parameters: {"key": "unknown any"},
+    abilityName: '[PC preview] unknow abilityName',
+    uri: '[PC preview] unknow uri',
+    shortName: '[PC preview] unknow shortName',
+    moduleName: '[PC preview] unknow moduleName'
+}
+const AbilityState = {
+    INITIAL: 0,
+    FOREGROUND: 9,
+    BACKGROUND: 10,
+    FOREGROUNDING: 11,
+    BACKGROUNDING: 12
+}
+
+export const AbilityRunningInfo = {
+    ability: ElementName,
+    pid: '[PC preview] unknow pid',
+    uid: '[PC preview] unknow uid',
+    processName: '[PC preview] unknow processName',
+    startTime: '[PC preview] unknow startTime',
+    abilityState: AbilityState
 }
