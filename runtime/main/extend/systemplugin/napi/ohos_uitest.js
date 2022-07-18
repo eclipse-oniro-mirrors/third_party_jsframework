@@ -45,28 +45,22 @@ export const WindowMode = {
 }
 
 export const Point = {
-  constructor() {
     X: '[PC Preview] unknown X';
     Y: '[PC Preview] unknown Y';
-  }
 }
 
 export const Rect = {
-  constructor() {
     leftX: '[PC Preview] unknown leftX';
     topY: '[PC Preview] unknown topY';
     rightX: '[PC Preview] unknown rightX';
     bottomY: '[PC Preview] unknown bottomY';
-  }
 }
 
 export const WindowFilter = {
-  constructor() {
     bundleName: '[PC Preview] unknown bundleName';
     title: '[PC Preview] unknown title';
     focused: '[PC Preview] unknown focused';
     actived: '[PC Preview] unknown actived';
-  }
 }
 
 const ByClass = class ByMock {
