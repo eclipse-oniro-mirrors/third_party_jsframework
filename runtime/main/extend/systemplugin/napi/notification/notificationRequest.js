@@ -50,7 +50,7 @@ export const NotificationRequest = {
     creatorUserId: '[PC preview] unknow creatorUserId',
     classification: '[PC preview] unknow classification',
     hashCode: '[PC preview] unknow hashCode',
-    isRemveAllowd: '[PC preview] unknow isRemveAllowd',
+    isRemoveAllowed: '[PC preview] unknow isRemveAllowd',
     source: '[PC preview] unknow source',
     template: NotificationTemplate,
     distributedOption: DistributedOptions,
