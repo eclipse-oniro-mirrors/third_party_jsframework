@@ -23,60 +23,94 @@ export function mockDataShareExtensionAbility() {
       console.warn('application.DataShareExtensionAbility interface mocked in the Previewer. How this interface works on' +
         ' the Previewer may be different from that on a real device.');
       this.context = new ExtensionContextClass();
-      this.onCreate = function () {
+      this.onCreate = function (...args) {
         console.warn("application.DataShareExtensionAbility.onCreate interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-      };
-      this.getFileTypes = function () {
+        " may be different from that on a real device.")
+        const len = args.length
+        if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock)
+        }
+      },
+      this.getFileTypes = function (...args) {
         console.warn("application.DataShareExtensionAbility.getFileTypes interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-        return [paramMock.paramStringMock];
-      };
-       this.openFile = function () {
+        " may be different from that on a real device.")
+        const len = args.length
+        if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock,[paramMock.paramStringMock])
+        }
+      },
+      this.openFile = function (...args) {
         console.warn("application.DataShareExtensionAbility.openFile interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-        return paramMock.paramNumberMock;
-      };
-      this.insert = function () {
+        " may be different from that on a real device.")
+        const len = args.length
+        if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+        }
+      },
+      this.insert = function (...args) {
         console.warn("application.DataShareExtensionAbility.insert interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-        return paramMock.paramNumberMock;
-      };
-      this.update = function () {
+        " may be different from that on a real device.")
+        const len = args.length
+        if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+        }
+      },
+      this.update = function (...args) {
         console.warn("application.DataShareExtensionAbility.update interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-        return paramMock.paramNumberMock;
-      };
-      this.delete = function () {
+        " may be different from that on a real device.")
+        const len = args.length
+        if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+        }
+      },
+      this.delete = function (...args) {
         console.warn("application.DataShareExtensionAbility.delete interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-        return paramMock.paramNumberMock;
-      };
-      this.query = function () {
+        " may be different from that on a real device.")
+        const len = args.length
+        if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+        }
+      },
+      this.query = function (...args) {
         console.warn("application.DataShareExtensionAbility.query interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-        return DataShareResultSetMock;
-      };
-      this.getType = function () {
+        " may be different from that on a real device.")
+        const len = args.length
+        if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
+        }
+      },
+      this.getType = function (...args) {
         console.warn("application.DataShareExtensionAbility.getType interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-        return paramMock.paramStringMock;
-      };
-      this.batchInsert = function () {
+        " may be different from that on a real device.")
+        const len = args.length
+        if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
+        }
+      },
+      this.batchInsert = function (...args) {
         console.warn("application.DataShareExtensionAbility.batchInsert interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-        return paramMock.paramNumberMock;
-      };
-      this.normalizeUri = function () {
+        " may be different from that on a real device.")
+        const len = args.length
+        if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
+        }
+      },
+      this.normalizeUri = function (...args) {
         console.warn("application.DataShareExtensionAbility.normalizeUri interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-        return paramMock.paramStringMock;
-      };
-      this.denormalizeUri = function () {
+        " may be different from that on a real device.")
+        const len = args.length
+        if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock)
+        }
+      },
+      this.denormalizeUri = function (...args) {
         console.warn("application.DataShareExtensionAbility.denormalizeUri interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-        return paramMock.paramStringMock;
-      };
+        " may be different from that on a real device.")
+        const len = args.length
+        if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock)
+        }
+      }    
     }
   }
   return DataShareExtensionAbilityClass;
