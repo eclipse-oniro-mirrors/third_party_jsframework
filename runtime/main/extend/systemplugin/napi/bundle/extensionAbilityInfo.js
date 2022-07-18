@@ -14,6 +14,10 @@
  */
 
 import { paramMock } from "../../utils"
+import { ApplicationInfo } from './applicationInfo';
+import { Metadata } from './metadata'
+import { ExtensionAbilityType } from "./../ohos_bundle"
+
 
 export const ExtensionAbilityInfo = {
     bundleName: "[PC preview] unknown bundleName",
@@ -23,75 +27,10 @@ export const ExtensionAbilityInfo = {
     descriptionId: "[PC preview] unknown descriptionId",
     iconId: "[PC preview] unknown iconId",
     isVisible: "[PC preview] unknown isVisible",
-    extensionAbilityType: {
-        FORM: 0,
-        WORK_SCHEDULER: 1,
-        INPUT_METHOD: 2,
-        SERVICE: 3,
-        ACCESSIBILITY: 4,
-        DATA_SHARE: 5,
-        FILE_SHARE: 6,
-        STATIC_SUBSCRIBER: 7,
-        WALLPAPER: 8,
-        BACKUP: 9,
-        WINDOW: 10,
-        ENTERPRISE_ADMIN: 11,
-        UNSPECIFIED: 20,
-    },
-    metadata: [{
-        name: "[PC preview] unknown name",
-        value: "[PC preview] unknown value",
-        resource: "[PC preview] unknown resource",
-    }],
+    extensionAbilityType: ExtensionAbilityType,
+    metadata: [Metadata],
     permissions: [paramMock.paramStringMock],
-    applicationInfo: {
-        packageName: "[PC preview] unknown packageName",
-        description: "[PC preview] unknown description",
-        descriptionId: "[PC preview] unknown descriptionId",
-        enabled: "[PC preview] unknown enabled",
-        systemApp: "[PC preview] unknown systemApp",
-        className: "[PC preview] unknown className",
-        name: "[PC preview] unknown name",
-        label: "[PC preview] unknown label",
-        labelId: "[PC preview] unknown labelId",
-        icon: "[PC preview] unknown icon",
-        iconId: "[PC preview] unknown iconId",
-        process: "[PC preview] unknown process",
-        moduleSourceDirs: [paramMock.paramStringMock],
-        permissions: [paramMock.paramStringMock],
-        moduleInfos: [{
-            moduleName: "[PC preview] unknown moduleName",
-            moduleSourceDir: "[PC preview] unknown moduleSourceDir",
-        }],
-        entryDir: "[PC preview] unknown entryDir",
-        codePath: "[PC preview] unknown codePath",
-        metaData: [{
-            name: "[PC preview] unknown name",
-            value: "[PC preview] unknown value",
-            extra: "[PC preview] unknown extra",
-        }],
-        metadata: [{
-            name: "[PC preview] unknown name",
-            value: "[PC preview] unknown value",
-            resource: "[PC preview] unknown resource",
-        }],
-        removable: "[PC preview] unknown removable",
-        accessTokenId: "[PC preview] unknown accessTokenId",
-        uid: "[PC preview] unknown uid",
-        entityType: "[PC preview] unknown entityType",
-        fingerprint: "[PC preview] unknown fingerprint",
-        iconResource: "[PC preview] unknown iconResource",
-        labelResource: "[PC preview] unknown labelResource",
-        descriptionResource: "[PC preview] unknown descriptionResource",
-        appDistributionType: "[PC preview] unknown appDistributionType",
-        appProvisionType: "[PC preview] unknown appProvisionType",
-        supportedModes: "[PC preview] unknown supportedModes",
-    },
-    metadata: [{
-        name: "[PC preview] unknown name",
-        value: "[PC preview] unknown value",
-        resource: "[PC preview] unknown resource",
-    }],
+    applicationInfo: ApplicationInfo,
     enabled: "[PC preview] unknown enabled",
     readPermission: "[PC preview] unknown readPermission",
     writePermission: "[PC preview] unknown writePermission",

@@ -19,7 +19,7 @@ export const MemLevel = {
 };
 export const ErrorCode = {
   ERROR_CODE_OK: 0,
-  ERROR_CODE_ERRND: -1,
+  ERROR_CODE_ERRNO: -1,
 };
 export const CompressLevel = {
   COMPRESS_LEVEL_NO_COMPRESSION: 0,
@@ -34,6 +34,11 @@ export const CompressStrategy = {
   COMPRESS_STRATEGY_RLE: 3,
   COMPRESS_STRATEGY_FIXED: 4
 };
+export const Options = {
+  level: CompressLevel,
+  memLevel: MemLevel,
+  strategy: CompressStrategy,
+};
 export function mockZlib() {
   const zlib = {
     ErrorCode,
@@ -45,6 +50,7 @@ export function mockZlib() {
       memLevel: MemLevel,
       strategy: CompressStrategy,
     },
+    
     zipFile(...args) {
       console.warn("zlib.zipFile interface mocked in the Previewer. How this interface works on the Previewer may be different from that on a real device.")
       return new Promise((resolve, reject) => {

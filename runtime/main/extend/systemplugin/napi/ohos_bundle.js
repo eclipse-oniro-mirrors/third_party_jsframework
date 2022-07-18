@@ -14,12 +14,102 @@
  */
 
 import { paramMock } from "../utils"
-import { BundleInfo, BundlePackInfo, PixelMapFormat} from './bundle/bundleInfo'
+import { BundleInfo, PixelMapFormat } from './bundle/bundleInfo'
+import { BundlePackInfo } from './bundle/packInfo'
 import { DispatchInfo } from './bundle/dispatchInfo'
 import { ApplicationInfo, Want } from './bundle/applicationInfo'
 import { AbilityInfo } from './bundle/abilityInfo'
-import { PermissionDef } from './bundle/permissionDef'
+import { PermissionDef } from './bundle/PermissionDef'
 import { ExtensionAbilityInfo } from './bundle/extensionAbilityInfo'
+
+export const BundleFlag = {
+    GET_BUNDLE_DEFAULT: 0x00000000,
+    GET_BUNDLE_WITH_ABILITIES: 0x00000001,
+    GET_ABILITY_INFO_WITH_PERMISSION: 0x00000002,
+    GET_ABILITY_INFO_WITH_APPLICATION: 0x00000004,
+    GET_APPLICATION_INFO_WITH_PERMISSION: 0x00000008,
+    GET_BUNDLE_WITH_REQUESTED_PERMISSION: 0x00000010,
+    GET_ALL_APPLICATION_INFO: 0xFFFF0000,
+    GET_ABILITY_INFO_WITH_METADATA: 0x00000020,
+    GET_BUNDLE_WITH_EXTENSION_ABILITY: 0x00000020,
+    GET_BUNDLE_WITH_HASH_VALUE: 0x00000030,
+    GET_APPLICATION_INFO_WITH_METADATA: 0x00000040,
+    GET_ABILITY_INFO_SYSTEMAPP_ONLY: 0x00000080,
+    GET_ABILITY_INFO_WITH_DISABLE: 0x00000100,
+    GET_APPLICATION_INFO_WITH_DISABLE: 0x00000200,
+    GET_APPLICATION_INFO_WITH_CERTIFICATE_FINGERPRINT: 0x00000400,
+}
+
+export const ExtensionFlag = {
+    GET_EXTENSION_INFO_DEFAULT: 0x00000000,
+    GET_EXTENSION_INFO_WITH_PERMISSION: 0x00000002,
+    GET_EXTENSION_INFO_WITH_APPLICATION: 0x00000004,
+    GET_EXTENSION_INFO_WITH_METADATA: 0x00000020,
+}
+
+export const ColorMode = {
+    AUTO_MODE: -1,
+    DARK_MODE: 0,
+    LIGHT_MODE: 1,
+}
+
+export const GrantStatus = {
+    PERMISSION_DENIED: -1,
+    PERMISSION_GRANTED: 0,
+}
+
+export const AbilityType = {
+    UNKNOWN: 0,
+    PAGE: 1,
+    SERVICE: 2,
+    DATA: 3,
+}
+
+export const AbilitySubType = {
+    UNSPECIFIED: 0,
+    CA: 1,
+}
+
+export const DisplayOrientation = {
+    UNSPECIFIED: 0,
+    LANDSCAPE: 0,
+    PORTRAIT: 1,
+    FOLLOW_RECENT: 2,
+    LANDSCAPE_INVERTED: 3,
+    PORTRAIT_INVERTED: 4,
+    AUTO_ROTATION: 5,
+    AUTO_ROTATION_LANDSCAPE: 6,
+    AUTO_ROTATION_PORTRAIT: 7,
+    AUTO_ROTATION_RESTRICTED: 8,
+    AUTO_ROTATION_LANDSCAPE_RESTRICTED: 9,
+    AUTO_ROTATION_PORTRAIT_RESTRICTED: 10,
+    LOCKED: 11,
+}
+
+export const LaunchMode = {
+    SINGLETON: 0,
+    STANDARD: 1,
+}
+
+export const ExtensionAbilityType = {
+    FORM: 0,
+    WORK_SCHEDULER: 1,
+    INPUT_METHOD: 2,
+    SERVICE: 3,
+    ACCESSIBILITY: 4,
+    DATA_SHARE: 5,
+    FILE_SHARE: 6,
+    STATIC_SUBSCRIBER: 7,
+    WALLPAPER: 8,
+    BACKUP: 9,
+    WINDOW: 10,
+    ENTERPRISE_ADMIN: 11,
+    UNSPECIFIED: 20,
+}
+
+export const BundleOptions = {
+    userId: "[PC preview] unknown userId",
+}
 
 export const InstallErrorCode = {
     SUCCESS: 0,
@@ -32,16 +122,28 @@ export const InstallErrorCode = {
     STATUS_UNINSTALL_FAILURE: 7,
     STATUS_UNINSTALL_FAILURE_BLOCKED: 8,
     STATUS_UNINSTALL_FAILURE_ABORTED: 9,
-    STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT: 10,
-    STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED: 0x0B,
-    STATUS_RECOVER_FAILURE_INVALID: 0x0C,
-    STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED: 0x0D,
+    STATUS_UNINSTALL_FAILURE_CONFLICT: 10,
+    STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT: 0x0B,
+    STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED: 0x0C,
+    STATUS_RECOVER_FAILURE_INVALID: 0x0D,
     STATUS_ABILITY_NOT_FOUND: 0x40,
     STATUS_BMS_SERVICE_ERROR: 0x41,
     STATUS_FAILED_NO_SPACE_LEFT: 0x42,
     STATUS_GRANT_REQUEST_PERMISSIONS_FAILED: 0x43,
     STATUS_INSTALL_PERMISSION_DENIED: 0x44,
     STATUS_UNINSTALL_PERMISSION_DENIED: 0x45,
+}
+
+export const UpgradeFlag = {
+    NOT_UPGRADE: 0,
+    SINGLE_UPGRADE: 1,
+    RELATION_UPGRADE: 2,
+}
+
+export const SupportWindowMode = {
+    FULL_SCREEN: 0,
+    SPLIT: 1,
+    FLOATING: 2,
 }
 
 export function mockBundle() {

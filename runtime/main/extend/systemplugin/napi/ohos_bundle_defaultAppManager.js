@@ -16,6 +16,17 @@
 import { paramMock } from "../utils"
 import { BundleInfo } from './bundle/bundleInfo'
 
+export const ApplicationType = {
+    BROWSER: "BROWSER",
+    IMAGE: "IMAGE",
+    AUDIO: "AUDIO",
+    VIDEO: "VIDEO",
+    PDF: "PDF",
+    WORD: "WORD",
+    EXCEL: "EXCEL",
+    PPT: "PPT",
+  };
+
 export function mockDefaultAppManager() {
     const defaultAppManager = {
         isDefaultApplication: function(...args){
