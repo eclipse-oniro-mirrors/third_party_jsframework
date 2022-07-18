@@ -14,19 +14,27 @@
  */
 
 import { paramMock } from "../utils"
-import {VolumeMock} from './volume/volumeInfo'
 
 export function mockVolumeManager() {
+  const Volume = {
+    id: '[PC preview] unknow id',
+    uuid: '[PC preview] unknow uuid',
+    description: '[PC preview] unknow description',
+    removeAble: '[PC preview] unknow removeAble', 
+    path: '[PC preview] unknow path', 
+    state: '[PC preview] unknow state' 
+  };
   const volumeManager = {
+    Volume: Volume,
     getAllVolumes: function (...args) {
       console.warn("volumeManager.getAllVolumes interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, Array(VolumeMock));
+        args[len - 1].call(this, paramMock.businessErrorMock, Array(Volume));
       } else {
         return new Promise((resolve, reject) => {
-          resolve(Array(VolumeMock));
+          resolve(Array(Volume));
         })
       }
     },
@@ -54,6 +62,66 @@ export function mockVolumeManager() {
         })
       }
     },
+    getVolumeByUuid: function (...args) {
+      console.warn("volumeManager.getVolumeByUuid interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, Volume);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(Volume);
+        })
+      }
+    },
+    getVolumeById: function (...args) {
+      console.warn("volumeManager.getVolumeById interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, Volume);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(Volume);
+        })
+      }
+    },
+    setVolumeDescription: function (...args) {
+      console.warn("volumeManager.setVolumeDescription interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    format: function (...args) {
+      console.warn("volumeManager.format interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    partition: function (...args) {
+      console.warn("volumeManager.partition interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.");
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    }
   }
   return volumeManager;
 }
