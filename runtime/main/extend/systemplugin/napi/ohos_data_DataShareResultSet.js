@@ -20,10 +20,6 @@ export const DataShareResultSetMock = {
   columnCount: "[PC Preview] unknow columnCount",
   rowCount: "[PC Preview] unknow rowCount",
   rowIndex: "[PC Preview] unknow rowIndex",
-  goToFirstRow: "[PC Preview] unknow goToFirstRow",
-  goToLastRow: "[PC Preview] unknow goToLastRow",
-  goToNextRow: "[PC Preview] unknow goToNextRow",
-  goToPreviousRow: "[PC Preview] unknow goToPreviousRow",
   isEnded: "[PC Preview] unknow isEnded",
   isStarted: "[PC Preview] unknow isStarted",
   isClosed: "[PC Preview] unknow isClosed",
@@ -98,7 +94,7 @@ export const DataShareResultSetMock = {
     return paramMock.paramNumberMock;
   },
   close: function () {
-    console.warn("ResultSet.isColumnNull interface mocked in the Previewer. How this interface works on the Previewer" +
+    console.warn("ResultSet.close interface mocked in the Previewer. How this interface works on the Previewer" +
       " may be different from that on a real device.")
   }
 }
