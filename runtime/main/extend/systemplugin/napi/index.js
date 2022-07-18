@@ -154,7 +154,6 @@ import { mockScreen } from './ohos_screen'
 import { mockDistributedBundle } from './ohos_distributedBundle'
 import { mockInputConsumer } from './ohos_multimodalInput_inputConsumer'
 import { mockDocument } from './ohos_document'
-import { mockMediaQuery } from './ohos_mediaquery'
 import { mockResourceManager } from './ohos_resourceManager'
 import { mockFile } from './system_file'
 import { mockEnterpriseDeviceManager } from './ohos_enterpriseDeviceManager'
@@ -176,8 +175,6 @@ export function mockRequireNapiFun() {
         return mockUiAppearance();
       case "resourceManager":
         return mockResourceManager();
-      case "mediaquery":
-        return mockMediaQuery();
       case "document":
         return mockDocument();
       case "screen":
