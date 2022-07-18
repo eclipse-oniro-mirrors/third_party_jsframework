@@ -19,7 +19,7 @@ const warnMessage =
     ' interface mocked in the Previewer. How this interface works on the' +
     ' Previewer may be different from that on a real device.'
 
-export const ResizeDirectionMock = {
+export const ResizeDirection = {
   LEFT: 0,
   RIGHT: 1,  
   UP: 2,
@@ -30,28 +30,28 @@ export const ResizeDirectionMock = {
   RIGHT_DOWN: 7
 }
 
-export const MatchPatternMock = {
+export const MatchPattern = {
   EQUALS: 0,
   CONTAINS: 1,
   STARTS_WITH: 2,
   ENDS_WITH: 3
 }
 
-export const WindowModeMock = {
+export const WindowMode = {
   FULLSCREEN: 0,
   PRIMARY: 1,
   SECONDARY: 2,
   FLOATING: 3
 }
 
-const PointMockClass = class PointMock {
+export const Point = {
   constructor() {
     X: '[PC Preview] unknown X';
     Y: '[PC Preview] unknown Y';
   }
 }
 
-const  RectMockClass = class RectMock {
+export const Rect = {
   constructor() {
     leftX: '[PC Preview] unknown leftX';
     topY: '[PC Preview] unknown topY';
@@ -60,7 +60,7 @@ const  RectMockClass = class RectMock {
   }
 }
 
-const WindowFilterMockClass = class WindowFilterMock {
+export const WindowFilter = {
   constructor() {
     bundleName: '[PC Preview] unknown bundleName';
     title: '[PC Preview] unknown title';
@@ -74,63 +74,63 @@ const ByClass = class ByMock {
     console.warn('uitest.By.constructor' + warnMessage);
     this.id = function(...args) {
       console.warn('uitest.By.id' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.text = function(...args) {
       console.warn('uitest.By.text' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.key = function(...args) {
       console.warn('uitest.By.key' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.type = function(...args) {
       console.warn('uitest.By.type' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.enabled = function(...args) {
       console.warn('uitest.By.enabled' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.focused = function(...args) {
       console.warn('uitest.By.focused' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.selected = function(...args) {
       console.warn('uitest.By.selected' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.clickable = function(...args) {
       console.warn('uitest.By.clickable' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.enabled = function(...args) {
       console.warn('uitest.By.enabled' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.longClickable = function(...args) {
       console.warn('uitest.By.longClickable' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.scrollable = function(...args) {
       console.warn('uitest.By.scrollable' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.checkable = function(...args) {
       console.warn('uitest.By.checkable' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.checked = function(...args) {
       console.warn('uitest.By.checked' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.isBefore = function(...args) {
       console.warn('uitest.By.isBefore' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
     this.isAfter = function(...args) {
       console.warn('uitest.By.isAfter' + warnMessage)
-      return new ByMock()
+      return new ByClass()
     };
   }
 }
@@ -147,25 +147,25 @@ const UiDriverClass = class UiDriverMock {
     this.findComponent = function(...args) {
       console.warn('uitest.UiDriver.findComponent' + warnMessage)
       return new Promise((resolve) => {
-        resolve(new UiComponentMock())
+        resolve(new UiComponentClass())
       });
     };
     this.findWindow = function(...args) {
       console.warn('uitest.UiDriver.findWindow' + warnMessage)
       return new Promise((resolve) => {
-        resolve(new UiWindowMock())
+        resolve(new UiWindowClass())
       });
     };
     this.findComponents = function(...args) {
       console.warn('uitest.UiDriver.findComponents' + warnMessage)
       return new Promise((resolve) => {
-        resolve(new Array(new UiComponentMock()))
+        resolve(new Array(new UiComponentClass()))
       });
     };
     this.waitForComponent = function(...args) {
       console.warn('uitest.UiDriver.waitForComponent' + warnMessage)
       return new Promise((resolve) => {
-        resolve(new UiComponentMock())
+        resolve(new UiComponentClass())
       });
     };
     this.screenCap = function(...args) {
@@ -314,13 +314,13 @@ const UiComponentClass = class UiComponentMock {
     this.getBounds = function(...args) {
       console.warn('uitest.UiComponent.getBounds.warn' + warnMessage)
       return new Promise((resolve) => {
-        resolve(RectMock)
+        resolve(Rect)
       });
     };
     this.getBoundsCenter = function(...args) {
       console.warn('uitest.UiComponent.getBoundsCenter.warn' + warnMessage)
       return new Promise((resolve) => {
-        resolve(PointMock)
+        resolve(Point)
       });
     };
     this.click = function(...args) {
@@ -368,7 +368,7 @@ const UiComponentClass = class UiComponentMock {
     this.scrollSearch = function(...args) {
       console.warn('uitest.UiComponent.scrollSearch.warn' + warnMessage)
       return new Promise((resolve) => {
-        resolve(new UiComponentMock())
+        resolve(new UiComponentClass())
       });
     };
     this.dragTo = function(...args) {
@@ -404,7 +404,7 @@ const UiWindowClass = class UiWindowMock {
     this.getBounds = function(...args) {
       console.warn('uitest.UiWindowMock.getBounds.warn' + warnMessage)
       return new Promise((resolve) => {
-        resolve(RectMock)
+        resolve(Rect)
       });
     };
     this.getTitle = function(...args) {
@@ -416,7 +416,7 @@ const UiWindowClass = class UiWindowMock {
     this.getWindowMode = function(...args) {
       console.warn('uitest.UiWindowMock.getWindowMode.warn' + warnMessage)
       return new Promise((resolve) => {
-        resolve(WindowModeMock)
+        resolve(WindowMode)
       });
     };
     this.isFocused = function(...args) {
@@ -484,12 +484,12 @@ const UiWindowClass = class UiWindowMock {
 
 export function mockUiTest() {
   const module = {
-    ResizeDirection: ResizeDirectionMock,
-    MatchPattern: MatchPatternMock,
-    WindowMode: WindowModeMock,
-    Point: PointMockClass,
-    Rect: RectMockClass,
-    WindowFilter: WindowFilterMockClass,
+    ResizeDirection: ResizeDirection,
+    MatchPattern: MatchPattern,
+    WindowMode: WindowMode,
+    Point: Point,
+    Rect: Rect,
+    WindowFilter: WindowFilter,
     BY: new ByClass(),
     UiDriver: UiDriverClass,
     UiComponent: UiComponentClass,
