@@ -36,8 +36,8 @@ export function mockInputMethodEngine() {
     inputOption: 3
   }
   const KeyEvent = {
-    keyCode: 1,
-    keyAction: 2,
+    keyCode: "[PC Preview] unknow keyCode",
+    keyAction: "[PC Preview] unknow keyAction"
   }
   const RichContent = {
     contentURI: "[PC Preview] unknow contentURI",
