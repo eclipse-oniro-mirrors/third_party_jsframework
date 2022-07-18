@@ -45,22 +45,22 @@ export const WindowMode = {
 }
 
 export const Point = {
-    X: '[PC Preview] unknown X';
-    Y: '[PC Preview] unknown Y';
+    X: '[PC Preview] unknown X',
+    Y: '[PC Preview] unknown Y'
 }
 
 export const Rect = {
-    leftX: '[PC Preview] unknown leftX';
-    topY: '[PC Preview] unknown topY';
-    rightX: '[PC Preview] unknown rightX';
-    bottomY: '[PC Preview] unknown bottomY';
+    leftX: '[PC Preview] unknown leftX',
+    topY: '[PC Preview] unknown topY',
+    rightX: '[PC Preview] unknown rightX',
+    bottomY: '[PC Preview] unknown bottomY'
 }
 
 export const WindowFilter = {
-    bundleName: '[PC Preview] unknown bundleName';
-    title: '[PC Preview] unknown title';
-    focused: '[PC Preview] unknown focused';
-    actived: '[PC Preview] unknown actived';
+    bundleName: '[PC Preview] unknown bundleName',
+    title: '[PC Preview] unknown title',
+    focused: '[PC Preview] unknown focused',
+    actived: '[PC Preview] unknown actived'
 }
 
 const ByClass = class ByMock {
@@ -425,8 +425,8 @@ const UiWindowClass = class UiWindowMock {
         resolve(paramMock.paramBoolMock)
       });
     };
-    this.focuse = function(...args) {
-      console.warn('uitest.UiWindowMock.focuse' + warnMessage)
+    this.focus = function(...args) {
+      console.warn('uitest.UiWindowMock.focus' + warnMessage)
       return new Promise((resolve) => {
         resolve(paramMock.paramBoolMock)
       });
