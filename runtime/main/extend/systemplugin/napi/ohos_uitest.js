@@ -69,7 +69,7 @@ const WindowFilterMockClass = class WindowFilterMock {
   }
 }
 
-const ByMockClass = class ByMock {
+const ByClass = class ByMock {
   constructor() {
     console.warn('uitest.By.constructor' + warnMessage);
     this.id = function(...args) {
@@ -159,7 +159,7 @@ const UiDriverClass = class UiDriverMock {
     this.findComponents = function(...args) {
       console.warn('uitest.UiDriver.findComponents' + warnMessage)
       return new Promise((resolve) => {
-        resolve(new UiComponentMock())
+        resolve(new Array(new UiComponentMock()))
       });
     };
     this.waitForComponent = function(...args) {
@@ -232,10 +232,8 @@ const UiDriverClass = class UiDriverMock {
 }
 
 UiDriverClass.create = function () {
-  this.create = function(...args) {
     console.warn('uitest.UiDriver.create' + warnMessage)
-    return new UiDriverMock()
-  }
+    return new UiDriverClass()
 }
 
 const UiComponentClass = class UiComponentMock {
@@ -492,7 +490,7 @@ export function mockUiTest() {
     Point: PointMockClass,
     Rect: RectMockClass,
     WindowFilter: WindowFilterMockClass,
-    BY: new ByMockClass(),
+    BY: new ByClass(),
     UiDriver: UiDriverClass,
     UiComponent: UiComponentClass,
     UiWindow: UiWindowClass
