@@ -165,7 +165,7 @@ const UiDriverClass = class UiDriverMock {
     this.screenCap = function(...args) {
       console.warn('uitest.UiDriver.screenCap' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.assertComponentExist = function(...args) {
@@ -260,49 +260,49 @@ const UiComponentClass = class UiComponentMock {
     this.isEnabled = function(...args) {
       console.warn('uitest.UiComponent.isEnabled' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.isFocused = function(...args) {
       console.warn('uitest.UiComponent.isFocused' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.isSelected = function(...args) {
       console.warn('uitest.UiComponent.isSelected' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.isClickable = function(...args) {
       console.warn('uitest.UiComponent.isClickable' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.isLongClickable = function(...args) {
       console.warn('uitest.UiComponent.isLongClickable' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.isScrollable = function(...args) {
       console.warn('uitest.UiComponent.isScrollable' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.isCheckable = function(...args) {
       console.warn('uitest.UiComponent.isCheckable' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.isChecked = function(...args) {
       console.warn('uitest.UiComponent.isChecked' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.getBounds = function(...args) {
@@ -416,61 +416,61 @@ const UiWindowClass = class UiWindowMock {
     this.isFocused = function(...args) {
       console.warn('uitest.UiWindow.isFocused' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.isActived = function(...args) {
       console.warn('uitest.UiWindow.isActived' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.focus = function(...args) {
       console.warn('uitest.UiWindow.focus' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.moveTo = function(...args) {
       console.warn('uitest.UiWindow.moveTo' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.resize = function(...args) {
       console.warn('uitest.UiWindow.resize' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.split = function(...args) {
       console.warn('uitest.UiWindow.split' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.maximize = function(...args) {
       console.warn('uitest.UiWindow.maximize' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.resume = function(...args) {
       console.warn('uitest.UiWindow.resume' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.minimize = function(...args) {
       console.warn('uitest.UiWindow.minimize' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
     this.close = function(...args) {
       console.warn('uitest.UiWindow.close' + warnMessage)
       return new Promise((resolve) => {
-        resolve(paramMock.paramBoolMock)
+        resolve(paramMock.paramBooleanMock)
       });
     };
   };
