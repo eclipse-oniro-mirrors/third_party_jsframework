@@ -16,43 +16,6 @@
 import { paramMock } from "../utils"
 
 export function mockDeviceManager() {
-  const wantAgent = {
-    DeviceType: {
-      UNKNOWN_TYPE: 0,
-      SPEAKER: 0x0A,
-      PHONE: 0x0E,
-      TABLET: 0x11,
-      WEARABLE: 0x6D,
-      CAR: 0x83,
-      TV: 0x9C
-    },
-    DeviceStateChangeAction: {
-      ONLINE: 0,
-      READY: 1,
-      OFFLINE: 2,
-      CHANGE: 3
-    },
-    DiscoverMode: {
-      DISCOVER_MODE_PASSIVE: 0x55,
-      DISCOVER_MODE_ACTIVE: 0xAA
-    },
-    ExchangeMedium: {
-      AUTO: 0,
-      BLE: 1,
-      COAP: 2,
-      USB: 3
-    },
-    ExchangeFreq: {
-      LOW: 0,
-      MID: 1,
-      HIGH: 2,
-      SUPER_HIGH: 3
-    },
-    SubscribeCap: {
-      SUBSCRIBE_CAPABILITY_DDMP: 0,
-      SUBSCRIBE_CAPABILITY_OSD: 1
-    },
-  }
   const deviceInfoMock = {
     deviceId: "[PC Preview] unknow mDeviceId",
     deviceName: "[PC Preview] unknow mDeviceName",
@@ -82,6 +45,41 @@ export function mockDeviceManager() {
     extraInfo: "[PC Preview] unknow mExtraInfo"
   }
   const deviceManagerMock = {
+    DeviceType: {
+      UNKNOWN_TYPE: 0,
+      SPEAKER: 0x0A,
+      PHONE: 0x0E,
+      TABLET: 0x11,
+      WEARABLE: 0x6D,
+      CAR: 0x83,
+      TV: 0x9C,
+    },
+    DeviceStateChangeAction: {
+      ONLINE: 0,
+      READY: 1,
+      OFFLINE: 2,
+      CHANGE: 3,
+    },
+    DiscoverMode: {
+      DISCOVER_MODE_PASSIVE: 0x55,
+      DISCOVER_MODE_ACTIVE: 0xAA,
+    },
+    ExchangeMedium: {
+      AUTO: 0,
+      BLE: 1,
+      COAP: 2,
+      USB: 3,
+    },
+    ExchangeFreq: {
+      LOW: 0,
+      MID: 1,
+      HIGH: 2,
+      SUPER_HIGH: 3,
+    },
+    SubscribeCap: {
+      SUBSCRIBE_CAPABILITY_DDMP: 0,
+      SUBSCRIBE_CAPABILITY_OSD: 1,
+    },
     release: function () {
       console.warn("DeviceManager.release interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
