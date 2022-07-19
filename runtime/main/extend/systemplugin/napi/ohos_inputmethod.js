@@ -39,14 +39,8 @@ export function mockInputMethod() {
     }
   ]
   const InputMethodProperty = {
-    methodId: "[PC Preview] unknow method id",
-    bundleName: "[PC Preview] unknow bundle name",
-    abilityName: "[PC Preview] unknow ability name",
-    configurationPage: "[PC Preview] unknow configuration page",
-    isSystemIme: true,
-    typeCount: 1,
-    defaultImeId: 2,
-    keyboardTypes: KeyboardTypeArry
+    packageName :"[PC Preview] unknow packageName",
+    methodId: "[PC Preview] unknow method id"
   }
   const InputMethodPropertyArry = [
     {
@@ -137,7 +131,7 @@ export function mockInputMethod() {
     },
   }
   const inputMethod = {
-    MAX_TYPE_MUN: 128,
+    MAX_TYPE_NUM: 128,
     getInputMethodController: function () {
       console.warn("inputmethod.getInputMethodController interface mocked in the Previewer. How this interface works" +
         " on the Previewer may be different from that on a real device.")
@@ -147,7 +141,24 @@ export function mockInputMethod() {
       console.warn("inputmethod.getInputMethodSetting interface mocked in the Previewer. How this interface works" +
         " on the Previewer may be different from that on a real device.")
       return InputMethodSettingMock;
-    }
+    },
+    getCurrentInputMethod: function () {
+      console.warn("inputmethod.getCurrentInputMethod interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+      return InputMethodProperty;
+    },
+    switchInputMethod: function (...args) {
+      console.warn("inputMethod.switchInputMethod interface mocked in the Previewer. How this interface works on" +
+        " the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
+        })
+      }
+    },
   }
   return inputMethod
 }
