@@ -207,12 +207,12 @@ export function mockRdb() {
   }
 
   const SyncMode = {
-    SYNC_MODE_PUSH: "[PC Preview] unknown SYNC_MODE_PUSH",
-    SYNC_MODE_PULL: "[PC Preview] unknown SYNC_MODE_PULL"
+    SYNC_MODE_PUSH: 0,
+    SYNC_MODE_PULL: 1
   }
   
   const SubscribeType = {
-    SUBSCRIBE_TYPE_REMOTE: "[PC Preview] unknown SUBSCRIBE_TYPE_REMOTE"
+    SUBSCRIBE_TYPE_REMOTE: 0
   }
 
   const rdbStore = {
