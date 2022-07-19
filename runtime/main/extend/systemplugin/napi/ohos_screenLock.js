@@ -69,7 +69,7 @@ export function mockScreenLock() {
       }
     },
     off: function (...args) {
-      console.warn("screenLock.ofF interface mocked in the Previewer. How this interface works on the" +
+      console.warn("screenLock.off interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
