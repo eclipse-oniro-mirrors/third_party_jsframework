@@ -31,10 +31,10 @@ export function mockVolumeManager() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, Array(Volume));
+        args[len - 1].call(this, paramMock.businessErrorMock, new Array(Volume));
       } else {
         return new Promise((resolve, reject) => {
-          resolve(Array(Volume));
+          resolve(new Array(Volume));
         })
       }
     },

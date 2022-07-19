@@ -35,10 +35,10 @@ export function mockFileManager() {
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, Array(FileInfo))
+        args[len - 1].call(this, paramMock.businessErrorMock, new Array(FileInfo))
       } else {
         return new Promise((resolve, reject) => {
-          resolve(Array(FileInfo));
+          resolve(new Array(FileInfo));
         })
       }
     },
@@ -47,10 +47,10 @@ export function mockFileManager() {
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, Array(FileInfo))
+        args[len - 1].call(this, paramMock.businessErrorMock, new Array(FileInfo))
       } else {
         return new Promise((resolve, reject) => {
-          resolve(Array(FileInfo));
+          resolve(new Array(FileInfo));
         })
       }
     },
