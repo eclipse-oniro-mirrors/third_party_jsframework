@@ -15,6 +15,8 @@
 
 import { paramMock } from "../../utils"
 import { AbilityInfo } from './abilityInfo';
+import { ExtensionAbilityInfo } from './extensionAbilityInfo';
+import { Metadata } from './metadata';
 
 
 export const HapModuleInfo = {
@@ -33,4 +35,7 @@ export const HapModuleInfo = {
     moduleName: "[PC preview] unknown moduleName",
     mainAbilityName: "[PC preview] unknown mainAbilityName",
     installationFree: "[PC preview] unknown installationFree",
+    mainElementName: "[PC preview] unknown mainElementName",
+    extensionAbilityInfo: [ExtensionAbilityInfo],
+    metadata: [Metadata],
 }

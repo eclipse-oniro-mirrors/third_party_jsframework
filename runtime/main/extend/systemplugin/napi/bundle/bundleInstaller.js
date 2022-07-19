@@ -24,6 +24,7 @@ export const HashParam = {
 export const InstallParam = {
     userId: "[PC preview] unknown userId",
     installFlag: "[PC preview] unknown installFlag",
+    isKeepData: "[PC preview] unknown isKeepData",
     hashParams: [HashParam],
     crowdtestDeadline: "[PC preview] unknown crowdtestDeadline",
 }
