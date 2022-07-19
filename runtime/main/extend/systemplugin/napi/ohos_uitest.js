@@ -388,87 +388,87 @@ const UiComponentClass = class UiComponentMock {
 
 const UiWindowClass = class UiWindowMock {
   constructor() {
-    console.warn('uitest.UiWindowMock.constructor' + warnMessage);
+    console.warn('uitest.UiWindow.constructor' + warnMessage);
     this.getBundleName = function(...args) {
-      console.warn('uitest.UiWindowMock.getBundleName' + warnMessage)
+      console.warn('uitest.UiWindow.getBundleName' + warnMessage)
       return new Promise((resolve) => {
         resolve(paramMock.paramStringMock)
       });
     };
     this.getBounds = function(...args) {
-      console.warn('uitest.UiWindowMock.getBounds' + warnMessage)
+      console.warn('uitest.UiWindow.getBounds' + warnMessage)
       return new Promise((resolve) => {
         resolve(Rect)
       });
     };
     this.getTitle = function(...args) {
-      console.warn('uitest.UiWindowMock.getTitle' + warnMessage)
+      console.warn('uitest.UiWindow.getTitle' + warnMessage)
       return new Promise((resolve) => {
         resolve(paramMock.paramStringMock)
       });
     };
     this.getWindowMode = function(...args) {
-      console.warn('uitest.UiWindowMock.getWindowMode' + warnMessage)
+      console.warn('uitest.UiWindow.getWindowMode' + warnMessage)
       return new Promise((resolve) => {
         resolve(WindowMode)
       });
     };
     this.isFocused = function(...args) {
-      console.warn('uitest.UiWindowMock.isFocused' + warnMessage)
+      console.warn('uitest.UiWindow.isFocused' + warnMessage)
       return new Promise((resolve) => {
         resolve(paramMock.paramBoolMock)
       });
     };
     this.isActived = function(...args) {
-      console.warn('uitest.UiWindowMock.isActived' + warnMessage)
+      console.warn('uitest.UiWindow.isActived' + warnMessage)
       return new Promise((resolve) => {
         resolve(paramMock.paramBoolMock)
       });
     };
     this.focus = function(...args) {
-      console.warn('uitest.UiWindowMock.focus' + warnMessage)
+      console.warn('uitest.UiWindow.focus' + warnMessage)
       return new Promise((resolve) => {
         resolve(paramMock.paramBoolMock)
       });
     };
     this.moveTo = function(...args) {
-      console.warn('uitest.UiWindowMock.moveTo' + warnMessage)
+      console.warn('uitest.UiWindow.moveTo' + warnMessage)
       return new Promise((resolve) => {
         resolve(paramMock.paramBoolMock)
       });
     };
     this.resize = function(...args) {
-      console.warn('uitest.UiWindowMock.resize' + warnMessage)
+      console.warn('uitest.UiWindow.resize' + warnMessage)
       return new Promise((resolve) => {
         resolve(paramMock.paramBoolMock)
       });
     };
     this.split = function(...args) {
-      console.warn('uitest.UiWindowMock.split' + warnMessage)
+      console.warn('uitest.UiWindow.split' + warnMessage)
       return new Promise((resolve) => {
         resolve(paramMock.paramBoolMock)
       });
     };
     this.maximize = function(...args) {
-      console.warn('uitest.UiWindowMock.maximize' + warnMessage)
+      console.warn('uitest.UiWindow.maximize' + warnMessage)
       return new Promise((resolve) => {
         resolve(paramMock.paramBoolMock)
       });
     };
     this.resume = function(...args) {
-      console.warn('uitest.UiWindowMock.resume' + warnMessage)
+      console.warn('uitest.UiWindow.resume' + warnMessage)
       return new Promise((resolve) => {
         resolve(paramMock.paramBoolMock)
       });
     };
     this.minimize = function(...args) {
-      console.warn('uitest.UiWindowMock.minimize' + warnMessage)
+      console.warn('uitest.UiWindow.minimize' + warnMessage)
       return new Promise((resolve) => {
         resolve(paramMock.paramBoolMock)
       });
     };
     this.close = function(...args) {
-      console.warn('uitest.UiWindowMock.close' + warnMessage)
+      console.warn('uitest.UiWindow.close' + warnMessage)
       return new Promise((resolve) => {
         resolve(paramMock.paramBoolMock)
       });
