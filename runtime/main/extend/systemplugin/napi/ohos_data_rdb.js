@@ -205,6 +205,16 @@ export function mockRdb() {
   const storeConfig = {
     name: "[PC Preview] unknown name"
   }
+
+  const SyncMode = {
+    SYNC_MODE_PUSH: "[PC Preview] unknown SYNC_MODE_PUSH",
+    SYNC_MODE_PULL: "[PC Preview] unknown SYNC_MODE_PULL"
+  }
+  
+  const SubscribeType = {
+    SUBSCRIBE_TYPE_REMOTE: "[PC Preview] unknown SUBSCRIBE_TYPE_REMOTE"
+  }
+
   const rdbStore = {
     insert: function (...args) {
       console.warn("RdbStore.insert interface mocked in the Previewer. How this interface works on the" +
