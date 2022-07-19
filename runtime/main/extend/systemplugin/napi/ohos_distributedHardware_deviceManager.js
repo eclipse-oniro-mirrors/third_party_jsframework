@@ -16,34 +16,6 @@
 import { paramMock } from "../utils"
 
 export function mockDeviceManager() {
-  const deviceInfoMock = {
-    deviceId: "[PC Preview] unknow mDeviceId",
-    deviceName: "[PC Preview] unknow mDeviceName",
-    deviceType: 0x0E,
-    networkId: "[PC Preview] unknow mNetworkId"
-  }
-  const deviceStateChangeMock = {
-    action: 0,
-    device: deviceInfoMock
-  }
-  const subscribeInfoMock = {
-    subscribeId: "[PC Preview] unknow mSubscribeId",
-    mode: "[PC Preview] unknow mMode",
-    medium: "[PC Preview] unknow mMedium",
-    freq: "[PC Preview] unknow mFreq",
-    isSameAccount: "[PC Preview] unknow mIsSameAccount",
-    isWakeRemote: "[PC Preview] unknow mIsWakeRemote",
-    capability: "[PC Preview] unknow mCapability"
-  }
-  const authParamMock = {
-    authType: "[PC Preview] unknow mAuthType",
-    extraInfo: "[PC Preview] unknow mExtraInfo"
-  }
-  const authInfoMock = {
-    authType: "[PC Preview] unknow mAuthType",
-    token: "[PC Preview] unknow mToken",
-    extraInfo: "[PC Preview] unknow mExtraInfo"
-  }
   const DeviceType = {
     UNKNOWN_TYPE: 0,
     SPEAKER: 0x0A,
@@ -78,6 +50,34 @@ export function mockDeviceManager() {
   const SubscribeCap = {
     SUBSCRIBE_CAPABILITY_DDMP: 0,
     SUBSCRIBE_CAPABILITY_OSD: 1
+  }
+  const deviceInfoMock = {
+    deviceId: "[PC Preview] unknow mDeviceId",
+    deviceName: "[PC Preview] unknow mDeviceName",
+    deviceType: DeviceType,
+    networkId: "[PC Preview] unknow mNetworkId"
+  }
+  const deviceStateChangeMock = {
+    action: 0,
+    device: deviceInfoMock
+  }
+  const subscribeInfo = {
+    subscribeId: "[PC Preview] unknow mSubscribeId",
+    mode: DiscoverMode,
+    medium: ExchangeMedium,
+    freq: ExchangeFreq,
+    isSameAccount: "[PC Preview] unknow mIsSameAccount",
+    isWakeRemote: "[PC Preview] unknow mIsWakeRemote",
+    capability: SubscribeCap
+  }
+  const authParam = {
+    authType: "[PC Preview] unknow mAuthType",
+    extraInfo: "[PC Preview] unknow mExtraInfo"
+  }
+  const authInfo = {
+    authType: "[PC Preview] unknow mAuthType",
+    token: "[PC Preview] unknow mToken",
+    extraInfo: "[PC Preview] unknow mExtraInfo"
   }
   const deviceManagerMock = {
     release: function () {
