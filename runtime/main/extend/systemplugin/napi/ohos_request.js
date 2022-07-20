@@ -16,7 +16,7 @@
 import { paramMock } from "../utils"
 
 export function mockRequest() {
-  const downloadConfigMock = {
+  const DownloadConfig = {
     url: "[PC Preview]: unknow uri",
     herder: "[PC Preview]: unknow herder",
     enableMetered: "[PC Preview]: unknow enableMetered",
@@ -27,7 +27,7 @@ export function mockRequest() {
     title: "[PC Preview]: unknow title",
   };
 
-  const downloadInfoMock = {
+  const DownloadInfo = {
     description: "[PC Preview]: unknow description",
     downloadedBytes: "[PC Preview]: unknow downloadedBytes",
     downloadId: "[PC Preview]: unknow downloadId",
@@ -43,7 +43,7 @@ export function mockRequest() {
 
   const DownloadTask = {
     on: function (...args) {
-      console.warn("AYL.downloadTask.on interface mocked in the Previewer. How this interface works on the" +
+      console.warn("downloadTask.on interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.");
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -61,7 +61,7 @@ export function mockRequest() {
     },
 
     off: function (...args) {
-      console.warn("AYL.downloadTask.off interface mocked in the Previewer. How this interface works on the" +
+      console.warn("downloadTask.off interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.");
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -75,18 +75,11 @@ export function mockRequest() {
           const err = "[PC Preview]: unknow err"
           args[len - 1].call(this, err)
         }
-      } else {
-        if (args[0] == 'complete' | 'pause' | 'remove') {
-          args[len - 1].call(this)
-        } else if (args[0] == 'fail') {
-          const err = "[PC Preview]: unknow err"
-          args[len - 1].call(this, err)
-        }
       }
     },
 
     remove: function (...args) {
-      console.warn("AYL.downloadTask.remove interface mocked in the Previewer. How this interface works on the" +
+      console.warn("downloadTask.remove interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -99,7 +92,7 @@ export function mockRequest() {
     },
 
     pause: function (...args) {
-      console.warn("AYL.downloadTask.pause interface mocked in the Previewer. How this interface works on the" +
+      console.warn("downloadTask.pause interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -112,7 +105,7 @@ export function mockRequest() {
     },
 
     resume: function (...args) {
-      console.warn("AYL.downloadTask.resume interface mocked in the Previewer. How this interface works on the" +
+      console.warn("downloadTask.resume interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -125,7 +118,7 @@ export function mockRequest() {
     },
 
     query: function (...args) {
-      console.warn("AYL.downloadTask.query interface mocked in the Previewer. How this interface works on the" +
+      console.warn("downloadTask.query interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -138,7 +131,7 @@ export function mockRequest() {
     },
 
     queryMimeType: function (...args) {
-      console.warn("AYL.downloadTask.queryMimeType interface mocked in the Previewer. How this interface works on the" +
+      console.warn("downloadTask.queryMimeType interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -151,29 +144,29 @@ export function mockRequest() {
     },
   };
 
-  const fileMock = {
+  const File = {
     filename: "[PC Preview]: unknow filename",
     name: "[PC Preview]: unknow name",
     uri: "[PC Preview]: unknow uri",
     type: "[PC Preview]: unknow type",
   };
 
-  const requestDataMock = {
+  const RequestData = {
     name: "[PC Preview]: unknow name",
     value: "[PC Preview]: unknow value",
   };
 
-  const uploadConfigMock = {
+  const UploadConfig = {
     url: "[PC Preview]: unknow uri",
     herder: "[PC Preview]: unknow herder",
     method: "[PC Preview]: unknow method",
-    files: "[PC Preview]: unknow files",
-    data: "[PC Preview]: unknow data",
+    files: [File],
+    data: [RequestData],
   };
 
   const UploadTask = {
     on: function (...args) {
-      console.warn("AYL.uploadTask.on interface mocked in the Previewer. How this interface works on the" +
+      console.warn("uploadTask.on interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.");
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -189,7 +182,7 @@ export function mockRequest() {
     },
 
     off: function (...args) {
-      console.warn("AYL.uploadTask.off interface mocked in the Previewer. How this interface works on the" +
+      console.warn("uploadTask.off interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.");
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -205,7 +198,7 @@ export function mockRequest() {
     },
 
     remove: function (...args) {
-      console.warn("AYL.uploadTask.remove interface mocked in the Previewer. How this interface works on the" +
+      console.warn("uploadTask.remove interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -241,7 +234,7 @@ export function mockRequest() {
     SESSION_SUCCESSFUL: '[PC preview] unknow SESSION_SUCCESSFUL',
 
     download: function (...args) {
-      console.warn("AYL.request.download interface mocked in the Previewer. How this interface works on the" +
+      console.warn("request.download interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
         if (typeof args[len - 1] === 'function') {
@@ -254,7 +247,7 @@ export function mockRequest() {
     },
 
     upload: function (...args) {
-      console.warn("AYL.request.upload interface mocked in the Previewer. How this interface works on the" +
+      console.warn("request.upload interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
