@@ -20,7 +20,7 @@ export function mockPasteBoard() {
     getPrimaryText: function () {
       console.warn("PasteData.getPrimaryText interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-      return "[PC Preview] unknow primarytext"
+        return paramMock.paramStringMock
     },
     addHtmlRecord: function () {
       console.warn("PasteData.addHtmlRecord interface mocked in the Previewer. How this interface works on the" +
@@ -48,12 +48,12 @@ export function mockPasteBoard() {
       let mimeTypes = new Array();
       mimeTypes.push('[PC preview] unknow MIMETYPE_TEXT_HTML');
       mimeTypes.push('[PC preview] unknow MIMETYPE_TEXT_PLAIN');
-      return mimeTypes;
+      return new Array(paramMock.paramStringMock);
     },
     getPrimaryHtml: function () {
       console.warn("PasteData.getPrimaryHtml interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-      return "[PC Preview] unknow getPrimaryHtml"
+      return paramMock.paramStringMock
     },
     getPrimaryWant: function () {
       console.warn("PasteData.getPrimaryWant interface mocked in the Previewer. How this interface works on the" +
@@ -63,12 +63,12 @@ export function mockPasteBoard() {
     getPrimaryMimeType: function () {
       console.warn("PasteData.getPrimaryMimeType interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-      return "[PC Preview] unknow getPrimaryMimeType"
+      return paramMock.paramStringMock
     },
     getPrimaryUri: function () {
       console.warn("PasteData.getPrimaryUri interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-      return "[PC Preview] unknow getPrimaryUri"
+      return paramMock.paramStringMock
     },
     getProperty: function () {
       console.warn("PasteData.getProperty interface mocked in the Previewer. How this interface works on the" +
@@ -83,27 +83,27 @@ export function mockPasteBoard() {
     getRecordCount: function () {
       console.warn("PasteData.getRecordCount interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-      return "[PC Preview] unknow getRecordCount"
+      return paramMock.paramNumberMock
     },
     getTag: function () {
       console.warn("PasteData.getTag interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-      return "[PC Preview] unknow getTag"
+      return paramMock.paramStringMock
     },
     hasMimeType: function () {
       console.warn("PasteData.hasMimeType interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-      return "[PC Preview] unknow hasMimeType"
+      return paramMock.paramBooleanMock
     },
     removeRecordAt: function () {
       console.warn("PasteData.removeRecordAt interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-      return "[PC Preview] unknow removeRecordAt"
+      return paramMock.paramBooleanMock
     },
     replaceRecordAt: function () {
       console.warn("PasteData.replaceRecordAt interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-      return "[PC Preview] unknow replaceRecordAt"
+      return paramMock.paramBooleanMock
     }
   }
   const PasteDataRecordMock = {
