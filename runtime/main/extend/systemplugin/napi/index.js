@@ -172,6 +172,7 @@ import { mockMouseEvent } from './ohos_multimodalInput_mouseEvent'
 import { mockTouchEvent } from './ohos_multimodalInput_touchEvent'
 import { mockUiAppearance } from './ohos_uiAppearance'
 import { mockContinationManager } from './ohos_continuation_continuationManager'
+import { mockUiTest } from './ohos_uitest'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
@@ -493,6 +494,8 @@ export function mockRequireNapiFun() {
         return mockTouchEvent();
       case "continuation.continuationManager":
         return mockContinationManager();
+      case "uitest":
+        return mockUiTest();
       default:
         return global.requireNapiPreview(...args);
     }
