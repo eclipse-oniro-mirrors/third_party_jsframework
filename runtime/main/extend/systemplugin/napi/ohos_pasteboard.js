@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -202,7 +202,7 @@ export function mockPasteBoard() {
       }
     }
   }
-  global.ohosplugin.pasteboard = {
+  const pasteboard = {
     MAX_RECORD_NUM: '[PC preview] unknow MAX_RECORD_NUM',
     MIMETYPE_TEXT_HTML: '[PC preview] unknow MIMETYPE_TEXT_HTML',
     MIMETYPE_TEXT_WANT: '[PC preview] unknow MIMETYPE_TEXT_WANT',
