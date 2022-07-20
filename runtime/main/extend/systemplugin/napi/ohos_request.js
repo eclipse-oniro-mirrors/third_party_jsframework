@@ -192,7 +192,7 @@ export function mockRequest() {
           args[len - 1].call(this, uploadedSize, totalSize)
         } else if (args[0] == 'headerReceive') {
           const header = "[PC Preview]: unknow header"
-          args[len - 1].call(this, header);
+          args[len - 1].call(this, header)
         }
       }
     },
