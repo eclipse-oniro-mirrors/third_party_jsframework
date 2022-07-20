@@ -246,6 +246,16 @@ export function mockUpdate() {
         UpgradeStatus,
         EventClassify,
         EventId,
+        UpgradeInfo,
+        BusinessType,
+        DownloadOptions,
+        ResumeDownloadOptions,
+        PauseDownloadOptions,
+        UpgradeOptions,
+        ClearOptions,
+        EventClassifyInfo,
+        UpgradeFile,
+        UpgradeTaskCallback,
         getOnlineUpdater: function (...args) {
             console.warn("update.getOnlineUpdater interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
@@ -271,7 +281,6 @@ const BusinessVendor = {
 
 const BusinessSubType = {
     FIRMWARE: 1,
-    PARAM: 2,
 }
 
 const ComponentType = {
@@ -412,4 +421,49 @@ const TaskInfo = {
 const EventInfo = {
     eventId: EventId.EVENT_TASK_RECEIVE,
     taskBody: TaskBody,
+}
+
+const UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: BusinessType
+}
+
+const BusinessType = {
+    vendor: BusinessVendor,
+    subType: BusinessSubType
+}
+
+const DownloadOptions = {
+    allowNetwork: NetType,
+    order: Order
+}
+
+const ResumeDownloadOptions = {
+    allowNetwork: NetType
+}
+
+const PauseDownloadOptions = {
+    isAllowAutoResume: boolean
+}
+
+const UpgradeOptions = {
+    order: Order
+}
+
+const ClearOptions = {
+    status: UpgradeStatus
+}
+
+const EventClassifyInfo = {
+    eventClassify: EventClassify,
+    extraInfo: string
+}
+
+const UpgradeFile = {
+    fileType: ComponentType,
+    filePath: string
+}
+
+const UpgradeTaskCallback = {
+    UpgradeTaskCallback: (eventInfo) => {}
 }
