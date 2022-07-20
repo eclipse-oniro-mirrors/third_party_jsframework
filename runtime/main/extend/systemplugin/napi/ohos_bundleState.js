@@ -16,7 +16,7 @@
 import { paramMock } from "../utils"
 
 export function mockBundleState() {
-  const BundleStateInfo = [{
+  const BundleStateInfo = {
     abilityInFgTotalTime: '[PC preview] unknown abilityInFgTotalTime',
     abilityPrevAccessTime: '[PC preview] unknown abilityPrevAccessTime',
     abilityPrevSeenTime: '[PC preview] unknown abilityPrevSeenTime',
@@ -32,20 +32,23 @@ export function mockBundleState() {
       console.warn("bundleState.merge interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.");
     },
-  }]
-  const BundleActiveState = [{
+  }
+  const BundleStateInfoArray = [BundleStateInfo]
+  const BundleActiveState = {
     appUsagePriorityGroup: '[PC preview] unknown appUsagePriorityGroup',
     bundleName: '[PC preview] unknown bundleName',
     indexOfLink: '[PC preview] unknown indexOfLink',
     nameOfClass: '[PC preview] unknown nameOfClass',
     stateOccurredTime: '[PC preview] unknown stateOccurredTime',
     stateType: '[PC preview] unknown stateType',
-  }]
-  const BundleActiveEventState = [{
+  }
+  const BundleActiveStateArray = [BundleActiveState]
+  const BundleActiveEventState = {
     name: '[PC preview] unknown name',
     eventId: '[PC preview] unknown eventId',
     count: '[PC preview] unknown count',
-  }]
+  }
+  const BundleActiveEventStateArray = [BundleActiveEventState]
   const BundleActiveInfoResponse = {
     "key": BundleStateInfo
   }
@@ -55,6 +58,13 @@ export function mockBundleState() {
     userId : '[PC preview] unknown userId',
     changeReason : '[PC preview] unknown changeReason',
     bundleName : '[PC preview] unknown bundleName',
+  }
+  const BundleActiveFormInfo = {
+    count : '[PC preview] unknown count',
+    formLastUsedTime : '[PC preview] unknown formLastUsedTime',
+    formId : '[PC preview] unknown formId',
+    formDimension : '[PC preview] unknown formDimension',
+    formName : '[PC preview] unknown formName',
   }
   const BundleActiveModuleInfo = {
     deviceId : '[PC preview] unknown deviceId',
@@ -69,7 +79,7 @@ export function mockBundleState() {
     abilityIconId : '[PC preview] unknown abilityIconId',
     launchedCount : '[PC preview] unknown launchedCount',
     lastModuleUsedTime : '[PC preview] unknown lastModuleUsedTime',
-    formRecords : '[PC preview] unknown formRecords',
+    formRecords : [BundleActiveFormInfo],
   }
   const IntervalType = {
     BY_OPTIMIZED: 0,
@@ -128,10 +138,10 @@ export function mockBundleState() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, BundleStateInfo);
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleStateInfoArray);
       } else {
         return new Promise((resolve) => {
-          resolve(BundleStateInfo)
+          resolve(BundleStateInfoArray)
         });
       }
     },
@@ -140,10 +150,10 @@ export function mockBundleState() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveState);
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveStateArray);
       } else {
         return new Promise((resolve) => {
-          resolve(BundleActiveState)
+          resolve(BundleActiveStateArray)
         });
       }
     },
@@ -152,10 +162,10 @@ export function mockBundleState() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveState);
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveStateArray);
       } else {
         return new Promise((resolve) => {
-          resolve(BundleActiveState)
+          resolve(BundleActiveStateArray)
         });
       }
     },
@@ -164,10 +174,10 @@ export function mockBundleState() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveEventState);
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveEventStateArray);
       } else {
         return new Promise((resolve) => {
-          resolve(BundleActiveEventState)
+          resolve(BundleActiveEventStateArray)
         });
       }
     },
@@ -176,10 +186,10 @@ export function mockBundleState() {
         " Previewer may be different from that on a real device.");
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveEventState);
+        args[len - 1].call(this, paramMock.businessErrorMock, BundleActiveEventStateArray);
       } else {
         return new Promise((resolve) => {
-          resolve(BundleActiveEventState)
+          resolve(BundleActiveEventStateArray)
         });
       }
     },
