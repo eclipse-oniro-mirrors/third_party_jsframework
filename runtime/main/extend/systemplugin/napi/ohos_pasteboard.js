@@ -22,23 +22,23 @@ export function mockPasteBoard() {
         " Previewer may be different from that on a real device.")
         return paramMock.paramStringMock
     },
-    addHtmlRecord: function () {
+    addHtmlRecord: function (...args) {
       console.warn("PasteData.addHtmlRecord interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
     },
-    addWantRecord: function () {
+    addWantRecord: function (...args) {
       console.warn("PasteData.addWantRecord interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
     },
-    addRecord: function () {
+    addRecord: function (...args) {
       console.warn("PasteData.addRecord interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
     },
-    addTextRecord: function () {
+    addTextRecord: function (...args) {
       console.warn("PasteData.addTextRecord interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
     },
-    addUriRecord: function () {
+    addUriRecord: function (...args) {
       console.warn("PasteData.addUriRecord interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
     },
@@ -75,7 +75,7 @@ export function mockPasteBoard() {
         " Previewer may be different from that on a real device.")
       return PasteDataPropertyMock;
     },
-    getRecordAt: function () {
+    getRecordAt: function (...args) {
       console.warn("PasteData.getRecordAt interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       return PasteDataRecordMock;
@@ -90,17 +90,17 @@ export function mockPasteBoard() {
         " Previewer may be different from that on a real device.")
       return paramMock.paramStringMock
     },
-    hasMimeType: function () {
+    hasMimeType: function (...args) {
       console.warn("PasteData.hasMimeType interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       return paramMock.paramBooleanMock
     },
-    removeRecordAt: function () {
+    removeRecordAt: function (...args) {
       console.warn("PasteData.removeRecordAt interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       return paramMock.paramBooleanMock
     },
-    replaceRecordAt: function () {
+    replaceRecordAt: function (...args) {
       console.warn("PasteData.replaceRecordAt interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       return paramMock.paramBooleanMock
@@ -208,42 +208,42 @@ export function mockPasteBoard() {
     MIMETYPE_TEXT_WANT: '[PC preview] unknow MIMETYPE_TEXT_WANT',
     MIMETYPE_TEXT_PLAIN: '[PC preview] unknow MIMETYPE_TEXT_PLAIN',
     MIMETYPE_TEXT_URI: '[PC preview] unknow MIMETYPE_TEXT_URI',
-    createPlainTextData: function () {
+    createPlainTextData: function (...args) {
       console.warn("pasteboard.createPlainTextData interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
       return PasteDataMock;
     },
-    createHtmlData: function () {
+    createHtmlData: function (...args) {
       console.warn("pasteboard.createHtmlData interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
       return PasteDataMock;
     },
-    createUriData: function () {
+    createUriData: function (...args) {
       console.warn("pasteboard.createUriData interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
       return PasteDataMock;
     },
-    createWantData: function () {
+    createWantData: function (...args) {
       console.warn("pasteboard.createWantData interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
       return PasteDataMock;
     },
-    createHtmlTextRecord: function () {
+    createHtmlTextRecord: function (...args) {
       console.warn("pasteboard.createHtmlTextRecord interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
       return PasteDataRecordMock;
     },
-    createWantRecord: function () {
+    createWantRecord: function (...args) {
       console.warn("pasteboard.createWantRecord interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
       return PasteDataRecordMock;
     },
-    createUriRecord: function () {
+    createUriRecord: function (...args) {
       console.warn("pasteboard.createUriRecord interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
       return PasteDataRecordMock;
     },
-    createPlainTextRecord: function () {
+    createPlainTextRecord: function (...args) {
       console.warn("pasteboard.createPlainTextRecord interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
       return PasteDataRecordMock;
