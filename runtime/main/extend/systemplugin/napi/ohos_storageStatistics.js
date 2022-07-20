@@ -16,13 +16,7 @@
 import { paramMock } from '../utils';
 
 export function mockStorageStatistics() {
-  const BundleStatsMock = {
-    appSize: '[PC preview] unknow appSize',
-    cacheSize: '[PC preview] unknow cacheSize',
-    dataSize: '[PC preview] unknow dataSize'
-  };
   const storageStatistics = {
-    BundleStats: BundleStatsMock,
     getTotalSizeOfVolume: function(...args) {
       console.warn('storageStatistics.getTotalSizeOfVolume interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
@@ -44,18 +38,6 @@ export function mockStorageStatistics() {
       } else {
         return new Promise((resolve, reject) => {
           resolve(paramMock.paramNumberMock);
-        });
-      }
-    },
-    getBundleStats: function(...args) {
-      console.warn('storageStatistics.getBundleStats interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.');
-      const len = args.length;
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, BundleStatsMock);
-      } else {
-        return new Promise((resolve, reject) => {
-          resolve(BundleStatsMock);
         });
       }
     }
