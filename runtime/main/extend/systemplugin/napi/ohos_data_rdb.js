@@ -210,7 +210,7 @@ export function mockRdb() {
     SYNC_MODE_PUSH: 0,
     SYNC_MODE_PULL: 1
   }
-  
+
   const SubscribeType = {
     SUBSCRIBE_TYPE_REMOTE: 0
   }
@@ -218,6 +218,18 @@ export function mockRdb() {
   const rdbStore = {
     insert: function (...args) {
       console.warn("RdbStore.insert interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramNumberMock);
+        })
+      }
+      },
+    batchInsert: function (...args) {
+      console.warn("RdbStore.batchInsert interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
