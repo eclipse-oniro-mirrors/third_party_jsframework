@@ -142,10 +142,10 @@ export function mockUpdate() {
             " Previewer may be different from that on a real device.")
             const len = args.length
             if (len > 0 && typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+                args[len - 1].call(this, paramMock.businessErrorMock);
             } else {
                 return new Promise((resolve, reject) => {
-                    resolve(paramMock.paramNumberMock);
+                    resolve();
                 })
             }
         },
@@ -198,10 +198,10 @@ export function mockUpdate() {
             " works on the Previewer may be different from that on a real device.")
             const len = args.length
             if (len > 0 && typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+                args[len - 1].call(this, paramMock.businessErrorMock);
             } else {
                 return new Promise((resolve, reject) => {
-                    resolve(paramMock.paramNumberMock);
+                    resolve();
                 })
             }
         },
@@ -306,13 +306,17 @@ const DescriptionType = {
 const NetType = {
     CELLULAR: 1,
     METERED_WIFI: 2,
-    NOT_METERED_WIFI: 4,
+    NOT_METERED_WIFI = 4,
+    WIFI = 6,
+    CELLULAR_AND_WIFI = 7
 }
 
 const Order = {
     DOWNLOAD: 1,
     INSTALL: 2,
-    APPLY: 4,
+    DOWNLOAD_AND_INSTALL = 3,
+    APPLY = 4,
+    INSTALL_AND_APPLY = 6
 }
 
 const UpgradeStatus = {
