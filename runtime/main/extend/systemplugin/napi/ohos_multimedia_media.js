@@ -58,9 +58,9 @@ export function mockMultimediaMedia() {
       }
     },
     src: '[PC Preview] unknow src',
-    fdSrc: '[PC Preview] unknow fdSrc',
+    fdSrc: AVFileDescriptor,
     loop: '[PC Preview] unknow loop',
-    audioInterruptMode: '[PC Preview] unknow audioInterruptMode',
+    audioInterruptMode: InterruptMode,
     currentTime: '[PC Preview] unknow currentTime',
     duration: '[PC Preview] unknow duration',
     state: '[PC Preview] unknow state',
@@ -223,15 +223,15 @@ export function mockMultimediaMedia() {
   }
   const videoPlayerMock = {
     url: '[PC Preview] unknow url',
-    fdSrc: '[PC Preview] unknow fdSrc',
+    fdSrc: AVFileDescriptor,
     loop: '[PC Preview] unknow loop',
     currentTime: '[PC Preview] unknow currentTime',
     duration: '[PC Preview] unknow duration',
     state: '[PC Preview] unknow state',
     width: '[PC Preview] unknow width',
     height: '[PC Preview] unknow height',
-    audioInterruptMode: '[PC Preview] unknow audioInterruptMode',
-    videoScaleType: '[PC Preview] unknow videoScaleType',
+    audioInterruptMode: InterruptMode,
+    videoScaleType: VideoScaleType,
     setDisplaySurface: function (...args) {
       console.warn("VideoPlayer.setDisplaySurface interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
@@ -372,7 +372,7 @@ export function mockMultimediaMedia() {
           args[len - 1].call(this, paramMock.paramNumberMock, paramMock.paramNumberMock);
       } else {
         return new Promise((resolve) => {
-          resolve();
+          resolve(paramMock.paramNumberMock);
         });
       }
     },
@@ -381,7 +381,7 @@ export function mockMultimediaMedia() {
         " may be different from that on a real device.")
     },
   }
-  const avfileDescriptorMock = {
+  const AVFileDescriptorMock = {
     fd: '[PC Preview] unknow fd',
     offset: '[PC Preview] unknow audioChannels',
     length: '[PC Preview] unknow audioCodec',
@@ -407,7 +407,11 @@ export function mockMultimediaMedia() {
     location: locationMock,
   }
   const mediaDescriptionMock = {
-    key: '[PC Preview] unknow key',
+    "key": 'paramMock.paramObjectMock',
+  }
+  const InterruptModeMock = {
+    SHARE_MODE: 0,
+    INDEPENDENT_MODE: 1
   }
   const mediaMock = {
     MediaErrorCode : {
