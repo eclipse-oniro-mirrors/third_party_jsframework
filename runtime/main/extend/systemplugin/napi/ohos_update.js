@@ -306,17 +306,17 @@ const DescriptionType = {
 const NetType = {
     CELLULAR: 1,
     METERED_WIFI: 2,
-    NOT_METERED_WIFI = 4,
-    WIFI = 6,
-    CELLULAR_AND_WIFI = 7
+    NOT_METERED_WIFI: 4,
+    WIFI: 6,
+    CELLULAR_AND_WIFI: 7
 }
 
 const Order = {
     DOWNLOAD: 1,
     INSTALL: 2,
-    DOWNLOAD_AND_INSTALL = 3,
-    APPLY = 4,
-    INSTALL_AND_APPLY = 6
+    DOWNLOAD_AND_INSTALL: 3,
+    APPLY: 4,
+    INSTALL_AND_APPLY: 6
 }
 
 const UpgradeStatus = {
