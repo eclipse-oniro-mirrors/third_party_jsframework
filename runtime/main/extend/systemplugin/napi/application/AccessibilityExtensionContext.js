@@ -14,7 +14,7 @@
  */
 
 import { paramMock } from '../../utils'
-import { ExtensionContextClass } from './abilityContext'
+import { ExtensionContextClass } from './AbilityContext'
 
 export function mockAccessibilityExtensionContext() {
   const ElementAttributeNameMock = '[PC Preview] unknown element attribute name';
