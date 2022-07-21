@@ -14,46 +14,47 @@
  */
 
 import { paramMock } from '../utils';
-import { mockAccessibilityExtensionContext } from './accessibilityExtensionContext';
+import { mockAccessibilityExtensionContext } from './application/AccessibilityExtensionContext';
 
-export function mockAccessibilityExtensionAbility() {
-  const accessibilityEventMock = {
-    eventType: '[PC Preview] unknown eventType',
-    target: '[PC Preview] unknown target',
-    timeStamp: '[PC Preview] unknown timeStamp',
-    notificationContent: '[PC Preview] unknown notificationContent'
+const AccessibilityEventMock = {
+  eventType: '[PC Preview] unknown eventType',
+  target: '[PC Preview] unknown target',
+  timeStamp: '[PC Preview] unknown timeStamp',
+  notificationContent: '[PC Preview] unknown notificationContent'
+};
+
+const GesturePointMock = {
+    positionX: paramMock.paramNumberMock,
+    positionY: paramMock.paramNumberMock
   };
 
-  const accessibilityExtensionAbilityClass = class accessibilityExtensionAbility {
-    context = null;
-    onConnect = null;
-    onDisconnect = null;
-    onAccessibilityEvent = null;
-    onKeyEvent = null;
+const GesturePathMock = {
+  points: [GesturePointMock],
+  durationTime: paramMock.paramNumberMock
+};
+
+export function mockAccessibilityExtensionAbility() {
+  const AccessibilityExtensionAbilityClass = class AccessibilityExtensionAbility {
     constructor() {
       this.context = mockAccessibilityExtensionContext();
       this.onConnect = function (...args) {
         console.warn('accessibilityExtensionAbility.onConnect interface mocked in the Previewer.' +
           ' How this interface works on the Previewer may be different from that on a real device.');
-        return;
       };
       this.onDisconnect = function (...args) {
         console.warn('accessibilityExtensionAbility.onDisconnect interface mocked in the Previewer.' +
           ' How this interface works on the Previewer may be different from that on a real device.');
-        return;
       };
       this.onAccessibilityEvent = function (...args) {
         console.warn('accessibilityExtensionAbility.onAccessibilityEvent interface mocked in the Previewer.' +
           ' How this interface works on the Previewer may be different from that on a real device.');
-        return;
       };
       this.onKeyEvent = function (...args) {
         console.warn('accessibilityExtensionAbility.onKeyEvent interface mocked in the Previewer.' +
           ' How this interface works on the Previewer may be different from that on a real device.');
-        return;
       };
     }
   };
 
-  return new accessibilityExtensionAbilityClass();
+  return AccessibilityExtensionAbilityClass;
 }
