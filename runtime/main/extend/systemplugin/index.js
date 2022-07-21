@@ -43,7 +43,6 @@ import { mockSystemPackage } from './systemPackage'
 import { mockUserauth } from './userIAM'
 import { mockVibrator } from './vibrator'
 import { mockRequireNapiFun } from './napi'
-import { mockAccessibility } from './accessibility'
 import { mockAI } from './ai'
 import { mockUserIAMUserAuth } from './ohos/userIAMuserAuth.js'
 import { mockBundleManager } from './ohos/bundleManager'
@@ -74,7 +73,6 @@ export function mockSystemPlugin() {
   mockAbilityContinuationRegisterManager()
   mockRequireNapiFun()
   mockAbilityDataUriUtils()
-  mockAccessibility()
   mockAbilityParticleAbility()
   mockAbilityFormManager()
   mockAbilityAbilityAgent()

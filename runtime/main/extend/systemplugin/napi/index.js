@@ -161,6 +161,9 @@ import { mockDefaultAppManager } from './ohos_bundle_defaultAppManager'
 import { mockKeyEvent } from './ohos_multimodalInput_keyEvent'
 import { mockMouseEvent } from './ohos_multimodalInput_mouseEvent'
 import { mockTouchEvent } from './ohos_multimodalInput_touchEvent'
+import { mockAccessibility } from './ohos_accessibility'
+import { mockAccessibilityConfig } from './ohos_accessibility_config'
+import { mockAccessibilityExtensionAbility } from './ohos_application_AccessibilityExtensionAbility'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
@@ -460,6 +463,12 @@ export function mockRequireNapiFun() {
         return mockMouseEvent();
       case "multimodalInput.touchEvent":
         return mockTouchEvent();
+      case "accessibility":
+        return mockAccessibility();
+      case "accessibility.config":
+        return mockAccessibilityConfig();
+      case "application.AccessibilityExtensionAbility":
+        return mockAccessibilityExtensionAbility();
       default:
         return global.requireNapiPreview(...args);
     }
