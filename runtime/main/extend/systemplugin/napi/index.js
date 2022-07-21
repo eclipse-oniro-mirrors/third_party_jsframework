@@ -155,7 +155,7 @@ export function mockRequireNapiFun() {
         return mockZlib();
       case "screenshot":
         return mockScreenshot();
-      case "WantAgent":
+      case "wantAgent":
         return mockWantAgent();
       case "wallpaper":
         return mockWallpaper();
