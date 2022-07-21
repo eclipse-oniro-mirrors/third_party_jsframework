@@ -45,9 +45,6 @@ export function mockPasteBoard() {
     getMimeTypes: function () {
       console.warn("PasteData.getMimeTypes interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.");
-      let mimeTypes = new Array();
-      mimeTypes.push('[PC preview] unknow MIMETYPE_TEXT_HTML');
-      mimeTypes.push('[PC preview] unknow MIMETYPE_TEXT_PLAIN');
       return new Array(paramMock.paramStringMock);
     },
     getPrimaryHtml: function () {
