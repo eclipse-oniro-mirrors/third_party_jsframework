@@ -792,6 +792,37 @@ export function mockMultimediaAudio() {
       SHARE_MODE: 0,
       INDEPENDENT_MODE: 1
     },
+    DeviceRole: {
+      INPUT_DEVICE: 1,
+      OUTPUT_DEVICE: 2
+    },
+    DeviceType: {
+      INVALID: 0,
+      EARPIECE: 1,
+      SPEAKER: 2,
+      WIRED_HEADSET: 3,
+      WIRED_HEADPHONES: 4,
+      BLUETOOTH_SCO: 7,
+      BLUETOOTH_A2DP: 8,
+      MIC: 15,
+      USB_HEADSET: 22
+    },
+    InterruptHint: {
+      INTERRUPT_HINT_NONE: 0,
+      INTERRUPT_HINT_RESUME: 1,
+      INTERRUPT_HINT_PAUSE: 2,
+      INTERRUPT_HINT_STOP: 3,
+      INTERRUPT_HINT_DUCK: 4,
+      INTERRUPT_HINT_UNDUCK: 5
+    },
+    InterruptActionType: {
+      TYPE_ACTIVATED: 0,
+      TYPE_INTERRUPT: 1
+    },
+    DeviceChangeType: {
+      CONNECT: 0,
+      DISCONNECT: 1
+    },
     getAudioManager: function () {
       console.warn("audio.getAudioManager interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
