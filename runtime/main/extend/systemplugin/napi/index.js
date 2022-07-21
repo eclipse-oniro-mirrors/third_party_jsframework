@@ -91,6 +91,7 @@ import { mockSecurityLabel } from './ohos_securitylabel'
 import { mockWorkScheduler } from './ohos_workScheduler'
 import { mockWorkSchedulerExtensionAbility } from './ohos_WorkSchedulerExtensionAbility'
 import { mockUserAuth } from './ohos_userIAM_userAuth'
+import { mockFaceAuth } from './ohos_userIAM_faceAuth'
 import { mockArrayList } from './ohos_util_Arraylist'
 import { mockDeque } from './ohos_util_Deque'
 import { mockHashMap } from './ohos_util_HashMap'
@@ -432,6 +433,8 @@ export function mockRequireNapiFun() {
         return mockWorkSchedulerExtensionAbility();
       case "userIAM.userAuth":
         return mockUserAuth();
+      case "userIAM.faceAuth":
+        return mockFaceAuth();  
       case "util.ArrayList":
         return mockArrayList();
       case "util.Deque":
