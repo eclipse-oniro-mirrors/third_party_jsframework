@@ -15,23 +15,135 @@
 
 import { paramMock } from "../utils"
 
-export const constraintSourceType = {
+export const ConstraintSourceType = {
   CONSTRAINT_NOT_EXIST: 0,
   CONSTRAINT_TYPE_BASE: 1,
   CONSTRAINT_TYPE_DEVICE_OWNER: 2,
   CONSTRAINT_TYPE_PROFILE_OWNER: 3
 };
+export const OsAccountTypeMock = {
+  ADMIN: 0,
+  NORMAL: 1,
+  GUEST: 2
+};
+export const FingerprintTips = {
+  FINGERPRINT_TIP_GOOD: 0,
+  FINGERPRINT_TIP_IMAGER_DIRTY: 1,
+  FINGERPRINT_TIP_INSUFFICIENT: 2,
+  FINGERPRINT_TIP_PARTIAL: 3,
+  FINGERPRINT_TIP_TOO_FAST: 4,
+  FINGERPRINT_TIP_TOO_SLOW: 5
+};
+export const FaceTipsCode = {
+  FACE_AUTH_TIP_TOO_BRIGHT: 1,
+  FACE_AUTH_TIP_TOO_DARK: 2,
+  FACE_AUTH_TIP_TOO_CLOSE: 3,
+  FACE_AUTH_TIP_TOO_FAR: 4,
+  FACE_AUTH_TIP_TOO_HIGH: 5,
+  FACE_AUTH_TIP_TOO_LOW: 6,
+  FACE_AUTH_TIP_TOO_RIGHT: 7,
+  FACE_AUTH_TIP_TOO_LEFT: 8,
+  FACE_AUTH_TIP_TOO_MUCH_MOTION: 9,
+  FACE_AUTH_TIP_POOR_GAZE: 10,
+  FACE_AUTH_TIP_NOT_DETECTED: 11
+};
+export const EesultCode = {
+  SUCCESS: 0,
+  FAIL: 1,
+  GENERAL_ERROR: 2,
+  CANCELED: 3,
+  TIMEOUT: 4,
+  TYPE_NOT_SUPPORT: 5,
+  TRUST_LEVEL_NOT_SUPPORT: 6,
+  BUSY: 7,
+  INVALID_PARAMETERS: 8,
+  LOCKED: 9,
+  NOT_ENROLLED: 10
+};
+export const module = {
+  FACE_AUTH: 1
+};
+export const authTrustLevel = {
+  ATL1: 10000,
+  ATL2: 20000,
+  ATL3: 30000,
+  ATL4: 40000
+};
+export const authSubType = {
+  PIN_SIX: 10000,
+  PIN_NUMBER: 10001,
+  PIN_MIXED: 10002,
+  FACE_2D: 20000,
+  FACE_3D: 20001
+};
+export const getPropertyType = {
+  AUTH_SUB_TYPE: 1,
+  REMAIN_TIMES: 2,
+  FREEZING_TIME: 3
+};
+export const setPropertyType = {
+  INIT_ALGORITHM: 1
+};
+export const authType = {
+  PIN: 1,
+  FACE: 2
+};
 export function mockOsAccount() {
   const osAccountInfoMock = {
-    localId: "[PC Preview] unknown id",
-    localName: "[PC Preview] unknown name",
+    localId: "[PC Preview] unknown localId",
+    localName: "[PC Preview] unknown localName",
     type: "[PC Preview] unknown type",
     constraints: "[PC Preview] unknown constraints",
+    isVerified: "[PC Preview] unknown isVerified",
+    photo: "[PC Preview] unknown photo",
+    createTime: "[PC Preview] unknown createTime",
+    lastLoginTime: "[PC Preview] unknown lastLoginTime",
+    serialNumber: "[PC Preview] unknown serialNumber",
+    isActived: "[PC Preview] unknown isActived",
+    domainInfo: "[PC Preview] unknown domainInfo",
     distributedInfo: "[PC Preview] unknown distributedInfo"
   };
+  const domainAccountInfoMock = {
+    domain: "[PC Preview] unknown domain",
+    accountName: "[PC Preview] unknown accountName"
+  };
   const constraintSourceTypeInfoMock = {
-    localId: "[PC Preview] unknown id",
-    type: constraintSourceType,
+    localId: "[PC Preview] unknown localId",
+    type: "[PC Preview] unknown type"
+  };
+  const getPropertyRequest = {
+    authType: "[PC Preview] unknown authType",
+    keys: "[PC Preview] unknown keys"
+  };
+  const setPropertyRequest = {
+    authType: "[PC Preview] unknown authType",
+    key: "[PC Preview] unknown key",
+    setInfo: "[PC Preview] unknown setInfo"
+  };
+  const executorProperty = {
+    result: "[PC Preview] unknown result",
+    authSubType: "[PC Preview] unknown authSubType",
+    remainTimes: "[PC Preview] unknown remainTimes",
+    freezingTime: "[PC Preview] unknown freezingTime"
+  };
+  const authResult = {
+    token: "[PC Preview] unknown token",
+    remainTimes: "[PC Preview] unknown remainTimes",
+    ferezingTime: "[PC Preview] unknown freezingTime"
+  };
+  const credentialInfo = {
+    credType: "[PC Preview] unknown credType",
+    credSubType: "[PC Preview] unknown credSubType",
+    token: "[PC Preview] unknown token"
+  };
+  const requestResult = {
+    credentialId: "[PC Preview] unknown credentialId"
+  };
+  const enrolledCredInfo = {
+    credentialId: "[PC Preview] unknown credentialId",
+    authType: "[PC Preview] unknown authType",
+    authSubType: "[PC Preview] unknown authSubType",
+    templateId: "[PC Preview] unknown templateId"
   };
   const osAccountTypeMock = "[PC Preview] unknown type";
   const accountManagerMock = {
