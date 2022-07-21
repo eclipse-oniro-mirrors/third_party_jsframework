@@ -231,7 +231,7 @@ export function mockMultimediaMedia() {
     width: '[PC Preview] unknow width',
     height: '[PC Preview] unknow height',
     audioInterruptMode: InterruptMode,
-    videoScaleType: VideoScaleType,
+    videoScaleType: mediaMock.VideoScaleType,
     setDisplaySurface: function (...args) {
       console.warn("VideoPlayer.setDisplaySurface interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
