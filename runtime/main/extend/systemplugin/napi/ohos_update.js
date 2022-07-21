@@ -428,44 +428,44 @@ const EventInfo = {
 }
 
 const UpgradeInfo = {
-    upgradeApp: "com.ohos.ota.updateclient",
+    upgradeApp: "[PC Preview] unknown upgradeApp",
     businessType: BusinessType
 }
 
 const BusinessType = {
     vendor: BusinessVendor,
-    subType: BusinessSubType
+    subType: BusinessSubType.FIRMWARE
 }
 
 const DownloadOptions = {
-    allowNetwork: NetType,
-    order: Order
+    allowNetwork: NetType.CELLULAR,
+    order: Order.DOWNLOAD_AND_INSTALL
 }
 
 const ResumeDownloadOptions = {
-    allowNetwork: NetType
+    allowNetwork: NetType.CELLULAR
 }
 
 const PauseDownloadOptions = {
-    isAllowAutoResume: boolean
+    isAllowAutoResume: true
 }
 
 const UpgradeOptions = {
-    order: Order
+    order: Order.INSTALL
 }
 
 const ClearOptions = {
-    status: UpgradeStatus
+    status: UpgradeStatus.UPGRADE_SUCCESS
 }
 
 const EventClassifyInfo = {
     eventClassify: EventClassify,
-    extraInfo: string
+    extraInfo: "[PC Preview] unknown extraInfo"
 }
 
 const UpgradeFile = {
-    fileType: ComponentType,
-    filePath: string
+    fileType: ComponentType.OTA,
+    filePath: "[PC Preview] unknown filePath"
 }
 
 const UpgradeTaskCallback = {
