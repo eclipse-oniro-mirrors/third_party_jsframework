@@ -20,6 +20,25 @@ export const Action = {
 }
 
 export function mockKeyEvent() {
+    const Key = {
+        code: '[PC preview] unknow code',
+        pressedTime: '[PC preview] unknow pressedTime',
+        deviceId: '[PC preview] unknow deviceId',
+    }
+    const KeyEvent = {
+        action: '[PC preview] unknow action',
+        key: Key,
+        unicodeChar: '[PC preview] unknow unicodeChar',
+        keys: ['[PC preview] unknow Key'],
+        ctrlKey: '[PC preview] unknow ctrlKey',
+        altKey: '[PC preview] unknow altKey',
+        shiftKey: '[PC preview] unknow shiftKey',
+        logoKey: '[PC preview] unknow logoKey',
+        fnKey: '[PC preview] unknow fnKey',
+        capsLock: '[PC preview] unknow capsLock',
+        numLock: '[PC preview] unknow numLock',
+        scrollLock: '[PC preview] unknow scrollLock',
+    }
     const keyEvent = {
         Action,
     }

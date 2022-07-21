@@ -13,69 +13,56 @@
  * limitations under the License.
  */
 
-export const AbilityInfoMock = {
-    bundleName: "string",
-    name: "string",
-    label: "string",
-    description: "string",
-    icon: "string",
-    labelId: 1,
-    descriptionId: 2,
-    iconId: 3,
-    moduleName: "string",
-    process: "string",
-    targetAbility: "string",
-    backgroundModes: 4,
-    isVisible: true,
-    formEnabled: true,
-    type: "bundle.AbilityType",
-    subType: "bundle.AbilitySubType",
-    orientation: "bundle.DisplayOrientation",
-    launchMode: "bundle.LaunchMode",
-    permissions: ["1"],
-    deviceTypes: ["2"],
-    deviceCapabilities: ["3"],
-    readPermission: "string",
-    writePermission: "string",
-    applicationInfo: {
-        packageName: "[PC preview] unknown packageName",
-        className: "[PC preview] unknown className",
-        name: "[PC preview] unknown name",
-        labelId: 1,
-        iconId: 2,
-        sourceDir: "[PC preview] unknown sourceDir",
-        flags: 3,
-        customizeData: {
-            key: "[PC preview] unknown key",
-            value: {
-                CustomizeData: {
-                    name: "[PC preview] unknown name",
-                    value: "[PC preview] unknown value",
-                }
-            }
-        }
-    },
-    formEntity: 5,
-    minFormHeight: 6,
-    defaultFormHeight: 7,
-    minFormWidth: 8,
-    defaultFormWidth: 9,
-    uri: "string",
-    customizeData: {
-        key: "[PC preview] unknown key",
-        value: [
-            {
-                CustomizeData: {
-                    name: "[PC preview] unknown name",
-                    value: "[PC preview] unknown value",
-                },
-            },
-            {
-                CustomizeData: {
-                    name: "[PC preview] unknown name",
-                    value: "[PC preview] unknown value",
-                },
-            }
-        ]
-    },
+import { paramMock } from "../../utils"
+import { AbilityType, AbilitySubType, DisplayOrientation, LaunchMode, SupportWindowMode } from "./../ohos_bundle"
+import { ApplicationInfo } from "./applicationInfo"
+import { CustomizeData } from "./customizeData"
+import { Metadata } from "./metadata"
+
+
+export const AbilityInfo = {
+    name: "[PC preview] unknown name",
+    bundleName: "[PC preview] unknown bundleName",
+    moduleName: "[PC preview] unknown moduleName",
+    process: "[PC preview] unknown process",
+    targetAbility: "[PC preview] unknown targetAbility",
+    backgroundModes: "[PC preview] unknown backgroundModes",
+    isVisible: "[PC preview] unknown isVisible",
+    formEnabled: "[PC preview] unknown formEnabled",
+    type: AbilityType,
+    subType: AbilitySubType,
+    orientation: DisplayOrientation,
+    launchMode: LaunchMode,
+    permissions: [paramMock.paramStringMock],
+    deviceTypes: [paramMock.paramStringMock],
+    deviceCapabilities: [paramMock.paramNumberMock],
+    readPermission: '[PC Preview] unknow readPermission',
+    writePermission: '[PC Preview] unknow writePermission',
+    appId: '[PC Preview] unknow appId',
+    label: "[PC preview] unknown label",
+    description: "[PC preview] unknown description",
+    icon: "[PC preview] unknown icon",
+    labelId: "[PC preview] unknown labelId",
+    iconId: "[PC preview] unknown iconId",
+    uid: '[PC Preview] unknow uid',
+    installTime: '[PC Preview] unknow installTime',
+    updateTime: '[PC Preview] unknow updateTime',
+    descriptionId: '[PC Preview] unknow descriptionId',
+    applicationInfo: ApplicationInfo,
+    metaData: [CustomizeData],
+    uri: "[PC preview] unknown uri",
+    metadata: [Metadata],
+    enabled: "[PC preview] unknown enabled",
+    supportWindowMode: [SupportWindowMode],
+    maxWindowRatio: "[PC preview] unknown maxWindowRatio",
+    minWindowRatio: "[PC preview] unknown minWindowRatio",
+    maxWindowWidth: "[PC preview] unknown maxWindowWidth",
+    minWindowWidth: "[PC preview] unknown minWindowWidth",
+    maxWindowHeight: "[PC preview] unknown maxWindowHeight",
+    minWindowHeight: "[PC preview] unknown minWindowHeight",
+    formEntity: "[PC preview] unknown formEntity",
+    minFormHeight: "[PC preview] unknown minFormHeight",
+    defaultFormHeight: "[PC preview] unknown defaultFormHeight",
+    minFormWidth: "[PC preview] unknown minFormWidth",
+    defaultFormWidth: "[PC preview] unknown defaultFormWidth",
 }

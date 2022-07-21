@@ -37,6 +37,8 @@ const {
 
 const frameworkBanner = `var global=this; var process={env:{}}; ` + `var setTimeout=global.setTimeout;\n`;
 
+const frameworkBannerForJSAPIMock = `var global=globalThis;`;
+
 const onwarn = warning => {
   // Silence circular dependency warning
   if (warning.code === 'CIRCULAR_DEPENDENCY') {
@@ -94,7 +96,8 @@ const configOutput = {
 
 const configJSAPIMockOutput = {
   file: path.resolve(__dirname, 'dist/jsMockSystemPlugin.js'),
-  format: 'umd'
+  format: 'umd',
+  banner: frameworkBannerForJSAPIMock
 };
 
 rollup.rollup(configInput).then(bundle => {

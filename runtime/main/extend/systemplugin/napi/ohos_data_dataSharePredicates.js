@@ -14,8 +14,8 @@
  */
 
 import { paramMock } from "../utils"
-export function DataSharePredicates() {
-    const DataSharePredicatesClass = class data_DataSharePredicates {
+export function mockDataSharePredicates() {
+    const DataSharePredicatesClass = class DataSharePredicates {
       constructor() {
         this.equalTo = function (...args) {
           console.warn("DataSharePredicates.equalTo interface mocked in the Previewer. How this interface works on the" +

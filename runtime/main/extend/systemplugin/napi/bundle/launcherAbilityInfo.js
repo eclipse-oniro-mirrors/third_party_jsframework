@@ -13,32 +13,13 @@
  * limitations under the License.
  */
 
-export const LauncherAbilityInfoMock = {
-    applicationInfo: {
-        packageName: "[PC preview] unknown packageName",
-        className: "[PC preview] unknown className",
-        name: "[PC preview] unknown name",
-        labelId: 1,
-        iconId: 2,
-        sourceDir: "[PC preview] unknown sourceDir",
-        flags: 3,
-        customizeData: {
-            key: "[PC preview] unknown key",
-            value: {
-                CustomizeData: {
-                    name: "[PC preview] unknown name",
-                    value: "[PC preview] unknown value",
-                }
-            }
-        }
-    },
-    elementName: {
-        deviceId: "[PC preview] unknown deviceId",
-        bundleName: "[PC preview] unknown bundleName",
-        abilityName: "[PC preview] unknown abilityName",
-        uri: "[PC preview] unknown uri",
-        shortName: "[PC preview] unknown shortName",
-    },
+import { paramMock } from "../../utils"
+import { ApplicationInfo } from './applicationInfo';
+import { ElementName } from './elementName'
+
+export const LauncherAbilityInfo = {
+    applicationInfo: ApplicationInfo,
+    elementName: ElementName,
     labelId: "[PC preview] unknown labelId",
     iconId: "[PC preview] unknown iconId",
     userId: "[PC preview] unknown userId",

@@ -116,6 +116,30 @@ export function mockAppManager() {
           resolve();
         });
       }
+    },
+    isRamConstrainedDevice: function (...args) {
+      console.warn('appManager.isRamConstrainedDevice interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve(paramMock.paramBooleanMock);
+        });
+      }
+    },
+    getAppMemorySize: function (...args) {
+      console.warn('appManager.getAppMemorySize interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve(paramMock.paramNumberMock);
+        });
+      }
     }
   }
   return appManager

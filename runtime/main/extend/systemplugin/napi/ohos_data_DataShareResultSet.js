@@ -15,15 +15,18 @@
 
 import {paramMock} from "../utils"
 
+export const DataType = {
+  TYPE_NULL: 0,
+  TYPE_LONG: 1,
+  TYPE_DOUBLE: 2,
+  TYPE_STRING: 3,
+  TYPE_BLOB: 4
+};
 export const DataShareResultSetMock = {
   columnNames: "[PC Preview] unknow columnNames",
   columnCount: "[PC Preview] unknow columnCount",
   rowCount: "[PC Preview] unknow rowCount",
   rowIndex: "[PC Preview] unknow rowIndex",
-  goToFirstRow: "[PC Preview] unknow goToFirstRow",
-  goToLastRow: "[PC Preview] unknow goToLastRow",
-  goToNextRow: "[PC Preview] unknow goToNextRow",
-  goToPreviousRow: "[PC Preview] unknow goToPreviousRow",
   isEnded: "[PC Preview] unknow isEnded",
   isStarted: "[PC Preview] unknow isStarted",
   isClosed: "[PC Preview] unknow isClosed",
@@ -98,7 +101,7 @@ export const DataShareResultSetMock = {
     return paramMock.paramNumberMock;
   },
   close: function () {
-    console.warn("ResultSet.isColumnNull interface mocked in the Previewer. How this interface works on the Previewer" +
+    console.warn("ResultSet.close interface mocked in the Previewer. How this interface works on the Previewer" +
       " may be different from that on a real device.")
   }
 }

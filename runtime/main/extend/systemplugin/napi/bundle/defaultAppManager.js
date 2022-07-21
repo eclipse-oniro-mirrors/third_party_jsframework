@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-export const DefaultAppManagerMock = {
+export const DefaultAppManager = {
     BROWSER: "[PC preview] unknown BROWSER",
     IMAGE: "[PC preview] unknown IMAGE",
     AUDIO: "[PC preview] unknown AUDIO",

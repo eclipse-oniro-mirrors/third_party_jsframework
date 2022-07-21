@@ -289,7 +289,7 @@ ohos_static_library("jsf") {
 }
 
 if (!is_cross_platform_build) {
-  import("//ark/ts2abc/ts2panda/ts2abc_config.gni")
+  import("//arkcompiler/ets_frontend/ts2panda/ts2abc_config.gni")
   ark_abc_path =
       get_label_info(":ark_build", "target_out_dir") + "/strip.native.min.abc"
 

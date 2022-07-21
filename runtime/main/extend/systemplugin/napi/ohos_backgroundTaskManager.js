@@ -16,7 +16,7 @@
 import { paramMock } from "../utils"
 
 export function mockBackgroundTaskManager() {
-    const DelaySuspendInfoMock = {
+    const DelaySuspendInfo = {
         requestId: '[PC preview] unknown requestId',
         actualDelayTime: '[PC preview] unknown actualDelayTime',
     };
@@ -38,7 +38,7 @@ export function mockBackgroundTaskManager() {
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
                 args[len - 1].call(this, paramMock.businessErrorMock)
-                return DelaySuspendInfoMock;
+                return DelaySuspendInfo;
             }
         },
         cancelSuspendDelay: function (...args) {
@@ -50,10 +50,10 @@ export function mockBackgroundTaskManager() {
                 " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, DelaySuspendInfoMock.actualDelayTime)
+                args[len - 1].call(this, paramMock.businessErrorMock, DelaySuspendInfo.actualDelayTime)
             } else {
                 return new Promise((resolve) => {
-                    resolve(DelaySuspendInfoMock.actualDelayTime)
+                    resolve(DelaySuspendInfo.actualDelayTime)
                 });
             }
         },

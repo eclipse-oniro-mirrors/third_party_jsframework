@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,8 @@
  */
 
 import { paramMock } from "../utils"
-import { ExtensionContextClass } from "./application/abilityContext"
+import { ExtensionContextClass } from "./application/AbilityContext"
+import { FormState } from "./ohos_application_formInfo"
 
 export function mockFormExtension() {
   const formBindingDataMock = {
@@ -36,7 +37,19 @@ export function mockFormExtension() {
             resolve();
           })
         }
-      }
+      };
+      this.startAbility = function (...args) {
+        console.warn("formExtension.formExtensionContext.startAbility interface mocked in the Previewer." +
+          " How this interface works on the Previewer may be different from that on a real device.");
+        const len = args.length;
+        if (len > 0 && typeof args[len - 1] === 'function') {
+            args[len - 1].call(this, paramMock.businessErrorMock);
+          } else {
+            return new Promise((resolve, reject) => {
+              resolve();
+            })
+          }
+      };
     }
   }
   const formExtensionClass = class formExtension {
@@ -68,6 +81,15 @@ export function mockFormExtension() {
       this.onDestroy = function (...args) {
         console.warn("application.formExtension.onDestroy interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
+      };
+      this.onConfigurationUpdated = function (...args) {
+        console.warn("application.formExtension.onConfigurationUpdated interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+      };
+      this.onAcquireFormState = function (...args) {
+        console.warn("application.formExtension.onAcquireFormState interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        return FormState;
       };
     }
   }
