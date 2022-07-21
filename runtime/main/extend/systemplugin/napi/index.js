@@ -105,7 +105,7 @@ import { mockMultimediaAudio } from './ohos_multimedia_audio'
 import { mockMultimediaImage } from './ohos_multimedia_image'
 import { mockMultimediaMedia } from './ohos_multimedia_media'
 import { mockMultimediaMediaLibrary } from './ohos_multimedia_mediaLibrary'
-import { mockOhosBatteryinfo } from './ohos_batteryInfo'
+import { mockBatteryinfo } from './ohos_batteryInfo'
 import { mockBluetooth } from './ohos_bluetooth'
 import { mockBrightness } from './ohos_brightness'
 import { mockBytrace } from './ohos_bytrace'
@@ -263,8 +263,8 @@ export function mockRequireNapiFun() {
         return mockBrightness();
       case "bluetooth":
         return mockBluetooth();
-      case "batteryInfo":
-        return mockOhosBatteryinfo();
+      case "batteryinfo":
+        return mockBatteryinfo();
       case "systemParameter":
         return mockSystemParameter();
       case "ability.dataUriUtils":

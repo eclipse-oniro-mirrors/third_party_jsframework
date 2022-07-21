@@ -29,14 +29,14 @@ export function mockBatteryStatistics() {
     }
     const BatteryStatsInfo = {
         uid: '[PC preview] unknow uid',
-        type: '[PC preview] unknow type',
+        type: ConsumptionType,
         power: '[PC preview] unknow power',
     }
-    const batteryStatistics = {
+    const batteryStats = {
         ConsumptionType,
         BatteryStatsInfo,
         getBatteryStats: function (...args) {
-            console.warn("batteryStatistics.getBatteryStats interface mocked in the Previewer. How this interface works on the" +
+            console.warn("batteryStats.getBatteryStats interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             var batteryStatsInfos = new Array(BatteryStatsInfo)
             const len = args.length
@@ -49,27 +49,27 @@ export function mockBatteryStatistics() {
             } 
         },
         getAppPowerValue: function (...args) {
-            console.warn("batteryStatistics.getAppPowerValue interface mocked in the Previewer. How this interface works on the" +
+            console.warn("batteryStats.getAppPowerValue interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             return paramMock.paramNumberMock;
         },
         getAppPowerPercent: function (...args) {
-            console.warn("batteryStatistics.getAppPowerPercent interface mocked in the Previewer. How this interface works on the" +
+            console.warn("batteryStats.getAppPowerPercent interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             return paramMock.paramNumberMock;
         },
         getHardwareUnitPowerValue: function (...args) {
-            console.warn("batteryStatistics.getHardwareUnitPowerValue interface mocked in the Previewer. How this interface works on the" +
+            console.warn("batteryStats.getHardwareUnitPowerValue interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             return paramMock.paramNumberMock;
             
         },
         getHardwareUnitPowerPercent: function (...args) {
-            console.warn("batteryStatistics.getHardwareUnitPowerPercent interface mocked in the Previewer. How this interface works on the" +
+            console.warn("batteryStats.getHardwareUnitPowerPercent interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
             return paramMock.paramNumberMock;
         }
     }
-    return batteryStatistics
+    return batteryStats
   }
   
