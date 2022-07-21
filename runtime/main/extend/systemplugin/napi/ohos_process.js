@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
 import { paramMock } from "../utils"
 
 export function mockProcess() {
-  const result = {
+  const process = {
     runCmd: function (...args) {
       console.warn("process.runCmd interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
@@ -155,5 +155,5 @@ export function mockProcess() {
         " may be different from that on a real device.")
     }
   }
-  return result;
+  return process;
 }
