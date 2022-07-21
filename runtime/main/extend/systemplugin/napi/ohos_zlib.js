@@ -13,51 +13,52 @@
  * limitations under the License.
  */
 export const MemLevel = {
-  MEM_LEVEL_MIN: 1,
-  MEM_LEVEL_MAX: 9,
-  MEM_LEVEL_DEFAULT: 8
+    MEM_LEVEL_MIN: 1,
+    MEM_LEVEL_MAX: 9,
+    MEM_LEVEL_DEFAULT: 8
 };
 export const ErrorCode = {
-  ERROR_CODE_OK: 0,
-  ERROR_CODE_ERRND: -1,
+    ERROR_CODE_OK: 0,
+    ERROR_CODE_ERRNO: -1,
 };
 export const CompressLevel = {
-  COMPRESS_LEVEL_NO_COMPRESSION: 0,
-  COMPRESS_LEVEL_BEST_SPEED: 1,
-  COMPRESS_LEVEL_BEST_COMPRESSION: 9,
-  COMPRESS_LEVEL_DEFAULT_COMPRESSION: -1
+    COMPRESS_LEVEL_NO_COMPRESSION: 0,
+    COMPRESS_LEVEL_BEST_SPEED: 1,
+    COMPRESS_LEVEL_BEST_COMPRESSION: 9,
+    COMPRESS_LEVEL_DEFAULT_COMPRESSION: -1
 };
 export const CompressStrategy = {
-  COMPRESS_STRATEGY_DEFAULT_STRATEGY: 0,
-  COMPRESS_STRATEGY_FILTERED: 1,
-  COMPRESS_STRATEGY_HUFFMAN_ONLY: 2,
-  COMPRESS_STRATEGY_RLE: 3,
-  COMPRESS_STRATEGY_FIXED: 4
+    COMPRESS_STRATEGY_DEFAULT_STRATEGY: 0,
+    COMPRESS_STRATEGY_FILTERED: 1,
+    COMPRESS_STRATEGY_HUFFMAN_ONLY: 2,
+    COMPRESS_STRATEGY_RLE: 3,
+    COMPRESS_STRATEGY_FIXED: 4
 };
-export function mockZlib() {
-  const zlib = {
-    ErrorCode,
-    MemLevel,
-    CompressLevel,
-    CompressStrategy,
-    Options: {
-      level: CompressLevel,
-      memLevel: MemLevel,
-      strategy: CompressStrategy,
-    },
-    zipFile(...args) {
-      console.warn("zlib.zipFile interface mocked in the Previewer. How this interface works on the Previewer may be different from that on a real device.")
-      return new Promise((resolve, reject) => {
-        resolve()
-      })
-    },
+export const Options = {
+    level: CompressLevel,
+    memLevel: MemLevel,
+    strategy: CompressStrategy,
+};
+export function mockZlib() {  
+    const zlib = {
+        ErrorCode,
+        MemLevel,
+        CompressLevel,
+        CompressStrategy,
+        Options,
+        zipFile: function(...args) {
+            console.warn("zlib.zipFile interface mocked in the Previewer. How this interface works on the Previewer may be different from that on a real device.")
+            return new Promise((resolve) => {
+                resolve();
+            })
+        },
 
-    unzipFile(...args) {
-      console.warn("zlib.unzipFile interface mocked in the Previewer. How this interface works on the Previewer may be different from that on a real device.")
-      return new Promise((resolve, reject) => {
-        resolve()
-      })
+        unzipFile: function(...args) {
+            console.warn("zlib.unzipFile interface mocked in the Previewer. How this interface works on the Previewer may be different from that on a real device.")
+            return new Promise((resolve) => {
+                resolve();
+            })
+        }
     }
-  }
-  return zlib;
+    return zlib;
 }

@@ -30,12 +30,12 @@ export function mockI18N() {
         getSystemLanguages: function() {
             console.warn("I18N.getSystemLanguages interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
-            return paramMock.paramArrayMock;
+            return new Array(paramMock.paramStringMock);
         },
         getSystemCountries: function(...args) {
             console.warn("I18N.getSystemCountries interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
-            return paramMock.paramArrayMock;
+            return new Array(paramMock.paramStringMock);
         },
         isSuggested: function(...args) {
             console.warn("I18N.isSuggested interface mocked in the Previewer. How this interface works on the Previewer" +
@@ -72,11 +72,6 @@ export function mockI18N() {
                 " may be different from that on a real device.")
             return paramMock.paramBooleanMock;
         },
-        PhoneNumberFormat: function(...args) {
-            console.warn("I18N.PhoneNumberFormat interface mocked in the Previewer. How this interface works on the Previewer" +
-                " may be different from that on a real device.")
-            return PhoneNumberFormatMock;
-        },
         getCalendar: function(...args) {
             console.warn("I18N.getCalendar interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
@@ -95,7 +90,7 @@ export function mockI18N() {
         getTimeZone: function(...args) {
             console.warn("I18N.getTimeZone interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
-            return TimeZoneMock;
+            return new TimeZoneClass();
         },
         Util: {
             unitConvert: function(...args) {
@@ -180,25 +175,25 @@ export function mockI18N() {
         getPreferredLanguageList: function() {
             console.warn("I18N.getPreferredLanguageList interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
-            return paramMock.paramArrayMock;
+            return new Array(paramMock.paramStringMock);
         },
         getFirstPreferredLanguage: function() {
             console.warn("I18N.getFirstPreferredLanguage interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
             return paramMock.paramStringMock;
-        }
-    }
-    const PhoneNumberFormatMock = {
-        isValidNumber: function(...args) {
-            console.warn("I18N.PhoneNumberFormat.isValidNumber interface mocked in the Previewer. How this interface works on the Previewer" +
+        },
+        TimeZone: TimeZoneClass,
+        setUsingLocalDigit: function(...args) {
+            console.warn("I18N.setUsingLocalDigit interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
             return paramMock.paramBooleanMock;
         },
-        format: function(...args) {
-            console.warn("I18N.PhoneNumberFormat.format interface mocked in the Previewer. How this interface works on the Previewer" +
+        getUsingLocalDigit: function() {
+            console.warn("I18N.getUsingLocalDigit interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
-            return paramMock.paramStringMock;
+            return paramMock.paramBooleanMock;
         },
+        PhoneNumberFormat: PhoneNumberFormatClass
     }
     const CalendarMock = {
         setTime: function(...args) {
@@ -302,7 +297,7 @@ export function mockI18N() {
         getIndexList: function() {
             console.warn("I18N.IndexUtil.getIndexList interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
-            return paramMock.paramArrayMock;
+            return new Array(paramMock.paramStringMock);
         },
         addLocale: function(...args) {
             console.warn("I18N.IndexUtil.addLocale interface mocked in the Previewer. How this interface works on the Previewer" +
@@ -314,27 +309,71 @@ export function mockI18N() {
             return paramMock.paramStringMock;
         }
     }
-    const TimeZoneMock = {
-        getID: function() {
+    return result;
+}
+
+export const TimeZoneClass = class TimeZone{
+    constructor() {
+        this.getID = function() {
             console.warn("I18N.TimeZone.getID interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
             return paramMock.paramStringMock;
-        },
-        getDisplayName: function(...args) {
+        };
+        this.getDisplayName = function(...args) {
             console.warn("I18N.TimeZone.getDisplayName interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
             return paramMock.paramStringMock;
-        },
-        getRawOffset: function() {
+        };
+        this.getRawOffset = function() {
             console.warn("I18N.TimeZone.getRawOffset interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
             return paramMock.paramNumberMock;
-        },
-        getOffset: function(...args) {
+        };
+        this.getOffset = function(...args) {
             console.warn("I18N.TimeZone.getOffset interface mocked in the Previewer. How this interface works on the Previewer" +
                 " may be different from that on a real device.")
             return paramMock.paramNumberMock;
-        }
+        };
     }
-    return result;
+}
+TimeZoneClass.getAvailableIDs = function() {
+    console.warn("I18N.TimeZone.getAvailableIDs interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+    return new Array(paramMock.paramStringMock);
+};
+TimeZoneClass.getAvailableZoneCityIDs = function() {
+    console.warn("I18N.TimeZone.getAvailableZoneCityIDs interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+    return new Array(paramMock.paramStringMock);
+};
+TimeZoneClass.getCityDisplayName = function(...args) {
+    console.warn("I18N.TimeZone.getCityDisplayName interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+    return paramMock.paramStringMock;
+};
+TimeZoneClass.getTimezoneFromCity = function(...args) {
+    console.warn("I18N.TimeZone.getTimezoneFromCity interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+    return new TimeZoneClass();
+};
+const PhoneNumberFormatClass = class PhoneNumberFormat{
+    constructor(...args) {
+        console.warn("I18N.PhoneNumberFormat.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
+            " may be different from that on a real device.")
+        this.isValidNumber = function(...args) {
+            console.warn("I18N.PhoneNumberFormat.isValidNumber interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramBooleanMock;
+        };
+        this.format = function(...args) {
+            console.warn("I18N.PhoneNumberFormat.format interface mocked in the Previewer. How this interface works on the Previewer" +
+                " may be different from that on a real device.")
+            return paramMock.paramStringMock;
+        };
+    }
+}
+PhoneNumberFormatClass.getLocationName = function(...args) {
+    console.warn("I18N.PhoneNumberFormat.getLocationName interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+    return paramMock.paramStringMock;
 }

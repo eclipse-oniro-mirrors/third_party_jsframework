@@ -16,6 +16,12 @@
 import { paramMock } from "../utils"
 
 export function mockInputEventClient() {
+  const KeyEvent = {
+    isPressed: '[PC preview] unknow isPressed',
+    keyCode: '[PC preview] unknow keyCode',
+    keyDownDuration: '[PC preview] unknow keyDownDuration',
+    isIntercepted: '[PC preview] unknow isIntercepted',
+  }
   const inputEventClient = {
     injectEvent: function(...args) {
       console.warn("inputEventClient.injectEvent interface mocked in the Previewer. How this interface works on the" +
@@ -29,19 +35,23 @@ export function mockInputEventClient() {
         console.warn("the second parameter type must be 'object'");
         return; 
       }
-      if (typeof args[0].isPressed !== 'boolean') {
+      if (!('KeyEvent' in args[0])) {
+        console.warn("missing 'KeyEvent' field");
+        return; 
+      }
+      if (typeof args[0].KeyEvent.isPressed !== 'boolean') {
         console.warn("Field isPressed must be boolean");
         return; 
       }
-      if (typeof args[0].keyCode !== 'number') {
+      if (typeof args[0].KeyEvent.keyCode !== 'number') {
         console.warn("Field keyCode must be number");
         return; 
       }
-      if (typeof args[0].keyDownDuration !== 'number') {
+      if (typeof args[0].KeyEvent.keyDownDuration !== 'number') {
         console.warn("Field keyDownDuration must be number");
         return; 
       }
-      if (typeof args[0].isIntercepted !== 'boolean') {
+      if (typeof args[0].KeyEvent.isIntercepted !== 'boolean') {
         console.warn("Field isIntercepted must be boolean");
         return; 
       }

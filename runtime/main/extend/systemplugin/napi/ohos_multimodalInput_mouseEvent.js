@@ -41,6 +41,31 @@ export const Axis = {
 }
 
 export function mockMouseEvent() {
+    const AxisValue = {
+        axis: '[PC preview] unknow axis',
+        value: '[PC preview] unknow value',
+    }
+    const MouseEvent = {
+        action: '[PC preview] unknow action',
+        screenX: '[PC preview] unknow screenX',
+        screenY: '[PC preview] unknow screenY',
+        windowX: '[PC preview] unknow windowX',
+        windowY: '[PC preview] unknow windowY',
+        rawDeltaX: '[PC preview] unknow rawDeltaX',
+        rawDeltaY: '[PC preview] unknow rawDeltaY',
+        button: '[PC preview] unknow button',
+        pressedButtons: ['[PC preview] unknow pressedButtons'],
+        axes: ['[PC preview] unknow axes'],
+        pressedKeys: ['[PC preview] unknow pressedKeys'],
+        ctrlKey: '[PC preview] unknow ctrlKey',
+        altKey: '[PC preview] unknow altKey',
+        shiftKey: '[PC preview] unknow shiftKey',
+        logoKey: '[PC preview] unknow logoKey',
+        fnKey: '[PC preview] unknow fnKey',
+        capsLock: '[PC preview] unknow capsLock',
+        numLock: '[PC preview] unknow numLock',
+        scrollLock: '[PC preview] unknow scrollLock',
+    }
     const mouseEvent = {
         Action,
         Button,

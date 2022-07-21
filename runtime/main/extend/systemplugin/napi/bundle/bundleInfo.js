@@ -13,266 +13,53 @@
  * limitations under the License.
  */
 
-export const BundleInfoMock = {
+import { paramMock } from "../../utils"
+import { AbilityInfo } from './abilityInfo';
+import { ApplicationInfo } from './applicationInfo';
+import { ExtensionAbilityInfo } from './extensionAbilityInfo';
+import { HapModuleInfo } from './hapModuleInfo';
+
+export const UsedScene = {
+    abilities: [paramMock.paramStringMock],
+    when: "[PC preview] unknown when",
+}
+
+export const ReqPermissionDetail = {
+    name: "[PC preview] unknown name",
+    reason: "[PC preview] unknown reason",
+    reasonId: "[PC preview] unknown reasonId",
+    usedScene: UsedScene,
+}
+
+export const BundleInfo = {
     name: "[PC preview] unknown name",
     type: "[PC preview] unknown type",
     appId: "[PC preview] unknown appId",
     uid: "[PC preview] unknown uid",
     installTime: "[PC preview] unknown installTime",
     updateTime: "[PC preview] unknown updateTime",
-    appInfo: {
-        packageName: "[PC preview] unknown packageName",
-        className: "[PC preview] unknown className",
-        name: "[PC preview] unknown name",
-        labelId: "[PC preview] unknown labelId",
-        iconId: "[PC preview] unknown iconId",
-        sourceDir: "[PC preview] unknown sourceDir",
-        flags: "[PC preview] unknown flags",
-        customizeData: {
-            key: "[PC preview] unknown key",
-            value: {
-                CustomizeData: {
-                    name: "[PC preview] unknown name",
-                    value: "[PC preview] unknown value",
-                }
-            }
-        }
-    },
-    abilityInfo: [
-        {
-            name: "[PC preview] unknown name",
-            type: '[[PC Preview] unknow type]',
-            appId: '[[PC Preview] unknow appId]',
-            label: "[PC preview] unknown label",
-            description: "[PC preview] unknown description",
-            uid: '[[PC Preview] unknow uid]',
-            installTime: '[[PC Preview] unknow installTime]',
-            updateTime: '[[PC Preview] unknow updateTime]',
-            applicationInfo: {
-                packageName: "[PC preview] unknown package name",
-                className: "[PC preview] unknown class name",
-                name: "[PC preview] unknown name",
-                labelId: "[PC preview] unknown label id",
-                iconId: "[PC preview] unknown icon id",
-                sourceDir: "[PC preview] unknown source dir",
-                flags: "[PC preview] unknown flags",
-                customizeData: {
-                    key: "[PC preview] unknown key",
-                    value: {
-                        CustomizeData: {
-                            name: "[PC preview] unknown name",
-                            value: "[PC preview] unknown value",
-                        }
-                    }
-                }
-            },
-            formEntity: "[PC preview] unknown formEntity",
-            minFormHeight: "[PC preview] unknown minFormHeight",
-            defaultFormHeight: "[PC preview] unknown defaultFormHeight",
-            minFormWidth: "[PC preview] unknown minFormWidth",
-            defaultFormWidth: "[PC preview] unknown defaultFormWidth",
-            uri: "[PC preview] unknown uri",
-            customizeData: {
-                key: "[PC preview] unknown key",
-                value: [
-                    {
-                        CustomizeData: {
-                            name: "[PC preview] unknown name",
-                            value: "[PC preview] unknown value",
-                        },
-                    },
-                    {
-                        CustomizeData: {
-                            name: "[PC preview] unknown name",
-                            value: "[PC preview] unknown value",
-                        },
-                    }
-                ]
-            },
-        }
-    ],
-    reqPermissions: ["[PC preview] unknown repermission"],
-    reqPermissionDetails: [
-        {
-            name: "[PC preview] unknown name",
-            reason: "[PC preview] unknown reason",
-            usedScene: {
-                abilities: ["[PC preview] unknown ability"],
-                when: "[PC preview] unknown when",
-            }
-        }
-    ],
+    appInfo: ApplicationInfo,
+    abilityInfos: [AbilityInfo],
+    reqPermissions: [paramMock.paramStringMock],
+    reqPermissionDetails: [ReqPermissionDetail],
     vendor: "[PC preview] unknown vendor",
     versionCode: "[PC preview] unknown versionCode",
     versionName: "[PC preview] unknown versionName",
     compatibleVersion: "[PC preview] unknown compatibleVersion",
     targetVersion: "[PC preview] unknown targetVersion",
     isCompressNativeLibs: "[PC preview] unknown isCompressNativeLibs",
-    hapModuleInfo: [
-        {
-            name: "string",
-            description: "string",
-            descriptionId: 1,
-            icon: "string",
-            label: "string",
-            labelId: 2,
-            iconId: 3,
-            backgroundImg: "string",
-            supportedModes: 4,
-            reqCapabilities: ["1", "2"],
-            deviceTypes: ["1", "2"],
-            abilityInfo: [
-                {
-                    bundleName: "string",
-                    name: "string",
-                    label: "string",
-                    description: "string",
-                    icon: "string",
-                    labelId: 1,
-                    descriptionId: 2,
-                    iconId: 3,
-                    moduleName: "string",
-                    process: "string",
-                    targetAbility: "string",
-                    backgroundModes: 4,
-                    isVisible: true,
-                    formEnabled: true,
-                    type: "bundle.AbilityType",
-                    subType: "bundle.AbilitySubType",
-                    orientation: "bundle.DisplayOrientation",
-                    launchMode: "bundle.LaunchMode",
-                    permissions: ["1"],
-                    deviceTypes: ["2"],
-                    deviceCapabilities: ["3"],
-                    readPermission: "string",
-                    writePermission: "string",
-                    applicationInfo: {
-                        packageName: "[PC preview] unknown packageName",
-                        className: "[PC preview] unknown className",
-                        name: "[PC preview] unknown name",
-                        labelId: 2,
-                        iconId: 3,
-                        sourceDir: "[PC preview] unknown sourceDir",
-                        flags: 1,
-                        customizeData: {
-                            key: "[PC preview] unknown key",
-                            value: {
-                                CustomizeData: {
-                                    name: "[PC preview] unknown name",
-                                    value: "[PC preview] unknown value",
-                                }
-                            }
-                        }
-                    },
-                    formEntity: 5,
-                    minFormHeight: 6,
-                    defaultFormHeight: 7,
-                    minFormWidth: 8,
-                    defaultFormWidth: 9,
-                    uri: "string",
-                    customizeData: {
-                        key: "[PC preview] unknown key",
-                        value: [
-                            {
-                                CustomizeData: {
-                                    name: "[PC preview] unknown name",
-                                    value: "[PC preview] unknown value",
-                                },
-                            },
-                            {
-                                CustomizeData: {
-                                    name: "[PC preview] unknown name",
-                                    value: "[PC preview] unknown value",
-                                },
-                            }
-                        ]
-                    },
-                }
-            ],
-            moduleName: "string",
-            mainAbilityName: "string",
-            installationFree: true,
-        }
-    ],
-    entryModuleName: "string",
-    cpuAbi: "string",
-    isSilentInstallation: "string",
-    minCompatibleVersionCode: 7,
-    entryInstallationFree: true,
+    hapModuleInfos: [HapModuleInfo],
+    entryModuleName: "[PC preview] unknown entryModuleName",
+    cpuAbi: "[PC preview] unknown cpuAbi",
+    isSilentInstallation: "[PC preview] unknown isSilentInstallation",
+    minCompatibleVersionCode: "[PC preview] unknown minCompatibleVersionCode",
+    entryInstallationFree: "[PC preview] unknown entryInstallationFree",
+    reqPermissionStates: [paramMock.paramStringMock],
+    extensionAbilityInfo: [ExtensionAbilityInfo],
 };
 
-export const BundlePackInfo = {
-    packages: [{
-        deviceType: ["[PC preview] unknown deviceType"],
-        name: "[PC preview] unknown name",
-        moduleType: "[PC preview] unknown moduleType",
-        deliveryWithInstall: "[PC preview] unknown deliveryWithInstall",
-    }],
-    summary: {
-        app: {
-            bundleName: "[PC preview] unknown bundleName",
-            version: {
-                minCompatibleVersionCode: "[PC preview] unknown minCompatibleVersionCode",
-                name: "[PC preview] unknown name",
-                code: "[PC preview] unknown code",
-            },
-        },
-        modules: [
-            {
-                apiVersion: {
-                    releaseType: "[PC preview] unknown releaseType",
-                    compatible: "[PC preview] unknown compatible",
-                    target: "[PC preview] unknown target",
-                },
-                deviceType: ["[PC preview] unknown deviceType"],
-                distro: {
-                    mainAbility: "[PC preview] unknown mainAbility",
-                    deliveryWithInstall: "[PC preview] unknown deliveryWithInstall",
-                    installationFree: "[PC preview] unknown installationFree",
-                    moduleName: "[PC preview] unknown moduleName",
-                    moduleType: "[PC preview] unknown moduleType",
-                },
-                abilities: [
-                    {
-                        name: "[PC preview] unknown name",
-                        label: "[PC preview] unknown label",
-                        visible: "[PC preview] unknown visible",
-                        forms: [
-                            {
-                                name: "[PC preview] unknown name",
-                                type: "[PC preview] unknown type",
-                                updateEnabled: "[PC preview] unknown updateEnabled",
-                                scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
-                                updateDuration: "[PC preview] unknown updateDuration",
-                                supportDimensions: ["[PC preview] unknown supportDimensions"],
-                                defaultDimension: "[PC preview] unknown defaultDimension",
-                            }
-                        ],
-
-                    }
-                ],
-                extensionAbilities: [
-                    {
-                        name: "[PC preview] unknown name",
-                        forms: [
-                            {
-                                name: "[PC preview] unknown name",
-                                type: "[PC preview] unknown type",
-                                updateEnabled: "[PC preview] unknown updateEnabled",
-                                scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
-                                updateDuration: "[PC preview] unknown updateDuration",
-                                supportDimensions: ["[PC preview] unknown supportDimensions"],
-                                defaultDimension: "[PC preview] unknown defaultDimension",
-                            }
-                        ],
-                    }
-                ]
-            }
-        ]
-    }
-};
-
-export const DispatchInfoMock = {
-    verison: "[PC preview] unknown verison",
-    dispatchAPI: "[PC preview] unknown dispatchAPI",
+export const PixelMapFormat = {
+    UNKNOWN: 0,
+    RGB_565: 2,
+    RGBA_8888: 3,
 }

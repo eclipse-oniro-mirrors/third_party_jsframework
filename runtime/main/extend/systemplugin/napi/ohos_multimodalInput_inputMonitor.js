@@ -14,6 +14,9 @@
  */
 
 export function mockInputMonitor() {
+  const TouchEventReceiver = {
+    "touchEvent": '[PC preview] unknow boolean'
+  }
   const touches = [{
     force: 1.67,
     globalX: 122,
@@ -79,8 +82,26 @@ export function mockInputMonitor() {
     off: function (...args) {
       console.warn('multimodalInput.inputMonitor.off interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
-      clearInterval(this.offInputMonitor);
-      delete this.offInputMonitor;
+      const len = args.length;
+      if (len < 1 || len > 2) {
+        console.warn("a maximum of two parameters");
+        return;
+      }
+      if (typeof args[0] !== 'string') {
+        console.warn("the first parameter type must be string");
+        return;
+      }
+      if (len === 1) {
+        if (args[0] !== 'touch' && args[0] !== 'mouse') {
+          console.warn("the first param should be touch or mouse");
+          return;
+        }
+      } else {
+        if (typeof args[1] !== 'function') {
+          console.warn("the second parameter type must be function");
+          return;
+        }
+      }
     }
   }
   return inputMonitor

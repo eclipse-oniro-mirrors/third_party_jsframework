@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,26 +13,44 @@
  * limitations under the License.
  */
 
-export const ApplicationInfoMock = {
-    packageName: "[PC preview] unknown packageName",
-    className: "[PC preview] unknown className",
+import { paramMock } from "../../utils"
+import { ModuleInfo } from './moduleInfo';
+import { CustomizeData } from './customizeData';
+import { Metadata } from './metadata';
+import { Resource } from './../global/resource';
+
+export const ApplicationInfo = {
     name: "[PC preview] unknown name",
-    labelId: 1,
-    iconId: 2,
-    sourceDir: "[PC preview] unknown sourceDir",
-    flags: 3,
-    customizeData: {
-        key: "[PC preview] unknown key",
-        value: {
-            CustomizeData: {
-                name: "[PC preview] unknown name",
-                value: "[PC preview] unknown value",
-            }
-        }
-    }
+    description: "[PC preview] unknown description",
+    descriptionId: "[PC preview] unknown descriptionId",
+    systemApp: "[PC preview] unknown systemApp",
+    enabled: "[PC preview] unknown enabled",
+    label: "[PC preview] unknown label",
+    labelId: "[PC preview] unknown labelId",
+    icon: "[PC preview] unknown icon",
+    iconId: "[PC preview] unknown iconId",
+    process: "[PC preview] unknown process",
+    supportedModes: "[PC preview] unknown supportedModes",
+    moduleSourceDirs: [paramMock.paramNumberMock],
+    permissions: [paramMock.paramNumberMock],
+    moduleInfos: [ModuleInfo],
+    entryDir: "[PC preview] unknown entryDir",
+    codePath: "[PC preview] unknown codePath",
+    metaData: [CustomizeData],
+    metadata: [Metadata],
+    removable: "[PC preview] unknown removable",
+    accessTokenId: "[PC preview] unknown accessTokenId",
+    uid: "[PC preview] unknown uid",
+    entityType: "[PC preview] unknown entityType",
+    fingerprint: "[PC preview] unknown fingerprint",
+    iconResource: Resource,
+    labelResource: Resource,
+    descriptionResource: Resource,
+    appDistributionType: "[PC preview] unknown appDistributionType",
+    appProvisionType: "[PC preview] unknown appProvisionType", 
 }
 
-export const WantMock = {
+export const Want = {
     deviceId: "[PC Preview] unknow deviceId",
     bundleName: "[PC Preview] unknow bundleName",
     abilityName: "[PC Preview] unknow abilityName",
@@ -40,39 +58,7 @@ export const WantMock = {
     type: "[PC Preview] unknow type",
     flag: "[PC Preview] unknow flag",
     action: "[PC Preview] unknow action",
-    parameters: "[PC Preview] unknow parameters",
-    entities: "[PC Preview] unknow entities"
- }
-
-export const ShortcutInfoMock =  {
-    id: "[PC preview] unknown id",
-    bundleName: "[PC preview] unknown bundleName",
-    hostAbility: "[PC preview] unknown hostAbility",
-    icon: "[PC preview] unknown icon",
-    label: "[PC preview] unknown label",
-    disableMessage: "[PC preview] unknown disableMessage",
-    wants: [
-        {
-            targetBundle: "[PC preview] unknown targetBundle",
-            targetClass: "[PC preview] unknown targetClass",
-        }],
-    isStatic: "[PC preview] unknown isStatic",
-    isHomeShortcut: "[PC preview] unknown isHomeShortcut",
-    isEnabled: "[PC preview] unknown isEnabled",
-}
-
-export const ModuleUsageRecordMock = {
-    bundleName: "[PC preview] unknown bundleName",
-    appLabelId: "[PC preview] unknown appLabelId",
-    name: "[PC preview] unknown name",
-    labelId: "[PC preview] unknown labelId",
-    descriptionId: "[PC preview] unknown descriptionId",
-    abilityName: "[PC preview] unknown abilityName",
-    abilityLabelId: "[PC preview] unknown abilityLabelId",
-    abilityDescriptionId: "[PC preview] unknown abilityDescriptionId",
-    abilityIconId: "[PC preview] unknown abilityIconId",
-    launchedCount: "[PC preview] unknown launchedCount",
-    lastLaunchTime: "[PC preview] unknown lastLaunchTime",
-    isRemoved: "[PC preview] unknown isRemoved",
-    installationFreeSupported: "[PC preview] unknown installationFreeSupported",
+    parameters: [paramMock.paramStringMock],
+    entities: [paramMock.paramStringMock],
+    moduleName: "[PC Preview] unknow moduleName",
 }
