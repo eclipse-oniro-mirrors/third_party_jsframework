@@ -18,8 +18,8 @@ import { ApplicationInfo } from './applicationInfo';
 import { ElementName } from './elementName'
 
 export const LauncherAbilityInfo = {
-    applicationInfo: {ApplicationInfo},
-    elementName: {ElementName},
+    applicationInfo: ApplicationInfo,
+    elementName: ElementName,
     labelId: "[PC preview] unknown labelId",
     iconId: "[PC preview] unknown iconId",
     userId: "[PC preview] unknown userId",

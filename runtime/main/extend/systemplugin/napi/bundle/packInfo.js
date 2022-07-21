@@ -33,7 +33,7 @@ export const ModuleDistroInfo = {
 export const AbilityFormInfo = {
     name: "[PC preview] unknown name",
     type: "[PC preview] unknown type",
-    updateEnabledtype: "[PC preview] unknown updateEnabled",
+    updateEnabled: "[PC preview] unknown updateEnabled",
     scheduledUpdateTime: "[PC preview] unknown scheduledUpdateTime",
     updateDuration: "[PC preview] unknown updateDuration",
     supportDimensions: [paramMock.paramNumberMock],
