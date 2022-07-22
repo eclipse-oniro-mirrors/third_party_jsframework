@@ -72,12 +72,12 @@ export function mockDeviceManager() {
   }
   const authParam = {
     authType: "[PC Preview] unknow mAuthType",
-    extraInfo: "[PC Preview] unknow mExtraInfo"
+    extraInfo: {"key":"unknow any"}
   }
   const authInfo = {
     authType: "[PC Preview] unknow mAuthType",
     token: "[PC Preview] unknow mToken",
-    extraInfo: "[PC Preview] unknow mExtraInfo"
+    extraInfo: {"key":"unknow any"}
   }
   const deviceManagerMock = {
     release: function () {
