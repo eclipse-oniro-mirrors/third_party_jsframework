@@ -434,16 +434,16 @@ const UpgradeInfo = {
 
 const BusinessType = {
     vendor: BusinessVendor,
-    subType: BusinessSubType.FIRMWARE
+    subType: BusinessSubType
 }
 
 const DownloadOptions = {
-    allowNetwork: NetType.CELLULAR,
-    order: Order.DOWNLOAD_AND_INSTALL
+    allowNetwork: NetType,
+    order: Order
 }
 
 const ResumeDownloadOptions = {
-    allowNetwork: NetType.CELLULAR
+    allowNetwork: NetType
 }
 
 const PauseDownloadOptions = {
@@ -451,11 +451,11 @@ const PauseDownloadOptions = {
 }
 
 const UpgradeOptions = {
-    order: Order.INSTALL
+    order: Order
 }
 
 const ClearOptions = {
-    status: UpgradeStatus.UPGRADE_SUCCESS
+    status: UpgradeStatus
 }
 
 const EventClassifyInfo = {
@@ -464,7 +464,7 @@ const EventClassifyInfo = {
 }
 
 const UpgradeFile = {
-    fileType: ComponentType.OTA,
+    fileType: ComponentType,
     filePath: "[PC Preview] unknown filePath"
 }
 
