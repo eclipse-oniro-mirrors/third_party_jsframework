@@ -62,7 +62,7 @@ export function mockDistributedObject() {
   const RevokeSaveSuccessResponse = {
     sessionId: "[[PC Preview] unknow sessionId]"
   };
-  const distributedObjectMock = {
+  const distributedDataObject = {
     createDistributedObject: function (...args) {
       console.warn("distributedObject.createDistributedObject interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.");
@@ -74,5 +74,5 @@ export function mockDistributedObject() {
       return 'just test';
     }
   };
-  return distributedObjectMock;
+  return distributedDataObject;
 }

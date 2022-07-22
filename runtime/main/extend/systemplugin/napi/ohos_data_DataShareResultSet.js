@@ -15,6 +15,13 @@
 
 import {paramMock} from "../utils"
 
+export const DataType = {
+  TYPE_NULL: 0,
+  TYPE_LONG: 1,
+  TYPE_DOUBLE: 2,
+  TYPE_STRING: 3,
+  TYPE_BLOB: 4
+};
 export const DataShareResultSetMock = {
   columnNames: "[PC Preview] unknow columnNames",
   columnCount: "[PC Preview] unknow columnCount",

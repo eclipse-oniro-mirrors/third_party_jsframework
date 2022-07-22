@@ -32,7 +32,13 @@ export function mockUserAuth() {
     onAcquireInfo: function (...args) {
       console.warn("uerAuth.onAcquireInfo interface mocked in the Previewer. How this interface works" +
         " on the Previewer may be different from that on a real device.")
-    }
+    },
+  }
+  
+  const AuthResult = {
+    token : paramMock.paramArrayMock,
+    remainTimes : "[PC Preview] unknown remainTimes",
+    freezingTime : "[PC Preview] unknown freezingTime",
   }
 
   const AuthenticatorClass = class Authenticator {
@@ -84,11 +90,12 @@ export function mockUserAuth() {
         console.warn("uerAuth.cancelAuth interface mocked in the Previewer." +
           " How this interface works on the Previewer may be different from that on a real device.")
         return SUCCESS;
-      }
+      };
+
     }
   }
 
-  const result = {
+  const userAuth = {
     AuthenticationResult: {
       NO_SUPPORT : -1,
       SUCCESS : 0,
@@ -151,14 +158,12 @@ export function mockUserAuth() {
       ATL3 : 30000,
       ATL4 : 40000
     },
-
-    getAuthenticator: function (...args) {
+    getAuthenticator : function (...args) {
       console.warn("uerAuth.getAuthenticator interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       return new AuthenticatorClass;
     },
-
     UserAuth : UserAuthClass
   }
-  return result
+  return userAuth; 
 }

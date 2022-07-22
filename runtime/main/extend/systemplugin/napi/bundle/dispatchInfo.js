@@ -14,6 +14,6 @@
  */
 
 export const DispatchInfo = {
-    verison: "[PC preview] unknown verison",
+    version: "[PC preview] unknown version",
     dispatchAPI: "[PC preview] unknown dispatchAPI",
 }

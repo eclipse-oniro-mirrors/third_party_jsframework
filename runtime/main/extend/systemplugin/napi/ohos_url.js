@@ -143,9 +143,9 @@ export function mockUrl() {
       this.username = '[PC preview] unknow username';
     }
   };
-  const result = {
+  const urlMock = {
     URLSearchParams: URLSearchParamsClass,
     URL: URLClass
   };
-  return result;
+  return urlMock;
 }
