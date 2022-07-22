@@ -43,13 +43,6 @@ export function mockWorker() {
     transfer:'[PC preview] unknow transfer'
   };
 
-  const EventListenerMock = { 
-    evt : function (...args) {
-        console.warn('EventListener.evt interface mocked in the Previewer. How this interface works on the' +
-        ' Previewer may be different from that on a real device.') ;
-    }
-  };
-
   const EventTargetMock = {
     addEventListener : function (...args) {
         console.warn('PostMessageOptions.addEventListener interface mocked in the Previewer. How this interface works on the' +
@@ -167,7 +160,8 @@ export function mockWorker() {
   };
 
   const workerMock = {
-    Worker : WorkerClass
+    Worker : WorkerClass,
+    parentPort : '[PC preview] unknow parentPort'
   };
   return workerMock;
 }
