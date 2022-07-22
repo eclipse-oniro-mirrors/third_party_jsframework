@@ -176,6 +176,9 @@ import { mockTouchEvent } from './ohos_multimodalInput_touchEvent'
 import { mockUiAppearance } from './ohos_uiAppearance'
 import { mockContinationManager } from './ohos_continuation_continuationManager'
 import { mockUiTest } from './ohos_uitest'
+import { mockAccessibility } from './ohos_accessibility'
+import { mockAccessibilityConfig } from './ohos_accessibility_config'
+import { mockAccessibilityExtensionAbility } from './ohos_application_AccessibilityExtensionAbility'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
@@ -501,6 +504,12 @@ export function mockRequireNapiFun() {
         return mockMouseEvent();
       case "multimodalInput.touchEvent":
         return mockTouchEvent();
+      case "accessibility":
+        return mockAccessibility();
+      case "accessibility.config":
+        return mockAccessibilityConfig();
+      case "application.AccessibilityExtensionAbility":
+        return mockAccessibilityExtensionAbility();
       case "continuation.continuationManager":
         return mockContinationManager();
       case "uitest":
