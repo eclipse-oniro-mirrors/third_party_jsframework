@@ -15,79 +15,6 @@
 
 import { paramMock } from "../utils"
 
-export const ConstraintSourceType = {
-  CONSTRAINT_NOT_EXIST: 0,
-  CONSTRAINT_TYPE_BASE: 1,
-  CONSTRAINT_TYPE_DEVICE_OWNER: 2,
-  CONSTRAINT_TYPE_PROFILE_OWNER: 3
-};
-export const OsAccountType = {
-  ADMIN: 0,
-  NORMAL: 1,
-  GUEST: 2
-};
-export const FingerprintTips = {
-  FINGERPRINT_TIP_GOOD: 0,
-  FINGERPRINT_TIP_IMAGER_DIRTY: 1,
-  FINGERPRINT_TIP_INSUFFICIENT: 2,
-  FINGERPRINT_TIP_PARTIAL: 3,
-  FINGERPRINT_TIP_TOO_FAST: 4,
-  FINGERPRINT_TIP_TOO_SLOW: 5
-};
-export const FaceTipsCode = {
-  FACE_AUTH_TIP_TOO_BRIGHT: 1,
-  FACE_AUTH_TIP_TOO_DARK: 2,
-  FACE_AUTH_TIP_TOO_CLOSE: 3,
-  FACE_AUTH_TIP_TOO_FAR: 4,
-  FACE_AUTH_TIP_TOO_HIGH: 5,
-  FACE_AUTH_TIP_TOO_LOW: 6,
-  FACE_AUTH_TIP_TOO_RIGHT: 7,
-  FACE_AUTH_TIP_TOO_LEFT: 8,
-  FACE_AUTH_TIP_TOO_MUCH_MOTION: 9,
-  FACE_AUTH_TIP_POOR_GAZE: 10,
-  FACE_AUTH_TIP_NOT_DETECTED: 11
-};
-export const ResultCode = {
-  SUCCESS: 0,
-  FAIL: 1,
-  GENERAL_ERROR: 2,
-  CANCELED: 3,
-  TIMEOUT: 4,
-  TYPE_NOT_SUPPORT: 5,
-  TRUST_LEVEL_NOT_SUPPORT: 6,
-  BUSY: 7,
-  INVALID_PARAMETERS: 8,
-  LOCKED: 9,
-  NOT_ENROLLED: 10
-};
-export const Module = {
-  FACE_AUTH: 1
-};
-export const AuthTrustLevel = {
-  ATL1: 10000,
-  ATL2: 20000,
-  ATL3: 30000,
-  ATL4: 40000
-};
-export const AuthSubType = {
-  PIN_SIX: 10000,
-  PIN_NUMBER: 10001,
-  PIN_MIXED: 10002,
-  FACE_2D: 20000,
-  FACE_3D: 20001
-};
-export const GetPropertyType = {
-  AUTH_SUB_TYPE: 1,
-  REMAIN_TIMES: 2,
-  FREEZING_TIME: 3
-};
-export const SetPropertyType = {
-  INIT_ALGORITHM: 1
-};
-export const AuthType = {
-  PIN: 1,
-  FACE: 2
-};
 export function mockOsAccount() {
   const OsAccountInfoMock = {
     localId: "[PC Preview] unknown localId",
@@ -537,6 +464,79 @@ export function mockOsAccount() {
         })
       }
     },
+  };
+  const ConstraintSourceType = {
+    CONSTRAINT_NOT_EXIST: 0,
+    CONSTRAINT_TYPE_BASE: 1,
+    CONSTRAINT_TYPE_DEVICE_OWNER: 2,
+    CONSTRAINT_TYPE_PROFILE_OWNER: 3
+  };
+  const OsAccountType = {
+    ADMIN: 0,
+    NORMAL: 1,
+    GUEST: 2
+  };
+  const FingerprintTips = {
+    FINGERPRINT_TIP_GOOD: 0,
+    FINGERPRINT_TIP_IMAGER_DIRTY: 1,
+    FINGERPRINT_TIP_INSUFFICIENT: 2,
+    FINGERPRINT_TIP_PARTIAL: 3,
+    FINGERPRINT_TIP_TOO_FAST: 4,
+    FINGERPRINT_TIP_TOO_SLOW: 5
+  };
+  const FaceTipsCode = {
+    FACE_AUTH_TIP_TOO_BRIGHT: 1,
+    FACE_AUTH_TIP_TOO_DARK: 2,
+    FACE_AUTH_TIP_TOO_CLOSE: 3,
+    FACE_AUTH_TIP_TOO_FAR: 4,
+    FACE_AUTH_TIP_TOO_HIGH: 5,
+    FACE_AUTH_TIP_TOO_LOW: 6,
+    FACE_AUTH_TIP_TOO_RIGHT: 7,
+    FACE_AUTH_TIP_TOO_LEFT: 8,
+    FACE_AUTH_TIP_TOO_MUCH_MOTION: 9,
+    FACE_AUTH_TIP_POOR_GAZE: 10,
+    FACE_AUTH_TIP_NOT_DETECTED: 11
+  };
+  const ResultCode = {
+    SUCCESS: 0,
+    FAIL: 1,
+    GENERAL_ERROR: 2,
+    CANCELED: 3,
+    TIMEOUT: 4,
+    TYPE_NOT_SUPPORT: 5,
+    TRUST_LEVEL_NOT_SUPPORT: 6,
+    BUSY: 7,
+    INVALID_PARAMETERS: 8,
+    LOCKED: 9,
+    NOT_ENROLLED: 10
+  };
+  const Module = {
+    FACE_AUTH: 1
+  };
+  const AuthTrustLevel = {
+    ATL1: 10000,
+    ATL2: 20000,
+    ATL3: 30000,
+    ATL4: 40000
+  };
+  const AuthSubType = {
+    PIN_SIX: 10000,
+    PIN_NUMBER: 10001,
+    PIN_MIXED: 10002,
+    FACE_2D: 20000,
+    FACE_3D: 20001
+  };
+  const GetPropertyType = {
+    AUTH_SUB_TYPE: 1,
+    REMAIN_TIMES: 2,
+    FREEZING_TIME: 3
+  };
+  const SetPropertyType = {
+    INIT_ALGORITHM: 1
+  };
+  const AuthType = {
+    PIN: 1,
+    FACE: 2
   };
   const osAccount = {
     getAccountManager: function (...args) {
