@@ -21,7 +21,7 @@ export const ConstraintSourceType = {
   CONSTRAINT_TYPE_DEVICE_OWNER: 2,
   CONSTRAINT_TYPE_PROFILE_OWNER: 3
 };
-export const OsAccountTypeMock = {
+export const OsAccountType = {
   ADMIN: 0,
   NORMAL: 1,
   GUEST: 2
@@ -47,7 +47,7 @@ export const FaceTipsCode = {
   FACE_AUTH_TIP_POOR_GAZE: 10,
   FACE_AUTH_TIP_NOT_DETECTED: 11
 };
-export const EesultCode = {
+export const ResultCode = {
   SUCCESS: 0,
   FAIL: 1,
   GENERAL_ERROR: 2,
@@ -60,36 +60,36 @@ export const EesultCode = {
   LOCKED: 9,
   NOT_ENROLLED: 10
 };
-export const module = {
+export const Module = {
   FACE_AUTH: 1
 };
-export const authTrustLevel = {
+export const AuthTrustLevel = {
   ATL1: 10000,
   ATL2: 20000,
   ATL3: 30000,
   ATL4: 40000
 };
-export const authSubType = {
+export const AuthSubType = {
   PIN_SIX: 10000,
   PIN_NUMBER: 10001,
   PIN_MIXED: 10002,
   FACE_2D: 20000,
   FACE_3D: 20001
 };
-export const getPropertyType = {
+export const GetPropertyType = {
   AUTH_SUB_TYPE: 1,
   REMAIN_TIMES: 2,
   FREEZING_TIME: 3
 };
-export const setPropertyType = {
+export const SetPropertyType = {
   INIT_ALGORITHM: 1
 };
-export const authType = {
+export const AuthType = {
   PIN: 1,
   FACE: 2
 };
 export function mockOsAccount() {
-  const osAccountInfoMock = {
+  const OsAccountInfoMock = {
     localId: "[PC Preview] unknown localId",
     localName: "[PC Preview] unknown localName",
     type: "[PC Preview] unknown type",
@@ -103,50 +103,50 @@ export function mockOsAccount() {
     domainInfo: "[PC Preview] unknown domainInfo",
     distributedInfo: "[PC Preview] unknown distributedInfo"
   };
-  const domainAccountInfoMock = {
+  const DomainAccountInfoMock = {
     domain: "[PC Preview] unknown domain",
     accountName: "[PC Preview] unknown accountName"
   };
-  const constraintSourceTypeInfoMock = {
+  const ConstraintSourceTypeInfoMock = {
     localId: "[PC Preview] unknown localId",
     type: "[PC Preview] unknown type"
   };
-  const getPropertyRequest = {
+  const GetPropertyRequest = {
     authType: "[PC Preview] unknown authType",
     keys: "[PC Preview] unknown keys"
   };
-  const setPropertyRequest = {
+  const SetPropertyRequest = {
     authType: "[PC Preview] unknown authType",
     key: "[PC Preview] unknown key",
     setInfo: "[PC Preview] unknown setInfo"
   };
-  const executorProperty = {
+  const ExecutorProperty = {
     result: "[PC Preview] unknown result",
     authSubType: "[PC Preview] unknown authSubType",
     remainTimes: "[PC Preview] unknown remainTimes",
     freezingTime: "[PC Preview] unknown freezingTime"
   };
-  const authResult = {
+  const AuthResult = {
     token: "[PC Preview] unknown token",
     remainTimes: "[PC Preview] unknown remainTimes",
     ferezingTime: "[PC Preview] unknown freezingTime"
   };
-  const credentialInfo = {
+  const CredentialInfo = {
     credType: "[PC Preview] unknown credType",
     credSubType: "[PC Preview] unknown credSubType",
     token: "[PC Preview] unknown token"
   };
-  const requestResult = {
+  const RequestResult = {
     credentialId: "[PC Preview] unknown credentialId"
   };
-  const enrolledCredInfo = {
+  const EnrolledCredInfo = {
     credentialId: "[PC Preview] unknown credentialId",
     authType: "[PC Preview] unknown authType",
     authSubType: "[PC Preview] unknown authSubType",
     templateId: "[PC Preview] unknown templateId"
   };
-  const osAccountTypeMock = "[PC Preview] unknown type";
-  const accountManagerMock = {
+  const OsAccountTypeMock = "[PC Preview] unknown type";
+  const AccountManagerMock = {
     activateOsAccount: function (...args) {
       console.warn("AccountManager.activateOsAccount interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
