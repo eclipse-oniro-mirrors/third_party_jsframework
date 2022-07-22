@@ -81,7 +81,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve();
         })
       }
@@ -93,7 +93,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramBooleanMock);
         })
       }
@@ -105,7 +105,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramBooleanMock);
         })
       }
@@ -117,7 +117,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramBooleanMock);
         })
       }
@@ -129,7 +129,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramBooleanMock);
         })
       }
@@ -141,7 +141,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramBooleanMock);
         })
       }
@@ -153,7 +153,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve();
         })
       }
@@ -165,7 +165,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve();
         })
       }
@@ -177,7 +177,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve();
         })
       }
@@ -189,7 +189,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -201,7 +201,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -213,7 +213,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -225,7 +225,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -237,7 +237,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -249,7 +249,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramStringMock);
         })
       }
@@ -258,12 +258,12 @@ export function mockOsAccount() {
       console.warn("AccountManager.queryAllCreatedOsAccounts interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
       var osAccountInfoArrayMock = new Array();
-      osAccountInfoArrayMock.push(osAccountInfoMock);
+      osAccountInfoArrayMock.push(OsAccountInfoMock);
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, osAccountInfoArrayMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(osAccountInfoArrayMock);
         })
       }
@@ -272,12 +272,12 @@ export function mockOsAccount() {
       console.warn("AccountManager.queryActivatedOsAccountIds interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
       var osAccountIdsArrayMock = new Array();
-      osAccountIdsArrayMock.push(osAccountInfoMock);
+      osAccountIdsArrayMock.push(OsAccountInfoMock);
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, osAccountIdsArrayMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(osAccountIdsArrayMock);
         })
       }
@@ -287,10 +287,10 @@ export function mockOsAccount() {
         "How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, osAccountInfoMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, OsAccountInfoMock);
       } else {
-        return new Promise((resolve, reject) => {
-          resolve(osAccountInfoMock);
+        return new Promise((resolve, _reject) => {
+          resolve(OsAccountInfoMock);
         })
       }
     },
@@ -299,10 +299,10 @@ export function mockOsAccount() {
         "How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, osAccountInfoMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, OsAccountInfoMock);
       } else {
-        return new Promise((resolve, reject) => {
-          resolve(osAccountInfoMock);
+        return new Promise((resolve, _reject) => {
+          resolve(OsAccountInfoMock);
         })
       }
     },
@@ -311,10 +311,10 @@ export function mockOsAccount() {
         "How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, osAccountInfoMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, OsAccountInfoMock);
       } else {
-        return new Promise((resolve, reject) => {
-          resolve(osAccountInfoMock);
+        return new Promise((resolve, _reject) => {
+          resolve(OsAccountInfoMock);
         })
       }
     },
@@ -323,10 +323,10 @@ export function mockOsAccount() {
         "How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, osAccountInfoMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, OsAccountInfoMock);
       } else {
-        return new Promise((resolve, reject) => {
-          resolve(osAccountInfoMock);
+        return new Promise((resolve, _reject) => {
+          resolve(OsAccountInfoMock);
         })
       }
     },
@@ -335,10 +335,10 @@ export function mockOsAccount() {
         "How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, osAccountTypeMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, OsAccountTypeMock);
       } else {
-        return new Promise((resolve, reject) => {
-          resolve(osAccountTypeMock);
+        return new Promise((resolve, _reject) => {
+          resolve(OsAccountTypeMock);
         })
       }
     },
@@ -349,7 +349,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramStringMock);
         })
       }
@@ -361,7 +361,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramStringMock);
         })
       }
@@ -373,7 +373,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve();
         })
       }
@@ -385,7 +385,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve();
         })
       }
@@ -397,7 +397,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve();
         })
       }
@@ -409,7 +409,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -421,7 +421,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -433,7 +433,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramBooleanMock);
         })
       }
@@ -445,7 +445,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -454,15 +454,194 @@ export function mockOsAccount() {
       console.warn("AccountManager.queryOsAccountConstraintSourceTypes interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
         var constraintSourceTypeInfoArrayMock = new Array();
-        constraintSourceTypeInfoArrayMock.push(constraintSourceTypeInfoMock);
+        constraintSourceTypeInfoArrayMock.push(ConstraintSourceTypeInfoMock);
         const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, constraintSourceTypeInfoArrayMock);
       } else {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           resolve(constraintSourceTypeInfoArrayMock);
         })
       }
+    },
+  };
+  const UserAuthClass = class UserAuth {
+    constructor() {
+      console.warn("osAccount.UserAuth.constructor interface mocked in the Previewer. " +
+      "How this interface works on the Previewer may be different from that on a real device.")
+      this.getVersion = function (..._args) {
+        console.warn("UserAuth.getVersion interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+        return paramMock.paramNumberMock;
+      };
+      this.getAvailableStatus = function (..._args) {
+        console.warn("UserAuth.getVAvailableStatus interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+        return paramMock.paramNumberMock;
+      };
+      this.getProperty = function (...args) {
+        console.warn("UserAuth.getProperty interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+        const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, ExecutorProperty);
+        } else {
+          return new Promise((resolve, _reject) => {
+            resolve(ExecutorProperty);
+          })
+        }
+      };
+      this.setProperty = function (...args) {
+        console.warn("UserAuth.setProperty interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+        const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+        } else {
+          return new Promise((resolve, _reject) => {
+            resolve(paramMock.paramNumberMock);
+          })
+        }
+      };
+      this.auth = function (...args) {
+        console.warn("UserAuth.auth interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+        const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock);
+        } 
+      };
+      this.anthUser = function (...args) {
+        console.warn("UserAuth.authUser interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+        const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock);
+        } 
+      };
+      this.cancelAuth = function (..._args) {
+        console.warn("UserAuth.cancelAuth interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+        return paramMock.paramNumberMock;
+      };
+   }; 
+  };
+  const PINAuthClass = class PINAuth {
+    constructor() {
+      console.warn("osAccount.PINA.constructor interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+        this.registerInputer = function (...args) {
+          console.warn("PINAuth.registerInputer constructor interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+          return paramMock.paramBooleanMock;
+        };
+        this.unregisterInputer = function (..._args) {
+          console.warn("PINAuth.unregisterInputer constructor interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+        };
+    };
+  };
+  const UserIdentityManagerClass = class UserIdentityManager {
+    constructor() {
+      console.warn("osAccount.getAccountManager constructor interface mocked in the Previewer. " +
+        "How this interface works on the Previewer may be different from that on a real device.")
+      this.openSession = function (...args) {
+        console.warn("UserIdentityManager.openSession interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+        const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock,  paramMock.paramArrayMock);
+        } else {
+          return new Promise((resolve, _reject) => {
+            resolve(paramMock.paramArrayMock);
+          })
+        }
+      };
+      this.addCredential = function (...args) {
+        console.warn("AUserIdentityManager.addCredential interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+        const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, IIdmCallback);
+        }
+      };
+      this.updateCredential = function (...args) {
+        console.warn("AUserIdentityManager.addCredential interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+        const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, IIdmCallback);
+        }
+      };
+      this.closeSession = function (..._args) {
+        console.warn("AUserIdentityManager.closeSession interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.") 
+      };
+      this.cancel = function (..._args) {
+        console.warn("AUserIdentityManager.console interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+          return paramMock.paramNumberMock;
+      };
+      this.delUser = function (..._args) {
+        console.warn("AUserIdentityManager.delUser interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+          const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, IIdmCallback);
+        }
+      };
+      this.delCred = function (..._args) {
+        console.warn("AUserIdentityManager.delCred interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+          const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, IIdmCallback);
+        }
+      };
+      this.getAuthInfo = function (..._args) {
+        console.warn("AUserIdentityManager.getAuthInfo interface mocked in the Previewer. " +
+          "How this interface works on the Previewer may be different from that on a real device.")
+          const len = args.length
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, new Array(EnrolledCredInfo));
+        } else {
+          return new Promise((resolve, reject) => {
+          resolve(new Array(EnrolledCredInfo))
+        })
+        }
+      };
+    };
+  }
+  const IInputData = {
+    onSetData: function (..._args) {
+      console.warn("IInputData.onSetData interface mocked in the Previewer. " +
+      "How this interface works on the Previewer may be different from that on a real device.")
+    },
+  };
+  const IInputer = {
+    onSetData: function (..._args) {
+      console.warn("IInputer.onSetData interface mocked in the Previewer. " +
+      "How this interface works on the Previewer may be different from that on a real device.")
+    },
+  };
+  const IUserAuthCallback = {
+    onResult: function (..._args) {
+      console.warn("IUserAuthCallback.onResult interface mocked in the Previewer. " +
+      "How this interface works on the Previewer may be different from that on a real device.")
+    },
+    onAcquireInfo: function (..._args) {
+      console.warn("IUserAuthCallback.onResult interface mocked in the Previewer. " +
+      "How this interface works on the Previewer may be different from that on a real device.")
+    },
+  };
+  const IIdmCallback = {
+    onResult: function (..._args) {
+      console.warn("IIdmCallback.onResult interface mocked in the Previewer. " +
+      "How this interface works on the Previewer may be different from that on a real device.")
+    },
+    onAcquireInfo: function (..._args) {
+      console.warn("IIdmCallback.onAcquireInfo interface mocked in the Previewer. " +
+      "How this interface works on the Previewer may be different from that on a real device.")
     },
   };
   const ConstraintSourceType = {
@@ -549,7 +728,7 @@ export function mockOsAccount() {
       NORMAL: "[PC Preview] unknown NORMAL",
       GUEST: "[PC Preview] unknown GUEST"
     },
-    constraintSourceType,
+    ConstraintSourceType,
   }
   return osAccount
 }
