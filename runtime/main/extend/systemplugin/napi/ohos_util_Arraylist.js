@@ -17,8 +17,8 @@ import { paramMock } from "../utils"
 
 export function mockArrayList() {
   const paramArrayList = {
-    paramAnyMock : '[PC Preview] unknow any',
-    paramArrayListMock : '[PC Preview] unknow ArrayList'
+    paramAnyMock: '[PC Preview] unknow any',
+    paramArrayListMock: '[PC Preview] unknow ArrayList'
   }
   const ArrayListClass = class ArrayList {
     constructor(...args) {
@@ -121,27 +121,27 @@ export function mockArrayList() {
         console.warn("ArrayList.trimToCurrentLength interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
       };
-    }
-    [Symbol.iterator](){
-      console.warn("ArrayList.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      let index = 0;
-      const IteratorMock = {
-        next: () => {
-          if (index < 1) {
-            index++;
-            return {
-              value: paramArrayList.paramAnyMock,
-              done: false
-            };
-          } else {
-            return {
-              done: true
-            };
+      this[Symbol.iterator] = function (...args) {
+        console.warn("ArrayList.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        let index = 0;
+        const IteratorMock = {
+          next: () => {
+            if (index < 1) {
+              index++;
+              return {
+                value: paramArrayList.paramAnyMock,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
           }
-        }
-      };
-      return IteratorMock;
+        };
+        return IteratorMock;
+      }
     }
   }
   return ArrayListClass;

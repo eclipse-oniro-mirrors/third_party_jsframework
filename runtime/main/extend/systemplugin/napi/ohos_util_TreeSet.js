@@ -17,9 +17,9 @@ import { paramMock } from "../utils"
 
 export function mockTreeSet() {
   const paramTreeSet = {
-    paramAnyMock : '[PC Preview] unknow any',
-    paramIterMock_TT : '[PC Preview] unknow IterableIterator_tt',
-    paramIterMock : '[PC Preview] unknow IterableIterator'
+    paramAnyMock: '[PC Preview] unknow any',
+    paramIterMock_TT: '[PC Preview] unknow IterableIterator_tt',
+    paramIterMock: '[PC Preview] unknow IterableIterator'
   }
   const TreeSetClass = class TreeSet {
     constructor(...args) {
@@ -100,34 +100,34 @@ export function mockTreeSet() {
       this.entries = function (...args) {
         console.warn("TreeSet.entries interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
-          const IteratorVMock = {
-            *[Symbol.iterator]() {
-              yield paramTreeSet.paramIterMock;
-            }
-          };
-          return IteratorVMock;
-      };
-    }
-    [Symbol.iterator]() {
-      console.warn("TreeSet.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      let index = 0;
-      const IteratorMock = {
-        next: () => {
-          if (index < 1) {
-            index++;
-            return {
-              value: paramTreeSet.paramAnyMock,
-              done: false
-            };
-          } else {
-            return {
-              done: true
-            };
+        const IteratorVMock = {
+          *[Symbol.iterator]() {
+            yield paramTreeSet.paramIterMock;
           }
-        }
+        };
+        return IteratorVMock;
       };
-      return IteratorMock;
+      this[Symbol.iterator] = function (...args) {
+        console.warn("TreeSet.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        let index = 0;
+        const IteratorMock = {
+          next: () => {
+            if (index < 1) {
+              index++;
+              return {
+                value: paramTreeSet.paramAnyMock,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
+          }
+        };
+        return IteratorMock;
+      }
     }
   }
   return TreeSetClass;

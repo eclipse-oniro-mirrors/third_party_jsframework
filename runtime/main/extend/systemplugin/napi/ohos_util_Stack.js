@@ -57,27 +57,27 @@ export function mockStack() {
           args[0].call(this, paramMock.businessErrorMock)
         }
       };
-    }
-    [Symbol.iterator]() {
-      console.warn("Stack.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      let index = 0;
-      const IteratorMock = {
-        next: () => {
-          if (index < 1) {
-            index++;
-            return {
-              value: paramStack.paramAnyMock,
-              done: false
-            };
-          } else {
-            return {
-              done: true
-            };
+      this[Symbol.iterator] = function (...args) {
+        console.warn("Stack.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        let index = 0;
+        const IteratorMock = {
+          next: () => {
+            if (index < 1) {
+              index++;
+              return {
+                value: paramStack.paramAnyMock,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
           }
-        }
-      };
-      return IteratorMock;
+        };
+        return IteratorMock;
+      }
     }
   }
   return StackClass;
