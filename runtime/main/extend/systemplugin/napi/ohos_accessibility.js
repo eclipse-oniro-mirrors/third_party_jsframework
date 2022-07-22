@@ -22,14 +22,14 @@ export function mockAccessibility() {
 
   const EventTypeMock = '[PC Preview] unknown EventType';
 
-  const AccessibilityAbilityInfoMock = {
-    id: paramMock.paramStringMock,
-    name: paramMock.paramStringMock,
-    bundleName: paramMock.paramStringMock,
-    TargetBundleName: [paramMock.paramStringMock],
+  const AccessibilityAbilityInfo = {
+    id: '[PC Preview] unknown id',
+    name: '[PC Preview] unknown name',
+    bundleName: '[PC Preview] unknown bundleName',
+    TargetBundleName: ['[PC Preview] unknown TargetBundleName'],
     abilityTypes: [AbilityTypeMock],
     capabilities: [CapabilityMock],
-    description: paramMock.paramStringMock,
+    description: '[PC Preview] unknown description',
     eventTypes: [EventTypeMock]
   };
 
@@ -37,9 +37,9 @@ export function mockAccessibility() {
 
   const CaptionsFontFamilyMock = '[PC Preview] unknown CaptionsFontFamily';
 
-  const CaptionStyleMock = {
+  const CaptionStyle = {
     fontFamily: CaptionsFontFamilyMock,
-    fontScale: paramMock.paramNumberMock,
+    fontScale: '[PC Preview] unknown fontScale',
     fontColor: '[PC Preview] unknown fontColor',
     fontEdgeType: CaptionsFontEdgeTypeMock,
     backgroundColor: '[PC Preview] unknown backgroundColor',
@@ -47,8 +47,8 @@ export function mockAccessibility() {
   };
 
   const CaptionsManagerMock = {
-    enabled: paramMock.paramBooleanMock,
-    style: CaptionStyleMock,
+    enabled: '[PC Preview] unknown enabled',
+    style: CaptionStyle,
     on: function (...args) {
       console.warn('CaptionsManager.on interface mocked in the Previewer.' +
         ' How this interface works on the Previewer may be different from that on a real device.');
@@ -57,7 +57,7 @@ export function mockAccessibility() {
         if (args[0] === 'enableChange') {
           args[len - 1].call(this, paramMock.paramBooleanMock);
         } else if (args[0] === 'styleChange') {
-          args[len - 1].call(this, CaptionStyleMock);
+          args[len - 1].call(this, CaptionStyle);
         }
       }
     },
@@ -69,7 +69,7 @@ export function mockAccessibility() {
         if (args[0] === 'enableChange') {
           args[len - 1].call(this, paramMock.paramBooleanMock);
         } else if (args[0] === 'styleChange') {
-          args[len - 1].call(this, CaptionStyleMock);
+          args[len - 1].call(this, CaptionStyle);
         }
       }
     },
@@ -82,23 +82,23 @@ export function mockAccessibility() {
   const TextMoveUnitMock = '[PC Preview] unknown TextMoveUnit';
 
   const EventInfoClass = class EventInfo {
-    constructor(jsonObject) {
+    constructor(...args) {
       console.warn('accessibility.EventInfoClass.constructor interface mocked in the Previewer.' +
         ' How this interface works on the Previewer may be different from that on a real device.');
       this.type = EventTypeMock;
       this.windowUpdateType = WindowUpdateTypeMock;
-      this.bundleName = paramMock.paramStringMock;
-      this.componentType = paramMock.paramStringMock;
-      this.pageId = paramMock.paramNumberMock;
-      this.description = paramMock.paramStringMock;
+      this.bundleName = '[PC Preview] unknown bundleName';
+      this.componentType = '[PC Preview] unknown componentType';
+      this.pageId = '[PC Preview] unknown pageId';
+      this.description = '[PC Preview] unknown description';
       this.triggerAction = ActionMock;
       this.textMoveUnit = TextMoveUnitMock;
-      this.contents = [paramMock.paramStringMock];
-      this.lastContent = paramMock.paramStringMock;
-      this.beginIndex = paramMock.paramNumberMock;
-      this.currentIndex = paramMock.paramNumberMock;
-      this.endIndex = paramMock.paramNumberMock;
-      this.itemCount = paramMock.paramNumberMock;
+      this.contents = ['[PC Preview] unknown content'];
+      this.lastContent = '[PC Preview] unknown lastContent';
+      this.beginIndex = '[PC Preview] unknown beginIndex';
+      this.currentIndex = '[PC Preview] unknown currentIndex';
+      this.endIndex = '[PC Preview] unknown endIndex';
+      this.itemCount = '[PC Preview] unknown itemCount';
     }
   };
 
@@ -159,10 +159,10 @@ export function mockAccessibility() {
         ' How this interface works on the Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [AccessibilityAbilityInfoMock]);
+        args[len - 1].call(this, paramMock.businessErrorMock, [AccessibilityAbilityInfo]);
       } else {
         return new Promise((resolve, reject) => {
-          resolve([AccessibilityAbilityInfoMock]);
+          resolve([AccessibilityAbilityInfo]);
         });
       }
     },

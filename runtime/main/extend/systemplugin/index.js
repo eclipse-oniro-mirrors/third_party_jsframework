@@ -73,7 +73,6 @@ export function mockSystemPlugin() {
   mockAbilityFeatureAbility()
   mockAbilityContinuationRegisterManager()
   mockRequireNapiFun()
-  mockAbilityDataUriUtils()
   mockAbilityParticleAbility()
   mockAbilityFormManager()
   mockAbilityAbilityAgent()

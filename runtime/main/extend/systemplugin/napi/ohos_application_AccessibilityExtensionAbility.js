@@ -14,29 +14,30 @@
  */
 
 import { paramMock } from '../utils';
-import { mockAccessibilityExtensionContext } from './application/AccessibilityExtensionContext';
+import { AccessibilityExtensionContext } from './application/AccessibilityExtensionContext';
 
-const AccessibilityEventMock = {
+const AccessibilityEvent = {
   eventType: '[PC Preview] unknown eventType',
   target: '[PC Preview] unknown target',
-  timeStamp: '[PC Preview] unknown timeStamp',
-  notificationContent: '[PC Preview] unknown notificationContent'
+  timeStamp: '[PC Preview] unknown timeStamp'
 };
 
-const GesturePointMock = {
-    positionX: paramMock.paramNumberMock,
-    positionY: paramMock.paramNumberMock
+const GesturePoint = {
+    positionX: '[PC Preview] unknown positionX',
+    positionY: '[PC Preview] unknown positionY'
   };
 
-const GesturePathMock = {
-  points: [GesturePointMock],
-  durationTime: paramMock.paramNumberMock
+const GesturePath = {
+  points: [GesturePoint],
+  durationTime: '[PC Preview] unknown durationTime'
 };
 
 export function mockAccessibilityExtensionAbility() {
   const AccessibilityExtensionAbilityClass = class AccessibilityExtensionAbility {
     constructor() {
-      this.context = mockAccessibilityExtensionContext();
+      console.warn('accessibilityExtensionAbility.constructor interface mocked in the Previewer.' +
+        ' How this interface works on the Previewer may be different from that on a real device.');
+      this.context = new AccessibilityExtensionContext();
       this.onConnect = function (...args) {
         console.warn('accessibilityExtensionAbility.onConnect interface mocked in the Previewer.' +
           ' How this interface works on the Previewer may be different from that on a real device.');
@@ -52,6 +53,7 @@ export function mockAccessibilityExtensionAbility() {
       this.onKeyEvent = function (...args) {
         console.warn('accessibilityExtensionAbility.onKeyEvent interface mocked in the Previewer.' +
           ' How this interface works on the Previewer may be different from that on a real device.');
+        return paramMock.paramBooleanMock;
       };
     }
   };
