@@ -71,6 +71,7 @@ import { mockInputDevice } from './ohos_multimodalInput_inputDevice'
 import { mockVibrator } from './ohos_vibrator'
 import { mockSensor } from './ohos_sensor'
 import { mockWifi } from './ohos_wifi'
+import { mockWifiExt } from './ohos_wifiext'
 import { mockUsb } from './ohos_usb'
 import { mockBundle } from './ohos_bundle'
 import { mockInnerBundle } from './ohos_bundle_innerBundleManager'
@@ -390,6 +391,8 @@ export function mockRequireNapiFun() {
         return mockSensor();
       case "wifi":
         return mockWifi();
+      case "wifiext":
+          return mockWifiExt();
       case "usb":
         return mockUsb();
       case "bundle":
