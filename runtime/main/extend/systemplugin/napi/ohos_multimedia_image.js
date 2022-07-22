@@ -95,6 +95,95 @@ export const PixelMapMock = {
       " may be different from that on a real device.")
     return paramMock.paramNumberMock
   },
+  getDensity: function (...args) {
+    console.warn("PixelMap.getDensity interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    return paramMock.paramNumberMock
+  },
+  opacity: function (...args) {
+    console.warn("PixelMap.opacity interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    const len = args.length
+    if (len > 0 && typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock);
+    } else {
+      return new Promise((resolve, reject) => {
+        resolve();
+      })
+    }
+  },
+  createAlphaPixelmap: function (...args) {
+    console.warn("PixelMap.createAlphaPixelmap interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    const len = args.length
+    if (len > 0 && typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock,PixelMapMock);
+    } else {
+      return new Promise((resolve, reject) => {
+        resolve(PixelMapMock);
+      })
+    }
+  },
+  scale: function (...args) {
+    console.warn("PixelMap.scale interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    const len = args.length
+    if (len > 0 && typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock);
+    } else {
+      return new Promise((resolve, reject) => {
+        resolve();
+      })
+    }
+  },
+  translate: function (...args) {
+    console.warn("PixelMap.translate interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    const len = args.length
+    if (len > 0 && typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock);
+    } else {
+      return new Promise((resolve, reject) => {
+        resolve();
+      })
+    }
+  },
+  rotate: function (...args) {
+    console.warn("PixelMap.rotate interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    const len = args.length
+    if (len > 0 && typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock);
+    } else {
+      return new Promise((resolve, reject) => {
+        resolve();
+      })
+    }
+  },
+  flip: function (...args) {
+    console.warn("PixelMap.flip interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    const len = args.length
+    if (len > 0 && typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock);
+    } else {
+      return new Promise((resolve, reject) => {
+        resolve();
+      })
+    }
+  },
+  crop: function (...args) {
+    console.warn("PixelMap.flip interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    const len = args.length
+    if (len > 0 && typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock);
+    } else {
+      return new Promise((resolve, reject) => {
+        resolve();
+      })
+    }
+  },
   release: function (...args) {
     console.warn("PixelMap.release interface mocked in the Previewer. How this interface works on the Previewer" +
       " may be different from that on a real device.")
@@ -151,6 +240,11 @@ export function mockMultimediaImage() {
     alphaType: "[PC Preview] unknow alphaType",
     scaleMode: "[PC Preview] unknow scaleMode"
   }
+  const SourceOptionsMock = {
+    sourceDensity:"[PC Preview] unknow sourceDensity",
+    sourcePixelFormat:"[PC Preview] unknow sourcePixelFormat",
+    sourceSize:SizeMock
+  }
 
   const ImageSourceMock = {
     getImageInfo: function (...args) {
@@ -201,17 +295,41 @@ export function mockMultimediaImage() {
         })
       }
     },
-	release: function (...args) {
-	  console.warn("ImageSource.release interface mocked in the Previewer. How this interface works on the Previewer" +
-		" may be different from that on a real device.")
-	  const len = args.length
-	  if (len > 0 && typeof args[len - 1] === 'function') {
-	    args[len - 1].call(this, paramMock.businessErrorMock);
-	  } else {
-	    return new Promise((resolve, reject) => {
-		  resolve();
-	    })
-	  }
+    modifyImageProperty: function (...args) {
+      console.warn("ImageSource.modifyImageProperty interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    updateData: function (...args) {
+      console.warn("ImageSource.updateData interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    release: function (...args) {
+      console.warn("ImageSource.release interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+      const len = args.length
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+        resolve();
+        })
+      }
     },
     supportedFormats: "[PC Preview] unknow supportedFormats"
   }
@@ -299,8 +417,8 @@ export function mockMultimediaImage() {
         })
       }
     },
-    readLatestImage: function (...args) {
-      console.warn("ImageReceiver.readLatestImage interface mocked in the Previewer. How this interface works on the Previewer" +
+    readNextImage: function (...args) {
+      console.warn("ImageReceiver.readNextImage interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
@@ -355,8 +473,8 @@ export function mockMultimediaImage() {
       UNPREMUL: 3,
     },
     ScaleMode: {
+      FIT_TARGET_SIZE: 0,
       CENTER_CROP: 1,
-      FIT_TARGET_SIZE: 2,
     },
     ComponentType: {
       YUV_Y: 1,
@@ -378,6 +496,11 @@ export function mockMultimediaImage() {
     },
     createImageSource: function () {
       console.warn("image.createImageSource interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+      return ImageSourceMock;
+    },
+    CreateIncrementalSource: function () {
+      console.warn("image.CreateIncrementalSource interface mocked in the Previewer. How this interface works" +
         " on the Previewer may be different from that on a real device.")
       return ImageSourceMock;
     },
