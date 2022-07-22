@@ -91,28 +91,28 @@ export function mockUrl() {
           ' may be different from that on a real device.');
         return paramMock.paramStringMock;
       };
-    }
-    [Symbol.iterator]() {
-      console.warn('url.URLSearchParams.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer' +
-        ' may be different from that on a real device.');
-      let index = 0;
-      const IteratorTwoStringMock = {
-        next: () => {
-          if (index < 1) {
-            const returnValue = [paramMock.paramStringMock, paramMock.paramStringMock];
-            index++;
-            return {
-              value: returnValue,
-              done: false
-            };
-          } else {
-            return {
-              done: true
-            };
+      this[Symbol.iterator] = function (...args) {
+        console.warn('url.URLSearchParams.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer' +
+          ' may be different from that on a real device.');
+        let index = 0;
+        const IteratorTwoStringMock = {
+          next: () => {
+            if (index < 1) {
+              const returnValue = [paramMock.paramStringMock, paramMock.paramStringMock];
+              index++;
+              return {
+                value: returnValue,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
           }
-        }
-      };
-      return IteratorTwoStringMock;
+        };
+        return IteratorTwoStringMock;
+      }
     }
   };
   const URLClass = class URL {
