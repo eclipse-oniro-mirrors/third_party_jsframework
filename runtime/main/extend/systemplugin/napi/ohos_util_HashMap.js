@@ -107,28 +107,28 @@ export function mockHashMap() {
         };
         return IteratorEntriesMock;
       };
-    }
-    [Symbol.iterator]() {
-      console.warn("HashMap.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      let index = 0;
-      const IteratorMock = {
-        next: () => {
-          if (index < 1) {
-            const returnValue = [paramHashMap.paramIterMock_K, paramHashMap.paramIterMock_V];
-            index++;
-            return {
-              value: returnValue,
-              done: false
-            };
-          } else {
-            return {
-              done: true
-            };
+      this[Symbol.iterator] = function (...args) {
+        console.warn("HashMap.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        let index = 0;
+        const IteratorMock = {
+          next: () => {
+            if (index < 1) {
+              const returnValue = [paramHashMap.paramIterMock_K, paramHashMap.paramIterMock_V];
+              index++;
+              return {
+                value: returnValue,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
           }
-        }
-      };
-      return IteratorMock;
+        };
+        return IteratorMock;
+      }
     }
   }
   return HashMapClass;

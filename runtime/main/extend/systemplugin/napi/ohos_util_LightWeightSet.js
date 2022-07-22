@@ -17,8 +17,8 @@ import { paramMock } from "../utils"
 
 export function mockLightWeightSet() {
   const paramLightWeightSet = {
-    paramAnyMock : '[PC Preview] unknow any',
-    paramIterMock_T : '[PC Preview] unknow IterableIterator_t'
+    paramAnyMock: '[PC Preview] unknow any',
+    paramIterMock_T: '[PC Preview] unknow IterableIterator_t'
   }
   const LightWeightSetClass = class LightWeightSet {
     constructor(...args) {
@@ -119,35 +119,35 @@ export function mockLightWeightSet() {
           }
         };
         return IteratorEntriesMock;
-      }
+      };
       this.isEmpty = function (...args) {
         console.warn("LightWeightSet.isEmpty interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
         return paramMock.paramBooleanMock;
+      };
+      this[Symbol.iterator] = function (...args) {
+        console.warn("LightWeightSet.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        let index = 0;
+        const IteratorMock = {
+          next: () => {
+            if (index < 1) {
+              const returnValue = [paramLightWeightSet.paramIterMock_T, paramLightWeightSet.paramIterMock_T];
+              index++;
+              return {
+                value: returnValue,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
+          }
+        };
+        return IteratorMock;
       }
     }
-    [Symbol.iterator]() {
-      console.warn("LightWeightSet.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      let index = 0;
-      const IteratorMock = {
-        next: () => {
-          if (index < 1) {
-            const returnValue = [paramLightWeightSet.paramIterMock_T, paramLightWeightSet.paramIterMock_T];
-            index++;
-            return {
-              value: returnValue,
-              done: false
-            };
-          } else {
-            return {
-              done: true
-            };
-          }
-        }
-      };
-      return IteratorMock;
-    }
   }
-    return LightWeightSetClass;
+  return LightWeightSetClass;
 }
