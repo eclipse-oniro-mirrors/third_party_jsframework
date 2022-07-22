@@ -14,6 +14,7 @@
  */
 
 import { mockSystemParameter } from './ohos_systemparameter'
+import { mockSystemCapability } from './ohos_systemCapability'
 import { mockAbility } from './ohos_application_Ability'
 import { mockFeatureAbility } from './ohos_ability_featureAbility'
 import { mockDataUriUtils } from './ohos_ability_dataUriUtils'
@@ -272,6 +273,8 @@ export function mockRequireNapiFun() {
         return mockBluetooth();
       case "batteryinfo":
         return mockBatteryinfo();
+      case "systemCapability":
+        return mockSystemCapability();
       case "systemParameter":
         return mockSystemParameter();
       case "ability.dataUriUtils":
