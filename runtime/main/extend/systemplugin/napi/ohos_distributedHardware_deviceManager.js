@@ -61,7 +61,7 @@ export function mockDeviceManager() {
     action: 0,
     device: deviceInfoMock
   }
-  const subscribeInfo = {
+  const SubscribeInfo = {
     subscribeId: "[PC Preview] unknow mSubscribeId",
     mode: DiscoverMode,
     medium: ExchangeMedium,
@@ -70,11 +70,11 @@ export function mockDeviceManager() {
     isWakeRemote: "[PC Preview] unknow mIsWakeRemote",
     capability: SubscribeCap
   }
-  const authParam = {
+  const AuthParam = {
     authType: "[PC Preview] unknow mAuthType",
     extraInfo: {"key":"unknow any"}
   }
-  const authInfo = {
+  const AuthInfo = {
     authType: "[PC Preview] unknow mAuthType",
     token: "[PC Preview] unknow mToken",
     extraInfo: {"key":"unknow any"}
