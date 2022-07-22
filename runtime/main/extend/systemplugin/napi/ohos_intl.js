@@ -168,6 +168,7 @@ export function mockIntl() {
     currencyDisplay: '[PC preview] unknow currencyDisplay',
     unit: '[PC preview] unknow unit',
     unitDisplay: '[PC preview] unknow unitDisplay',
+    unitUsage: '[PC preview] unknow unitUsage',
     signDisplay: '[PC preview] unknow signDisplay',
     compactDisplay: '[PC preview] unknow compactDisplay',
     notation: '[PC preview] unknow notation',
@@ -199,10 +200,24 @@ export function mockIntl() {
     minimumSignificantDigits: '[PC preview] unknow minimumSignificantDigits',
     maximumSignificantDigits: '[PC preview] unknow maximumSignificantDigits',
   }
-  const RelativeTimeFormatResolvedOptionsMock = {
+  const RelativeTimeFormatResolvedOptions = {
+    locale: '[PC preview] unknow locale',
+    style: '[PC preview] unknow style',
+    numeric: '[PC preview] unknow numeric',
+    numberingSystem: '[PC preview] unknow numberingSystem',
+  }
+  const RelativeTimeFormatInputOptions = {
     localeMatcher: '[PC preview] unknow localeMatcher',
     numeric: '[PC preview] unknow numeric',
     style: '[PC preview] unknow style',
+  }
+  const LocaleOptions = {
+    calendar: '[PC preview] unknow calendar',
+    collation: '[PC preview] unknow collation',
+    hourCycle: '[PC preview] unknow hourCycle',
+    numberingSystem: '[PC preview] unknow numberingSystem',
+    numeric: '[PC preview] unknow numeric',
+    caseFirst: '[PC preview] unknow caseFirst',
   }
   return result;
 }
