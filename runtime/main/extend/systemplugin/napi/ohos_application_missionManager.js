@@ -92,6 +92,18 @@ export function mockMissionManager() {
         });
       }
     },
+    getLowResolutionMissionSnapShot: function (...args) {
+      console.warn('missionManager.getLowResolutionMissionSnapShot interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, MissionSnapshotMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve(MissionSnapshotMock);
+        });
+      }
+    },
     lockMission: function (...args) {
       console.warn('missionManager.lockMission interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');

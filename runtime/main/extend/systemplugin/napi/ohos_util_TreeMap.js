@@ -17,8 +17,8 @@ import { paramMock } from "../utils"
 
 export function mockTreeMap() {
   const paramTreeMap = {
-    paramIterMock_K : '[PC Preview] unknow iterableiterator_k',
-    paramIterMock_V : '[PC Preview] unknow iterableiterator_v'
+    paramIterMock_K: '[PC Preview] unknow iterableiterator_k',
+    paramIterMock_V: '[PC Preview] unknow iterableiterator_v'
   }
   const TreeMapClass = class TreeMap {
     constructor(...args) {
@@ -125,28 +125,28 @@ export function mockTreeMap() {
         };
         return IteratorEntriesMock;
       };
-    }
-    [Symbol.iterator]() {
-      console.warn("TreeMap.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      let index = 0;
-      const IteratorMock = {
-        next: () => {
-          if (index < 1) {
-            const returnValue = [paramTreeMap.paramIterMock_K, paramTreeMap.paramIterMock_V];
-            index++;
-            return {
-              value: returnValue,
-              done: false
-            };
-          } else {
-            return {
-              done: true
-            };
+      this[Symbol.iterator] = function (...args) {
+        console.warn("TreeMap.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        let index = 0;
+        const IteratorMock = {
+          next: () => {
+            if (index < 1) {
+              const returnValue = [paramTreeMap.paramIterMock_K, paramTreeMap.paramIterMock_V];
+              index++;
+              return {
+                value: returnValue,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
           }
-        }
-      };
-      return IteratorMock;
+        };
+        return IteratorMock;
+      }
     }
   }
   return TreeMapClass;

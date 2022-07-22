@@ -38,4 +38,5 @@ export const HapModuleInfo = {
     mainElementName: "[PC preview] unknown mainElementName",
     extensionAbilityInfo: [ExtensionAbilityInfo],
     metadata: [Metadata],
+    hashValue: "[PC preview] unknown mainElementName",
 }

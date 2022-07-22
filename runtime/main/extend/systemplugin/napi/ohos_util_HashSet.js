@@ -74,29 +74,29 @@ export function mockHashSet() {
           }
         };
         return IteratorEntriesMock;
-      }
-    }
-    [Symbol.iterator]() {
-      console.warn("HashSet.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      let index = 0;
-      const IteratorMock = {
-        next: () => {
-          if (index < 1) {
-            const returnValue = [paramHashSet.paramAnyMock, paramHashSet.paramAnyMock];
-            index++;
-            return {
-              value: returnValue,
-              done: false
-            };
-          } else {
-            return {
-              done: true
-            };
-          }
-        }
       };
-      return IteratorMock;
+      this[Symbol.iterator] = function (...args) {
+        console.warn("HashSet.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        let index = 0;
+        const IteratorMock = {
+          next: () => {
+            if (index < 1) {
+              const returnValue = [paramHashSet.paramAnyMock, paramHashSet.paramAnyMock];
+              index++;
+              return {
+                value: returnValue,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
+          }
+        };
+        return IteratorMock;
+      }
     }
   }
   return HashSetClass;

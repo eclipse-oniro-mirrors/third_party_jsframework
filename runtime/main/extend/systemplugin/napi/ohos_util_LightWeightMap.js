@@ -144,28 +144,28 @@ export function mockLightWeightMap() {
         };
         return IteratorVMock;
       };
-    }
-    [Symbol.iterator]() {
-      console.warn("LightWeightMap.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      let index = 0;
-      const IteratorMock = {
-        next: () => {
-          if (index < 1) {
-            const returnValue = [paramLightWeightMap.paramAnyMock_K, paramLightWeightMap.paramAnyMock_V];
-            index++;
-            return {
-              value: returnValue,
-              done: false
-            };
-          } else {
-            return {
-              done: true
-            };
+      this[Symbol.iterator] = function (...args) {
+        console.warn("LightWeightMap.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        let index = 0;
+        const IteratorMock = {
+          next: () => {
+            if (index < 1) {
+              const returnValue = [paramLightWeightMap.paramAnyMock_K, paramLightWeightMap.paramAnyMock_V];
+              index++;
+              return {
+                value: returnValue,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
           }
-        }
-      };
-      return IteratorMock;
+        };
+        return IteratorMock;
+      }
     }
   }
   return LightWeightMapClass;

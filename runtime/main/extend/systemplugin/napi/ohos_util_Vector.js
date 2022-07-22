@@ -17,9 +17,9 @@ import { paramMock } from "../utils"
 
 export function mockVector() {
   const paramVector = {
-      paramAnyMock : '[PC Preview] unknow any',
-      paramVectorMock : '[PC Preview] unknow Vector',
-      paramIterMock : '[PC Preview] unknow IterableIterator'
+    paramAnyMock: '[PC Preview] unknow any',
+    paramVectorMock: '[PC Preview] unknow Vector',
+    paramIterMock: '[PC Preview] unknow IterableIterator'
   }
 
   const VectorClass = class Vector {
@@ -163,27 +163,27 @@ export function mockVector() {
         console.warn("Vector.copyToArray interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
       };
-    }
-    [Symbol.iterator]() {
-      console.warn("Vector.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      let index = 0;
-      const IteratorMock = {
-        next: () => {
-          if (index < 1) {
-            index++;
-            return {
-              value: paramVector.paramAnyMock,
-              done: false
-            };
-          } else {
-            return {
-              done: true
-            };
+      this[Symbol.iterator] = function (...args) {
+        console.warn("Vector.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        let index = 0;
+        const IteratorMock = {
+          next: () => {
+            if (index < 1) {
+              index++;
+              return {
+                value: paramVector.paramAnyMock,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
           }
-        }
-      };
-      return IteratorMock;
+        };
+        return IteratorMock;
+      }
     }
   }
   return VectorClass;

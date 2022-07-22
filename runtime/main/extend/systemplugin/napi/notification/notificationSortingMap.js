@@ -15,6 +15,6 @@
 import { paramMock } from "../../utils"
 
 export const NotificationSortingMap = {
-    sortings: {},
+    sortings: {"key": "unknown any"},
     sortedHashCode: [paramMock.paramStringMock],
 };

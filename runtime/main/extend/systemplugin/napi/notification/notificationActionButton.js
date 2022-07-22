@@ -17,6 +17,6 @@ import { NotificationUserInput } from "./notificationUserInput"
 export const NotificationActionButton = {
     title: '[PC preview] unknow title',
     wantAgent: '[PC preview] unknow wantAgent',
-    extras: {},
+    extras: {"key": "unknown any"},
     userInput: NotificationUserInput,
 }

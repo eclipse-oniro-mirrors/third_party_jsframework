@@ -28,6 +28,7 @@ import { mockServiceExtensionAbility } from './ohos_application_ServiceExtension
 import { mockAbilityStage } from './ohos_application_AbilityStage'
 import { mockFormBindingData } from './ohos_application_formBindingData'
 import { mockAbilityManager } from './ohos_application_abilityManager'
+import { mockParticleAbility } from './ohos_ability_particleAbility'
 import { mockAppManager } from './ohos_application_appManager'
 import { mockDataShareExtensionAbility } from './ohos_application_DataShareExtensionAbility'
 import { mockMissionManager } from "./ohos_application_missionManager"
@@ -70,6 +71,7 @@ import { mockInputDevice } from './ohos_multimodalInput_inputDevice'
 import { mockVibrator } from './ohos_vibrator'
 import { mockSensor } from './ohos_sensor'
 import { mockWifi } from './ohos_wifi'
+import { mockWifiExt } from './ohos_wifiext'
 import { mockUsb } from './ohos_usb'
 import { mockBundle } from './ohos_bundle'
 import { mockInnerBundle } from './ohos_bundle_innerBundleManager'
@@ -175,6 +177,9 @@ import { mockUiAppearance } from './ohos_uiAppearance'
 import { mockContinationManager } from './ohos_continuation_continuationManager'
 import { mockUiTest } from './ohos_uitest'
 import { mockWindowAnimationManager } from './ohos_animation_windowAnimationManager'
+import { mockAccessibility } from './ohos_accessibility'
+import { mockAccessibilityConfig } from './ohos_accessibility_config'
+import { mockAccessibilityExtensionAbility } from './ohos_application_AccessibilityExtensionAbility'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
@@ -192,7 +197,7 @@ export function mockRequireNapiFun() {
         return mockZlib();
       case "screenshot":
         return mockScreenshot();
-      case "WantAgent":
+      case "wantAgent":
         return mockWantAgent();
       case "wallpaper":
         return mockWallpaper();
@@ -278,6 +283,8 @@ export function mockRequireNapiFun() {
         return mockSystemParameter();
       case "ability.dataUriUtils":
         return mockDataUriUtils();
+      case "ability.particleAbility":
+        return mockParticleAbility();
       case "ability.featureAbility":
         return mockFeatureAbility();
       case "application.Ability":
@@ -388,6 +395,8 @@ export function mockRequireNapiFun() {
         return mockSensor();
       case "wifi":
         return mockWifi();
+      case "wifiext":
+          return mockWifiExt();
       case "usb":
         return mockUsb();
       case "bundle":
@@ -496,6 +505,12 @@ export function mockRequireNapiFun() {
         return mockMouseEvent();
       case "multimodalInput.touchEvent":
         return mockTouchEvent();
+      case "accessibility":
+        return mockAccessibility();
+      case "accessibility.config":
+        return mockAccessibilityConfig();
+      case "application.AccessibilityExtensionAbility":
+        return mockAccessibilityExtensionAbility();
       case "continuation.continuationManager":
         return mockContinationManager();
       case "uitest":

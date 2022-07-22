@@ -30,7 +30,7 @@ export const NotificationRequest = {
     tapDismissed: '[PC preview] unknow tapDismissed',
     autoDeletedTime: '[PC preview] unknow autoDeletedTime',
     wantAgent: '[PC preview] unknow wantAgent',
-    extraInfo: {},
+    extraInfo: {"key": "unknown any"},
     color: '[PC preview] unknow color',
     colorEnabled: '[PC preview] unknow colorEnabled',
     isAlertOnce: '[PC preview] unknow isAlertOnce',
