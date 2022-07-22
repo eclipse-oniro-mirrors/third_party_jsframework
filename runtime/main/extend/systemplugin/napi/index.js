@@ -388,13 +388,13 @@ export function mockRequireNapiFun() {
         return mockConvertXml();
       case "statfs":
         return mockStatfs();
-      case "filemanager":
+      case "fileManager":
         return mockFileManager();
       case "environment":
         return mockEnvironment();
-      case "storagestatistics":
+      case "storageStatistics":
         return mockStorageStatistics();
-      case "volumemanager":
+      case "volumeManager":
         return mockVolumeManager();
       case "settings":
         return mockSettings();
@@ -408,7 +408,7 @@ export function mockRequireNapiFun() {
         return mockBackgroundTaskManager();
       case "bundleState":
         return mockBundleState();
-      case "securitylabel":
+      case "securityLabel":
         return mockSecurityLabel();
       case "workScheduler":
         return mockWorkScheduler();
