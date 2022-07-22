@@ -255,7 +255,6 @@ export function mockUpdate() {
         ClearOptions,
         EventClassifyInfo,
         UpgradeFile,
-        UpgradeTaskCallback,
         getOnlineUpdater: function (...args) {
             console.warn("update.getOnlineUpdater interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
@@ -466,8 +465,4 @@ const EventClassifyInfo = {
 const UpgradeFile = {
     fileType: ComponentType,
     filePath: "[PC Preview] unknown filePath"
-}
-
-const UpgradeTaskCallback = {
-    UpgradeTaskCallback: (eventInfo) => {}
 }
