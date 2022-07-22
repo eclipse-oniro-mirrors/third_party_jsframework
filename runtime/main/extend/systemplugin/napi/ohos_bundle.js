@@ -14,89 +14,149 @@
  */
 
 import { paramMock } from "../utils"
-import { BundleInfoMock, BundlePackInfo, DispatchInfoMock } from './bundle/bundleInfo'
-import { ApplicationInfoMock } from './bundle/applicationInfo'
-import { WantMock } from './bundle/applicationInfo'
+import { BundleInfo, PixelMapFormat } from './bundle/bundleInfo'
+import { BundlePackInfo } from './bundle/packInfo'
+import { DispatchInfo } from './bundle/dispatchInfo'
+import { ApplicationInfo, Want} from './bundle/applicationInfo'
+import { AbilityInfo } from './bundle/abilityInfo'
+import { PermissionDef } from './bundle/PermissionDef'
+import { ExtensionAbilityInfo } from './bundle/extensionAbilityInfo'
+
+export const BundleFlag = {
+    GET_BUNDLE_DEFAULT: 0x00000000,
+    GET_BUNDLE_WITH_ABILITIES: 0x00000001,
+    GET_ABILITY_INFO_WITH_PERMISSION: 0x00000002,
+    GET_ABILITY_INFO_WITH_APPLICATION: 0x00000004,
+    GET_APPLICATION_INFO_WITH_PERMISSION: 0x00000008,
+    GET_BUNDLE_WITH_REQUESTED_PERMISSION: 0x00000010,
+    GET_ALL_APPLICATION_INFO: 0xFFFF0000,
+    GET_ABILITY_INFO_WITH_METADATA: 0x00000020,
+    GET_BUNDLE_WITH_EXTENSION_ABILITY: 0x00000020,
+    GET_BUNDLE_WITH_HASH_VALUE: 0x00000030,
+    GET_APPLICATION_INFO_WITH_METADATA: 0x00000040,
+    GET_ABILITY_INFO_SYSTEMAPP_ONLY: 0x00000080,
+    GET_ABILITY_INFO_WITH_DISABLE: 0x00000100,
+    GET_APPLICATION_INFO_WITH_DISABLE: 0x00000200,
+    GET_APPLICATION_INFO_WITH_CERTIFICATE_FINGERPRINT: 0x00000400,
+}
+
+export const ExtensionFlag = {
+    GET_EXTENSION_INFO_DEFAULT: 0x00000000,
+    GET_EXTENSION_INFO_WITH_PERMISSION: 0x00000002,
+    GET_EXTENSION_INFO_WITH_APPLICATION: 0x00000004,
+    GET_EXTENSION_INFO_WITH_METADATA: 0x00000020,
+}
+
+export const ColorMode = {
+    AUTO_MODE: -1,
+    DARK_MODE: 0,
+    LIGHT_MODE: 1,
+}
+
+export const GrantStatus = {
+    PERMISSION_DENIED: -1,
+    PERMISSION_GRANTED: 0,
+}
+
+export const AbilityType = {
+    UNKNOWN: 0,
+    PAGE: 1,
+    SERVICE: 2,
+    DATA: 3,
+}
+
+export const AbilitySubType = {
+    UNSPECIFIED: 0,
+    CA: 1,
+}
+
+export const DisplayOrientation = {
+    UNSPECIFIED: 0,
+    LANDSCAPE: 0,
+    PORTRAIT: 1,
+    FOLLOW_RECENT: 2,
+    LANDSCAPE_INVERTED: 3,
+    PORTRAIT_INVERTED: 4,
+    AUTO_ROTATION: 5,
+    AUTO_ROTATION_LANDSCAPE: 6,
+    AUTO_ROTATION_PORTRAIT: 7,
+    AUTO_ROTATION_RESTRICTED: 8,
+    AUTO_ROTATION_LANDSCAPE_RESTRICTED: 9,
+    AUTO_ROTATION_PORTRAIT_RESTRICTED: 10,
+    LOCKED: 11,
+}
+
+export const LaunchMode = {
+    SINGLETON: 0,
+    STANDARD: 1,
+}
+
+export const ExtensionAbilityType = {
+    FORM: 0,
+    WORK_SCHEDULER: 1,
+    INPUT_METHOD: 2,
+    SERVICE: 3,
+    ACCESSIBILITY: 4,
+    DATA_SHARE: 5,
+    FILE_SHARE: 6,
+    STATIC_SUBSCRIBER: 7,
+    WALLPAPER: 8,
+    BACKUP: 9,
+    WINDOW: 10,
+    ENTERPRISE_ADMIN: 11,
+    UNSPECIFIED: 20,
+}
+
+export const BundleOptions = {
+    userId: "[PC preview] unknown userId",
+}
+
+export const InstallErrorCode = {
+    SUCCESS: 0,
+    STATUS_INSTALL_FAILURE: 1,
+    STATUS_INSTALL_FAILURE_ABORTED: 2,
+    STATUS_INSTALL_FAILURE_INVALID: 3,
+    STATUS_INSTALL_FAILURE_CONFLICT: 4,
+    STATUS_INSTALL_FAILURE_STORAGE: 5,
+    STATUS_INSTALL_FAILURE_INCOMPATIBLE: 6,
+    STATUS_UNINSTALL_FAILURE: 7,
+    STATUS_UNINSTALL_FAILURE_BLOCKED: 8,
+    STATUS_UNINSTALL_FAILURE_ABORTED: 9,
+    STATUS_UNINSTALL_FAILURE_CONFLICT: 10,
+    STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT: 0x0B,
+    STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED: 0x0C,
+    STATUS_RECOVER_FAILURE_INVALID: 0x0D,
+    STATUS_ABILITY_NOT_FOUND: 0x40,
+    STATUS_BMS_SERVICE_ERROR: 0x41,
+    STATUS_FAILED_NO_SPACE_LEFT: 0x42,
+    STATUS_GRANT_REQUEST_PERMISSIONS_FAILED: 0x43,
+    STATUS_INSTALL_PERMISSION_DENIED: 0x44,
+    STATUS_UNINSTALL_PERMISSION_DENIED: 0x45,
+}
+
+export const UpgradeFlag = {
+    NOT_UPGRADE: 0,
+    SINGLE_UPGRADE: 1,
+    RELATION_UPGRADE: 2,
+}
+
+export const SupportWindowMode = {
+    FULL_SCREEN: 0,
+    SPLIT: 1,
+    FLOATING: 2,
+}
 
 export function mockBundle() {
-    const extensionAbilityType = {
-        FORM: 0,
-        WORK_SCHEDULER: 1,
-        INPUT_METHOD: 2,
-        SERVICE: 3,
-        ACCESSIBILITY: 4,
-        DATA_SHARE: 5,
-        FILE_SHARE: 6,
-        STATIC_SUBSCRIBER: 7,
-        WALLPAPER: 8,
-        BACKUP: 9,
-        WINDOW: 10,
-        UNSPECIFIED: 20,
-    }
-
-    const ExtensionAbilityInfoMock = [
-        {
-          bundleName: "[PC preview] unknown bundle name",
-          moduleName: "[PC preview] unknown module name",
-          name: "[PC preview] unknown name",
-          labelId: "[PC preview] unknown label id",
-          descriptionId: "[PC preview] unknown description id",
-          iconId: "[PC preview] unknown icon id",
-          isVisible: "[PC preview] unknown is visible",
-          extensionAbilityType: extensionAbilityType,
-          permissions: ["[PC preview] unknown permissions"],
-          applicationInfo: {
-            name: "[PC preview] unknown is name",
-            description: "[PC preview] unknown is description",
-            descriptionId: "[PC preview] unknown is descriptionId",
-            systemApp: "[PC preview] unknown is systemApp",
-            enabled: "[PC preview] unknown is enabled",
-            labelId: "[PC preview] unknown is labelId",
-            icon: "[PC preview] unknown is icon",
-            iconId: "[PC preview] unknown is iconId",
-            process: "[PC preview] unknown is process",
-            supportedModes: "[PC preview] unknown is supportedModes",
-            moduleSourceDirs: "[PC preview] unknown is moduleSourceDirs",
-            permissions: ["[PC preview] unknown is permissions"],
-            moduleInfos: ["[PC preview] unknown is moduleSourceDirs"],
-            entryDir: "[PC preview] unknown is entryDir",
-            metaData: [{
-                name: "[PC preview] unknown name",
-                value: "[PC preview] unknown value",
-                resource: "[PC preview] unknown resource",
-            }],
-            metadata: [{
-                name: "[PC preview] unknown name",
-                value: "[PC preview] unknown value",
-                resource: "[PC preview] unknown resource",
-            }],
-            removable: "[PC preview] unknown is removable",
-            accessTokenId: "[PC preview] unknown is accessTokenId",
-            uid: "[PC preview] unknown is uid",
-            entityType: "[PC preview] unknown is entityType",
-            fingerprint: "[PC preview] unknown is fingerprint",
-          },
-          metadata: [{
-            name: "[PC preview] unknown name",
-            value: "[PC preview] unknown value",
-            resource: "[PC preview] unknown resource",
-          }],
-          enabled: "[PC preview] unknown enabled",
-          readPermission: "[PC preview] unknown read permission",
-          writePermission: "[PC preview] unknown write permission",
-        }
-      ]
-      
     const bundle = {
         getBundleInfo: function(...args) {
             console.warn("bundle.getBundleInfo interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, BundleInfoMock);
+                args[len - 1].call(this, paramMock.businessErrorMock, BundleInfo);
             } else {
                 return new Promise((resolve) => {
-                    resolve(BundleInfoMock);
+                    resolve(BundleInfo);
                 })
             }
         },
@@ -117,10 +177,10 @@ export function mockBundle() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, ApplicationInfoMock);
+                args[len - 1].call(this, paramMock.businessErrorMock, ApplicationInfo);
             } else {
                 return new Promise((resolve) => {
-                    resolve(ApplicationInfoMock);
+                    resolve(ApplicationInfo);
                 })
             }
         },
@@ -129,10 +189,10 @@ export function mockBundle() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, Array(BundleInfoMock));
+                args[len - 1].call(this, paramMock.businessErrorMock, Array(BundleInfo));
             } else {
                 return new Promise((resolve) => {
-                    resolve(Array(BundleInfoMock));
+                    resolve(Array(BundleInfo));
                 })
             }
         },
@@ -141,10 +201,10 @@ export function mockBundle() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, Array(BundleInfoMock));
+                args[len - 1].call(this, paramMock.businessErrorMock, Array(BundleInfo));
             } else {
                 return new Promise((resolve) => {
-                    resolve(Array(BundleInfoMock));
+                    resolve(Array(BundleInfo));
                 })
             }
         },
@@ -153,10 +213,10 @@ export function mockBundle() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, Array(ApplicationInfoMock));
+                args[len - 1].call(this, paramMock.businessErrorMock, Array(ApplicationInfo));
             } else {
                 return new Promise((resolve) => {
-                    resolve(Array(ApplicationInfoMock));
+                    resolve(Array(ApplicationInfo));
                 })
             }
         },
@@ -165,10 +225,10 @@ export function mockBundle() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, Array(BundleInfoMock));
+                args[len - 1].call(this, paramMock.businessErrorMock, Array(BundleInfo));
             } else {
                 return new Promise((resolve) => {
-                    resolve(Array(BundleInfoMock));
+                    resolve(Array(BundleInfo));
                 })
             }
         },
@@ -177,10 +237,10 @@ export function mockBundle() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, Array(WantMock));
+                args[len - 1].call(this, paramMock.businessErrorMock, Array(Want));
             } else {
                 return new Promise((resolve) => {
-                    resolve(Array(WantMock));
+                    resolve(Array(Want));
                 })
             }
         },
@@ -273,10 +333,10 @@ export function mockBundle() {
                 " Previewer may be different from that on a real device.")
             const len = args.length
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this,paramMock.businessErrorMock, Array(ExtensionAbilityInfoMock))
+                args[len - 1].call(this,paramMock.businessErrorMock, Array(ExtensionAbilityInfo))
             } else {
                 return new Promise((resolve) => {
-                    resolve(Array(ExtensionAbilityInfoMock))
+                    resolve(Array(ExtensionAbilityInfo))
                 });
             }
         },
@@ -297,10 +357,10 @@ export function mockBundle() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, DispatchInfoMock);
+                args[len - 1].call(this, paramMock.businessErrorMock, DispatchInfo);
             } else {
                 return new Promise((resolve) => {
-                    resolve(DispatchInfoMock);
+                    resolve(DispatchInfo);
                 })
             }
         },
@@ -326,6 +386,90 @@ export function mockBundle() {
                 return new Promise((resolve) => {
                     resolve(paramMock.paramNumberMock)
                 });
+            }
+        },
+        isAbilityEnabled: function(...args) {
+            console.warn("bundle.isAbilityEnabled interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock);
+                })
+            }
+        },
+        isApplicationEnabled: function(...args) {
+            console.warn("bundle.isApplicationEnabled interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramBooleanMock);
+                })
+            }
+        },
+        getAbilityIcon: function(...args) {
+            console.warn("bundle.getAbilityIcon interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, PixelMapFormat);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(PixelMapFormat);
+                })
+            }
+        },
+        getAbilityLabel: function(...args) {
+            console.warn("bundle.getAbilityLabel interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramStringMock);
+                })
+            }
+        },
+        getPermissionDef: function(...args) {
+            console.warn("bundle.getPermissionDef interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, PermissionDef);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(PermissionDef);
+                })
+            }
+        },
+        getNameForUid: function(...args) {
+            console.warn("bundle.getNameForUid interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(paramMock.paramStringMock);
+                })
+            }
+        },
+        getAbilityInfo: function(...args) {
+            console.warn("bundle.getAbilityInfo interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+            const len = args.length;
+            if (typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, AbilityInfo);
+            } else {
+                return new Promise((resolve) => {
+                    resolve(AbilityInfo);
+                })
             }
         },
     };

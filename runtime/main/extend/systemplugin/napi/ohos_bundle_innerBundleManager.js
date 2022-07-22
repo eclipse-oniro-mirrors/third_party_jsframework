@@ -14,8 +14,8 @@
  */
 
 import { paramMock } from "../utils"
-import { ShortcutInfoMock } from './bundle/applicationInfo'
-import { LauncherAbilityInfoMock } from './bundle/launcherAbilityInfo'
+import { ShortcutInfo } from './bundle/shortcutInfo'
+import { LauncherAbilityInfo } from './bundle/launcherAbilityInfo'
 
 export function mockInnerBundle() {
     const innerBundleManager = {

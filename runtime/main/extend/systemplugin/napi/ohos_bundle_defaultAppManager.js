@@ -14,7 +14,18 @@
  */
 
 import { paramMock } from "../utils"
-import { BundleInfoMock } from './bundle/bundleInfo'
+import { BundleInfo } from './bundle/bundleInfo'
+
+export const ApplicationType = {
+    BROWSER: "BROWSER",
+    IMAGE: "IMAGE",
+    AUDIO: "AUDIO",
+    VIDEO: "VIDEO",
+    PDF: "PDF",
+    WORD: "WORD",
+    EXCEL: "EXCEL",
+    PPT: "PPT",
+  };
 
 export function mockDefaultAppManager() {
     const defaultAppManager = {
@@ -35,10 +46,10 @@ export function mockDefaultAppManager() {
             " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, BundleInfoMock);
+                args[len - 1].call(this, paramMock.businessErrorMock, BundleInfo);
             } else {
                 return new Promise((resolve) => {
-                    resolve(BundleInfoMock);
+                    resolve(BundleInfo);
                 })
             }
         },
