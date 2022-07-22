@@ -49,7 +49,7 @@ export function mockOsAccount() {
   };
   const ExecutorProperty = {
     result: "[PC Preview] unknown result",
-    authSubType: "[PC Preview] unknown authSubType",
+    authSubType: AuthSubType,
     remainTimes: "[PC Preview] unknown remainTimes",
     freezingTime: "[PC Preview] unknown freezingTime"
   };
@@ -468,20 +468,20 @@ export function mockOsAccount() {
   const UserAuthClass = class UserAuth {
     constructor() {
       console.warn("osAccount.UserAuth.constructor interface mocked in the Previewer. " +
-      "How this interface works on the Previewer may be different from that on a real device.")
-      this.getVersion = function (..._args) {
+        "How this interface works on the Previewer may be different from that on a real device.")
+      this.getVersion = function (...args) {
         console.warn("UserAuth.getVersion interface mocked in the Previewer. " +
-        "How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramNumberMock;
+          "How this interface works on the Previewer may be different from that on a real device.")
+          return paramMock.paramNumberMock;
       };
-      this.getAvailableStatus = function (..._args) {
+      this.getAvailableStatus = function (...args) {
         console.warn("UserAuth.getVAvailableStatus interface mocked in the Previewer. " +
-        "How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramNumberMock;
+          "How this interface works on the Previewer may be different from that on a real device.")
+          return paramMock.paramNumberMock;
       };
       this.getProperty = function (...args) {
         console.warn("UserAuth.getProperty interface mocked in the Previewer. " +
-        "How this interface works on the Previewer may be different from that on a real device.")
+          "How this interface works on the Previewer may be different from that on a real device.")
         const len = args.length
         if (len > 0 && typeof args[len - 1] === 'function') {
           args[len - 1].call(this, paramMock.businessErrorMock, ExecutorProperty);
@@ -493,7 +493,7 @@ export function mockOsAccount() {
       };
       this.setProperty = function (...args) {
         console.warn("UserAuth.setProperty interface mocked in the Previewer. " +
-        "How this interface works on the Previewer may be different from that on a real device.")
+          "How this interface works on the Previewer may be different from that on a real device.")
         const len = args.length
         if (len > 0 && typeof args[len - 1] === 'function') {
           args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
@@ -505,7 +505,7 @@ export function mockOsAccount() {
       };
       this.auth = function (...args) {
         console.warn("UserAuth.auth interface mocked in the Previewer. " +
-        "How this interface works on the Previewer may be different from that on a real device.")
+          "How this interface works on the Previewer may be different from that on a real device.")
         const len = args.length
         if (len > 0 && typeof args[len - 1] === 'function') {
           args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock);
@@ -513,16 +513,16 @@ export function mockOsAccount() {
       };
       this.anthUser = function (...args) {
         console.warn("UserAuth.authUser interface mocked in the Previewer. " +
-        "How this interface works on the Previewer may be different from that on a real device.")
+          "How this interface works on the Previewer may be different from that on a real device.")
         const len = args.length
         if (len > 0 && typeof args[len - 1] === 'function') {
           args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock);
         } 
       };
-      this.cancelAuth = function (..._args) {
+      this.cancelAuth = function (...args) {
         console.warn("UserAuth.cancelAuth interface mocked in the Previewer. " +
-        "How this interface works on the Previewer may be different from that on a real device.")
-        return paramMock.paramNumberMock;
+          "How this interface works on the Previewer may be different from that on a real device.")
+          return paramMock.paramNumberMock;
       };
    }; 
   };
@@ -530,15 +530,15 @@ export function mockOsAccount() {
     constructor() {
       console.warn("osAccount.PINA.constructor interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
-        this.registerInputer = function (...args) {
-          console.warn("PINAuth.registerInputer constructor interface mocked in the Previewer. " +
+      this.registerInputer = function (...args) {
+        console.warn("PINAuth.registerInputer constructor interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
           return paramMock.paramBooleanMock;
-        };
-        this.unregisterInputer = function (..._args) {
-          console.warn("PINAuth.unregisterInputer constructor interface mocked in the Previewer. " +
+      };
+      this.unregisterInputer = function (...args) {
+        console.warn("PINAuth.unregisterInputer constructor interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
-        };
+      };
     };
   };
   const UserIdentityManagerClass = class UserIdentityManager {
@@ -573,75 +573,75 @@ export function mockOsAccount() {
           args[len - 1].call(this, paramMock.businessErrorMock, IIdmCallback);
         }
       };
-      this.closeSession = function (..._args) {
+      this.closeSession = function (...args) {
         console.warn("AUserIdentityManager.closeSession interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.") 
       };
-      this.cancel = function (..._args) {
+      this.cancel = function (...args) {
         console.warn("AUserIdentityManager.console interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
           return paramMock.paramNumberMock;
       };
-      this.delUser = function (..._args) {
+      this.delUser = function (...args) {
         console.warn("AUserIdentityManager.delUser interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
-          const len = args.length
+        const len = args.length
         if (len > 0 && typeof args[len - 1] === 'function') {
           args[len - 1].call(this, paramMock.businessErrorMock, IIdmCallback);
         }
       };
-      this.delCred = function (..._args) {
+      this.delCred = function (...args) {
         console.warn("AUserIdentityManager.delCred interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
-          const len = args.length
+        const len = args.length
         if (len > 0 && typeof args[len - 1] === 'function') {
           args[len - 1].call(this, paramMock.businessErrorMock, IIdmCallback);
         }
       };
-      this.getAuthInfo = function (..._args) {
+      this.getAuthInfo = function (...args) {
         console.warn("AUserIdentityManager.getAuthInfo interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
-          const len = args.length
+        const len = args.length
         if (len > 0 && typeof args[len - 1] === 'function') {
           args[len - 1].call(this, paramMock.businessErrorMock, new Array(EnrolledCredInfo));
         } else {
           return new Promise((resolve, reject) => {
-          resolve(new Array(EnrolledCredInfo))
+            resolve(new Array(EnrolledCredInfo))
         })
         }
       };
     };
   }
   const IInputData = {
-    onSetData: function (..._args) {
+    onSetData: function (...args) {
       console.warn("IInputData.onSetData interface mocked in the Previewer. " +
-      "How this interface works on the Previewer may be different from that on a real device.")
+        "How this interface works on the Previewer may be different from that on a real device.")
     },
   };
   const IInputer = {
-    onSetData: function (..._args) {
+    onSetData: function (...args) {
       console.warn("IInputer.onSetData interface mocked in the Previewer. " +
-      "How this interface works on the Previewer may be different from that on a real device.")
+        "How this interface works on the Previewer may be different from that on a real device.")
     },
   };
   const IUserAuthCallback = {
-    onResult: function (..._args) {
+    onResult: function (...args) {
       console.warn("IUserAuthCallback.onResult interface mocked in the Previewer. " +
-      "How this interface works on the Previewer may be different from that on a real device.")
+        "How this interface works on the Previewer may be different from that on a real device.")
     },
-    onAcquireInfo: function (..._args) {
+    onAcquireInfo: function (...args) {
       console.warn("IUserAuthCallback.onResult interface mocked in the Previewer. " +
-      "How this interface works on the Previewer may be different from that on a real device.")
+        "How this interface works on the Previewer may be different from that on a real device.")
     },
   };
   const IIdmCallback = {
-    onResult: function (..._args) {
+    onResult: function (...args) {
       console.warn("IIdmCallback.onResult interface mocked in the Previewer. " +
-      "How this interface works on the Previewer may be different from that on a real device.")
+        "How this interface works on the Previewer may be different from that on a real device.")
     },
-    onAcquireInfo: function (..._args) {
+    onAcquireInfo: function (...args) {
       console.warn("IIdmCallback.onAcquireInfo interface mocked in the Previewer. " +
-      "How this interface works on the Previewer may be different from that on a real device.")
+        "How this interface works on the Previewer may be different from that on a real device.")
     },
   };
   const ConstraintSourceType = {
