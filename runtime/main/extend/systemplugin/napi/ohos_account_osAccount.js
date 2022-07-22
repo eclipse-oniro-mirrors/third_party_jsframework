@@ -81,7 +81,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve();
         })
       }
@@ -93,7 +93,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramBooleanMock);
         })
       }
@@ -105,7 +105,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramBooleanMock);
         })
       }
@@ -117,7 +117,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramBooleanMock);
         })
       }
@@ -129,7 +129,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramBooleanMock);
         })
       }
@@ -141,7 +141,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramBooleanMock);
         })
       }
@@ -153,7 +153,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve();
         })
       }
@@ -165,7 +165,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve();
         })
       }
@@ -177,7 +177,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve();
         })
       }
@@ -189,7 +189,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -201,7 +201,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -213,7 +213,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -225,7 +225,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -237,7 +237,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -249,7 +249,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramStringMock);
         })
       }
@@ -263,7 +263,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, osAccountInfoArrayMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(osAccountInfoArrayMock);
         })
       }
@@ -277,7 +277,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, osAccountIdsArrayMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(osAccountIdsArrayMock);
         })
       }
@@ -289,7 +289,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, OsAccountInfoMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(OsAccountInfoMock);
         })
       }
@@ -301,7 +301,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, OsAccountInfoMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(OsAccountInfoMock);
         })
       }
@@ -313,7 +313,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, OsAccountInfoMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(OsAccountInfoMock);
         })
       }
@@ -325,7 +325,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, OsAccountInfoMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(OsAccountInfoMock);
         })
       }
@@ -337,7 +337,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, OsAccountTypeMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(OsAccountTypeMock);
         })
       }
@@ -349,7 +349,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramStringMock);
         })
       }
@@ -361,7 +361,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramStringMock);
         })
       }
@@ -373,7 +373,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve();
         })
       }
@@ -385,7 +385,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve();
         })
       }
@@ -397,7 +397,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve();
         })
       }
@@ -409,7 +409,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -421,7 +421,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -433,7 +433,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramBooleanMock);
         })
       }
@@ -445,7 +445,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(paramMock.paramNumberMock);
         })
       }
@@ -459,7 +459,7 @@ export function mockOsAccount() {
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, constraintSourceTypeInfoArrayMock);
       } else {
-        return new Promise((resolve, _reject) => {
+        return new Promise((resolve, reject) => {
           resolve(constraintSourceTypeInfoArrayMock);
         })
       }
@@ -486,7 +486,7 @@ export function mockOsAccount() {
         if (len > 0 && typeof args[len - 1] === 'function') {
           args[len - 1].call(this, paramMock.businessErrorMock, ExecutorProperty);
         } else {
-          return new Promise((resolve, _reject) => {
+          return new Promise((resolve, reject) => {
             resolve(ExecutorProperty);
           })
         }
@@ -498,7 +498,7 @@ export function mockOsAccount() {
         if (len > 0 && typeof args[len - 1] === 'function') {
           args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
         } else {
-          return new Promise((resolve, _reject) => {
+          return new Promise((resolve, reject) => {
             resolve(paramMock.paramNumberMock);
           })
         }
@@ -552,7 +552,7 @@ export function mockOsAccount() {
         if (len > 0 && typeof args[len - 1] === 'function') {
           args[len - 1].call(this, paramMock.businessErrorMock,  paramMock.paramArrayMock);
         } else {
-          return new Promise((resolve, _reject) => {
+          return new Promise((resolve, reject) => {
             resolve(paramMock.paramArrayMock);
           })
         }
