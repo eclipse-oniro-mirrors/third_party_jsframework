@@ -596,147 +596,147 @@ export const Window = {
   },
 }
 
-export function mockWindow() {
+export const window =  {
+  getTopWindow: function(...args) {
+    console.warn("Window.getTopWindow interface mocked in the Previewer. How this interface works on the Previewer" +
+      "may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock, Window)
+    } else {
+      return new Promise((resolve) => {
+        resolve(Window)
+      })
+    }
+  },
+  create: function(...args) {
+    console.warn("Window.create interface mocked in the Previewer. How this interface works on the Previewer may" +
+       " be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock, Window)
+    } else {
+      return new Promise((resolve) => {
+        resolve(Window)
+      })
+    }
+  },
+  find: function(...args) {
+    console.warn("Window.find interface mocked in the Previewer. How this interface works on the Previewer may be" +
+       " different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock, Window)
+    } else {
+      return new Promise((resolve) => {
+        resolve(Window)
+      })
+    }
+  },
+  isFloatingAbilityWindowVisible: function(...args) {
+    console.warn("Window.isFloatingAbilityWindowVisible interface mocked in the Previewer. How this interface" +
+      " works on the Previewer may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
+    } else {
+      return new Promise((resolve) => {
+        resolve(paramMock.paramBooleanMock)
+      })
+    }
+  },
+  setSplitBarVisibility: function(...args) {
+    console.warn("Window.setSplitBarVisibility interface mocked in the Previewer. How this interface works on the Previewer" +
+      "may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock)
+    } else {
+      return new Promise((resolve) => {
+        resolve()
+      })
+    }
+  },
+  minimizeAll: function(...args) {
+    console.warn("Window.minimizeAll interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock)
+    } else {
+      return new Promise((resolve) => {
+        resolve()
+      })
+    }
+  },
+  toggleShownStateForAllAppWindows: function(...args) {
+    console.warn("Window.toggleShownStateForAllAppWindows interface mocked in the Previewer. How this interface" +
+      " works on the Previewer may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock)
+    } else {
+      return new Promise((resolve) => {
+        resolve()
+      })
+    }
+  },
+  setWindowLayoutMode: function(...args) {
+    console.warn("Window.setWindowLayoutMode interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock)
+    } else {
+      return new Promise((resolve) => {
+        resolve()
+      })
+    }
+  },
+  on: function(...args) {
+    console.warn("Window.on interface mocked in the Previewer. How this interface works on the Previewer may be" +
+      " different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      if (args[0] === 'systemBarTintChange') {
+        console.warn(`Window.on you has registered ${args[0]} event`)
+      } else {
+        console.warn("Window.on please check first param!")
+      }
+    } else {
+      console.warn("Window.on please check param!")
+    }
+  },
+  off: function(...args) {
+    console.warn("Window.off interface mocked in the Previewer. How this interface works on the Previewer may be" +
+      " different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      if (args[0] === 'systemBarTintChange') {
+        console.warn(`Window.off you has registered ${args[0]} event`)
+      } else {
+        console.warn("Window.off please check first param!")
+      }
+    } else {
+      console.warn("Window.off please check param!")
+    }
+  },
+  WindowType,
+  AvoidAreaType,
+  WindowMode,
+  WindowLayoutMode,
+  SystemBarProperties,
+  SystemBarRegionTint,
+  SystemBarTintState,
+  Rect,
+  AvoidArea,
+  Size,
+  WindowProperties,
+  ColorSpace,
+  WindowStageEventType,
+  WindowStage
+}
 
-  const window =  {
-    getTopWindow: function(...args) {
-      console.warn("Window.getTopWindow interface mocked in the Previewer. How this interface works on the Previewer" +
-        "may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, Window)
-      } else {
-        return new Promise((resolve) => {
-          resolve(Window)
-        })
-      }
-    },
-    create: function(...args) {
-      console.warn("Window.create interface mocked in the Previewer. How this interface works on the Previewer may" +
-         " be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, Window)
-      } else {
-        return new Promise((resolve) => {
-          resolve(Window)
-        })
-      }
-    },
-    find: function(...args) {
-      console.warn("Window.find interface mocked in the Previewer. How this interface works on the Previewer may be" +
-         " different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, Window)
-      } else {
-        return new Promise((resolve) => {
-          resolve(Window)
-        })
-      }
-    },
-    isFloatingAbilityWindowVisible: function(...args) {
-      console.warn("Window.isFloatingAbilityWindowVisible interface mocked in the Previewer. How this interface" +
-        " works on the Previewer may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve(paramMock.paramBooleanMock)
-        })
-      }
-    },
-    setSplitBarVisibility: function(...args) {
-      console.warn("Window.setSplitBarVisibility interface mocked in the Previewer. How this interface works on the Previewer" +
-        "may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve()
-        })
-      }
-    },
-    minimizeAll: function(...args) {
-      console.warn("Window.minimizeAll interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve()
-        })
-      }
-    },
-    toggleShownStateForAllAppWindows: function(...args) {
-      console.warn("Window.toggleShownStateForAllAppWindows interface mocked in the Previewer. How this interface" +
-        " works on the Previewer may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve()
-        })
-      }
-    },
-    setWindowLayoutMode: function(...args) {
-      console.warn("Window.setWindowLayoutMode interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve()
-        })
-      }
-    },
-    on: function(...args) {
-      console.warn("Window.on interface mocked in the Previewer. How this interface works on the Previewer may be" +
-        " different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        if (args[0] === 'systemBarTintChange') {
-          console.warn(`Window.on you has registered ${args[0]} event`)
-        } else {
-          console.warn("Window.on please check first param!")
-        }
-      } else {
-        console.warn("Window.on please check param!")
-      }
-    },
-    off: function(...args) {
-      console.warn("Window.off interface mocked in the Previewer. How this interface works on the Previewer may be" +
-        " different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        if (args[0] === 'systemBarTintChange') {
-          console.warn(`Window.off you has registered ${args[0]} event`)
-        } else {
-          console.warn("Window.off please check first param!")
-        }
-      } else {
-        console.warn("Window.off please check param!")
-      }
-    },
-    WindowType,
-    AvoidAreaType,
-    WindowMode,
-    WindowLayoutMode,
-    SystemBarProperties,
-    SystemBarRegionTint,
-    SystemBarTintState,
-    Rect,
-    AvoidArea,
-    Size,
-    WindowProperties,
-    ColorSpace,
-    WindowStageEventType,
-    WindowStage
-  }
+export function mockWindow() {
   return window
 }
