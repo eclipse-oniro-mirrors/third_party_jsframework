@@ -18,5 +18,5 @@ export const CommonEventData = {
     bundleName: '[PC preview] unknow bundleName',
     code: '[PC preview] unknow code',
     data: '[PC preview] unknow data',
-    parameters: {}
+    parameters: {"key": "unknown any"},
 }

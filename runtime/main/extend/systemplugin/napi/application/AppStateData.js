@@ -12,11 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { NotificationUserInput } from "./notificationUserInput"
 
-export const NotificationActionButton = {
-    title: '[PC preview] unknow title',
-    wantAgent: '[PC preview] unknow wantAgent',
-    extras: {"key": "unknown any"},
-    userInput: NotificationUserInput,
-}
+export const AppStateDataClass = class AppStateData {
+    constructor() {
+        console.warn("AppStateData.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
+            " may be different from that on a real device.")
+        this.bundleName = "[PC Preview] unknow bundleName",
+        this.uid = "[PC Preview] unknow uid",
+        this.state = "[PC Preview] unknow state",
+    }
+};

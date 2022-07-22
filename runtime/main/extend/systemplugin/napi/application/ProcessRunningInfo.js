@@ -12,11 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { NotificationUserInput } from "./notificationUserInput"
 
-export const NotificationActionButton = {
-    title: '[PC preview] unknow title',
-    wantAgent: '[PC preview] unknow wantAgent',
-    extras: {"key": "unknown any"},
-    userInput: NotificationUserInput,
+import { paramMock } from "../../utils"
+
+export const ProcessRunningInfo = {
+    pid: "[PC Preview] unknow pid",
+    uid: "[PC Preview] unknow uid",
+    processName: "[PC Preview] unknow processName",
+    bundleNames: [paramMock.paramStringMock]
 }
