@@ -39,6 +39,10 @@ export function mockContact() {
       this.organization = "[PC Preview] unknow organization";
     }
   }
+  ContactClass.INVALID_CONTACT_ID = -1;
+
+  const Attribute = "[PC Preview] unknow unkown Attribute";
+
   const ContactAttributesClass = class ContactAttributes {
     constructor() {
       console.warn('contact.ContactAttributes.constructor interface mocked in the Previewer. How this interface' +
@@ -122,6 +126,7 @@ export function mockContact() {
       this.middleNamePhonetic = "[PC Preview] unknow middleNamePhonetic";
       this.namePrefix = "[PC Preview] unknow namePrefix";
       this.nameSuffix = "[PC Preview] unknow nameSuffix";
+      this.middleName = "[PC Preview] unknow middleName";
     }
   }
   const NickNameClass = class NickName {

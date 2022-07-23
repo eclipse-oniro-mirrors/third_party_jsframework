@@ -15,30 +15,96 @@
 
 import { paramMock } from "../utils"
 
-const NetworkState = {
-  longOperatorName: "[PC Preview] unknow longOperatorName",
-  shortOperatorName: "[PC Preview] unknow shortOperatorName",
-  plmnNumeric: "[PC Preview] unknow plmnNumeric",
-  isRoaming: "[PC Preview] unknow isRoaming",
-  regState: "[PC Preview] unknow regState",
-  nsaState: "[PC Preview] unknow nsaState",
-  isCaActive: "[PC Preview] unknow isCaActive",
-  isEmergency: "[PC Preview] unknow isEmergency",
-}
-const SignalInformation = {
-  signalType: "[PC Preview] unknow signalType",
-  signalLevel: "[PC Preview] unknow signalLevel"
-}
-const DataFlowType = "[PC Preview] unknow DataFlowType"
-const DataConnectState = "[PC Preview] unknow DataConnectState"
-const CellInformation = {
-  networkType: "[PC Preview] unknow networkType",
-  isCamped: "[PC Preview] unknow isCamped",
-  timeStamp: "[PC Preview] unknow timeStamp",
-  signalInformation: "[PC Preview] unknow signalInformation",
-  data: "[PC Preview] unknow unkown data"
-}
 export function mockRadio() {
+  const NetworkState = {
+    longOperatorName: "[PC Preview] unknow longOperatorName",
+    shortOperatorName: "[PC Preview] unknow shortOperatorName",
+    plmnNumeric: "[PC Preview] unknow plmnNumeric",
+    isRoaming: "[PC Preview] unknow isRoaming",
+    regState: "[PC Preview] unknow regState",
+    nsaState: "[PC Preview] unknow nsaState",
+    isCaActive: "[PC Preview] unknow isCaActive",
+    isEmergency: "[PC Preview] unknow isEmergency",
+    cfgTech: RadioTechnology,
+  }
+  const SignalInformation = {
+    signalType: "[PC Preview] unknow signalType",
+    signalLevel: "[PC Preview] unknow signalLevel"
+  }
+  const DataFlowType = "[PC Preview] unknow DataFlowType";
+  const DataConnectState = "[PC Preview] unknow DataConnectState";
+  const RadioTechnology = "[PC Preview] unknow RadioTechnology";
+  const NetworkType = "[PC Preview] unknow NetworkType";
+  const RegState = "[PC Preview] unknow RegState";
+  const NsaState = "[PC Preview] unknow NsaState";
+  const CellInformation = {
+    networkType: "[PC Preview] unknow networkType",
+    isCamped: "[PC Preview] unknow isCamped",
+    timeStamp: "[PC Preview] unknow timeStamp",
+    signalInformation: "[PC Preview] unknow signalInformation",
+    data: "[PC Preview] unknow data"
+  }
+  const CdmaCellInformation = {
+    baseId: "[PC Preview] unknow baseId",
+    latitude: "[PC Preview] unknow latitude",
+    longitude: "[PC Preview] unknow longitude",
+    nid: "[PC Preview] unknow nid",
+    sid: "[PC Preview] unknow sid"
+  }
+  const GsmCellInformation = {
+    lac: "[PC Preview] unknow lac",
+    cellId: "[PC Preview] unknow cellId",
+    arfcn: "[PC Preview] unknow arfcn",
+    bsic: "[PC Preview] unknow bsic",
+    mcc: "[PC Preview] unknow mcc",
+    mnc: "[PC Preview] unknow mnc",
+  }
+  const LteCellInformation = {
+    cgi: "[PC Preview] unknow cgi",
+    pci: "[PC Preview] unknow pci",
+    tac: "[PC Preview] unknow tac",
+    earfcn: "[PC Preview] unknow earfcn",
+    bandwidth: "[PC Preview] unknow bandwidth",
+    mcc: "[PC Preview] unknow mcc",
+    mnc: "[PC Preview] unknow mnc",
+    isSupportEndc: "[PC Preview] unknow isSupportEndc",
+  }
+  const NrCellInformation = {
+    nrArfcn: "[PC Preview] unknow nrArfcn",
+    pci: "[PC Preview] unknow pci",
+    tac: "[PC Preview] unknow tac",
+    nci: "[PC Preview] unknow nci",
+    mcc: "[PC Preview] unknow mcc",
+    mnc: "[PC Preview] unknow mnc",
+  }
+  const TdscdmaCellInformation = {
+    lac: "[PC Preview] unknow lac",
+    cellId: "[PC Preview] unknow cellId",
+    cpid: "[PC Preview] unknow cpid",
+    uarfcn: "[PC Preview] unknow uarfcn",
+    mcc: "[PC Preview] unknow mcc",
+    mnc: "[PC Preview] unknow mnc",
+  }
+  const WcdmaCellInformation = {
+    lac: "[PC Preview] unknow lac",
+    cellId: "[PC Preview] unknow cellId",
+    psc: "[PC Preview] unknow psc",
+    uarfcn: "[PC Preview] unknow uarfcn",
+    mcc: "[PC Preview] unknow mcc",
+    mnc: "[PC Preview] unknow mnc",
+  }
+  const NetworkSelectionModeOptions = {
+    slotId: "[PC Preview] unknow slotId",
+    selectMode: NetworkSelectionMode,
+    networkInformation: NetworkInformation,
+    resumeSelection: "[PC Preview] unknow resumeSelection",
+  }
+  const NetworkInformation = {
+    operatorName: "[PC Preview] unknow operatorName",
+    operatorNumeric: "[PC Preview] unknow operatorNumeric",
+    state: NetworkInformationState,
+    radioTech: "[PC Preview] unknow radioTech",
+  }
   const NetworkSearchResult = {
     isNetworkSearchSuccess: "[PC Preview] unknow isNetworkSearchSuccess",
     networkSearchResult: [{
@@ -48,9 +114,10 @@ export function mockRadio() {
       radioTech: "[PC Preview] unknow radioTech"
     }]
   }
-  const PreferredNetworkMode = "[PC Preview] unknow PreferredNetworkMode"
-  const NrOptionMode = "[PC Preview] unknow NrOptionMode"
-  const NetworkSelectionMode = "[PC Preview] unknow unkown NetworkSelectionMode"
+  const PreferredNetworkMode = "[PC Preview] unknow PreferredNetworkMode";
+  const NetworkInformationState = "[PC Preview] unknow NetworkInformationState";
+  const NrOptionMode = "[PC Preview] unknow NrOptionMode";
+  const NetworkSelectionMode = "[PC Preview] unknow unkown NetworkSelectionMode";
   const radio = {
     getRadioTech: function (...args) {
       console.warn("telephony.radio.getRadioTech interface mocked in the Previewer. How this interface works on the Previewer may" +
@@ -75,7 +142,7 @@ export function mockRadio() {
         " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, NetworkState);
+        args[len - 1].call(this, NetworkState);
       } else {
         return new Promise((resolve, reject) => {
           resolve(NetworkState);
@@ -94,12 +161,24 @@ export function mockRadio() {
         })
       }
     },
+    setPrimarySlotId: function (...args) {
+      console.warn("telephony.radio.setPrimarySlotId interface mocked in the Previewer. How this interface works on the Previewer may" +
+      " be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
     getCellInformation: function (...args) {
       console.warn("telephony.radio.getCellInformation interface mocked in the Previewer. How this interface works on the Previewer may" +
         " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [CellInformation]);
+        args[len - 1].call(this, [CellInformation]);
       } else {
         return new Promise((resolve, reject) => {
           resolve([CellInformation]);
@@ -111,7 +190,7 @@ export function mockRadio() {
         " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, NetworkSelectionMode);
+        args[len - 1].call(this, NetworkSelectionMode);
       } else {
         return new Promise((resolve, reject) => {
           resolve(NetworkSelectionMode);
@@ -135,7 +214,7 @@ export function mockRadio() {
         " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, NetworkSearchResult);
+        args[len - 1].call(this, NetworkSearchResult);
       } else {
         return new Promise((resolve, reject) => {
           resolve(NetworkSearchResult);
@@ -272,7 +351,7 @@ export function mockRadio() {
         " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
+        args[len - 1].call(this, paramMock.paramStringMock);
       } else {
         return new Promise((resolve, reject) => {
           resolve(paramMock.paramStringMock);
@@ -296,7 +375,7 @@ export function mockRadio() {
         " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, PreferredNetworkMode);
+        args[len - 1].call(this, PreferredNetworkMode);
       } else {
         return new Promise((resolve, reject) => {
           resolve(PreferredNetworkMode);
@@ -308,7 +387,7 @@ export function mockRadio() {
         " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock);
+        args[len - 1].call(this, paramMock.paramStringMock);
       } else {
         return new Promise((resolve, reject) => {
           resolve(paramMock.paramStringMock);

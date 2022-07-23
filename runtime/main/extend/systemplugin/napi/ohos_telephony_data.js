@@ -16,6 +16,8 @@
 import { paramMock } from "../utils"
 
 export function mockData() {
+  const DataFlowType = "[PC Preview] unknow DataFlowType";
+  const DataConnectState = "[PC Preview] unknow DataConnectState";
   const data = {
     getDefaultCellularDataSlotId: function (...args) {
       console.warn("telephony.data.getDefaultCellularDataSlotId interface mocked in the Previewer. How this interface works on the Previewer may" +

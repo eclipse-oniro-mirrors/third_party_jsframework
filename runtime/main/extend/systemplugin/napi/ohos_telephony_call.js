@@ -18,6 +18,48 @@ import { paramMock } from "../utils"
 export function mockCall() {
   const CallWaitingStatus = "[PC Preview] unknow CallWaitingStatus";
   const RestrictionStatus = "[PC Preview] unknow RestrictionStatus";
+  const ImsCallMode = "[PC Preview] unknow ImsCallMode";
+  const AudioDevice = "[PC Preview] unknow AudioDevice";
+  const CallRestrictionType = "[PC Preview] unknow CallRestrictionType";
+  const CallTransferType = "[PC Preview] unknow CallTransferType";
+  const CallTransferSettingType = "[PC Preview] unknow CallTransferSettingType";
+  const ConferenceState = "[PC Preview] unknow ConferenceState";
+  const CallType = "[PC Preview] unknow CallType";
+  const VideoStateType = "[PC Preview] unknow VideoStateType";
+  const DetailedCallState = "[PC Preview] unknow DetailedCallState";
+  const CallRestrictionMode = "[PC Preview] unknow CallRestrictionMode";
+  const CallAbilityEventId = "[PC Preview] unknow CallAbilityEventId";
+  const DialScene = "[PC Preview] unknow DialScene";
+  const DialType = "[PC Preview] unknow DialType";
+  const CallState = "[PC Preview] unknow CallState";
+  const TransferStatus = "[PC Preview] unknow TransferStatus";
+  const DisconnectedDetails = "[PC Preview] unknow DisconnectedDetails";
+  const EmergencyNumberOptions = {
+    slotId: "[PC Preview] unknow slotId"
+  }
+  const CallTransferResult = {
+    status: "[PC Preview] unknow status",
+    number: "[PC Preview] unknow number",
+  }
+  const CallTransferInfo = {
+    transferNum: "[PC Preview] unknow transferNum",
+    type: CallTransferType,
+    settingType: CallTransferSettingType,
+  }
+  const NumberFormatOptions = {
+    countryCode: "[PC Preview] unknow countryCode"
+  }
+  const CallRestrictionInfo = {
+    type: CallRestrictionType,
+    password: "[PC Preview] unknow password",
+    mode: CallRestrictionMode,
+  }
+  const CallEventOptions = {
+    eventId: CallAbilityEventId
+  }
+  const RejectMessageOptions = {
+    messageContent: "[PC Preview] unknow messageContent"
+  }
   const CallAttributeOptions = {
     accountNumber: "[PC Preview] unknow accountNumber",
     speakerphoneOn: "[PC Preview] unknow speakerphoneOn",
@@ -30,9 +72,12 @@ export function mockCall() {
     callState: "[PC Preview] unknow callState",
     conferenceState: "[PC Preview] unknow conferenceState"
   }
-  const CallTransferResult = {
-    status: "[PC Preview] unknow status",
-    number: "[PC Preview] unknow number",
+  const DialOptions = {
+    extras: "[PC Preview] unknow extras",
+    accountId: "[PC Preview] unknow accountId",
+    videoState: VideoStateType,
+    dialScene: DialScene,
+    dialType: DialType,
   }
   const call = {
     dial: function (...args) {
@@ -420,7 +465,9 @@ export function mockCall() {
         if (args[0] == 'callDetailsChange') {
           args[len - 1].call(this, CallAttributeOptions);
         } else if (args[0] == 'callEventChange') {
-          args[len - 1].call(this, paramMock.paramObjectMock);
+          args[len - 1].call(this, CallEventOptions);
+        } else if (args[0] == 'callDisconnectedCause') {
+          args[len - 1].call(this, DisconnectedDetails);
         }
       }
     },
@@ -432,8 +479,70 @@ export function mockCall() {
         if (args[0] == 'callDetailsChange') {
           args[len - 1].call(this, CallAttributeOptions);
         } else if (args[0] == 'callEventChange') {
-          args[len - 1].call(this, paramMock.paramObjectMock);
+          args[len - 1].call(this, CallEventOptions);
+        } else if (args[0] == 'callDisconnectedCause') {
+          args[len - 1].call(this, DisconnectedDetails);
         }
+      }
+    },
+    cancelMuted: function (...args) {
+      console.warn("telephony.call.cancelMuted interface mocked in the Previewer. How this interface works on the Previewer may" +
+      " be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    joinConference: function (...args) {
+      console.warn("telephony.call.joinConference interface mocked in the Previewer. How this interface works on the Previewer may" +
+      " be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    disableImsSwitch: function (...args) {
+      console.warn("telephony.call.disableImsSwitch interface mocked in the Previewer. How this interface works on the Previewer may" +
+      " be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    enableImsSwitch: function (...args) {
+      console.warn("telephony.call.enableImsSwitch interface mocked in the Previewer. How this interface works on the Previewer may" +
+      " be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    updateImsCallMode: function (...args) {
+      console.warn("telephony.call.updateImsCallMode interface mocked in the Previewer. How this interface works on the Previewer may" +
+      " be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
       }
     },
     isNewCallAllowed: function (...args) {
@@ -526,6 +635,18 @@ export function mockCall() {
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
+        })
+      }
+    },
+    isImsSwitchEnabled: function (...args) {
+      console.warn("telephony.call.isImsSwitchEnabled interface mocked in the Previewer. How this interface works on the Previewer may" +
+      " be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.paramBooleanMock);
       } else {
         return new Promise((resolve, reject) => {
           resolve(paramMock.paramBooleanMock);

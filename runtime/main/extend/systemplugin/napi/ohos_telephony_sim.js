@@ -33,15 +33,29 @@ export function mockSim() {
     result: "[PC Preview] unknow result",
     remain: "[PC Preview] unknow remain"
   }
+  const LockInfo = {
+    lockType: LockType,
+    password: "[PC Preview] unknow password",
+    state: LockState,
+  }
+  const PersoLockInfo = {
+    lockType: PersoLockType,
+    password: "[PC Preview] unknow password",
+  }
   const DiallingNumbersInfo = {
     efid: "[PC Preview] unknow efid",
     recordNumber: "[PC Preview] unknow recordNumber",
     alphaTag: "[PC Preview] unknow alphaTag",
     number: "[PC Preview] unknow number",
-    emails: "[PC Preview] unknow emails"
+    emails: "[PC Preview] unknow emails",
+    pin2: "[PC Preview] unknow pin2",
   }
   const CardType = "[PC Preview] unknow CardType";
+  const LockType = "[PC Preview] unknow LockType";
   const SimState = "[PC Preview] unknow SimState";
+  const PersoLockType = "[PC Preview] unknow PersoLockType";
+  const ContactType = "[PC Preview] unknow ContactType";
+  const LockState = "[PC Preview] unknow LockState";
   const sim = {
     isSimActive: function (...args) {
       console.warn("telephony.sim.isSimActive interface mocked in the Previewer. How this interface works on the Previewer may" +
@@ -124,6 +138,18 @@ export function mockSim() {
       } else {
         return new Promise((resolve, reject) => {
           resolve(SimState);
+        })
+      }
+    },
+    getLockState: function (...args) {
+      console.warn("telephony.sim.getLockState interface mocked in the Previewer. How this interface works on the Previewer may" +
+      " be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, LockState);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(LockState);
         })
       }
     },
@@ -312,6 +338,18 @@ export function mockSim() {
         })
       }
     },
+    setVoiceMailInfo: function (...args) {
+      console.warn("telephony.sim.setVoiceMailInfo interface mocked in the Previewer. How this interface works on the Previewer may" +
+      " be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
     deactivateSim: function (...args) {
       console.warn("telephony.sim.deactivateSim interface mocked in the Previewer. How this interface works on the Previewer may" +
         " be different from that on a real device.")
@@ -324,9 +362,33 @@ export function mockSim() {
         })
       }
     },
+    sendEnvelopeCmd: function (...args) {
+      console.warn("telephony.sim.sendEnvelopeCmd interface mocked in the Previewer. How this interface works on the Previewer may" +
+      " be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
     setShowName: function (...args) {
       console.warn("telephony.sim.setShowName interface mocked in the Previewer. How this interface works on the Previewer may" +
         " be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    sendTerminalResponseCmd: function (...args) {
+      console.warn("telephony.sim.sendTerminalResponseCmd interface mocked in the Previewer. How this interface works on the Previewer may" +
+      " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
@@ -387,6 +449,18 @@ export function mockSim() {
     unlockPin: function (...args) {
       console.warn("telephony.sim.unlockPin interface mocked in the Previewer. How this interface works on the Previewer may" +
         " be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, LockStatusResponse);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(LockStatusResponse);
+        })
+      }
+    },
+    unlockSimLock: function (...args) {
+      console.warn("telephony.sim.unlockSimLock interface mocked in the Previewer. How this interface works on the Previewer may" +
+      " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, LockStatusResponse);
