@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { abilityStageContextClass } from "./application/abilityContext"
+import { abilityStageContextClass } from "./application/AbilityContext"
 import { paramMock } from "../utils"
 
 export function mockAbilityStage() {
@@ -26,11 +26,15 @@ export function mockAbilityStage() {
         console.warn("application.AbilityStage.onCreate interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
       };
-      this.onAcceptWant = function () {
+      this.onAcceptWant = function (...args) {
         console.warn("application.AbilityStage.onAcceptWant interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
         return paramMock.paramStringMock;
-      }
+      };
+      this.onConfigurationUpdated = function (...args) {
+        console.warn("application.AbilityStage.onConfigurationUpdated interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+      };
     }
   }
   return new AbilityStageClass();

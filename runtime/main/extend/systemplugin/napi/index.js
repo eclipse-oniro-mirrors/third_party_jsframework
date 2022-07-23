@@ -15,10 +15,15 @@
 
 import { mockSystemParameter } from './ohos_systemparameter'
 import { mockAbility } from './ohos_application_Ability'
+import { mockFeatureAbility } from './ohos_ability_featureAbility'
 import { mockDataUriUtils } from './ohos_ability_dataUriUtils'
 import { mockAbilityDelegatorRegistry } from './ohos_application_abilityDelegatorRegistry'
 import { mockAbilityLifecycleCallback } from './ohos_application_AbilityLifecycleCallback'
 import { mockFormExtension } from './ohos_application_FormExtension'
+import { mockStaticSubscriberExtensionAbility } from './ohos_application_StaticSubscriberExtensionAbility'
+import { mockFormHost } from './ohos_application_formHost'
+import { mockErrorManager } from './ohos_application_errorManager'
+import { mockTestRunner } from './ohos_application_testRunner'
 import { mockServiceExtensionAbility } from './ohos_application_ServiceExtensionAbility'
 import { mockAbilityStage } from './ohos_application_AbilityStage'
 import { mockFormBindingData } from './ohos_application_formBindingData'
@@ -271,12 +276,22 @@ export function mockRequireNapiFun() {
         return mockSystemParameter();
       case "ability.dataUriUtils":
         return mockDataUriUtils();
+      case "ability.featureAbility":
+        return mockFeatureAbility();
       case "application.Ability":
         return mockAbility();
+      case "application.formHost":
+        return mockFormHost();
       case "application.FormExtension":
         return mockFormExtension();
       case "application.ServiceExtensionAbility":
         return mockServiceExtensionAbility();
+      case "application.errorManager":
+        return mockErrorManager();
+      case "application.testRunner":
+        return mockTestRunner();
+      case "application.StaticSubscriberExtensionAbility":
+        return mockStaticSubscriberExtensionAbility();
       case "application.abilityDelegatorRegistry":
         return mockAbilityDelegatorRegistry();
       case "application.AbilityLifecycleCallback":
