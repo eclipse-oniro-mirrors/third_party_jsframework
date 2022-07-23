@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
 import { paramMock } from "../utils"
 
 export function mockUtil() {
-  const result = {
+  const util = {
     printf: function (...args) {
       console.warn("util.printf interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
@@ -52,9 +52,14 @@ export function mockUtil() {
       return RationalNumberMock;
     },
     LruBuffer: function (...args) {
-      console.warn("util.Lrubuffer interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("util.LruBuffer interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return LrubufferMock;
+      return LruBufferMock;
+    },
+    ScopeComparable: function (...args) {
+      console.warn("util.Scope interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      return ScopeComparableMock;
     },
     Scope: function (...args) {
       console.warn("util.Scope interface mocked in the Previewer. How this interface works on the Previewer" +
@@ -66,16 +71,20 @@ export function mockUtil() {
         " may be different from that on a real device.")
       return Base64Mock;
     },
-    Types: function (...args) {
-      console.warn("util.Types interface mocked in the Previewer. How this interface works on the Previewer" +
+    types: function (...args) {
+      console.warn("util.types interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return TypesMock;
     }
   }
   const TextDecoderMock = {
-    encoding: '[PC preview] unknow encoding',
-    fatal: '[PC preview] unknow fatal',
-    ignoreBOM: '[PC preview] unknow ignoreBOM',
+    encoding: "[PC preview] unknow encoding",
+    fatal: "[PC preview] unknow fatal",
+    ignoreBOM: "[PC preview] unknow ignoreBOM",
+    constructor(...args) {
+      console.warn("util.TextDecoder.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+	},
     decode: function (...args) {
       console.warn("TextDecoder.decode interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
@@ -83,7 +92,11 @@ export function mockUtil() {
     }
   }
   const TextEncoderMock = {
-    encoding: '[PC preview] unknow encoding',
+    encoding: "[PC preview] unknow encoding",
+    constructor(...args) {
+      console.warn("util.TextEncoder.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+	},
     encode: function (...args) {
       console.warn("TextEncoder.encode interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
@@ -97,6 +110,10 @@ export function mockUtil() {
     }
   }
   const RationalNumberMock = {
+    constructor(...args) {
+      console.warn("util.RationalNumber.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+	},
     createRationalFromString: function (...args) {
       console.warn("RationalNumber.createRationalFromString​ interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
@@ -153,107 +170,122 @@ export function mockUtil() {
       return paramMock.paramStringMock;
     }
   }
-  const LrubufferMock = {
-    length: '[PC preview] unknow length',
+  const LruBufferMock = {
+    length: "[PC preview] unknow length",
+    constructor(...args) {
+      console.warn("util.LruBuffer.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+	},
     updateCapacity: function (...args) {
-      console.warn("Lrubuffer.updateCapacity interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.updateCapacity interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
     },
     toString: function (...args) {
-      console.warn("Lrubuffer.toString interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.toString interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramStringMock;
     },
     getCapacity: function (...args) {
-      console.warn("Lrubuffer.getCapacity interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.getCapacity interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramNumberMock;
     },
     clear: function (...args) {
-      console.warn("Lrubuffer.clear interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.clear interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
     },
     getCreateCount: function (...args) {
-      console.warn("Lrubuffer.getCreateCount interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.getCreateCount interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramNumberMock;
     },
     getMissCount: function (...args) {
-      console.warn("Lrubuffer.getMissCount interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.getMissCount interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramNumberMock;
     },
     getRemovalCount: function (...args) {
-      console.warn("Lrubuffer.getRemovalCount interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.getRemovalCount interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramNumberMock;
     },
     getMatchCount: function (...args) {
-      console.warn("Lrubuffer.getMatchCount interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.getMatchCount interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramNumberMock;
     },
     getPutCount: function (...args) {
-      console.warn("Lrubuffer.getPutCount interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.getPutCount interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramNumberMock;
     },
     isEmpty: function (...args) {
-      console.warn("Lrubuffer.isEmpty​ interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.isEmpty​ interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     get: function (...args) {
-      console.warn("Lrubuffer.get interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.get interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramObjectMock;
     },
     put: function (...args) {
-      console.warn("Lrubuffer.put interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.put interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramObjectMock;
     },
     values: function (...args) {
-      console.warn("Lrubuffer.values interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.values interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramObjectMock;
     },
     keys: function (...args) {
-      console.warn("Lrubuffer.keys​ interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.keys​ interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramObjectMock;
     },
     remove: function (...args) {
-      console.warn("Lrubuffer.remove interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.remove interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramObjectMock;
     },
     afterRemoval: function (...args) {
-      console.warn("Lrubuffer.afterRemoval interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.afterRemoval interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
     },
     contains: function (...args) {
-      console.warn("Lrubuffer.contains​ interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.contains​ interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     createDefault: function (...args) {
-      console.warn("Lrubuffer.createDefault​ interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.createDefault​ interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramObjectMock;
     },
     entries: function (...args) {
-      console.warn("Lrubuffer.entries interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.entries interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramObjectMock;
     },
     [Symbol.iterator]: function (...args) {
-      console.warn("Lrubuffer.[Symbol.iterator] interface mockecd in the Previewer. How this interface works on the Previewer" +
+      console.warn("LruBuffer.[Symbol.iterator] interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
       return paramMock.paramObjectMock;
     }
   }
+  const ScopeComparableMock = {
+    compareTo: function(...args) {
+      console.warn("ScopeComparable.compareTo interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    }
+  }
   const ScopeMock = {
+    constructor(...args) {
+      console.warn("util.Scope.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+	},
     toString: function (...args) {
       console.warn("Scope.toString interface mockecd in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
@@ -311,6 +343,10 @@ export function mockUtil() {
     }
   }
   const Base64Mock = {
+    constructor(...args) {
+      console.warn("util.Base64.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+	},
     encodeSync: function (...args) {
       console.warn("Base64.encodeSync interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
@@ -353,201 +389,205 @@ export function mockUtil() {
     }
   }
   const TypesMock = {
+    constructor(...args) {
+      console.warn("util.Types.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+	},
     isAnyArrayBuffer: function (...args) {
-      console.warn("Types.isAnyArrayBuffer interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isAnyArrayBuffer interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isArrayBufferView: function (...args) {
-      console.warn("Types.isArrayBufferView interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isArrayBufferView interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isArgumentsObject: function (...args) {
-      console.warn("Types.isArgumentsObject interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isArgumentsObject interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isArrayBuffer: function (...args) {
-      console.warn("Types.isArrayBuffer interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isArrayBuffer interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isAsyncFunction: function (...args) {
-      console.warn("Types.isAsyncFunction interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isAsyncFunction interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isBigInt64Array: function (...args) {
-      console.warn("Types.isBigInt64Array interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isBigInt64Array interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isBigUint64Array: function (...args) {
-      console.warn("Types.isBigUint64Array interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isBigUint64Array interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isBooleanObject: function (...args) {
-      console.warn("Types.isBooleanObject interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isBooleanObject interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isBoxedPrimitive: function (...args) {
-      console.warn("Types.isBoxedPrimitive interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isBoxedPrimitive interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isDataView: function (...args) {
-      console.warn("Types.isDataView interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isDataView interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isDate: function (...args) {
-      console.warn("Types.isDate interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isDate interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isExternal: function (...args) {
-      console.warn("Types.isExternal interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isExternal interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isFloat32Array: function (...args) {
-      console.warn("Types.isFloat32Array interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isFloat32Array interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isFloat64Array: function (...args) {
-      console.warn("Types.isFloat64Array interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isFloat64Array interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isGeneratorFunction: function (...args) {
-      console.warn("Types.isGeneratorFunction interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isGeneratorFunction interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isGeneratorObject: function (...args) {
-      console.warn("Types.isGeneratorObject interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isGeneratorObject interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isInt8Array: function (...args) {
-      console.warn("Types.isInt8Array interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isInt8Array interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isInt16Array: function (...args) {
-      console.warn("Types.isInt16Array interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isInt16Array interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isInt32Array: function (...args) {
-      console.warn("Types.isInt32Array interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isInt32Array interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isMap: function (...args) {
-      console.warn("Types.isMap interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isMap interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isMapIterator: function (...args) {
-      console.warn("Types.isMapIterator interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isMapIterator interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isModuleNamespaceObject: function (...args) {
-      console.warn("Types.isModuleNamespaceObject interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isModuleNamespaceObject interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isNativeError: function (...args) {
-      console.warn("Types.isNativeError interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isNativeError interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isNumberObject: function (...args) {
-      console.warn("Types.isNumberObject interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isNumberObject interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isPromise: function (...args) {
-      console.warn("Types.isPromise interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isPromise interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isProxy: function (...args) {
-      console.warn("Types.isProxy interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isProxy interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isRegExp: function (...args) {
-      console.warn("Types.isRegExp interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isRegExp interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isSet: function (...args) {
-      console.warn("Types.isSet interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isSet interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isSetIterator: function (...args) {
-      console.warn("Types.isSetIterator interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isSetIterator interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isSharedArrayBuffer: function (...args) {
-      console.warn("Types.isSharedArrayBuffer interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isSharedArrayBuffer interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isStringObject: function (...args) {
-      console.warn("Types.isStringObject interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isStringObject interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isSymbolObject: function (...args) {
-      console.warn("Types.isSymbolObject interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isSymbolObject interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isTypedArray: function (...args) {
-      console.warn("Types.isTypedArray interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isTypedArray interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isUint8Array: function (...args) {
-      console.warn("Types.isUint8Array interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isUint8Array interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isUint8ClampedArray: function (...args) {
-      console.warn("Types.isUint8ClampedArray interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isUint8ClampedArray interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isUint16Array: function (...args) {
-      console.warn("Types.isUint16Array interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isUint16Array interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isUint32Array: function (...args) {
-      console.warn("Types.isUint32Array interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isUint32Array interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isWeakMap: function (...args) {
-      console.warn("Types.isWeakMap interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isWeakMap interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
     isWeakSet: function (...args) {
-      console.warn("Types.isWeakSet interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("types.isWeakSet interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     }
   }
-  return result;
+  return util;
 }
