@@ -21,17 +21,20 @@ export function mockSocket() {
     isClose: "[PC Preview] unknow isClose",
     isConnected: "[PC Preview] unknow isConnected"
   }
+
   const SocketRemoteInfo = {
     address: "[PC Preview] unknow address",
     family: "[PC Preview] unknow family",
     port: "[PC Preview] unknow port",
     size: "[PC Preview] unknow size"
   }
+
   const NetAddress = {
     address: "[PC Preview] unknow saddressize",
     family: "[PC Preview] unknow family",
     port: "[PC Preview] unknow port "
   }
+
   const UDPSocket = {
     bind: function (...args) {
       console.warn("UDPSocket.bind interface mocked in the Previewer. How this interface works on the Previewer" +
@@ -105,6 +108,8 @@ export function mockSocket() {
           });
         } else if (args[0] === 'listening') {
           args[len - 1].call(this, paramMock.businessErrorMock);
+        } else if (args[0] === 'close') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
         } else if (args[0] === 'error') {
           args[len - 1].call(this, paramMock.businessErrorMock);
         }
@@ -121,6 +126,8 @@ export function mockSocket() {
             remoteInfo: SocketRemoteInfo
           });
         } else if (args[0] === 'listening') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
+        } else if (args[0] === 'close') {
           args[len - 1].call(this, paramMock.businessErrorMock);
         } else if (args[0] === 'error') {
           args[len - 1].call(this, paramMock.businessErrorMock);
@@ -224,7 +231,9 @@ export function mockSocket() {
             message: "[PC Preview] unknow message",
             remoteInfo: SocketRemoteInfo
           });
-        } else if (args[0] === 'listening') {
+        } else if (args[0] === 'connect') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
+        } else if (args[0] === 'close') {
           args[len - 1].call(this, paramMock.businessErrorMock);
         } else if (args[0] === 'error') {
           args[len - 1].call(this, paramMock.businessErrorMock);
@@ -241,7 +250,9 @@ export function mockSocket() {
             message: "[PC Preview] unknow message",
             remoteInfo: SocketRemoteInfo
           });
-        } else if (args[0] === 'listening') {
+        } else if (args[0] === 'connect') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
+        } else if (args[0] === 'close') {
           args[len - 1].call(this, paramMock.businessErrorMock);
         } else if (args[0] === 'error') {
           args[len - 1].call(this, paramMock.businessErrorMock);
@@ -249,6 +260,40 @@ export function mockSocket() {
       }
     }
   }
+
+  const UDPSendOptionsMock = {
+    data: "[PC Preview] unknow data",
+    address: NetAddress,
+  }
+
+  const ExtraOptionsBaseMock = {
+    receiveBufferSize: "[PC Preview] unknow receiveBufferSize",
+    sendBufferSize: "[PC Preview] unknow sendBufferSize",
+    reuseAddress: "[PC Preview] unknow reuseAddress",
+    socketTimeout: "[PC Preview] unknow socketTimeout",
+  }
+
+  const UDPExtraOptionsMock = {
+    broadcast: "[PC Preview] unknow broadcast",
+  }
+
+  const TCPConnectionOptionsMock = {
+    address: NetAddress,
+    timeout: "[PC Preivew] unknow timeout",
+  }
+
+  const TCPSendOptionsMock = {
+    data: "[PC Preview] unknow data",
+    encoding: "[PC Preview] unknow encoding",
+  }
+
+  const TCPExtraOptionsMock = {
+    keepAlive: "[PC Preview] unknow keepAlive",
+    OOBInline: "[PC Preview] unknow OOBInline",
+    TCPNoDelay: "[PC Preview] unknow TCPNoDelay",
+    socketLinger: "[PC Preview] unknow socketLinger",
+  }
+
   const socket = {
     constructUDPSocketInstance: function () {
       console.warn("net.socket.constructUDPSocketInstance interface mocked in the Previewer. How this interface works on the Previewer" +
@@ -259,7 +304,12 @@ export function mockSocket() {
       console.warn("net.socket.constructTCPSocketInstance interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return TCPSocket;
+    },
+    NetAddress: function() {
+      console.warn("net.socket.NetAddress interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.");
+      return NetAddress;
     }
   }
-  return socket
+  return socket;
 }

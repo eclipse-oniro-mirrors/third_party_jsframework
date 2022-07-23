@@ -61,10 +61,11 @@ export function mockHttp() {
   }
   const HttpResponseMock = {
     result: "[PC Preview] unknow result",
-    responseCode: "[PC Preview] unknow responseCode",
-    header: "[PC Preview] unknow header"
+    responseCode: responseCodeMock,
+    header: "[PC Preview] unknow header",
+    cookies: "[PC Preview] unknow cookies"
   }
-  const HttpRequestMock = {
+  const httpRequest = {
     request: function (...args) {
       console.warn("HttpRequest.request interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
@@ -86,7 +87,11 @@ export function mockHttp() {
         " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramObjectMock);
+        if (args[0] === 'headerReceive') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramObjectMock);
+        } else if (args[0] === 'headersReceive') {
+          args[len - 1].call(this, paramMock.paramObjectMock);
+        }
       }
     },
     off: function (...args) {
@@ -94,15 +99,39 @@ export function mockHttp() {
         " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramObjectMock);
+        if (args[0] === 'headerReceive') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramObjectMock);
+        } else if (args[0] === 'headersReceive') {
+          args[len - 1].call(this, paramMock.paramObjectMock);
+        }
+      }
+    },
+    once: function (...args) {
+      console.warn("HttpRequest.once interface mocked in the Previewer. How this interface works on the Previewer may" +
+        " be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.paramObjectMock);
       }
     }
   }
+  const requestMethodMock = "[PC Preview] unknow RequestMethod"
+
+  const HttpRequestOptionsMock = {
+    method: requestMethodMock,
+    extraData: "[PC Preview] unknow extraData",
+    header: "[PC Preview] unknow header",
+    readTimeout: "[PC Preview] unknow readTimeout",
+    connectTimeout: "[PC Preview] unknow connectTimeout"
+  }
+
+  const responseCodeMock = "[PC Preview] unknow ResponseCode"
+
   const http = {
     createHttp: function () {
       console.warn("net.http.createHttp interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return HttpRequestMock;
+      return httpRequest;
     },
     getInstalledHttpResponseCache: function (...args) {
       console.warn("net.http.getInstalledHttpResponseCache interface mocked in the Previewer. How this interface works on the Previewer may" +
