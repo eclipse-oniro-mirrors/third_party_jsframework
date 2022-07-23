@@ -14,6 +14,7 @@
  */
 
 import { paramMock } from "../utils"
+import { resultSet } from "./data/rdb/resultSet"
 
 export const RdbPredicatesClass = class RdbPredicates {
   constructor(...args) {
@@ -200,89 +201,20 @@ export function mockRdb() {
     },
     RdbPredicates: RdbPredicatesClass
   };
-  const resultSetMock = {
-    columnNames: "[[PC Preview] unknow columnNames]",
-    columnCount: "[PC Preview] unknow columnCount",
-    rowCount: "[PC Preview] unknow rowCount",
-    rowIndex: "[PC Preview] unknow rowIndex",
-    isAtFirstRow: "[PC Preview] unknow isAtFirstRow",
-    isAtLastRow: "[PC Preview] unknow isAtLastRow",
-    isEnded: "[PC Preview] unknow isEnded",
-    isStarted: "[PC Preview] unknow isStarted",
-    isClosed: "[PC Preview] unknow isClosed",
-    getColumnIndex: function (...args) {
-      console.warn("ResultSet.getColumnIndex interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock;
-    },
-    getColumnName: function (...args) {
-      console.warn("ResultSet.getColumnName interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      return paramMock.paramStringMock;
-    },
-    goTo: function (...args) {
-      console.warn("ResultSet.goTo interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    goToRow: function (...args) {
-      console.warn("ResultSet.goToRow interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    goToFirstRow: function (...args) {
-      console.warn("ResultSet.goToFirstRow interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    goToLastRow: function (...args) {
-      console.warn("ResultSet.goToLastRow interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    goToNextRow: function (...args) {
-      console.warn("ResultSet.goToNextRow interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    goToPreviousRow: function (...args) {
-      console.warn("ResultSet.goToPreviousRow interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    getBlob: function (...args) {
-      console.warn("ResultSet.getBlob interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      return paramMock.paramObjectMock;
-    },
-    getString: function (...args) {
-      console.warn("ResultSet.getString interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      return paramMock.paramStringMock;
-    },
-    getLong: function (...args) {
-      console.warn("ResultSet.getLong interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock;
-    },
-    getDouble: function (...args) {
-      console.warn("ResultSet.getDouble interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      return paramMock.paramNumberMock;
-    },
-    isColumnNull: function (...args) {
-      console.warn("ResultSet.isColumnNull interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    close: function (...args) {
-      console.warn("ResultSet.close interface mocked in the Previewer. How this interface works on the" +
-        " Previewer may be different from that on a real device.")
-    }
-  }
+
   const storeConfig = {
     name: "[PC Preview] unknown name"
   }
+
+  const SyncMode = {
+    SYNC_MODE_PUSH: 0,
+    SYNC_MODE_PULL: 1
+  }
+  
+  const SubscribeType = {
+    SUBSCRIBE_TYPE_REMOTE: 0
+  }
+
   const rdbStore = {
     insert: function (...args) {
       console.warn("RdbStore.insert interface mocked in the Previewer. How this interface works on the" +
@@ -325,10 +257,10 @@ export function mockRdb() {
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, resultSetMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, resultSet);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(resultSetMock);
+          resolve(resultSet);
         })
       }
     },
@@ -337,10 +269,10 @@ export function mockRdb() {
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, resultSetMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, resultSet);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(resultSetMock);
+          resolve(resultSet);
         })
       }
     },
@@ -355,6 +287,18 @@ export function mockRdb() {
           resolve();
         })
       }
+    },
+    beginTransaction: function () {
+      console.warn("RdbStore.beginTransaction interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    },
+    commit: function () {
+      console.warn("RdbStore.commit interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    },
+    rollBack: function () {
+      console.warn("RdbStore.rollBack interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
     },
     backup: function (...args) {
       console.warn("RdbStore.backup interface mocked in the Previewer. How this interface works on the" +
