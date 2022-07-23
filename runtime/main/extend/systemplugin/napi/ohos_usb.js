@@ -88,8 +88,10 @@ export function mockUsb() {
 
   const PortModeType = {
     NONE: '[PC Preview] unknow NONE',
-    DFP: '[PC Preview] unknow DFP',
     UFP: '[PC Preview] unknow UFP',
+    DFP: '[PC Preview] unknow DFP',
+    DRP: '[PC Preview] unknow DRP',
+    NUM_MODES: '[PC Preview] unknow NUM_MODES',
   };
 
   const USBPortStatus = {
