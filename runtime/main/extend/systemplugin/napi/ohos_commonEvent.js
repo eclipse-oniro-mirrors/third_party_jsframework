@@ -252,7 +252,8 @@ export function mockCommonEvent() {
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
       }
-    }
+    },
+    Support
   }
   return commonEvent
 }
