@@ -17,28 +17,28 @@ import { paramMock } from "../utils"
 
 export function mockRequest() {
   const DownloadConfig = {
-    url: "[PC Preview]: unknow uri",
-    herder: "[PC Preview]: unknow herder",
-    enableMetered: "[PC Preview]: unknow enableMetered",
-    enableRoaming: "[PC Preview]: unknow enableRoaming",
-    description: "[PC Preview]: unknow description",
-    networkType: "[PC Preview]: unknow networkType",
-    filePath: "[PC Preview]: unknow filePath",
-    title: "[PC Preview]: unknow title",
+    url: "[PC Preview] unknow uri",
+    herder: "[PC Preview] unknow herder",
+    enableMetered: "[PC Preview] unknow enableMetered",
+    enableRoaming: "[PC Preview] unknow enableRoaming",
+    description: "[PC Preview] unknow description",
+    networkType: "[PC Preview] unknow networkType",
+    filePath: "[PC Preview] unknow filePath",
+    title: "[PC Preview] unknow title",
   };
 
   const DownloadInfo = {
-    description: "[PC Preview]: unknow description",
-    downloadedBytes: "[PC Preview]: unknow downloadedBytes",
-    downloadId: "[PC Preview]: unknow downloadId",
-    failedReason: "[PC Preview]: unknow failedReason",
-    fileName: "[PC Preview]: unknow fileName",
-    filePath: "[PC Preview]: unknow filePath",
-    pausedReason: "[PC Preview]: unknow pausedReason",
-    status: "[PC Preview]: unknow status",
-    targetURI: "[PC Preview]: unknow targetURI",
-    downloadTitle: "[PC Preview]: unknow downloadTitle",
-    downloadTotalBytes: "[PC Preview]: unknow downloadTotalBytes",
+    description: "[PC Preview] unknow description",
+    downloadedBytes: "[PC Preview] unknow downloadedBytes",
+    downloadId: "[PC Preview] unknow downloadId",
+    failedReason: "[PC Preview] unknow failedReason",
+    fileName: "[PC Preview] unknow fileName",
+    filePath: "[PC Preview] unknow filePath",
+    pausedReason: "[PC Preview] unknow pausedReason",
+    status: "[PC Preview] unknow status",
+    targetURI: "[PC Preview] unknow targetURI",
+    downloadTitle: "[PC Preview] unknow downloadTitle",
+    downloadTotalBytes: "[PC Preview] unknow downloadTotalBytes",
   };
 
   const DownloadTask = {
@@ -48,13 +48,13 @@ export function mockRequest() {
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'progress') {
-          const receivedSize = "[PC Preview]: unknow receivedSize"
-          const totalSize = "[PC Preview]: unknow totalSize"
+          const receivedSize = "[PC Preview] unknow receivedSize"
+          const totalSize = "[PC Preview] unknow totalSize"
           args[len - 1].call(this, receivedSize, totalSize)
         } else if (args[0] == 'complete' | 'pause' | 'remove') {
           args[len - 1].call(this)
         } else if (args[0] == 'fail') {
-          const err = "[PC Preview]: unknow err"
+          const err = "[PC Preview] unknow err"
           args[len - 1].call(this, err)
         }
       }
@@ -66,8 +66,8 @@ export function mockRequest() {
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'progress') {
-          const receivedSize = "[PC Preview]: unknow receivedSize"
-          const totalSize = "[PC Preview]: unknow totalSize"
+          const receivedSize = "[PC Preview] unknow receivedSize"
+          const totalSize = "[PC Preview] unknow totalSize"
           args[len - 1].call(this, receivedSize, totalSize)
         } else if (args[0] == 'complete' | 'pause' | 'remove') {
           args[len - 1].call(this)
@@ -145,21 +145,21 @@ export function mockRequest() {
   };
 
   const File = {
-    filename: "[PC Preview]: unknow filename",
-    name: "[PC Preview]: unknow name",
-    uri: "[PC Preview]: unknow uri",
-    type: "[PC Preview]: unknow type",
+    filename: "[PC Preview] unknow filename",
+    name: "[PC Preview] unknow name",
+    uri: "[PC Preview] unknow uri",
+    type: "[PC Preview] unknow type",
   };
 
   const RequestData = {
-    name: "[PC Preview]: unknow name",
-    value: "[PC Preview]: unknow value",
+    name: "[PC Preview] unknow name",
+    value: "[PC Preview] unknow value",
   };
 
   const UploadConfig = {
-    url: "[PC Preview]: unknow uri",
-    herder: "[PC Preview]: unknow herder",
-    method: "[PC Preview]: unknow method",
+    url: "[PC Preview] unknow uri",
+    herder: "[PC Preview] unknow herder",
+    method: "[PC Preview] unknow method",
     files: [File],
     data: [RequestData],
   };
@@ -171,11 +171,11 @@ export function mockRequest() {
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'progress') {
-          const uploadedSize = "[PC Preview]: unknow receivedSize"
-          const totalSize = "[PC Preview]: unknow totalSize"
+          const uploadedSize = "[PC Preview] unknow receivedSize"
+          const totalSize = "[PC Preview] unknow totalSize"
           args[len - 1].call(this, uploadedSize, totalSize)
         } else if (args[0] == 'headerReceive') {
-          const header = "[PC Preview]: unknow header"
+          const header = "[PC Preview] unknow header"
           args[len - 1].call(this, header)
         }
       }
@@ -187,11 +187,11 @@ export function mockRequest() {
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'progress') {
-          const uploadedSize = "[PC Preview]: unknow receivedSize"
-          const totalSize = "[PC Preview]: unknow totalSize"
+          const uploadedSize = "[PC Preview] unknow receivedSize"
+          const totalSize = "[PC Preview] unknow totalSize"
           args[len - 1].call(this, uploadedSize, totalSize)
         } else if (args[0] == 'headerReceive') {
-          const header = "[PC Preview]: unknow header"
+          const header = "[PC Preview] unknow header"
           args[len - 1].call(this, header)
         }
       }
