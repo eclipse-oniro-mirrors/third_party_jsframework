@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -69,6 +69,13 @@ export function mockSystemTimer() {
         })
       }
     }
+  }
+  const TimerOptions = {
+    type: '[PC Preview] unknown type',
+    repeat: '[PC Preview] unknown repeat',
+    interval: '[PC Preview] unknown interval',
+    wantAgent: '[PC Preview] unknown WantAgent',
+    callback:'[PC Preview] unknown interval'
   }
   return systemTimer
 }
