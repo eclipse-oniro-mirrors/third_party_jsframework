@@ -41,8 +41,6 @@ export function mockContact() {
   }
   ContactClass.INVALID_CONTACT_ID = -1;
 
-  const Attribute = "[PC Preview] unknow unkown Attribute";
-
   const ContactAttributesClass = class ContactAttributes {
     constructor() {
       console.warn('contact.ContactAttributes.constructor interface mocked in the Previewer. How this interface' +
@@ -274,6 +272,22 @@ export function mockContact() {
     Relation: RelationClass,
     SipAddress: SipAddressClass,
     Website: WebsiteClass,
+    Attribute:{
+      ATTR_CONTACT_EVENT: "[PC Preview] unknow ATTR_CONTACT_EVENT",
+      ATTR_EMAIL: "[PC Preview] unknow ATTR_EMAIL",
+      ATTR_GROUP_MEMBERSHIP: "[PC Preview] unknow ATTR_GROUP_MEMBERSHIP",
+      ATTR_IM: "[PC Preview] unknow ATTR_IM",
+      ATTR_NAME: "[PC Preview] unknow ATTR_NAME",
+      ATTR_NICKNAME: "[PC Preview] unknow ATTR_NICKNAME",
+      ATTR_NOTE: "[PC Preview] unknow ATTR_NOTE",
+      ATTR_ORGANIZATION: "[PC Preview] unknow ATTR_ORGANIZATION",
+      ATTR_PHONE: "[PC Preview] unknow ATTR_PHONE",
+      ATTR_PORTRAIT: "[PC Preview] unknow ATTR_PORTRAIT",
+      ATTR_POSTAL_ADDRESS: "[PC Preview] unknow ATTR_POSTAL_ADDRESS",
+      ATTR_RELATION: "[PC Preview] unknow ATTR_RELATION",
+      ATTR_SIP_ADDRESS: "[PC Preview] unknow ATTR_SIP_ADDRESS",
+      ATTR_WEBSITE: "[PC Preview] unknow ATTR_WEBSITE",
+    },
     addContact: function (...args) {
       console.warn("contact.addContact interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
