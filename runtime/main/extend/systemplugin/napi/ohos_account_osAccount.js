@@ -475,7 +475,7 @@ export function mockOsAccount() {
           return paramMock.paramNumberMock;
       };
       this.getAvailableStatus = function (...args) {
-        console.warn("UserAuth.getVAvailableStatus interface mocked in the Previewer. " +
+        console.warn("UserAuth.getAvailableStatus interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
           return paramMock.paramNumberMock;
       };
@@ -512,7 +512,7 @@ export function mockOsAccount() {
         } 
       };
       this.anthUser = function (...args) {
-        console.warn("UserAuth.authUser interface mocked in the Previewer. " +
+        console.warn("UserAuth.anthUser interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
         const len = args.length
         if (len > 0 && typeof args[len - 1] === 'function') {
@@ -531,19 +531,19 @@ export function mockOsAccount() {
       console.warn("osAccount.PINA.constructor interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
       this.registerInputer = function (...args) {
-        console.warn("PINAuth.registerInputer constructor interface mocked in the Previewer. " +
+        console.warn("PINAuth.registerInputer interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
           return paramMock.paramBooleanMock;
       };
       this.unregisterInputer = function (...args) {
-        console.warn("PINAuth.unregisterInputer constructor interface mocked in the Previewer. " +
+        console.warn("PINAuth.unregisterInputer interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
       };
     };
   };
   const UserIdentityManagerClass = class UserIdentityManager {
     constructor() {
-      console.warn("osAccount.getAccountManager constructor interface mocked in the Previewer. " +
+      console.warn("osAccount.getAccountManager.constructor interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
       this.openSession = function (...args) {
         console.warn("UserIdentityManager.openSession interface mocked in the Previewer. " +
@@ -566,7 +566,7 @@ export function mockOsAccount() {
         }
       };
       this.updateCredential = function (...args) {
-        console.warn("AUserIdentityManager.addCredential interface mocked in the Previewer. " +
+        console.warn("AUserIdentityManager.updateCredential interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
         const len = args.length
         if (len > 0 && typeof args[len - 1] === 'function') {
@@ -578,7 +578,7 @@ export function mockOsAccount() {
           "How this interface works on the Previewer may be different from that on a real device.") 
       };
       this.cancel = function (...args) {
-        console.warn("AUserIdentityManager.console interface mocked in the Previewer. " +
+        console.warn("AUserIdentityManager.cancel interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
           return paramMock.paramNumberMock;
       };
@@ -630,7 +630,7 @@ export function mockOsAccount() {
         "How this interface works on the Previewer may be different from that on a real device.")
     },
     onAcquireInfo: function (...args) {
-      console.warn("IUserAuthCallback.onResult interface mocked in the Previewer. " +
+      console.warn("IUserAuthCallback.onAcquireInfo interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
     },
   };
