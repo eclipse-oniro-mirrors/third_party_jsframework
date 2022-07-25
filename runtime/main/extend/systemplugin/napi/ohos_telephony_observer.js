@@ -19,7 +19,9 @@ export function mockObserver() {
   const SimStateData = {
     type: "[PC Preview] unknow type",
     state: "[PC Preview] unknow state",
+    reason: LockReason,
   }
+  const LockReason = "[PC Preview] unknow LockReason";
   const observer = {
     on: function (...args) {
       console.warn("telephony.observer.on interface mocked in the Previewer. How this interface works on the Previewer may " +
