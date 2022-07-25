@@ -14,49 +14,73 @@
  */
 
 import { paramMock } from "../utils"
-
+export const LockInfo = {
+  lockType: LockType,
+  password: "[PC Preview] unknow password",
+  state: LockState,
+}
+export const LockType = {
+  PIN_LOCK: 1,
+  FDN_LOCK: 2,
+};
+export const LockState = {
+  LOCK_OFF: 0,
+  LOCK_ON: 1,
+};
+export const PersoLockType = {
+  PN_PIN_LOCK: "[PC Preview] unknow PN_PIN_LOCK",
+  PN_PUK_LOCK: "[PC Preview] unknow PN_PUK_LOCK",
+  PU_PIN_LOCK: "[PC Preview] unknow PU_PIN_LOCK",
+  PU_PUK_LOCK: "[PC Preview] unknow PU_PUK_LOCK",
+  PP_PIN_LOCK: "[PC Preview] unknow PP_PIN_LOCK",
+  PP_PUK_LOCK: "[PC Preview] unknow PP_PUK_LOCK",
+  PC_PIN_LOCK: "[PC Preview] unknow PC_PIN_LOCK",
+  PC_PUK_LOCK: "[PC Preview] unknow PC_PUK_LOCK",
+  SIM_PIN_LOCK: "[PC Preview] unknow SIM_PIN_LOCK",
+  SIM_PUK_LOCK: "[PC Preview] unknow SIM_PUK_LOCK",
+};
+export const PersoLockInfo = {
+  lockType: PersoLockType,
+  password: "[PC Preview] unknow password",
+}
+export const DiallingNumbersInfo = {
+  alphaTag: "[PC Preview] unknow alphaTag",
+  number: "[PC Preview] unknow number",
+  recordNumber: "[PC Preview] unknow recordNumber",
+  pin2: "[PC Preview] unknow pin2",
+}
+export const CardType = {
+  UNKNOWN_CARD: -1,
+  SINGLE_MODE_SIM_CARD: 10,
+  SINGLE_MODE_USIM_CARD: 20,
+  SINGLE_MODE_RUIM_CARD: 30,
+  DUAL_MODE_CG_CARD: 40,
+  CT_NATIONAL_ROAMING_CARD: 41,
+  CU_DUAL_MODE_CARD: 42,
+  DUAL_MODE_TELECOM_LTE_CARD: 43,
+  DUAL_MODE_UG_CARD: 50,
+  SINGLE_MODE_ISIM_CARD: 60
+};
+export const SimState = {
+  SIM_STATE_UNKNOWN: "[PC Preview] unknow SIM_STATE_UNKNOWN",
+  SIM_STATE_NOT_PRESENT: "[PC Preview] unknow SIM_STATE_NOT_PRESENT",
+  SIM_STATE_LOCKED: "[PC Preview] unknow SIM_STATE_LOCKED",
+  SIM_STATE_NOT_READY: "[PC Preview] unknow SIM_STATE_NOT_READY",
+  SIM_STATE_READY: "[PC Preview] unknow SIM_STATE_READY",
+  SIM_STATE_LOADED: "[PC Preview] unknow SIM_STATE_LOADED",
+};
+export const ContactType = {
+  GENERAL_CONTACT: 1,
+  FIXED_DIALING: 2,
+};
 export function mockSim() {
-  const IccAccountInfo = {
-    simId: "[PC Preview] unknow simId",
-    slotIndex: "[PC Preview] unknow slotIndex",
-    isEsim: "[PC Preview] unknow isEsim",
-    isActive: "[PC Preview] unknow isActive",
-    iccId: "[PC Preview] unknow iccId",
-    showName: "[PC Preview] unknow showName",
-    showNumber: "[PC Preview] unknow showNumber"
-  }
-  const OperatorConfigMock = {
-    field: "[PC Preview] unknow field",
-    value: "[PC Preview] unknow value"
-  }
-  const LockStatusResponse = {
-    result: "[PC Preview] unknow result",
-    remain: "[PC Preview] unknow remain"
-  }
-  const LockInfo = {
-    lockType: LockType,
-    password: "[PC Preview] unknow password",
-    state: LockState,
-  }
-  const PersoLockInfo = {
-    lockType: PersoLockType,
-    password: "[PC Preview] unknow password",
-  }
-  const DiallingNumbersInfo = {
-    efid: "[PC Preview] unknow efid",
-    recordNumber: "[PC Preview] unknow recordNumber",
-    alphaTag: "[PC Preview] unknow alphaTag",
-    number: "[PC Preview] unknow number",
-    emails: "[PC Preview] unknow emails",
-    pin2: "[PC Preview] unknow pin2",
-  }
-  const CardType = "[PC Preview] unknow CardType";
-  const LockType = "[PC Preview] unknow LockType";
-  const SimState = "[PC Preview] unknow SimState";
-  const PersoLockType = "[PC Preview] unknow PersoLockType";
-  const ContactType = "[PC Preview] unknow ContactType";
-  const LockState = "[PC Preview] unknow LockState";
   const sim = {
+    ContactType,
+    SimState,
+    CardType,
+    PersoLockType,
+    LockState,
+    LockType,
     isSimActive: function (...args) {
       console.warn("telephony.sim.isSimActive interface mocked in the Previewer. How this interface works on the Previewer may" +
         " be different from that on a real device.")
@@ -143,10 +167,10 @@ export function mockSim() {
     },
     getLockState: function (...args) {
       console.warn("telephony.sim.getLockState interface mocked in the Previewer. How this interface works on the Previewer may" +
-      " be different from that on a real device.")
+        " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, LockState);
+        args[len - 1].call(this, paramMock.businessErrorMock, LockState);
       } else {
         return new Promise((resolve, reject) => {
           resolve(LockState);
@@ -340,7 +364,7 @@ export function mockSim() {
     },
     setVoiceMailInfo: function (...args) {
       console.warn("telephony.sim.setVoiceMailInfo interface mocked in the Previewer. How this interface works on the Previewer may" +
-      " be different from that on a real device.")
+        " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
@@ -364,7 +388,7 @@ export function mockSim() {
     },
     sendEnvelopeCmd: function (...args) {
       console.warn("telephony.sim.sendEnvelopeCmd interface mocked in the Previewer. How this interface works on the Previewer may" +
-      " be different from that on a real device.")
+        " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
@@ -388,7 +412,7 @@ export function mockSim() {
     },
     sendTerminalResponseCmd: function (...args) {
       console.warn("telephony.sim.sendTerminalResponseCmd interface mocked in the Previewer. How this interface works on the Previewer may" +
-      " be different from that on a real device.")
+        " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock);
@@ -460,7 +484,7 @@ export function mockSim() {
     },
     unlockSimLock: function (...args) {
       console.warn("telephony.sim.unlockSimLock interface mocked in the Previewer. How this interface works on the Previewer may" +
-      " be different from that on a real device.")
+        " be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock, LockStatusResponse);

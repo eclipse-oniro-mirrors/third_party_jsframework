@@ -14,15 +14,30 @@
  */
 
 import { paramMock } from "../utils"
-
+export const LockReason = {
+  SIM_NONE: "[PC Preview] unknow SIM_NONE",
+  SIM_PIN: "[PC Preview] unknow SIM_PIN",
+  SIM_PUK: "[PC Preview] unknow SIM_PUK",
+  SIM_PN_PIN: "[PC Preview] unknow SIM_PN_PIN",
+  SIM_PN_PUK: "[PC Preview] unknow SIM_PN_PUK",
+  SIM_PU_PIN: "[PC Preview] unknow SIM_PU_PIN",
+  SIM_PU_PUK: "[PC Preview] unknow SIM_PU_PUK",
+  SIM_PP_PIN: "[PC Preview] unknow SIM_PP_PIN",
+  SIM_PP_PUK: "[PC Preview] unknow SIM_PP_PUK",
+  SIM_PC_PIN: "[PC Preview] unknow SIM_PC_PIN",
+  SIM_PC_PUK: "[PC Preview] unknow SIM_PC_PUK",
+  SIM_SIM_PIN: "[PC Preview] unknow SIM_SIM_PIN",
+  SIM_SIM_PUK: "[PC Preview] unknow SIM_SIM_PUK",
+};
 export function mockObserver() {
   const SimStateData = {
     type: "[PC Preview] unknow type",
     state: "[PC Preview] unknow state",
     reason: LockReason,
   }
-  const LockReason = "[PC Preview] unknow LockReason";
   const observer = {
+    LockReason,
+    SimStateData,
     on: function (...args) {
       console.warn("telephony.observer.on interface mocked in the Previewer. How this interface works on the Previewer may " +
         "be different from that on a real device.")
