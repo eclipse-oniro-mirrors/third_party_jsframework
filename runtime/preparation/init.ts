@@ -201,5 +201,7 @@ const ComponentsInfo: components<string>[] = [
   {
     'methods': ['takePhoto', 'startRecorder', 'closeRecorder', 'scrollTo', 'createIntersectionObserver', 'addChild'],
     'type': 'camera'
-  }
+  },
+  { 'methods': ['getInspector'], 'type': 'toolbar' },
+  { 'methods': ['getInspector'], 'type': 'toolbar-item' }
 ];
