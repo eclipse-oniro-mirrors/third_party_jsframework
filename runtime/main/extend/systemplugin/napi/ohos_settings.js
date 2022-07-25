@@ -193,5 +193,5 @@ export function mockSettings() {
       return paramMock.paramBooleanMock
     },
   };
-  return settingsMock;
+  return settings;
 }
