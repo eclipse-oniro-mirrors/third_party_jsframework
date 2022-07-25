@@ -58,7 +58,9 @@ export function mockMultimediaMedia() {
       }
     },
     src: '[PC Preview] unknow src',
+    fdSrc: AVFileDescriptor,
     loop: '[PC Preview] unknow loop',
+    audioInterruptMode: InterruptMode,
     currentTime: '[PC Preview] unknow currentTime',
     duration: '[PC Preview] unknow duration',
     state: '[PC Preview] unknow state',
@@ -221,12 +223,15 @@ export function mockMultimediaMedia() {
   }
   const videoPlayerMock = {
     url: '[PC Preview] unknow url',
+    fdSrc: AVFileDescriptor,
     loop: '[PC Preview] unknow loop',
     currentTime: '[PC Preview] unknow currentTime',
     duration: '[PC Preview] unknow duration',
     state: '[PC Preview] unknow state',
     width: '[PC Preview] unknow width',
     height: '[PC Preview] unknow height',
+    audioInterruptMode: InterruptMode,
+    videoScaleType: mediaMock.VideoScaleType,
     setDisplaySurface: function (...args) {
       console.warn("VideoPlayer.setDisplaySurface interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
@@ -359,10 +364,27 @@ export function mockMultimediaMedia() {
         });
       }
     },
+    selectBitrate: function (...args) {
+      console.warn("VideoPlayer.selectBitrate interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.paramNumberMock, paramMock.paramNumberMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve(paramMock.paramNumberMock);
+        });
+      }
+    },
     on: function (...args) {
       console.warn("VideoPlayer.on interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
     },
+  }
+  const AVFileDescriptorMock = {
+    fd: '[PC Preview] unknow fd',
+    offset: '[PC Preview] unknow audioChannels',
+    length: '[PC Preview] unknow audioCodec',
   }
   const videoRecorderProfileMock = {
     audioBitrate: '[PC Preview] unknow audioBitrate',
@@ -385,9 +407,13 @@ export function mockMultimediaMedia() {
     location: locationMock,
   }
   const mediaDescriptionMock = {
-    key: '[PC Preview] unknow key',
+    "key": 'paramMock.paramObjectMock',
   }
-  const multimediaMediaMock = {
+  const InterruptModeMock = {
+    SHARE_MODE: 0,
+    INDEPENDENT_MODE: 1
+  }
+  const mediaMock = {
     MediaErrorCode : {
       MSERR_OK: 0,
       MSERR_NO_MEMORY: 1,
@@ -436,6 +462,10 @@ export function mockMultimediaMedia() {
       SPEED_FORWARD_1_25_X: 2,
       SPEED_FORWARD_1_75_X: 3,
       SPEED_FORWARD_2_00_X: 4,
+    },
+    VideoScaleType : {
+      VIDEO_SCALE_TYPE_FIT: 0,
+      VIDEO_SCALE_TYPE_FIT_CROP: 1,
     },
     ContainerFormatType : {
       CFT_MPEG_4: "mp4",
@@ -507,5 +537,5 @@ export function mockMultimediaMedia() {
       }
     },
   }
-  return multimediaMediaMock;
+  return mediaMock;
 }
