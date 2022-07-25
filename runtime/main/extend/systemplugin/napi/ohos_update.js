@@ -280,8 +280,6 @@ export function mockUpdate() {
         EventClassifyInfo,
         UpgradeFile,
         DescriptionOptions,
-        ComponentDescription,
-        DescriptionFormat,
         getOnlineUpdater: function (...args) {
             console.warn("update.getOnlineUpdater interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
