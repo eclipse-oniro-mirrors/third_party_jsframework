@@ -102,14 +102,11 @@ export function mockSocket() {
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] === 'message') {
-          args[len - 1].call(this, {
-            message: "[PC Preview] unknow message",
-            remoteInfo: SocketRemoteInfo
-          });
+          args[len - 1].call(this, {ArrayBuffer, SocketRemoteInfo});
         } else if (args[0] === 'listening') {
-          args[len - 1].call(this, paramMock.businessErrorMock);
+          args[len - 1].call(this);
         } else if (args[0] === 'close') {
-          args[len - 1].call(this, paramMock.businessErrorMock);
+          args[len - 1].call(this);
         } else if (args[0] === 'error') {
           args[len - 1].call(this, paramMock.businessErrorMock);
         }
@@ -121,14 +118,11 @@ export function mockSocket() {
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] === 'message') {
-          args[len - 1].call(this, {
-            message: "[PC Preview] unknow message",
-            remoteInfo: SocketRemoteInfo
-          });
+          args[len - 1].call(this, {ArrayBuffer, SocketRemoteInfo});
         } else if (args[0] === 'listening') {
-          args[len - 1].call(this, paramMock.businessErrorMock);
+          args[len - 1].call(this);
         } else if (args[0] === 'close') {
-          args[len - 1].call(this, paramMock.businessErrorMock);
+          args[len - 1].call(this);
         } else if (args[0] === 'error') {
           args[len - 1].call(this, paramMock.businessErrorMock);
         }
@@ -227,14 +221,11 @@ export function mockSocket() {
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] === 'message') {
-          args[len - 1].call(this, {
-            message: "[PC Preview] unknow message",
-            remoteInfo: SocketRemoteInfo
-          });
+          args[len - 1].call(this, {ArrayBuffer, SocketRemoteInfo});
         } else if (args[0] === 'connect') {
-          args[len - 1].call(this, paramMock.businessErrorMock);
+          args[len - 1].call(this);
         } else if (args[0] === 'close') {
-          args[len - 1].call(this, paramMock.businessErrorMock);
+          args[len - 1].call(this);
         } else if (args[0] === 'error') {
           args[len - 1].call(this, paramMock.businessErrorMock);
         }
@@ -246,14 +237,11 @@ export function mockSocket() {
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] === 'message') {
-          args[len - 1].call(this, {
-            message: "[PC Preview] unknow message",
-            remoteInfo: SocketRemoteInfo
-          });
+          args[len - 1].call(this, {ArrayBuffer, SocketRemoteInfo});
         } else if (args[0] === 'connect') {
-          args[len - 1].call(this, paramMock.businessErrorMock);
+          args[len - 1].call(this);
         } else if (args[0] === 'close') {
-          args[len - 1].call(this, paramMock.businessErrorMock);
+          args[len - 1].call(this);
         } else if (args[0] === 'error') {
           args[len - 1].call(this, paramMock.businessErrorMock);
         }
@@ -261,39 +249,41 @@ export function mockSocket() {
     }
   }
 
-  const UDPSendOptionsMock = {
+  const UDPSendOptions = {
     data: "[PC Preview] unknow data",
-    address: NetAddress,
+    address: NetAddress
   }
 
-  const ExtraOptionsBaseMock = {
+  const ExtraOptionsBase = {
     receiveBufferSize: "[PC Preview] unknow receiveBufferSize",
     sendBufferSize: "[PC Preview] unknow sendBufferSize",
     reuseAddress: "[PC Preview] unknow reuseAddress",
-    socketTimeout: "[PC Preview] unknow socketTimeout",
+    socketTimeout: "[PC Preview] unknow socketTimeout"
   }
 
-  const UDPExtraOptionsMock = {
-    broadcast: "[PC Preview] unknow broadcast",
+  const UDPExtraOptions = {
+    broadcast: "[PC Preview] unknow broadcast"
   }
 
-  const TCPConnectionOptionsMock = {
+  const TCPConnectOptions = {
     address: NetAddress,
     timeout: "[PC Preivew] unknow timeout",
   }
 
-  const TCPSendOptionsMock = {
+  const TCPSendOptions = {
     data: "[PC Preview] unknow data",
     encoding: "[PC Preview] unknow encoding",
   }
 
-  const TCPExtraOptionsMock = {
+  const TCPExtraOptions = {
     keepAlive: "[PC Preview] unknow keepAlive",
     OOBInline: "[PC Preview] unknow OOBInline",
     TCPNoDelay: "[PC Preview] unknow TCPNoDelay",
-    socketLinger: "[PC Preview] unknow socketLinger",
+    socketLinger: {
+      on: "[PC Preview] unknow on",
+      linger: "[PC Preview] unknow linger"
+    }
   }
-
   const socket = {
     constructUDPSocketInstance: function () {
       console.warn("net.socket.constructUDPSocketInstance interface mocked in the Previewer. How this interface works on the Previewer" +
@@ -304,12 +294,8 @@ export function mockSocket() {
       console.warn("net.socket.constructTCPSocketInstance interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       return TCPSocket;
-    },
-    NetAddress: function() {
-      console.warn("net.socket.NetAddress interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.");
-      return NetAddress;
     }
   }
+
   return socket;
 }

@@ -15,70 +15,80 @@
 
 import { paramMock } from "../utils"
 
+export const NetCap = {
+  NET_CAPABILITY_MMS: '[PC preview] unknow NET_CAPABILITY_MMS',
+  NET_CAPABILITY_NOT_METERED: '[PC preview] unknow NET_CAPABILITY_NOT_METERED',
+  NET_CAPABILITY_INTERNET: '[PC preview] unknow NET_CAPABILITY_INTERNET',
+  NET_CAPABILITY_NOT_VPN: '[PC preview] unknow NET_CAPABILITY_NOT_VPN',
+  NET_CAPABILITY_VALIDATED: '[PC preview] unknow NET_CAPABILITY_VALIDATED'
+}
+
+export const NetBearType = {
+  BEARER_CELLULAR: '[PC preview] unknow BEARER_CELLULAR',
+  BEARER_WIFI: '[PC preview] unknow BEARER_WIFI',
+  BEARER_ETHERNET: '[PC preview] unknow BEARER_ETHERNET'
+}
+
 export function mockConnection() {
-  const NetSpecifierMock = {
-    netCapabilities: NetCapabilitiesMock,
+  const NetSpecifier = {
+    netCapabilities: NetCapabilities,
     bearerPrivateIdentifier: '[PC preview] unknow bearerPrivateIdentifier'
   }
 
-  const NetCapabilitiesMock = {
+  const NetCapabilities = {
     linkUpBandwidthKbps: '[PC preview] unknow linkUpBandwidthKbps',
     linkDownBandwidthKbps: '[PC preview] unknow linkDownBandwidthKbps',
-    networkCap:[netCapMock],
-    bearerTypes:[netBearTypeMock]
+    networkCap:[NetCap],
+    bearerTypes:[NetBearType]
   }
 
-  const netCapMock = '[PC preview] unknow NetCap'
-
-  const netBearTypeMock = '[PC preview] unknow NetBearType' 
-
-  const ConnectionPropertiesMock = {
+  const ConnectionProperties = {
     interfaceName: '[PC preview] unknow interfaceName',
     domains: '[PC preview] unknow domains',
-    linkAddresses: [LinkAddressMock],
-    dnses: [NetAddressMock],
-    routes: [RouteInfoMock],
+    linkAddresses: [LinkAddress],
+    dnses: [NetAddress],
+    routes: [RouteInfo],
     mtu: '[PC preview] unknow mtu'
   }
 
-  const LinkAddressMock = {
-    address: NetAddressMock,
+  const LinkAddress = {
+    address: NetAddress,
     prefixLength: '[PC preview] unknow prefixLength'
   }
 
-  const NetAddressMock = {
+  const NetAddress = {
     address: '[PC preview] unknow address',
     family: '[PC preview] unknow family',
     port: '[PC preview] unknow port'
   }
 
-  const RouteInfoMock = {
+  const RouteInfo = {
     interface: '[PC preview] unknow interface',
-    destination: LinkAddressMock,
-    gateway: NetAddressMock,
+    destination: LinkAddress,
+    gateway: NetAddress,
     hasGateway: '[PC preview] unknow hasGateway',
     isDefaultRoute: '[PC preview] unknow isDefaultRoute'
   }
 
-  const netConnection = {
+  const NetConnection = {
     on: function (...args) {
-      console.warn("netConnection.on interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("NetConnection.on interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] === 'netAvailable') {
-          args[len - 1].call(this, netHandle);
+          args[len - 1].call(this, NetHandle);
         } else if (args[0] === 'netBlockStatusChange') {
-          var array = new Array(netHandle, paramMock.paramBooleanMock);
+          var array = new Array(NetHandle, paramMock.paramBooleanMock);
           args[len - 1].call(this, array);
         } else if (args[0] === 'netCapabilitiesChange') {
-          var array = new Array(netHandle, NetCapabilitiesMock);
+          var array = new Array(NetHandle, NetCapabilities);
           args[len - 1].call(this, array);
         } else if (args[0] === 'netConnectionPropertiesChange') {
-          var array = new Array(netHandle, ConnectionPropertiesMock);
+          var array = new Array(NetHandle, ConnectionProperties);
           args[len - 1].call(this, array);
         } else if (args[0] === 'netLost') {
-          args[len - 1].call(this, netHandle);
+          args[len - 1].call(this, NetHandle);
         } else if (args[0] === 'netUnavailable') {
           args[len - 1].call(this);
         }
@@ -86,80 +96,61 @@ export function mockConnection() {
     },
 
     register: function (...args) {
-      console.warn("netConnection.register interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("NetConnection.register interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
-      } else {
-        return new Promise((resolve, reject) => {
-          resolve()
-        })
       }
     },
 
     unregister: function (...args) {
-      console.warn("netConnection.unregister interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("NetConnection.unregister interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
         args[len - 1].call(this, paramMock.businessErrorMock)
-      } else {
-        return new Promise((resolve, reject) => {
-          resolve()
-        })
       }
     }
   }
 
-  const netHandle = {
+  const NetHandle = {
     netId: '[PC preview] unknow netId',
 
-    bindSocket: function (...args) {
-      console.warn("netHandle.bindSocket interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (len > 0 && typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock)
-      } else {
-        return new Promise((resolve, reject) => {
-          resolve()
-        })
-      }
-    },
-
     getAddressesByName: function (...args) {
-      console.warn("netHandle.getAddressesByName interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("NetHandle.getAddressesByName interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [NetAddressMock])
+        args[len - 1].call(this, paramMock.businessErrorMock, [NetAddress])
       } else {
         return new Promise((resolve, reject) => {
-          resolve([NetAddressMock])
+          resolve([NetAddress])
         })
       }
     },
 
     getAddressByName: function (...args) {
-      console.warn("netHandle.getAddressByName interface mocked in the Previewer. How this interface works on the Previewer" +
+      console.warn("NetHandle.getAddressByName interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
       const len = args.length
       if (len > 0 && typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, NetAddressMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, NetAddress)
       } else {
         return new Promise((resolve, reject) => {
-          resolve(NetAddressMock)
+          resolve(NetAddress)
         })
       }
     }
   }
 
   const connection = {
+    NetCap,
+    NetBearType,
     createNetConnection: function () {
       console.warn("connection.createNetConnection interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
-      return netConnection;
+      return NetConnection;
     },
 
     getDefaultNet: function (...args) {
@@ -167,10 +158,10 @@ export function mockConnection() {
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, netHandle)
+        args[len - 1].call(this, paramMock.businessErrorMock, NetHandle)
       } else {
         return new Promise((resolve) => {
-          resolve(netHandle)
+          resolve(NetHandle)
         })
       }
     },
@@ -180,10 +171,10 @@ export function mockConnection() {
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [netHandle])
+        args[len - 1].call(this, paramMock.businessErrorMock, [NetHandle])
       } else {
         return new Promise((resolve) => {
-          resolve([netHandle])
+          resolve([NetHandle])
         })
       }
     },
@@ -193,10 +184,10 @@ export function mockConnection() {
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, ConnectionPropertiesMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, ConnectionProperties)
       } else {
         return new Promise((resolve) => {
-          resolve(ConnectionPropertiesMock)
+          resolve(ConnectionProperties)
         })
       }
     },
@@ -206,10 +197,10 @@ export function mockConnection() {
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, NetCapabilitiesMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, NetCapabilities)
       } else {
         return new Promise((resolve) => {
-          resolve(NetCapabilitiesMock)
+          resolve(NetCapabilities)
         })
       }
     },
@@ -284,106 +275,13 @@ export function mockConnection() {
         " may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [NetAddressMock])
+        args[len - 1].call(this, paramMock.businessErrorMock, [NetAddress])
       } else {
         return new Promise((resolve) => {
-          resolve([NetAddressMock])
+          resolve([NetAddress])
         })
       }
     },
-
-    getAddressByName: function (...args) {
-      console.warn("connection.getAddressByName interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, NetAddressMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve(NetAddressMock)
-        })
-      }
-    },
-
-    getAppNet: function (...args) {
-      console.warn("connection.getAppNet interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, netHandle)
-      } else {
-        return new Promise((resolve) => {
-          resolve(netHandle)
-        })
-      }
-    },
-
-    setAppNet: function (...args) {
-      console.warn("connection.setAppNet interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve()
-        })
-      }
-    },
-
-    registerReportNetConnectCallback: function (...args) {
-      console.warn("connection.registerReportNetConnectCallback interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve()
-        })
-      }
-    },
-
-    unregisterReportNetConnectCallback: function (...args) {
-      console.warn("connection.unregisterReportNetConnectCallback interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve()
-        })
-      }
-    },
-
-    getSpecificNet: function (...args) {
-      console.warn("connection.getSpecificNet interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, Array(paramMock.paramNumberMock))
-      } else {
-        return new Promise((resolve) => {
-          resolve(Array(paramMock.paramNumberMock))
-        })
-      }
-    },
-
-    restoreFactoryData: function (...args) {
-      console.warn("connection.restoreFactoryData interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve()
-        })
-      }
-    },
-
-
   };
 
   return connection;
