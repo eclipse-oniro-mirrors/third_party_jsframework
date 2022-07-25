@@ -723,11 +723,6 @@ export function mockOsAccount() {
         "How this interface works on the Previewer may be different from that on a real device.")
       return AccountManagerMock;
     },
-    OsAccountType: {
-      ADMIN: "[PC Preview] unknown ADMIN",
-      NORMAL: "[PC Preview] unknown NORMAL",
-      GUEST: "[PC Preview] unknown GUEST"
-    },
     UserAuth: UserAuthClass,
     PINAuth: PINAuthClass,
     UserIdentityManager: UserIdentityManagerClass,
