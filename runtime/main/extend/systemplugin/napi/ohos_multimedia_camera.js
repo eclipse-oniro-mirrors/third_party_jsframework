@@ -18,12 +18,10 @@ import { paramMock } from "../utils"
 export function mockMultimediaCamera() {
   const Camera = {
     cameraId: '[PC preview] unknow pid',
-    cameraPosition: '[PC preview] unknow cameraPosition',
-    cameraType: '[PC preview] unknow cameraType',
-    connectionType: '[PC preview] unknow connectionType'
+    cameraPosition: CameraPosition,
+    cameraType: CameraType,
+    connectionType: ConnectionType
   }
-  const FlashMode = '[PC preview] unknow flashMode'
-  const FocusMode = '[PC preview] unknow focusMode'
   const multimediaCameraMock = {
     getCameraManager: function (...args) {
       console.warn('camera.getCameraManager interface mocked in the Previewer. How this interface works on the' +
@@ -62,7 +60,7 @@ export function mockMultimediaCamera() {
       }
     },
     createPhotoOutput: function (...args) {
-      console.warn('camera.createPreviewOutput interface mocked in the Previewer. How this interface works on the' +
+      console.warn('camera.createPhotoOutput interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
@@ -85,6 +83,16 @@ export function mockMultimediaCamera() {
         });
       }
     },
+  }
+  const CameraStatus = {
+    CAMERA_STATUS_APPEAR: 0,
+    CAMERA_STATUS_DISAPPEAR: 1,
+    CAMERA_STATUS_AVAILABLE: 2,
+    CAMERA_STATUS_UNAVAILABLE: 3
+  }
+  const CameraStatusInfo = {
+    camera: Camera,
+    status: CameraStatus
   }
   const CameraManager = {
     getCameras: function (...args) {
@@ -114,7 +122,57 @@ export function mockMultimediaCamera() {
     on: function (...args) {
       console.warn('CameraManager.on interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        if(args[0] == 'cameraStatus'){
+          args[len - 1].call(this, paramMock.businessErrorMock, CameraStatusInfo);
+        }
+      }
     }
+  }
+  const CameraPosition = {
+    CAMERA_POSITION_UNSPECIFIED: 0,
+    CAMERA_POSITION_BACK: 1,
+    CAMERA_POSITION_FRONT: 2
+  }
+  const CameraType = {
+    CAMERA_TYPE_UNSPECIFIED: 0,
+    CAMERA_TYPE_WIDE_ANGLE: 1,
+    CAMERA_TYPE_ULTRA_WIDE: 2,
+    CAMERA_TYPE_TELEPHOTO: 3,
+    CAMERA_TYPE_TRUE_DEPTH: 4
+  }
+  const ConnectionType = {
+    CAMERA_CONNECTION_BUILT_IN: 0,
+    CAMERA_CONNECTION_USB_PLUGIN: 1,
+    CAMERA_CONNECTION_REMOTE: 2
+  }
+  const Size = {
+    height: '[PC preview] unknow height',
+    width: '[PC preview] unknow width'
+  }
+  const CameraInputErrorCode = {
+    ERROR_UNKNOWN: -1
+  }
+  const CameraInputError = {
+    code: CameraInputErrorCode
+  }
+  const FlashMode = {
+    FLASH_MODE_CLOSE: 0,
+    FLASH_MODE_OPEN: 1,
+    FLASH_MODE_AUTO: 2,
+    FLASH_MODE_ALWAYS_OPEN: 3
+  }
+  const FocusMode = {
+    FOCUS_MODE_MANUAL: 0,
+    FOCUS_MODE_CONTINUOUS_AUTO: 1,
+    FOCUS_MODE_AUTO: 2,
+    FOCUS_MODE_LOCKED: 3
+  }
+  const FocusState = {
+    FOCUS_STATE_SCAN: 0,
+    FOCUS_STATE_FOCUSED: 1,
+    FOCUS_STATE_UNFOCUSED: 2
   }
   const CameraInput = {
     getCameraId: function (...args) {
@@ -213,6 +271,18 @@ export function mockMultimediaCamera() {
         });
       }
     },
+    setFocusPoint: function (...args) {
+      console.warn('CameraInput.setFocusPoint interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve) => {
+        resolve();
+        });
+      }
+    },
     getZoomRatioRange: function (...args) {
       console.warn('CameraInput.getZoomRatioRange interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
@@ -226,7 +296,7 @@ export function mockMultimediaCamera() {
       }
     },
     getZoomRatio: function (...args) {
-      console.warn('CameraInput.getZoomRatioRange interface mocked in the Previewer. How this interface works on the' +
+      console.warn('CameraInput.getZoomRatio interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
@@ -264,7 +334,21 @@ export function mockMultimediaCamera() {
     on: function (...args) {
       console.warn('CameraInput.on interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        if(args[0] == 'focusStateChange'){
+          args[len - 1].call(this, paramMock.businessErrorMock, FocusState);
+        } else if (args[0] == 'error') {
+          args[len - 1].call(this, paramMock.businessErrorMock, CameraInputError);
+        }
+      }
     }
+  }
+  const CaptureSessionErrorCode = {
+    ERROR_UNKNOWN: -1
+  }
+  const CaptureSessionError = {
+    code: CaptureSessionErrorCode
   }
   const CaptureSession = {
     beginConfig: function (...args) {
@@ -328,7 +412,7 @@ export function mockMultimediaCamera() {
       }
     },
     removeOutput: function (...args) {
-      console.warn('CaptureSession.removeInput interface mocked in the Previewer. How this interface works on the' +
+      console.warn('CaptureSession.removeOutput interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
@@ -378,7 +462,19 @@ export function mockMultimediaCamera() {
     on: function (...args) {
       console.warn('CaptureSession.on interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        if(args[0] == 'error'){
+          args[len - 1].call(this, paramMock.businessErrorMock, CaptureSessionError);
+        }
+      }
     }
+  }
+  const PreviewOutputErrorCode = {
+    ERROR_UNKNOWN: -1
+  }
+  const PreviewOutputError = {
+    code: PreviewOutputErrorCode
   }
   const PreviewOutput = {
     release: function (...args) {
@@ -394,9 +490,48 @@ export function mockMultimediaCamera() {
       }
     },
     on: function (...args) {
-      console.warn('PreviewOutput.release interface mocked in the Previewer. How this interface works on the' +
+      console.warn('PreviewOutput.on interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        if(args[0] == 'frameStart'){
+          args[len - 1].call(this, paramMock.businessErrorMock);
+        } else if (args[0] == 'frameEnd') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
+        } else if (args[0] == 'error') {
+          args[len - 1].call(this, paramMock.businessErrorMock, PreviewOutputError);
+        }
+      }
     },
+  }
+  const ImageRotation = {
+    ROTATION_0: 0,
+    ROTATION_90: 90,
+    ROTATION_180: 180,
+    ROTATION_270: 270
+  }
+  const QualityLevel = {
+    QUALITY_LEVEL_HIGH: 0,
+    QUALITY_LEVEL_MEDIUM: 1,
+    QUALITY_LEVEL_LOW: 2
+  }
+  const PhotoCaptureSetting = {
+    quality:QualityLevel,
+    rotation: ImageRotation
+  }
+  const FrameShutterInfo = {
+    captureId: '[PC preview] unknow captureId',
+    timestamp: '[PC preview] unknow timestamp'
+  }
+  const CaptureEndInfo = {
+    captureId: '[PC preview] unknow captureId',
+    frameCount: '[PC preview] unknow frameCount'
+  }
+  const PhotoOutputErrorCode = {
+    ERROR_UNKNOWN: -1
+  }
+  const PhotoOutputError = {
+    code: PhotoOutputErrorCode
   }
   const PhotoOutput = {
     capture: function (...args) {
@@ -426,7 +561,25 @@ export function mockMultimediaCamera() {
     on: function (...args) {
       console.warn('PhotoOutput.on interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        if(args[0] == 'captureStart'){
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+        } else if (args[0] == 'frameShutter') {
+          args[len - 1].call(this, paramMock.businessErrorMock, FrameShutterInfo);
+        } else if (args[0] == 'captureEnd') {
+          args[len - 1].call(this, paramMock.businessErrorMock, CaptureEndInfo);
+        } else if (args[0] == 'error') {
+          args[len - 1].call(this, paramMock.businessErrorMock, PhotoOutputError);
+        }
+      }
     }
+  }
+  const VideoOutputErrorCode = {
+    ERROR_UNKNOWN: -1
+  }
+  const VideoOutputError = {
+    code: VideoOutputErrorCode
   }
   const VideoOutput = {
     start: function (...args) {
@@ -468,6 +621,16 @@ export function mockMultimediaCamera() {
     on: function (...args) {
       console.warn('VideoOutput.on interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        if(args[0] == 'frameStart'){
+          args[len - 1].call(this, paramMock.businessErrorMock);
+        } else if (args[0] == 'frameEnd') {
+          args[len - 1].call(this, paramMock.businessErrorMock);
+        } else if (args[0] == 'error') {
+          args[len - 1].call(this, paramMock.businessErrorMock, VideoOutputError);
+        }
+      }
     }
   }
   return multimediaCameraMock
