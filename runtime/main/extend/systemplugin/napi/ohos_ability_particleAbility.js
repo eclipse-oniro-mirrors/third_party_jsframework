@@ -14,7 +14,7 @@
  */
 
 import { paramMock } from "../utils"
-import { dataAbilityHelper } from "./ability/dataAbilityHelper"
+import { DataAbilityHelper } from "./ability/dataAbilityHelper"
 
 export function mockParticleAbility() {
   const particleAbility = {
@@ -45,7 +45,7 @@ export function mockParticleAbility() {
     acquireDataAbilityHelper: function (...args) {
       console.warn("ability.particleAbility.acquireDataAbilityHelper interface mocked in the Previewer. How this interface works" +
         " on the Previewer may be different from that on a real device.")
-      return dataAbilityHelper;
+      return DataAbilityHelper;
     },
     connectAbility: function (...args) {
       console.warn("ability.particleAbility.connectAbility interface mocked in the Previewer. How this interface works" +

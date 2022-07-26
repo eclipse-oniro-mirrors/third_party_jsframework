@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-import { paramMock } from "../utils"
-
 export function mockAbilityLifecycleCallback() {
   const AbilityLifecycleCallbackClass = class AbilityLifecycleCallback {
     constructor() {

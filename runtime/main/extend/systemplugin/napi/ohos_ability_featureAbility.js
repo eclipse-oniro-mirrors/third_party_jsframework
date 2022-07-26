@@ -15,274 +15,13 @@
 
 import { paramMock } from "../utils"
 import { WantClass } from "./ohos_application_Want"
-import { Context } from "./app/context"
+import { Context as _Context } from "./app/context"
 import { AbilityResult } from "./ability/abilityResult"
 import { windowMock } from "./ohos_window"
+import { DataAbilityHelper } from "./ability/dataAbilityHelper"
+import { AppVersionInfo as _AppVersionInfo } from "./app/appVersionInfo"
+import { ProcessInfo as _ProcessInfo } from "./app/processInfo"
 
-const DataAbilityResult = {
-    uri: "[PC Preview] unknow uri",
-    count: "[PC Preview] unknow count"
-}
-const DataAbilityResultArray = [
-    DataAbilityResult
-]
-export const PacMapType = {
-    PacMap: {key:{}}
-}
-export const ResultSet = {
-    columnNames: [paramMock.paramStringMock],
-    columnCount: "[PC Preview] unknow columnCount",
-    rowCount: "[PC Preview] unknow rowCount",
-    rowIndex: "[PC Preview] unknow rowIndex",
-    isAtFirstRow: "[PC Preview] unknow isAtFirstRow",
-    isAtLastRow: "[PC Preview] unknow isAtLastRow",
-    isEnded: "[PC Preview] unknow isEnded",
-    isStarted: "[PC Preview] unknow isStarted",
-    isClose: "[PC Preview] unknow isClose",
-    getColumnIndex: function (...args) {
-      console.warn("ResultSet.getColumnIndex interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramNumberMock;
-    },
-    getColumnName: function (...args) {
-      console.warn("ResultSet.getColumnName interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramStringMock;
-    },
-    goTo: function (...args) {
-      console.warn("ResultSet.goTo interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    goToRow: function (...args) {
-      console.warn("ResultSet.goToRow interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    goToLastRow: function (...args) {
-      console.warn("ResultSet.goToLastRow interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    goToFirstRow: function (...args) {
-      console.warn("ResultSet.goToFirstRow interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    goToNextRow: function (...args) {
-      console.warn("ResultSet.goToNextRow interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    goToPreviousRow: function (...args) {
-      console.warn("ResultSet.goToPreviousRow interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    getBlob: function (...args) {
-      console.warn("ResultSet.getBlob interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramArrayMock;
-    },
-    getString: function (...args) {
-      console.warn("ResultSet.getString interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramStringMock;
-    },
-    getLong: function (...args) {
-      console.warn("ResultSet.getLong interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramNumberMock;
-    },
-    getDouble: function (...args) {
-      console.warn("ResultSet.getDouble interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramNumberMock;
-    },
-    isColumnNull: function (...args) {
-      console.warn("ResultSet.isColumnNull interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    close: function () {
-      console.warn("ResultSet.isColumnNull interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-    }
-}
-const DataAbilityHelper = {
-    openFile: function (...args) {
-      console.warn("DataAbilityHelper.openFile interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve(paramMock.paramNumberMock);
-        })
-      }
-    },
-    on: function (...args) {
-      console.warn("DataAbilityHelper.on interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock)
-      }
-    },
-    off: function (...args) {
-      console.warn("DataAbilityHelper.off interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock)
-      }
-    },
-    getType: function (...args) {
-      console.warn("DataAbilityHelper.getType interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve(paramMock.paramStringMock);
-        })
-      }
-    },
-    getFileTypes: function (...args) {
-      console.warn("DataAbilityHelper.getFileTypes interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [paramMock.paramStringMock])
-      } else {
-        return new Promise((resolve) => {
-          resolve([paramMock.paramStringMock]);
-        })
-      }
-    },
-    normalizeUri: function (...args) {
-      console.warn("DataAbilityHelper.normalizeUri interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve(paramMock.paramStringMock);
-        })
-      }
-    },
-    denormalizeUri: function (...args) {
-      console.warn("DataAbilityHelper.denormalizeUri interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramStringMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve(paramMock.paramStringMock);
-        })
-      }
-    },
-    notifyChange: function (...args) {
-      console.warn("DataAbilityHelper.notifyChange interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve();
-        })
-      }
-    },
-    insert: function (...args) {
-      console.warn("DataAbilityHelper.insert interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve(paramMock.paramNumberMock);
-        })
-      }
-    },
-    batchInsert: function (...args) {
-      console.warn("DataAbilityHelper.batchInsert interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve(paramMock.paramNumberMock);
-        })
-      }
-    },
-    delete: function (...args) {
-      console.warn("DataAbilityHelper.delete interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve(paramMock.paramNumberMock);
-        })
-      }
-    },
-    update: function (...args) {
-      console.warn("DataAbilityHelper.update interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock)
-      } else {
-        return new Promise((resolve) => {
-          resolve(paramMock.paramNumberMock);
-        })
-      }
-    },
-    query: function (...args) {
-      console.warn("DataAbilityHelper.query interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, ResultSet)
-      } else {
-        return new Promise((resolve) => {
-          resolve(ResultSet);
-        })
-      }
-    },
-    call: function (...args) {
-        console.warn("DataAbilityHelper.call interface mocked in the Previewer. How this interface works on the Previewer" +
-          " may be different from that on a real device.")
-        const len = args.length
-        if (typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.businessErrorMock, PacMapType)
-        } else {
-          return new Promise((resolve) => {
-            resolve(PacMapType);
-          })
-        }
-      },
-    executeBatch: function (...args) {
-      console.warn("DataAbilityHelper.executeBatch interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, DataAbilityResultArray)
-      } else {
-        return new Promise((resolve) => {
-          resolve(DataAbilityResultArray);
-        })
-      }
-    }
-}
 export function mockFeatureAbility() {
     const featureAbility = {
         getWant: function (...args) {
@@ -312,7 +51,7 @@ export function mockFeatureAbility() {
         getContext: function () {
             console.warn("featureAbility.getContext interface mocked in the Previewer." +
                 " How this interface works on the Previewer may be different from that on a real device.")
-            return Context;
+            return _Context;
         },
         startAbilityForResult: function (...args) {
             console.warn("featureAbility.startAbilityForResult interface mocked in the Previewer." +
@@ -396,6 +135,13 @@ export function mockFeatureAbility() {
                 })
             }
         },
+        AbilityWindowConfiguration,
+        AbilityStartSetting,
+        ErrorCode,
+        DataAbilityOperationType,
+        Context: _Context,
+        AppVersionInfo: _AppVersionInfo,
+        ProcessInfo: _ProcessInfo
     }
     return featureAbility;
 }

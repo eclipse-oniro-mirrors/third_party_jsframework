@@ -24,6 +24,7 @@ export function mockFormBindingData() {
         " may be different from that on a real device.")
       return FormBindingData;
     },
+    FormBindingData
   }
   return formBindingData;
 }
