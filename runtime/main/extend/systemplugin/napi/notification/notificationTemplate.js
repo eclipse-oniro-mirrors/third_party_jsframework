@@ -14,5 +14,5 @@
  */
 export const NotificationTemplate = {
     name: '[PC preview] unknow name',
-    data: {},
+    data: {"key": "unknown any"},
 }

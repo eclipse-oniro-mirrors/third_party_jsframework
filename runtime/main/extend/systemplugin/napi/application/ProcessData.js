@@ -12,11 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { NotificationUserInput } from "./notificationUserInput"
 
-export const NotificationActionButton = {
-    title: '[PC preview] unknow title',
-    wantAgent: '[PC preview] unknow wantAgent',
-    extras: {"key": "unknown any"},
-    userInput: NotificationUserInput,
-}
+import { paramMock } from "../../utils"
+
+export const ProcessDataClass = class ProcessData {
+    constructor() {
+        console.warn("ProcessData.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
+            " may be different from that on a real device.")
+        this.bundleName = "[PC Preview] unknow bundleName"
+        this.pid = "[PC Preview] unknow pid"
+        this.uid = "[PC Preview] unknow uid"
+    }
+};
