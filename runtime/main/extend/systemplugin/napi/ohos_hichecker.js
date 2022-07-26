@@ -15,34 +15,32 @@
 
 import { paramMock } from "../utils"
 
-function buildMockInfo(interfaceName) {
-  return interfaceName + " interface mocked in the Previewer. How this interface works on the Previewer" +
-    " may be different from that on a real device."
-}
-
-
 export function mockHiChecker() {
-  const RULE_CAUTION_PRINT_LOG = paramMock.paramNumberMock;
-  const RULE_CAUTION_TRIGGER_CRASH = paramMock.paramNumberMock;
-  const RULE_THREAD_CHECK_SLOW_PROCESS = paramMock.paramNumberMock;
-  const RULE_CHECK_ABILITY_CONNECTION_LEAK = paramMock.paramNumberMock;
+  const RULE_CAUTION_PRINT_LOG = 9223372036854775808n;
+  const RULE_CAUTION_TRIGGER_CRASH = 4611686018427387904n;
+  const RULE_THREAD_CHECK_SLOW_PROCESS = 1n;
+  const RULE_CHECK_ABILITY_CONNECTION_LEAK = 8589934592n;
   const hichecker = {
     RULE_CAUTION_PRINT_LOG,
     RULE_CAUTION_TRIGGER_CRASH,
     RULE_THREAD_CHECK_SLOW_PROCESS,
     RULE_CHECK_ABILITY_CONNECTION_LEAK,
     addRule: function(...args) {
-      console.warn(buildMockInfo("hichecker.addRule"))
+      console.warn("hichecker.addRule interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
     },
     removeRule: function(...args) {
-      console.warn(buildMockInfo("hichecker.removeRule"))
+      console.warn("hichecker.removeRule interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
     },
     getRule: function(...args) {
-      console.warn(buildMockInfo("hichecker.getRule"))
+      console.warn("hichecker.getRule interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
       return paramMock.paramNumberMock;
     },
     contains: function(...args) {
-      console.warn(buildMockInfo("hichecker.contains"))
+      console.warn("hichecker.contains interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
   }

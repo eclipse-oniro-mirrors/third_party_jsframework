@@ -346,6 +346,8 @@ export function mockRequireNapiFun() {
         return mockProcess();
       case "url":
         return mockUrl();
+      case "hichecker":
+        return mockHiChecker();
       case "hiAppEvent":
         return mockHiAppEvent();
       case "hilog":
