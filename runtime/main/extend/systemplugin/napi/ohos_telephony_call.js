@@ -138,8 +138,26 @@ export const TransferStatus = {
   TRANSFER_DISABLE: 0,
   TRANSFER_ENABLE: 1,
 };
+export const CallAttributeOptions = {
+  accountNumber: "[PC Preview] unknow accountNumber",
+  speakerphoneOn: "[PC Preview] unknow speakerphoneOn",
+  accountId: "[PC Preview] unknow accountId",
+  videoState: VideoStateType,
+  startTime: "[PC Preview] unknow startTime",
+  isEcc: "[PC Preview] unknow isEcc",
+  callType: CallType,
+  callId: "[PC Preview] unknow callId",
+  callState: DetailedCallState,
+  conferenceState: ConferenceState,
+  status: "[PC Preview] unknow status",
+  number: "[PC Preview] unknow number",
+}
 export const EmergencyNumberOptions = {
   slotId: "[PC Preview] unknow slotId"
+}
+export const CallTransferResult = {
+  status: "[PC Preview] unknow status",
+  number: "[PC Preview] unknow number",
 }
 export const DisconnectedDetails = {
   UNASSIGNED_NUMBER: 1,
@@ -181,6 +199,7 @@ export function mockCall() {
     CallState,
     DialScene,
     RestrictionStatus,
+    CallTransferResult,
     DialType,
     CallRestrictionMode,
     dial: function (...args) {

@@ -61,6 +61,15 @@ export const CardType = {
   DUAL_MODE_UG_CARD: 50,
   SINGLE_MODE_ISIM_CARD: 60
 };
+export const IccAccountInfo = {
+  simId: "[PC Preview] unknow simId",
+  slotIndex: "[PC Preview] unknow slotIndex",
+  isEsim: "[PC Preview] unknow isEsim",
+  isActive: "[PC Preview] unknow isActive",
+  iccId: "[PC Preview] unknow iccId",
+  showName: "[PC Preview] unknow showName",
+  showNumber: "[PC Preview] unknow showNumber",
+}
 export const SimState = {
   SIM_STATE_UNKNOWN: "[PC Preview] unknow SIM_STATE_UNKNOWN",
   SIM_STATE_NOT_PRESENT: "[PC Preview] unknow SIM_STATE_NOT_PRESENT",
@@ -73,6 +82,14 @@ export const ContactType = {
   GENERAL_CONTACT: 1,
   FIXED_DIALING: 2,
 };
+export const OperatorConfig = {
+  field: "[PC Preview] unknow field",
+  value: "[PC Preview] unknow value"
+}
+export const LockStatusResponse = {
+  result: "[PC Preview] unknow result",
+  remain: "[PC Preview] unknow remain",
+}
 export function mockSim() {
   const sim = {
     ContactType,

@@ -14,6 +14,7 @@
  */
 
 import { paramMock } from "../utils"
+import { CardType, SimState } from "./ohos_telephony_sim"
 export const LockReason = {
   SIM_NONE: "[PC Preview] unknow SIM_NONE",
   SIM_PIN: "[PC Preview] unknow SIM_PIN",
@@ -29,15 +30,14 @@ export const LockReason = {
   SIM_SIM_PIN: "[PC Preview] unknow SIM_SIM_PIN",
   SIM_SIM_PUK: "[PC Preview] unknow SIM_SIM_PUK",
 };
+export const SimStateData = {
+  type: CardType,
+  state: SimState,
+  reason: LockReason,
+}
 export function mockObserver() {
-  const SimStateData = {
-    type: "[PC Preview] unknow type",
-    state: "[PC Preview] unknow state",
-    reason: LockReason,
-  }
   const observer = {
     LockReason,
-    SimStateData,
     on: function (...args) {
       console.warn("telephony.observer.on interface mocked in the Previewer. How this interface works on the Previewer may " +
         "be different from that on a real device.")

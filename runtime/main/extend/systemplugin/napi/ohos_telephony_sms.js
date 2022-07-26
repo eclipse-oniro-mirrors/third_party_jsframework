@@ -119,6 +119,7 @@ export const MmsDeliveryInd = {
   to: [MmsAddress],
   status: "[PC Preview] unknow status",
   version: MmsVersionType,
+  messageId: "[PC Preview] unknow messageId",
 }
 export const MmsReadRecInd = {
   version: MmsVersionType,
