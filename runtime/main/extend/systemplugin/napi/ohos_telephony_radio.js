@@ -116,6 +116,17 @@ export const TdscdmaCellInformation = {
   mcc: "[PC Preview] unknow mcc",
   mnc: "[PC Preview] unknow mnc",
 }
+export const NetworkState = {
+  longOperatorName: "[PC Preview] unknow longOperatorName",
+  shortOperatorName: "[PC Preview] unknow shortOperatorName",
+  plmnNumeric: "[PC Preview] unknow plmnNumeric",
+  isRoaming: "[PC Preview] unknow isRoaming",
+  regState: RegState,
+  cfgTech: RadioTechnology,
+  nsaState: NsaState,
+  isCaActive: "[PC Preview] unknow isCaActive",
+  isEmergency: "[PC Preview] unknow isEmergency",
+}
 export const NrCellInformation = {
   nrArfcn: "[PC Preview] unknow nrArfcn",
   pci: "[PC Preview] unknow pci",
@@ -166,6 +177,21 @@ export const NrOptionMode = {
   NR_OPTION_SA_ONLY: "[PC Preview] unknow NR_OPTION_SA_ONLY",
   NR_OPTION_NSA_AND_SA: "[PC Preview] unknow NR_OPTION_NSA_AND_SA",
 };
+export const CellInformation = {
+  networkType: NetworkType,
+  isCamped: "[PC Preview] unknow isCamped",
+  timeStamp: "[PC Preview] unknow timeStamp",
+  signalInformation: SignalInformation,
+  data: CdmaCellInformation,
+};
+export const SignalInformation = {
+  signalType: NetworkType,
+  signalLevel: "[PC Preview] unknow signalLevel",
+};
+export const NetworkSearchResult = {
+  isNetworkSearchSuccess: "[PC Preview] unknow isNetworkSearchSuccess",
+  networkSearchResult: [NetworkInformation],
+}
 export function mockRadio() {
   const radio = {
     RegState,
