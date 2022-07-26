@@ -15,24 +15,34 @@
 
 import { mockSystemParameter } from './ohos_systemparameter'
 import { mockAbility } from './ohos_application_Ability'
+import { mockErrorCode } from './ohos_ability_errorCode'
 import { mockFeatureAbility } from './ohos_ability_featureAbility'
 import { mockDataUriUtils } from './ohos_ability_dataUriUtils'
+import { mockWantConstant } from './ohos_ability_wantConstant'
+import { mockAbilityConstant } from './ohos_application_AbilityConstant'
 import { mockAbilityDelegatorRegistry } from './ohos_application_abilityDelegatorRegistry'
 import { mockAbilityLifecycleCallback } from './ohos_application_AbilityLifecycleCallback'
 import { mockFormExtension } from './ohos_application_FormExtension'
 import { mockStaticSubscriberExtensionAbility } from './ohos_application_StaticSubscriberExtensionAbility'
 import { mockFormHost } from './ohos_application_formHost'
+import { mockFormInfo } from './ohos_application_formInfo'
 import { mockErrorManager } from './ohos_application_errorManager'
 import { mockTestRunner } from './ohos_application_testRunner'
+import { mockWant } from './ohos_application_Want'
 import { mockServiceExtensionAbility } from './ohos_application_ServiceExtensionAbility'
+import { mockStartOptions } from './ohos_application_StartOptions'
 import { mockAbilityStage } from './ohos_application_AbilityStage'
 import { mockFormBindingData } from './ohos_application_formBindingData'
+import { mockFormError } from './ohos_application_formError'
 import { mockAbilityManager } from './ohos_application_abilityManager'
 import { mockParticleAbility } from './ohos_ability_particleAbility'
 import { mockAppManager } from './ohos_application_appManager'
+import { mockConfiguration } from './ohos_application_Configuration'
+import { mockConfigurationConstant } from './ohos_application_ConfigurationConstant'
+import { mockContext } from './ohos_application_context'
 import { mockDataShareExtensionAbility } from './ohos_application_DataShareExtensionAbility'
+import { mockEnvironmentCallback } from './ohos_application_EnvironmentCallback'
 import { mockMissionManager } from "./ohos_application_missionManager"
-import { mockServiceExtAbility } from "./ohos_application_ServiceExtAbility"
 import { mockUriPermissionManager } from "./ohos_application_uriPermissionManager"
 import { mockCommonEvent } from './ohos_commonEvent'
 import { mockNotification } from './ohos_notification'
@@ -280,26 +290,38 @@ export function mockRequireNapiFun() {
         return mockBatteryinfo();
       case "systemParameter":
         return mockSystemParameter();
+      case "ability.errorCode":
+        return mockErrorCode();
       case "ability.dataUriUtils":
         return mockDataUriUtils();
       case "ability.particleAbility":
         return mockParticleAbility();
       case "ability.featureAbility":
         return mockFeatureAbility();
+      case "ability.wantConstant":
+        return mockWantConstant();
       case "application.Ability":
         return mockAbility();
       case "application.formHost":
         return mockFormHost();
+      case "application.formInfo":
+        return mockFormInfo();
       case "application.FormExtension":
         return mockFormExtension();
       case "application.ServiceExtensionAbility":
         return mockServiceExtensionAbility();
+      case "application.StartOptions":
+        return mockStartOptions();
+      case "application.StaticSubscriberExtensionAbility":
+        return mockStaticSubscriberExtensionAbility()
       case "application.errorManager":
         return mockErrorManager();
       case "application.testRunner":
         return mockTestRunner();
-      case "application.StaticSubscriberExtensionAbility":
-        return mockStaticSubscriberExtensionAbility();
+      case "application.Want":
+        return mockWant();
+      case "application.AbilityConstant":
+        return mockAbilityConstant();
       case "application.abilityDelegatorRegistry":
         return mockAbilityDelegatorRegistry();
       case "application.AbilityLifecycleCallback":
@@ -308,16 +330,24 @@ export function mockRequireNapiFun() {
         return mockAbilityStage();
       case "application.formBindingData":
         return mockFormBindingData();
+      case "application.formError":
+        return mockFormError();
       case "application.abilityManager":
         return mockAbilityManager();
       case "application.appManager":
         return mockAppManager();
+      case "application.Configuration":
+        return mockConfiguration();
+      case "application.ConfigurationConstant":
+        return mockConfigurationConstant();
+      case "application.context":
+        return mockContext();
       case "application.DataShareExtensionAbility":
         return mockDataShareExtensionAbility();
+      case "application.EnvironmentCallback":
+        return mockEnvironmentCallback();
       case "application.missionManager":
         return mockMissionManager();
-      case "application.ServiceExtAbility":
-        return mockServiceExtAbility();
       case "application.UriPermissionManager":
         return mockUriPermissionManager();
       case "commonEvent":

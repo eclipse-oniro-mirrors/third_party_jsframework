@@ -33,3 +33,12 @@ export const OnContinueResult = {
     REJECT: 1,
     MISMATCH: 2,
 }
+export function mockAbilityConstant() {
+    const AbilityConstant = {
+        LaunchParam,
+        LaunchReason,
+        LastExitReason,
+        OnContinueResult
+    }
+    return AbilityConstant;
+}

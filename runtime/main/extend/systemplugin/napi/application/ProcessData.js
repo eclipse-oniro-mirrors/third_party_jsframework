@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-import { paramMock } from "../../utils"
-
 export const ProcessDataClass = class ProcessData {
     constructor() {
         console.warn("ProcessData.constructor interface mocked in the Previewer. How this interface works on the Previewer" +

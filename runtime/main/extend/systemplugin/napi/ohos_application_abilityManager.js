@@ -14,6 +14,9 @@
  */
 
 import { paramMock } from "../utils"
+import { AbilityRunningInfo as _AbilityRunningInfo } from "./application/AbilityRunningInfo"
+import { ExtensionRunningInfo as _ExtensionRunningInfo } from "./application/ExtensionRunningInfo"
+import { ElementName } from "./bundle/elementName"
 
 export const AbilityState = {
   INITIAL: 0,
@@ -23,39 +26,8 @@ export const AbilityState = {
   BACKGROUNDING: 12
 }
 export function mockAbilityManager() {
-  const AbilityRunningInfoMock = {
-    ability: ElementNameMock,
-    pid: '[PC preview] unknow pid',
-    uid: '[PC preview] unknow uid',
-    processName: '[PC preview] unknow processName',
-    startTime: '[PC preview] unknow startTime',
-    AbilityStateMock: '[PC preview] unknow abilityStateMock'
-  }
-  const ElementNameMock = {
-    deviceId: '[PC preview] unknow deviceId',
-    bundleName: '[PC preview] unknow bundleName',
-    abilityName: '[PC preview] unknow abilityName',
-    uri: '[PC preview] unknow uri',
-    shortName: '[PC preview] unknow shortName'
-  }
-  const ExtensionRunningInfoMock = {
-    extension: ElementNameMock,
-    pid: '[PC preview] unknow pid',
-    uid: '[PC preview] unknow uid',
-    processName: '[PC preview] unknow processName',
-    startTime: '[PC preview] unknow startTime',
-    clientPackage: [paramMock.paramStringMock],
-    ExtensionAbilityTypeMock: '[PC preview] unknow ExtensionAbilityTypeMock',
-  }
-  const elementName = {
-    deviceId: "[PC preview] unknown deviceId",
-    bundleName: "[PC preview] unknown bundleName",
-    abilityName: "[PC preview] unknown abilityName",
-    uri: "[PC preview] unknown uri",
-    shortName: "[PC preview] unknown shortName",
-    moduleName: "[PC preview] unknown moduleName",
-  }
   const abilityManager = {
+    AbilityState,
     updateConfiguration: function (...args) {
       console.warn('abilityManager.updateConfiguration interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
@@ -73,10 +45,10 @@ export function mockAbilityManager() {
         ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [AbilityRunningInfoMock]);
+        args[len - 1].call(this, paramMock.businessErrorMock, [_AbilityRunningInfo]);
       } else {
         return new Promise((resolve) => {
-          resolve([AbilityRunningInfoMock]);
+          resolve([_AbilityRunningInfo]);
         });
       }
     },
@@ -85,10 +57,10 @@ export function mockAbilityManager() {
         ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [ExtensionRunningInfoMock]);
+        args[len - 1].call(this, paramMock.businessErrorMock, [_ExtensionRunningInfo]);
       } else {
         return new Promise((resolve) => {
-          resolve([ExtensionRunningInfoMock]);
+          resolve([_ExtensionRunningInfo]);
         });
       }
     },
@@ -97,13 +69,15 @@ export function mockAbilityManager() {
         ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, elementName);
+        args[len - 1].call(this, paramMock.businessErrorMock, ElementName);
       } else {
         return new Promise((resolve) => {
-          resolve(elementName);
+          resolve(ElementName);
         });
       }
-    }
+    },
+    AbilityRunningInfo: _AbilityRunningInfo,
+    ExtensionRunningInfo: _ExtensionRunningInfo
   }
   return abilityManager
 }

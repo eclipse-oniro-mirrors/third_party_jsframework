@@ -21,11 +21,14 @@ export const WantClass = class Want {
     this.abilityName = "[PC Preview] unknow abilityName";
     this.uri = "[PC Preview] unknow uri";
     this.type = "[PC Preview] unknow type";
-    this.flag = "[PC Preview] unknow flag";
+    this.flags = "[PC Preview] unknow flags";
     this.action = "[PC Preview] unknow action";
     this.parameters = {};
     this.entities = [paramMock.paramStringMock];
     this.moduleName = "[PC Preview] unknow moduleName";
   }
+}
+export function mockWant() {
+  return new WantClass();
 }
 

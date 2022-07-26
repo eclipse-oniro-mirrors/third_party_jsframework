@@ -64,3 +64,15 @@ export const FormParam = {
 export const  FormInfoFilter = {
     moduleName: '[PC preview] unknow moduleName',
 }
+export function mockFormInfo() {
+    const formInfo = {
+        FormInfo,
+        FormType,
+        ColorMode,
+        FormStateInfo,
+        FormState,
+        FormParam,
+        FormInfoFilter
+    }
+    return formInfo;
+}

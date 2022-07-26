@@ -14,7 +14,7 @@
  */
 
 import { paramMock } from '../../utils'
-import { ExtensionContextClass } from './AbilityContext'
+import { ExtensionContextClass } from './ExtensionContext'
 
 const ElementAttributeNameMock = '[PC Preview] unknown element attribute name';
 
