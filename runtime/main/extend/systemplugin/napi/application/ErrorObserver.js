@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { NotificationUserInput } from "./notificationUserInput"
 
-export const NotificationActionButton = {
-    title: '[PC preview] unknow title',
-    wantAgent: '[PC preview] unknow wantAgent',
-    extras: {"key": "unknown any"},
-    userInput: NotificationUserInput,
-}
+export const ErrorObserverClass = class ErrorObserver {
+    constructor() {
+        console.warn("ErrorObserver.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
+            " may be different from that on a real device.")
+        this.onUnhandledException = function (...args) {
+            console.warn("ErrorObserver.onUnhandledException interface mocked in the Previewer. How this interface works on the Previewer" +
+              " may be different from that on a real device.")
+        };
+    }
+};

@@ -17,5 +17,5 @@ export const TriggerInfo = {
     code: '[PC preview] unknow code',
     want: new WantClass(),
     permission: '[PC preview] unknow permission',
-    extraInfo: {},
+    extraInfo: {"key": "unknown any"},
 };

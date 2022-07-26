@@ -20,5 +20,5 @@ export const WantAgentInfo = {
     operationType: OperationType,
     requestCode: '[PC preview] unknow requestCode',
     wantAgentFlags: [WantAgentFlags],
-    extraInfo: {},
+    extraInfo: {"key": "unknown any"},
 };

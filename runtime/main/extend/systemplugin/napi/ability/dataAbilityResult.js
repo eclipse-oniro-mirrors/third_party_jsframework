@@ -12,11 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { NotificationUserInput } from "./notificationUserInput"
 
-export const NotificationActionButton = {
-    title: '[PC preview] unknow title',
-    wantAgent: '[PC preview] unknow wantAgent',
-    extras: {"key": "unknown any"},
-    userInput: NotificationUserInput,
+export const DataAbilityResult = {
+  uri: "[PC Preview] unknow uri",
+  count: "[PC Preview] unknow count",
 }

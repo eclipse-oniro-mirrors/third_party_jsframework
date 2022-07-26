@@ -12,11 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { NotificationUserInput } from "./notificationUserInput"
 
-export const NotificationActionButton = {
-    title: '[PC preview] unknow title',
-    wantAgent: '[PC preview] unknow wantAgent',
-    extras: {"key": "unknown any"},
-    userInput: NotificationUserInput,
+import { WantClass } from "../ohos.application.Want"
+
+export const MissionInfo = {
+    missionId: '[PC preview] unknow missionId',
+    runningState: '[PC preview] unknow runningState',
+    lockedState: '[PC preview] unknow lockedState',
+    timestamp: '[PC preview] unknow timestamp',
+    want: new WantClass(),
+    label: '[PC preview] unknow label',
+    iconPath: '[PC preview] unknow iconPath',
+    continuable: '[PC preview] unknow continuable'
 }
