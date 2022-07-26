@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 import { ApplicationInfo } from "../bundle/applicationInfo"
-import { BaseContext } from "./BaseContext"
+import { BaseContextClass as  BaseContext } from "./BaseContext"
+
 const ResourceManager = {
     getString: function(...args) {
       console.warn("ResourceManager.getString interface mocked in the Previewer. " +

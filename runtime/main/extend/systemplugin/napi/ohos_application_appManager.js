@@ -14,19 +14,13 @@
  */
 
 import { paramMock } from "../utils"
+import { AppStateDataClass as _AppStateData } from "./application/AppStateData"
+import { ProcessRunningInfo } from "./application/ProcessRunningInfo"
+import { AppStateDataClass as _AbilityStateData } from "./application/AppStateData"
+import { ApplicationStateObserverClass as _ApplicationStateObserver } from "./application/ApplicationStateObserver"
+import { ProcessDataClass as _ProcessData } from "./application/ProcessData"
 
 export function mockAppManager() {
-  const AppStateDataMock = {
-    bundleName: '[PC preview] unknow bundleName',
-    uid: '[PC preview] unknow uid',
-    state: '[PC preview] unknow state'
-  }
-  const ProcessRunningInfoMock = {
-    pid: '[PC preview] unknow pid',
-    uid: '[PC preview] unknow uid',
-    processName: '[PC preview] unknow processName',
-    bundleNames: [paramMock.paramStringMock]
-  }
   const appManager = {
     registerApplicationStateObserver: function (...args) {
       console.warn('appManager.registerApplicationStateObserver interface mocked in the Previewer. How this interface works on the' +
@@ -50,10 +44,10 @@ export function mockAppManager() {
         ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [AppStateDataMock]);
+        args[len - 1].call(this, paramMock.businessErrorMock, [new _AppStateData()]);
       } else {
         return new Promise((resolve) => {
-          resolve([AppStateDataMock]);
+          resolve([new _AppStateData()]);
         });
       }
     },
@@ -86,10 +80,10 @@ export function mockAppManager() {
         ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [ProcessRunningInfoMock]);
+        args[len - 1].call(this, paramMock.businessErrorMock, [ProcessRunningInfo]);
       } else {
         return new Promise((resolve) => {
-          resolve([ProcessRunningInfoMock]);
+          resolve([ProcessRunningInfo]);
         });
       }
     },
@@ -140,7 +134,12 @@ export function mockAppManager() {
           resolve(paramMock.paramNumberMock);
         });
       }
-    }
+    },
+    AbilityStateData: new _AbilityStateData(),
+    AppStateData: new _AppStateData(),
+    ApplicationStateObserver: new _ApplicationStateObserver(),
+    ProcessData: new _ProcessData(),
+    ProcessRunningInfo
   }
   return appManager
 }

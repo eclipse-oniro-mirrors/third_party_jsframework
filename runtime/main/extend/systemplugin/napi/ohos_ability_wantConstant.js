@@ -66,3 +66,11 @@ export const Flags = {
     FLAG_ABILITY_NEW_MISSION: 0x10000000,
     FLAG_ABILITY_MISSION_TOP: 0x20000000
 }
+export function mockWantConstant() {
+    const wantConstant = {
+        Action,
+        Entity,
+        Flags
+    }
+    return wantConstant;
+}

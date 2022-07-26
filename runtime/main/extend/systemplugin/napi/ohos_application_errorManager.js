@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import { paramMock } from "../utils"
+import { ErrorObserverClass as _ErrorObserver } from "./application/ErrorObserver"
 
 export function mockErrorManager() {
     const errorManager = {
@@ -33,6 +34,7 @@ export function mockErrorManager() {
               });
             }
         },
+        ErrorObserver: new _ErrorObserver()
     }
     return errorManager
 }

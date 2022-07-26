@@ -31,3 +31,11 @@ export const ScreenDensity = {
     SCREEN_DENSITY_XXLDPI: 480,
     SCREEN_DENSITY_XXXLDPI: 640,
 }
+export function mockConfigurationConstant() {
+    const ConfigurationConstant = {
+        ColorMode,
+        Direction,
+        ScreenDensity
+    }
+    return ConfigurationConstant;
+}
