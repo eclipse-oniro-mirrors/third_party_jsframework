@@ -17,6 +17,13 @@ import { paramMock } from "../utils"
 
 export function mockWebSocket() {
   global.systemplugin.net = {}
+  const WebSocketRequestOptions = {
+    header: "[PC Preview] unknow header"
+  }
+  const WebSocketCloseOptions = {
+    code: "[PC Preview] unknow code",
+    reason: "[PC Preview] unknow reason"
+  }
   const WebSocketMock = {
     connect: function (...args) {
       console.warn("WebSocket.connect interface mocked in the Previewer. How this interface works on the Previewer" +
