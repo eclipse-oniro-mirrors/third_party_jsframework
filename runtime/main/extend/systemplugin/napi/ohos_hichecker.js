@@ -16,10 +16,10 @@
 import { paramMock } from "../utils"
 
 export function mockHiChecker() {
-  const RULE_CAUTION_PRINT_LOG = 9223372036854775808n;
-  const RULE_CAUTION_TRIGGER_CRASH = 4611686018427387904n;
-  const RULE_THREAD_CHECK_SLOW_PROCESS = 1n;
-  const RULE_CHECK_ABILITY_CONNECTION_LEAK = 8589934592n;
+  const RULE_CAUTION_PRINT_LOG = paramMock.paramNumberMock;
+  const RULE_CAUTION_TRIGGER_CRASH = paramMock.paramNumberMock;
+  const RULE_THREAD_CHECK_SLOW_PROCESS = paramMock.paramNumberMock;
+  const RULE_CHECK_ABILITY_CONNECTION_LEAK = paramMock.paramNumberMock;
   const hichecker = {
     RULE_CAUTION_PRINT_LOG,
     RULE_CAUTION_TRIGGER_CRASH,
