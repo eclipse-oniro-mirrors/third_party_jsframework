@@ -16,7 +16,6 @@
 import { paramMock } from "../utils"
 
 export function mockWebSocket() {
-  global.systemplugin.net = {}
   const WebSocketRequestOptions = {
     header: "[PC Preview] unknow header"
   }
