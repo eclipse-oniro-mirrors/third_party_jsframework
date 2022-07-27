@@ -16,18 +16,18 @@
 import { paramMock } from "../utils"
 
 export const NetCap = {
-  NET_CAPABILITY_MMS: '[PC preview] unknow NET_CAPABILITY_MMS',
-  NET_CAPABILITY_NOT_METERED: '[PC preview] unknow NET_CAPABILITY_NOT_METERED',
-  NET_CAPABILITY_INTERNET: '[PC preview] unknow NET_CAPABILITY_INTERNET',
-  NET_CAPABILITY_NOT_VPN: '[PC preview] unknow NET_CAPABILITY_NOT_VPN',
-  NET_CAPABILITY_VALIDATED: '[PC preview] unknow NET_CAPABILITY_VALIDATED'
-}
+  NET_CAPABILITY_MMS: 0,
+  NET_CAPABILITY_NOT_METERED: 11,
+  NET_CAPABILITY_INTERNET: 12,
+  NET_CAPABILITY_NOT_VPN: 15,
+  NET_CAPABILITY_VALIDATED: 16
+};
 
 export const NetBearType = {
-  BEARER_CELLULAR: '[PC preview] unknow BEARER_CELLULAR',
-  BEARER_WIFI: '[PC preview] unknow BEARER_WIFI',
-  BEARER_ETHERNET: '[PC preview] unknow BEARER_ETHERNET'
-}
+  BEARER_CELLULAR: 0,
+  BEARER_WIFI: 1,
+  BEARER_ETHERNET: 3
+};
 
 export function mockConnection() {
   const NetSpecifier = {
