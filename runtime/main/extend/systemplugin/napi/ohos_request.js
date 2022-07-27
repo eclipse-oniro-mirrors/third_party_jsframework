@@ -18,7 +18,7 @@ import { paramMock } from "../utils"
 export function mockRequest() {
   const DownloadConfig = {
     url: "[PC Preview] unknow uri",
-    header: "[PC Preview] unknow herder",
+    header: "[PC Preview] unknow header",
     enableMetered: "[PC Preview] unknow enableMetered",
     enableRoaming: "[PC Preview] unknow enableRoaming",
     description: "[PC Preview] unknow description",
@@ -158,7 +158,7 @@ export function mockRequest() {
 
   const UploadConfig = {
     url: "[PC Preview] unknow uri",
-    header: "[PC Preview] unknow herder",
+    header: "[PC Preview] unknow header",
     method: "[PC Preview] unknow method",
     files: [File],
     data: [RequestData],
