@@ -16,7 +16,32 @@
 import { hasComplete } from "../utils"
 
 export function mockCipher() {
-  const cipher = {
+
+  const CipherResponse = {
+	text: '[PC preview] unknow text',
+  }
+  const CipherRsaOptions = {
+	action: '[PC preview] unknow action',
+	text: '[PC preview] unknow text',
+	key: '[PC preview] unknow key',
+	transformation: '[PC preview] unknow ransformation',
+	success: '[PC preview] unknow success',
+	fail: '[PC preview] unknow fail',
+	complete: '[PC preview] unknow complete',
+  }
+  const CipherAesOptions = {
+	action: '[PC preview] unknow action',
+	text: '[PC preview] unknow text',
+	key: '[PC preview] unknow key',
+	transformation: '[PC preview] unknow transformation',
+	iv: '[PC preview] unknow iv',
+	ivOffset: '[PC preview] unknow ivOffset',
+	ivLen: '[PC preview] unknow ivLen',
+	success: '[PC preview] unknow success',
+	fail: '[PC preview] unknow fail',
+	complete: '[PC preview] unknow complete',
+  }
+  const Cipher = {
     rsa: function (...args) {
       console.warn("cipher.rsa interface mocked in the Previewer. How this interface works on the Previewer may be" +
         " different from that on a real device.")
@@ -30,7 +55,7 @@ export function mockCipher() {
       const result = '[PC preview] aes xxxxxxxxxxxxx'
       args[0].success(result)
       hasComplete(args[0].complete)
-    }
+    },
   }
   return cipher
 }
