@@ -19,12 +19,14 @@ export function mockSensor() {
     const AccelerometerResponse = {
         x: '[PC preview] unknown x',
         y: '[PC preview] unknown y',
-        z: '[PC preview] unknown z'
+        z: '[PC preview] unknown z',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const LinearAccelerometerResponse = {
         x: '[PC preview] unknown x',
         y: '[PC preview] unknown y',
-        z: '[PC preview] unknown z'
+        z: '[PC preview] unknown z',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const AccelerometerUncalibratedResponse = {
         x: '[PC preview] unknown x',
@@ -32,28 +34,33 @@ export function mockSensor() {
         z: '[PC preview] unknown z',
         biasX: '[PC preview] unknown biasX',
         biasY: '[PC preview] unknown biasY',
-        biasZ: '[PC preview] unknown biasZ'
+        biasZ: '[PC preview] unknown biasZ',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const GravityResponse = {
         x: '[PC preview] unknown x',
         y: '[PC preview] unknown y',
-        z: '[PC preview] unknown z'
+        z: '[PC preview] unknown z',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const OrientationResponse = {
         alpha: '[PC preview] unknown alpha',
         beta: '[PC preview] unknown beta',
-        gamma: '[PC preview] unknown gamma'
+        gamma: '[PC preview] unknown gamma',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const RotationVectorResponse = {
         x: '[PC preview] unknown x',
         y: '[PC preview] unknown y',
         z: '[PC preview] unknown z',
-        w: '[PC preview] unknown w'
+        w: '[PC preview] unknown w',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const GyroscopeResponse = {
         x: '[PC preview] unknown x',
         y: '[PC preview] unknown y',
-        z: '[PC preview] unknown z'
+        z: '[PC preview] unknown z',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const GyroscopeUncalibratedResponse = {
         x: '[PC preview] unknown x',
@@ -61,24 +68,30 @@ export function mockSensor() {
         z: '[PC preview] unknown z',
         biasX: '[PC preview] unknown biasX',
         biasY: '[PC preview] unknown biasY',
-        biasZ: '[PC preview] unknown biasZ'
+        biasZ: '[PC preview] unknown biasZ',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const SignificantMotionResponse = {
-        scalar: '[PC preview] unknown scalar'
+        scalar: '[PC preview] unknown scalar',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const ProximityResponse = {
-        distance: '[PC preview] unknown distance'
+        distance: '[PC preview] unknown distance',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const LightResponse = {
-        intensity: '[PC preview] unknown intensity'
+        intensity: '[PC preview] unknown intensity',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const HallResponse = {
-        status: '[PC preview] unknown status'
+        status: '[PC preview] unknown status',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const MagneticFieldResponse = {
         x: '[PC preview] unknown x',
         y: '[PC preview] unknown y',
-        z: '[PC preview] unknown z'
+        z: '[PC preview] unknown z',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const MagneticFieldUncalibratedResponse = {
         x: '[PC preview] unknown x',
@@ -86,28 +99,36 @@ export function mockSensor() {
         z: '[PC preview] unknown z',
         biasX: '[PC preview] unknown biasX',
         biasY: '[PC preview] unknown biasY',
-        biasZ: '[PC preview] unknown biasZ'
+        biasZ: '[PC preview] unknown biasZ',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const PedometerResponse = {
-        steps: '[PC preview] unknown steps'
+        steps: '[PC preview] unknown steps',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const HumidityResponse = {
-        humidity: '[PC preview] unknown humidity'
+        humidity: '[PC preview] unknown humidity',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const PedometerDetectResponse = {
-        scalar: '[PC preview] unknown scalar'
+        scalar: '[PC preview] unknown scalar',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const AmbientTemperatureResponse = {
-        temperature: '[PC preview] unknown temperature'
+        temperature: '[PC preview] unknown temperature',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const BarometerResponse = {
-        pressure: '[PC preview] unknown pressure'
+        pressure: '[PC preview] unknown pressure',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const HeartRateResponse = {
-        heartRate: '[PC preview] unknown heartRate'
+        heartRate: '[PC preview] unknown heartRate',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const WearDetectionResponse = {
-        value: '[PC preview] unknown value'
+        value: '[PC preview] unknown value',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const Options = {
         interval: '[PC preview] unknown value'
@@ -122,10 +143,11 @@ export function mockSensor() {
         totalIntensity: '[PC preview] unknown totalIntensity'
     }
     const PedometerDetectionResponse = {
-        scalar: '[PC preview] unknown scalar'
+        scalar: '[PC preview] unknown scalar',
+        timestamp: '[PC preview] unknown timestamp'
     }
     const Response  = {
-        timestamp: '[PC preview] unknown z'
+        timestamp: '[PC preview] unknown timestamp'
     }
     const LocationOptions = {
         latitude: '[PC preview] unknown latitude',
@@ -162,6 +184,7 @@ export function mockSensor() {
         SENSOR_TYPE_ID_ORIENTATION: 256,
         SENSOR_TYPE_ID_GRAVITY: 257,
         SENSOR_TYPE_ID_LINEAR_ACCELERATION: 258,
+        SENSOR_TYPE_ID_LINEAR_ACCELEROMETER: 258,
         SENSOR_TYPE_ID_ROTATION_VECTOR: 259,
         SENSOR_TYPE_ID_AMBIENT_TEMPERATURE: 260,
         SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED: 261,
@@ -170,11 +193,13 @@ export function mockSensor() {
         SENSOR_TYPE_ID_PEDOMETER_DETECTION: 265,
         SENSOR_TYPE_ID_PEDOMETER: 266,
         SENSOR_TYPE_ID_HEART_RATE: 278,
+        SENSOR_TYPE_ID_HEART_BEAT_RATE: 278,
         SENSOR_TYPE_ID_WEAR_DETECTION: 280,
         SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED: 281
     }
     const sensor = {
         Sensor,
+        SensorType,
         on: function (...args) {
             console.warn('sensor.on interface mocked in the Previewer. How this interface works on the'
                 + 'Previewer may be different from that on a real device.')
