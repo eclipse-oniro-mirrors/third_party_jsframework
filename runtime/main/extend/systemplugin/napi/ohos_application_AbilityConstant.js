@@ -33,12 +33,20 @@ export const OnContinueResult = {
     REJECT: 1,
     MISMATCH: 2,
 }
+export const WindowMode = {
+    WINDOW_MODE_UNDEFINED: 0,
+    WINDOW_MODE_FULLSCREEN: 1,
+    WINDOW_MODE_SPLIT_PRIMARY: 100,
+    WINDOW_MODE_SPLIT_SECONDARY: 101,
+    WINDOW_MODE_FLOATING: 102,
+}
 export function mockAbilityConstant() {
     const AbilityConstant = {
         LaunchParam,
         LaunchReason,
         LastExitReason,
-        OnContinueResult
+        OnContinueResult,
+        WindowMode
     }
     return AbilityConstant;
 }
