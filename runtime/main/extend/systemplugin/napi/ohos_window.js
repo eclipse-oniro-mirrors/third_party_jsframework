@@ -14,6 +14,7 @@
  */
 
 import { paramMock } from "../utils"
+import { PixelMapMock } from "./ohos_multimedia_image"
 
 export const WindowType = {
   TYPE_APP: 0,
@@ -533,6 +534,7 @@ export const Window = {
     if (typeof args[len - 1] === 'function') {
       if (args[0] === 'keyboardHeightChange'|| args[0] === 'systemAvoidAreaChange'
         || args[0] === 'windowSizeChange'|| args[0] === 'touchOutside'|| args[0] === 'avoidAreaChange'
+        || args[0] === 'screenshot'
       ){
         console.warn(`Window.on you has registered ${args[0]} event`)
       } else {
@@ -549,6 +551,7 @@ export const Window = {
     if (typeof args[len - 1] === 'function') {
       if (args[0] === 'keyboardHeightChange'|| args[0] === 'systemAvoidAreaChange'
         || args[0] === 'windowSizeChange'|| args[0] === 'touchOutside'|| args[0] === 'avoidAreaChange'
+        || args[0] === 'screenshot'
       ){
         console.warn(`Window.off you has registered ${args[0]} event`)
       } else {
@@ -591,6 +594,18 @@ export const Window = {
     } else {
       return new Promise((resolve) => {
         resolve(paramMock.paramBooleanMock)
+      })
+    }
+  },
+  snapshot: function (...args) {
+    console.warn("Window.snapshot interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock, PixelMapMock)
+    } else {
+      return new Promise((resolve, reject) => {
+        resolve(PixelMapMock)
       })
     }
   },
