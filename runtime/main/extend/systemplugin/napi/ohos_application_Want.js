@@ -15,18 +15,20 @@
 import { paramMock } from "../utils"
 
 export const WantClass = class Want {
-    constructor() {
-      console.warn('Want.constructor interface mocked in the Previewer. How this interface works on' +
-        ' the Previewer may be different from that on a real device.');
-      this.deviceId = "[PC Preview] unknow deviceId";
-      this.bundleName = "[PC Preview] unknow bundleName";
-      this.abilityName = "[PC Preview] unknow abilityName";
-      this.uri = "[PC Preview] unknow uri";
-      this.type = "[PC Preview] unknow type";
-      this.flag = "[PC Preview] unknow flag";
-      this.action = "[PC Preview] unknow action";
-      this.parameters = {};
-      this.entities = [paramMock.paramStringMock];
-      this.moduleName = "[PC Preview] unknow moduleName";
-    }
+  constructor() {
+    this.deviceId = "[PC Preview] unknow deviceId";
+    this.bundleName = "[PC Preview] unknow bundleName";
+    this.abilityName = "[PC Preview] unknow abilityName";
+    this.uri = "[PC Preview] unknow uri";
+    this.type = "[PC Preview] unknow type";
+    this.flags = "[PC Preview] unknow flags";
+    this.action = "[PC Preview] unknow action";
+    this.parameters = {};
+    this.entities = [paramMock.paramStringMock];
+    this.moduleName = "[PC Preview] unknow moduleName";
+  }
 }
+export function mockWant() {
+  return new WantClass();
+}
+

@@ -15,23 +15,34 @@
 
 import { mockSystemParameter } from './ohos_systemparameter'
 import { mockAbility } from './ohos_application_Ability'
+import { mockErrorCode } from './ohos_ability_errorCode'
 import { mockFeatureAbility } from './ohos_ability_featureAbility'
 import { mockDataUriUtils } from './ohos_ability_dataUriUtils'
+import { mockWantConstant } from './ohos_ability_wantConstant'
+import { mockAbilityConstant } from './ohos_application_AbilityConstant'
 import { mockAbilityDelegatorRegistry } from './ohos_application_abilityDelegatorRegistry'
 import { mockAbilityLifecycleCallback } from './ohos_application_AbilityLifecycleCallback'
 import { mockFormExtension } from './ohos_application_FormExtension'
 import { mockStaticSubscriberExtensionAbility } from './ohos_application_StaticSubscriberExtensionAbility'
 import { mockFormHost } from './ohos_application_formHost'
+import { mockFormInfo } from './ohos_application_formInfo'
 import { mockErrorManager } from './ohos_application_errorManager'
 import { mockTestRunner } from './ohos_application_testRunner'
+import { mockWant } from './ohos_application_Want'
 import { mockServiceExtensionAbility } from './ohos_application_ServiceExtensionAbility'
+import { mockStartOptions } from './ohos_application_StartOptions'
 import { mockAbilityStage } from './ohos_application_AbilityStage'
 import { mockFormBindingData } from './ohos_application_formBindingData'
+import { mockFormError } from './ohos_application_formError'
 import { mockAbilityManager } from './ohos_application_abilityManager'
+import { mockParticleAbility } from './ohos_ability_particleAbility'
 import { mockAppManager } from './ohos_application_appManager'
+import { mockConfiguration } from './ohos_application_Configuration'
+import { mockConfigurationConstant } from './ohos_application_ConfigurationConstant'
+import { mockContext } from './ohos_application_context'
 import { mockDataShareExtensionAbility } from './ohos_application_DataShareExtensionAbility'
+import { mockEnvironmentCallback } from './ohos_application_EnvironmentCallback'
 import { mockMissionManager } from "./ohos_application_missionManager"
-import { mockServiceExtAbility } from "./ohos_application_ServiceExtAbility"
 import { mockUriPermissionManager } from "./ohos_application_uriPermissionManager"
 import { mockCommonEvent } from './ohos_commonEvent'
 import { mockNotification } from './ohos_notification'
@@ -54,6 +65,7 @@ import { mockHilog } from './ohos_hilog'
 import { mockHiSysEvent } from './ohos_hiSysEvent'
 import { mockHiTraceChain } from './ohos_hiTraceChain'
 import { mockHidebug } from './ohos_hidebug'
+import { mockFaultLogger } from './ohos_faultLogger'
 import { mockTv } from './tv'
 import { mockDtv } from './dtv'
 import { mockDistributedAccount } from './ohos_account_distributedAccount'
@@ -71,6 +83,7 @@ import { mockInputDevice } from './ohos_multimodalInput_inputDevice'
 import { mockVibrator } from './ohos_vibrator'
 import { mockSensor } from './ohos_sensor'
 import { mockWifi } from './ohos_wifi'
+import { mockWifiExt } from './ohos_wifiext'
 import { mockUsb } from './ohos_usb'
 import { mockBundle } from './ohos_bundle'
 import { mockInnerBundle } from './ohos_bundle_innerBundleManager'
@@ -92,6 +105,7 @@ import { mockSecurityLabel } from './ohos_securitylabel'
 import { mockWorkScheduler } from './ohos_workScheduler'
 import { mockWorkSchedulerExtensionAbility } from './ohos_WorkSchedulerExtensionAbility'
 import { mockUserAuth } from './ohos_userIAM_userAuth'
+import { mockFaceAuth } from './ohos_userIAM_faceAuth'
 import { mockArrayList } from './ohos_util_Arraylist'
 import { mockDeque } from './ohos_util_Deque'
 import { mockHashMap } from './ohos_util_HashMap'
@@ -106,6 +120,7 @@ import { mockStack } from './ohos_util_Stack'
 import { mockTreeMap } from './ohos_util_TreeMap'
 import { mockTreeSet } from './ohos_util_TreeSet'
 import { mockVector } from './ohos_util_Vector'
+import { mockMultimediaAVSession } from './ohos_multimedia_av_session'
 import { mockMultimediaCamera } from './ohos_multimedia_camera'
 import { mockMultimediaAudio } from './ohos_multimedia_audio'
 import { mockMultimediaImage } from './ohos_multimedia_image'
@@ -172,6 +187,11 @@ import { mockMouseEvent } from './ohos_multimodalInput_mouseEvent'
 import { mockTouchEvent } from './ohos_multimodalInput_touchEvent'
 import { mockUiAppearance } from './ohos_uiAppearance'
 import { mockContinationManager } from './ohos_continuation_continuationManager'
+import { mockUiTest } from './ohos_uitest'
+import { mockWindowAnimationManager } from './ohos_animation_windowAnimationManager'
+import { mockAccessibility } from './ohos_accessibility'
+import { mockAccessibilityConfig } from './ohos_accessibility_config'
+import { mockAccessibilityExtensionAbility } from './ohos_application_AccessibilityExtensionAbility'
 export function mockRequireNapiFun() {
   global.requireNapi = function (...args) {
     switch (args[0]) {
@@ -189,7 +209,7 @@ export function mockRequireNapiFun() {
         return mockZlib();
       case "screenshot":
         return mockScreenshot();
-      case "WantAgent":
+      case "wantAgent":
         return mockWantAgent();
       case "wallpaper":
         return mockWallpaper();
@@ -273,24 +293,38 @@ export function mockRequireNapiFun() {
         return mockBatteryinfo();
       case "systemParameter":
         return mockSystemParameter();
+      case "ability.errorCode":
+        return mockErrorCode();
       case "ability.dataUriUtils":
         return mockDataUriUtils();
+      case "ability.particleAbility":
+        return mockParticleAbility();
       case "ability.featureAbility":
         return mockFeatureAbility();
+      case "ability.wantConstant":
+        return mockWantConstant();
       case "application.Ability":
         return mockAbility();
       case "application.formHost":
         return mockFormHost();
+      case "application.formInfo":
+        return mockFormInfo();
       case "application.FormExtension":
         return mockFormExtension();
       case "application.ServiceExtensionAbility":
         return mockServiceExtensionAbility();
+      case "application.StartOptions":
+        return mockStartOptions();
+      case "application.StaticSubscriberExtensionAbility":
+        return mockStaticSubscriberExtensionAbility()
       case "application.errorManager":
         return mockErrorManager();
       case "application.testRunner":
         return mockTestRunner();
-      case "application.StaticSubscriberExtensionAbility":
-        return mockStaticSubscriberExtensionAbility();
+      case "application.Want":
+        return mockWant();
+      case "application.AbilityConstant":
+        return mockAbilityConstant();
       case "application.abilityDelegatorRegistry":
         return mockAbilityDelegatorRegistry();
       case "application.AbilityLifecycleCallback":
@@ -299,16 +333,24 @@ export function mockRequireNapiFun() {
         return mockAbilityStage();
       case "application.formBindingData":
         return mockFormBindingData();
+      case "application.formError":
+        return mockFormError();
       case "application.abilityManager":
         return mockAbilityManager();
       case "application.appManager":
         return mockAppManager();
+      case "application.Configuration":
+        return mockConfiguration();
+      case "application.ConfigurationConstant":
+        return mockConfigurationConstant();
+      case "application.context":
+        return mockContext();
       case "application.DataShareExtensionAbility":
         return mockDataShareExtensionAbility();
+      case "application.EnvironmentCallback":
+        return mockEnvironmentCallback();
       case "application.missionManager":
         return mockMissionManager();
-      case "application.ServiceExtAbility":
-        return mockServiceExtAbility();
       case "application.UriPermissionManager":
         return mockUriPermissionManager();
       case "commonEvent":
@@ -353,6 +395,8 @@ export function mockRequireNapiFun() {
         return mockHidebug();
       case "hiTraceChain":
         return mockHiTraceChain();
+      case "faultLogger":
+        return mockFaultLogger();
       case "tv":
         return mockTv();
       case "dtv":
@@ -387,6 +431,8 @@ export function mockRequireNapiFun() {
         return mockSensor();
       case "wifi":
         return mockWifi();
+      case "wifiext":
+          return mockWifiExt();
       case "usb":
         return mockUsb();
       case "bundle":
@@ -405,13 +451,13 @@ export function mockRequireNapiFun() {
         return mockConvertXml();
       case "statfs":
         return mockStatfs();
-      case "filemanager":
+      case "fileManager":
         return mockFileManager();
       case "environment":
         return mockEnvironment();
-      case "storagestatistics":
+      case "storageStatistics":
         return mockStorageStatistics();
-      case "volumemanager":
+      case "volumeManager":
         return mockVolumeManager();
       case "settings":
         return mockSettings();
@@ -425,7 +471,7 @@ export function mockRequireNapiFun() {
         return mockBackgroundTaskManager();
       case "bundleState":
         return mockBundleState();
-      case "securitylabel":
+      case "securityLabel":
         return mockSecurityLabel();
       case "workScheduler":
         return mockWorkScheduler();
@@ -433,6 +479,8 @@ export function mockRequireNapiFun() {
         return mockWorkSchedulerExtensionAbility();
       case "userIAM.userAuth":
         return mockUserAuth();
+      case "userIAM.faceAuth":
+        return mockFaceAuth();  
       case "util.ArrayList":
         return mockArrayList();
       case "util.Deque":
@@ -467,6 +515,8 @@ export function mockRequireNapiFun() {
         return mockMultimediaMedia();
       case "multimedia.image":
         return mockMultimediaImage();
+      case "multimedia.avsession":
+        return mockMultimediaAVSession();
       case "multimedia.camera":
         return mockMultimediaCamera();
       case "multimedia.audio":
@@ -491,8 +541,18 @@ export function mockRequireNapiFun() {
         return mockMouseEvent();
       case "multimodalInput.touchEvent":
         return mockTouchEvent();
+      case "accessibility":
+        return mockAccessibility();
+      case "accessibility.config":
+        return mockAccessibilityConfig();
+      case "application.AccessibilityExtensionAbility":
+        return mockAccessibilityExtensionAbility();
       case "continuation.continuationManager":
         return mockContinationManager();
+      case "uitest":
+        return mockUiTest();
+      case "animation.windowAnimationManager":
+        return mockWindowAnimationManager();
       default:
         return global.requireNapiPreview(...args);
     }

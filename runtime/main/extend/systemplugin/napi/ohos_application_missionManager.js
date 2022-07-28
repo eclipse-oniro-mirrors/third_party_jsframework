@@ -14,30 +14,11 @@
  */
 
 import { paramMock } from "../utils"
-import { PixelMapMock } from "../multimedia"
+import { MissionInfo as _MissionInfo } from "./application/MissionInfo"
+import { MissionSnapshot as _MissionSnapshot } from "./application/MissionSnapshot"
+import { MissionListener as _MissionListener } from "./application/MissionListener"
 
 export function mockMissionManager() {
-  const MissionInfoMock = {
-    missionId: '[PC preview] unknown missionId',
-    runningState: '[PC preview] unknown runningState',
-    lockedState: '[PC preview] unknown lockedState',
-    timestamp: '[PC preview] unknown timestamp',
-    want: '[PC preview] unknown want', 
-    label: '[PC preview] unknown label',
-    iconPath: '[PC preview] unknown iconPath',
-    continuable: '[PC preview] unknown continuable'
-  }
-  const ElementNameMock = {
-    deviceId: '[PC preview] unknown deviceId',
-    bundleName: '[PC preview] unknown bundleName',
-    abilityName: '[PC preview] unknown abilityName',
-    uri: '[PC preview] unknown uri',
-    shortName: '[PC preview] unknown shortName'
-  }
-  const MissionSnapshotMock = {
-    abality: ElementNameMock,
-    snapshot: PixelMapMock,
-  }
   const missionManager = {
     registerMissionListener: function (...args) {
       console.warn("missionManager.registerMissionListener interface mocked in the Previewer. How this interface works on the Previewer" +
@@ -61,10 +42,10 @@ export function mockMissionManager() {
         ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, MissionInfoMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, _MissionInfo);
       } else {
         return new Promise((resolve) => {
-          resolve(MissionInfoMock);
+          resolve(_MissionInfo);
         });
       }
     },
@@ -73,10 +54,10 @@ export function mockMissionManager() {
         ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, [MissionInfoMock]);
+        args[len - 1].call(this, paramMock.businessErrorMock, [_MissionInfo]);
       } else {
         return new Promise((resolve) => {
-          resolve([MissionInfoMock]);
+          resolve([_MissionInfo]);
         });
       }
     },
@@ -85,10 +66,22 @@ export function mockMissionManager() {
         ' Previewer may be different from that on a real device.');
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, MissionSnapshotMock);
+        args[len - 1].call(this, paramMock.businessErrorMock, _MissionSnapshot);
       } else {
         return new Promise((resolve) => {
-          resolve(MissionSnapshotMock);
+          resolve(_MissionSnapshot);
+        });
+      }
+    },
+    getLowResolutionMissionSnapShot: function (...args) {
+      console.warn('missionManager.getLowResolutionMissionSnapShot interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, _MissionSnapshot);
+      } else {
+        return new Promise((resolve) => {
+          resolve(_MissionSnapshot);
         });
       }
     },
@@ -151,7 +144,10 @@ export function mockMissionManager() {
           resolve();
         });
       }
-    }
+    },
+    MissionInfo: _MissionInfo,
+    MissionListener: _MissionListener,
+    MissionSnapshot: _MissionSnapshot
   }
   return missionManager
 }

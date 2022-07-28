@@ -14,9 +14,24 @@
  */
 
 import { paramMock } from "../utils"
-
+export const DataFlowType = {
+  DATA_FLOW_TYPE_NONE: 0,
+  DATA_FLOW_TYPE_DOWN: 1,
+  DATA_FLOW_TYPE_UP: 2,
+  DATA_FLOW_TYPE_UP_DOWN: 3,
+  DATA_FLOW_TYPE_DORMANT: 4,
+};
+export const DataConnectState = {
+  DATA_STATE_UNKNOWN: -1,
+  DATA_STATE_DISCONNECTED: 0,
+  DATA_STATE_CONNECTING: 1,
+  DATA_STATE_CONNECTED: 2,
+  DATA_STATE_SUSPENDED: 3,
+};
 export function mockData() {
   const data = {
+    DataFlowType,
+    DataConnectState,
     getDefaultCellularDataSlotId: function (...args) {
       console.warn("telephony.data.getDefaultCellularDataSlotId interface mocked in the Previewer. How this interface works on the Previewer may" +
         " be different from that on a real device.")

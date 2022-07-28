@@ -15,6 +15,15 @@
 
 import { paramMock } from "../utils"
 
+const ValueTypes = '[PC Preview] unknow value type'
+
+const StorageObserver = {
+  key: '[PC Preview] unknown key'
+};
+const MAX_KEY_LENGTH = 80;
+
+const MAX_VALUE_LENGTH = 8192;
+
 export function mockDataStorage() {
   const storage = {
     storageMock,
@@ -72,17 +81,17 @@ export function mockDataStorage() {
     getSync: function () {
       console.warn("Storage.getSync interface mocked in the Previewer. How this interface works on the Previewer may" +
         " be different from that on a real device.")
-      return paramValueTypeMock
+      return ValueTypes
     },
     get: function (...args) {
       console.warn("Storage.get interface mocked in the Previewer. How this interface works on the Previewer may be" +
         " different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMock, paramValueTypeMock)
+        args[len - 1].call(this, paramMock.businessErrorMock, ValueTypes)
       } else {
         return new Promise((resolve) => {
-          resolve(paramValueTypeMock)
+          resolve(ValueTypes)
         })
       }
     },
@@ -171,13 +180,13 @@ export function mockDataStorage() {
       console.warn("Storage.on interface mocked in the Previewer. How this interface works on the Previewer may be" +
         " different from that on a real device.")
       const len = args.length
-      args[len - 1].call(this, storageObserverMock)
+      args[len - 1].call(this, StorageObserver)
     },
     off: function (...args) {
       console.warn("Storage.off interface mocked in the Previewer. How this interface works on the Previewer may be" +
         " different from that on a real device.")
       const len = args.length
-      args[len - 1].call(this, storageObserverMock)
+      args[len - 1].call(this, storageObserver)
     }
   }
   return storage

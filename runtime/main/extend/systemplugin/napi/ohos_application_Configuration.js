@@ -19,4 +19,8 @@ export const Configuration = {
     direction: Direction,
     screenDensity: ScreenDensity,
     displayId: '[PC preview] unknow displayId',
+    hasPointerDevice: '[PC preview] unknow hasPointerDevice',
+}
+export function mockConfiguration() {
+    return Configuration;
 }

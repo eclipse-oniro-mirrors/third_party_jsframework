@@ -21,5 +21,5 @@ export const CommonEventPublishData = {
     subscriberPermissions: [paramMock.paramStringMock],
     isOrdered: '[PC preview] unknow isOrdered',
     isSticky: '[PC preview] unknow isSticky',
-    parameters: {}
+    parameters: {"key": "unknown any"},
 }

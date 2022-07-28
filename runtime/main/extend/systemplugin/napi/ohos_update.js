@@ -142,10 +142,10 @@ export function mockUpdate() {
             " Previewer may be different from that on a real device.")
             const len = args.length
             if (len > 0 && typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+                args[len - 1].call(this, paramMock.businessErrorMock);
             } else {
                 return new Promise((resolve, reject) => {
-                    resolve(paramMock.paramNumberMock);
+                    resolve();
                 })
             }
         },
@@ -198,10 +198,10 @@ export function mockUpdate() {
             " works on the Previewer may be different from that on a real device.")
             const len = args.length
             if (len > 0 && typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+                args[len - 1].call(this, paramMock.businessErrorMock);
             } else {
                 return new Promise((resolve, reject) => {
-                    resolve(paramMock.paramNumberMock);
+                    resolve();
                 })
             }
         },
@@ -246,6 +246,15 @@ export function mockUpdate() {
         UpgradeStatus,
         EventClassify,
         EventId,
+        UpgradeInfo,
+        BusinessType,
+        DownloadOptions,
+        ResumeDownloadOptions,
+        PauseDownloadOptions,
+        UpgradeOptions,
+        ClearOptions,
+        EventClassifyInfo,
+        UpgradeFile,
         getOnlineUpdater: function (...args) {
             console.warn("update.getOnlineUpdater interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
@@ -271,7 +280,6 @@ const BusinessVendor = {
 
 const BusinessSubType = {
     FIRMWARE: 1,
-    PARAM: 2,
 }
 
 const ComponentType = {
@@ -298,12 +306,16 @@ const NetType = {
     CELLULAR: 1,
     METERED_WIFI: 2,
     NOT_METERED_WIFI: 4,
+    WIFI: 6,
+    CELLULAR_AND_WIFI: 7
 }
 
 const Order = {
     DOWNLOAD: 1,
     INSTALL: 2,
+    DOWNLOAD_AND_INSTALL: 3,
     APPLY: 4,
+    INSTALL_AND_APPLY: 6
 }
 
 const UpgradeStatus = {
@@ -412,4 +424,45 @@ const TaskInfo = {
 const EventInfo = {
     eventId: EventId.EVENT_TASK_RECEIVE,
     taskBody: TaskBody,
+}
+
+const UpgradeInfo = {
+    upgradeApp: "[PC Preview] unknown upgradeApp",
+    businessType: BusinessType
+}
+
+const BusinessType = {
+    vendor: BusinessVendor,
+    subType: BusinessSubType
+}
+
+const DownloadOptions = {
+    allowNetwork: NetType,
+    order: Order
+}
+
+const ResumeDownloadOptions = {
+    allowNetwork: NetType
+}
+
+const PauseDownloadOptions = {
+    isAllowAutoResume: true
+}
+
+const UpgradeOptions = {
+    order: Order
+}
+
+const ClearOptions = {
+    status: UpgradeStatus
+}
+
+const EventClassifyInfo = {
+    eventClassify: EventClassify,
+    extraInfo: "[PC Preview] unknown extraInfo"
+}
+
+const UpgradeFile = {
+    fileType: ComponentType,
+    filePath: "[PC Preview] unknown filePath"
 }

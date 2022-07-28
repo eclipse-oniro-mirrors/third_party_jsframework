@@ -125,27 +125,27 @@ export function mockLinkedList() {
           " may be different from that on a real device.")
         return paramMock.paramArrayMock;
       };
-    }
-    [Symbol.iterator]() {
-      console.warn("LinkedList.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      let index = 0;
-      const IteratorMock = {
-        next: () => {
-          if (index < 1) {
-            index++;
-            return {
-              value: paramLinkedList.paramAnyMock,
-              done: false
-            };
-          } else {
-            return {
-              done: true
-            };
+      this[Symbol.iterator] = function (...args) {
+        console.warn("LinkedList.[Symbol.iterator] interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        let index = 0;
+        const IteratorMock = {
+          next: () => {
+            if (index < 1) {
+              index++;
+              return {
+                value: paramLinkedList.paramAnyMock,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
           }
-        }
-      };
-      return IteratorMock;
+        };
+        return IteratorMock;
+      }
     }
   }
   return LinkedListClass;

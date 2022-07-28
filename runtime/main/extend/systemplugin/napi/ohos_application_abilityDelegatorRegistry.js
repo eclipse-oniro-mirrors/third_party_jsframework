@@ -13,8 +13,10 @@
  * limitations under the License.
  */
 
-import { AbilityDelegator } from "./application/abilityDelegator"
-import { AbilityDelegatorArgs } from "./application/abilityDelegatorArgs"
+import { AbilityDelegator as _AbilityDelegator} from "./application/abilityDelegator"
+import { AbilityDelegatorArgs as _AbilityDelegatorArgs } from "./application/abilityDelegatorArgs"
+import { AbilityMonitor as _AbilityMonitor } from "./application/abilityMonitor"
+import { ShellCmdResult as _ShellCmdResult } from "./application/shellCmdResult"
 
 export const AbilityLifecycleState = {
   UNINITIALIZED: '[PC preview] unknow UNINITIALIZED',
@@ -29,13 +31,18 @@ export function mockAbilityDelegatorRegistry() {
     getAbilityDelegator: function () {
         console.warn('abilityDelegatorRegistry.getAbilityDelegator interface mocked in the Previewer. How this interface works on the' +
           ' Previewer may be different from that on a real device.');
-        return AbilityDelegator;
+        return _AbilityDelegator;
     },
     getArguments: function () {
         console.warn('abilityDelegatorRegistry.getArguments interface mocked in the Previewer. How this interface works on the' +
           ' Previewer may be different from that on a real device.');
-        return AbilityDelegatorArgs;
+        return _AbilityDelegatorArgs;
     },
+    AbilityLifecycleState,
+    AbilityDelegator: _AbilityDelegator,
+    AbilityDelegatorArgs: _AbilityDelegatorArgs,
+    AbilityMonitor: _AbilityMonitor,
+    ShellCmdResult: _ShellCmdResult
   }
   return abilityDelegatorRegistry
 }

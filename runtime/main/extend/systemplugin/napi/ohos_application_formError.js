@@ -37,3 +37,9 @@ export const FormError = {
     ERR_FORM_DUPLICATE_ADDED: 31,
     ERR_IN_RECOVERY: 36
 }
+export function mockFormError() {
+    const formError = {
+        FormError
+    }
+    return formError;
+}

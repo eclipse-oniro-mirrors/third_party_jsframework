@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 import { ApplicationInfo } from "../bundle/applicationInfo"
-import { BaseContext } from "./BaseContext"
+import { BaseContextClass as  BaseContext } from "./BaseContext"
+
 const ResourceManager = {
     getString: function(...args) {
       console.warn("ResourceManager.getString interface mocked in the Previewer. " +
@@ -280,10 +281,12 @@ export const ContextClass = class Context extends BaseContext {
       this.tempDir = "[PC Preview] unknow tempDir";
       this.filesDir = "[PC Preview] unknow filesDir";
       this.databaseDir = "[PC Preview] unknow databaseDir";
+      this.preferencesDir = "[PC Preview] unknow preferencesDir";
       this.storageDir = "[PC Preview] unknow storageDir";
       this.bundleCodeDir = "[PC Preview] unknow bundleCodeDir";
       this.distributedFilesDir = "[PC Preview] unknow distributedFilesDir";
       this.eventHub = new EventHubClass();
+      this.area = AreaMode;
       this.createBundleContext = function (...args) {
         console.warn("Context.createBundleContext interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")

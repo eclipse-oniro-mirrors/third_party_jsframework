@@ -419,6 +419,9 @@ export function mockNotification() {
         });
       }
     },
+    SlotType,
+    ContentType,
+    SlotLevel,
     subscribe: function (...args) {
       console.warn('notification.subscribe interface mocked in the Previewer. How this interface works on the' +
         ' Previewer may be different from that on a real device.');
@@ -778,7 +781,13 @@ export function mockNotification() {
           resolve(paramMock.paramBooleanMock);
         })
       }
-    }
+    },
+    BundleOption,
+    NotificationKey,
+    DoNotDisturbType,
+    DoNotDisturbDate,
+    DeviceRemindType,
+    SourceType
   }
   return notification
 }

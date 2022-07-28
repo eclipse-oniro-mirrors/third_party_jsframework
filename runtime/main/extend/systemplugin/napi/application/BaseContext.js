@@ -12,7 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-export const BaseContext = {
-    stageMode: "[PC Preview] unknow stageMode",
-}
+export const BaseContextClass = class BaseContext {
+    constructor() {
+        console.warn("BaseContext.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
+            " may be different from that on a real device.");
+        this.stageMode = "[PC Preview] unknow stageMode";
+    }
+};

@@ -39,7 +39,7 @@ export const BundleInfo = {
     installTime: "[PC preview] unknown installTime",
     updateTime: "[PC preview] unknown updateTime",
     appInfo: ApplicationInfo,
-    abilityInfo: [AbilityInfo],
+    abilityInfos: [AbilityInfo],
     reqPermissions: [paramMock.paramStringMock],
     reqPermissionDetails: [ReqPermissionDetail],
     vendor: "[PC preview] unknown vendor",

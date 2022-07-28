@@ -17,22 +17,22 @@ import { paramMock } from "../utils"
 
 export function mockHuks() {
 
-  const HuksParamMock = {
-    tag: '[PC preview] unknow tag',
+  const HuksParam = {
+    tag: huks.HuksTag,
     value: '[PC preview] unknow value',
   }
-  const HuksHandleMock = {
+  const HuksHandle = {
     errorCode: '[PC preview] unknow errorCode',
     handle: '[PC preview] unknow handle',
-    token: '[PC preview] unknow token',
+    token: paramMock.paramArrayMock,
   }
-  const HuksOptionsMock = {
+  const HuksOptions = {
     properties: [HuksParamMock],
-    inData: '[PC preview] unknow inData',
+    inData: paramMock.paramArrayMock,
   }
-  const HuksResultMock = {
+  const HuksResult = {
     errorCode: '[PC preview] unknow errorCode',
-    outData: '[PC preview] unknow outData',
+    outData: paramMock.paramArrayMock,
     properties: [HuksParamMock],
     certChains: [paramMock.paramStringMock],
   }
