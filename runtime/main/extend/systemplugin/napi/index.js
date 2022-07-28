@@ -64,6 +64,7 @@ import { mockHiAppEvent } from './ohos_hiAppEvent'
 import { mockHilog } from './ohos_hilog'
 import { mockHiSysEvent } from './ohos_hiSysEvent'
 import { mockHiTraceChain } from './ohos_hiTraceChain'
+import { mockHiTraceMeter } from './ohos_hiTraceMeter'
 import { mockFaultLogger } from './ohos_faultLogger'
 import { mockTv } from './tv'
 import { mockDtv } from './dtv'
@@ -392,6 +393,8 @@ export function mockRequireNapiFun() {
         return mockHiSysEvent();
       case "hiTraceChain":
         return mockHiTraceChain();
+      case "hiTraceMeter":
+        return mockHiTraceMeter();
       case "faultLogger":
         return mockFaultLogger();
       case "tv":
