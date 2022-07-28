@@ -61,7 +61,42 @@ export function mockAbilityAccessCtrl() {
             return new Promise((resolve, reject) => {
                 resolve(paramMock.paramNumberMock);
             })
+        },
+        on: function (...args) {
+            console.warn("AtManager.on interface mocked in the Previewer." +
+                " How this interface works on the Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, PermStateChangeInfo);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve(PermStateChangeInfo);
+                })
+            }
+        },
+        off: function (...args) {
+            console.warn("AtManager.off interface mocked in the Previewer." +
+                " How this interface works on the Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, PermStateChangeInfo);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve(PermStateChangeInfo);
+                })
+            }
         }
+    };
+    const PermStateChangeType = {
+        PERMISSION_REVOKED_OPER: 0,
+        PERMISSION_GRANTED_OPER: 1
+    };
+
+    const PermStateChangeInfo = {
+        change: PermStateChangeType,
+        tokenID: '[PC Preview] unknown tokenID',
+        permissionName: '[PC Preview] unknown permissionName',
+
     };
     const abilityAccessCtrl = {
         createAtManager : function (...args) {
