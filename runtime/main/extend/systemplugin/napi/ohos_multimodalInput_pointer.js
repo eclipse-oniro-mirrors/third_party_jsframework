@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -45,12 +45,20 @@ export function mockPointer() {
       console.warn("multimodalInput.pointer.isPointerVisible interface mocked in the Previewer." +
         "How this interface works on the" + " Previewer may be different from that on a real device.");
       const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        args[len - 1].call(this, paramMock.businessErrorMoc, paramMock.paramBooleanMock);
-      } else {
+      if (len > 1) {
+        console.warn("parameter number error");
+        return;
+      }
+      if (len == 0) {
         return new Promise((resolve, reject) => {
           resolve(paramMock.paramArrayMock);
         })
+      } else {
+        if (typeof args[0] !== 'function') {
+          console.warn("the first parameter type must be function");
+          return;
+        }
+        args[0].call(this, paramMock.businessErrorMoc, paramMock.paramBooleanMock);
       }
     },
   };
