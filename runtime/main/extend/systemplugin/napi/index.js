@@ -62,6 +62,7 @@ import { mockwebgl2 } from './webgl2'
 import { mockProcess } from './ohos_process'
 import { mockUrl } from './ohos_url'
 import { mockHiAppEvent } from './ohos_hiAppEvent'
+import { mockHiChecker } from './ohos_hichecker'
 import { mockHilog } from './ohos_hilog'
 import { mockHiSysEvent } from './ohos_hiSysEvent'
 import { mockHiTraceChain } from './ohos_hiTraceChain'
@@ -389,6 +390,8 @@ export function mockRequireNapiFun() {
         return mockProcess();
       case "url":
         return mockUrl();
+      case "hichecker":
+        return mockHiChecker();
       case "hiAppEvent":
         return mockHiAppEvent();
       case "hilog":
