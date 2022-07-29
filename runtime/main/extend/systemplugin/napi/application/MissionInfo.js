@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { WantClass } from "../ohos.application.Want"
+import { WantClass } from "../ohos_application_Want"
 
 export const MissionInfo = {
     missionId: '[PC preview] unknow missionId',

@@ -12,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { ExtensionContextClass } from "./abilityContext"
-export const formExtensionContextClass = class formExtensionContext extends ExtensionContextClass {
+import { ExtensionContextClass } from "./ExtensionContext"
+export const FormExtensionContextClass = class FormExtensionContext extends ExtensionContextClass {
     constructor() {
       super();
-      console.warn('formExtensionContext.constructor interface mocked in the Previewer. How this interface works on' +
+      console.warn('FormExtensionContext.constructor interface mocked in the Previewer. How this interface works on' +
         ' the Previewer may be different from that on a real device.');
       this.startAbility = function (...args) {
-        console.warn("formExtensionContext.startAbility interface mocked in the Previewer." +
+        console.warn("FormExtensionContext.startAbility interface mocked in the Previewer." +
           " How this interface works on the Previewer may be different from that on a real device.");
         const len = args.length;
         if (len > 0 && typeof args[len - 1] === 'function') {

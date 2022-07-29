@@ -13,12 +13,17 @@
  * limitations under the License.
  */
 
-export const AppStateDataClass = class AppStateData {
+export const EnvironmentCallbackClass = class EnvironmentCallback {
     constructor() {
-        console.warn("AppStateData.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
-            " may be different from that on a real device.");
-        this.bundleName = "[PC Preview] unknow bundleName";
-        this.uid = "[PC Preview] unknow uid";
-        this.state = "[PC Preview] unknow state";
+      console.warn('EnvironmentCallback.constructor interface mocked in the Previewer. How this interface works on' +
+        ' the Previewer may be different from that on a real device.');
+        this.onConfigurationUpdated = function (...args) {
+            console.warn("EnvironmentCallback.onConfigurationUpdated interface mocked in the Previewer. How this interface works on the Previewer" +
+              " may be different from that on a real device.")
+        };
     }
-};
+}
+
+export function mockEnvironmentCallback() { 
+    return new EnvironmentCallbackClass();
+}

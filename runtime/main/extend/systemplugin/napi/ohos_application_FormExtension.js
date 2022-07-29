@@ -13,54 +13,20 @@
  * limitations under the License.
  */
 
-import { paramMock } from "../utils"
-import { ExtensionContextClass } from "./application/AbilityContext"
 import { FormState } from "./ohos_application_formInfo"
+import { FormExtensionContextClass as FormExtensionContext } from "./application/FormExtensionContext"
+import { FormBindingData } from "./ohos_application_formBindingData"
 
 export function mockFormExtension() {
-  const formBindingDataMock = {
-    data: paramMock.paramObjectMock
-  }
-  const formExtensionContextClass = class formExtensionContext extends ExtensionContextClass {
-    constructor() {
-      super();
-      console.warn('formExtension.formExtensionContext.constructor interface mocked in the Previewer. How this interface works on' +
-        ' the Previewer may be different from that on a real device.');
-      this.updateForm = function (...args) {
-        console.warn("formExtension.formExtensionContext.updateForm interface mocked in the Previewer." +
-          " How this interface works on the Previewer may be different from that on a real device.")
-        const len = args.length
-        if (len > 0 && typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.businessErrorMock);
-        } else {
-          return new Promise((resolve, reject) => {
-            resolve();
-          })
-        }
-      };
-      this.startAbility = function (...args) {
-        console.warn("formExtension.formExtensionContext.startAbility interface mocked in the Previewer." +
-          " How this interface works on the Previewer may be different from that on a real device.");
-        const len = args.length;
-        if (len > 0 && typeof args[len - 1] === 'function') {
-            args[len - 1].call(this, paramMock.businessErrorMock);
-          } else {
-            return new Promise((resolve, reject) => {
-              resolve();
-            })
-          }
-      };
-    }
-  }
   const formExtensionClass = class formExtension {
     constructor() {
       console.warn('application.formExtension.constructor interface mocked in the Previewer. How this interface works on' +
         ' the Previewer may be different from that on a real device.');
-      this.context = new formExtensionContextClass();
+      this.context = new FormExtensionContext();
       this.onCreate = function (...args) {
         console.warn("application.formExtension.onCreate interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
-        return formBindingDataMock
+        return FormBindingData
       };
       this.onCastToNormal = function (...args) {
         console.warn("application.formExtension.onCastToNormal interface mocked in the Previewer. How this interface works on the Previewer" +

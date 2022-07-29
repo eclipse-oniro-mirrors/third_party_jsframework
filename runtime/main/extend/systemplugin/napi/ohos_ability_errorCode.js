@@ -18,3 +18,6 @@ export const ErrorCode = {
     INVALID_PARAMETER: -1,
     NO_ERROR: 0,
 }
+export function mockErrorCode() {
+    return ErrorCode;
+}

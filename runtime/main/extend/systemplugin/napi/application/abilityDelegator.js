@@ -14,7 +14,7 @@
  */
 import { paramMock } from "../../utils"
 import { AbilityClass } from "../ohos_application_Ability"
-import { ContextClass } from "../ohos_application_ServiceExtAbility"
+import { ContextClass } from "./Context"
 import { ShellCmdResult } from "./shellCmdResult"
 
 export const AbilityDelegator = {

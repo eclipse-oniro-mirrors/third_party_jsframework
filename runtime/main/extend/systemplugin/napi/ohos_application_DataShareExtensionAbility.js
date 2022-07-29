@@ -14,8 +14,7 @@
  */
 
 import { paramMock } from "../utils"
-import { ExtensionContextClass } from "./application/AbilityContext"
-import { DataShareResultSetMock } from "./ohos_data_DataShareResultSet"
+import { ExtensionContextClass } from "./application/ExtensionContext"
 
 export function mockDataShareExtensionAbility() {
   const DataShareExtensionAbilityClass = class DataShareExtensionAbility {

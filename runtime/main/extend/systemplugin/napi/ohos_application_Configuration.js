@@ -21,3 +21,6 @@ export const Configuration = {
     displayId: '[PC preview] unknow displayId',
     hasPointerDevice: '[PC preview] unknow hasPointerDevice',
 }
+export function mockConfiguration() {
+    return Configuration;
+}

@@ -20,3 +20,6 @@ export const StartOptionsClass = class StartOptions {
       this.displayId = "[PC Preview] unknow displayId";
     }
 }
+export function mockStartOptions() {
+  return new StartOptionsClass();
+}

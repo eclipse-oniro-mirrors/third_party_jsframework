@@ -14,8 +14,8 @@
  */
 
 import { ContextClass } from "./Context"
-import { HapModuleInfo } from "../bundle/HapModuleInfo"
-import { Configuration } from "../ohos.application.Configuration"
+import { HapModuleInfo } from "../bundle/hapModuleInfo"
+import { Configuration } from "../ohos_application_Configuration"
 
 export const AbilityStageContextClass = class AbilityStageContext extends ContextClass {
     constructor() {

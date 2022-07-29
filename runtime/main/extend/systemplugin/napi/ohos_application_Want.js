@@ -28,4 +28,7 @@ export const WantClass = class Want {
     this.moduleName = "[PC Preview] unknow moduleName";
   }
 }
+export function mockWant() {
+  return new WantClass();
+}
 

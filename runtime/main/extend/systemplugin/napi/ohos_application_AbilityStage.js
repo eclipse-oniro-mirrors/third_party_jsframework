@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { abilityStageContextClass } from "./application/AbilityContext"
+import { AbilityStageContextClass } from "./application/AbilityStageContext"
 import { paramMock } from "../utils"
 
 export function mockAbilityStage() {
@@ -21,7 +21,7 @@ export function mockAbilityStage() {
     constructor() {
       console.warn('application.AbilityStage.constructor interface mocked in the Previewer. How this interface works on' +
         ' the Previewer may be different from that on a real device.');
-      this.context = new abilityStageContextClass();
+      this.context = new AbilityStageContextClass();
       this.onCreate = function () {
         console.warn("application.AbilityStage.onCreate interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
