@@ -184,7 +184,15 @@ export function mockDeviceManager() {
     }
   }
   const deviceManager = {
-    deviceManagerMock,
+    DeviceType,
+    DeviceStateChangeAction,
+    DiscoverMode,
+    ExchangeMedium,
+    ExchangeFreq,
+    SubscribeCap,
+    SubscribeInfo,
+    AuthParam,
+    AuthInfo,
     createDeviceManager: function (...args) {
       console.warn("distributedHardware.deviceManager.createDeviceManager interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
