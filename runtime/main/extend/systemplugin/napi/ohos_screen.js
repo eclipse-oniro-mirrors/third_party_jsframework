@@ -20,10 +20,7 @@ export const Orientation = {
   VERTICAL: 1,
   HORIZONTAL: 2,
   REVERSE_VERTICAL: 3,
-  REVERSE_HORIZONTAL: 4,
-  SENSOR: 5,
-  SENSOR_VERTICAL: 6,
-  SENSOR_HORIZONTAL: 7
+  REVERSE_HORIZONTAL: 4
 };
 
 export const Screen = {
