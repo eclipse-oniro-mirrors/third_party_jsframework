@@ -25,6 +25,7 @@ export function mockRequest() {
     networkType: "[PC Preview] unknow networkType",
     filePath: "[PC Preview] unknow filePath",
     title: "[PC Preview] unknow title",
+    background: "[PC Preview] unknow background",
   };
 
   const DownloadInfo = {
