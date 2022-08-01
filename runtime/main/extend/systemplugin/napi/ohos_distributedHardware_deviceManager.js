@@ -55,7 +55,8 @@ export function mockDeviceManager() {
     deviceId: "[PC Preview] unknow mDeviceId",
     deviceName: "[PC Preview] unknow mDeviceName",
     deviceType: DeviceType,
-    networkId: "[PC Preview] unknow mNetworkId"
+    networkId: "[PC Preview] unknow mNetworkId",
+    range: "[PC Preview] unknow mRange"
   }
   const deviceStateChangeMock = {
     action: 0,
