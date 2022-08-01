@@ -16,15 +16,68 @@
 import { paramMock } from "../utils"
 
 export function mockDeviceManager() {
+  const DeviceType = {
+    UNKNOWN_TYPE: 0,
+    SPEAKER: 0x0A,
+    PHONE: 0x0E,
+    TABLET: 0x11,
+    WEARABLE: 0x6D,
+    CAR: 0x83,
+    TV: 0x9C
+  }
+  const DeviceStateChangeAction = {
+    ONLINE: 0,
+    READY: 1,
+    OFFLINE: 2,
+    CHANGE: 3
+  }
+  const DiscoverMode = {
+    DISCOVER_MODE_PASSIVE: 0x55,
+    DISCOVER_MODE_ACTIVE: 0xAA
+  }
+  const ExchangeMedium = {
+    AUTO: 0,
+    BLE: 1,
+    COAP: 2,
+    USB: 3
+  }
+  const ExchangeFreq = {
+    LOW: 0,
+    MID: 1,
+    HIGH: 2,
+    SUPER_HIGH: 3
+  }
+  const SubscribeCap = {
+    SUBSCRIBE_CAPABILITY_DDMP: 0,
+    SUBSCRIBE_CAPABILITY_OSD: 1
+  }
   const deviceInfoMock = {
     deviceId: "[PC Preview] unknow mDeviceId",
     deviceName: "[PC Preview] unknow mDeviceName",
-    deviceType: 0x0E,
+    deviceType: DeviceType,
     networkId: "[PC Preview] unknow mNetworkId"
   }
   const deviceStateChangeMock = {
     action: 0,
     device: deviceInfoMock
+  }
+  const SubscribeInfo = {
+    subscribeId: "[PC Preview] unknow mSubscribeId",
+    mode: DiscoverMode,
+    medium: ExchangeMedium,
+    freq: ExchangeFreq,
+    isSameAccount: "[PC Preview] unknow mIsSameAccount",
+    isWakeRemote: "[PC Preview] unknow mIsWakeRemote",
+    capability: SubscribeCap
+  }
+  const AuthParam = {
+    authType: "[PC Preview] unknow mAuthType",
+    extraInfo: {"key":"unknow any"}
+  }
+  const AuthInfo = {
+    authType: "[PC Preview] unknow mAuthType",
+    token: "[PC Preview] unknow mToken",
+    extraInfo: {"key":"unknow any"}
   }
   const deviceManagerMock = {
     release: function () {
@@ -131,7 +184,15 @@ export function mockDeviceManager() {
     }
   }
   const deviceManager = {
-    deviceManagerMock,
+    DeviceType,
+    DeviceStateChangeAction,
+    DiscoverMode,
+    ExchangeMedium,
+    ExchangeFreq,
+    SubscribeCap,
+    SubscribeInfo,
+    AuthParam,
+    AuthInfo,
     createDeviceManager: function (...args) {
       console.warn("distributedHardware.deviceManager.createDeviceManager interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.")
