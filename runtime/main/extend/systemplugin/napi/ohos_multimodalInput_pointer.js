@@ -38,28 +38,20 @@ export function mockPointer() {
           console.warn("the second parameter type must be function");
           return;
         }
-        args[1].call(this, paramMock.businessErrorMoc);
+        args[1].call(this, paramMock.businessErrorMock);
       }
     },
     isPointerVisible: function (...args) {
       console.warn("multimodalInput.pointer.isPointerVisible interface mocked in the Previewer." +
         "How this interface works on the" + " Previewer may be different from that on a real device.");
-      const len = args.length
-      if (len > 1) {
-        console.warn("parameter number error");
-        return;
-      }
-      if (len == 0) {
-        return new Promise((resolve, reject) => {
-          resolve(paramMock.paramArrayMock);
-        })
-      } else {
-        if (typeof args[0] !== 'function') {
-          console.warn("the first parameter type must be function");
-          return;
+        const len = args.length
+        if (typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
+        } else {
+          return new Promise((resolve) => {
+            resolve(paramMock.paramBooleanMock)
+          })
         }
-        args[0].call(this, paramMock.businessErrorMoc, paramMock.paramBooleanMock);
-      }
     },
   };
   return pointer
