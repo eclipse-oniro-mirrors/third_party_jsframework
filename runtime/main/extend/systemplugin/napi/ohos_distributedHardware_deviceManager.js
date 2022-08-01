@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -55,7 +55,8 @@ export function mockDeviceManager() {
     deviceId: "[PC Preview] unknow mDeviceId",
     deviceName: "[PC Preview] unknow mDeviceName",
     deviceType: DeviceType,
-    networkId: "[PC Preview] unknow mNetworkId"
+    networkId: "[PC Preview] unknow mNetworkId",
+    range: "[PC Preview] unknow mRange"
   }
   const deviceStateChangeMock = {
     action: 0,
@@ -69,6 +70,12 @@ export function mockDeviceManager() {
     isSameAccount: "[PC Preview] unknow mIsSameAccount",
     isWakeRemote: "[PC Preview] unknow mIsWakeRemote",
     capability: SubscribeCap
+  }
+  const PublishInfo = {
+    publishId: "[PC Preview] unknow mPublishId",
+    mode: DiscoverMode,
+    freq: ExchangeFreq,
+    ranging : "[PC Preview] unknow mRanging"
   }
   const AuthParam = {
     authType: "[PC Preview] unknow mAuthType",
@@ -130,6 +137,14 @@ export function mockDeviceManager() {
       console.warn("DeviceManager.stopDeviceDiscovery interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
     },
+    publishDeviceDiscovery: function (...args) {
+      console.warn("DeviceManager.publishDeviceDiscovery interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    },
+    unPublishDeviceDiscovery: function (...args) {
+      console.warn("DeviceManager.unPublishDeviceDiscovery interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    },
     authenticateDevice: function (...args) {
       console.warn("DeviceManager.authenticateDevice interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
@@ -173,6 +188,15 @@ export function mockDeviceManager() {
             subscribeId: "[PC Preview] unknow subscribeId",
             reason: "[PC Preview] unknow reason"
           });
+        } else if (args[0] == 'publishSuccess') {
+          args[len - 1].call(this, paramMock.businessErrorMock, {
+            publishId: "[PC Preview] unknow publishId",
+          });
+        } else if (args[0] == 'publishFail') {
+          args[len - 1].call(this, paramMock.businessErrorMock, {
+            publishId: "[PC Preview] unknow publishId",
+            reason: "[PC Preview] unknow reason"
+          });
         } else {
           args[len - 1].call(this);
         }
@@ -191,6 +215,7 @@ export function mockDeviceManager() {
     ExchangeFreq,
     SubscribeCap,
     SubscribeInfo,
+    PublishInfo,
     AuthParam,
     AuthInfo,
     createDeviceManager: function (...args) {
