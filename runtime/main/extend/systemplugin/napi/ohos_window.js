@@ -349,6 +349,10 @@ export const Window = {
       })
     }
   },
+  setSnapshotSkip: function(...args) {
+    console.warn("Window.setSnapshotSkip interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  },
   setSystemBarEnable: function(...args) {
     console.warn("Window.setSystemBarEnable interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
