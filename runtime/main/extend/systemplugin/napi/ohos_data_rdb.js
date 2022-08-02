@@ -264,7 +264,7 @@ export function mockRdb() {
         })
       }
     },
-	remoteQuery: function (...args) {
+    remoteQuery: function (...args) {
       console.warn("RdbStore.remoteQuery interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
