@@ -41,6 +41,18 @@ export function mockUpdate() {
                 })
             }
         },
+        getNewVersionDescription: function (...args) {
+            console.warn("Updater.getNewVersionDescription interface mocked in the Previewer. How this interface works" +
+            " on the Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, [ComponentDescription]);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve([ComponentDescription]);
+                })
+            }
+        },
         getCurrentVersionInfo: function (...args) {
             console.warn("Updater.getCurrentVersionInfo interface mocked in the Previewer. How this interface works" +
             " on the Previewer may be different from that on a real device.")
@@ -50,6 +62,18 @@ export function mockUpdate() {
             } else {
                 return new Promise((resolve, reject) => {
                     resolve(CurrentVersionInfo);
+                })
+            }
+        },
+        getCurrentVersionDescription: function (...args) {
+            console.warn("Updater.getCurrentVersionDescription interface mocked in the Previewer. How this interface works" +
+            " on the Previewer may be different from that on a real device.")
+            const len = args.length
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                args[len - 1].call(this, paramMock.businessErrorMock, [ComponentDescription]);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve([ComponentDescription]);
                 })
             }
         },
@@ -255,6 +279,8 @@ export function mockUpdate() {
         ClearOptions,
         EventClassifyInfo,
         UpgradeFile,
+        DescriptionOptions,
+        DescriptionFormat,
         getOnlineUpdater: function (...args) {
             console.warn("update.getOnlineUpdater interface mocked in the Previewer. How this interface works on the" +
             " Previewer may be different from that on a real device.")
@@ -365,6 +391,7 @@ const DescriptionInfo = {
 }
 
 const VersionComponent = {
+    componentId: "[PC Preview] unknown componentId",
     componentType: ComponentType.OTA,
     upgradeAction: UpgradeAction.UPGRADE,
     displayVersion: "[PC Preview] unknown displayVersion",
@@ -465,4 +492,19 @@ const EventClassifyInfo = {
 const UpgradeFile = {
     fileType: ComponentType,
     filePath: "[PC Preview] unknown filePath"
+}
+
+const DescriptionOptions = {
+    format: DescriptionFormat,
+    language: "[PC Preview] unknown language",
+}
+
+const ComponentDescription = {
+    componentId: "[PC Preview] unknown componentId",
+    descriptionInfo: DescriptionInfo,
+}
+
+const DescriptionFormat = {
+    STANDARD: 0,
+    SIMPLIFIED : 1,
 }

@@ -16,47 +16,43 @@
 import { paramMock } from "../utils"
 
 export function mockUri() {
-  const uri = {
-    URI: function (...args) {
-      console.warn("uri.URI interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return URIMock;
-    }
-  }
-  const URIMock = {
+  const URIClass = class URI {
     constructor(...args) {
       console.warn("uri.URI.constructor interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-	},
-    toString: function (...args) {
-      console.warn("URI.toString interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramStringMock;
-    },
-    equals: function (...args) {
-      console.warn("URI.equals interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    checkIsAbsolute: function (...args) {
-      console.warn("URI.checkIsAbsolute interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramBooleanMock;
-    },
-    normalize: function (...args) {
-      console.warn("URI.normalize interface mocked in the Previewer. How this interface works on the Previewer" +
-        " may be different from that on a real device.")
-      return paramMock.paramObjectMock;
-    },
-    scheme: '[PC preview] unknow scheme',
-    userInfo: '[PC preview] unknow userInfo',
-    host: '[PC preview] unknow host',
-    port: '[PC preview] unknow port',
-    path: '[PC preview] unknow path',
-    query: '[PC preview] unknow query',
-    fragment: '[PC preview] unknow fragment',
-    authority: '[PC preview] unknow authority',
-    ssp: '[PC preview] unknow ssp'
-  }
-  return uri;
+        " may be different from that on a real device.");
+      this.toString = function (...args) {
+        console.warn("URI.toString interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.");
+        return paramMock.paramStringMock;
+      };
+      this.equals = function (...args) {
+        console.warn("URI.equals interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.");
+        return paramMock.paramBooleanMock;
+      };
+      this.checkIsAbsolute = function (...args) {
+        console.warn("URI.checkIsAbsolute interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.");
+        return paramMock.paramBooleanMock;
+      };
+      this.normalize = function (...args) {
+        console.warn("URI.normalize interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.");
+        return new URIClass();
+      };
+      this.scheme = '[PC preview] unknow scheme';
+      this.userInfo = '[PC preview] unknow userInfo';
+      this.host = '[PC preview] unknow host';
+      this.port = '[PC preview] unknow port';
+      this.path = '[PC preview] unknow path';
+      this.query = '[PC preview] unknow query';
+      this.fragment = '[PC preview] unknow fragment';
+      this.authority = '[PC preview] unknow authority';
+      this.ssp = '[PC preview] unknow ssp';
+   }
+  };
+  const uriMock = {
+    URI : URIClass
+  };
+  return uriMock;
 }

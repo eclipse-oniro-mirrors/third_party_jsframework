@@ -27,6 +27,7 @@ export function mockOsAccount() {
     lastLoginTime: "[PC Preview] unknown lastLoginTime",
     serialNumber: "[PC Preview] unknown serialNumber",
     isActived: "[PC Preview] unknown isActived",
+    isCreateCompleted: "[PC Preview] unknown isCreateCompleted",
     domainInfo: "[PC Preview] unknown domainInfo",
     distributedInfo: "[PC Preview] unknown distributedInfo"
   };
@@ -56,7 +57,7 @@ export function mockOsAccount() {
   const AuthResult = {
     token: "[PC Preview] unknown token",
     remainTimes: "[PC Preview] unknown remainTimes",
-    ferezingTime: "[PC Preview] unknown freezingTime"
+    freezingTime: "[PC Preview] unknown freezingTime"
   };
   const CredentialInfo = {
     credType: "[PC Preview] unknown credType",
@@ -508,16 +509,18 @@ export function mockOsAccount() {
           "How this interface works on the Previewer may be different from that on a real device.")
         const len = args.length
         if (len > 0 && typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock);
+          args[len - 1].call(this, paramMock.businessErrorMock, IUserAuthCallback);
         } 
+        return paramMock.paramArrayMock;
       };
-      this.anthUser = function (...args) {
-        console.warn("UserAuth.anthUser interface mocked in the Previewer. " +
+      this.authUser = function (...args) {
+        console.warn("UserAuth.authUser interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
         const len = args.length
         if (len > 0 && typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock);
-        } 
+          args[len - 1].call(this, paramMock.businessErrorMock, IUserAuthCallback);
+        }
+        return paramMock.paramArrayMock;
       };
       this.cancelAuth = function (...args) {
         console.warn("UserAuth.cancelAuth interface mocked in the Previewer. " +
@@ -601,13 +604,15 @@ export function mockOsAccount() {
       this.getAuthInfo = function (...args) {
         console.warn("AUserIdentityManager.getAuthInfo interface mocked in the Previewer. " +
           "How this interface works on the Previewer may be different from that on a real device.")
+        var EnrolledCredInfoMock = new Array();
+        EnrolledCredInfoMock.push(EnrolledCredInfo);
         const len = args.length
         if (len > 0 && typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.businessErrorMock, new Array(EnrolledCredInfo));
+          args[len - 1].call(this, paramMock.businessErrorMock, EnrolledCredInfoMock);
         } else {
           return new Promise((resolve, reject) => {
-            resolve(new Array(EnrolledCredInfo))
-        })
+            resolve(EnrolledCredInfoMock)
+          })
         }
       };
     };
@@ -619,8 +624,8 @@ export function mockOsAccount() {
     },
   };
   const IInputer = {
-    onSetData: function (...args) {
-      console.warn("IInputer.onSetData interface mocked in the Previewer. " +
+    onGetData: function (...args) {
+      console.warn("IInputer.onGetData interface mocked in the Previewer. " +
         "How this interface works on the Previewer may be different from that on a real device.")
     },
   };

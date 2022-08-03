@@ -14,6 +14,7 @@
  */
 
 import { mockSystemParameter } from './ohos_systemparameter'
+import { mockSystemCapability } from './ohos_systemCapability'
 import { mockAbility } from './ohos_application_Ability'
 import { mockErrorCode } from './ohos_ability_errorCode'
 import { mockFeatureAbility } from './ohos_ability_featureAbility'
@@ -61,9 +62,13 @@ import { mockwebgl2 } from './webgl2'
 import { mockProcess } from './ohos_process'
 import { mockUrl } from './ohos_url'
 import { mockHiAppEvent } from './ohos_hiAppEvent'
+import { mockHiChecker } from './ohos_hichecker'
 import { mockHilog } from './ohos_hilog'
 import { mockHiSysEvent } from './ohos_hiSysEvent'
 import { mockHiTraceChain } from './ohos_hiTraceChain'
+import { mockHiTraceMeter } from './ohos_hiTraceMeter'
+import { mockHidebug } from './ohos_hidebug'
+import { mockFaultLogger } from './ohos_faultLogger'
 import { mockTv } from './tv'
 import { mockDtv } from './dtv'
 import { mockDistributedAccount } from './ohos_account_distributedAccount'
@@ -289,6 +294,8 @@ export function mockRequireNapiFun() {
         return mockBluetooth();
       case "batteryinfo":
         return mockBatteryinfo();
+      case "systemCapability":
+        return mockSystemCapability();
       case "systemParameter":
         return mockSystemParameter();
       case "ability.errorCode":
@@ -383,14 +390,22 @@ export function mockRequireNapiFun() {
         return mockProcess();
       case "url":
         return mockUrl();
+      case "hichecker":
+        return mockHiChecker();
       case "hiAppEvent":
         return mockHiAppEvent();
       case "hilog":
         return mockHilog();
       case "hiSysEvent":
         return mockHiSysEvent();
+      case "hidebug":
+        return mockHidebug();
       case "hiTraceChain":
         return mockHiTraceChain();
+      case "hiTraceMeter":
+        return mockHiTraceMeter();
+      case "faultLogger":
+        return mockFaultLogger();
       case "tv":
         return mockTv();
       case "dtv":

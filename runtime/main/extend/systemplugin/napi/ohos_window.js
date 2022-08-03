@@ -14,6 +14,7 @@
  */
 
 import { paramMock } from "../utils"
+import { PixelMapMock } from "./ohos_multimedia_image"
 
 export const WindowType = {
   TYPE_APP: 0,
@@ -544,6 +545,7 @@ export const Window = {
     if (typeof args[len - 1] === 'function') {
       if (args[0] === 'keyboardHeightChange'|| args[0] === 'systemAvoidAreaChange'
         || args[0] === 'windowSizeChange'|| args[0] === 'touchOutside'|| args[0] === 'avoidAreaChange'
+        || args[0] === 'screenshot' || args[0] === 'dialogTargetTouch'
       ){
         console.warn(`Window.on you has registered ${args[0]} event`)
       } else {
@@ -560,6 +562,7 @@ export const Window = {
     if (typeof args[len - 1] === 'function') {
       if (args[0] === 'keyboardHeightChange'|| args[0] === 'systemAvoidAreaChange'
         || args[0] === 'windowSizeChange'|| args[0] === 'touchOutside'|| args[0] === 'avoidAreaChange'
+        || args[0] === 'screenshot' || args[0] === 'dialogTargetTouch'
       ){
         console.warn(`Window.off you has registered ${args[0]} event`)
       } else {
@@ -602,6 +605,33 @@ export const Window = {
     } else {
       return new Promise((resolve) => {
         resolve(paramMock.paramBooleanMock)
+      })
+    }
+  },
+  snapshot: function (...args) {
+    console.warn("Window.snapshot interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock, PixelMapMock)
+    } else {
+      return new Promise((resolve, reject) => {
+        resolve(PixelMapMock)
+      })
+    }
+  },
+  bindDialogTarget: function(...args) {
+    console.warn("Window.bindDialogTarget interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+    const len = args.length
+    /* 参数带有function,需特殊判断,原型如下 */
+    /* bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>): Promise<void>; */
+    /* bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>, callback: AsyncCallback<void>); */
+    if (typeof args[len - 2] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock)
+    } else {
+      return new Promise((resolve) => {
+        resolve()
       })
     }
   },
