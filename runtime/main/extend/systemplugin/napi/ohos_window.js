@@ -30,7 +30,10 @@ export const WindowType = {
   TYPE_LAUNCHER_RECENT: 11,
   TYPE_LAUNCHER_DOCK: 12,
   TYPE_VOICE_INTERACTION: 13,
-  TYPE_POINTER: 14
+  TYPE_POINTER: 14,
+  TYPE_FLOAT_CAMERA: 15,
+  TYPE_DIALOG: 16,
+  TYPE_SCREENSHOT: 17
 }
 
 export const AvoidAreaType= {
@@ -285,6 +288,10 @@ export const Window = {
         resolve()
       })
     }
+  },
+  setWakeUpScreen: function(...args) {
+    console.warn("Window.setWakeUpScreen interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
   },
   setDimBehind: function(...args) {
     console.warn("Window.setDimBehind interface mocked in the Previewer. How this interface works on the" +
