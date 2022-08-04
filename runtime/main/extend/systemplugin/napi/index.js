@@ -186,6 +186,7 @@ import { mockTouchEvent } from './ohos_multimodalInput_touchEvent'
 import { mockUiAppearance } from './ohos_uiAppearance'
 import { mockContinationManager } from './ohos_continuation_continuationManager'
 import { mockUiTest } from './ohos_uitest'
+import { mockBuffer } from './ohos_buffer'
 import { mockWindowAnimationManager } from './ohos_animation_windowAnimationManager'
 import { mockAccessibility } from './ohos_accessibility'
 import { mockAccessibilityConfig } from './ohos_accessibility_config'
@@ -545,6 +546,8 @@ export function mockRequireNapiFun() {
         return mockContinationManager();
       case "uitest":
         return mockUiTest();
+      case "buffer":
+        return mockBuffer();
       case "animation.windowAnimationManager":
         return mockWindowAnimationManager();
       default:
