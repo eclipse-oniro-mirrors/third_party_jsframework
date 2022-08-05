@@ -21,24 +21,12 @@ export function mockPointer() {
       console.warn("multimodalInput.pointer.setPointerVisible interface mocked in the Previewer." +
         "How this interface works on the" + " Previewer may be different from that on a real device.");
       const len = args.length;
-      if (len < 1 || len > 2) {
-        console.warn("parameter number error");
-        return;
-      }
-      if (typeof args[0] !== 'boolean') {
-        console.warn("the first parameter error");
-        return;
-      }
-      if (len == 1) {
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
         return new Promise((resolve, reject) => {
           resolve();
         })
-      } else {
-        if (typeof args[1] !== 'function') {
-          console.warn("the second parameter type must be function");
-          return;
-        }
-        args[1].call(this, paramMock.businessErrorMock);
       }
     },
     isPointerVisible: function (...args) {
