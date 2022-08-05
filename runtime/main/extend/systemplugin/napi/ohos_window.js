@@ -630,6 +630,26 @@ export const Window = {
       })
     }
   },
+  setBlur: function() {
+    console.warn("Window.setBlur interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  },
+  setBackdropBlur: function() {
+    console.warn("Window.setBackdropBlur interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  },
+  setBackdropBlurStyle: function() {
+    console.warn("Window.setBackdropBlurStyle interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  },
+  setShadow: function() {
+    console.warn("Window.setShadow interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  },
+  setCornerRadius: function() {
+    console.warn("Window.setCornerRadius interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  },
 }
 
 export const windowMock = Window
@@ -637,6 +657,12 @@ export const windowMock = Window
 export function mockWindow() {
 
   const window =  {
+    BlurStyle: {
+      OFF: 0,
+      THIN: 1,
+      REGULAR: 2,
+      THICK: 3
+    },
     getTopWindow: function(...args) {
       console.warn("Window.getTopWindow interface mocked in the Previewer. How this interface works on the Previewer" +
         "may be different from that on a real device.")
