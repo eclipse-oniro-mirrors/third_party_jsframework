@@ -18,7 +18,7 @@ export const MemLevel = {
     MEM_LEVEL_DEFAULT: 8
 };
 export const ErrorCode = {
-    ERROR_CODE_OK: 1,
+    ERROR_CODE_OK: 0,
     ERROR_CODE_ERRNO: -1,
 };
 export const CompressLevel = {
