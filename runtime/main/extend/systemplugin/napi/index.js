@@ -164,6 +164,7 @@ import { mockWindow } from './ohos_window'
 import { mockAppAccount } from './ohos_account_appAccount'
 import { mockOhosGeolocation } from './ohos_geolocation'
 import { mockInputMonitor } from './ohos_multimodalInput_inputMonitor'
+import { mockPointer } from './ohos_multimodalInput_pointer'
 import { mockOsAccount } from './ohos_account_osAccount'
 import { mockReminderAgent } from './ohos_reminderAgent'
 import { mockSystemTime } from './ohos_systemTime'
@@ -434,6 +435,8 @@ export function mockRequireNapiFun() {
         return mockDataAbility();
       case "multimodalInput.inputDevice":
         return mockInputDevice();
+      case "multimodalInput.pointer":
+        return mockPointer();
       case "vibrator":
         return mockVibrator();
       case "sensor":
