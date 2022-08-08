@@ -498,8 +498,7 @@ export function mockDistributedData() {
           " on the Previewer may be different from that on a real device.")
         const len = args.length
         if (typeof args[len - 1] === 'function') {
-          var array = new Array([paramMock.paramStringMock, paramMock.paramNumberMock])
-          args[len - 1].call(this, array)
+          args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock)
         } else {
           return new Promise((resolve) => {
             resolve()
