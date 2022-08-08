@@ -135,6 +135,25 @@ export const ColorSpace = {
   WIDE_GAMUT: 1
 }
 
+const TransitionController = {
+  animationForShown : function(...args) {
+    console.warn("TransitionController.animationForShown interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  },
+  animationForHidden : function(...args) {
+    console.warn("TransitionController.animationForHidden interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  }
+}
+
+const TransitionContext = {
+  toWindow: Window,
+  completeTransition : function(...args) {
+    console.warn("TransitionContext.completeTransition interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  }
+}
+
 export const WindowStageEventType = {
   FOREGROUND: 1,
   ACTIVE: 2,
@@ -490,8 +509,32 @@ export const Window = {
       })
     }
   },
+  hideWithAnimation: function(...args) {
+    console.warn("Window.hideWithAnimation interface mocked in the Previewer. How this interface works on the" +
+       " Previewer may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock)
+    } else {
+      return new Promise((resolve) => {
+        resolve()
+      })
+    }
+  },
   show: function(...args) {
     console.warn("Window.show interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+    const len = args.length
+    if (typeof args[len - 1] === 'function') {
+      args[len - 1].call(this, paramMock.businessErrorMock)
+    } else {
+      return new Promise((resolve) => {
+        resolve()
+      })
+    }
+  },
+  showWithAnimation: function(...args) {
+    console.warn("Window.showWithAnimation interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
     const len = args.length
     if (typeof args[len - 1] === 'function') {
@@ -655,11 +698,52 @@ export const Window = {
     console.warn("Window.setCornerRadius interface mocked in the Previewer. How this interface works on the" +
       " Previewer may be different from that on a real device.")
   },
+  opacity: function(...args) {
+    console.warn("Window.opacity interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  },
+  scale: function(...args) {
+    console.warn("Window.scale interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  },
+  rotate: function(...args) {
+    console.warn("Window.rotate interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  },
+  translate: function(...args) {
+    console.warn("Window.translate interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+  },
+  getTransitionController: function() {
+    console.warn("Window.getTransitionController interface mocked in the Previewer. How this interface works on the" +
+      " Previewer may be different from that on a real device.")
+      return TransitionController;
+  }
 }
 
 export const windowMock = Window
 
 export function mockWindow() {
+  const ScaleOptions = {
+    x: '[PC preview] unknow x',
+    y: '[PC preview] unknow y',
+    pivotX: '[PC preview] unknow pivotX',
+    pivotY: '[PC preview] unknow pivotY'
+  }
+
+  const RotateOptions = {
+    x: '[PC preview] unknow x',
+    y: '[PC preview] unknow y',
+    z: '[PC preview] unknow z',
+    pivotX: '[PC preview] unknow pivotX',
+    pivotY: '[PC preview] unknow pivotY'
+  }
+
+  const TranslateOptions = {
+    x: '[PC preview] unknow x',
+    y: '[PC preview] unknow y',
+    z: '[PC preview] unknow z'
+  }
 
   const window =  {
     BlurStyle: {
@@ -804,6 +888,11 @@ export function mockWindow() {
     Size,
     WindowProperties,
     ColorSpace,
+    ScaleOptions,
+    RotateOptions,
+    TranslateOptions,
+    TransitionContext,
+    TransitionController,
     WindowStageEventType,
     WindowStage
   }
