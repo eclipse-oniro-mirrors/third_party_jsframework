@@ -30,59 +30,54 @@ const DisplayType = {
   change: 'change'
 }
 
-export const Rect = {
-  left: '[PC preview] unknow left',
-  top: '[PC preview] unknow top',
-  width: '[PC preview] unknow width',
-  height: '[PC preview] unknow height',
-}
+export function mockDisplay() {
+  const Rect = {
+    left: '[PC preview] unknow left',
+    top: '[PC preview] unknow top',
+    width: '[PC preview] unknow width',
+    height: '[PC preview] unknow height',
+  }
+  
+  const WaterfallDisplayAreaRects = {
+    left: Rect,
+    top: Rect,
+    width: Rect,
+    height: Rect
+  }
 
-export const WaterfallDisplayAreaRects = {
-  left: Rect,
-  top: Rect,
-  width: Rect,
-  height: Rect
-}
-
-export const allBoudingRectsMock = [
-  Rect
-]
-
-export const CutoutInfo = {
-  boundingRects: allBoudingRectsMock,
-  waterfallDisplayAreaRects: WaterfallDisplayAreaRects
-}
-
-export const Display = {
-  id: '[PC preview] unknow id',
-  name: '[PC preview] unknow name',
-  alive: '[PC preview] unknow alive',
-  state: DisplayState,
-  refreshRate: '[PC preview] unknow refreshRate',
-  rotation: '[PC preview] unknow rotation',
-  width: '[PC preview] unknow width',
-  height: '[PC preview] unknow height',
-  densityDPI: '[PC preview] unknow densityDPI',
-  densityPixels: '[PC preview] unknow densityPixels',
-  scaledDensity: '[PC preview] unknow scaledDensity',
-  xDPI: '[PC preview] unknow xDPI',
-  yDPI: '[PC preview] unknow yDPI',
-  getCutoutInfo: function(...args) {
-    console.warn('Display.getCutoutInfo interface mocked in the Previewer. How this interface works on the' +
-      ' Previewer may be different from that on a real device.');
-    const len = args.length;
-    if (typeof args[len - 1] === 'function') {
-      args[len - 1].call(this, paramMock.businessErrorMock, CutoutInfo);
-    } else {
-      return new Promise((resolve) => {
-        resolve(CutoutInfo);
-      });
+  const CutoutInfo = {
+    boundingRects: Array(Rect),
+    waterfallDisplayAreaRects: WaterfallDisplayAreaRects
+  }
+  
+  const Display = {
+    id: '[PC preview] unknow id',
+    name: '[PC preview] unknow name',
+    alive: '[PC preview] unknow alive',
+    state: DisplayState,
+    refreshRate: '[PC preview] unknow refreshRate',
+    rotation: '[PC preview] unknow rotation',
+    width: '[PC preview] unknow width',
+    height: '[PC preview] unknow height',
+    densityDPI: '[PC preview] unknow densityDPI',
+    densityPixels: '[PC preview] unknow densityPixels',
+    scaledDensity: '[PC preview] unknow scaledDensity',
+    xDPI: '[PC preview] unknow xDPI',
+    yDPI: '[PC preview] unknow yDPI',
+    getCutoutInfo: function(...args) {
+      console.warn('Display.getCutoutInfo interface mocked in the Previewer. How this interface works on the' +
+        ' Previewer may be different from that on a real device.');
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, CutoutInfo);
+      } else {
+        return new Promise((resolve) => {
+          resolve(CutoutInfo);
+        });
+      }
     }
   }
-}
-
-export function mockDisplay() {
-
+  
   const display = {
     getDefaultDisplay: function (...args) {
       console.warn("Display.getDefaultDisplay interface mocked in the Previewer. How this interface works on the" +
