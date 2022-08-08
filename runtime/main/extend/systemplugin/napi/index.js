@@ -143,6 +143,7 @@ import { mockDisplay } from './ohos_display'
 import { mockHuks } from './ohos_security_huks'
 import { mockInputMethod } from './ohos_inputmethod'
 import { mockInputMethodEngine } from './ohos_inputmethodengine'
+import { mockInputMethodExtensionAbility } from "./ohos_inputmethodextensionability";
 import { mockConnection } from './ohos_net_connection'
 import { mockHttp } from './ohos_net_http'
 import { mockSocket } from './ohos_net_socket'
@@ -272,6 +273,8 @@ export function mockRequireNapiFun() {
         return mockInputMethodEngine();
       case "inputmethod":
         return mockInputMethod();
+      case "inputmethodextensionability":
+        return mockInputMethodExtensionAbility();
       case "security.huks":
         return mockHuks();
       case "display":
