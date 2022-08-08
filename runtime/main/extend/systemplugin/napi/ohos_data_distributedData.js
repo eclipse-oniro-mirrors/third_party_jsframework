@@ -467,7 +467,7 @@ export function mockDistributedData() {
         }
       };
 
-	  this.backup = function (...args) {
+      this.backup = function (...args) {
         console.warn("KVStore.backup interface mocked in the Previewer. How this interface works" +
           " on the Previewer may be different from that on a real device.")
         const len = args.length
@@ -480,7 +480,7 @@ export function mockDistributedData() {
         }
       };
 
-	  this.restore = function (...args) {
+	    this.restore = function (...args) {
         console.warn("KVStore.restore interface mocked in the Previewer. How this interface works" +
           " on the Previewer may be different from that on a real device.")
         const len = args.length
@@ -493,12 +493,13 @@ export function mockDistributedData() {
         }
       };
 
-	  this.deleteBackup = function (...args) {
+      this.deleteBackup = function (...args) {
         console.warn("KVStore.deleteBackup interface mocked in the Previewer. How this interface works" +
           " on the Previewer may be different from that on a real device.")
         const len = args.length
         if (typeof args[len - 1] === 'function') {
-          args[len - 1].call(this, paramMock.businessErrorMock)
+          var array = new Array([paramMock.paramStringMock, paramMock.paramNumberMock])
+          args[len - 1].call(this, array)
         } else {
           return new Promise((resolve) => {
             resolve()
