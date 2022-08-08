@@ -501,7 +501,7 @@ export function mockDistributedData() {
           args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramArrayMock)
         } else {
           return new Promise((resolve) => {
-            resolve()
+            resolve(paramMock.paramArrayMock)
           })
         }
       };
