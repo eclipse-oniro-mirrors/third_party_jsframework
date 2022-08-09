@@ -33,6 +33,11 @@ export const OnContinueResult = {
     REJECT: 1,
     MISMATCH: 2,
 }
+export const MemoryLevel = {
+    MEMORY_LEVEL_MODERATE: 0,
+    MEMORY_LEVEL_LOW: 1,
+    MEMORY_LEVEL_CRITICAL: 2,
+}
 export const WindowMode = {
     WINDOW_MODE_UNDEFINED: 0,
     WINDOW_MODE_FULLSCREEN: 1,
@@ -46,6 +51,7 @@ export function mockAbilityConstant() {
         LaunchReason,
         LastExitReason,
         OnContinueResult,
+        MemoryLevel,
         WindowMode
     }
     return AbilityConstant;

@@ -59,10 +59,20 @@ export const FormParam = {
     MODULE_NAME_KEY: "ohos.extra.param.key.module_name",
     WIDTH_KEY: "ohos.extra.param.key.form_width",
     HEIGHT_KEY: "ohos.extra.param.key.form_height",
-    TEMPORARY_KEY: "ohos.extra.param.key.form_temporary"
+    TEMPORARY_KEY: "ohos.extra.param.key.form_temporary",
+    BUNDLE_NAME_KEY: "ohos.extra.param.key.bundle_name",
+    ABILITY_NAME_KEY: "ohos.extra.param.key.ability_name",
+    DEVICE_ID_KEY: "ohos.extra.param.key.device_id"
 }
 export const  FormInfoFilter = {
     moduleName: '[PC preview] unknow moduleName',
+}
+export const FormDimension = {
+    Dimension_1_2: 1,
+    Dimension_2_2: '[PC preview] unknow Dimension_2_2',
+    Dimension_2_4: '[PC preview] unknow Dimension_2_4',
+    Dimension_4_4: '[PC preview] unknow Dimension_4_4',
+    Dimension_2_1: '[PC preview] unknow Dimension_2_1',
 }
 export function mockFormInfo() {
     const formInfo = {
@@ -72,7 +82,8 @@ export function mockFormInfo() {
         FormStateInfo,
         FormState,
         FormParam,
-        FormInfoFilter
+        FormInfoFilter,
+        FormDimension
     }
     return formInfo;
 }

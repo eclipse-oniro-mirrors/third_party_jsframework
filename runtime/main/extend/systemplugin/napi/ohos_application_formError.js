@@ -35,7 +35,8 @@ export const FormError = {
     ERR_FORM_FA_NOT_INSTALLED: 20,
     ERR_SYSTEM_RESPONSES_FAILED: 30,
     ERR_FORM_DUPLICATE_ADDED: 31,
-    ERR_IN_RECOVERY: 36
+    ERR_IN_RECOVERY: 36,
+    ERR_DISTRIBUTED_SCHEDULE_FAILED: 37
 }
 export function mockFormError() {
     const formError = {

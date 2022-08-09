@@ -14,6 +14,7 @@
  */
 
 import { paramMock } from "../../utils"
+import { Caller } from "../ohos_application_Ability";
 import { ExtensionContextClass } from "./ExtensionContext"
 
 export const ServiceExtensionContextClass = class ServiceExtensionContext extends ExtensionContextClass {
@@ -126,6 +127,13 @@ export const ServiceExtensionContextClass = class ServiceExtensionContext extend
                 resolve();
               })
             }
+        };
+        this.startAbilityByCall = function (...args) {
+            console.warn("ServiceExtensionContext.startAbilityByCall interface mocked in the Previewer." +
+              " How this interface works on the Previewer may be different from that on a real device.")
+            return new Promise((resolve, reject) => {
+              resolve(Caller);
+            })
         };
     }
 };

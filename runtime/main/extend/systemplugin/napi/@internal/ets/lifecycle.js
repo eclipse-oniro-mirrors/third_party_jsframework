@@ -53,6 +53,11 @@ export const LifecycleForm = {
           " be different from that on a real device.")
         return FormState;
     },
+    onShare: function (...args) {
+      console.warn("LifecycleForm.onShare interface mocked in the Previewer. How this interface works on the Previewer may" +
+        " be different from that on a real device.")
+      return {"key": "unknow any"};
+  },
 }
 export const LifecycleApp = {
     onShow: function () {
