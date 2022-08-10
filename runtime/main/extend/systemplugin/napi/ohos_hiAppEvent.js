@@ -17,7 +17,27 @@ import { paramMock } from "../utils"
 
 function buildMockInfo(interfaceName) {
   return interfaceName + " interface mocked in the Previewer. How this interface works on the Previewer" +
-    " may be different from that on a real device."
+    " may be different from that on a real device.";
+}
+
+const AppEventPackage = {
+  packageId: paramMock.paramNumberMock,
+  row: paramMock.paramNumberMock,
+  size: paramMock.paramNumberMock,
+  data: paramMock.paramArrayMock
+}
+
+const AppEventPackageHolderClass = class AppEventPackageHolder {
+  constructor(...args) {
+    console.warn(buildMockInfo("AppEventPackageHolder.constructor"));
+    this.setSize = function (...arg) {
+      console.warn(buildMockInfo("AppEventPackageHolder.setSize"));
+    };
+    this.takeNext = function (...arg) {
+      console.warn(buildMockInfo("AppEventPackageHolder.takeNext"));
+      return AppEventPackage;
+    };
+  }
 }
 
 export function mockHiAppEvent() {
@@ -42,6 +62,7 @@ export function mockHiAppEvent() {
     EventType: EventTypeMock,
     Event: EventMock,
     Param: ParamMock,
+    AppEventPackageHolder: AppEventPackageHolderClass,
     write: function (...args) {
       console.warn(buildMockInfo("hiAppEvent.write"))
       const len = args.length
@@ -56,6 +77,16 @@ export function mockHiAppEvent() {
     configure: function (...args) {
       console.warn(buildMockInfo("hiAppEvent.configure"));
       return paramMock.paramBooleanMock
+    },
+    addWatcher: function (...args) {
+      console.warn(buildMockInfo("hiAppEvent.addWatcher"));
+      return new AppEventPackageHolderClass();
+    },
+    removeWatcher: function (...args) {
+      console.warn(buildMockInfo("hiAppEvent.removeWatcher"));
+    },
+    clearData: function (...args) {
+      console.warn(buildMockInfo("hiAppEvent.clearData"));
     }
   }
   return hiAppEvent
