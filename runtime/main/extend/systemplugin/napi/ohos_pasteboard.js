@@ -14,7 +14,7 @@
  */
 
 import { paramMock } from "../utils"
-import { PixelMapMock }from "./ohos_multimedia_image.js"
+import { PixelMapMock } from "./ohos_multimedia_image.js"
 
 export function mockPasteBoard() {
   const PasteDataMock = {
