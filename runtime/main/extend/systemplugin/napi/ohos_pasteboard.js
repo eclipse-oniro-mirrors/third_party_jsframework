@@ -42,6 +42,10 @@ export function mockPasteBoard() {
       console.warn("PasteData.addUriRecord interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
     },
+    addPixelMapRecord: function (...args) {
+      console.warn("PasteData.addPixelMapRecord interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    },
     getMimeTypes: function () {
       console.warn("PasteData.getMimeTypes interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.");
@@ -66,6 +70,11 @@ export function mockPasteBoard() {
       console.warn("PasteData.getPrimaryUri interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       return paramMock.paramStringMock
+    },
+    getPrimaryPixelMap: function () {
+      console.warn("PasteData.getPrimaryPixelMap interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return "[PC Preview] unknow getPrimaryPixelMap"
     },
     getProperty: function () {
       console.warn("PasteData.getProperty interface mocked in the Previewer. How this interface works on the" +
@@ -109,6 +118,7 @@ export function mockPasteBoard() {
     mimeType: '[PC preview] unknow mimeType',
     plainText: '[PC preview] unknow plainText',
     uri: '[PC preview] unknow uri',
+    pixelMap: '[PC preview] unknow pixelMap',
     convertToText: function (...args) {
       console.warn("PasteDataRecord.convertToText interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
@@ -205,6 +215,7 @@ export function mockPasteBoard() {
     MIMETYPE_TEXT_WANT: '[PC preview] unknow MIMETYPE_TEXT_WANT',
     MIMETYPE_TEXT_PLAIN: '[PC preview] unknow MIMETYPE_TEXT_PLAIN',
     MIMETYPE_TEXT_URI: '[PC preview] unknow MIMETYPE_TEXT_URI',
+    MIMETYPE_PIXELMAP: '[PC preview] unknow MIMETYPE_PIXELMAP',
     createPlainTextData: function (...args) {
       console.warn("pasteboard.createPlainTextData interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
@@ -217,6 +228,11 @@ export function mockPasteBoard() {
     },
     createUriData: function (...args) {
       console.warn("pasteboard.createUriData interface mocked in the Previewer. How this interface works on" +
+        " the Previewer may be different from that on a real device.")
+      return PasteDataMock;
+    },
+    createPixelMapData: function (...args) {
+      console.warn("pasteboard.createPixelMapData interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
       return PasteDataMock;
     },
@@ -237,6 +253,11 @@ export function mockPasteBoard() {
     },
     createUriRecord: function (...args) {
       console.warn("pasteboard.createUriRecord interface mocked in the Previewer. How this interface works on" +
+        " the Previewer may be different from that on a real device.")
+      return PasteDataRecordMock;
+    },
+    createPixelMapRecord: function (...args) {
+      console.warn("pasteboard.createPixelMapRecord interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
       return PasteDataRecordMock;
     },
