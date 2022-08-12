@@ -14,6 +14,7 @@
  */
 
 import { paramMock } from "../utils"
+import { PixelMapMock }from "./ohos_multimedia_image.js"
 
 export function mockPasteBoard() {
   const PasteDataMock = {
@@ -74,7 +75,7 @@ export function mockPasteBoard() {
     getPrimaryPixelMap: function () {
       console.warn("PasteData.getPrimaryPixelMap interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-      return "[PC Preview] unknow getPrimaryPixelMap"
+      return PixelMapMock
     },
     getProperty: function () {
       console.warn("PasteData.getProperty interface mocked in the Previewer. How this interface works on the" +
@@ -118,7 +119,7 @@ export function mockPasteBoard() {
     mimeType: '[PC preview] unknow mimeType',
     plainText: '[PC preview] unknow plainText',
     uri: '[PC preview] unknow uri',
-    pixelMap: '[PC preview] unknow pixelMap',
+    pixelMap: PixelMapMock,
     convertToText: function (...args) {
       console.warn("PasteDataRecord.convertToText interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
