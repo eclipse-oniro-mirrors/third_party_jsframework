@@ -46,6 +46,8 @@ export function mockMultimediaAudio() {
     volumeType: "[PC Preview] unknow volumeType",
     volume: "[PC Preview] unknow volume",
     updateUi: "[PC Preview] unknow updateUi",
+    volumeGroupId: "[PC Preview] unknow volumeGroupId",
+    networkId: "[PC Preview] unknow networkId",
   }
   const AudioScene = '[PC Preview] unknow AudioScene'
   const AudioStreamInfo = {
@@ -101,6 +103,13 @@ export function mockMultimediaAudio() {
     uid: "[PC Preview] unknow uid",
     rendererInfo: AudioRendererInfo,
     rendererId: "[PC Preview] unknow rendererId",
+  }
+  const VolumeGroupInfo = {
+    networkId: "[PC Preview] unknow networkId",
+    groupId: "[PC Preview] unknow groupId",
+    mappingId: "[PC Preview] unknow mappingId",
+    groupName: "[PC Preview] unknow groupName",
+    ConnectType: "[PC Preview] unknow ConnectType",
   }
   const AudioCapturer = {
     state: "[PC Preview] unknow state",
@@ -661,6 +670,31 @@ export function mockMultimediaAudio() {
           resolve(AudioStreamManager);
         })
       }
+    },
+    getVolumeGroups: function (...args) {
+      console.warn("AudioManager.getVolumeGroups interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      var VolumeGroupInfos  = new Array(VolumeGroupInfo)
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, VolumeGroupInfos);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(VolumeGroupInfos);
+        })
+      }
+    },
+    getGroupManager: function (...args) {
+      console.warn("AudioManager.getGroupManager interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, AudioGroupManager);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(AudioGroupManager);
+        })
+      }
     }
   }
   const AudioStreamManager = {
@@ -741,9 +775,84 @@ export function mockMultimediaAudio() {
     selectOutputDeviceByFilter: function (...args) {
       console.warn("AudioRoutingManager.selectOutputDeviceByFilter interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
+    }
+  }
+  const AudioGroupManager = {
+    setVolume: function (...args) {
+      console.warn("AudioGroupManager.setVolume interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    getVolume: function (...args) {
+      console.warn("AudioGroupManager.getVolume interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramNumberMock);
+        })
+      }
+    },
+    getMinVolume: function (...args) {
+      console.warn("AudioGroupManager.getMinVolume interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramNumberMock);
+        })
+      }
+    },
+    getMaxVolume: function (...args) {
+      console.warn("AudioGroupManager.getMaxVolume interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramNumberMock);
+        })
+      }
+    },
+    isMute: function (...args) {
+      console.warn("AudioGroupManager.isMute interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(paramMock.paramBooleanMock);
+        })
+      }
+    },
+    mute: function (...args) {
+      console.warn("AudioGroupManager.mute interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
     },
   }
   const audio = {
+    LOCAL_NETWORK_ID: "LocalDevice",
     AudioState: {
       STATE_INVALID: -1,
       STATE_NEW: 0,
@@ -878,6 +987,10 @@ export function mockMultimediaAudio() {
     DeviceChangeType: {
       CONNECT: 0,
       DISCONNECT: 1
+    },
+    ConnectType: {
+      CONNECT_TYPE_LOCAL: 1,
+      CONNECT_TYPE_DISTRIBUTED: 2
     },
     getAudioManager: function () {
       console.warn("audio.getAudioManager interface mocked in the Previewer." +
