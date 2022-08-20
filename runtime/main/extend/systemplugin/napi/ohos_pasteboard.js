@@ -82,6 +82,10 @@ export function mockPasteBoard() {
         " Previewer may be different from that on a real device.")
       return PasteDataPropertyMock;
     },
+    setProperty: function () {
+      console.warn("PasteData.setProperty interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+    },
     getRecordAt: function (...args) {
       console.warn("PasteData.getRecordAt interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
@@ -120,6 +124,7 @@ export function mockPasteBoard() {
     plainText: '[PC preview] unknow plainText',
     uri: '[PC preview] unknow uri',
     pixelMap: PixelMapMock,
+    data: '[PC preview] unknow data',
     convertToText: function (...args) {
       console.warn("PasteDataRecord.convertToText interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
@@ -133,12 +138,18 @@ export function mockPasteBoard() {
       }
     }
   }
+  const shareOptionMock = {
+    InApp: "[PC Preview] unknown InApp",
+    LocalDevice: "[PC Preview] unknown LocalDevice",
+    CrossDevice: "[PC Preview] unknown CrossDevice"
+  }
   const PasteDataPropertyMock = {
     additions: '[PC preview] unknow additions',
     mimeTypes: new Array('[PC preview] unknow MIMETYPE_TEXT_PLAIN'),
     tag: '[PC preview] unknow tag',
     timestamp: '[PC preview] unknow timestamp',
     localOnly: '[PC preview] unknow localOnly',
+    shareOption: shareOptionMock
   }
   const SystemPasteboardMock = {
     on: function (...args) {
@@ -237,6 +248,11 @@ export function mockPasteBoard() {
         " the Previewer may be different from that on a real device.")
       return PasteDataMock;
     },
+    createData: function (...args) {
+      console.warn("pasteboard.createData interface mocked in the Previewer. How this interface works on" +
+        " the Previewer may be different from that on a real device.")
+      return PasteDataMock;
+    },
     createWantData: function (...args) {
       console.warn("pasteboard.createWantData interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
@@ -259,6 +275,11 @@ export function mockPasteBoard() {
     },
     createPixelMapRecord: function (...args) {
       console.warn("pasteboard.createPixelMapRecord interface mocked in the Previewer. How this interface works on" +
+        " the Previewer may be different from that on a real device.")
+      return PasteDataRecordMock;
+    },
+    createRecord: function (...args) {
+      console.warn("pasteboard.createRecord interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
       return PasteDataRecordMock;
     },
