@@ -33,9 +33,9 @@ export function mockMultimediaAudio() {
     sampleRates: [paramMock.paramNumberMock],
     channelCounts: [paramMock.paramNumberMock],
     channelMasks: [paramMock.paramNumberMock],
-    networkId: [paramMock.paramStringMock],
-    interruptGroupId: [paramMock.paramNumberMock],
-    volumeGroupId: [paramMock.paramNumberMock],
+    networkId: "[PC Preview] unknow networkId",
+    interruptGroupId: "[PC Preview] unknow interruptGroupId",
+    volumeGroupId: "[PC Preview] unknow volumeGroupId",
   }
   const DeviceChangeAction = {
     type: "[PC Preview] unknow type",
@@ -667,7 +667,7 @@ export function mockMultimediaAudio() {
         args[len - 1].call(this, paramMock.businessErrorMock, AudioRoutingManager);
       } else {
         return new Promise((resolve, reject) => {
-          resolve(AudioStreamManager);
+          resolve(AudioRoutingManager);
         })
       }
     },
@@ -743,17 +743,23 @@ export function mockMultimediaAudio() {
   }
   const AudioRoutingManager = {
     on: function (...args) {
+      console.warn("AudioRoutingManager.on_deviceChange interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
         if (args[0] == 'deviceChange') {
-          console.warn("AudioRoutingManager.on_deviceChange interface mocked in the Previewer." +
-            " How this interface works on the Previewer may be different from that on a real device.")
+          args[len-1].call(this,DeviceChangeAction);
         }
       }
     },
     off: function (...args) {
       console.warn("AudioRoutingManager.off interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
+        if (typeof args[len - 1] === 'function') {
+          if (args[0] == 'deviceChange') {
+            args[len-1].call(this,DeviceChangeAction);
+          }
+        }
     },
     getDevices: function (...args) {
       console.warn("AudioRoutingManager.getDevices interface mocked in the Previewer." +
@@ -771,10 +777,24 @@ export function mockMultimediaAudio() {
     selectOutputDevice: function (...args) {
       console.warn("AudioRoutingManager.selectOutputDevice interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
     },
     selectOutputDeviceByFilter: function (...args) {
       console.warn("AudioRoutingManager.selectOutputDeviceByFilter interface mocked in the Previewer." +
         " How this interface works on the Previewer may be different from that on a real device.")
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
     }
   }
   const AudioGroupManager = {
