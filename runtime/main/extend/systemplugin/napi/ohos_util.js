@@ -551,6 +551,21 @@ export function mockUtil() {
       console.warn("util.promisify interface mocked in the Previewer. How this interface works on the Previewer" +
         " may be different from that on a real device.");
       return paramMock.paramObjectMock;
+    },
+    randomUUID: function (...args) {
+      console.warn("util.randomUUID interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.");
+      return paramMock.paramStringMock;
+    },
+    randomBinaryUUID: function (...args) {
+      console.warn("util.randomBinaryUUID interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.");
+      return paramMock.paramArrayMock;
+    },
+    parseUUID: function (...args) {
+      console.warn("util.parseUUID interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.");
+      return paramMock.paramArrayMock;
     }
   };
   return utilMock;
