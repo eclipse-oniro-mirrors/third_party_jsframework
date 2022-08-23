@@ -196,9 +196,9 @@ export function mockRequest() {
         } else if (args[0] == 'headerReceive') {
           const header = "[PC Preview] unknow header"
           args[len - 1].call(this, header)
+        } else if (args[0] == 'complete' | 'fail') {
+          args[len - 1].call(this, TaskState)
         }
-      } else if (args[0] == 'complete' | 'fail') {
-        console.warn("uploadTask off complete | fail");
       }
     },
 
