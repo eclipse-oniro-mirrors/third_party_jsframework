@@ -32,6 +32,7 @@ export function mockWorkScheduler() {
         repeatCount: '[PC preview] unknown repeatCount',
         isDeepIdle: '[PC preview] unknown isDeepIdle',
         idleWaitTime: '[PC preview] unknown idleWaitTime',
+        parameters: '[PC preview] unknown parameters',
     };
     const WorkInfoArray = [WorkInfo]
     const workScheduler = {
