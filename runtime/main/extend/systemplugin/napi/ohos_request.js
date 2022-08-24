@@ -165,6 +165,12 @@ export function mockRequest() {
     data: [RequestData],
   };
 
+  const TaskState = {
+    path: "[PC Preview] unknow path",
+    responseCode: "[PC Preview] unknow responseCode",
+    message: "[PC Preview] unknow message",
+  };
+
   const UploadTask = {
     on: function (...args) {
       console.warn("uploadTask.on interface mocked in the Previewer. How this interface works on the" +
