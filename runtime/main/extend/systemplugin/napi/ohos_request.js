@@ -185,7 +185,8 @@ export function mockRequest() {
           const header = "[PC Preview] unknow header"
           args[len - 1].call(this, header)
         } else if (args[0] == 'complete' || 'fail') {
-          const taskStates = "[PC Preview] unknow taskStates"
+          var taskStates = new Array();
+          taskStates.push(TaskState);
           args[len - 1].call(this, taskStates)
         }
       }
@@ -204,7 +205,8 @@ export function mockRequest() {
           const header = "[PC Preview] unknow header"
           args[len - 1].call(this, header)
         } else if (args[0] == 'complete' || 'fail') {
-          const taskStates = "[PC Preview] unknow taskStates"
+          var taskStates = new Array();
+          taskStates.push(TaskState);
           args[len - 1].call(this, taskStates)
         }
       }
