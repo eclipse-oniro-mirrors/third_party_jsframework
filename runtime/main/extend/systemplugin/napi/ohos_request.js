@@ -52,7 +52,7 @@ export function mockRequest() {
           const receivedSize = "[PC Preview] unknow receivedSize"
           const totalSize = "[PC Preview] unknow totalSize"
           args[len - 1].call(this, receivedSize, totalSize)
-        } else if (args[0] == 'complete' | 'pause' | 'remove') {
+        } else if (args[0] == 'complete' || 'pause' || 'remove') {
           args[len - 1].call(this)
         } else if (args[0] == 'fail') {
           const err = "[PC Preview] unknow err"
@@ -70,7 +70,7 @@ export function mockRequest() {
           const receivedSize = "[PC Preview] unknow receivedSize"
           const totalSize = "[PC Preview] unknow totalSize"
           args[len - 1].call(this, receivedSize, totalSize)
-        } else if (args[0] == 'complete' | 'pause' | 'remove') {
+        } else if (args[0] == 'complete' || 'pause' || 'remove') {
           args[len - 1].call(this)
         } else if (args[0] == 'fail') {
           const err = "[PC Preview]: unknow err"
@@ -165,6 +165,12 @@ export function mockRequest() {
     data: [RequestData],
   };
 
+  const TaskState = {
+    path: "[PC Preview] unknow path",
+    responseCode: "[PC Preview] unknow responseCode",
+    message: "[PC Preview] unknow message",
+  };
+
   const UploadTask = {
     on: function (...args) {
       console.warn("uploadTask.on interface mocked in the Previewer. How this interface works on the" +
@@ -178,6 +184,9 @@ export function mockRequest() {
         } else if (args[0] == 'headerReceive') {
           const header = "[PC Preview] unknow header"
           args[len - 1].call(this, header)
+        } else if (args[0] == 'complete' || 'fail') {
+          const taskStates = "[PC Preview] unknow taskStates"
+          args[len - 1].call(this, taskStates)
         }
       }
     },
@@ -194,6 +203,9 @@ export function mockRequest() {
         } else if (args[0] == 'headerReceive') {
           const header = "[PC Preview] unknow header"
           args[len - 1].call(this, header)
+        } else if (args[0] == 'complete' || 'fail') {
+          const taskStates = "[PC Preview] unknow taskStates"
+          args[len - 1].call(this, taskStates)
         }
       }
     },
