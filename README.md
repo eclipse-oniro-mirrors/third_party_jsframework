@@ -11,7 +11,7 @@
 - `test/ut/`：unit test file
 - `.eslintrc`：eslint configure
 - `BUILD.gn`：compiling file of JS UI framework for NinjaJS
-- `build.js`：build JS framework
+- `build_jsmock_system_plugin.js, build_strip_native_min.js`: build JS framework
 - `js_framework_build.sh`：script file for JS framework building
 - `LICENSE`：Apache License
 - `NOTICE`：third party open source software notice
@@ -35,7 +35,7 @@ Please make sure that the following commands work before trying to build:
 Your `npm` and `node` should be of a later version. You can upgrade them to the **latest stable version**.
 ### 2. Installing
 
-RollUp tool for packaging has been configured in `build.js`. So after the preceding conditions are met, we can start installing right now.
+RollUp tool for packaging has been configured in `build_jsmock_system_plugin.js, build_strip_native_min.js`. So after the preceding conditions are met, we can start installing right now.
 
 First, we go to the root directory of the project:
 ```

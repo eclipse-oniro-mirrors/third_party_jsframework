@@ -39,8 +39,8 @@ cp -f $6 $9
 cp -f $7 $9
 cp -f ${10} $9
 cp -f $1 $9
+cp -f ${13} $9
 cp -r $8 $9
-
 if [ -d "$prebuilts_path" ]; then
   echo "prebuilts exists"
   # address problme of parallzing compile
@@ -49,13 +49,17 @@ if [ -d "$prebuilts_path" ]; then
   cp -r $2 $9
   cd $9
   if [ "${11}" == 'true' ];then
-    ./node-v12.18.4-darwin-x64/bin/node build.js
+    ./node-v12.18.4-darwin-x64/bin/node build_jsmock_system_plugin.js || exit 1 &
+    ./node-v12.18.4-darwin-x64/bin/node build_strip_native_min.js || exit 1 &
     # run unit test
-    ./node-v12.18.4-darwin-x64/bin/node node_modules/.bin/mocha -r ts-node/register test/lib.ts test/ut/**/*.ts test/ut/*.ts
+    ./node-v12.18.4-darwin-x64/bin/node node_modules/.bin/mocha -r ts-node/register test/lib.ts test/ut/**/*.ts test/ut/*.ts || exit 1 &
+    wait
   else
-    ./node-v12.18.4-linux-x64/bin/node build.js
+    ./node-v12.18.4-linux-x64/bin/node build_jsmock_system_plugin.js || exit 1 &
+    ./node-v12.18.4-linux-x64/bin/node build_strip_native_min.js || exit 1 &
     # run unit test
-    ./node-v12.18.4-linux-x64/bin/node node_modules/.bin/mocha -r ts-node/register test/lib.ts test/ut/**/*.ts test/ut/*.ts
+    ./node-v12.18.4-linux-x64/bin/node node_modules/.bin/mocha -r ts-node/register test/lib.ts test/ut/**/*.ts test/ut/*.ts || exit 1&
+    wait
   fi
 else
   npm run build
@@ -72,7 +76,8 @@ else
 fi
 rm -rf ./runtime
 rm -rf ./tsconfig.json
-rm -rf ./build.js
+rm -rf build_jsmock_system_plugin.js
+rm -rf build_strip_native_min.js
 rm -rf ./test
 rm -rf ./.eslintrc
 rm -rf ./.babelrc

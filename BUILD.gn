@@ -58,7 +58,8 @@ action("gen_snapshot") {
     }
   }
 
-  buildfile = "//third_party/jsframework/build.js"
+  buildfile_jsmock = "//third_party/jsframework/build_jsmock_system_plugin.js"
+  buildfile_native_min = "//third_party/jsframework/build_strip_native_min.js"
 
   package_file = "//third_party/jsframework/package.json"
   tsconfig = "//third_party/jsframework/tsconfig.json"
@@ -67,7 +68,7 @@ action("gen_snapshot") {
   test_file = "//third_party/jsframework/test"
 
   args = [
-    rebase_path(buildfile, root_build_dir),
+    rebase_path(buildfile_jsmock, root_build_dir),
     rebase_path(nodejs_path, root_build_dir),
     rebase_path(js_framework, root_build_dir),
     rebase_path(node_modules, root_build_dir),
@@ -79,6 +80,7 @@ action("gen_snapshot") {
     rebase_path(babel, root_build_dir),
     is_mac,
     rebase_path("//prebuilts", root_build_dir),
+    rebase_path(buildfile_native_min, root_build_dir),
   ]
 
   inputs = [
@@ -172,7 +174,8 @@ action("gen_snapshot") {
     # config of compiler
     ".babelrc",
     ".eslintrc",
-    "build.js",
+    "build_jsmock_system_plugin.js",
+    "build_strip_native_min.js",
     "tsconfig.json",
     "tslint.json",
   ]

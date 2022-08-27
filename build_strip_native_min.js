@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -73,31 +73,10 @@ const configInput = {
   ]
 };
 
-const configJSAPIMockInput = {
-  input: path.resolve(__dirname, 'runtime/main/extend/systemplugin/entry.js'),
-  onwarn,
-  plugins: [
-    esPlugin,
-    tsPlugin,
-    json(),
-    resolve(),
-    commonjs(),
-    babel({
-      exclude: 'node_moduels/**'
-    })
-  ]
-};
-
 const configOutput = {
   file: path.resolve(__dirname, 'dist/strip.native.min.js'),
   format: 'umd',
   banner: frameworkBanner
-};
-
-const configJSAPIMockOutput = {
-  file: path.resolve(__dirname, 'dist/jsMockSystemPlugin.js'),
-  format: 'umd',
-  banner: frameworkBannerForJSAPIMock
 };
 
 rollup.rollup(configInput).then(bundle => {
@@ -106,15 +85,9 @@ rollup.rollup(configInput).then(bundle => {
   });
 });
 
-rollup.rollup(configJSAPIMockInput).then(bundle => {
-  bundle.write(configJSAPIMockOutput).then(() => {
-    countSize(configJSAPIMockOutput.file);
-  });
-});
-
 function countSize(filePath) {
   const file = path.relative(__dirname, filePath);
-  fs.stat(filePath, function(error, stats) {
+  fs.stat(filePath, function (error, stats) {
     if (error) {
       console.error('file size is wrong');
     } else {
