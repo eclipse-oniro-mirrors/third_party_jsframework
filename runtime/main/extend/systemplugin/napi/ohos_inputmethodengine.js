@@ -311,6 +311,18 @@ export function mockInputMethodEngine() {
           resolve();
         })
       }
+    },
+    moveCursor: function (...args) {
+      console.warn("TextInputClientMock.moveCursor interface mocked in the Previewer. How this interface works on" +
+          " the Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
     }
   }
   const InputMethodEngineMock = {
@@ -325,6 +337,8 @@ export function mockInputMethodEngine() {
           args[len - 1].call(this, KeyboardControllerMock, TextInputClientMock);
         } else if (args[0] == 'inputStop' || args[0] == 'keyboardShow' || args[0] == 'directionChange' || args[0] == 'keyboardHide') {
           args[len - 1].call(this);
+        } else if (args[0] == 'setCallingWindow') {
+          args[len - 1].call(this, paramMock.paramNumberMock);
         }
       }
     },
@@ -339,6 +353,8 @@ export function mockInputMethodEngine() {
           args[len - 1].call(this, KeyboardControllerMock, TextInputClientMock);
         } else if (args[0] == 'inputStop' || args[0] == 'keyboardShow' || args[0] == 'directionChange' || args[0] == 'keyboardHide') {
           args[len - 1].call(this);
+        } else if (args[0] == 'setCallingWindow') {
+          args[len - 1].call(this, paramMock.paramNumberMock);
         }
       }
     }
@@ -413,7 +429,12 @@ export function mockInputMethodEngine() {
     OPTION_AUTO_CAP_SENTENCES: "[PC Preview] unknow OPTION_AUTO_CAP_SENTENCES",
     OPTION_AUTO_WORDS: "[PC Preview] unknow OPTION_AUTO_WORDS",
     OPTION_MULTI_LINE: "[PC Preview] unknow OPTION_MULTI_LINE",
-    OPTION_NO_FULLSCREEN: "[PC Preview] unknow OPTION_NO_FULLSCREEN"
+    OPTION_NO_FULLSCREEN: "[PC Preview] unknow OPTION_NO_FULLSCREEN",
+    CURSOR_UP: "[PC Preview] unknow CURSOR_UP",
+    CURSOR_DOWN: "[PC Preview] unknow CURSOR_UP",
+    CURSOR_LEFT: "[PC Preview] unknow CURSOR_UP",
+    CURSOR_RIGHT: "[PC Preview] unknow CURSOR_UP",
+    WINDOW_TYPE_INPUT_METHOD_FLOAT: "[PC Preview] unknow WINDOW_TYPE_INPUT_METHOD_FLOAT"
   }
   return inputMethodEngine
 }
