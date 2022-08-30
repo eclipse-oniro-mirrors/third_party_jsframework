@@ -77,8 +77,6 @@ import { mockDistributedData } from './ohos_data_distributedData'
 import { mockDistributedObject } from './ohos_data_distributedDataObject'
 import { mockDataAbility } from './ohos_data_dataAbility'
 import { mockStorage } from './system_storage'
-import { mockRdb } from './ohos_data_rdb'
-import { mockPreferences } from './ohos_data_preferences'
 import { mockDataShare } from './ohos_data_dataShare'
 import { mockDataSharePredicates } from './ohos_data_dataSharePredicates'
 import { DataShareResultSet } from './ohos_data_DataShareResultSet'
@@ -423,12 +421,8 @@ export function mockRequireNapiFun() {
         return mockDistributedData();
       case "data.distributedDataObject":
         return mockDistributedObject();
-      case "data.rdb":
-        return mockRdb();
       case "data.storage":
         return mockStorage();
-      case "data.preferences":
-        return mockPreferences();
       case "data.dataShare":
         return mockDataShare();
       case "data.dataSharePredicates":
