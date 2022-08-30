@@ -32,6 +32,23 @@ export function mockBackgroundTaskManager() {
             VOIP: 8,
             TASK_KEEPING: 9
         },
+        ResourceType : {
+            CPU: 1,
+            COMMON_EVENT: 1 << 1,
+            TIMER: 1 << 2,
+            WORK_SCHEDULER: 1 << 3,
+            BLUETOOTH: 1 << 4,
+            GPS: 1 << 5,
+            AUDIO: 1 << 6,
+        },
+        EfficiencyResourceRequest : {
+            resourceType: '[PC preview] unknown resourceType',
+            isApply: '[PC preview] unknown isApply',
+            timeOut: '[PC preview] unknown timeOut',
+            isPersist: '[PC preview] unknown isPersist',
+            isProcess: '[PC preview] unknown isProcess',
+            reason: '[PC preview] unknown reason',
+        },
         requestSuspendDelay: function (...args) {
             console.warn("backgroundTaskManager.requestSuspendDelay interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
@@ -80,6 +97,14 @@ export function mockBackgroundTaskManager() {
                     resolve();
                 });
             }
+        },
+        applyEfficiencyResources: function(...args) {
+            console.warn("backgroundTaskManager.applyEfficiencyResources interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+        },
+        resetAllEfficiencyResources: function(...args) {
+            console.warn("backgroundTaskManager.resetAllEfficiencyResources interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
         }
     };
     return backgroundTaskManager;
