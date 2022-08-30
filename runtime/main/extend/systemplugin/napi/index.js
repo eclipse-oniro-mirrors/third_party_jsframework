@@ -73,7 +73,6 @@ import { mockTv } from './tv'
 import { mockDtv } from './dtv'
 import { mockDistributedAccount } from './ohos_account_distributedAccount'
 import { mockEmitter } from './ohos_events_emitter'
-import { mockDistributedData } from './ohos_data_distributedData'
 import { mockDistributedObject } from './ohos_data_distributedDataObject'
 import { mockDataAbility } from './ohos_data_dataAbility'
 import { mockStorage } from './system_storage'
@@ -417,8 +416,6 @@ export function mockRequireNapiFun() {
         return mockDistributedAccount();
       case "events.emitter":
         return mockEmitter();
-      case "data.distributedData":
-        return mockDistributedData();
       case "data.distributedDataObject":
         return mockDistributedObject();
       case "data.storage":
