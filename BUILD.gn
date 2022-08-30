@@ -291,25 +291,25 @@ ohos_static_library("jsf") {
   sources = [ jsfc_path ]
 }
 
-if (!is_cross_platform_build) {
-  import("//arkcompiler/ets_frontend/ts2panda/ts2abc_config.gni")
-  ark_abc_path =
-      get_label_info(":ark_build", "target_out_dir") + "/strip.native.min.abc"
+import("//arkcompiler/ets_frontend/ts2panda/ts2abc_config.gni")
+ark_abc_path =
+    get_label_info(":ark_build", "target_out_dir") + "/strip.native.min.abc"
 
-  ts2abc_gen_abc("ark_jsf") {
-    extra_visibility = [ ":*" ]  # Only targets in this file can depend on this
-    extra_dependencies = [ ":gen_snapshot" ]
+ts2abc_gen_abc("ark_jsf") {
+  extra_visibility = [ ":*" ]  # Only targets in this file can depend on this
+  extra_dependencies = [ ":gen_snapshot" ]
 
-    src_js = rebase_path(prebuilt_js_path)
-    dst_file = rebase_path(ark_abc_path)
+  src_js = rebase_path(prebuilt_js_path)
+  dst_file = rebase_path(ark_abc_path)
 
-    in_puts = [ prebuilt_js_path ]
-    out_puts = [ ark_abc_path ]
-  }
+  in_puts = [ prebuilt_js_path ]
+  out_puts = [ ark_abc_path ]
+}
 
-  ohos_prebuilt_etc("ark_build") {
-    deps = [ ":ark_jsf" ]
-    source = ark_abc_path
+ohos_prebuilt_etc("ark_build") {
+  deps = [ ":ark_jsf" ]
+  source = ark_abc_path
+  if (!is_cross_platform_build) {
     part_name = "ace_engine"
   }
 }
