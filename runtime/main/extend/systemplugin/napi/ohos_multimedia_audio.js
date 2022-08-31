@@ -17,16 +17,14 @@ import { paramMock } from "../utils"
 
 export function mockMultimediaAudio() {
   const interruptAction = {
-    actionType: "[PC Preview] unknow actionType",
-    type: "[PC Preview] unknow type",
-    hint: "[PC Preview] unknow hint",
+    actionType: audio.InterruptActionType,
+    type: audio.InterruptType,
+    hint: audio.InterruptHint,
     activated: "[PC Preview] unknow activated",
   }
-  const DeviceRole = "[PC Preview] unknow DeviceRole"
-  const DeviceType = "[PC Preview] unknow DeviceType"
   const AudioDeviceDescriptor = {
-    deviceRole: DeviceRole,
-    deviceType: DeviceType,
+    deviceRole: audio.DeviceRole,
+    deviceType: audio.DeviceType,
     id: "[PC Preview] unknow id",
     name: "[PC Preview] unknow name",
     address: "[PC Preview] unknow address",
@@ -38,12 +36,12 @@ export function mockMultimediaAudio() {
     volumeGroupId: "[PC Preview] unknow volumeGroupId",
   }
   const DeviceChangeAction = {
-    type: "[PC Preview] unknow type",
+    type: audio.DeviceChangeType,
     deviceDescriptors: AudioDeviceDescriptor,
   }
-  const AudioRingMode = '[PC Preview] unknow AudioRingMode'
+  const AudioRingMode = audio.AudioRingMode
   const VolumeEvent = {
-    volumeType: "[PC Preview] unknow volumeType",
+    volumeType: audio.AudioVolumeType,
     volume: "[PC Preview] unknow volume",
     updateUi: "[PC Preview] unknow updateUi",
     volumeGroupId: "[PC Preview] unknow volumeGroupId",
@@ -51,14 +49,14 @@ export function mockMultimediaAudio() {
   }
   const AudioScene = '[PC Preview] unknow AudioScene'
   const AudioStreamInfo = {
-    samplingRate: "[PC Preview] unknow samplingRate",
-    channels: "[PC Preview] unknow channels",
-    sampleFormat: "[PC Preview] unknow sampleFormat",
-    encodingType: "[PC Preview] unknow encodingType",
+    samplingRate: audio.AudioSamplingRate,
+    channels: audio.AudioChannel,
+    sampleFormat: audio.AudioSampleFormat,
+    encodingType: audio.AudioEncodingType,
   }
   const AudioRendererInfo = {
-    content: "[PC Preview] unknow content",
-    usage: "[PC Preview] unknow usage",
+    content: audio.ContentType,
+    usage: audio.StreamUsage,
     rendererFlags: "[PC Preview] unknow rendererFlags",
   }
   const AudioRendererOptions = {
@@ -66,37 +64,36 @@ export function mockMultimediaAudio() {
     rendererInfo: AudioRendererInfo,
   }
   const AudioCapturerInfo = {
-    source: "[PC Preview] unknow source",
+    source: audio.SourceType,
     capturerFlags: "[PC Preview] unknow capturerFlags",
   }
   const AudioCapturerOptions = {
     streamInfo: AudioStreamInfo,
     capturerInfo: AudioCapturerInfo,
   }
-  const AudioState = '[PC Preview] unknow AudioState'
-  const AudioRendererRate = '[PC Preview] unknow AudioRendererRate'
+  const AudioRendererRate = audio.AudioRendererRate
   const InterruptEvent = {
-    eventType: "[PC Preview] unknow eventType",
-    forceType: "[PC Preview] unknow forceType",
-    hintType: "[PC Preview] unknow hintType",
+    eventType: audio.InterruptType,
+    forceType: audio.InterruptForceType,
+    hintType: audio.InterruptHint,
   }
   const AudioInterrupt = {
-    streamUsage: "[PC Preview] unknow streamUsage",
-    contentType: "[PC Preview] unknow contentType",
+    streamUsage: audio.StreamUsage,
+    contentType: audio.ContentType,
     pauseWhenDucked: "[PC Preview] unknow pauseWhenDucked",
   }
   const AudioRendererChangeInfo = {
     streamId: "[PC Preview] unknow streamId",
     clientUid: "[PC Preview] unknow clientUid",
     rendererInfo: AudioRendererInfo,
-    rendererState: AudioState,
+    rendererState: audio.AudioState,
     deviceDescriptors: [AudioDeviceDescriptor],
   }
   const AudioCapturerChangeInfo = {
     streamId: "[PC Preview] unknow streamId",
     clientUid: "[PC Preview] unknow clientUid",
     capturerInfo: AudioRendererInfo,
-    capturerState: AudioState,
+    capturerState: audio.AudioState,
     deviceDescriptors: [AudioDeviceDescriptor],
   }
   const AudioRendererFilter = {
@@ -109,7 +106,7 @@ export function mockMultimediaAudio() {
     groupId: "[PC Preview] unknow groupId",
     mappingId: "[PC Preview] unknow mappingId",
     groupName: "[PC Preview] unknow groupName",
-    ConnectType: "[PC Preview] unknow ConnectType",
+    type: audio.ConnectType,
   }
   const AudioCapturer = {
     state: "[PC Preview] unknow state",
