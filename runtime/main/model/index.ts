@@ -355,11 +355,11 @@ export default class Vm {
    */
   public $on(type: string, handler: Function): void {
     if (typeof type !== 'string') {
-      Log.warn(`Invalid parameter type: The type of 'type' should be string, not ${typeof type}.`);
+      Log.debug(`Invalid parameter type: The type of 'type' should be string, not ${typeof type}.`);
       return;
     }
     if (typeof handler !== 'function') {
-      Log.warn(`Invalid parameter type: The type of 'handler' should be function, not ${typeof handler}.`);
+      Log.debug(`Invalid parameter type: The type of 'handler' should be function, not ${typeof handler}.`);
       return;
     }
     const events = this.__vmEvents;
