@@ -107,6 +107,10 @@ export const AbilityClass = class Ability {
         " may be different from that on a real device.")
       return [paramMock.paramStringMock];
     };
+    this.onMemoryLevel = function (...args) {
+      console.warn("application.Ability.onMemoryLevel interface mocked in the Previewer. How this interface works on the Previewer" +
+        " may be different from that on a real device.")
+    };
   }
 }
 export function mockAbility() {

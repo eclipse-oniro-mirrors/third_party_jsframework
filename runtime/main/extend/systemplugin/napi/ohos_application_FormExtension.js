@@ -57,6 +57,11 @@ export function mockFormExtension() {
           " may be different from that on a real device.")
         return FormState;
       };
+      this.onShare = function (...args) {
+        console.warn("application.formExtension.onShare interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+        return {"key": "unknow any"};
+      };
     }
   }
   return new formExtensionClass();

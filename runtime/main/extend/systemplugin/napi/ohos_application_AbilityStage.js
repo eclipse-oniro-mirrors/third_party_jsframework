@@ -35,6 +35,10 @@ export function mockAbilityStage() {
         console.warn("application.AbilityStage.onConfigurationUpdated interface mocked in the Previewer. How this interface works on the Previewer" +
           " may be different from that on a real device.")
       };
+      this.onMemoryLevel = function (...args) {
+        console.warn("application.AbilityStage.onMemoryLevel interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.")
+      };
     }
   }
   return new AbilityStageClass();
