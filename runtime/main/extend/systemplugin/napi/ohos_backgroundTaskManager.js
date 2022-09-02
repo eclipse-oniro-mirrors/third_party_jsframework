@@ -42,7 +42,7 @@ export function mockBackgroundTaskManager() {
             AUDIO: 1 << 6,
         },
         EfficiencyResourceRequest : {
-            resourceType: '[PC preview] unknown resourceType',
+            resourceTypes: '[PC preview] unknown resourceTypes',
             isApply: '[PC preview] unknown isApply',
             timeOut: '[PC preview] unknown timeOut',
             isPersist: '[PC preview] unknown isPersist',
