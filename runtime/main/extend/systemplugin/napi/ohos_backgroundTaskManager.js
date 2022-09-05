@@ -41,7 +41,7 @@ export function mockBackgroundTaskManager() {
             GPS: 1 << 5,
             AUDIO: 1 << 6,
         },
-        EfficiencyResourceRequest : {
+        EfficiencyResourcesRequest : {
             resourceTypes: '[PC preview] unknown resourceTypes',
             isApply: '[PC preview] unknown isApply',
             timeOut: '[PC preview] unknown timeOut',
@@ -101,6 +101,7 @@ export function mockBackgroundTaskManager() {
         applyEfficiencyResources: function(...args) {
             console.warn("backgroundTaskManager.applyEfficiencyResources interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
+            return paramMock.paramBooleanMock;
         },
         resetAllEfficiencyResources: function(...args) {
             console.warn("backgroundTaskManager.resetAllEfficiencyResources interface mocked in the Previewer. How this interface works on the" +
