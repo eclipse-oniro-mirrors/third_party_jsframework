@@ -124,7 +124,7 @@ export function mockPasteBoard() {
     plainText: '[PC preview] unknow plainText',
     uri: '[PC preview] unknow uri',
     pixelMap: PixelMapMock,
-    data: new ArrayBuffer('[PC preview] unknow data'),
+    data: {"mimeType": new ArrayBuffer()},
     convertToText: function (...args) {
       console.warn("PasteDataRecord.convertToText interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
