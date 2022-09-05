@@ -57,7 +57,7 @@ export function mockPrivacyManager() {
         tokenId: "[PC Preview] unknown tokenId",
         permissionName: "[PC Preview] unknown permissionName",
         deviceId: "[PC Preview] unknown deviceId",
-        activeStatus: "[PC Preview] unknown activeStatus",
+        activeStatus: privacyManager.PermissionActiveStatus,
     };
     const privacyManager = {
         PermissionUsageFlag : {
@@ -122,7 +122,7 @@ export function mockPrivacyManager() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (len > 0 && typeof args[len - 1] === 'function') {
-                  args[len - 1].call(this, paramMock.businessErrorMock, ActiveChangeResponse);
+                  args[len - 1].call(this, ActiveChangeResponse);
             }
         },
         off: function (...args) {
@@ -130,7 +130,7 @@ export function mockPrivacyManager() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (len > 0 && typeof args[len - 1] === 'function') {
-                  args[len - 1].call(this, paramMock.businessErrorMock, ActiveChangeResponse);
+                  args[len - 1].call(this, ActiveChangeResponse);
             }
         },
     };
