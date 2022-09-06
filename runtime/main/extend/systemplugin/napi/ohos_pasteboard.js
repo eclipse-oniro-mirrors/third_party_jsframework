@@ -124,6 +124,7 @@ export function mockPasteBoard() {
     plainText: '[PC preview] unknow plainText',
     uri: '[PC preview] unknow uri',
     pixelMap: PixelMapMock,
+    data: {'mock_xml': new ArrayBuffer()},
     convertToText: function (...args) {
       console.warn("PasteDataRecord.convertToText interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
@@ -140,7 +141,8 @@ export function mockPasteBoard() {
   const pasteboard = {
     ShareOption: {
       InApp: "[PC Preview] unknown InApp",
-      LocalDevice: "[PC Preview] unknown LocalDevice"
+      LocalDevice: "[PC Preview] unknown LocalDevice",
+      CrossDevice: "[PC Preview] unknown CrossDevice"
     },
     MAX_RECORD_NUM: '[PC preview] unknow MAX_RECORD_NUM',
     MIMETYPE_TEXT_HTML: '[PC preview] unknow MIMETYPE_TEXT_HTML11111',
@@ -168,6 +170,11 @@ export function mockPasteBoard() {
         " the Previewer may be different from that on a real device.")
       return PasteDataMock;
     },
+    createData: function (...args) {
+      console.warn("pasteboard.createData interface mocked in the Previewer. How this interface works on" +
+        " the Previewer may be different from that on a real device.")
+      return PasteDataMock;
+    },
     createWantData: function (...args) {
       console.warn("pasteboard.createWantData interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
@@ -190,6 +197,11 @@ export function mockPasteBoard() {
     },
     createPixelMapRecord: function (...args) {
       console.warn("pasteboard.createPixelMapRecord interface mocked in the Previewer. How this interface works on" +
+        " the Previewer may be different from that on a real device.")
+      return PasteDataRecordMock;
+    },
+    createRecord: function (...args) {
+      console.warn("pasteboard.createRecord interface mocked in the Previewer. How this interface works on" +
         " the Previewer may be different from that on a real device.")
       return PasteDataRecordMock;
     },
