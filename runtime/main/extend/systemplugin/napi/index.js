@@ -28,6 +28,7 @@ import { mockStaticSubscriberExtensionAbility } from './ohos_application_StaticS
 import { mockFormHost } from './ohos_application_formHost'
 import { mockFormInfo } from './ohos_application_formInfo'
 import { mockErrorManager } from './ohos_application_errorManager'
+import { mockQuickFixManager } from './ohos_application_quickFixManager'
 import { mockTestRunner } from './ohos_application_testRunner'
 import { mockWant } from './ohos_application_Want'
 import { mockServiceExtensionAbility } from './ohos_application_ServiceExtensionAbility'
@@ -348,6 +349,8 @@ export function mockRequireNapiFun() {
         return mockAppManager();
       case "application.Configuration":
         return mockConfiguration();
+      case "application.quickFixManager":
+        return mockQuickFixManager();
       case "application.ConfigurationConstant":
         return mockConfigurationConstant();
       case "application.context":
