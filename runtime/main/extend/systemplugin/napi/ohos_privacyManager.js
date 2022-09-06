@@ -53,11 +53,22 @@ export function mockPrivacyManager() {
         endTime: '[PC preview] unknow endTime',
         bundleRecords: [BundleUsedRecordMock],
     };
+    const ActiveChangeResponse = {
+        tokenId: "[PC Preview] unknown tokenId",
+        permissionName: "[PC Preview] unknown permissionName",
+        deviceId: "[PC Preview] unknown deviceId",
+        activeStatus: privacyManager.PermissionActiveStatus,
+    };
     const privacyManager = {
         PermissionUsageFlag : {
             FLAG_PERMISSION_USAGE_SUMMARY: 0,
             FLAG_PERMISSION_USAGE_DETAIL: 1,
-        },  
+        },
+        PermissionActiveStatus : {
+            PERM_INACTIVE: 0,
+            PERM_ACTIVE_IN_FOREGROUND: 1,
+            PERM_ACTIVE_IN_BACKGROUND: 2,
+        }, 
         addPermissionUsedRecord: function (...args) {
             console.warn("privacyManager.addPermissionUsedRecord interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
@@ -80,6 +91,46 @@ export function mockPrivacyManager() {
                 return new Promise((resolve, reject) => {
                     resolve(PermissionUsedResponseMock);
                 })
+            }
+        },
+        startUsingPermission: function (...args) {
+            console.warn("privacyManager.startUsingPermission interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+            const len = args.length;
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                  args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve(paramMock.paramNumberMock);
+                });
+            }
+        },
+        stopUsingPermission: function (...args) {
+            console.warn("privacyManager.stopUsingPermission interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+            const len = args.length;
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                  args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve(paramMock.paramNumberMock);
+                });
+            }
+        },
+        on: function (...args) {
+            console.warn("privacyManager.on interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+            const len = args.length;
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                  args[len - 1].call(this, ActiveChangeResponse);
+            }
+        },
+        off: function (...args) {
+            console.warn("privacyManager.off interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+            const len = args.length;
+            if (len > 0 && typeof args[len - 1] === 'function') {
+                  args[len - 1].call(this, ActiveChangeResponse);
             }
         },
     };
