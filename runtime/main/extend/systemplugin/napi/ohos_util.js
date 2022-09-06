@@ -25,6 +25,11 @@ export function mockUtil() {
           " may be different from that on a real device.");
         return paramMock.paramStringMock;
       };
+      this.decodeWithStream = function (...args) {
+        console.warn("TextDecoder.decodeWithStream interface mocked in the Previewer. How this interface works on the Previewer" +
+          " may be different from that on a real device.");
+        return paramMock.paramStringMock;
+      };
       this.encoding = "[PC preview] unknow encoding";
       this.fatal = "[PC preview] unknow fatal";
       this.ignoreBOM = "[PC preview] unknow ignoreBOM"
