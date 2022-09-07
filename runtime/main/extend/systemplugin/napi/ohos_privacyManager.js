@@ -53,22 +53,24 @@ export function mockPrivacyManager() {
         endTime: '[PC preview] unknow endTime',
         bundleRecords: [BundleUsedRecordMock],
     };
+    const PermissionActiveStatus = {
+            PERM_INACTIVE: 0,
+            PERM_ACTIVE_IN_FOREGROUND: 1,
+            PERM_ACTIVE_IN_BACKGROUND: 2,
+    };
     const ActiveChangeResponse = {
         tokenId: "[PC Preview] unknown tokenId",
         permissionName: "[PC Preview] unknown permissionName",
         deviceId: "[PC Preview] unknown deviceId",
-        activeStatus: privacyManager.PermissionActiveStatus,
+        activeStatus: PermissionActiveStatus,
     };
     const privacyManager = {
+        PermissionActiveStatus,
         PermissionUsageFlag : {
             FLAG_PERMISSION_USAGE_SUMMARY: 0,
             FLAG_PERMISSION_USAGE_DETAIL: 1,
         },
-        PermissionActiveStatus : {
-            PERM_INACTIVE: 0,
-            PERM_ACTIVE_IN_FOREGROUND: 1,
-            PERM_ACTIVE_IN_BACKGROUND: 2,
-        }, 
+        
         addPermissionUsedRecord: function (...args) {
             console.warn("privacyManager.addPermissionUsedRecord interface mocked in the Previewer. How this interface works on the" +
                 " Previewer may be different from that on a real device.")
