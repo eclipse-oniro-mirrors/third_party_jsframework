@@ -64,7 +64,6 @@ import { mockProcess } from './ohos_process'
 import { mockUrl } from './ohos_url'
 import { mockHiAppEvent } from './ohos_hiAppEvent'
 import { mockHiChecker } from './ohos_hichecker'
-import { mockHilog } from './ohos_hilog'
 import { mockHiSysEvent } from './ohos_hiSysEvent'
 import { mockHiTraceChain } from './ohos_hiTraceChain'
 import { mockHiTraceMeter } from './ohos_hiTraceMeter'
@@ -402,8 +401,6 @@ export function mockRequireNapiFun() {
         return mockHiChecker();
       case "hiAppEvent":
         return mockHiAppEvent();
-      case "hilog":
-        return mockHilog();
       case "hiSysEvent":
         return mockHiSysEvent();
       case "hidebug":
