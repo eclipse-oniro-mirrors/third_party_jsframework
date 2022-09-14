@@ -138,6 +138,7 @@ import { mockDeviceInfo } from './ohos_deviceInfo'
 import { mockDeviceManager } from './ohos_distributedHardware_deviceManager'
 import { mockDistributedMissionManager } from "./ohos_distributedMissionManager"
 import { mockDisplay } from './ohos_display'
+import { mockCryptoFramework } from './ohos_security_cryptoFramework'
 import { mockHuks } from './ohos_security_huks'
 import { mockInputMethod } from './ohos_inputmethod'
 import { mockInputMethodEngine } from './ohos_inputmethodengine'
@@ -273,6 +274,8 @@ export function mockRequireNapiFun() {
         return mockInputMethod();
       case "inputmethodextensionability":
         return mockInputMethodExtensionAbility();
+      case "security.cryptoFramework":
+        return mockCryptoFramework();
       case "security.huks":
         return mockHuks();
       case "display":
