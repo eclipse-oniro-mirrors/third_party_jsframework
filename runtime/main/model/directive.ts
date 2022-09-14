@@ -234,6 +234,9 @@ function bindSubEvent(vm: Vm, subVm: Vm, template: TemplateInterface): void {
         if (vm[template.events[type]]
             && typeof vm[template.events[type]] === 'function') {
           vm[template.events[type]].apply(vm, args);
+        } else if (template.events[type]
+            && typeof template.events[type] === 'function') {
+          template.events[type].apply(vm, args);
         }
       });
     }
