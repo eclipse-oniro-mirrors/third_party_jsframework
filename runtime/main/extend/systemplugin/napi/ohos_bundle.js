@@ -472,6 +472,16 @@ export function mockBundle() {
                 })
             }
         },
+        getApplicationInfoSync: function(...args) {
+            console.warn("bundle.getApplicationInfoSync interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+            return ApplicationInfo
+        },
+        getBundleInfoSync: function(...args) {
+            console.warn("bundle.getBundleInfoSync interface mocked in the Previewer. How this interface works on the" +
+                " Previewer may be different from that on a real device.")
+            return BundleInfo
+        },
     };
     return bundle;
 }
