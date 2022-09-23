@@ -19,7 +19,7 @@
 
 import { Log } from '../../utils/index';
 import { watch } from './directive';
-import cssWhat from 'css-what';
+import {  parse, Selector } from '../../css-what/src/index';
 import Element from '../../vdom/Element';
 import Vm from './index';
 import { cssType } from './vmOptions';
@@ -318,8 +318,8 @@ function addMetaToStyle(classObject: cssType): cssType {
             key !== '@FONT-FACE' &&
             key !== '@TRANSITION'
     ) {
-      const meta: { ruleDef?: string[] } = {};
-      const keys = cssWhat(key);
+      const meta: { ruleDef?: Selector[] } = {};
+      const keys = parse(key);
       meta.ruleDef = keys[0];
       if (meta.ruleDef && meta.ruleDef.length >= 3) {
         classList[key]['_meta'] = meta;
