@@ -65,32 +65,18 @@ export function mockScreenLock() {
         })
       }
     },
-    on: function (...args) {
-      console.warn("screenLock.on interface mocked in the Previewer. How this interface works on the" +
+    onSystemEvent: function (...args) {
+      console.warn("screenLock.onSystemEvent interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
-        if (args[0] == 'beginWakeUp' || args[0] == 'endWakeUp' || args[0] == 'beginScreenOn' || args[0] == 'endScreenOn'
-           || args[0] == 'beginScreenOff' || args[0] == 'endScreenOff' || args[0] == 'unlockScreen' || args[0] == 'beginExitAnimation') {
-          args[len - 1].call(this);
-        } else if (args[0] == 'beginSleep' || args[0] == 'endSleep' || args[0] == 'changeUser') {
-          args[len - 1].call(this, paramMock.paramNumberMock);
-        } else if (args[0] == 'screenlockEnabled') {
-          args[len - 1].call(this, paramMock.paramBooleanMock);
-        }
+        args[len - 1].call(this, screenLock.SystemEvent)
       }
+      return paramMock.paramBooleanMock
     },
-    off: function (...args) {
-      console.warn("screenLock.off interface mocked in the Previewer. How this interface works on the" +
-      " Previewer may be different from that on a real device.")
-      const len = args.length
-      if (typeof args[len - 1] === 'function') {
-        if (args[0] == 'beginWakeUp' || args[0] == 'endWakeUp' || args[0] == 'beginScreenOn' || args[0] == 'endScreenOn'
-         || args[0] == 'beginScreenOff' || args[0] == 'endScreenOff' || args[0] == 'unlockScreen' || args[0] == 'beginExitAnimation'
-         || args[0] == 'screenlockEnabled' || args[0] == 'beginSleep' || args[0] == 'endSleep' || args[0] == 'changeUser') {
-          args[len - 1].call(this);
-        }
-      }
+    SystemEvent: {
+      eventType: '[PC Preview] unknow eventType',
+      params: paramMock.paramStringMock
     },
     sendScreenLockEvent: function (...args) {
       console.warn("screenLock.sendScreenLockEvent interface mocked in the Previewer. How this interface works on the" +
