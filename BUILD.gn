@@ -66,6 +66,7 @@ action("gen_snapshot") {
   eslint = "//third_party/jsframework/.eslintrc"
   babel = "//third_party/jsframework/.babelrc"
   test_file = "//third_party/jsframework/test"
+  css_what = "//third_party/css-what"
 
   args = [
     rebase_path(buildfile_jsmock, root_build_dir),
@@ -81,6 +82,7 @@ action("gen_snapshot") {
     is_mac,
     rebase_path("//prebuilts", root_build_dir),
     rebase_path(buildfile_native_min, root_build_dir),
+    rebase_path(css_what, root_build_dir),
   ]
 
   inputs = [

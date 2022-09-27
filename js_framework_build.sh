@@ -18,8 +18,14 @@ prebuilts_path=${12}
 # copy dependency file to generate dir of gn
 # the params come from .gn
 
+# copy runtime to target out, and runtime/css-what is solt link, copy it always follow symbolic links in SOURCE
+if [ "${11}" == 'true' ];then
+  cp -R -L $3 $9
+else
+  cp -r -L $3 $9
+fi
+
 # $2 => node $4 => node_modules
-cp -r $3 $9
 cp -f $5 $9
 
 if [ -d "$prebuilts_path" ]; then
