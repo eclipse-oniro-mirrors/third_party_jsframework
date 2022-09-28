@@ -36,6 +36,13 @@ export function mockWallpaper() {
         })
       }
     },
+    getColorsSync: function (...args) {
+      console.warn("wallpaper.getColorsSync interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      let colors = new Array();
+      colors.push(RgbaColorMock);
+      return colors;
+    },
     getId: function (...args) {
       console.warn("wallpaper.getId interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
@@ -47,6 +54,11 @@ export function mockWallpaper() {
           resolve(paramMock.paramNumberMock);
         })
       }
+    },
+    getIdSync: function (...args) {
+      console.warn("wallpaper.getIdSync interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock;
     },
     getFile: function (...args) {
       console.warn("wallpaper.getFile interface mocked in the Previewer. How this interface works on the" +
@@ -60,6 +72,11 @@ export function mockWallpaper() {
         })
       }
     },
+    getFileSync: function (...args) {
+      console.warn("wallpaper.getFileSync interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock;
+    },
     getMinHeight: function (...args) {
       console.warn("wallpaper.getMinHeight interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
@@ -71,6 +88,11 @@ export function mockWallpaper() {
           resolve(paramMock.paramNumberMock);
         })
       }
+    },
+    getMinHeightSync: function (...args) {
+      console.warn("wallpaper.getMinHeightSync interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock;
     },
     getMinWidth: function (...args) {
       console.warn("wallpaper.getMinWidth interface mocked in the Previewer. How this interface works on the" +
@@ -84,6 +106,11 @@ export function mockWallpaper() {
         })
       }
     },
+    getMinWidthSync: function (...args) {
+      console.warn("wallpaper.getMinWidthSync interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramNumberMock;
+    },
     isChangePermitted: function (...args) {
       console.warn("wallpaper.isChangePermitted interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
@@ -95,6 +122,11 @@ export function mockWallpaper() {
           resolve(paramMock.paramBooleanMock);
         })
       }
+    },
+    isChangePermittedSync: function (...args) {
+      console.warn("wallpaper.isChangePermittedSync interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
     },
     isOperationAllowed: function (...args) {
       console.warn("wallpaper.isOperationAllowed interface mocked in the Previewer. How this interface works on the" +
@@ -108,8 +140,25 @@ export function mockWallpaper() {
         })
       }
     },
+    isOperationAllowedSync: function (...args) {
+      console.warn("wallpaper.isOperationAllowedSync interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
     reset: function (...args) {
       console.warn("wallpaper.reset interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock)
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
+    resetWithException: function (...args) {
+      console.warn("wallpaper.resetWithException interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -132,8 +181,32 @@ export function mockWallpaper() {
         })
       }
     },
+    setWallpaperWithException: function (...args) {
+      console.warn("wallpaper.setWallpaperWithException interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock)
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve();
+        })
+      }
+    },
     getPixelMap: function (...args) {
       console.warn("wallpaper.getPixelMap interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, PixelMapMock)
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(PixelMapMock);
+        })
+      }
+    },
+    getPixelMapWithException: function (...args) {
+      console.warn("wallpaper.getPixelMapWithException interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
