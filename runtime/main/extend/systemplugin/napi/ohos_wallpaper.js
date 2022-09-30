@@ -123,8 +123,8 @@ export function mockWallpaper() {
         })
       }
     },
-    isChangePermittedSync: function (...args) {
-      console.warn("wallpaper.isChangePermittedSync interface mocked in the Previewer. How this interface works on the" +
+    isChangeAllowed: function (...args) {
+      console.warn("wallpaper.isChangeAllowed interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
@@ -140,8 +140,8 @@ export function mockWallpaper() {
         })
       }
     },
-    isOperationAllowedSync: function (...args) {
-      console.warn("wallpaper.isOperationAllowedSync interface mocked in the Previewer. How this interface works on the" +
+    isUserChangeAllowed: function (...args) {
+      console.warn("wallpaper.isUserChangeAllowed interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
@@ -157,7 +157,7 @@ export function mockWallpaper() {
         })
       }
     },
-    resetWithException: function (...args) {
+    recovery: function (...args) {
       console.warn("wallpaper.resetWithException interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
@@ -181,7 +181,7 @@ export function mockWallpaper() {
         })
       }
     },
-    setWallpaperWithException: function (...args) {
+    setImage: function (...args) {
       console.warn("wallpaper.setWallpaperWithException interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
@@ -205,7 +205,7 @@ export function mockWallpaper() {
         })
       }
     },
-    getPixelMapWithException: function (...args) {
+    getImage: function (...args) {
       console.warn("wallpaper.getPixelMapWithException interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length

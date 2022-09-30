@@ -29,8 +29,8 @@ export function mockScreenLock() {
         })
       }
     },
-    isScreenLockedSync: function (...args) {
-      console.warn("wallpaper.isScreenLockedSync interface mocked in the Previewer. How this interface works on the" +
+    isLocked: function (...args) {
+      console.warn("wallpaper.isLocked interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
@@ -46,8 +46,8 @@ export function mockScreenLock() {
         })
       }
     },
-    isSecureModeSync: function (...args) {
-      console.warn("wallpaper.isSecureModeSync interface mocked in the Previewer. How this interface works on the" +
+    isSecure: function (...args) {
+      console.warn("wallpaper.isSecure interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       return paramMock.paramBooleanMock;
     },
@@ -63,8 +63,8 @@ export function mockScreenLock() {
         })
       }
     },
-    unlockScreenWithException: function (...args) {
-      console.warn("screenLock.unlockScreenWithException interface mocked in the Previewer. How this interface works on the" +
+    unlock: function (...args) {
+      console.warn("screenLock.unlock interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
@@ -75,7 +75,7 @@ export function mockScreenLock() {
         })
       }
     },
-    lockScreen: function (...args) {
+    lock: function (...args) {
       console.warn("screenLock.lockScreen interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
