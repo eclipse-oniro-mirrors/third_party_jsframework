@@ -102,7 +102,7 @@ const ModulesInfo: Record<string, string[]>[] = [
   {'system.mediaquery': ['addListener', 'getDeviceType']},
   {'animation': ['requestAnimationFrame', 'cancelAnimationFrame']},
   {'system.resource': ['readText']},
-  {'ohos.animator': ['createAnimator']}
+  {'ohos.animator': ['createAnimator', 'create']}
 ];
 
 type components<T> = {
