@@ -29,6 +29,11 @@ export function mockScreenLock() {
         })
       }
     },
+    isLocked: function (...args) {
+      console.warn("wallpaper.isLocked interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
+    },
     isSecureMode: function (...args) {
       console.warn("screenLock.isSecureMode interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
@@ -40,6 +45,11 @@ export function mockScreenLock() {
           resolve(paramMock.paramBooleanMock);
         })
       }
+    },
+    isSecure: function (...args) {
+      console.warn("wallpaper.isSecure interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      return paramMock.paramBooleanMock;
     },
     unlockScreen: function (...args) {
       console.warn("screenLock.unlockScreen interface mocked in the Previewer. How this interface works on the" +
@@ -53,7 +63,19 @@ export function mockScreenLock() {
         })
       }
     },
-    lockScreen: function (...args) {
+    unlock: function (...args) {
+      console.warn("screenLock.unlock interface mocked in the Previewer. How this interface works on the" +
+        " Previewer may be different from that on a real device.")
+      const len = args.length
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock)
+      } else {
+        return new Promise((resolve) => {
+          resolve(paramMock.paramBooleanMock);
+        })
+      }
+    },
+    lock: function (...args) {
       console.warn("screenLock.lockScreen interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
