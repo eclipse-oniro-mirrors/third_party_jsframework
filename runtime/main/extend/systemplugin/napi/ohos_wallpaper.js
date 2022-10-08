@@ -157,8 +157,8 @@ export function mockWallpaper() {
         })
       }
     },
-    recovery: function (...args) {
-      console.warn("wallpaper.recovery interface mocked in the Previewer. How this interface works on the" +
+    restore: function (...args) {
+      console.warn("wallpaper.restore interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
       const len = args.length
       if (typeof args[len - 1] === 'function') {
