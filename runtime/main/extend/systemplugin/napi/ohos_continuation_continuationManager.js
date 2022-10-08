@@ -16,12 +16,16 @@
 import { paramMock } from "../utils"
 
 export function mockContinationManager() {
+  const ContinuationMode = {
+    COLLABORATION_SINGLE: 0,
+    COLLABORATION_MULTIPLE: 1
+  }
   const ContinuationExtraParams = {
     deviceType: [paramMock.paramStringMock],
     targetBundle: '[PC preview] unknown targetBundle',
     description: '[PC preview] unknown description',
     filter: '[PC preview] unknown filter',
-    continuationMode: continuationManager.ContinuationMode,
+    continuationMode: ContinuationMode,
     authInfo: '[PC preview] unknown authInfo'
   }
 
@@ -32,16 +36,12 @@ export function mockContinationManager() {
   }
 
   const continuationManager = {
+    ContinuationMode,
     DeviceConnectState: {
       IDLE: 0,
       CONNECTING: 1,
       CONNECTED: 2,
       DISCONNECTING: 3
-    },
-
-    ContinuationMode: {
-      COLLABORATION_SINGLE: 0,
-      COLLABORATION_MULTIPLE: 1
     },
 
     on: function (...args) {
@@ -103,6 +103,58 @@ export function mockContinationManager() {
 
     startDeviceManager: function (...args) {
       console.warn("continuationManager.startDeviceManager interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve();
+        });
+      }
+    },
+
+    registerContinuation: function (...args) {
+      console.warn("continuationManager.registerContinuation interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramNumberMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve(paramMock.paramNumberMock);
+        });
+      }
+    },
+
+    unregisterContinuation: function (...args) {
+      console.warn("continuationManager.unregisterContinuation interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve();
+        });
+      }
+    },
+
+    updateContinuationState: function (...args) {
+      console.warn("continuationManager.updateContinuationState interface mocked in the Previewer. How this interface works on the Previewer" +
+      " may be different from that on a real device.")
+      const len = args.length;
+      if (typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, paramMock.businessErrorMock);
+      } else {
+        return new Promise((resolve) => {
+          resolve();
+        });
+      }
+    },
+
+    startContinuationDeviceManager: function (...args) {
+      console.warn("continuationManager.startContinuationDeviceManager interface mocked in the Previewer. How this interface works on the Previewer" +
       " may be different from that on a real device.")
       const len = args.length;
       if (typeof args[len - 1] === 'function') {
