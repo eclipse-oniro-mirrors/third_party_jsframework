@@ -17,8 +17,6 @@ import { paramMock } from "../utils"
 
 export function mockUserAuth() {
 
-  const Version = 10000
-
   const SUCCESS = 0
 
   const contextId = 1234
@@ -41,22 +39,18 @@ export function mockUserAuth() {
     freezingTime : "[PC Preview] unknown freezingTime",
   }
 
-  const AuthenticatorClass = class Authenticator {
-    constructor() {
-      console.warn("uerAuth.constructor interface mocked in the Previewer." +
-      " How this interface works on the Previewer may be different from that on a real device.")
-      this.execute = function (...args) {
-        console.warn("uerAuth.execute interface mocked in the Previewer." +
-          " How this interface works on the Previewer may be different from that on a real device.")
-          const len = args.length
-          if (len > 0 && typeof args[len - 1] === 'function') {
-            args[len - 1].call(this, SUCCESS);
-          } else {
-            return new Promise((resolve, reject) => {
-              resolve(SUCCESS);
-            })
-          }
-      }
+  const Authenticator = {
+    execute: function (...args) {
+      console.warn("uerAuth.execute interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+        const len = args.length;
+        if (len > 0 && typeof args[len - 1] === 'function') {
+          args[len - 1].call(this, SUCCESS);
+        } else {
+          return new Promise((resolve, reject) => {
+            resolve(SUCCESS);
+          })
+        }
     }
   }
 
@@ -67,7 +61,7 @@ export function mockUserAuth() {
       this.getVersion = function (...args) {
         console.warn("uerAuth.getVersion interface mocked in the Previewer." +
           " How this interface works on the Previewer may be different from that on a real device.")
-        return Version;
+        return paramMock.paramNumberMock;
       };
 
       this.getAvailableStatus = function (...args) {
@@ -79,7 +73,7 @@ export function mockUserAuth() {
       this.auth = function (...args) {
         console.warn("uerAuth.auth interface mocked in the Previewer." +
           " How this interface works on the Previewer may be different from that on a real device.")
-        const len = args.length
+        const len = args.length;
         if (len > 0 && typeof args[len - 1] === 'function') {
           args[len - 1].call(this, IUserAuthCallback);
         }
@@ -93,6 +87,48 @@ export function mockUserAuth() {
       };
 
     }
+  }
+
+  const AuthEvent = {
+    callback: function (...args) {
+      console.warn("uerAuth.callback interface mocked in the Previewer. How this interface works" +
+        " on the Previewer may be different from that on a real device.")
+    }
+  }
+
+  const AuthResultInfo = {
+    result : "[PC Preview] unknown result",
+    token : paramMock.paramArrayMock,
+    remainAttempts : "[PC Preview] unknown remainAttempts",
+    lockoutDuration : "[PC Preview] unknown lockoutDuration",
+  }
+
+  const TipInfo = {
+      module : "[PC Preview] unknown module",
+      tip : "[PC Preview] unknown tip",
+  }
+
+  const AuthInstance = {
+    on: function (...args) {
+      console.warn("uerAuth.on interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      const len = args.length;
+      if (len > 0 && typeof args[len - 1] === 'function') {
+        args[len - 1].call(this, AuthEvent);
+      }
+    },
+    off: function (...args) {
+      console.warn("uerAuth.off interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+    },
+    start: function (...args) {
+      console.warn("uerAuth.start interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+    },
+    cancel: function (...args) {
+      console.warn("uerAuth.cancel interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+    },
   }
 
   const userAuth = {
@@ -158,10 +194,42 @@ export function mockUserAuth() {
       ATL3 : 30000,
       ATL4 : 40000
     },
+
     getAuthenticator : function (...args) {
       console.warn("uerAuth.getAuthenticator interface mocked in the Previewer. How this interface works on the" +
         " Previewer may be different from that on a real device.")
-      return new AuthenticatorClass;
+      return Authenticator;
+    },
+
+    getVersion : function (...args) {
+      console.warn("uerAuth.getVersion interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+        return paramMock.paramNumberMock;
+    },
+  
+    getAvailableStatus : function (...args) {
+      console.warn("uerAuth.getAvailableStatus interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+    },
+  
+    getAuthInstance : function (...args) {
+      console.warn("uerAuth.getAuthInstance interface mocked in the Previewer." +
+        " How this interface works on the Previewer may be different from that on a real device.")
+      return AuthInstance;
+    },
+
+    ResultCodeV9 : {
+      SUCCESS : 12500000,
+      FAIL : 12500001,
+      GENERAL_ERROR : 12500002,
+      CANCELED : 12500003,
+      TIMEOUT : 12500004,
+      TYPE_NOT_SUPPORT : 12500005,
+      TRUST_LEVEL_NOT_SUPPORT : 12500006,
+      BUSY : 12500007,
+      INVALID_PARAMETERS : 12500008,
+      LOCKED : 12500009,
+      NOT_ENROLLED : 12500010
     },
     UserAuth : UserAuthClass
   }

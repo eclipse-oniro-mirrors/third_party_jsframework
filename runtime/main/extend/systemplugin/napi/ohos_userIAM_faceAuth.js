@@ -18,8 +18,7 @@ import { paramMock } from "../utils"
 export function mockFaceAuth() {
 
   const ResultCode = {
-    SUCCESS : 0,
-    FAIL : 1
+    FAIL : 12700001
   }
   const FaceAuthManagerClass = class FaceAuthManager {
     constructor() {
@@ -29,7 +28,6 @@ export function mockFaceAuth() {
       this.setSurfaceId = function (...args) {
         console.warn("faceAuth.setSurfaceId interface mocked in the Previewer." +
           " How this interface works on the Previewer may be different from that on a real device.")
-        return ResultCode.SUCCESS;
       };
     }
   }
