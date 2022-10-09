@@ -46,10 +46,10 @@ export function mockEnterpriseDeviceManager() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+                args[len - 1].call(this, paramMock.businessErrorMock);
             } else {
                 return new Promise((resolve) => {
-                    resolve(paramMock.paramBooleanMock);
+                    resolve();
                 })
             }
         },
@@ -58,10 +58,10 @@ export function mockEnterpriseDeviceManager() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+                args[len - 1].call(this, paramMock.businessErrorMock);
             } else {
                 return new Promise((resolve) => {
-                    resolve(paramMock.paramBooleanMock);
+                    resolve();
                 })
             }
         },
@@ -70,10 +70,10 @@ export function mockEnterpriseDeviceManager() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+                args[len - 1].call(this, paramMock.businessErrorMock);
             } else {
                 return new Promise((resolve) => {
-                    resolve(paramMock.paramBooleanMock);
+                    resolve();
                 })
             }
         },
@@ -106,10 +106,10 @@ export function mockEnterpriseDeviceManager() {
                 " Previewer may be different from that on a real device.")
             const len = args.length;
             if (typeof args[len - 1] === 'function') {
-                args[len - 1].call(this, paramMock.businessErrorMock, paramMock.paramBooleanMock);
+                args[len - 1].call(this, paramMock.businessErrorMock);
             } else {
                 return new Promise((resolve) => {
-                    resolve(paramMock.paramBooleanMock);
+                    resolve();
                 })
             }
         },
