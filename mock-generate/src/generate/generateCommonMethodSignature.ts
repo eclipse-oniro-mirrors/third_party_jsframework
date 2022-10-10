@@ -36,7 +36,11 @@ export function generateCommonMethodSignature(rootName: string, methodSignatureA
       methodSignatureBody += getCallbackStatement();
     }
     if (methodEntity.returnType.returnKind !== SyntaxKind.VoidKeyword) {
-      methodSignatureBody += getReturnStatement(methodEntity.returnType, sourceFile);
+      if (rootName === 'Context' && methodEntity.returnType.returnKindName === 'Context') {
+        methodSignatureBody += 'return Context;';
+      } else {
+        methodSignatureBody += getReturnStatement(methodEntity.returnType, sourceFile);
+      }
     }
   } else {
     const argSet: Set<string> = new Set<string>();
