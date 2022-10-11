@@ -4,7 +4,7 @@
   "description": "generate mock",
   "main": "main.js",
   "scripts": {
-    "build": "npm install && tsc && cd dist && node main.js && cd .. && eslint -c .eslintrc --fix ../runtime/**/systemplugin/**/*.js"
+    "build": "npm install && node ../node_modules/typescript/bin/tsc && cd dist && node main.js && cd .. && eslint -c .eslintrc --fix ../runtime/**/systemplugin/**/*.js"
   },
   "keywords": [
     "mock"

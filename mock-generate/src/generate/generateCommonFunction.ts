@@ -37,7 +37,11 @@ export function generateCommonFunction(rootName: string, functionArray: Array<Fu
       functionBody += getCallbackStatement();
     }
     if (functionEntity.returnType.returnKind !== SyntaxKind.VoidKeyword) {
-      functionBody += getReturnStatement(functionEntity.returnType, sourceFile);
+      if (rootName === 'featureAbility' && functionEntity.returnType.returnKindName === 'Context') {
+        functionBody += 'return _Context;';
+      } else {
+        functionBody += getReturnStatement(functionEntity.returnType, sourceFile);
+      }
     }
   } else {
     const argSet: Set<string> = new Set<string>();
