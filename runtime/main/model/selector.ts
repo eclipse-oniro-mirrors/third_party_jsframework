@@ -19,7 +19,7 @@
 
 import { Log } from '../../utils/index';
 import { watch } from './directive';
-import { parse, Selector } from '../../css-what/src/index';
+import { parse, Selector } from '../../src/index';
 import Element from '../../vdom/Element';
 import Vm from './index';
 import { cssType } from './vmOptions';
