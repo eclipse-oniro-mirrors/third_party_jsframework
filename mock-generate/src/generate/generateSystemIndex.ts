@@ -34,7 +34,7 @@ export function generateSystemIndex(): string {
     systemIndex += `import { ${value.mockFunctionName} } from './${value.filename}'\n`;
     exportFunction += `${value.mockFunctionName}();\n`;
   });
-  systemIndex += `import {mockRequireNapiFun} from './napi';`;
+  systemIndex += `import {mockRequireNapiFun} from './napi/index';\n`;
   systemIndex += `export function mockSystemPlugin() {
     global.regeneratorRuntime = regeneratorRuntime
     global.systemplugin = {}
