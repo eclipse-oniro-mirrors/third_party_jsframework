@@ -39,6 +39,8 @@ export function generateCommonFunction(rootName: string, functionArray: Array<Fu
     if (functionEntity.returnType.returnKind !== SyntaxKind.VoidKeyword) {
       if (rootName === 'featureAbility' && functionEntity.returnType.returnKindName === 'Context') {
         functionBody += 'return _Context;';
+      } else if (rootName === 'inputMethod' && functionEntity.returnType.returnKindName === 'InputMethodSubtype') {
+        functionBody += 'return mockInputMethodSubtype().InputMethodSubtype;'
       } else {
         functionBody += getReturnStatement(functionEntity.returnType, sourceFile);
       }
