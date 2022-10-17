@@ -64,7 +64,7 @@ export function generateCommonMethodSignature(rootName: string, methodSignatureA
         isReturnPromise = true;
       }
     });
-    if (isReturnPromise) {
+    if (isReturnPromise && isCallBack) {
       methodSignatureBody += `else {
         return new Promise((resolve, reject) => {
           resolve('[PC Preview] unknow boolean');
