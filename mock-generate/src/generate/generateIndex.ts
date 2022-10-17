@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+import { firstCharacterToUppercase } from "../common/commonUtils";
+
 /**
  * save all mock function
  */
@@ -40,7 +42,12 @@ export function generateIndex(): string {
     let isHasSameValue = false;
     if (filterSet.has(value.mockFunctionName)) {
       isHasSameValue = true;
-      functionName = `_${value.mockFunctionName}`;
+      const tmpArr = value.fileName.split('_');
+      let tmpName = tmpArr[0];
+      for (let i = 1; i < tmpArr.length; i++) {
+        tmpName += firstCharacterToUppercase(tmpArr[i]);
+      }
+      functionName = `${tmpName}`;
     }
     filterSet.add(functionName);
     if (isHasSameValue) {
