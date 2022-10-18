@@ -14,9 +14,9 @@
 import("//build/ohos.gni")
 import("//foundation/arkui/ace_engine/ace_config.gni")
 
-prebuilt_js_path =
-    get_label_info(":gen_jsf_c", "target_out_dir") + "/dist/strip.native.min.js"
-prebuilt_js_api_mock_path = get_label_info(":gen_jsf_c", "target_out_dir") +
+prebuilt_js_path = get_label_info(":gen_snapshot", "target_out_dir") +
+                   "/dist/strip.native.min.js"
+prebuilt_js_api_mock_path = get_label_info(":gen_snapshot", "target_out_dir") +
                             "/dist/jsMockSystemPlugin.js"
 
 action("gen_node_modules") {
@@ -264,35 +264,6 @@ if (!is_standard_system && !is_cross_platform_build) {
     sources = [ v8_snapshot_obj_path ]
     deps = [ ":gen_snapshot_obj" ]
   }
-}
-
-jsfc_path = get_label_info(":jsf", "target_out_dir") + "/src/jsf.c"
-
-action("gen_jsf_c") {
-  visibility = [ ":*" ]  # Only targets in this file can depend on this.
-
-  deps = [ ":gen_snapshot" ]
-  deps += [ "//third_party/quickjs:qjsc(${host_toolchain})" ]
-
-  script = get_label_info("//third_party/quickjs:qjsc(${host_toolchain})",
-                          "root_out_dir") + "/arkui/ace_engine_full/qjsc"
-
-  args = [
-    "-o",
-    rebase_path(jsfc_path),
-    "-N",
-    "js_framework",
-    "-c",
-    rebase_path(prebuilt_js_path, root_build_dir),
-  ]
-
-  inputs = [ prebuilt_js_path ]
-  outputs = [ jsfc_path ]
-}
-
-ohos_static_library("jsf") {
-  deps = [ ":gen_jsf_c" ]
-  sources = [ jsfc_path ]
 }
 
 import("//arkcompiler/ets_frontend/ts2panda/ts2abc_config.gni")
