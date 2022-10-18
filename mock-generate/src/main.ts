@@ -33,7 +33,7 @@ const dtsFileList: Array<string> = [];
  */
 function getAllDtsFile(dir: string): Array<string> {
   const arr = fs.readdirSync(dir);
-  if (!dir.toString().includes('node_modules') && !dir.toString().includes('component')) {
+  if (!dir.toString().includes('node_modules') && !dir.toString().includes('/@internal/component/')) {
     arr.forEach(value => {
       const fullPath = path.join(dir, value);
       const stats = fs.statSync(fullPath);
@@ -136,6 +136,9 @@ function main() {
       fs.appendFileSync(path.join(filePath), generateSourceFileElements('', sourceFileEntity, sourceFile, outputFileName));
     }
   });
+  if (!fs.existsSync(path.join(outMockJsFileDir, 'napi'))) {
+    mkdirsSync(path.join(outMockJsFileDir, 'napi'));
+  }
   fs.writeFileSync(path.join(outMockJsFileDir, 'napi', 'index.js'), generateIndex());
   fs.writeFileSync(path.join(outMockJsFileDir, 'index.js'), generateSystemIndex());
   fs.writeFileSync(path.join(outMockJsFileDir, 'entry.js'), generateEntry());
