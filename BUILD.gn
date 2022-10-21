@@ -33,6 +33,7 @@ action("gen_snapshot") {
   script = "//third_party/jsframework/js_framework_build.sh"
 
   js_framework = "//third_party/jsframework/runtime"
+  js_framework_mock_generate = "//third_party/jsframework/mock-generate"
   is_mac = "false"
   use_mac = host_os == "mac"
 
@@ -83,6 +84,7 @@ action("gen_snapshot") {
     rebase_path("//prebuilts", root_build_dir),
     rebase_path(buildfile_native_min, root_build_dir),
     rebase_path(css_what, root_build_dir),
+    rebase_path(js_framework_mock_generate, root_build_dir),
   ]
 
   inputs = [
