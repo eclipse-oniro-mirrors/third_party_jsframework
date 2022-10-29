@@ -211,7 +211,7 @@ export function generateImportDeclaration(importEntity: ImportElementEntity, sou
  * @returns
  */
  function checIsDefaultExportClass(importName: string): boolean {
-  const defaultExportClass = ['Context', 'BaseContext', 'ExtensionContext', 'ApplicationContext', 'ExtensionAbility'];
+  const defaultExportClass = ['Context', 'BaseContext', 'ExtensionContext', 'ApplicationContext', 'ExtensionAbility', 'Ability'];
   return defaultExportClass.includes(importName);
 }
 
