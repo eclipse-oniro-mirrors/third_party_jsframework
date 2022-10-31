@@ -188,7 +188,6 @@ import { mockDefaultAppManager } from './ohos_bundle_defaultAppManager'
 import { mockKeyEvent } from './ohos_multimodalInput_keyEvent'
 import { mockMouseEvent } from './ohos_multimodalInput_mouseEvent'
 import { mockTouchEvent } from './ohos_multimodalInput_touchEvent'
-import { mockUiAppearance } from './ohos_uiAppearance'
 import { mockContinationManager } from './ohos_continuation_continuationManager'
 import { mockUiTest } from './ohos_uitest'
 import { mockBuffer } from './ohos_buffer'
@@ -201,8 +200,6 @@ export function mockRequireNapiFun() {
     switch (args[0]) {
       case "file":
         return mockFile();
-      case "uiAppearance":
-        return mockUiAppearance();
       case "resourceManager":
         return mockResourceManager();
       case "document":
