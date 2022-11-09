@@ -128,7 +128,7 @@ export default class Vm {
     const shareData = options.shareData || {};
     this.__vmOptions = options;
     this.__computed = options.computed;
-    this.__css = options.style;
+    this.__css = options.style || {};
     this.__selector = selector(this.__css);
     this.__ids = {};
     this.$refs = {};
