@@ -184,10 +184,10 @@ export function bindSubVm(vm: Vm, rawSubVm: Vm, rawTemplate: TemplateInterface, 
   const attr = template.attr || {};
   for (const key in attr) {
     const value = attr[key];
-    if (key === 'inhertClass') {
-      const inhertClasss = value.split(' ');
-      for (let x = 0; x < inhertClasss.length; x++) {
-        const cssName = '.' + inhertClasss[x];
+    if (key === 'inheritClass') {
+      const inheritClasses = value.split(' ');
+      for (let x = 0; x < inheritClasses.length; x++) {
+        const cssName = '.' + inheritClasses[x];
         const cssParent = vm._css[cssName];
         if (cssParent) {
           subVm._css[cssName] = cssParent;
