@@ -141,8 +141,8 @@ export function compileBundle(functionCode: string, file: string, ...args: objec
 
   // If failed to run code on native, then run code on framework.
   if (!compileBundleNative(funcKeys, funcValues, functionCode, file)) {
-    const resolveFunction: Function = new Function(funcKeys.toString(), functionCode);
-    return resolveFunction(...funcValues);
+    Log.error(`Compile js bundle failed, typeof code is not 'function'`)
+    return;
   }
 }
 
