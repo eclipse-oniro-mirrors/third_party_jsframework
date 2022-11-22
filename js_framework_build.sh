@@ -21,10 +21,14 @@ prebuilts_path=${12}
 # copy runtime to target out, and runtime/css-what is solt link, copy it always follow symbolic links in SOURCE
 if [ "${11}" == 'true' ];then
   cp -R -L $3 $9
-  cp -R ${15} $9
+  if [ "${16}" == 'true' ];then
+    cp -R ${15} $9
+  fi
 else
   cp -r -L $3 $9
-  cp -r ${15} $9
+  if [ "${16}" == 'true' ];then
+    cp -r ${15} $9
+  fi
 fi
 
 # $2 => node $4 => node_modules
@@ -57,14 +61,18 @@ if [ -d "$prebuilts_path" ]; then
   cp -r $2 $9
   cd $9
   if [ "${11}" == 'true' ];then
-    ./node-v12.18.4-darwin-x64/bin/node ./mock-generate/build.js
+    if [ "${16}" == 'true' ];then
+      ./node-v12.18.4-darwin-x64/bin/node ./mock-generate/build.js
+    fi
     ./node-v12.18.4-darwin-x64/bin/node build_jsmock_system_plugin.js || exit 1 &
     ./node-v12.18.4-darwin-x64/bin/node build_strip_native_min.js || exit 1 &
     # run unit test
     ./node-v12.18.4-darwin-x64/bin/node node_modules/.bin/mocha -r ts-node/register test/lib.ts test/ut/**/*.ts test/ut/*.ts || exit 1 &
     wait
   else
-    ./node-v12.18.4-linux-x64/bin/node ./mock-generate/build.js
+    if [ "${16}" == 'true' ];then
+      ./node-v12.18.4-linux-x64/bin/node ./mock-generate/build.js
+    fi
     ./node-v12.18.4-linux-x64/bin/node build_jsmock_system_plugin.js || exit 1 &
     ./node-v12.18.4-linux-x64/bin/node build_strip_native_min.js || exit 1 &
     # run unit test
@@ -92,4 +100,6 @@ rm -rf ./test
 rm -rf ./.eslintrc
 rm -rf ./.babelrc
 rm -rf ./package.json
-rm -rf ./mock-generate
+if [ "${16}" == 'true' ];then
+  rm -rf ./mock-generate
+fi

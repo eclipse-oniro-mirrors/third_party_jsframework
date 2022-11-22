@@ -35,6 +35,10 @@ action("gen_snapshot") {
   js_framework = "//third_party/jsframework/runtime"
   js_framework_mock_generate = "//third_party/jsframework/mock-generate"
   is_mac = "false"
+  is_preview_engine = "false"
+  if (use_mingw_win || use_mac || use_linux) {
+    is_preview_engine = "true"
+  }
   use_mac = host_os == "mac"
 
   if (is_standard_system || is_cross_platform_build) {
@@ -85,6 +89,7 @@ action("gen_snapshot") {
     rebase_path(buildfile_native_min, root_build_dir),
     rebase_path(css_what, root_build_dir),
     rebase_path(js_framework_mock_generate, root_build_dir),
+    is_preview_engine,
   ]
 
   inputs = [
