@@ -120,7 +120,7 @@ export function generateSourceFileElements(rootName: string, sourceFileEntity: S
       mockApi += `${val.elementName}: ${val.elementName},`;
     });
     mockApi += '}\n';
-    mockApi += `return mockModule${firstCharacterToUppercase(mockName)}\n`;
+    mockApi += `return mockModule${firstCharacterToUppercase(mockName)}.${firstCharacterToUppercase(mockName)}\n`;
     mockApi += '}';
   } else {
     const defaultExportClass = getDefaultExportClassDeclaration(sourceFile);
