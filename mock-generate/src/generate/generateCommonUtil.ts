@@ -99,6 +99,9 @@ export function getReturnStatement(returnType: ReturnTypeEntity, sourceFile: Sou
         break;
       }
     }
+    if (returnName.trimStart().trimEnd() === 'void') {
+      return ``;
+    }
     if (getClassNameSet().has(returnName)) {
       return `return new ${returnName}()`;
     } else {
