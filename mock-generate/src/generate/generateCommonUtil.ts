@@ -54,16 +54,46 @@ export function getReturnStatement(returnType: ReturnTypeEntity, sourceFile: Sou
       return `return new ${returnType.returnKindName}()`;
     } else if (returnType.returnKindName.startsWith('IterableIterator')) {
       if (returnType.returnKindName.includes(',')) {
-        return `const IteratorEntriesMock = {
+        return `let index = 0;
+        const IteratorEntriesMock = {
           *[Symbol.iterator]() {
             yield ['[PC Preview] unkonwn paramIterMock_K', '[PC Preview] unkonwn paramIterMock_V'];
+          },
+          next: () => {
+            if (index < 1) {
+              const returnValue = ['[PC Previwe] unkonwn paramIterMock_K', '[PC Previwe] unkonwn paramIterMock_V'];
+              index++;
+              return {
+                value: returnValue,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
           }
         };
         return IteratorEntriesMock;`;
       } else {
-        return `const IteratorStringMock = {
+        return `let index = 0;
+        const IteratorStringMock = {
           *[Symbol.iterator]() {
             yield '[PC Preview] unkonwn string';
+          },
+          next: () => {
+            if (index < 1) {
+              const returnValue = '[PC Previwe] unkonwn string';
+              index++;
+              return {
+                value: returnValue,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
           }
         };
         return IteratorStringMock;`;
