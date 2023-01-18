@@ -14,6 +14,8 @@
  */
 
 const systemIndexArray: Array<SystemIndexEntity> = [];
+const systemNoMockArray = ['system.app', 'system.configuration', 'system.device',
+  'system.mediaquery', 'system.prompt', 'system.router'];
 
 export function addToSystemIndexArray(systemIndexEntity: SystemIndexEntity) {
   systemIndexArray.push(systemIndexEntity);
@@ -31,8 +33,10 @@ export function generateSystemIndex(): string {
   let systemIndex = `import regeneratorRuntime from 'babel-runtime/regenerator'\n`;
   let exportFunction = '';
   systemIndexArray.forEach(value => {
-    systemIndex += `import { ${value.mockFunctionName} } from './${value.filename}'\n`;
-    exportFunction += `${value.mockFunctionName}();\n`;
+    if (!systemNoMockArray.includes(value.filename.replace('_', '.'))) {
+      systemIndex += `import { ${value.mockFunctionName} } from './${value.filename}'\n`;
+      exportFunction += `${value.mockFunctionName}();\n`;
+    }
   });
   systemIndex += `import {mockRequireNapiFun} from './napi/index';\n`;
   systemIndex += `export function mockSystemPlugin() {
