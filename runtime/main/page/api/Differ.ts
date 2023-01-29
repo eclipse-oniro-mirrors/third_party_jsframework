@@ -63,10 +63,13 @@ export default class Differ {
       this._hasTimer = true;
 
       // Use setTimeout instead of setTimeoutDiffer
-      setTimeout(() => {
-        this._hasTimer = false;
-        this.flush();
-      }, 0);
+      // avoid invoking setTimeout after appDestroy
+      if (typeof setTimeout === "function") {
+        setTimeout(() => {
+          this._hasTimer = false;
+          this.flush();
+        }, 0);
+      }
     }
     const map: object[] = this._map;
     if (!map[defaultDepth]) {
