@@ -68,6 +68,9 @@ export function getImportDeclaration(node: Node, sourceFile: SourceFile): Import
   const importClause = importNode.importClause;
   if (importClause !== undefined) {
     importElements = sourceFile.text.substring(importClause.pos, importClause.end).trimStart().trimEnd();
+    if (importElements.startsWith('type ')) {
+      importElements = importElements.replace('type ', '');
+    }
   }
 
   return {
