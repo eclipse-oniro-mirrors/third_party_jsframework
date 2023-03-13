@@ -44,8 +44,14 @@ export function getReturnStatement(returnType: ReturnTypeEntity, sourceFile: Sou
       return `return '[PC Preview] unkonwn type'`;
     } else if (returnType.returnKindName === 'String') {
       return `return ${returnType.returnKindName}(...args)`;
+    } else if (returnType.returnKindName === 'ArrayBuffer') {
+      return `return new ${returnType.returnKindName}(0)`;
     } else if (returnType.returnKindName.startsWith('Array')) {
-      return `return [${generateGenericTypeToMockValue(returnType.returnKindName)}]`;
+      if (returnType.returnKindName.includes('<') && returnType.returnKindName.includes('>')) {
+        return `return [${generateGenericTypeToMockValue(returnType.returnKindName)}]`;
+      } else {
+        return `return new ${returnType.returnKindName}()`;
+      }
     } else if (returnType.returnKindName.startsWith('Readonly')) {
       return `return ${returnType.returnKindName.split('<')[1].split('>')[0]}`;
     } else if (checkIsGenericSymbol(returnType.returnKindName)) {
