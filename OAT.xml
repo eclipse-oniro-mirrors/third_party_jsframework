@@ -20,14 +20,5 @@
 <configuration>
     <oatconfig>
         <licensefile></licensefile>
-        <filefilterlist>
-            <filefilter name="defaultFilter" desc="Files not to check">
-                <filteritem type="filepath" name="node_modules/.*" desc="dependencies"/>
-                <filteritem type="filepath" name="runtime/.*" desc="based on third party software"/>
-                <filteritem type="filepath" name="test/.*" desc="for test"/>
-                <filteritem type="filepath" name="NOTICE" desc="third party software notice"/>
-                <filteritem type="filepath" name=".eslintrc" desc="eslint settings"/>
-            </filefilter>
-        </filefilterlist>
     </oatconfig>
 </configuration>
