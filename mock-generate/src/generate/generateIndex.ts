@@ -57,7 +57,7 @@ export function generateIndex(): string {
     }
 
     if (value.fileName.startsWith('ohos_')) {
-      caseBody += `case '${value.fileName.split('ohos_')[1].replace('_', '.')}':\n\treturn ${functionName}();\n`;
+      caseBody += `case '${value.fileName.split('ohos_')[1].replace(/_/g, '.')}':\n\treturn ${functionName}();\n`;
     } else {
       caseBody += `case '${value.fileName}':\n\treturn ${functionName}();\n`;
     }
