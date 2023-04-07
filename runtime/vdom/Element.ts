@@ -34,8 +34,6 @@ import { FragBlockInterface,
 import Vm from '../main/model';
 import { CSS_INHERITANCE } from '../main/app/bundle';
 import {interceptCallback} from '../main/manage/event/callbackIntercept';
-import {mockWebgl} from '../main/extend/systemplugin/napi/webgl/webgl';
-import {mockWebgl2} from '../main/extend/systemplugin/napi/webgl/webgl2';
 import { VmOptions } from '../main/model/vmOptions';
 /**
  * Element is a basic class to describe a tree node in vdom.
@@ -83,11 +81,6 @@ class Element extends Node {
               if (taskCenter) {
                 // support aceapp callback style
                 args = interceptCallback(args);
-                if (args[0] === 'webgl') {
-                  return mockWebgl();
-                } else if (args[0] === 'webgl2') {
-                  return mockWebgl2();
-                }
                 const ret = taskCenter.send('component', {
                   ref: this.ref,
                   component: type,

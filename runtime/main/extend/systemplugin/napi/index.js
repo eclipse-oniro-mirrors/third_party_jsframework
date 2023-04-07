@@ -58,8 +58,6 @@ import { mockBatteryStatistics } from './ohos_batteryStatistics'
 import { mockIntl } from './ohos_intl'
 import { mockI18N } from './ohos_i18n'
 import { mockRpc } from './ohos_rpc'
-import { mockWebgl } from './webgl/webgl'
-import { mockWebgl2 } from './webgl/webgl2'
 import { mockProcess } from './ohos_process'
 import { mockUrl } from './ohos_url'
 import { mockHiAppEvent } from './ohos_hiAppEvent'
@@ -386,10 +384,6 @@ export function mockRequireNapiFun() {
         return mockBatteryStatistics();
       case "rpc":
         return mockRpc();
-      case "webgl":
-        return mockWebgl();
-      case "webgl2":
-        return mockWebgl2();
       case "process":
         return mockProcess();
       case "url":
