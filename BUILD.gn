@@ -32,10 +32,6 @@ action("gen_snapshot") {
 
   js_framework = "//third_party/jsframework/runtime"
   is_mac = "false"
-  is_preview_engine = "false"
-  if (use_mingw_win || use_mac || use_linux) {
-    is_preview_engine = "true"
-  }
   use_mac = host_os == "mac"
 
   if (is_standard_system || is_cross_platform_build) {
