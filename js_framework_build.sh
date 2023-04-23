@@ -49,19 +49,19 @@ cp -r $7 $8
 if [ -d "$prebuilts_path" ]; then
   echo "prebuilts exists"
   # address problme of parallzing compile
-  rm -rf "$8/node-v12.18.4-linux-x64"
-  rm -rf "$8/node-v12.18.4-darwin-x64"
-  cp -r $1 $8
+  rm -rf "$8/current"
+  link_path=$(realpath $1)
+  ln -s $link_path "$8/current"
   cd $8
   if [ "${10}" == 'true' ];then
-    ./node-v12.18.4-darwin-x64/bin/node build_strip_native_min.js || exit 1 &
+    ./current/bin/node build_strip_native_min.js || exit 1 &
     # run unit test
-    ./node-v12.18.4-darwin-x64/bin/node node_modules/.bin/mocha -r ts-node/register test/lib.ts test/ut/**/*.ts test/ut/*.ts || exit 1 &
+    ./current/bin/node node_modules/.bin/mocha -r ts-node/register test/lib.ts test/ut/**/*.ts test/ut/*.ts || exit 1 &
     wait
   else
-    ./node-v12.18.4-linux-x64/bin/node build_strip_native_min.js || exit 1 &
+    ./current/bin/node build_strip_native_min.js || exit 1 &
     # run unit test
-    ./node-v12.18.4-linux-x64/bin/node node_modules/.bin/mocha -r ts-node/register test/lib.ts test/ut/**/*.ts test/ut/*.ts || exit 1&
+    ./current/bin/node node_modules/.bin/mocha -r ts-node/register test/lib.ts test/ut/**/*.ts test/ut/*.ts || exit 1&
     wait
   fi
 else
@@ -73,9 +73,9 @@ fi
 # after running, remove dependency file
 rm -rf ./node_modules
 if [ "${10}" == 'true' ];then
-  rm -rf ./node-v12.18.4-darwin-x64
+  rm -rf ./current
 else
-  rm -rf ./node-v12.18.4-linux-x64
+  rm -rf ./current
 fi
 rm -rf ./runtime
 rm -rf ./tsconfig.json
