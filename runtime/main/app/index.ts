@@ -25,7 +25,6 @@ import { App } from './App';
 import { PageLinkedMap } from './map';
 import Page from '../page/index';
 import { destroy } from '../page/api/index';
-import { mockSystemPlugin } from '../extend/systemplugin/index';
 import { compileBundle } from '../page/entry/init';
 import { removePrefix } from '../util/index';
 import { requireModule } from '../page/register';
@@ -93,7 +92,6 @@ export function appCreate(page: Page, options: Options, data: object, services: 
   }
   if (options.pcPreview && options.pcPreview === 'enable') {
     global.pcPreview = true;
-    mockSystemPlugin();
   }
   const packageName: string = page.packageName;
   const appPage: Page = new Page(options.appInstanceId, options, packageName, data);
