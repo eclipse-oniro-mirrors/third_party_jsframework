@@ -31,6 +31,8 @@ const typescript = require('rollup-plugin-typescript2');
 
 const { uglify } = require('rollup-plugin-uglify');
 
+const { terser } = require('rollup-plugin-terser');
+
 const {
   eslint
 } = require('rollup-plugin-eslint');
@@ -68,7 +70,8 @@ const configJSAPIMockInput = {
     commonjs(),
     babel({
       exclude: 'node_moduels/**'
-    })
+    }),
+    terser()
   ]
 };
 
