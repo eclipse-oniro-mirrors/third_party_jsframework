@@ -29,8 +29,7 @@ case $(uname -s) in
         exit 1
 esac
 
-node_js_ver=v12.18.4
-node_js_name=node-${node_js_ver}-${host_platform}-x64
+node_js_name=current
 
 cd ${code_dir}/third_party/jsframework/
 export PATH=${code_dir}/prebuilts/build-tools/common/nodejs/${node_js_name}/bin:$PATH
@@ -40,7 +39,7 @@ npm install
 cd ${code_dir}
 if [ -d "${code_dir}/prebuilts/build-tools/common/js-framework" ]; then
     echo -e "\n"
-    echo "${code_dir}/prebuilts/build-tools/common/js-framework already exist, it will be replaced with node-${node_js_ver}"
+    echo "${code_dir}/prebuilts/build-tools/common/js-framework already exist, it will be replaced"
     /bin/rm -rf ${code_dir}/prebuilts/build-tools/common/js-framework
     echo -e "\n"
 fi
