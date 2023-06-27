@@ -242,11 +242,11 @@ if (!is_standard_system && !is_cross_platform_build) {
   }
 }
 
-import("//arkcompiler/ets_frontend/ts2panda/ts2abc_config.gni")
+import("//arkcompiler/ets_frontend/es2panda/es2abc_config.gni")
 ark_abc_path =
     get_label_info(":ark_build", "target_out_dir") + "/strip.native.min.abc"
 
-ts2abc_gen_abc("ark_jsf") {
+es2abc_gen_abc("ark_jsf") {
   extra_visibility = [ ":*" ]  # Only targets in this file can depend on this
   extra_dependencies = [ ":gen_snapshot" ]
 
