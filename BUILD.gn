@@ -200,7 +200,7 @@ if (!is_standard_system && !is_cross_platform_build) {
   ohos_prebuilt_etc("v8_snapshot_bin") {
     deps = [ ":gen_snapshot_bin" ]
     source = v8_snapshot_bin_path
-    part_name = "ace_engine_full"
+    part_name = "jsframework"
   }
 
   action("gen_snapshot_obj") {
@@ -262,6 +262,6 @@ ohos_prebuilt_etc("ark_build") {
   deps = [ ":ark_jsf" ]
   source = ark_abc_path
   if (!is_cross_platform_build) {
-    part_name = "ace_engine"
+    part_name = "jsframework"
   }
 }
