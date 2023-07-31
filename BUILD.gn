@@ -28,6 +28,7 @@ action("gen_node_modules") {
 }
 
 action("gen_snapshot") {
+  deps = [ "//third_party/css-what:css_what_sources" ]
   script = "//third_party/jsframework/js_framework_build.sh"
 
   js_framework = "//third_party/jsframework/runtime"
