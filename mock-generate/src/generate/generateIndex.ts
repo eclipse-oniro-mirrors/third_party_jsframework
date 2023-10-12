@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,14 +13,14 @@
  * limitations under the License.
  */
 
-import { firstCharacterToUppercase } from "../common/commonUtils";
+import { firstCharacterToUppercase } from '../common/commonUtils';
 
 /**
  * save all mock function
  */
 const indexArray: Array<IndexEntity> = [];
 
-export function addToIndexArray(indexEntity: IndexEntity) {
+export function addToIndexArray(indexEntity: IndexEntity): void {
   indexArray.push(indexEntity);
 }
 
@@ -33,7 +33,7 @@ export function getIndexArray(): Array<IndexEntity> {
  * @returns
  */
 export function generateIndex(): string {
-  let indexBody = '';
+  let indexBody = 'import * as common from \'./@internal/component/ets/common\';\n';
   let caseBody = '';
   const filterSet: Set<string> = new Set<string>();
 
@@ -64,7 +64,7 @@ export function generateIndex(): string {
   });
 
   indexBody += `export function mockRequireNapiFun() {
-    global.requireNapi = function (...args) {
+    global.requireNapi = function(...args) {
       const globalNapi = global.requireNapiPreview(...args);
       if (globalNapi !== undefined) {
         return globalNapi;
@@ -72,6 +72,9 @@ export function generateIndex(): string {
       switch (args[0]) {`;
   indexBody += caseBody;
   const endBody = `}
+      if (global.hosMockFunc !== undefined) {
+        return global.hosMockFunc(args[0]);
+      }
           }
         }`;
   indexBody += endBody;

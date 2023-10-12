@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,17 +13,21 @@
  * limitations under the License.
  */
 
+import type { ClassDeclaration, SourceFile } from 'typescript';
 import {
-  ClassDeclaration, isConstructorDeclaration,
-  isMethodDeclaration, isPropertyDeclaration,
-  isTypeParameterDeclaration, SourceFile, SyntaxKind
+  isConstructorDeclaration, isMethodDeclaration, isPropertyDeclaration, isTypeParameterDeclaration, SyntaxKind
 } from 'typescript';
 import { getExportKeyword } from '../common/commonUtils';
-import { ConstructorEntity, getConstructorDeclaration } from './constructorDeclaration';
-import { getHeritageClauseDeclaration, HeritageClauseEntity } from './heritageClauseDeclaration';
-import { getMethodDeclaration, MethodEntity, StaticMethodEntity } from './methodDeclaration';
-import { getPropertyDeclaration, PropertyEntity } from './propertyDeclaration';
-import { getTypeParameterDeclaration, TypeParameterEntity } from './typeParameterDeclaration';
+import { getConstructorDeclaration } from './constructorDeclaration';
+import type { ConstructorEntity } from './constructorDeclaration';
+import { getHeritageClauseDeclaration } from './heritageClauseDeclaration';
+import type { HeritageClauseEntity } from './heritageClauseDeclaration';
+import { getMethodDeclaration } from './methodDeclaration';
+import type { MethodEntity, StaticMethodEntity } from './methodDeclaration';
+import { getPropertyDeclaration } from './propertyDeclaration';
+import type { PropertyEntity } from './propertyDeclaration';
+import { getTypeParameterDeclaration } from './typeParameterDeclaration';
+import type { TypeParameterEntity } from './typeParameterDeclaration';
 
 /**
  * get class info

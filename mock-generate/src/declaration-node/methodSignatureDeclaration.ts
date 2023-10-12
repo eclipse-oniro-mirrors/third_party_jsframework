@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,11 +13,9 @@
  * limitations under the License.
  */
 
-import { MethodSignature, Node, SourceFile } from 'typescript';
-import {
-  getFunctionAndMethodReturnInfo, getParameter, getPropertyName,
-  ParameterEntity, ReturnTypeEntity
-} from '../common/commonUtils';
+import type { MethodSignature, Node, SourceFile } from 'typescript';
+import { getFunctionAndMethodReturnInfo, getParameter, getPropertyName } from '../common/commonUtils';
+import type { ParameterEntity, ReturnTypeEntity } from '../common/commonUtils';
 
 /**
  * get interface signature info

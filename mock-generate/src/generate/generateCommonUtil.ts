@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,10 +13,13 @@
  * limitations under the License.
  */
 
-import { SourceFile, SyntaxKind } from 'typescript';
-import { firstCharacterToUppercase, getClassNameSet, ReturnTypeEntity } from '../common/commonUtils';
-import { getImportDeclarationArray, ImportElementEntity } from '../declaration-node/importAndExportDeclaration';
-import { MethodEntity } from '../declaration-node/methodDeclaration';
+import type { SourceFile } from 'typescript';
+import { SyntaxKind } from 'typescript';
+import { firstCharacterToUppercase, getClassNameSet } from '../common/commonUtils';
+import type { ReturnTypeEntity } from '../common/commonUtils';
+import { getImportDeclarationArray } from '../declaration-node/importAndExportDeclaration';
+import type { ImportElementEntity } from '../declaration-node/importAndExportDeclaration';
+import type { MethodEntity } from '../declaration-node/methodDeclaration';
 
 /**
  * get warn console template
@@ -25,7 +28,7 @@ import { MethodEntity } from '../declaration-node/methodDeclaration';
  * @returns
  */
 export function getWarnConsole(interfaceNameOrClassName: string, functionNameOrPropertyName: string): string {
-  return `console.warn('${interfaceNameOrClassName}.${functionNameOrPropertyName} interface mocked in the Previewer. How this interface works on the Previewer may be different from that on a real device.');\n`;
+  return `console.warn('The ${interfaceNameOrClassName}.${functionNameOrPropertyName} interface in the Previewer is a mocked implementation and may behave differently than on a real device.');\n`;
 }
 
 /**
@@ -38,10 +41,10 @@ export function getReturnStatement(returnType: ReturnTypeEntity, sourceFile: Sou
   if (returnType.returnKind === SyntaxKind.TypeReference) {
     if (returnType.returnKindName.startsWith('Promise')) {
       return `return new Promise((resolve, reject) => {
-        resolve('[PC Preview] unkonwn type');
+        resolve('[PC Preview] unknown type');
       })`;
     } else if (returnType.returnKindName === 'T') {
-      return `return '[PC Preview] unkonwn type'`;
+      return 'return \'[PC Preview] unknown type\'';
     } else if (returnType.returnKindName === 'String') {
       return `return ${returnType.returnKindName}(...args)`;
     } else if (returnType.returnKindName === 'ArrayBuffer') {
@@ -55,7 +58,7 @@ export function getReturnStatement(returnType: ReturnTypeEntity, sourceFile: Sou
     } else if (returnType.returnKindName.startsWith('Readonly')) {
       return `return ${returnType.returnKindName.split('<')[1].split('>')[0]}`;
     } else if (checkIsGenericSymbol(returnType.returnKindName)) {
-      return `return '[PC Preview] unkonwn iterableiterator_${returnType.returnKindName}'`;
+      return `return '[PC Preview] unknown iterableiterator_${returnType.returnKindName}'`;
     } else if (returnType.returnKindName.startsWith('Uint8Array')) {
       return `return new ${returnType.returnKindName}()`;
     } else if (returnType.returnKindName.startsWith('IterableIterator')) {
@@ -63,11 +66,11 @@ export function getReturnStatement(returnType: ReturnTypeEntity, sourceFile: Sou
         return `let index = 0;
         const IteratorEntriesMock = {
           *[Symbol.iterator]() {
-            yield ['[PC Preview] unkonwn paramIterMock_K', '[PC Preview] unkonwn paramIterMock_V'];
+            yield ['[PC Preview] unknown paramIterMock_K', '[PC Preview] unknown paramIterMock_V'];
           },
           next: () => {
             if (index < 1) {
-              const returnValue = ['[PC Previwe] unkonwn paramIterMock_K', '[PC Previwe] unkonwn paramIterMock_V'];
+              const returnValue = ['[PC Previwe] unknown paramIterMock_K', '[PC Previwe] unknown paramIterMock_V'];
               index++;
               return {
                 value: returnValue,
@@ -85,11 +88,11 @@ export function getReturnStatement(returnType: ReturnTypeEntity, sourceFile: Sou
         return `let index = 0;
         const IteratorStringMock = {
           *[Symbol.iterator]() {
-            yield '[PC Preview] unkonwn string';
+            yield '[PC Preview] unknown string';
           },
           next: () => {
             if (index < 1) {
-              const returnValue = '[PC Previwe] unkonwn string';
+              const returnValue = '[PC Previwe] unknown string';
               index++;
               return {
                 value: returnValue,
@@ -107,7 +110,7 @@ export function getReturnStatement(returnType: ReturnTypeEntity, sourceFile: Sou
     } else if (returnType.returnKindName.includes('<T>')) {
       const tmpReturn = returnType.returnKindName.split('<')[0];
       if (tmpReturn.startsWith('Array')) {
-        return `return []`;
+        return 'return []';
       } else {
         `return new ${tmpReturn}()`;
       }
@@ -116,7 +119,7 @@ export function getReturnStatement(returnType: ReturnTypeEntity, sourceFile: Sou
     } else {
       if (getClassNameSet().has(returnType.returnKindName)) {
         if (returnType.returnKindName === 'Want') {
-          return `return mockWant().Want`;
+          return 'return mockWant().Want';
         } else {
           return `return new ${returnType.returnKindName}()`;
         }
@@ -136,7 +139,7 @@ export function getReturnStatement(returnType: ReturnTypeEntity, sourceFile: Sou
       }
     }
     if (returnName.trimStart().trimEnd() === 'void') {
-      return ``;
+      return '';
     }
     if (getClassNameSet().has(returnName)) {
       return `return new ${returnName}()`;
@@ -144,9 +147,9 @@ export function getReturnStatement(returnType: ReturnTypeEntity, sourceFile: Sou
       return `return ${getBaseReturnValue(returnName.trimStart().trimEnd())}`;
     }
   } else {
-    return `return '[PC Preview] unkonwn type'`;
+    return 'return \'[PC Preview] unknown type\'';
   }
-  return `return '[PC Preview] unkonwn type'`;
+  return 'return \'[PC Preview] unknown type\'';
 }
 
 /**
@@ -154,11 +157,11 @@ export function getReturnStatement(returnType: ReturnTypeEntity, sourceFile: Sou
  * @param propertyTypeName
  * @returns
  */
-export function propertyTypeWhiteList(propertyTypeName: string): any {
+export function propertyTypeWhiteList(propertyTypeName: string): boolean | number | string {
   const whiteList = ['GLboolean', 'GLuint', 'GLenum', 'GLint', 'NotificationFlags'];
   if (whiteList.includes(propertyTypeName)) {
     if (propertyTypeName === 'NotificationFlags' || propertyTypeName === 'GLenum') {
-      return `'[PC Preview] unkonwn ${propertyTypeName}'`;
+      return `'[PC Preview] unknown ${propertyTypeName}'`;
     } else if (propertyTypeName === 'GLboolean') {
       return true;
     } else {
@@ -176,17 +179,17 @@ export function propertyTypeWhiteList(propertyTypeName: string): any {
  */
 export function getBaseReturnValue(value: string): string | number | boolean {
   if (value === 'string') {
-    return `''`;
+    return '\'\'';
   } else if (value === 'number') {
     return 0;
   } else if (value === 'boolean') {
     return true;
   } else if (value === 'Object' || value === 'object') {
-    return `{}`;
+    return '{}';
   } else if (checkIsGenericSymbol(value)) {
-    return `'[PC Preview] unkonwn type'`;
+    return '\'[PC Preview] unknown type\'';
   } else if (value === 'WebGLActiveInfo') {
-    return `{size: '[PC Preview] unkonwn GLint', type: 0, name: '[PC Preview] unkonwn name'}`;
+    return '{size: \'[PC Preview] unknown GLint\', type: 0, name: \'[PC Preview] unknown name\'}';
   } else {
     return value;
   }
@@ -228,7 +231,7 @@ export function getTheRealReferenceFromImport(sourceFile: SourceFile, typeName: 
   } else {
     returnName = getImportTypeAliasNameFromImportElements(importArray, typeName);
   }
-  return returnName;
+  return returnName.split('<')[0];
 }
 
 /**
@@ -237,22 +240,28 @@ export function getTheRealReferenceFromImport(sourceFile: SourceFile, typeName: 
  * @param typeName
  * @returns
  */
- function getImportTypeAliasNameFromImportElements(importElementEntity: ImportElementEntity[], typeName: string): string {
+function getImportTypeAliasNameFromImportElements(importElementEntity: ImportElementEntity[], typeName: string): string {
   for (let i = 0; i < importElementEntity.length; i++) {
     if (importElementEntity[i].importElements.includes('_')) {
       const importElements = importElementEntity[i].importElements.replace('{', '').replace('}', '').split(',');
       for (let j = 0; j < importElements.length; j++) {
         const element = importElements[j].trimStart().trimEnd();
-        if (`_${typeName}` === element.split('as')[1].trimStart().trimEnd()) {
+        if (!element) {
+          continue;
+        }
+        if (`_${typeName}` === element.trim()) {
+          return `_${typeName}`;
+        }
+        if (element.includes(' as ') && `_${typeName}` === element.split('as')[1].trim()) {
           return `_${typeName}`;
         }
       }
     }
   }
   if (typeName === 'Want') {
-    typeName = `mockWant().Want`;
+    typeName = 'mockWant().Want';
   } else if (typeName === 'InputMethodExtensionContext') {
-    typeName = `mockInputmethodextensioncontext().InputMethodExtensionContext`;
+    typeName = 'mockInputMethodExtensionContext().InputMethodExtensionContext';
   }
   return typeName;
 }
@@ -272,10 +281,10 @@ export function checkIsGenericSymbol(type: string): boolean {
  * @param kindName
  * @returns
  */
-export function generateGenericTypeToMockValue(kindName: string): any {
+export function generateGenericTypeToMockValue(kindName: string): string | number | boolean {
   const genericTypeName = kindName.split('<')[1].split('>')[0];
   if (genericTypeName === 'string') {
-    return `''`;
+    return '\'\'';
   } else if (genericTypeName === 'number') {
     return 0;
   } else if (genericTypeName === 'boolean') {
@@ -283,19 +292,146 @@ export function generateGenericTypeToMockValue(kindName: string): any {
   } else if (genericTypeName === 'Object' || genericTypeName === 'object') {
     return '{}';
   } else {
-    return ``;
+    return '';
   }
 }
 
+const paramsTypeStart = {
+  'void': '[PC Preview] unknown type',
+  'Array': '[]',
+  'Object': '{}',
+  '{': '{}',
+  'string': '""',
+  'number': 0,
+  'boolean': false,
+  'ArrayBuffer': 'new ArrayBuffer(0)',
+  'Uint8Array': 'new Uint8Array()',
+  'unknown': '[PC Preview] unknown type'
+};
+
+const removeCallback = (str: string) => {
+  const callbackParams = {
+    type: 'Callback',
+    value: ''
+  };
+  if (str.startsWith('Callback')) {
+    callbackParams.value = str.slice(0, str.length - 1).slice(9).trim();
+    callbackParams.type = 'Callback';
+  } else if (str.startsWith('AsyncCallback')) {
+    callbackParams.value = str.slice(0, str.length - 1).slice(14).trim();
+    callbackParams.type = 'AsyncCallback';
+  }
+  if (callbackParams.value.includes(',')) {
+    callbackParams.value = callbackParams.value.split(',')[0].trim();
+  }
+  return callbackParams;
+};
+
+const isInImportType = (mockApi: string, value: string) => {
+  let hasDotFirstWorld = '';
+  if (value.includes('.')) {
+    hasDotFirstWorld = value.split('.')[0].trim();
+  }
+  if (hasDotFirstWorld && mockApi.includes(`import { mock${firstLetterWord(hasDotFirstWorld)} `)) {
+    return 'isHasDotImportMock';
+  }
+  if (hasDotFirstWorld && mockApi.includes(`import { ${firstLetterWord(hasDotFirstWorld)} `)) {
+    return 'isNoHasDotImportMock';
+  }
+  if (mockApi.includes(`import { mock${firstLetterWord(value)} `)) {
+    return 'isImportMock';
+  }
+  if (mockApi.includes(`import { ${value} `)) {
+    return 'isImport';
+  }
+  return 'noImport';
+};
+
+const firstLetterWord = (word: string) => {
+  return word.slice(0, 1).toUpperCase() + word.slice(1);
+};
+
+const hasDotFirstWord = (str: string) => {
+  return str.includes('.') ? str.split('.')[0] : str;
+};
+
+/**
+ * get callback parameters data
+ * @returns data: parameters data: type: AsyncCallback or Callback
+ */
+const setCallbackData = (mockApi: string, paramTypeString: string): {data: string, type: string} => {
+  const callbackParams = removeCallback(paramTypeString);
+  let callbackData = '';
+  let importType = '';
+  if (callbackParams.value) {
+    importType = isInImportType(mockApi, callbackParams.value);
+  }
+  if (importType === 'isHasDotImportMock') {
+    const upperWord = firstLetterWord(callbackParams.value); // Image.PixelMap
+    const firstWord = hasDotFirstWord(upperWord); // Image
+    callbackData = `mock${firstWord}()${upperWord.slice(firstWord.length)}`;
+  } else if (importType === 'isNoHasDotImportMock') {
+    callbackData = callbackParams.value;
+  } else if (importType === 'isImportMock') {
+    callbackData = `mock${firstLetterWord(callbackParams.value)}()`;
+  } else if (importType === 'isImport') {
+    callbackData = callbackParams.value;
+  } else if (importType === 'noImport') {
+    let paramsTypeNoHas = true;
+    if (callbackParams.value.endsWith(']')) {
+      callbackData = '[]';
+    } else {
+      Object.keys(paramsTypeStart).forEach(item => {
+        if (callbackParams.value.startsWith(item)) {
+          callbackData = paramsTypeStart[item];
+          paramsTypeNoHas = false;
+        }
+      });
+      if (paramsTypeNoHas) {
+        callbackData = callbackParams.value;
+        if (callbackParams.value.includes('<')) {
+          callbackData = `${callbackParams.value.split('<')[0]}`;
+        }
+      }
+      if (callbackParams.value === 'Date') {
+        callbackData = 'new Date()';
+      }
+      if (callbackParams.value === 'Uint8Array') {
+        callbackData = 'new Uint8Array()';
+      }
+      if (callbackParams.value === 'T') {
+        callbackData = '[PC Preview] unknown type';
+      }
+    }
+  } else {
+    callbackData = '[PC Preview] unknown type';
+  }
+  return {
+    data: callbackData,
+    type: callbackParams.type
+  };
+};
+
 /**
  * get callback statement
- * @returns
+ * @returns callback statement
  */
-export function getCallbackStatement(): string {
-  return `const len = args.length;
-  if (typeof args[len - 1] === 'function') {
-    args[len - 1].call(this, null, '[PC Preview] unkonwn type')
-  }`;
+export function getCallbackStatement(mockApi: string, paramTypeString?: string): string {
+  let outPut = `if (args && typeof args[args.length - 1] === 'function') {
+    args[args.length - 1].call(this,`;
+  const callbackError = "{'code': '','data': '','name': '','message': '','stack': ''}";
+  let callbackDataParams = {
+    type: '',
+    data: '[PC Preview] unknown type'
+  };
+  if (paramTypeString) {
+    callbackDataParams = setCallbackData(mockApi, paramTypeString);
+  }
+  if (callbackDataParams?.type === 'AsyncCallback') {
+    outPut += ` ${callbackError},`;
+  }
+  outPut += callbackDataParams.data === '[PC Preview] unknown type' ? ` '${callbackDataParams.data}');\n}` : ` ${callbackDataParams.data});\n}`;
+  return outPut;
 }
 
 /**
@@ -310,7 +446,7 @@ export function generateSymbolIterator(methodEntity: MethodEntity): string {
     const IteratorMock = {
       next: () => {
         if (index < 1) {
-          const returnValue = ['[PC Previwe] unkonwn iterableiterator_k', '[PC Previwe] unkonwn iterableiterator_v'];
+          const returnValue = ['[PC Previwe] unknown iterableiterator_k', '[PC Previwe] unknown iterableiterator_v'];
           index++;
           return {
             value: returnValue,
@@ -331,7 +467,7 @@ export function generateSymbolIterator(methodEntity: MethodEntity): string {
         if (index < 1) {
           index++;
           return {
-            value: '[PC Preview] unkonwn any',
+            value: '[PC Preview] unknown any',
             done: false
           };
         } else {
@@ -345,4 +481,196 @@ export function generateSymbolIterator(methodEntity: MethodEntity): string {
   }
 
   return iteratorMethod;
+}
+
+/**
+ * generate more function name return statement;
+ * @param isReturnPromise
+ * @param returnType
+ * @param sourceFile
+ * @param mockApi
+ * @returns
+ */
+export function getReturnData(isCallBack: boolean, isReturnPromise: boolean, returnType: ReturnTypeEntity, sourceFile: SourceFile, mockApi: string): string {
+  // If the return value is an iterator IterableIterator, then IteratorEntriesMock is directly returned
+  if (returnType.returnKindName.startsWith('IterableIterator')) {
+    if (returnType.returnKindName.includes(',')) {
+      return `let index = 0;
+        const IteratorEntriesMock = {
+          *[Symbol.iterator]() {
+            yield ['[PC Preview] unknown paramIterMock_K', '[PC Preview] unknown paramIterMock_V'];
+          },
+          next: () => {
+            if (index < 1) {
+              const returnValue = ['[PC Previwe] unknown paramIterMock_K', '[PC Previwe] unknown paramIterMock_V'];
+              index++;
+              return {
+                value: returnValue,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
+          }
+        };
+        return IteratorEntriesMock;`;
+    } else {
+      return `let index = 0;
+        const IteratorStringMock = {
+          *[Symbol.iterator]() {
+            yield '[PC Preview] unknown string';
+          },
+          next: () => {
+            if (index < 1) {
+              const returnValue = '[PC Previwe] unknown string';
+              index++;
+              return {
+                value: returnValue,
+                done: false
+              };
+            } else {
+              return {
+                done: true
+              };
+            }
+          }
+        };
+        return IteratorStringMock;`;
+    }
+  }
+  // If it is a promise, intercept the content of x in promise<x>, which may have the following formats:
+  // fun(): y | Promise<y>、 fun(): Promise<x | y | z>、 fun(): Promise<x>、 fun(): Promise<x.y>
+  // If it is not a promise, the returned type may be x, x | y | z, x.y
+  let returnPromiseParams = returnType.returnKindName;
+  if (isReturnPromise) {
+    if (returnType.returnKind === SyntaxKind.UnionType) {
+      // fun(): y | Promise<y>
+      const returnNames = returnPromiseParams.split('|');
+      for (let i = 0; i < returnNames.length; i++) {
+        if (returnNames[i].trim().startsWith('Promise<')) {
+          // Promise<y>
+          returnPromiseParams = returnNames[i].trim();
+          break;
+        }
+      }
+    }
+    // At this point, obtain the values in these formats: Promise<x | y | z>, Promise<y>, Promise<x.y>, Promise<x>
+    const kindName = returnPromiseParams;
+    returnPromiseParams = kindName.slice(0, kindName.length - 1).slice(8).trim();
+  }
+  // At this point, the value type of param in promise<param>may be x, x | y | z, x.y
+  if (returnPromiseParams.includes('|')) {
+    returnPromiseParams = getSeparatorParam(returnPromiseParams);
+  }
+
+  // At this point, the possible types of promiseParam are x, x.y x [] Array<x>
+  // Check if it was imported
+  let returnData = '"[PC Preview] unknown type"';
+  const importType = isInImportType(mockApi, returnPromiseParams);
+  if (importType === 'isHasDotImportMock') {
+    const upperWord = firstLetterWord(returnPromiseParams); // Image.PixelMap
+    const firstWord = hasDotFirstWord(upperWord); // Image
+    returnData = `mock${firstWord}()${upperWord.slice(firstWord.length)}`;
+  } else if (importType === 'isNoHasDotImportMock') {
+    returnData = returnPromiseParams;
+  } else if (importType === 'isImportMock') {
+    returnData = `mock${firstLetterWord(returnPromiseParams)}()`;
+  } else if (importType === 'isImport') {
+    returnData = returnPromiseParams;
+  } else if (importType === 'noImport') {
+    if (returnPromiseParams.endsWith(']')) {
+      returnData = '[]';
+    } else {
+      let paramsTypeNoHas = true;
+      Object.keys(paramsTypeStart).forEach(item => {
+        if (returnPromiseParams.startsWith(item)) {
+          returnData = paramsTypeStart[item];
+          paramsTypeNoHas = false;
+        }
+      });
+      if (paramsTypeNoHas) {
+        returnData = returnPromiseParams;
+        if (returnPromiseParams.includes('<')) {
+          returnData = `${returnPromiseParams.split('<')[0]}`;
+        }
+      }
+      if (returnPromiseParams === 'Date') {
+        returnData = 'new Date()';
+      }
+      if (returnPromiseParams === 'T') {
+        returnData = '"[PC Preview] unknown type"';
+      }
+      if (returnType.returnKindName.startsWith('Readonly')) {
+        returnData = `${returnType.returnKindName.split('<')[1].split('>')[0]}`;
+      }
+      if (checkIsGenericSymbol(returnType.returnKindName)) {
+        returnData = `'[PC Preview] unknown iterableiterator_${returnType.returnKindName}'`;
+      }
+    }
+  } else {
+    returnData = '"[PC Preview] unknown type"';
+  }
+  const data = typeof returnData === 'string' && returnData.startsWith('[PC Preview] unknown') ? `'${returnData}'` : `${returnData}`;
+  if (isReturnPromise) {
+    if (isCallBack) {
+      return `else {
+        return new Promise((resolve, reject) => {
+          resolve(${data});
+        })
+      }`;
+    } else {
+      return `
+        return new Promise((resolve, reject) => {
+          resolve(${data});
+        })
+      `;
+    }
+  } else {
+    return `return ${data}`;
+  }
+}
+
+/**
+ *
+ * @param returnPromiseParams
+ * @returns
+ */
+function getSeparatorParam(returnPromiseParams: string): string {
+  let hasObj = '';
+  let hasArr = '';
+  let hasUint8Array = '';
+  let hasArrayBuffer = '';
+  let otherValue = '';
+  const paramsArr = returnPromiseParams.split('|');
+  for (let i = 0; i < paramsArr.length; i++) {
+    const param = paramsArr[i].trim();
+    if (param.startsWith('{') || param.startsWith('Object')) {
+      hasObj = '{}';
+    } else if (param.endsWith(']') || param.startsWith('[') || param.startsWith('Array<')) {
+      hasArr = '[]';
+    } else if (param.startsWith('Uint8Array')) {
+      hasUint8Array = 'Uint8Array';
+    } else if (param.startsWith('ArrayBuffer')) {
+      hasArrayBuffer = 'ArrayBuffer';
+    } else {
+      if (param !== null) {
+        otherValue = param;
+      }
+    }
+  }
+  if (hasObj) {
+    return hasObj;
+  }
+  if (hasArr) {
+    return hasArr;
+  }
+  if (hasUint8Array) {
+    return hasUint8Array;
+  }
+  if (hasArrayBuffer) {
+    return hasArrayBuffer;
+  }
+  return otherValue;
 }
