@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-import { isIdentifier, SourceFile, VariableStatement } from 'typescript';
+import { isIdentifier } from 'typescript';
+import type { SourceFile, VariableStatement } from 'typescript';
 
 /**
  * get const declaration variable
@@ -36,6 +37,7 @@ export function getVariableStatementDeclaration(variableStatement: VariableState
     }
     if (value.initializer !== undefined) {
       initializer = sourceFile.text.substring(value.initializer.pos, value.initializer.end);
+      typeKind = value.initializer.kind;
     }
     if (value.type !== undefined) {
       typeName = sourceFile.text.substring(value.type.pos, value.type.end);

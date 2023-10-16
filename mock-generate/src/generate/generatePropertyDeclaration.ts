@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 
-import { SourceFile, SyntaxKind } from 'typescript';
+import { SyntaxKind } from 'typescript';
+import type { SourceFile } from 'typescript';
 import { getClassNameSet } from '../common/commonUtils';
-import { PropertyEntity } from '../declaration-node/propertyDeclaration';
+import type { PropertyEntity } from '../declaration-node/propertyDeclaration';
 import { getTheRealReferenceFromImport } from './generateCommonUtil';
 
 /**
@@ -47,7 +48,7 @@ export function generatePropertyDeclaration(rootName: string, propertyDeclaratio
     } else if (propertyDeclaration.kind === SyntaxKind.TypeReference) {
       propertyBody = `this.${propertyDeclaration.propertyName} = `;
       if (getClassNameSet().has(propertyDeclaration.propertyTypeName)) {
-        if (propertyDeclaration.propertyTypeName !== 'Want' && propertyDeclaration.propertyTypeName !== 'InputMethodExtensionContext') {
+        if (!['Want', 'InputMethodExtensionContext'].includes(propertyDeclaration.propertyTypeName)) {
           propertyBody += `new ${getTheRealReferenceFromImport(sourceFile, propertyDeclaration.propertyTypeName)}();`;
         } else {
           propertyBody += `${getTheRealReferenceFromImport(sourceFile, propertyDeclaration.propertyTypeName)};`;
@@ -58,7 +59,7 @@ export function generatePropertyDeclaration(rootName: string, propertyDeclaratio
     } else if (propertyDeclaration.kind === SyntaxKind.NumericLiteral || propertyDeclaration.kind === SyntaxKind.StringLiteral) {
       propertyBody = `this.${propertyDeclaration.propertyName} = ${propertyDeclaration.propertyTypeName};`;
     } else {
-      propertyBody = `this.${propertyDeclaration.propertyName} = '[PC Previwe] unkonwn ${propertyDeclaration.propertyName}';`;
+      propertyBody = `this.${propertyDeclaration.propertyName} = '[PC Previwe] unknown ${propertyDeclaration.propertyName}';`;
     }
   }
   return propertyBody;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,18 +15,23 @@
 
 import { SyntaxKind } from 'typescript';
 import { getClassNameSet } from '../common/commonUtils';
-import { StatementEntity } from '../declaration-node/variableStatementResolve';
+import type { StatementEntity } from '../declaration-node/variableStatementResolve';
 
 /**
  * generate const variable statement
  * @param statementEntity
  * @returns
  */
-export function generateVariableStatementDelcatation(statementEntity: StatementEntity): string {
-  let statementBody = `${statementEntity.statementName}: `;
+export function generateVariableStatementDelcatation(statementEntity: StatementEntity, isInnerModule: boolean): string {
+  let statementBody = '';
+  if (isInnerModule) {
+    statementBody = `const ${statementEntity.statementName} = `;
+  } else {
+    statementBody = `${statementEntity.statementName}: `;
+  }
   let statementValue;
   if (statementEntity.typeKind === SyntaxKind.StringKeyword) {
-    statementValue = `''`;
+    statementValue = '\'\'';
   } else if (statementEntity.typeKind === SyntaxKind.LiteralType || statementEntity.typeKind === SyntaxKind.StringLiteral ||
     statementEntity.typeKind === SyntaxKind.NumericLiteral) {
     if (statementEntity.initializer === '') {
@@ -61,6 +66,10 @@ export function generateVariableStatementDelcatation(statementEntity: StatementE
     statementValue = `'[PC Preivew] unknown ${statementEntity.statementName}'`;
   }
   statementBody += statementValue;
-  statementBody += ',';
+  if (isInnerModule) {
+    statementBody += ';';
+  } else {
+    statementBody += ',';
+  }
   return statementBody;
 }

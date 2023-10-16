@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 
 import { SyntaxKind } from 'typescript';
-import { EnumEntity } from '../declaration-node/enumDeclaration';
+import type { EnumEntity } from '../declaration-node/enumDeclaration';
 
 /**
  * generate enum
@@ -35,7 +35,9 @@ export function generateEnumDeclaration(rootName: string, enumDeclaration: EnumE
     if (member.enumKind === SyntaxKind.TypeReference) {
       enumBody += `${member.enumValueName}: new ${member.enumValue},\n`;
     } else if (member.enumKind === SyntaxKind.NumericLiteral) {
-      enumBody += `${member.enumValueName}: ${member.enumValue.replace(/"/g, '')},\n`;
+      defaultValue = parseInt(member.enumValue.replace(/"/g, '').replace(/'/g, ''));
+      enumBody += `${member.enumValueName}: ${defaultValue},\n`;
+      defaultValue++;
     } else if (member.enumKind === SyntaxKind.StringLiteral) {
       enumBody += `${member.enumValueName}: ${member.enumValue},\n`;
     } else {

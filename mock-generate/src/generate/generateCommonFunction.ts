@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 
-import { SourceFile, SyntaxKind } from 'typescript';
-import { FunctionEntity } from '../declaration-node/functionDeclaration';
-import { getCallbackStatement, getReturnStatement, getWarnConsole } from './generateCommonUtil';
+import type { SourceFile } from 'typescript';
+import { SyntaxKind } from 'typescript';
+import type { FunctionEntity } from '../declaration-node/functionDeclaration';
+import { getCallbackStatement, getReturnStatement, getWarnConsole, getReturnData } from './generateCommonUtil';
 
 /**
  * generate function
@@ -24,29 +25,36 @@ import { getCallbackStatement, getReturnStatement, getWarnConsole } from './gene
  * @param sourceFile
  * @returns
  */
-export function generateCommonFunction(rootName: string, functionArray: Array<FunctionEntity>, sourceFile: SourceFile): string {
+export function generateCommonFunction(rootName: string, functionArray: Array<FunctionEntity>, sourceFile: SourceFile, mockApi: string): string {
   let functionBody = '';
   const functionEntity = functionArray[0];
   functionBody = `${functionEntity.functionName}: function(...args) {`;
   functionBody += getWarnConsole(rootName, functionEntity.functionName);
 
+  // The callback function cannot be executed immediately, otherwise an error will be reported
+  if (sourceFile.fileName.includes('@ohos.events.emitter.d.ts')) {
+    functionBody += '},';
+    return functionBody;
+  }
+
   if (functionArray.length === 1) {
     const args = functionEntity.args;
     const len = args.length;
     if (args.length > 0 && args[len - 1].paramName.toLowerCase().includes('callback')) {
-      functionBody += getCallbackStatement();
+      functionBody += getCallbackStatement(mockApi, args[len - 1]?.paramTypeString);
     }
     if (functionEntity.returnType.returnKind !== SyntaxKind.VoidKeyword) {
       if (rootName === 'featureAbility' && functionEntity.returnType.returnKindName === 'Context') {
         functionBody += 'return _Context;';
       } else if (rootName === 'inputMethod' && functionEntity.returnType.returnKindName === 'InputMethodSubtype') {
-        functionBody += 'return mockInputMethodSubtype().InputMethodSubtype;'
+        functionBody += 'return mockInputMethodSubtype().InputMethodSubtype;';
       } else {
         functionBody += getReturnStatement(functionEntity.returnType, sourceFile);
       }
     }
   } else {
     const argSet: Set<string> = new Set<string>();
+    let argParamsSet: string = '';
     const returnSet: Set<string> = new Set<string>();
     let isCallBack = false;
     functionArray.forEach(value => {
@@ -55,25 +63,60 @@ export function generateCommonFunction(rootName: string, functionArray: Array<Fu
         argSet.add(arg.paramName);
         if (arg.paramName.toLowerCase().includes('callback')) {
           isCallBack = true;
+          if (arg.paramTypeString) {
+            argParamsSet = arg.paramTypeString;
+          }
         }
       });
     });
     if (isCallBack) {
-      functionBody += getCallbackStatement();
+      functionBody += getCallbackStatement(mockApi, argParamsSet);
     }
     let isReturnPromise = false;
+    let promiseReturnValue = '';
+    let otherReturnValue = '';
     returnSet.forEach(value => {
-      if (value.startsWith('Promise')) {
+      if (value.includes('Promise<')) {
         isReturnPromise = true;
+        promiseReturnValue = value;
+      } else {
+        if (!otherReturnValue) {
+          otherReturnValue = value;
+        }
       }
     });
-
-    if (isReturnPromise && isCallBack) {
-      functionBody += `else {
-        return new Promise((resolve, reject) => {
-          resolve('[PC Preview] unknow boolean');
-        })
-      }`;
+    if (isReturnPromise) {
+      if (promiseReturnValue) {
+        let returnType = null;
+        functionArray.forEach(value => {
+          if (value.returnType.returnKindName === promiseReturnValue) {
+            returnType = value.returnType;
+          }
+        });
+        functionBody += getReturnData(isCallBack, isReturnPromise, returnType, sourceFile, mockApi);
+      } else {
+        if (isCallBack) {
+          functionBody += `else {
+              return new Promise((resolve, reject) => {
+                resolve('[PC Preview] unknow boolean');
+              })
+            }`;
+        } else {
+          functionBody += `
+              return new Promise((resolve, reject) => {
+                resolve('[PC Preview] unknow boolean');
+              })
+            `;
+        }
+      }
+    } else if (otherReturnValue) {
+      let returnType = null;
+      functionArray.forEach(value => {
+        if (value.returnType.returnKindName === otherReturnValue) {
+          returnType = value.returnType;
+        }
+      });
+      functionBody += getReturnData(isCallBack, isReturnPromise, returnType, sourceFile, mockApi);
     }
   }
   functionBody += '},';

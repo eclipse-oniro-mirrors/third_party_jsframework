@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -35,9 +35,9 @@ const {
   eslint
 } = require('rollup-plugin-eslint');
 
-const frameworkBanner = `var global=this; var process={env:{}}; ` + `var setTimeout=global.setTimeout;\n`;
+const frameworkBanner = 'var global=this; var process={env:{}}; ' + 'var setTimeout=global.setTimeout;\n';
 
-const frameworkBannerForJSAPIMock = `var global=globalThis;`;
+const frameworkBannerForJSAPIMock = 'var global=globalThis;';
 
 const onwarn = warning => {
   // Silence circular dependency warning
@@ -75,12 +75,15 @@ const configJSAPIMockInput = {
 const configJSAPIMockOutput = {
   file: path.resolve(__dirname, 'dist/jsMockSystemPlugin.js'),
   format: 'umd',
+  treeshake: false,
   banner: frameworkBannerForJSAPIMock
 };
 
 rollup.rollup(configJSAPIMockInput).then(bundle => {
   bundle.write(configJSAPIMockOutput).then(() => {
     countSize(configJSAPIMockOutput.file);
+    const fileContent = fs.readFileSync(configJSAPIMockOutput.file, 'utf-8');
+    fs.writeFileSync(configJSAPIMockOutput.file, fileContent.replace(/CommonMethod\$\d*/g, 'CommonMethod'), 'utf-8');
   });
 });
 
@@ -90,7 +93,9 @@ function countSize(filePath) {
     if (error) {
       console.error('file size is wrong');
     } else {
-      const size = (stats.size / 1024).toFixed(2) + 'KB';
+      const KB_BYTE_LENGTH = 1024;
+      const num = 2;
+      const size = (stats.size / KB_BYTE_LENGTH).toFixed(num) + 'KB';
       console.log(`generate snapshot file: ${file}...\nthe snapshot file size: ${size}...`);
     }
   });

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 
 import { SyntaxKind } from 'typescript';
-import { IndexSignatureEntity } from '../declaration-node/indexSignatureDeclaration';
+import type { IndexSignatureEntity } from '../declaration-node/indexSignatureDeclaration';
 
 /**
  * generate index signature
@@ -27,7 +27,7 @@ export function generateIndexSignature(signatureEntity: IndexSignatureEntity): s
   if (signatureEntity.indexSignatureKind === SyntaxKind.TypeReference) {
     signatureTypeName = signatureEntity.indexSignatureTypeName;
   } else {
-    signatureTypeName = `'[PC Preview] unkonwn type',\n`;
+    signatureTypeName = '\'[PC Preview] unknown type\',\n';
   }
   return `${signatureKey}: ${signatureTypeName}`;
 }
