@@ -166,7 +166,7 @@ action("gen_snapshot") {
   outputs = [ prebuilt_js_path ]
 }
 
-if (!is_standard_system && !is_cross_platform_build) {
+if (!is_standard_system && !is_arkui_x) {
   import("$v8_root/gni/snapshot_toolchain.gni")
 
   v8_snapshot_bin_path = get_label_info(":v8_snapshot_bin", "target_out_dir") +
@@ -261,7 +261,7 @@ es2abc_gen_abc("ark_jsf") {
 ohos_prebuilt_etc("ark_build") {
   deps = [ ":ark_jsf" ]
   source = ark_abc_path
-  if (!is_cross_platform_build) {
+  if (!is_arkui_x) {
     part_name = "jsframework"
   }
 }
