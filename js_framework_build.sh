@@ -44,6 +44,7 @@ fi
 cp -f $5 $8
 cp -f $6 $8
 cp -f ${9} $8
+cp -f ${14} $8
 cp -f ${12} $8
 cp -r $7 $8
 if [ -d "$prebuilts_path" ]; then
@@ -79,6 +80,7 @@ else
 fi
 rm -rf ./runtime
 rm -rf ./tsconfig.json
+rm -rf rollup-plugin-uglifyjs.js
 rm -rf build_strip_native_min.js
 rm -rf ./test
 rm -rf ./.eslintrc
