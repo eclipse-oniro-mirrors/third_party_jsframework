@@ -19,19 +19,21 @@ const path = require('path');
 
 const rollup = require('rollup');
 
-const resolve = require('@rollup/plugin-node-resolve');
+const resolve = require('rollup-plugin-node-resolve');
 
-const commonjs = require('@rollup/plugin-commonjs');
+const commonjs = require('rollup-plugin-commonjs');
 
-const json = require('@rollup/plugin-json');
+const json = require('rollup-plugin-json');
 
-const { getBabelOutputPlugin } = require('@rollup/plugin-babel');
+const babel = require('rollup-plugin-babel');
 
-const typescript = require('@rollup/plugin-typescript');
+const typescript = require('rollup-plugin-typescript2');
 
-const uglifyJs = require('./rollup-plugin-uglifyjs');
+const { uglify } = require('rollup-plugin-uglify');
 
-const eslint = require('@rollup/plugin-eslint');
+const {
+  eslint
+} = require('rollup-plugin-eslint');
 
 const frameworkBanner = `var global=this; var process={env:{}}; ` + `var setTimeout=global.setTimeout;\n`;
 
@@ -42,15 +44,12 @@ const onwarn = warning => {
   if (warning.code === 'CIRCULAR_DEPENDENCY') {
     return;
   }
-  if (warning.code === 'PLUGIN_WARNING') {
-    return;
-  }
   console.warn(`(!) ${warning.message}`);
 };
 
 const tsPlugin = typescript({
   tsconfig: path.resolve(__dirname, 'tsconfig.json'),
-  module: "ESNext"
+  check: true
 });
 
 const esPlugin = eslint({
@@ -67,12 +66,10 @@ const configInput = {
     json(),
     resolve(),
     commonjs(),
-    getBabelOutputPlugin({
-      exclude: 'node_moduels/**',
-      presets: [ '@babel/preset-env' ],
-      allowAllFormats: true
+    babel({
+      exclude: 'node_moduels/**'
     }),
-    uglifyJs()
+    uglify()
   ]
 };
 
