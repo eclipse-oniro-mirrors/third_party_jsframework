@@ -18,11 +18,19 @@ prebuilts_path=${11}
 # copy dependency file to generate dir of gn
 # the params come from .gn
 
+if [ "${14}" == 'true' ];then
+  rm -rf $2/src
+fi
+
 # copy runtime to target out, and runtime/css-what is solt link, copy it always follow symbolic links in SOURCE
 if [ "${10}" == 'true' ];then
   cp -R -L $2 $8
 else
   cp -r -L $2 $8
+fi
+
+if [ "${14}" == 'true' ];then
+  cp -r -L ${13} obj/third_party/jsframework/runtime
 fi
 
 # $2 => node $4 => node_modules
