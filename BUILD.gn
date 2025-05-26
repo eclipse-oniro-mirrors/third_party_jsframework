@@ -12,7 +12,6 @@
 # limitations under the License.
 
 import("//build/ohos.gni")
-import("//foundation/arkui/ace_engine/ace_config.gni")
 
 prebuilt_js_path = get_label_info(":gen_snapshot", "target_out_dir") +
                    "/dist/strip.native.min.js"
@@ -28,7 +27,6 @@ action("gen_node_modules") {
 }
 
 action("gen_snapshot") {
-  deps = [ "//third_party/css-what:css_what_sources" ]
   script = "//third_party/jsframework/js_framework_build.sh"
 
   js_framework = "//third_party/jsframework/runtime"
@@ -50,7 +48,16 @@ action("gen_snapshot") {
   eslint = "//third_party/jsframework/.eslintrc"
   babel = "//third_party/jsframework/.babelrc"
   test_file = "//third_party/jsframework/test"
-  css_what = "//third_party/css-what"
+  css_what = ""
+  
+  if (ohos_indep_compiler_enable) {
+    external_deps = [ "css-what:css_what_sources" ]
+    css_what = "obj/binarys/third_party/css-what/innerapis/css_what_sources/src"
+    is_indep_compiler = "true"
+  } else {
+    deps = [ "//third_party/css-what:css_what_sources" ]
+    is_indep_compiler = "false"
+  }
 
   args = [
     rebase_path(nodejs_path, root_build_dir),
@@ -65,7 +72,8 @@ action("gen_snapshot") {
     is_mac,
     rebase_path("//prebuilts", root_build_dir),
     rebase_path(buildfile_native_min, root_build_dir),
-    rebase_path(css_what, root_build_dir),
+    css_what,
+    is_indep_compiler
   ]
 
   inputs = [
@@ -263,5 +271,6 @@ ohos_prebuilt_etc("ark_build") {
   source = ark_abc_path
   if (!is_arkui_x) {
     part_name = "jsframework"
+    subsystem_name = "thirdparty"
   }
 }

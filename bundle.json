@@ -20,7 +20,9 @@
         "rom": "",
         "ram": "",
         "deps": {
-            "components": [],
+            "components": [
+                "css-what"
+            ],
             "third_party": []
         },
         "build": {
