@@ -275,6 +275,8 @@ export class TaskCenter {
             return ace.callNative(JSON.stringify(options), args);
           case 'ohos.animator':
             return ace.callNative(JSON.stringify(options), JSON.stringify(args[0]));
+          case 'digitalCrown':
+            return ace.callNative(JSON.stringify(options), args[0]);
           default:
             break;
         }
