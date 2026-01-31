@@ -209,7 +209,7 @@ export function genTimerAPI(page: Page): object {
       animation.cancelAnimationFrame(n);
     },
     setMonitorForCrownEvents: (...args) => {
-      const handler = function(event) {
+      const handler = function(event): boolean {
         return args[0](event, ...args.slice(1));
       };
       digitalCrown.setMonitorForCrownEvents(handler);
