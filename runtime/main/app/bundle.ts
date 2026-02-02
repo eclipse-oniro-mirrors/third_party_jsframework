@@ -174,7 +174,6 @@ export function genTimerAPI(page: Page): object {
   // Timer APIs polyfill in native
   const timer: any = page.requireModule('timer');
   const animation = page.requireModule('animation');
-  const digitalCrown = page.requireModule('digitalCrown');
   Object.assign(timerAPIs, {
     setTimeout: (...args) => {
       const handler = () => {
@@ -207,16 +206,6 @@ export function genTimerAPI(page: Page): object {
     },
     cancelAnimationFrame: (n) => {
       animation.cancelAnimationFrame(n);
-    },
-    setMonitorForCrownEvents: (...args) => {
-      const handler = function(event): boolean {
-        return args[0](event, ...args.slice(1));
-      };
-      digitalCrown.setMonitorForCrownEvents(handler);
-      return page.doc.taskCenter.callbackManager.currCallbackId.toString();
-    },
-    clearMonitorForCrownEvents: ()=>{
-      digitalCrown.clearMonitorForCrownEvents();
     }
   });
   return timerAPIs;
