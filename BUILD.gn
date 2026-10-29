@@ -56,6 +56,9 @@ action("gen_snapshot") {
     is_indep_compiler = "true"
   } else {
     deps = [ "//third_party/css-what:css_what_sources" ]
+    css_what = rebase_path(
+            get_label_info("//third_party/css-what:css_what_sources", "target_out_dir") + "/runtime/src",
+            root_build_dir)
     is_indep_compiler = "false"
   }
 
