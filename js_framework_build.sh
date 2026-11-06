@@ -23,7 +23,21 @@ prebuilts_path=${11}
 # runtime/src link is never followed. The source tree and producer output stay
 # unchanged, including in standalone builds.
 if [ -n "${13}" ]; then
-  rm -rf "$8/runtime"
+  runtime_source=$(cd "$2" && pwd -P)
+  css_source=$(cd "${13}" && pwd -P)
+  output_root=$(cd "$8" && pwd -P)
+  runtime_target="$output_root/runtime"
+  if [ -d "$runtime_target" ]; then
+    runtime_target=$(cd "$runtime_target" && pwd -P)
+  fi
+  for source_path in "$runtime_source" "$css_source"; do
+    case "$runtime_target/" in
+      "$source_path/"*) echo "runtime output overlaps an input directory" >&2; exit 1 ;;
+    esac
+    case "$source_path/" in
+      "$runtime_target/"*) echo "runtime output overlaps an input directory" >&2; exit 1 ;;
+    esac
+  done
   mkdir -p "$8/runtime"
   css_runtime_path=${13%/}
   css_runtime_name=${css_runtime_path##*/}
