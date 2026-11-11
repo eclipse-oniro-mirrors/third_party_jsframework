@@ -19,17 +19,49 @@ prebuilts_path=${11}
 # the params come from .gn
 
 
-# copy runtime to target out, and runtime/css-what is solt link, copy it always follow symbolic links in SOURCE
-if [ "${10}" == 'true' ];then
-  cp -R -L $2 $8
-else
-  cp -r -L $2 $8
-fi
-
-# Keep the css-what producer output outside this temporary runtime tree.
-# Cleanup below must not delete a different target's declared outputs.
+# With an explicit css-what input, stage runtime entries separately so a stale
+# runtime/src link is never followed. The source tree and producer output stay
+# unchanged, including in standalone builds.
 if [ -n "${13}" ]; then
-  cp -r -L "${13}" "$8/runtime/"
+  runtime_source=$(cd "$2" && pwd -P)
+  css_source=$(cd "${13}" && pwd -P)
+  output_root=$(cd "$8" && pwd -P)
+  runtime_target="$output_root/runtime"
+  if [ -d "$runtime_target" ]; then
+    runtime_target=$(cd "$runtime_target" && pwd -P)
+  fi
+  for source_path in "$runtime_source" "$css_source"; do
+    case "$runtime_target/" in
+      "$source_path/"*) echo "runtime output overlaps an input directory" >&2; exit 1 ;;
+    esac
+    case "$source_path/" in
+      "$runtime_target/"*) echo "runtime output overlaps an input directory" >&2; exit 1 ;;
+    esac
+  done
+  mkdir -p "$8/runtime"
+  css_runtime_path=${13%/}
+  css_runtime_name=${css_runtime_path##*/}
+  shopt -s dotglob nullglob
+  for runtime_entry in "$2"/*; do
+    if [ "${runtime_entry##*/}" = "$css_runtime_name" ]; then
+      continue
+    fi
+    if [ "${10}" = true ]; then
+      cp -R -L "$runtime_entry" "$8/runtime/"
+    else
+      cp -r -L "$runtime_entry" "$8/runtime/"
+    fi
+  done
+  shopt -u dotglob nullglob
+  if [ "${10}" = true ]; then
+    cp -R -L "${13}" "$8/runtime/"
+  else
+    cp -r -L "${13}" "$8/runtime/"
+  fi
+elif [ "${10}" = true ]; then
+  cp -R -L "$2" "$8"
+else
+  cp -r -L "$2" "$8"
 fi
 
 # $2 => node $4 => node_modules
